@@ -1,0 +1,798 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{13F682A8-C792-47B6-945A-222556D95398}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>QTech.Component</RootNamespace>
+    <AssemblyName>QTech.Component</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>false</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Modules|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Modules\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup>
+    <Reference Include="ClosedXML">
+      <HintPath>..\..\..\Easy Order\Easy Order.C#\EasyOrder\EasyOrder.Base\Dll\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="DocumentFormat.OpenXml">
+      <HintPath>..\EasyOrder.Base\Dll\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EasyServer.Domain">
+      <HintPath>..\..\..\Easy Order\Easy Order.C#\EasyOrder\EasyOrder.Base\Dll\EasyServer.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="esc-pos-usb-net">
+      <HintPath>..\EasyOrder.Base\Dll\esc-pos-usb-net.dll</HintPath>
+    </Reference>
+    <Reference Include="FastMember">
+      <HintPath>..\EasyOrder.Base\Dll\FastMember.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="QRCoder, Version=1.3.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.3.6\lib\net40\QRCoder.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.6.3.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.6.3\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Storm.Domain, Version=0.8.226.1019, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\EasyOrder.Base\Dll\Storm.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.4.5.0\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TinyCsvParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=d7df35b038077099, processorArchitecture=MSIL">
+      <HintPath>..\packages\TinyCsvParser.2.5.2\lib\net45\TinyCsvParser.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddAttachmentDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddAttachmentDialog.Designer.cs">
+      <DependentUpon>AddAttachmentDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ExLinkLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\ExPrinterPicker.cs" />
+    <Compile Include="Components\ExPrinterPicker.Designer.cs">
+      <DependentUpon>ExPrinterPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ExSearchListCombo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\ExSearchListCombo.Designer.cs">
+      <DependentUpon>ExSearchListCombo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\PrinterPickerDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface\PrinterPickerDialog.Designer.cs">
+      <DependentUpon>PrinterPickerDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GRAPanel.cs" />
+    <Compile Include="LineDownPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LineDownPanel.designer.cs">
+      <DependentUpon>LineDownPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="panelBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="panelBar.designer.cs">
+      <DependentUpon>panelBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanelBorderLine.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PanelBorderLine.designer.cs">
+      <DependentUpon>PanelBorderLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanelControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PanelControl.designer.cs">
+      <DependentUpon>PanelControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanelLineLeft.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PanelLineLeft.designer.cs">
+      <DependentUpon>PanelLineLeft.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanelLineRight.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PanelLineRight.designer.cs">
+      <DependentUpon>PanelLineRight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RoundButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RoundButton.designer.cs">
+      <DependentUpon>RoundButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectListItemsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectListItemsDialog.Designer.cs">
+      <DependentUpon>SelectListItemsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\CalendarColumn.cs" />
+    <Compile Include="Components\CheckBoxHeaderCell.cs" />
+    <Compile Include="Components\DataGridViewProgressColumn.cs" />
+    <Compile Include="Components\ExPrettyDateColumn.cs" />
+    <Compile Include="Components\ExTextboxSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ExTextboxSearch.designer.cs">
+      <DependentUpon>ExTextboxSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\NumericUpDownColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExChart.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\ExCrystalReportViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExDateTimePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExPdfReportViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExPdfReportViewer.Designer.cs">
+      <DependentUpon>ExPdfReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExPrettyDate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExReportDatePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExReportViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExReportViewer.Designer.cs">
+      <DependentUpon>ExReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ExcelHelper.cs" />
+    <Compile Include="Helpers\ISearchForm.cs" />
+    <Compile Include="Interface\AuditTrailDialog.cs" />
+    <Compile Include="Interface\AuditTrailDialog.Designer.cs">
+      <DependentUpon>AuditTrailDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\CustomAdvanceFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface\CustomAdvanceFilter.Designer.cs">
+      <DependentUpon>CustomAdvanceFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\ExReportPeroidDatePickerDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface\ExReportPeroidDatePickerDialog.designer.cs">
+      <DependentUpon>ExReportPeroidDatePickerDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Components\DataGridViewTextImage.cs" />
+    <Compile Include="Components\ExBotton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\ExPaging.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ExPaging.Designer.cs">
+      <DependentUpon>ExPaging.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ExPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\ExPanel.Designer.cs">
+      <DependentUpon>ExPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ItemAction.cs" />
+    <Compile Include="Components\DropDownComboBoxColumns.cs" />
+    <Compile Include="Components\DropDownPattern.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\ExTextboxIconPattern.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ExTextboxIconPattern.designer.cs">
+      <DependentUpon>ExTextboxIconPattern.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ExTextboxPattern.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ExTextboxPattern.designer.cs">
+      <DependentUpon>ExTextboxPattern.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ExToolTip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\TreeGridCell.cs" />
+    <Compile Include="Components\TreeGridEvents.cs" />
+    <Compile Include="Components\TreeGridNode.cs" />
+    <Compile Include="Components\TreeGridNodeCollection.cs" />
+    <Compile Include="Components\TreeGridView.cs" />
+    <Compile Include="Components\TreeGridViewExt.cs" />
+    <Compile Include="ExFile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExFile.Designer.cs">
+      <DependentUpon>ExFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExImage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExImage.Designer.cs">
+      <DependentUpon>ExImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ExLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExLoadingImageButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExPagination.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExPagination.Designer.cs">
+      <DependentUpon>ExPagination.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExProfilePicture.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExProfilePicture.Designer.cs">
+      <DependentUpon>ExProfilePicture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ExSearchComboColumn.cs" />
+    <Compile Include="ExFileItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExFileItem.Designer.cs">
+      <DependentUpon>ExFileItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ExTabBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ExTabBar.Designer.cs">
+      <DependentUpon>ExTabBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ExTabItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ExTabItem.Designer.cs">
+      <DependentUpon>ExTabItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExToast.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExToast.Designer.cs">
+      <DependentUpon>ExToast.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Conts.cs" />
+    <Compile Include="Helpers\ReadNumber.cs" />
+    <Compile Include="Components\ComboBoxExtension.cs" />
+    <Compile Include="Components\DataGridViewExComboBoxColumn.cs" />
+    <Compile Include="Components\DebounceDispatcher.cs" />
+    <Compile Include="Components\DropDownItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\DropDownItem.designer.cs">
+      <DependentUpon>DropDownItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Enum.cs" />
+    <Compile Include="Components\ExComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ExComboBox.designer.cs">
+      <DependentUpon>ExComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ExDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExInputTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\ExButtonLoading.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExMessage.Designer.cs">
+      <DependentUpon>ExMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ExSearchCombo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\ExSearchCombo.Designer.cs">
+      <DependentUpon>ExSearchCombo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\DropDownExtension.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Components\ExTextbox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ExTextbox.designer.cs">
+      <DependentUpon>ExTextbox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\GRAPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExDialog.designer.cs">
+      <DependentUpon>ExDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\DropDownExts.cs" />
+    <Compile Include="Helpers\FormatHelper.cs" />
+    <Compile Include="Helpers\IDialog.cs" />
+    <Compile Include="Helpers\ResourcesHelper.cs" />
+    <Compile Include="Helpers\Validator.cs" />
+    <Compile Include="Helpers\ViewBinding.cs" />
+    <Compile Include="IAsyncTask.cs" />
+    <Compile Include="Interface\ReportPeroidDatePickerDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface\ReportPeroidDatePickerDialog.designer.cs">
+      <DependentUpon>ReportPeroidDatePickerDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IPage.cs" />
+    <Compile Include="Components\NavGroup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\NavGroup.designer.cs">
+      <DependentUpon>NavGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\NavItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Popup.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportDatePicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReportDatePicker.designer.cs">
+      <DependentUpon>ReportDatePicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Runner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Runner.designer.cs">
+      <DependentUpon>Runner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectItemsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectItemsDialog.Designer.cs">
+      <DependentUpon>SelectItemsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\TreeViewCheck.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\TreeViewCheck.Designer.cs">
+      <DependentUpon>TreeViewCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\TriStateTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="UI.cs" />
+    <Compile Include="Validation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Validation.designer.cs">
+      <DependentUpon>Validation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\TextBoxPlaceHolder.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AddAttachmentDialog.resx">
+      <DependentUpon>AddAttachmentDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ExPrinterPicker.resx">
+      <DependentUpon>ExPrinterPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ExSearchListCombo.resx">
+      <DependentUpon>ExSearchListCombo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface\PrinterPickerDialog.resx">
+      <DependentUpon>PrinterPickerDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="panelBar.resx">
+      <DependentUpon>panelBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectListItemsDialog.resx">
+      <DependentUpon>SelectListItemsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ExTextboxSearch.resx">
+      <DependentUpon>ExTextboxSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExPdfReportViewer.resx">
+      <DependentUpon>ExPdfReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExReportDatePicker.resx">
+      <DependentUpon>ExReportDatePicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExReportViewer.resx">
+      <DependentUpon>ExReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface\AuditTrailDialog.resx">
+      <DependentUpon>AuditTrailDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface\CustomAdvanceFilter.resx">
+      <DependentUpon>CustomAdvanceFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ExPaging.resx">
+      <DependentUpon>ExPaging.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ExTextboxIconPattern.resx">
+      <DependentUpon>ExTextboxIconPattern.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ExTextboxPattern.resx">
+      <DependentUpon>ExTextboxPattern.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExFile.resx">
+      <DependentUpon>ExFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExImage.resx">
+      <DependentUpon>ExImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExPagination.resx">
+      <DependentUpon>ExPagination.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExProfilePicture.resx">
+      <DependentUpon>ExProfilePicture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExFileItem.resx">
+      <DependentUpon>ExFileItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ExTabBar.resx">
+      <DependentUpon>ExTabBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ExTabItem.resx">
+      <DependentUpon>ExTabItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExToast.resx">
+      <DependentUpon>ExToast.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface\ExReportPeroidDatePickerDialog.resx">
+      <DependentUpon>ExReportPeroidDatePickerDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\DropDownItem.resx">
+      <DependentUpon>DropDownItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ExComboBox.resx">
+      <DependentUpon>ExComboBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExDialog.resx">
+      <DependentUpon>ExDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExMessage.resx">
+      <DependentUpon>ExMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ExSearchCombo.resx">
+      <DependentUpon>ExSearchCombo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ExTextbox.resx">
+      <DependentUpon>ExTextbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface\ReportPeroidDatePickerDialog.resx">
+      <DependentUpon>ReportPeroidDatePickerDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\NavGroup.resx">
+      <DependentUpon>NavGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportDatePicker.resx">
+      <DependentUpon>ReportDatePicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Runner.resx">
+      <DependentUpon>Runner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectItemsDialog.resx">
+      <DependentUpon>SelectItemsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validation.resx">
+      <DependentUpon>Validation.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\arrow_drop_down_grey_18x18.png" />
+    <None Include="Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\barcode.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\20.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EPowerIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\right-arrow-in-circular-button.png" />
+    <None Include="Resources\tab_middle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down-arrow-in-small-circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\point_loading.gif" />
+    <None Include="Resources\report_printing.png" />
+    <None Include="Resources\waiting.png" />
+    <None Include="Resources\report_processing.png" />
+    <None Include="Resources\printed_check.png" />
+    <None Include="Resources\start.png" />
+    <None Include="Resources\running.png" />
+    <None Include="Resources\reading.png" />
+    <None Include="Resources\printing.png" />
+    <None Include="Resources\png.png" />
+    <None Include="Resources\xls.png" />
+    <None Include="Resources\ppt.png" />
+    <None Include="Resources\retry.png" />
+    <None Include="Resources\unknown_file.png" />
+    <None Include="Resources\plus_in_circle.png" />
+    <None Include="Resources\plus.png" />
+    <None Include="Resources\report_32.png" />
+    <None Include="Resources\pencil_edit.png" />
+    <None Include="Resources\pencil.png" />
+    <None Include="Resources\placeholder1.png" />
+    <None Include="Resources\rubbish.png" />
+    <None Include="Resources\picture.png" />
+    <None Include="Resources\waste_bin.png" />
+    <None Include="Resources\attachment.png" />
+    <None Include="Resources\crossremove.png" />
+    <Content Include="Libs\Storm.MediaAPI.dll" />
+    <None Include="Resources\download.png" />
+    <None Include="Resources\doc.png" />
+    <None Include="Resources\avi.png" />
+    <None Include="Resources\active.png" />
+    <None Include="Resources\customer.png" />
+    <None Include="Resources\downloading_datas.png" />
+    <None Include="Resources\arrow_down.png" />
+    <None Include="Resources\arrow_up.png" />
+    <None Include="Resources\drop_down.png" />
+    <None Include="Resources\drop_up.png" />
+    <None Include="Resources\documents-empty.png" />
+    <None Include="Resources\close.png" />
+    <None Include="Resources\arrow-down.png" />
+    <None Include="Resources\arrow_down_small.png" />
+    <None Include="Resources\arrow_up_small.png" />
+    <None Include="Resources\bullet.png" />
+    <None Include="Resources\channel_disconnect.png" />
+    <None Include="Resources\channel_connected.png" />
+    <Content Include="Resources\edit.png" />
+    <None Include="Resources\empty_avatar.png" />
+    <None Include="Resources\jpg.png" />
+    <None Include="Resources\img_pencil.png" />
+    <None Include="Resources\img_delete.png" />
+    <None Include="Resources\img_edit.png" />
+    <None Include="Resources\img_add.png" />
+    <None Include="Resources\img_logout.png" />
+    <None Include="Resources\img_active.png" />
+    <None Include="Resources\img_idle.png" />
+    <None Include="Resources\img_diconnected.png" />
+    <None Include="Resources\img_open.png" />
+    <None Include="Resources\img_close.png" />
+    <None Include="Resources\img_terminate.png" />
+    <None Include="Resources\img_pending.png" />
+    <None Include="Resources\img_block.png" />
+    <None Include="Resources\editing.png" />
+    <None Include="Resources\inputing.png" />
+    <None Include="Resources\inputted.png" />
+    <None Include="Resources\img_meter_un_available.png" />
+    <None Include="Resources\img_meter_inuse.png" />
+    <None Include="Resources\img_meter_available.png" />
+    <None Include="Resources\img_meter_unavailable.png" />
+    <None Include="Resources\img_uploading.png" />
+    <None Include="Resources\history.png" />
+    <None Include="Resources\img_pencil_24.png" />
+    <None Include="Resources\img_loggedOut.png" />
+    <None Include="Resources\img_Progress.png" />
+    <None Include="Resources\img_refund.png" />
+    <None Include="Resources\img_transfer.png" />
+    <None Include="Resources\img_invoice.png" />
+    <None Include="Resources\img_on.png" />
+    <None Include="Resources\img_off.png" />
+    <None Include="Resources\img_show_all.png" />
+    <None Include="Resources\empty_file.png" />
+    <None Include="Resources\folder.png" />
+    <None Include="Resources\img_question.png" />
+    <None Include="Resources\img_refresh.png" />
+    <None Include="Resources\img_info.png" />
+    <None Include="Resources\hide.png" />
+    <None Include="Resources\img_question1.png" />
+    <None Include="Resources\left-arrow.png" />
+    <None Include="Resources\img_left_arrow.png" />
+    <None Include="Resources\img_right_arrow.png" />
+    <None Include="Resources\img_broken.png" />
+    <None Include="Resources\img_suspend.png" />
+    <None Include="Resources\house.png" />
+    <None Include="Resources\img_social_disconnect.png" />
+    <None Include="Resources\img_social_connected.png" />
+    <None Include="Resources\img_none.png" />
+    <None Include="Resources\img_meter__broken.png" />
+    <None Include="Resources\img_ok.png" />
+    <None Include="Resources\img_print.png" />
+    <None Include="Resources\img_export.png" />
+    <None Include="Resources\img_printer_icon.png" />
+    <None Include="Resources\img_expired.png" />
+    <None Include="Resources\img_sending.png" />
+    <None Include="Resources\img_skip.png" />
+    <None Include="Resources\img_placeholder.png" />
+    <None Include="Resources\img_social_default.png" />
+    <None Include="Resources\img_input.png" />
+    <None Include="Resources\img_read.png" />
+    <Content Include="Resources\map-point.png" />
+    <None Include="Resources\maximize.png" />
+    <Content Include="Resources\menu.png" />
+    <None Include="Resources\OoneIcon.ico" />
+    <None Include="Resources\open-folder.png" />
+    <None Include="Resources\open_folder_24.png" />
+    <None Include="Resources\pdf.png" />
+    <None Include="Resources\mp4.png" />
+    <None Include="Resources\OoneIcon1.ico" />
+    <None Include="Resources\OoneIcon2.ico" />
+    <None Include="Resources\oone_64.png" />
+    <None Include="Resources\pause.png" />
+    <None Include="Resources\money.png" />
+    <None Include="Resources\minimize.png" />
+    <Content Include="Resources\pencail.png" />
+    <None Include="Resources\check.png" />
+    <None Include="Resources\infinity.gif" />
+    <None Include="Resources\spin.gif" />
+    <None Include="Resources\maximume.png" />
+    <None Include="Resources\right-arrow-in-circular-button_light.png" />
+    <None Include="Resources\down-arrow-in-small-circle_light.png" />
+    <None Include="Resources\tab_right_selected.png" />
+    <None Include="Resources\tab_middle_selected.png" />
+    <None Include="Resources\tab_left_selected.png" />
+    <None Include="Resources\tab_right.png" />
+    <None Include="Resources\tab_left.png" />
+    <None Include="Resources\arrow_drop_down_grey_18x181.png" />
+    <None Include="Resources\down_traingle.png" />
+    <None Include="Resources\right_traingle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.10.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.10.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxAcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QTech.Base\QTech.Base.csproj">
+      <Project>{209a6926-2491-4480-9cce-5b6a0c65e5c1}</Project>
+      <Name>QTech.Base</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MyComponents\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
