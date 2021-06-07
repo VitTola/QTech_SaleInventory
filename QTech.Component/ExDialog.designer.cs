@@ -51,7 +51,7 @@ namespace QTech.Component
             // 
             // container
             // 
-            this.container.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.container.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(222)))));
             this.container.Dock = System.Windows.Forms.DockStyle.Fill;
             this.container.Location = new System.Drawing.Point(0, 21);
             this.container.Margin = new System.Windows.Forms.Padding(0);
@@ -76,6 +76,9 @@ namespace QTech.Component
             this.digheader.Controls.Add(this._lblTITLE);
             this.digheader.Controls.Add(this.imgICON);
             this.digheader.CornerRadius = 5;
+            this.digheader.Corners = ((QTech.Component.Corners)((((QTech.Component.Corners.TopLeft | QTech.Component.Corners.TopRight) 
+            | QTech.Component.Corners.BottomLeft) 
+            | QTech.Component.Corners.BottomRight)));
             this.digheader.Dock = System.Windows.Forms.DockStyle.Top;
             this.digheader.Gradient = true;
             this.digheader.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
@@ -86,6 +89,7 @@ namespace QTech.Component
             this.digheader.Image = null;
             this.digheader.ImageAlpha = 75;
             this.digheader.ImagePadding = new System.Windows.Forms.Padding(5);
+            this.digheader.ImagePosition = QTech.Component.ImagePositions.BottomRight;
             this.digheader.ImageSize = new System.Drawing.Size(48, 48);
             this.digheader.Location = new System.Drawing.Point(0, 0);
             this.digheader.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
