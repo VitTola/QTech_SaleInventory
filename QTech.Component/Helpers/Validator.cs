@@ -237,6 +237,21 @@ namespace QTech.Component.Helpers
             }
             return valid;
         }
+        //public static bool IsValidNumberic(this DataGridViewCell textBox, bool isShowValidation = true, TabAlignment alignment = TabAlignment.Right)
+        //{
+        //    bool valid = EDomain.Helpers.Validator.IsNumeric(textBox.Value.ToString());
+        //    if (!valid)
+        //    {
+        //        if (isShowValidation)
+        //            textBox.ShowValidation(EDomain.Resources.MsgPleaseInputNumber, alignment);
+        //    }
+        //    else
+        //    {
+        //        textBox.HideValidation();
+        //    }
+        //    return valid;
+        //}
+
         public static bool IsValidInteger(this TextBox textBox, TabAlignment alignment = TabAlignment.Right)
         {
             bool valid = EDomain.Helpers.Validator.IsInteger(textBox.Text);

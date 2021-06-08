@@ -13,9 +13,9 @@ using System.Windows.Forms;
 
 namespace QTech.Forms
 {
-    public partial class frmEmployee : ExDialog, IDialog
+    public partial class frmEmployeePay : ExDialog, IDialog
     {
-        public frmEmployee()
+        public frmEmployeePay()
         {
             InitializeComponent();
             ResourceHelper.Register(QTech.Base.Properties.Resources.ResourceManager);
@@ -28,9 +28,8 @@ namespace QTech.Forms
 
         public void Bind()
         {
+            colCurrency.SetDataSource<QTech.Base.Enums.Currency>();
             cboPosition.SetDataSource<Base.Enums.Postion>();
-            colName.Visible = true;
-            colName.Width = 100;
             
         }
 
@@ -56,6 +55,8 @@ namespace QTech.Forms
 
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
+            dgv.Rows[dgv.NewRowIndex].Cells[colPayDate.Name].Value = DateTime.Now;
+            dgv.Rows[dgv.NewRowIndex].Cells[colCurrency.Name].Value = Base.Enums.Currency.Dollar;
             e.Control.RegisterEnglishInput();
 
             
@@ -95,6 +96,7 @@ namespace QTech.Forms
 
         private void lblAdd_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            dgv.CurrentCell = dgv.Rows[dgv.NewRowIndex].Cells[colCurrency.Name];
             dgv.BeginEdit(true);
         }
 

@@ -109,6 +109,7 @@
     <Compile Include="AddAttachmentDialog.Designer.cs">
       <DependentUpon>AddAttachmentDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\DataGridViewDateTimeColumn.cs" />
     <Compile Include="Components\ExLinkLabel.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -9,14 +9,19 @@ namespace QTech.Base
 {
     public class Customer: QTech.Base.ActiveBaseModel
     {
+        public string Code { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
+        public string Note { get; set; }
+        public int PositionId { get; set; }
     }
 
-    public class Site : BaseModel
+    public class Site : ActiveBaseModel
     {
+        public string Code { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
+        public string Note { get; set; }
         public int CustomerId { get; set; }
     }
 }

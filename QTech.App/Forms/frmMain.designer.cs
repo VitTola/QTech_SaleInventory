@@ -120,7 +120,7 @@
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(169, 130);
             this.lblUser.TabIndex = 3;
-            this.lblUser.Text = "colSite";
+            this.lblUser.Text = "ផេង  រី";
             this.lblUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label3

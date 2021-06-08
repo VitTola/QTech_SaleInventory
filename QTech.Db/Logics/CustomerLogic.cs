@@ -12,7 +12,12 @@ namespace QTech.Db.Logics
     {
         public CustomerLogic(QTechDbContext qTechDbContext): base(qTechDbContext)
         {
+           
+        }
 
+        public override Task<Customer> FindAsync(int id)
+        {
+            return base.FindAsync(id);
         }
     }
 }

@@ -30,10 +30,14 @@ namespace SaleInventory
             InitializeComponent();
             timer1.Start();
             this.MinimizeBox = true;
-            //LoadModules();
-            //ApplyResource();
             ResourceHelper.Register(QTech.Base.Properties.Resources.ResourceManager);
-            
+            InitEvent();
+        }
+
+        private void InitEvent()
+        {
+            btnAccSetting.Enabled = btnCate.Enabled = btnImp.Enabled = btnLogOut.Enabled =
+                btnImpRe.Enabled = btnSup.Enabled  = false;
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -44,15 +48,15 @@ namespace SaleInventory
             timer1.Tick += (o, te) => { lblTime.Text = DateTime.Now.ToLongTimeString(); };
             lblDate.Text = DateTime.Now.ToLongDateString();
             //lblUser.Text = Operation.EmpName;
-            btnEmployee.Click += (o, ee) => { new frmEmployee().ShowDialog(); };
+            btnEmployee.Click += (o, ee) => { new frmCustomer().ShowDialog(); };
             //btnSup.Click += (o, se) => { new frmSupplier().ShowDialog(); };
-            //btnPro.Click += (o, pe) => { new frmProduct().ShowDialog(); };
+            btnPro.Click += (o, pe) => { new frmProduct().ShowDialog(); };
             btnSale.Click += (o, se) => { new frmSale().ShowDialog(); };
             //btnSaleRe.Click += (o, se) => { new frmSaleReport().ShowDialog(); };
             //btnImp.Click += (o, se) => { new frmImport().ShowDialog(); };
             //btnImpRe.Click += (o, ie) => { new frmImportReport().ShowDialog(); };
             //btnAccSetting.Click += (o, se) => { new frmCreateAccount().ShowDialog(); };
-            btnCus.Click += (o, ce) => { new frmCustomer().ShowDialog(); };
+            btnCus.Click += (o, ce) => { new frmEmployee().ShowDialog(); };
             //btnLogOut.Click += (o, le) => { this.Hide(); new frmLogin().Show(); };
             //btnCate.Click += (o, ce) => { new frmCategory().ShowDialog(); };
         }

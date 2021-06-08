@@ -217,4 +217,55 @@
   <data name="Update" xml:space="preserve">
     <value>កែប្រែ</value>
   </data>
+  <data name="Currency" xml:space="preserve">
+    <value>រូបិយប័ណ្ណ</value>
+  </data>
+  <data name="Customer" xml:space="preserve">
+    <value>អតិថិជន</value>
+  </data>
+  <data name="Employees" xml:space="preserve">
+    <value>បុគ្គលិក</value>
+  </data>
+  <data name="PaidAmount" xml:space="preserve">
+    <value>ទឹកប្រាក់បានបង់</value>
+  </data>
+  <data name="PayDate" xml:space="preserve">
+    <value>ថ្ងៃបង់</value>
+  </data>
+  <data name="Sales" xml:space="preserve">
+    <value>លក់</value>
+  </data>
+  <data name="Suppliers" xml:space="preserve">
+    <value>អ្នកផ្គត់ផ្គង់</value>
+  </data>
+  <data name="Company" xml:space="preserve">
+    <value>ផេង ​​​​រី</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>ចំណាំ</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>បិទ</value>
+  </data>
+  <data name="Currency_Dollar" xml:space="preserve">
+    <value>ដុល្លា</value>
+  </data>
+  <data name="Currency_Khmer" xml:space="preserve">
+    <value>រៀល</value>
+  </data>
+  <data name="Postion_Driver" xml:space="preserve">
+    <value>តៃកុងឡាន</value>
+  </data>
+  <data name="Postion_Marketing" xml:space="preserve">
+    <value>ទីផ្សារ</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>រក្សាទុក</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>លេខទូស័ព្ទ</value>
+  </data>
+  <data name="Position" xml:space="preserve">
+    <value>តួនាទី</value>
+  </data>
 </root>

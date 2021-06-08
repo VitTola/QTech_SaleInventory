@@ -13,14 +13,15 @@ using System.Windows.Forms;
 
 namespace QTech.Forms
 {
-    public partial class frmCustomer : ExDialog, IDialog
+    public partial class frmProduct : ExDialog, IDialog
     {
-        public frmCustomer()
+        public frmProduct()
         {
             InitializeComponent();
         }
 
         public GeneralProcess Flag { get; set; }
+
 
         public void Bind()
         {

@@ -1,6 +1,6 @@
 ﻿namespace QTech.Forms
 {
-    partial class frmSale
+    partial class frmEmployeePay
     {
         /// <summary>
         /// Required designer variable.
@@ -45,20 +45,17 @@
             this.lblAdd = new System.Windows.Forms.LinkLabel();
             this.dgv = new QTech.Component.ExDataGridView();
             this.exLabel2 = new QTech.Component.ExLabel();
+            this.exLabel3 = new QTech.Component.ExLabel();
+            this.txtPhone = new System.Windows.Forms.TextBox();
+            this.exLabel4 = new QTech.Component.ExLabel();
             this.exPanel1 = new QTech.Component.Components.ExPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnClose = new QTech.Component.ExButtonLoading();
             this.btnAdd = new QTech.Component.ExButtonLoading();
-            this.exLabel4 = new QTech.Component.ExLabel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.cboPosition = new System.Windows.Forms.ComboBox();
-            this.exLabel5 = new QTech.Component.ExLabel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.exLabel6 = new QTech.Component.ExLabel();
-            this.colName_ = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.colQauntity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDriver = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPayDate = new QTech.Component.CalendarColumn();
+            this.colPaidAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCurrency = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.container.SuspendLayout();
             this.flowLayOutLabelRemoveAdd.SuspendLayout();
@@ -69,20 +66,17 @@
             // 
             // container
             // 
-            this.container.Controls.Add(this.comboBox1);
-            this.container.Controls.Add(this.exLabel6);
             this.container.Controls.Add(this.cboPosition);
-            this.container.Controls.Add(this.exLabel5);
-            this.container.Controls.Add(this.exLabel4);
-            this.container.Controls.Add(this.textBox1);
             this.container.Controls.Add(this.exPanel1);
+            this.container.Controls.Add(this.exLabel4);
+            this.container.Controls.Add(this.exLabel3);
+            this.container.Controls.Add(this.txtPhone);
             this.container.Controls.Add(this.exLabel2);
             this.container.Controls.Add(this.dgv);
             this.container.Controls.Add(this.flowLayOutLabelRemoveAdd);
             this.container.Controls.Add(this.exLabel1);
             this.container.Controls.Add(this.txtName);
-            this.container.Size = new System.Drawing.Size(708, 465);
-            this.container.Paint += new System.Windows.Forms.PaintEventHandler(this.container_Paint);
+            this.container.Size = new System.Drawing.Size(708, 482);
             // 
             // colId
             // 
@@ -150,7 +144,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(479, 16);
+            this.txtName.Location = new System.Drawing.Point(143, 25);
             this.txtName.Margin = new System.Windows.Forms.Padding(2);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(200, 27);
@@ -159,19 +153,19 @@
             // exLabel1
             // 
             this.exLabel1.AutoSize = true;
-            this.exLabel1.Location = new System.Drawing.Point(360, 19);
+            this.exLabel1.Location = new System.Drawing.Point(24, 28);
             this.exLabel1.Name = "exLabel1";
             this.exLabel1.Required = true;
-            this.exLabel1.Size = new System.Drawing.Size(81, 19);
+            this.exLabel1.Size = new System.Drawing.Size(43, 19);
             this.exLabel1.TabIndex = 5;
-            this.exLabel1.Text = "លេខបញ្ជាទិញ";
+            this.exLabel1.Text = "ឈ្មោះ";
             // 
             // flowLayOutLabelRemoveAdd
             // 
             this.flowLayOutLabelRemoveAdd.Controls.Add(this.lblRemove);
             this.flowLayOutLabelRemoveAdd.Controls.Add(this.lblAdd);
             this.flowLayOutLabelRemoveAdd.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayOutLabelRemoveAdd.Location = new System.Drawing.Point(580, 80);
+            this.flowLayOutLabelRemoveAdd.Location = new System.Drawing.Point(580, 103);
             this.flowLayOutLabelRemoveAdd.Name = "flowLayOutLabelRemoveAdd";
             this.flowLayOutLabelRemoveAdd.Size = new System.Drawing.Size(99, 19);
             this.flowLayOutLabelRemoveAdd.TabIndex = 3;
@@ -217,10 +211,9 @@
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colName_,
-            this.colQauntity,
-            this.colDriver,
-            this.colTotal,
+            this.colPayDate,
+            this.colPaidAmount,
+            this.colCurrency,
             this.colNote});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -232,7 +225,7 @@
             this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
-            this.dgv.Location = new System.Drawing.Point(28, 105);
+            this.dgv.Location = new System.Drawing.Point(28, 128);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
             this.dgv.Paging = null;
@@ -247,19 +240,47 @@
             // 
             this.exLabel2.AutoSize = true;
             this.exLabel2.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exLabel2.Location = new System.Drawing.Point(27, 80);
+            this.exLabel2.Location = new System.Drawing.Point(27, 103);
             this.exLabel2.Name = "exLabel2";
             this.exLabel2.Required = false;
-            this.exLabel2.Size = new System.Drawing.Size(92, 19);
+            this.exLabel2.Size = new System.Drawing.Size(178, 19);
             this.exLabel2.TabIndex = 11;
-            this.exLabel2.Text = "មុខទំនិញលម្អិត";
+            this.exLabel2.Text = "ទឹកប្រាក់ដែលបានទូទាន់ប្រចាំខែ";
+            // 
+            // exLabel3
+            // 
+            this.exLabel3.AutoSize = true;
+            this.exLabel3.Location = new System.Drawing.Point(360, 28);
+            this.exLabel3.Name = "exLabel3";
+            this.exLabel3.Required = false;
+            this.exLabel3.Size = new System.Drawing.Size(68, 19);
+            this.exLabel3.TabIndex = 13;
+            this.exLabel3.Text = "លេខទូរស័ព្ទ";
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(479, 25);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(200, 27);
+            this.txtPhone.TabIndex = 1;
+            // 
+            // exLabel4
+            // 
+            this.exLabel4.AutoSize = true;
+            this.exLabel4.Location = new System.Drawing.Point(24, 59);
+            this.exLabel4.Name = "exLabel4";
+            this.exLabel4.Required = false;
+            this.exLabel4.Size = new System.Drawing.Size(40, 19);
+            this.exLabel4.TabIndex = 15;
+            this.exLabel4.Text = "តួនាទី";
             // 
             // exPanel1
             // 
             this.exPanel1.BackColor = System.Drawing.Color.Transparent;
             this.exPanel1.Controls.Add(this.flowLayoutPanel2);
             this.exPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.exPanel1.Location = new System.Drawing.Point(1, 428);
+            this.exPanel1.Location = new System.Drawing.Point(1, 445);
             this.exPanel1.Name = "exPanel1";
             this.exPanel1.Padding = new System.Windows.Forms.Padding(2);
             this.exPanel1.Size = new System.Drawing.Size(706, 36);
@@ -304,91 +325,40 @@
             this.btnAdd.Text = "រក្សាទុក";
             this.btnAdd.UseVisualStyleBackColor = true;
             // 
-            // exLabel4
-            // 
-            this.exLabel4.AutoSize = true;
-            this.exLabel4.Location = new System.Drawing.Point(360, 52);
-            this.exLabel4.Name = "exLabel4";
-            this.exLabel4.Required = true;
-            this.exLabel4.Size = new System.Drawing.Size(80, 19);
-            this.exLabel4.TabIndex = 19;
-            this.exLabel4.Text = "លេខវិក្កយបត្រ";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(479, 49);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 27);
-            this.textBox1.TabIndex = 18;
-            // 
             // cboPosition
             // 
             this.cboPosition.FormattingEnabled = true;
-            this.cboPosition.Location = new System.Drawing.Point(143, 49);
+            this.cboPosition.Location = new System.Drawing.Point(143, 56);
             this.cboPosition.Name = "cboPosition";
             this.cboPosition.Size = new System.Drawing.Size(200, 27);
-            this.cboPosition.TabIndex = 21;
+            this.cboPosition.TabIndex = 18;
             // 
-            // exLabel5
+            // colPayDate
             // 
-            this.exLabel5.AutoSize = true;
-            this.exLabel5.Location = new System.Drawing.Point(24, 52);
-            this.exLabel5.Name = "exLabel5";
-            this.exLabel5.Required = false;
-            this.exLabel5.Size = new System.Drawing.Size(76, 19);
-            this.exLabel5.TabIndex = 20;
-            this.exLabel5.Text = "ទៅកាន់គំរោង";
+            this.colPayDate.DataPropertyName = "PayDate";
+            this.colPayDate.HeaderText = "ថ្ងៃទូទាត់";
+            this.colPayDate.Name = "colPayDate";
+            this.colPayDate.ReadOnly = true;
+            this.colPayDate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colPayDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colPayDate.Width = 140;
             // 
-            // comboBox1
+            // colPaidAmount
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(143, 16);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 27);
-            this.comboBox1.TabIndex = 23;
+            this.colPaidAmount.DataPropertyName = "PaidAmount";
+            this.colPaidAmount.HeaderText = "ទឹកប្រាក់";
+            this.colPaidAmount.Name = "colPaidAmount";
+            this.colPaidAmount.ReadOnly = true;
+            this.colPaidAmount.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colPaidAmount.Width = 140;
             // 
-            // exLabel6
+            // colCurrency
             // 
-            this.exLabel6.AutoSize = true;
-            this.exLabel6.Location = new System.Drawing.Point(24, 19);
-            this.exLabel6.Name = "exLabel6";
-            this.exLabel6.Required = false;
-            this.exLabel6.Size = new System.Drawing.Size(52, 19);
-            this.exLabel6.TabIndex = 22;
-            this.exLabel6.Text = "ក្រុមហ៊ុន";
-            // 
-            // colName_
-            // 
-            this.colName_.HeaderText = "ឈ្មោះ";
-            this.colName_.Name = "colName_";
-            this.colName_.ReadOnly = true;
-            this.colName_.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colName_.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.colName_.Width = 140;
-            // 
-            // colQauntity
-            // 
-            this.colQauntity.DataPropertyName = "Qauntity";
-            this.colQauntity.HeaderText = "បរិមាណ";
-            this.colQauntity.Name = "colQauntity";
-            this.colQauntity.ReadOnly = true;
-            this.colQauntity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colQauntity.Width = 140;
-            // 
-            // colDriver
-            // 
-            this.colDriver.HeaderText = "អ្នកដឹក";
-            this.colDriver.Name = "colDriver";
-            this.colDriver.ReadOnly = true;
-            this.colDriver.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colDriver.Width = 70;
-            // 
-            // colTotal
-            // 
-            this.colTotal.HeaderText = "សរុប";
-            this.colTotal.Name = "colTotal";
-            this.colTotal.ReadOnly = true;
+            this.colCurrency.HeaderText = "រូបីប័ណ្ណ";
+            this.colCurrency.Name = "colCurrency";
+            this.colCurrency.ReadOnly = true;
+            this.colCurrency.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colCurrency.Width = 70;
             // 
             // colNote
             // 
@@ -398,14 +368,14 @@
             this.colNote.Name = "colNote";
             this.colNote.ReadOnly = true;
             // 
-            // frmSale
+            // frmEmployees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(708, 486);
+            this.ClientSize = new System.Drawing.Size(708, 503);
             this.Location = new System.Drawing.Point(0, 0);
             this.MaximizeBox = false;
-            this.Name = "frmSale";
+            this.Name = "frmEmployeePay";
             this.Text = "frmEmployeePay";
             this.container.ResumeLayout(false);
             this.container.PerformLayout();
@@ -434,20 +404,17 @@
         private System.Windows.Forms.LinkLabel lblAdd;
         private Component.ExLabel exLabel1;
         private Component.ExLabel exLabel2;
+        private Component.ExLabel exLabel4;
+        private Component.ExLabel exLabel3;
+        private System.Windows.Forms.TextBox txtPhone;
         private Component.Components.ExPanel exPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private Component.ExButtonLoading btnClose;
         private Component.ExButtonLoading btnAdd;
-        private Component.ExLabel exLabel4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private Component.ExLabel exLabel6;
         private System.Windows.Forms.ComboBox cboPosition;
-        private Component.ExLabel exLabel5;
-        private System.Windows.Forms.DataGridViewComboBoxColumn colName_;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colQauntity;
-        private System.Windows.Forms.DataGridViewComboBoxColumn colDriver;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTotal;
+        private Component.CalendarColumn colPayDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPaidAmount;
+        private System.Windows.Forms.DataGridViewComboBoxColumn colCurrency;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNote;
     }
 }

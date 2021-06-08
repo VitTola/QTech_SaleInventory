@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QTech.Base
 {
-    public class Sale: BaseModel
+    public class Sale: ActiveBaseModel
     {
         public DateTime SaleDate { get; set; }
         public string InvoiceNo { get; set; }
@@ -17,5 +17,11 @@ namespace QTech.Base
         public int CompanyId { get; set; }
         public int EmployeeId { get; set; }
 
+    }
+
+    public class SaleDetail : ActiveBaseModel
+    {
+        public int EmployeeId { get; set; }
+        public int SaleId { get; set; }
     }
 }
