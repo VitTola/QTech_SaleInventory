@@ -2,7 +2,6 @@
 using EasyServer.Domain.Exceptions;
 using EasyServer.Domain.Models;
 using EasyServer.Domain.SearchModels;
-using Newtonsoft.Json;
 using QTech.Db;
 using System;
 using System.Collections.Generic;
@@ -15,7 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using datasx = System.Data;
 
-namespace EasyServer.App.Logics
+namespace QTech.Db
 {
     public class MasterLogic
     {
@@ -26,7 +25,7 @@ namespace EasyServer.App.Logics
         }
         
         public class TDbLogic<T, TKey> : MasterLogic
-                where T : TBaseModel<TKey>
+                where T : QTech.Base.TBaseModel<TKey>
                 where TKey : struct
         {
             bool _hasActiveColumn = false;
@@ -132,7 +131,7 @@ namespace EasyServer.App.Logics
                 pi.SetValue(obj, active);
             }
         }
-        public class DbLogic<T> : TDbLogic<T, int> where T : ActiveBaseModel
+        public class DbLogic<T> : TDbLogic<T, int> where T : Base.ActiveBaseModel
         {
             public DbLogic(QTechDbContext qTechDbContext) : base(qTechDbContext) { }
 
@@ -141,5 +140,8 @@ namespace EasyServer.App.Logics
                 return _db.Set<T>().AsNoTracking().Where(x => x.Active);
             }
         }
+
+        
     }
+    
 }

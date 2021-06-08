@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using QTech.Component;
 using QTech.Base.BaseModels;
 using QTech.Base.Enums;
-using QTech.Db.Models;
+using QTech.Base;
 
 namespace Storm.UI
 {

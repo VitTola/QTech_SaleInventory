@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QTech.Db.Models
+namespace QTech.Base
 {
     public class User:BaseModel
     {

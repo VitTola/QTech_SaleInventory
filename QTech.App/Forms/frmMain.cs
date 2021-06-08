@@ -44,10 +44,10 @@ namespace SaleInventory
             timer1.Tick += (o, te) => { lblTime.Text = DateTime.Now.ToLongTimeString(); };
             lblDate.Text = DateTime.Now.ToLongDateString();
             //lblUser.Text = Operation.EmpName;
-            //btnEmployee.Click += (o, ee) => { new frmEmployee().ShowDialog(); };
+            btnEmployee.Click += (o, ee) => { new frmEmployee().ShowDialog(); };
             //btnSup.Click += (o, se) => { new frmSupplier().ShowDialog(); };
             //btnPro.Click += (o, pe) => { new frmProduct().ShowDialog(); };
-            //btnSale.Click += (o, se) => { new frmSale().ShowDialog(); };
+            btnSale.Click += (o, se) => { new frmSale().ShowDialog(); };
             //btnSaleRe.Click += (o, se) => { new frmSaleReport().ShowDialog(); };
             //btnImp.Click += (o, se) => { new frmImport().ShowDialog(); };
             //btnImpRe.Click += (o, ie) => { new frmImportReport().ShowDialog(); };
