@@ -1,5 +1,6 @@
 ﻿
 using QTech.Component;
+using QTech.Forms;
 using SaleInventory;
 using System;
 using System.Collections.Generic;

@@ -28,15 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.exLabel2 = new QTech.Component.ExLabel();
             this.dgv = new QTech.Component.ExDataGridView();
-            this.colSite = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayOutLabelRemoveAdd = new System.Windows.Forms.FlowLayoutPanel();
             this.lblRemove = new System.Windows.Forms.LinkLabel();
             this.lblAdd = new System.Windows.Forms.LinkLabel();
-            this.lblCompany = new QTech.Component.ExLabel();
+            this.lblCompany_ = new QTech.Component.ExLabel();
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblPhone = new QTech.Component.ExLabel();
             this.txtPhone = new System.Windows.Forms.TextBox();
@@ -46,6 +45,8 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnClose = new QTech.Component.ExButtonLoading();
             this.btnAdd = new QTech.Component.ExButtonLoading();
+            this.colSite = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.flowLayOutLabelRemoveAdd.SuspendLayout();
@@ -63,7 +64,7 @@
             this.container.Controls.Add(this.exLabel2);
             this.container.Controls.Add(this.dgv);
             this.container.Controls.Add(this.flowLayOutLabelRemoveAdd);
-            this.container.Controls.Add(this.lblCompany);
+            this.container.Controls.Add(this.lblCompany_);
             this.container.Controls.Add(this.txtName);
             this.container.Size = new System.Drawing.Size(375, 399);
             // 
@@ -86,22 +87,23 @@
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv.BackgroundColor = System.Drawing.Color.White;
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colSite});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colSite,
+            this.colPhone});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
             this.dgv.Location = new System.Drawing.Point(28, 154);
@@ -114,13 +116,6 @@
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(315, 184);
             this.dgv.TabIndex = 14;
-            // 
-            // colSite
-            // 
-            this.colSite.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colSite.HeaderText = "ឈ្មោះគំរោង";
-            this.colSite.Name = "colSite";
-            this.colSite.ReadOnly = true;
             // 
             // flowLayOutLabelRemoveAdd
             // 
@@ -155,16 +150,17 @@
             this.lblAdd.TabIndex = 0;
             this.lblAdd.TabStop = true;
             this.lblAdd.Text = "បន្ថែម";
+            this.lblAdd.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblAdd_LinkClicked);
             // 
-            // lblCompany
+            // lblCompany_
             // 
-            this.lblCompany.AutoSize = true;
-            this.lblCompany.Location = new System.Drawing.Point(24, 24);
-            this.lblCompany.Name = "lblCompany";
-            this.lblCompany.Required = true;
-            this.lblCompany.Size = new System.Drawing.Size(83, 19);
-            this.lblCompany.TabIndex = 15;
-            this.lblCompany.Text = "ឈ្មោះក្រុមហ៊ុន";
+            this.lblCompany_.AutoSize = true;
+            this.lblCompany_.Location = new System.Drawing.Point(24, 24);
+            this.lblCompany_.Name = "lblCompany_";
+            this.lblCompany_.Required = true;
+            this.lblCompany_.Size = new System.Drawing.Size(83, 19);
+            this.lblCompany_.TabIndex = 15;
+            this.lblCompany_.Text = "ឈ្មោះក្រុមហ៊ុន";
             // 
             // txtName
             // 
@@ -263,6 +259,20 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // colSite
+            // 
+            this.colSite.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colSite.HeaderText = "ឈ្មោះគំរោង";
+            this.colSite.Name = "colSite";
+            this.colSite.ReadOnly = true;
+            // 
+            // colPhone
+            // 
+            this.colPhone.HeaderText = "លេខទូរស័ព្ទ";
+            this.colPhone.Name = "colPhone";
+            this.colPhone.ReadOnly = true;
+            this.colPhone.Width = 150;
+            // 
             // frmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
@@ -286,11 +296,10 @@
 
         private Component.ExLabel exLabel2;
         private Component.ExDataGridView dgv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSite;
         private System.Windows.Forms.FlowLayoutPanel flowLayOutLabelRemoveAdd;
         private System.Windows.Forms.LinkLabel lblRemove;
         private System.Windows.Forms.LinkLabel lblAdd;
-        private Component.ExLabel lblCompany;
+        private Component.ExLabel lblCompany_;
         private System.Windows.Forms.TextBox txtName;
         private Component.ExLabel lblPhone;
         private System.Windows.Forms.TextBox txtPhone;
@@ -300,5 +309,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private Component.ExButtonLoading btnClose;
         private Component.ExButtonLoading btnAdd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSite;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPhone;
     }
 }

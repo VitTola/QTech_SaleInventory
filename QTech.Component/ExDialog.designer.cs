@@ -51,7 +51,7 @@ namespace QTech.Component
             // 
             // container
             // 
-            this.container.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(222)))));
+            this.container.BackColor = System.Drawing.Color.Transparent;
             this.container.Dock = System.Windows.Forms.DockStyle.Fill;
             this.container.Location = new System.Drawing.Point(0, 21);
             this.container.Margin = new System.Windows.Forms.Padding(0);
@@ -66,7 +66,7 @@ namespace QTech.Component
             // 
             this.digheader.BackColor = System.Drawing.Color.Transparent;
             this.digheader.Border = true;
-            this.digheader.BorderColor = System.Drawing.Color.White;
+            this.digheader.BorderColor = System.Drawing.Color.Transparent;
             this.digheader.Colors.Add(this.colorWithAlpha1);
             this.digheader.Colors.Add(this.colorWithAlpha2);
             this.digheader.Colors.Add(this.colorWithAlpha3);
@@ -75,10 +75,8 @@ namespace QTech.Component
             this.digheader.Controls.Add(this.bar);
             this.digheader.Controls.Add(this._lblTITLE);
             this.digheader.Controls.Add(this.imgICON);
-            this.digheader.CornerRadius = 5;
-            this.digheader.Corners = ((QTech.Component.Corners)((((QTech.Component.Corners.TopLeft | QTech.Component.Corners.TopRight) 
-            | QTech.Component.Corners.BottomLeft) 
-            | QTech.Component.Corners.BottomRight)));
+            this.digheader.CornerRadius = 6;
+            this.digheader.Corners = ((QTech.Component.Corners)((QTech.Component.Corners.TopLeft | QTech.Component.Corners.TopRight)));
             this.digheader.Dock = System.Windows.Forms.DockStyle.Top;
             this.digheader.Gradient = true;
             this.digheader.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
@@ -101,23 +99,24 @@ namespace QTech.Component
             // colorWithAlpha1
             // 
             this.colorWithAlpha1.Alpha = 255;
-            this.colorWithAlpha1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(205)))), ((int)(((byte)(205)))));
+            this.colorWithAlpha1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
             this.colorWithAlpha1.Parent = this.digheader;
             // 
             // colorWithAlpha2
             // 
             this.colorWithAlpha2.Alpha = 255;
-            this.colorWithAlpha2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(175)))), ((int)(((byte)(175)))));
+            this.colorWithAlpha2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
             this.colorWithAlpha2.Parent = this.digheader;
             // 
             // colorWithAlpha3
             // 
             this.colorWithAlpha3.Alpha = 255;
-            this.colorWithAlpha3.Color = System.Drawing.SystemColors.ActiveBorder;
+            this.colorWithAlpha3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
             this.colorWithAlpha3.Parent = this.digheader;
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel1.Controls.Add(this._bClose);
             this.flowLayoutPanel1.Controls.Add(this._bMaximize);
             this.flowLayoutPanel1.Controls.Add(this._bMinimize);
@@ -207,6 +206,7 @@ namespace QTech.Component
             // 
             // imgICON
             // 
+            this.imgICON.BackColor = System.Drawing.Color.Transparent;
             this.imgICON.Location = new System.Drawing.Point(5, 2);
             this.imgICON.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.imgICON.Name = "imgICON";
@@ -220,7 +220,7 @@ namespace QTech.Component
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(240)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.ClientSize = new System.Drawing.Size(284, 249);
             this.Controls.Add(this.container);
             this.Controls.Add(this.digheader);

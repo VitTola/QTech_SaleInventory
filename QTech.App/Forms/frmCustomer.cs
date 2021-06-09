@@ -18,12 +18,12 @@ namespace QTech.Forms
 {
     public partial class frmCustomer : ExDialog, IDialog
     {
-        QTechDbContext db=new QTechDbContext();
         Customer model=new Customer();
+        QTechDbContext db = new QTechDbContext();
         public frmCustomer()
         {
             InitializeComponent();
-            CustomerLogic logic = new CustomerLogic(db);
+            
         }
 
         public GeneralProcess Flag { get; set; }
@@ -40,12 +40,12 @@ namespace QTech.Forms
 
         public bool InValid()
         {
-            if (!txtName.IsValidRequired(lblCompany.Text) | txtPhone.IsValidRequired(lblPhone.Text) 
+            if (!txtName.IsValidRequired(lblCompany_.Text) | txtPhone.IsValidRequired(lblPhone.Text) 
                 | txtPhone.IsValidPhone())
             {
-                return true;
+                return false;
             }
-            return false;
+            return true;
         }
 
         public void Read()
@@ -71,7 +71,7 @@ namespace QTech.Forms
             }
             model.Active = true;
             model.Name = txtName.Text;
-            model.Phone = txtNote.Text;
+            model.Phone = txtPhone.Text;
             model.Note = txtNote.Text;
         }
 
@@ -84,6 +84,11 @@ namespace QTech.Forms
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void lblAdd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
         }
     }
 }

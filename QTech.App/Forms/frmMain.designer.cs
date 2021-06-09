@@ -77,7 +77,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.Beige;
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Controls.Add(this.label2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 187);
@@ -88,7 +88,7 @@
             // 
             // label2
             // 
-            this.label2.BackColor = System.Drawing.Color.Beige;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Khmer Muol", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
@@ -101,7 +101,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.Beige;
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.Controls.Add(this.lblUser);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -137,7 +137,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.Beige;
+            this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Controls.Add(this.lblTime);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Font = new System.Drawing.Font("Khmer OS Bokor", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -149,7 +149,7 @@
             // 
             // lblTime
             // 
-            this.lblTime.BackColor = System.Drawing.Color.Beige;
+            this.lblTime.BackColor = System.Drawing.Color.Transparent;
             this.lblTime.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTime.ForeColor = System.Drawing.Color.Black;
             this.lblTime.Location = new System.Drawing.Point(0, -4);
@@ -161,7 +161,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.Beige;
+            this.panel5.BackColor = System.Drawing.Color.Transparent;
             this.panel5.Controls.Add(this.lblDate);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 542);
@@ -172,7 +172,7 @@
             // 
             // lblDate
             // 
-            this.lblDate.BackColor = System.Drawing.Color.Beige;
+            this.lblDate.BackColor = System.Drawing.Color.Transparent;
             this.lblDate.Font = new System.Drawing.Font("Khmer Muol", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.ForeColor = System.Drawing.Color.Black;
             this.lblDate.Location = new System.Drawing.Point(0, 0);
@@ -184,7 +184,7 @@
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.Beige;
+            this.panel6.BackColor = System.Drawing.Color.Transparent;
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Font = new System.Drawing.Font("Khmer Muol", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel6.Location = new System.Drawing.Point(3, 643);
@@ -195,7 +195,7 @@
             // 
             // panel7
             // 
-            this.panel7.BackColor = System.Drawing.Color.Beige;
+            this.panel7.BackColor = System.Drawing.Color.Transparent;
             this.panel7.Controls.Add(this.btnAccSetting);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(3, 735);
@@ -227,7 +227,7 @@
             // 
             // panel8
             // 
-            this.panel8.BackColor = System.Drawing.Color.Beige;
+            this.panel8.BackColor = System.Drawing.Color.Transparent;
             this.panel8.Controls.Add(this.btnLogOut);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(3, 845);
@@ -259,7 +259,7 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Beige;
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.tableLayoutPanel1.ColumnCount = 9;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.8653F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.22694F));
@@ -526,7 +526,7 @@
             // 
             // panel9
             // 
-            this.panel9.BackColor = System.Drawing.Color.Beige;
+            this.panel9.BackColor = System.Drawing.Color.Transparent;
             this.panel9.Controls.Add(this.pictureBox1);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(3, 4);
@@ -537,7 +537,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Beige;
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(55, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -559,7 +559,7 @@
             // 
             // label5
             // 
-            this.label5.BackColor = System.Drawing.Color.Beige;
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Khmer Muol", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -577,7 +577,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(600, 600);
-            this.BackColor = System.Drawing.Color.Beige;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.ClientSize = new System.Drawing.Size(1366, 975);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

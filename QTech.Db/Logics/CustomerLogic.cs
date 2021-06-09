@@ -13,9 +13,6 @@ namespace QTech.Db.Logics
         Customer c = new Customer();
         public CustomerLogic(QTechDbContext qTechDbContext): base(qTechDbContext)
         {
-            c.Name = "Gipmong";
-            c.Phone = "010889944";
-            this.AddAsync(c);
         }
 
         public override Task<Customer> FindAsync(int id)
