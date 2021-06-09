@@ -11,7 +11,7 @@ namespace QTech.Base
     {
         public DateTime SaleDate { get; set; }
         public string InvoiceNo { get; set; }
-        public string Total { get; set; }
+        public decimal Total { get; set; }
         public string PurchaseOrderNo { get; set; }
         public int SiteId { get; set; }
         public int CompanyId { get; set; }
@@ -23,5 +23,8 @@ namespace QTech.Base
     {
         public int EmployeeId { get; set; }
         public int SaleId { get; set; }
+        public int ProductId { get; set; }
+        public int Qauntity { get; set; }
+        public decimal Total{ get; set; }
     }
 }
