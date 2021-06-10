@@ -213,6 +213,19 @@ namespace QTech.Component
                 } 
             }
             base.OnLoad(e);
-        } 
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // ExPage
+            // 
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "ExPage";
+            this.ResumeLayout(false);
+
+        }
     }
 }

@@ -10,6 +10,12 @@ namespace QTech.Component
 {
     public class ExButtonLoading:Button,IAsyncTask
     {
+        public ExButtonLoading()
+        {
+            BackColor = Color.Ivory;
+            FlatStyle = FlatStyle.Flat;
+            FlatAppearance.BorderColor = Color.FromArgb(238, 127, 0);
+        }
         public enum Aligment
         {
             Vertical,
@@ -57,7 +63,7 @@ namespace QTech.Component
                 drawFormat.FormatFlags = StringFormatFlags.DirectionVertical;
                 drawFormat.Alignment = StringAlignment.Near;
             }
-
+            
             //var arc = new RectangleF(bounds.Location, size);
             //GraphicsPath path = new GraphicsPath();
 
@@ -79,7 +85,7 @@ namespace QTech.Component
 
 
             //e.Graphics.FillPath(new SolidBrush(ColorTranslator.FromHtml(Properties.Resources.ColorPrimary)), path);
-             
+
             //e.Graphics.DrawPath(new Pen(Color.White), path);
             //e.Graphics.DrawPath(new Pen(ColorTranslator.FromHtml(Properties.Resources.ColorPrimary)), path);
             e.Graphics.DrawString(ShortcutText, drawFont, drawBrush, locationF, drawFormat);

@@ -311,7 +311,7 @@
             // 
             // btnEmployee
             // 
-            this.btnEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(240)))));
+            this.btnEmployee.BackColor = System.Drawing.Color.Ivory;
             this.btnEmployee.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnEmployee.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));

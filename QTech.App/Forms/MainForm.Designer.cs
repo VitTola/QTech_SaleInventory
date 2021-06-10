@@ -68,10 +68,7 @@
             this.colorWithAlpha2 = new QTech.Component.ColorWithAlpha();
             this.pMenuHeader = new QTech.Component.ExTabItem();
             this.pBoder = new QTech.Component.GRAPanel();
-            this.sidePanel = new QTech.Component.GRAPanel();
-            this.pLeftMenu = new QTech.Component.GRAPanel();
             this.colorWithAlpha3 = new QTech.Component.ColorWithAlpha();
-            this.pHeaderLefrMenu = new QTech.Component.ExTabItem();
             this.pContainBottom = new QTech.Component.GRAPanel();
             this.colorWithAlpha8 = new QTech.Component.ColorWithAlpha();
             this.menuSwitchLinkServer = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -81,6 +78,7 @@
             this.cnmStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnChangePassword = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLogOut = new System.Windows.Forms.ToolStripMenuItem();
+            this.label3 = new System.Windows.Forms.Label();
             this.container.SuspendLayout();
             this.topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
@@ -90,7 +88,6 @@
             this.mainPanel.SuspendLayout();
             this.graPanel2.SuspendLayout();
             this.graPanel3.SuspendLayout();
-            this.sidePanel.SuspendLayout();
             this.pContainBottom.SuspendLayout();
             this.menuSwitchLinkServer.SuspendLayout();
             this.cnmStrip.SuspendLayout();
@@ -132,6 +129,7 @@
             this.topPanel.BorderColor = System.Drawing.Color.Gray;
             this.topPanel.Colors.Add(this.colorWithAlpha4);
             this.topPanel.ContentPadding = new System.Windows.Forms.Padding(0);
+            this.topPanel.Controls.Add(this.label3);
             this.topPanel.Controls.Add(this.picLogo);
             this.topPanel.Controls.Add(this.pTopMenu);
             this.topPanel.CornerRadius = 1;
@@ -265,9 +263,9 @@
             this.txtUserName.ForeColor = System.Drawing.Color.Black;
             this.txtUserName.Location = new System.Drawing.Point(29, 0);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(65, 19);
+            this.txtUserName.Size = new System.Drawing.Size(69, 19);
             this.txtUserName.TabIndex = 3;
-            this.txtUserName.Text = "ណេង ធុននី";
+            this.txtUserName.Text = "អ្នកប្រើប្រាស់";
             // 
             // lblUserDropDown_
             // 
@@ -275,7 +273,7 @@
             this.lblUserDropDown_.ForeColor = System.Drawing.Color.Black;
             this.lblUserDropDown_.Image = global::QTech.Properties.Resources.down_arrow_12;
             this.lblUserDropDown_.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblUserDropDown_.Location = new System.Drawing.Point(97, 0);
+            this.lblUserDropDown_.Location = new System.Drawing.Point(101, 0);
             this.lblUserDropDown_.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.lblUserDropDown_.Name = "lblUserDropDown_";
             this.lblUserDropDown_.Size = new System.Drawing.Size(19, 19);
@@ -285,7 +283,7 @@
             // lblBranchIcon_
             // 
             this.lblBranchIcon_.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblBranchIcon_.Location = new System.Drawing.Point(122, 0);
+            this.lblBranchIcon_.Location = new System.Drawing.Point(126, 0);
             this.lblBranchIcon_.Name = "lblBranchIcon_";
             this.lblBranchIcon_.Size = new System.Drawing.Size(20, 20);
             this.lblBranchIcon_.TabIndex = 4;
@@ -429,7 +427,6 @@
             this.mainPanel.Colors.Add(this.colorWithAlpha6);
             this.mainPanel.ContentPadding = new System.Windows.Forms.Padding(0, -1, 0, -1);
             this.mainPanel.Controls.Add(this.graPanel2);
-            this.mainPanel.Controls.Add(this.sidePanel);
             this.mainPanel.CornerRadius = 1;
             this.mainPanel.Corners = QTech.Component.Corners.TopLeft;
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -489,11 +486,11 @@
             this.graPanel2.ImagePadding = new System.Windows.Forms.Padding(5);
             this.graPanel2.ImagePosition = QTech.Component.ImagePositions.BottomRight;
             this.graPanel2.ImageSize = new System.Drawing.Size(48, 48);
-            this.graPanel2.Location = new System.Drawing.Point(203, 3);
+            this.graPanel2.Location = new System.Drawing.Point(3, 3);
             this.graPanel2.Name = "graPanel2";
             this.graPanel2.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.graPanel2.Rounded = true;
-            this.graPanel2.Size = new System.Drawing.Size(1071, 632);
+            this.graPanel2.Size = new System.Drawing.Size(1271, 632);
             this.graPanel2.TabIndex = 1;
             // 
             // colorWithAlpha13
@@ -539,7 +536,7 @@
             this.graPanel3.Location = new System.Drawing.Point(3, 0);
             this.graPanel3.Name = "graPanel3";
             this.graPanel3.Rounded = true;
-            this.graPanel3.Size = new System.Drawing.Size(1068, 632);
+            this.graPanel3.Size = new System.Drawing.Size(1268, 632);
             this.graPanel3.TabIndex = 0;
             // 
             // colorWithAlpha10
@@ -586,7 +583,7 @@
             this.pContainForm.Name = "pContainForm";
             this.pContainForm.Padding = new System.Windows.Forms.Padding(2);
             this.pContainForm.Rounded = true;
-            this.pContainForm.Size = new System.Drawing.Size(1068, 610);
+            this.pContainForm.Size = new System.Drawing.Size(1268, 610);
             this.pContainForm.TabIndex = 1;
             // 
             // colorWithAlpha1
@@ -603,6 +600,7 @@
             // 
             // pMenuHeader
             // 
+            this.pMenuHeader.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.pMenuHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
             this.pMenuHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pMenuHeader.Image = null;
@@ -611,7 +609,7 @@
             this.pMenuHeader.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pMenuHeader.Name = "pMenuHeader";
             this.pMenuHeader.Selected = false;
-            this.pMenuHeader.Size = new System.Drawing.Size(1068, 22);
+            this.pMenuHeader.Size = new System.Drawing.Size(1268, 22);
             this.pMenuHeader.TabIndex = 0;
             this.pMenuHeader.Text = "ម៊ឺនុយ";
             this.pMenuHeader.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -641,88 +639,13 @@
             this.pBoder.Location = new System.Drawing.Point(0, 0);
             this.pBoder.Name = "pBoder";
             this.pBoder.Rounded = true;
-            this.pBoder.Size = new System.Drawing.Size(1068, 632);
+            this.pBoder.Size = new System.Drawing.Size(1268, 632);
             this.pBoder.TabIndex = 2;
-            // 
-            // sidePanel
-            // 
-            this.sidePanel.BackColor = System.Drawing.Color.Transparent;
-            this.sidePanel.Border = true;
-            this.sidePanel.BorderColor = System.Drawing.Color.Black;
-            this.sidePanel.ContentPadding = new System.Windows.Forms.Padding(0);
-            this.sidePanel.Controls.Add(this.pLeftMenu);
-            this.sidePanel.Controls.Add(this.pHeaderLefrMenu);
-            this.sidePanel.CornerRadius = 5;
-            this.sidePanel.Corners = ((QTech.Component.Corners)((((QTech.Component.Corners.TopLeft | QTech.Component.Corners.TopRight) 
-            | QTech.Component.Corners.BottomLeft) 
-            | QTech.Component.Corners.BottomRight)));
-            this.sidePanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.sidePanel.Gradient = true;
-            this.sidePanel.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.sidePanel.GradientOffset = 1F;
-            this.sidePanel.GradientSize = new System.Drawing.Size(0, 0);
-            this.sidePanel.GradientWrapMode = System.Drawing.Drawing2D.WrapMode.Tile;
-            this.sidePanel.Grayscale = false;
-            this.sidePanel.Image = null;
-            this.sidePanel.ImageAlpha = 75;
-            this.sidePanel.ImagePadding = new System.Windows.Forms.Padding(5);
-            this.sidePanel.ImagePosition = QTech.Component.ImagePositions.BottomRight;
-            this.sidePanel.ImageSize = new System.Drawing.Size(48, 48);
-            this.sidePanel.Location = new System.Drawing.Point(3, 3);
-            this.sidePanel.Name = "sidePanel";
-            this.sidePanel.Rounded = true;
-            this.sidePanel.Size = new System.Drawing.Size(200, 632);
-            this.sidePanel.TabIndex = 0;
-            // 
-            // pLeftMenu
-            // 
-            this.pLeftMenu.AutoScroll = true;
-            this.pLeftMenu.BackColor = System.Drawing.Color.LightGray;
-            this.pLeftMenu.Border = true;
-            this.pLeftMenu.BorderColor = System.Drawing.Color.Gray;
-            this.pLeftMenu.Colors.Add(this.colorWithAlpha3);
-            this.pLeftMenu.ContentPadding = new System.Windows.Forms.Padding(0);
-            this.pLeftMenu.CornerRadius = 5;
-            this.pLeftMenu.Corners = ((QTech.Component.Corners)((QTech.Component.Corners.BottomLeft | QTech.Component.Corners.BottomRight)));
-            this.pLeftMenu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pLeftMenu.Gradient = false;
-            this.pLeftMenu.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.pLeftMenu.GradientOffset = 1F;
-            this.pLeftMenu.GradientSize = new System.Drawing.Size(0, 0);
-            this.pLeftMenu.GradientWrapMode = System.Drawing.Drawing2D.WrapMode.Tile;
-            this.pLeftMenu.Grayscale = false;
-            this.pLeftMenu.Image = null;
-            this.pLeftMenu.ImageAlpha = 75;
-            this.pLeftMenu.ImagePadding = new System.Windows.Forms.Padding(5);
-            this.pLeftMenu.ImagePosition = QTech.Component.ImagePositions.BottomRight;
-            this.pLeftMenu.ImageSize = new System.Drawing.Size(48, 48);
-            this.pLeftMenu.Location = new System.Drawing.Point(0, 22);
-            this.pLeftMenu.Name = "pLeftMenu";
-            this.pLeftMenu.Padding = new System.Windows.Forms.Padding(1);
-            this.pLeftMenu.Rounded = true;
-            this.pLeftMenu.Size = new System.Drawing.Size(200, 610);
-            this.pLeftMenu.TabIndex = 1;
             // 
             // colorWithAlpha3
             // 
             this.colorWithAlpha3.Alpha = 255;
             this.colorWithAlpha3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.colorWithAlpha3.Parent = this.pLeftMenu;
-            // 
-            // pHeaderLefrMenu
-            // 
-            this.pHeaderLefrMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.pHeaderLefrMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pHeaderLefrMenu.Image = null;
-            this.pHeaderLefrMenu.IsTitle = true;
-            this.pHeaderLefrMenu.Location = new System.Drawing.Point(0, 0);
-            this.pHeaderLefrMenu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pHeaderLefrMenu.Name = "pHeaderLefrMenu";
-            this.pHeaderLefrMenu.Selected = false;
-            this.pHeaderLefrMenu.Size = new System.Drawing.Size(200, 22);
-            this.pHeaderLefrMenu.TabIndex = 0;
-            this.pHeaderLefrMenu.Text = "QTech";
-            this.pHeaderLefrMenu.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pContainBottom
             // 
@@ -812,6 +735,19 @@
             this.btnLogOut.Size = new System.Drawing.Size(146, 24);
             this.btnLogOut.Text = "ចាកចេញ";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label3.Font = new System.Drawing.Font("Khmer Muol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(87, 6);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(170, 24);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "សម្រាប់ប្រើបណ្ដោះអាសន្ន";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
@@ -825,6 +761,7 @@
             this.Controls.SetChildIndex(this.container, 0);
             this.container.ResumeLayout(false);
             this.topPanel.ResumeLayout(false);
+            this.topPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.pBottom.ResumeLayout(false);
             this.pBottom.PerformLayout();
@@ -835,7 +772,6 @@
             this.mainPanel.ResumeLayout(false);
             this.graPanel2.ResumeLayout(false);
             this.graPanel3.ResumeLayout(false);
-            this.sidePanel.ResumeLayout(false);
             this.pContainBottom.ResumeLayout(false);
             this.menuSwitchLinkServer.ResumeLayout(false);
             this.cnmStrip.ResumeLayout(false);
@@ -851,11 +787,8 @@
         private QTech.Component.GRAPanel pBottom;
         private QTech.Component.GRAPanel topPanel;
         private QTech.Component.GRAPanel graPanel2;
-        private QTech.Component.GRAPanel sidePanel;
         private QTech.Component.GRAPanel graPanel3;
         private QTech.Component.ExTabItem pMenuHeader;
-        private QTech.Component.ExTabItem pHeaderLefrMenu;
-        private QTech.Component.GRAPanel pLeftMenu;
         private QTech.Component.GRAPanel pContainForm;
         private System.Windows.Forms.Panel Body;
         private QTech.Component.GRAPanel pBoder;
@@ -898,5 +831,6 @@
         private QTech.Component.ColorWithAlpha colorWithAlpha10;
         private QTech.Component.ColorWithAlpha colorWithAlpha11;
         private QTech.Component.ColorWithAlpha colorWithAlpha12;
+        private System.Windows.Forms.Label label3;
     }
 }

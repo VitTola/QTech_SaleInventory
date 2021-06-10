@@ -16,6 +16,8 @@ namespace Storm.UI
 {
     public partial class MainForm : ExDialog
     {
+        private Dictionary<string, Form> _pages = new Dictionary<string, Form>();
+
         public MainForm()
         {
             InitializeComponent();
@@ -25,8 +27,32 @@ namespace Storm.UI
 
         private void InitEvent()
         {
-            // btnCustomer.Click += (o, ce) => { new frmCustomer().ShowDialog(); };
+            this.Text = QTech.Base.Properties.Resources.Company;
 
+            container.SuspendLayout();
+            topPanel.SuspendLayout();
+            pBottom.SuspendLayout();
+            pBranch.SuspendLayout();
+            mainPanel.SuspendLayout();
+            graPanel2.SuspendLayout();
+            graPanel3.SuspendLayout();
+            pContainBottom.SuspendLayout();
+            SuspendLayout();
+
+            container.ResumeLayout(false);
+            topPanel.ResumeLayout(false);
+            pBottom.ResumeLayout(false);
+            pBottom.PerformLayout();
+            pBranch.ResumeLayout(false);
+            pBranch.PerformLayout();
+            mainPanel.ResumeLayout(false);
+            graPanel2.ResumeLayout(false);
+            graPanel3.ResumeLayout(false);
+            pContainBottom.ResumeLayout(false);
+            ResumeLayout(false);
+            ResourceHelper.ApplyResource(this);
+            this.InitForm();
+            this.OptimizeLoadUI();
         }
 
         private void AddTopMenue()
@@ -35,8 +61,8 @@ namespace Storm.UI
             {
             new ExTabItem()
             {
-                Name = nameof(frmCustomer),
-                Tag = new frmCustomer(),
+                Name = nameof(CustomerPage),
+                Tag = new CustomerPage(),
                 Text = QTech.Base.Properties.Resources.Customer,
                 Image = QTech.Base.Properties.Resources.Customer_img,
                 TextAlignment = ContentAlignment.MiddleLeft,
@@ -79,12 +105,24 @@ namespace Storm.UI
         {
             if (sender is ExTabItem exTab)
             {
-                if (exTab.Tag is Form f)
+                if (exTab.Tag is Form form)
                 {
-                    pMenuHeader.Text = f.Text;
-                    f.ShowDialog();
+                    pMenuHeader.Text = form.Text;
+                    form.TopLevel = false;
+                    form.Enabled = true;
+                    form.FormBorderStyle = FormBorderStyle.None;
+                    form.Dock = DockStyle.Fill;
+                    pContainForm.Controls.Add(form);
+                    _pages.Add(form.Name, form);
+                    ResourceHelper.ApplyResource(form);
+                    form.Show();
                 }
             }
+        }
+
+        private void AddPage(string pageName)
+        {
+
         }
 
 

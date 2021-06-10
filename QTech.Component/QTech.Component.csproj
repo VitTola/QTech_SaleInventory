@@ -484,6 +484,9 @@
     <EmbeddedResource Include="Components\ExSearchListCombo.resx">
       <DependentUpon>ExSearchListCombo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ExPage.resx">
+      <DependentUpon>ExPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Interface\PrinterPickerDialog.resx">
       <DependentUpon>PrinterPickerDialog.cs</DependentUpon>
     </EmbeddedResource>

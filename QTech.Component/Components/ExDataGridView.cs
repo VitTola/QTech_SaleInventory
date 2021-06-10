@@ -62,6 +62,10 @@ namespace QTech.Component
             CellFormatting += exDataGridView_CellFormatting;
             //LostFocus += ExDataGridView_LostFocus;
             //Leave += ExDataGridView_LostFocus;
+
+            BackgroundColor = Color.FromArgb(245, 245, 237);
+            ColumnHeadersDefaultCellStyle.BackColor = Color.Ivory;
+            EnableHeadersVisualStyles = false;
         }
 
         private void exDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -93,6 +97,7 @@ namespace QTech.Component
         private void Panel_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+
             //DrawBackground(e.Graphics, picThin.ClientSize);
 
             // Make the smiley path.
