@@ -55,7 +55,10 @@ namespace QTech.Component
             _bMaximize.Image = new Bitmap(Properties.Resources.hide, new Size(16, 16));
             _bMinimize.Image = new Bitmap(Properties.Resources.hide, new Size(16, 16));
             _bClose.Image = new Bitmap(Properties.Resources.close, new Size(16, 16));
-            
+
+            ResourceHelper.Register(QTech.Base.Properties.Resources.ResourceManager);
+
+
         }
 
 

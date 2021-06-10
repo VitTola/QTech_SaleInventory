@@ -18,8 +18,6 @@ namespace QTech.Forms
         public frmEmployee()
         {
             InitializeComponent();
-            ResourceHelper.Register(QTech.Base.Properties.Resources.ResourceManager);
-            this.ApplyResource();
             Bind();
             InitEvent();
         }

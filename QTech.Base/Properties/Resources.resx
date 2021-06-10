@@ -268,4 +268,31 @@
   <data name="Position" xml:space="preserve">
     <value>តួនាទី</value>
   </data>
+  <data name="CloseDateEntery_img" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CloseDateEntery.img.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="customer2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\customer2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Customer_img" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Customer.img.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Employee_img" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Employee.img.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="prepaid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\prepaid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Product_img" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Product.img.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Report_img" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report.img.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Sale_img" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sale.img.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>ទំនិញ</value>
+  </data>
 </root>

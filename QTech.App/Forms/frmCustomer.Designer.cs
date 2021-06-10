@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomer));
             this.exLabel2 = new QTech.Component.ExLabel();
             this.dgv = new QTech.Component.ExDataGridView();
+            this.colSite = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayOutLabelRemoveAdd = new System.Windows.Forms.FlowLayoutPanel();
             this.lblRemove = new System.Windows.Forms.LinkLabel();
             this.lblAdd = new System.Windows.Forms.LinkLabel();
@@ -45,8 +48,6 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnClose = new QTech.Component.ExButtonLoading();
             this.btnAdd = new QTech.Component.ExButtonLoading();
-            this.colSite = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.flowLayOutLabelRemoveAdd.SuspendLayout();
@@ -66,7 +67,7 @@
             this.container.Controls.Add(this.flowLayOutLabelRemoveAdd);
             this.container.Controls.Add(this.lblCompany_);
             this.container.Controls.Add(this.txtName);
-            this.container.Size = new System.Drawing.Size(375, 399);
+            this.container.Size = new System.Drawing.Size(373, 399);
             // 
             // exLabel2
             // 
@@ -87,8 +88,8 @@
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgv.BackgroundColor = System.Drawing.Color.White;
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -96,14 +97,14 @@
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSite,
             this.colPhone});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
             this.dgv.Location = new System.Drawing.Point(28, 154);
@@ -115,7 +116,21 @@
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(315, 184);
-            this.dgv.TabIndex = 14;
+            this.dgv.TabIndex = 3;
+            // 
+            // colSite
+            // 
+            this.colSite.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colSite.HeaderText = "ឈ្មោះគំរោង";
+            this.colSite.Name = "colSite";
+            this.colSite.ReadOnly = true;
+            // 
+            // colPhone
+            // 
+            this.colPhone.HeaderText = "លេខទូរស័ព្ទ";
+            this.colPhone.Name = "colPhone";
+            this.colPhone.ReadOnly = true;
+            this.colPhone.Width = 150;
             // 
             // flowLayOutLabelRemoveAdd
             // 
@@ -135,9 +150,10 @@
             this.lblRemove.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.lblRemove.Name = "lblRemove";
             this.lblRemove.Size = new System.Drawing.Size(29, 19);
-            this.lblRemove.TabIndex = 0;
+            this.lblRemove.TabIndex = 1;
             this.lblRemove.TabStop = true;
             this.lblRemove.Text = "លុប";
+            this.lblRemove.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblRemove_LinkClicked);
             // 
             // lblAdd
             // 
@@ -164,11 +180,11 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(143, 21);
+            this.txtName.Location = new System.Drawing.Point(143, 20);
             this.txtName.Margin = new System.Windows.Forms.Padding(2);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(200, 27);
-            this.txtName.TabIndex = 12;
+            this.txtName.TabIndex = 0;
             // 
             // lblPhone
             // 
@@ -182,16 +198,16 @@
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(143, 52);
+            this.txtPhone.Location = new System.Drawing.Point(143, 51);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(2);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(200, 27);
-            this.txtPhone.TabIndex = 21;
+            this.txtPhone.TabIndex = 1;
             // 
             // exLabel3
             // 
             this.exLabel3.AutoSize = true;
-            this.exLabel3.Location = new System.Drawing.Point(24, 86);
+            this.exLabel3.Location = new System.Drawing.Point(24, 85);
             this.exLabel3.Name = "exLabel3";
             this.exLabel3.Required = false;
             this.exLabel3.Size = new System.Drawing.Size(41, 19);
@@ -200,12 +216,12 @@
             // 
             // txtNote
             // 
-            this.txtNote.Location = new System.Drawing.Point(143, 83);
+            this.txtNote.Location = new System.Drawing.Point(143, 82);
             this.txtNote.Margin = new System.Windows.Forms.Padding(2);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(200, 46);
-            this.txtNote.TabIndex = 23;
+            this.txtNote.TabIndex = 2;
             // 
             // exPanel1
             // 
@@ -215,7 +231,7 @@
             this.exPanel1.Location = new System.Drawing.Point(1, 362);
             this.exPanel1.Name = "exPanel1";
             this.exPanel1.Padding = new System.Windows.Forms.Padding(2);
-            this.exPanel1.Size = new System.Drawing.Size(373, 36);
+            this.exPanel1.Size = new System.Drawing.Size(371, 36);
             this.exPanel1.TabIndex = 25;
             // 
             // flowLayoutPanel2
@@ -226,14 +242,14 @@
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(2, 2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(369, 32);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(367, 32);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // btnClose
             // 
             this.btnClose.DefaultImage = null;
             this.btnClose.Executing = false;
-            this.btnClose.Location = new System.Drawing.Point(292, 3);
+            this.btnClose.Location = new System.Drawing.Point(290, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -248,7 +264,7 @@
             // 
             this.btnAdd.DefaultImage = null;
             this.btnAdd.Executing = false;
-            this.btnAdd.Location = new System.Drawing.Point(213, 3);
+            this.btnAdd.Location = new System.Drawing.Point(211, 3);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -259,25 +275,12 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // colSite
-            // 
-            this.colSite.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colSite.HeaderText = "ឈ្មោះគំរោង";
-            this.colSite.Name = "colSite";
-            this.colSite.ReadOnly = true;
-            // 
-            // colPhone
-            // 
-            this.colPhone.HeaderText = "លេខទូរស័ព្ទ";
-            this.colPhone.Name = "colPhone";
-            this.colPhone.ReadOnly = true;
-            this.colPhone.Width = 150;
-            // 
             // frmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(375, 420);
+            this.ClientSize = new System.Drawing.Size(373, 420);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "frmCustomer";
             this.Text = "frmEmployee";

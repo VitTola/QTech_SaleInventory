@@ -40,6 +40,7 @@
             // 
             // panelRight
             // 
+            this.panelRight.BackColor = System.Drawing.Color.Transparent;
             this.panelRight.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelRight.BackgroundImage")));
             this.panelRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelRight.Location = new System.Drawing.Point(200, 0);
@@ -49,6 +50,7 @@
             // 
             // panelLeft
             // 
+            this.panelLeft.BackColor = System.Drawing.Color.Transparent;
             this.panelLeft.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelLeft.BackgroundImage")));
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
@@ -58,6 +60,7 @@
             // 
             // panelMiddle
             // 
+            this.panelMiddle.BackColor = System.Drawing.Color.Transparent;
             this.panelMiddle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelMiddle.BackgroundImage")));
             this.panelMiddle.Controls.Add(this.picBox);
             this.panelMiddle.Controls.Add(this.lblCaption);
@@ -101,7 +104,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Transparent;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.Controls.Add(this.panelRight);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panelMiddle);

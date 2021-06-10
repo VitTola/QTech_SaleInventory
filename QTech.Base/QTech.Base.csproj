@@ -169,7 +169,6 @@
     <None Include="Resources\key.png" />
     <None Include="Resources\power.png" />
     <None Include="Resources\meter.png" />
-    <None Include="Resources\home.png" />
     <None Include="Resources\Money.png" />
     <None Include="Resources\billing.png" />
   </ItemGroup>
@@ -184,6 +183,16 @@
     <Content Include="Dll\EasyServer.Domain.dll" />
     <Content Include="Dll\esc-pos-usb-net.dll" />
     <Content Include="Dll\FastMember.dll" />
+    <None Include="Resources\Product.img.png" />
+    <None Include="Resources\prepaid.png" />
+    <None Include="Resources\home.png" />
+    <None Include="Resources\Employee.img.png" />
+    <None Include="Resources\customer2.png" />
+    <None Include="Resources\Customer.img.png" />
+    <None Include="Resources\CloseDateEntery.img.png" />
+    <None Include="Resources\Sale.img.png" />
+    <None Include="Resources\report.png" />
+    <None Include="Resources\Report.img.png" />
     <None Include="Resources\setting.png" />
     <None Include="Resources\minimize.png" />
     <None Include="Resources\cancel.png" />
@@ -203,7 +212,6 @@
     <None Include="Resources\salereport.png" />
     <None Include="Resources\RyLogo.png" />
     <None Include="Resources\product.png" />
-    <None Include="Resources\report.png" />
     <None Include="Resources\settings1.png" />
   </ItemGroup>
   <ItemGroup>

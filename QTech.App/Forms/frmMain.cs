@@ -48,7 +48,7 @@ namespace SaleInventory
             timer1.Tick += (o, te) => { lblTime.Text = DateTime.Now.ToLongTimeString(); };
             lblDate.Text = DateTime.Now.ToLongDateString();
             //lblUser.Text = Operation.EmpName;
-            btnEmployee.Click += (o, ee) => { new frmCustomer().ShowDialog(); };
+            btnEmployee.Click += (o, ee) => { new frmEmployee().ShowDialog(); };
             //btnSup.Click += (o, se) => { new frmSupplier().ShowDialog(); };
             btnPro.Click += (o, pe) => { new frmProduct().ShowDialog(); };
             btnSale.Click += (o, se) => { new frmSale().ShowDialog(); };
@@ -56,7 +56,7 @@ namespace SaleInventory
             //btnImp.Click += (o, se) => { new frmImport().ShowDialog(); };
             //btnImpRe.Click += (o, ie) => { new frmImportReport().ShowDialog(); };
             //btnAccSetting.Click += (o, se) => { new frmCreateAccount().ShowDialog(); };
-            btnCus.Click += (o, ce) => { new frmEmployee().ShowDialog(); };
+            btnCus.Click += (o, ce) => { new frmCustomer().ShowDialog(); };
             //btnLogOut.Click += (o, le) => { this.Hide(); new frmLogin().Show(); };
             //btnCate.Click += (o, ce) => { new frmCategory().ShowDialog(); };
         }

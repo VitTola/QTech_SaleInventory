@@ -19,23 +19,44 @@ namespace QTech.Forms
     public partial class frmCustomer : ExDialog, IDialog
     {
         Customer model=new Customer();
+        Site site = new Site();
         QTechDbContext db = new QTechDbContext();
         public frmCustomer()
         {
             InitializeComponent();
-            
+            Bind();
+            InitEvent();
         }
 
         public GeneralProcess Flag { get; set; }
 
         public void Bind()
         {
-            throw new NotImplementedException();
+           
         }
 
         public void InitEvent()
         {
-            throw new NotImplementedException();
+            this.Text = Base.Properties.Resources.Employees;
+            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            txtPhone.RegisterEnglishInput();
+
+            dgv.ReadOnly = false;
+            dgv.AllowRowNotFound = false;
+            dgv.AllowUserToAddRows = dgv.AllowUserToDeleteRows = true;
+            dgv.EditMode = DataGridViewEditMode.EditOnEnter;
+            dgv.RegisterEnglishInputColumns(colPhone);
+
+            dgv.EditingControlShowing += dgv_EditingControlShowing;
+
+        }
+
+        private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (dgv?.SelectedRows?.Count < 0)
+            {
+                return;
+            }
         }
 
         public bool InValid()
@@ -88,7 +109,17 @@ namespace QTech.Forms
 
         private void lblAdd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            dgv.BeginEdit(true);
+        }
 
+        private void lblRemove_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (dgv.SelectedRows.Count == 0 || dgv.SelectedRows[0] == null)
+            {
+                return;
+            }
+            var row = dgv.SelectedRows[0];
+            dgv.Rows.Remove(row);
         }
     }
 }

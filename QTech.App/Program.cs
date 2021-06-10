@@ -2,6 +2,7 @@
 using QTech.Component;
 using QTech.Forms;
 using SaleInventory;
+using Storm.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace QTech
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            Application.Run(new MainForm());
 
         }
 
