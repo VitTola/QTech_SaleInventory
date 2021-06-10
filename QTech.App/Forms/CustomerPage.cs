@@ -47,8 +47,20 @@ namespace QTech.Forms
             throw new NotImplementedException();
         }
 
-        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
+            new frmCustomer().ShowDialog();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            new frmCustomer().ShowDialog();
+
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            new frmCustomer().ShowDialog();
 
         }
     }

@@ -103,10 +103,21 @@ namespace Storm.UI
         }
         private void Tab_Click(object sender, EventArgs e)
         {
+           
+
             if (sender is ExTabItem exTab)
             {
                 if (exTab.Tag is Form form)
                 {
+                    FormCollection fc = Application.OpenForms;
+                    foreach (Form frm in fc)
+                    {
+                        if (frm.Name == form.Name)
+                        {
+                            return;
+                        }
+                    }
+
                     pMenuHeader.Text = form.Text;
                     form.TopLevel = false;
                     form.Enabled = true;

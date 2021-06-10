@@ -43,6 +43,8 @@
             this.btnRemove = new QTech.Component.ExButtonLoading();
             this.btnUpdate = new QTech.Component.ExButtonLoading();
             this.btnAdd = new QTech.Component.ExButtonLoading();
+            this.colorWithAlpha2 = new QTech.Component.ColorWithAlpha();
+            this.colorWithAlpha3 = new QTech.Component.ColorWithAlpha();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.graPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -96,7 +98,6 @@
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(785, 340);
             this.dgv.TabIndex = 1;
-            this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
             // 
             // colId
             // 
@@ -197,8 +198,10 @@
             // 
             // btnRemove
             // 
+            this.btnRemove.BackColor = System.Drawing.Color.Ivory;
             this.btnRemove.DefaultImage = null;
             this.btnRemove.Executing = false;
+            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemove.Location = new System.Drawing.Point(193, 4);
             this.btnRemove.Margin = new System.Windows.Forms.Padding(0, 4, 4, 2);
             this.btnRemove.Name = "btnRemove";
@@ -208,11 +211,14 @@
             this.btnRemove.TabIndex = 2;
             this.btnRemove.Text = "លុប";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnUpdate
             // 
+            this.btnUpdate.BackColor = System.Drawing.Color.Ivory;
             this.btnUpdate.DefaultImage = null;
             this.btnUpdate.Executing = false;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Location = new System.Drawing.Point(101, 4);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(0, 4, 2, 2);
             this.btnUpdate.Name = "btnUpdate";
@@ -222,11 +228,14 @@
             this.btnUpdate.TabIndex = 1;
             this.btnUpdate.Text = "កែប្រែ";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnAdd
             // 
+            this.btnAdd.BackColor = System.Drawing.Color.Ivory;
             this.btnAdd.DefaultImage = null;
             this.btnAdd.Executing = false;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Location = new System.Drawing.Point(9, 4);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(0, 4, 2, 2);
             this.btnAdd.Name = "btnAdd";
@@ -236,6 +245,19 @@
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "បន្ថែម";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // colorWithAlpha2
+            // 
+            this.colorWithAlpha2.Alpha = 255;
+            this.colorWithAlpha2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.colorWithAlpha2.Parent = null;
+            // 
+            // colorWithAlpha3
+            // 
+            this.colorWithAlpha3.Alpha = 255;
+            this.colorWithAlpha3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.colorWithAlpha3.Parent = null;
             // 
             // CustomerPage
             // 
@@ -269,5 +291,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPhone;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNote;
+        private Component.ColorWithAlpha colorWithAlpha2;
+        private Component.ColorWithAlpha colorWithAlpha3;
     }
 }

@@ -58,9 +58,41 @@ namespace QTech.Component
 
             ResourceHelper.Register(QTech.Base.Properties.Resources.ResourceManager);
 
+            this.Move += ExDialog_Move;
 
         }
 
+        private void ExDialog_Move(object sender, EventArgs e)
+        {
+            AdaptBackGroundColor();
+        }
+
+        private void AdaptBackGroundColor()
+        {
+            var location = GetLeftLocation(this);
+            var color = GetPixelColor(location);
+            if (color != null)
+            {
+                this.digheader.BackColor = color;
+            }
+        }
+
+        static Color GetPixelColor(Point position)
+        {
+            using (var bitmap = new Bitmap(1, 1))
+            {
+                using (var graphics = Graphics.FromImage(bitmap))
+                {
+                    graphics.CopyFromScreen(position, new Point(0, 0), new Size(1, 1));
+                }
+                return bitmap.GetPixel(0, 0);
+            }
+        }
+
+        private Point GetLeftLocation(Control c)
+        {
+            return c.PointToScreen(Point.Empty);
+        }
 
 
 

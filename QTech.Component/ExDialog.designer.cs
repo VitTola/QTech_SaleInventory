@@ -75,7 +75,7 @@ namespace QTech.Component
             this.digheader.Controls.Add(this.bar);
             this.digheader.Controls.Add(this._lblTITLE);
             this.digheader.Controls.Add(this.imgICON);
-            this.digheader.CornerRadius = 6;
+            this.digheader.CornerRadius = 8;
             this.digheader.Corners = ((QTech.Component.Corners)((QTech.Component.Corners.TopLeft | QTech.Component.Corners.TopRight)));
             this.digheader.Dock = System.Windows.Forms.DockStyle.Top;
             this.digheader.Gradient = true;
