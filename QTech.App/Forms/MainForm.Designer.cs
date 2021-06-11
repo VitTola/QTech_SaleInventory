@@ -60,10 +60,13 @@
             this.colorWithAlpha6 = new QTech.Component.ColorWithAlpha();
             this.graPanel2 = new QTech.Component.GRAPanel();
             this.graPanel3 = new QTech.Component.GRAPanel();
+            this.pBoder = new QTech.Component.GRAPanel();
             this.pContainForm = new QTech.Component.GRAPanel();
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();
             this.colorWithAlpha2 = new QTech.Component.ColorWithAlpha();
-            this.pBoder = new QTech.Component.GRAPanel();
+            this.pSecondMenue1 = new System.Windows.Forms.Panel();
+            this._btnUpDown = new System.Windows.Forms.PictureBox();
+            this.pSecondMenue2 = new System.Windows.Forms.FlowLayoutPanel();
             this.colorWithAlpha3 = new QTech.Component.ColorWithAlpha();
             this.pContainBottom = new QTech.Component.GRAPanel();
             this.colorWithAlpha8 = new QTech.Component.ColorWithAlpha();
@@ -74,9 +77,6 @@
             this.cnmStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnChangePassword = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLogOut = new System.Windows.Forms.ToolStripMenuItem();
-            this.pSecondMenue2 = new System.Windows.Forms.FlowLayoutPanel();
-            this._btnUpDown = new System.Windows.Forms.PictureBox();
-            this.pSecondMenue1 = new System.Windows.Forms.Panel();
             this.container.SuspendLayout();
             this.topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
@@ -86,18 +86,18 @@
             this.mainPanel.SuspendLayout();
             this.graPanel2.SuspendLayout();
             this.graPanel3.SuspendLayout();
+            this.pBoder.SuspendLayout();
+            this.pSecondMenue1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._btnUpDown)).BeginInit();
             this.pContainBottom.SuspendLayout();
             this.menuSwitchLinkServer.SuspendLayout();
             this.cnmStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._btnUpDown)).BeginInit();
-            this.pSecondMenue1.SuspendLayout();
             this.SuspendLayout();
             // 
             // container
             // 
             this.container.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.container.Controls.Add(this.mainPanel);
-            this.container.Controls.Add(this.pSecondMenue1);
             this.container.Controls.Add(this.pContainBottom);
             this.container.Controls.Add(this.topPanel);
             this.container.Padding = new System.Windows.Forms.Padding(1, 0, 1, 1);
@@ -151,7 +151,7 @@
             this.topPanel.Name = "topPanel";
             this.topPanel.Padding = new System.Windows.Forms.Padding(1);
             this.topPanel.Rounded = true;
-            this.topPanel.Size = new System.Drawing.Size(1278, 35);
+            this.topPanel.Size = new System.Drawing.Size(1278, 32);
             this.topPanel.TabIndex = 0;
             // 
             // colorWithAlpha4
@@ -195,7 +195,7 @@
             this.pTopMenu.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.pTopMenu.Location = new System.Drawing.Point(1, 1);
             this.pTopMenu.Name = "pTopMenu";
-            this.pTopMenu.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.pTopMenu.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
             this.pTopMenu.Size = new System.Drawing.Size(1276, 34);
             this.pTopMenu.TabIndex = 16;
             // 
@@ -456,11 +456,11 @@
             this.mainPanel.ImagePosition = QTech.Component.ImagePositions.BottomRight;
             this.mainPanel.ImageSize = new System.Drawing.Size(48, 48);
             this.mainPanel.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.mainPanel.Location = new System.Drawing.Point(1, 88);
+            this.mainPanel.Location = new System.Drawing.Point(1, 32);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Padding = new System.Windows.Forms.Padding(3, 3, 4, 2);
             this.mainPanel.Rounded = false;
-            this.mainPanel.Size = new System.Drawing.Size(1278, 584);
+            this.mainPanel.Size = new System.Drawing.Size(1278, 640);
             this.mainPanel.TabIndex = 2;
             // 
             // colorWithAlpha5
@@ -502,7 +502,7 @@
             this.graPanel2.Name = "graPanel2";
             this.graPanel2.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.graPanel2.Rounded = true;
-            this.graPanel2.Size = new System.Drawing.Size(1271, 579);
+            this.graPanel2.Size = new System.Drawing.Size(1271, 635);
             this.graPanel2.TabIndex = 1;
             // 
             // graPanel3
@@ -511,7 +511,6 @@
             this.graPanel3.Border = true;
             this.graPanel3.BorderColor = System.Drawing.Color.Gray;
             this.graPanel3.ContentPadding = new System.Windows.Forms.Padding(0);
-            this.graPanel3.Controls.Add(this.pContainForm);
             this.graPanel3.Controls.Add(this.pBoder);
             this.graPanel3.CornerRadius = 5;
             this.graPanel3.Corners = ((QTech.Component.Corners)((((QTech.Component.Corners.TopLeft | QTech.Component.Corners.TopRight) 
@@ -532,8 +531,38 @@
             this.graPanel3.Location = new System.Drawing.Point(3, 0);
             this.graPanel3.Name = "graPanel3";
             this.graPanel3.Rounded = true;
-            this.graPanel3.Size = new System.Drawing.Size(1268, 579);
+            this.graPanel3.Size = new System.Drawing.Size(1268, 635);
             this.graPanel3.TabIndex = 0;
+            // 
+            // pBoder
+            // 
+            this.pBoder.BackColor = System.Drawing.Color.Transparent;
+            this.pBoder.Border = true;
+            this.pBoder.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.pBoder.ContentPadding = new System.Windows.Forms.Padding(0);
+            this.pBoder.Controls.Add(this.pContainForm);
+            this.pBoder.Controls.Add(this.pSecondMenue1);
+            this.pBoder.CornerRadius = 2;
+            this.pBoder.Corners = ((QTech.Component.Corners)((((QTech.Component.Corners.TopLeft | QTech.Component.Corners.TopRight) 
+            | QTech.Component.Corners.BottomLeft) 
+            | QTech.Component.Corners.BottomRight)));
+            this.pBoder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pBoder.Gradient = true;
+            this.pBoder.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.pBoder.GradientOffset = 1F;
+            this.pBoder.GradientSize = new System.Drawing.Size(0, 0);
+            this.pBoder.GradientWrapMode = System.Drawing.Drawing2D.WrapMode.Tile;
+            this.pBoder.Grayscale = false;
+            this.pBoder.Image = null;
+            this.pBoder.ImageAlpha = 75;
+            this.pBoder.ImagePadding = new System.Windows.Forms.Padding(5);
+            this.pBoder.ImagePosition = QTech.Component.ImagePositions.BottomRight;
+            this.pBoder.ImageSize = new System.Drawing.Size(48, 48);
+            this.pBoder.Location = new System.Drawing.Point(0, 0);
+            this.pBoder.Name = "pBoder";
+            this.pBoder.Rounded = true;
+            this.pBoder.Size = new System.Drawing.Size(1268, 635);
+            this.pBoder.TabIndex = 2;
             // 
             // pContainForm
             // 
@@ -557,11 +586,11 @@
             this.pContainForm.ImagePadding = new System.Windows.Forms.Padding(5);
             this.pContainForm.ImagePosition = QTech.Component.ImagePositions.BottomRight;
             this.pContainForm.ImageSize = new System.Drawing.Size(48, 48);
-            this.pContainForm.Location = new System.Drawing.Point(0, 0);
+            this.pContainForm.Location = new System.Drawing.Point(0, 76);
             this.pContainForm.Name = "pContainForm";
             this.pContainForm.Padding = new System.Windows.Forms.Padding(2);
             this.pContainForm.Rounded = true;
-            this.pContainForm.Size = new System.Drawing.Size(1268, 579);
+            this.pContainForm.Size = new System.Drawing.Size(1268, 559);
             this.pContainForm.TabIndex = 1;
             // 
             // colorWithAlpha1
@@ -576,33 +605,35 @@
             this.colorWithAlpha2.Color = System.Drawing.SystemColors.Control;
             this.colorWithAlpha2.Parent = this.pContainForm;
             // 
-            // pBoder
+            // pSecondMenue1
             // 
-            this.pBoder.BackColor = System.Drawing.Color.Transparent;
-            this.pBoder.Border = true;
-            this.pBoder.BorderColor = System.Drawing.SystemColors.ActiveBorder;
-            this.pBoder.ContentPadding = new System.Windows.Forms.Padding(0);
-            this.pBoder.CornerRadius = 2;
-            this.pBoder.Corners = ((QTech.Component.Corners)((((QTech.Component.Corners.TopLeft | QTech.Component.Corners.TopRight) 
-            | QTech.Component.Corners.BottomLeft) 
-            | QTech.Component.Corners.BottomRight)));
-            this.pBoder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pBoder.Gradient = true;
-            this.pBoder.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.pBoder.GradientOffset = 1F;
-            this.pBoder.GradientSize = new System.Drawing.Size(0, 0);
-            this.pBoder.GradientWrapMode = System.Drawing.Drawing2D.WrapMode.Tile;
-            this.pBoder.Grayscale = false;
-            this.pBoder.Image = null;
-            this.pBoder.ImageAlpha = 75;
-            this.pBoder.ImagePadding = new System.Windows.Forms.Padding(5);
-            this.pBoder.ImagePosition = QTech.Component.ImagePositions.BottomRight;
-            this.pBoder.ImageSize = new System.Drawing.Size(48, 48);
-            this.pBoder.Location = new System.Drawing.Point(0, 0);
-            this.pBoder.Name = "pBoder";
-            this.pBoder.Rounded = true;
-            this.pBoder.Size = new System.Drawing.Size(1268, 579);
-            this.pBoder.TabIndex = 2;
+            this.pSecondMenue1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.pSecondMenue1.Controls.Add(this._btnUpDown);
+            this.pSecondMenue1.Controls.Add(this.pSecondMenue2);
+            this.pSecondMenue1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pSecondMenue1.Location = new System.Drawing.Point(0, 0);
+            this.pSecondMenue1.Name = "pSecondMenue1";
+            this.pSecondMenue1.Size = new System.Drawing.Size(1268, 76);
+            this.pSecondMenue1.TabIndex = 4;
+            // 
+            // _btnUpDown
+            // 
+            this._btnUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._btnUpDown.Image = global::QTech.Properties.Resources.imgCollapse;
+            this._btnUpDown.Location = new System.Drawing.Point(1248, 60);
+            this._btnUpDown.Name = "_btnUpDown";
+            this._btnUpDown.Size = new System.Drawing.Size(16, 18);
+            this._btnUpDown.TabIndex = 0;
+            this._btnUpDown.TabStop = false;
+            // 
+            // pSecondMenue2
+            // 
+            this.pSecondMenue2.BackColor = System.Drawing.Color.Transparent;
+            this.pSecondMenue2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pSecondMenue2.Location = new System.Drawing.Point(0, 0);
+            this.pSecondMenue2.Name = "pSecondMenue2";
+            this.pSecondMenue2.Size = new System.Drawing.Size(1246, 76);
+            this.pSecondMenue2.TabIndex = 3;
             // 
             // colorWithAlpha3
             // 
@@ -698,38 +729,6 @@
             this.btnLogOut.Size = new System.Drawing.Size(146, 24);
             this.btnLogOut.Text = "ចាកចេញ";
             // 
-            // pSecondMenue2
-            // 
-            this.pSecondMenue2.BackColor = System.Drawing.Color.Transparent;
-            this.pSecondMenue2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pSecondMenue2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.pSecondMenue2.Location = new System.Drawing.Point(0, 0);
-            this.pSecondMenue2.Name = "pSecondMenue2";
-            this.pSecondMenue2.Size = new System.Drawing.Size(1249, 53);
-            this.pSecondMenue2.TabIndex = 3;
-            // 
-            // _btnUpDown
-            // 
-            this._btnUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._btnUpDown.Image = global::QTech.Properties.Resources.imgCollapse;
-            this._btnUpDown.Location = new System.Drawing.Point(1258, 37);
-            this._btnUpDown.Name = "_btnUpDown";
-            this._btnUpDown.Size = new System.Drawing.Size(16, 18);
-            this._btnUpDown.TabIndex = 0;
-            this._btnUpDown.TabStop = false;
-            this._btnUpDown.Click += new System.EventHandler(this._btnUpDown_Click);
-            // 
-            // pSecondMenue1
-            // 
-            this.pSecondMenue1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.pSecondMenue1.Controls.Add(this._btnUpDown);
-            this.pSecondMenue1.Controls.Add(this.pSecondMenue2);
-            this.pSecondMenue1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pSecondMenue1.Location = new System.Drawing.Point(1, 35);
-            this.pSecondMenue1.Name = "pSecondMenue1";
-            this.pSecondMenue1.Size = new System.Drawing.Size(1278, 53);
-            this.pSecondMenue1.TabIndex = 4;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
@@ -755,11 +754,12 @@
             this.mainPanel.ResumeLayout(false);
             this.graPanel2.ResumeLayout(false);
             this.graPanel3.ResumeLayout(false);
+            this.pBoder.ResumeLayout(false);
+            this.pSecondMenue1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this._btnUpDown)).EndInit();
             this.pContainBottom.ResumeLayout(false);
             this.menuSwitchLinkServer.ResumeLayout(false);
             this.cnmStrip.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this._btnUpDown)).EndInit();
-            this.pSecondMenue1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

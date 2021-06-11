@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
+using BaseResource = QTech.Base.Properties.Resources;
 
 namespace QTech.Base.BaseModels
 {
@@ -65,90 +66,60 @@ namespace QTech.Base.BaseModels
         public readonly Dictionary<AuthKey, string> _registries = new Dictionary<AuthKey, string>();
         public readonly Dictionary<AuthKey, Assembly> Assemblies = new Dictionary<AuthKey, Assembly>();
         private readonly List<Report> _reports = new List<Report>();
+
         private readonly List<MenuBar> _menuBars = new List<MenuBar>()
         {
-            //new MenuBar()
-            //{
-            //    Index = 1,
-            //    Level = 1,
-            //    Key = AuthKey.PaymentPage,
-            //    DisplayName = Resources.Payment,
-            //    Icon = Properties.Resources.imgPayment,
-            //    Children = new List<MenuBar>(),
-            //    //ModuleReports = new List<ReportGroup>()
-            //},
-            //new MenuBar()
-            //{
-            //    Index = 2,
-            //    Level = 1,
-            //    Key = AuthKey.CustomerPage,
-            //    DisplayName = Resources.Customer,
-            //    Icon = Properties.Resources.Staff,
-            //    Children = new List<MenuBar>(),
-            //    //ModuleReports = new List<ReportGroup>()
-            //},
-            //new MenuBar()
-            //{
-            //    Index = 0,
-            //    Level = 1,
-            //    Key = AuthKey.BillingPage,
-            //    DisplayName = Resources.Billing,
-            //    Icon = Properties.Resources.billing,
-            //    Children = new List<MenuBar>(),
-            //    //ModuleReports = new List<ReportGroup>()
-            //},
+            new MenuBar()
+            {
+                Index = 1,
+                Level = 1,
+                Key = AuthKey.Employee,
+                DisplayName = BaseResource.Employees,
+                Icon = BaseResource.Employee_img,
+                Children = new List<MenuBar>(),
+                FormName = "EmployeePage"
+            },
+            new MenuBar()
+            {
+                Index = 2,
+                Level = 1,
+                Key = AuthKey.Customer,
+                DisplayName = BaseResource.Customer,
+                Icon = BaseResource.Customer_img,
+                Children = new List<MenuBar>(),
+            },
+            new MenuBar()
+            {
+                Index = 3,
+                Level = 1,
+                Key = AuthKey.Product,
+                DisplayName = BaseResource.Products,
+                Icon = BaseResource.Product_img,
+                Children = new List<MenuBar>(),
+            },
+            new MenuBar()
+            {
+                Index = 4,
+                Level = 1,
+                Key = AuthKey.Sale,
+                DisplayName = BaseResource.Sales,
+                Icon = BaseResource.Sale_img,
+                Children = new List<MenuBar>(),
+            },
+            new MenuBar()
+            {
+                Index = 5,
+                Level = 1,
+                Key = AuthKey.CloseEntryData,
+                DisplayName = BaseResource.CloseEntryData,
+                Icon = BaseResource.CloseDateEntery_img,
+                Children = new List<MenuBar>(),
+            },
 
-            //new MenuBar()
-            //{
-            //    Index = 3,
-            //    Level = 1,
-            //    Key = AuthKey.PowerPage,
-            //    DisplayName = Resources.Power,
-            //    Icon = Properties.Resources.power,
-            //    Children = new List<MenuBar>(),
-            //    //ModuleReports = new List<ReportGroup>()
-            //},
 
-            //new MenuBar()
-            //{
-            //    Index = 6,
-            //    Level = 1,
-            //    Key = AuthKey.CompanyPage,
-            //    DisplayName = Resources.Company,
-            //    Icon = Properties.Resources.home,
-            //    Children = new List<MenuBar>(),
-            //    //ModuleReports = new List<ReportGroup>()
-            //},
-            //new MenuBar()
-            //{
-            //    Index = 7,
-            //    Level = 1,
-            //    Key = AuthKey.SettingPage,
-            //    DisplayName = Resources.Setting,
-            //    Icon = Properties.Resources.settings,
-            //    Children = new List<MenuBar>(),
-            //    //ModuleReports = new List<ReportGroup>()
-            //},
-            //new MenuBar()
-            //{
-            //    Index = 8,
-            //    Level = 1,
-            //    Key = AuthKey.ReportPage,
-            //    DisplayName = Resources.Report,
-            //    Icon = Properties.Resources.report,
-            //    Children = new List<MenuBar>(),
-            //},
-            //new MenuBar()
-            //{
-            //    Index = 9,
-            //    Level = 1,
-            //    Key = AuthKey.SecurityPage,
-            //    DisplayName =Resources.SystemSecurity,
-            //    Icon = Properties.Resources.key,
-            //    Children = new List<MenuBar>(),
-            //    //ModuleReports = new List<ReportGroup>()
-            //}
-        };
+    };
+    
+    
 
         //init registered dll
         public ModuleManager()

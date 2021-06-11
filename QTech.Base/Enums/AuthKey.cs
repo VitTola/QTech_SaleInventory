@@ -8,6 +8,11 @@ namespace QTech.Base.Enums
 {
    public enum AuthKey
     {
-
+        Employee = 1,
+        Customer = 2,
+        Product = 3,
+        Sale = 5,
+        Supplier = 6,
+        CloseEntryData = 7,
     }
 }

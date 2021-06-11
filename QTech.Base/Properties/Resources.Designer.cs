@@ -129,6 +129,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to បិទបញ្ជី.
+        /// </summary>
+        public static string CloseEntryData {
+            get {
+                return ResourceManager.GetString("CloseEntryData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ផេង ​​​​រី.
         /// </summary>
         public static string Company {
@@ -200,6 +209,15 @@ namespace QTech.Base.Properties {
             get {
                 object obj = ResourceManager.GetObject("customer2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ប្រភេទអតិថិជន.
+        /// </summary>
+        public static string CustomerType {
+            get {
+                return ResourceManager.GetString("CustomerType", resourceCulture);
             }
         }
         
@@ -353,6 +371,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ឈ្មោះ.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ចំណាំ.
         /// </summary>
         public static string Note {
@@ -452,6 +479,15 @@ namespace QTech.Base.Properties {
             get {
                 object obj = ResourceManager.GetObject("Product_img", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ប្រភេទទំនិញ.
+        /// </summary>
+        public static string ProductCategory {
+            get {
+                return ResourceManager.GetString("ProductCategory", resourceCulture);
             }
         }
         
@@ -636,6 +672,16 @@ namespace QTech.Base.Properties {
         public static string Suppliers {
             get {
                 return ResourceManager.GetString("Suppliers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Type_img {
+            get {
+                object obj = ResourceManager.GetObject("Type_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
