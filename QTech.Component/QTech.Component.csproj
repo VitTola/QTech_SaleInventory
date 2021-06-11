@@ -136,6 +136,18 @@
     <Compile Include="LineDownPanel.designer.cs">
       <DependentUpon>LineDownPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyComponents\ExTabItem2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyComponents\ExTabItem2.Designer.cs">
+      <DependentUpon>ExTabItem2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyComponents\RoundButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyComponents\RoundButton.Designer.cs">
+      <DependentUpon>RoundButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="panelBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -490,6 +502,9 @@
     <EmbeddedResource Include="Interface\PrinterPickerDialog.resx">
       <DependentUpon>PrinterPickerDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MyComponents\ExTabItem2.resx">
+      <DependentUpon>ExTabItem2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="panelBar.resx">
       <DependentUpon>panelBar.cs</DependentUpon>
     </EmbeddedResource>
@@ -795,8 +810,6 @@
       <Name>QTech.Base</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MyComponents\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

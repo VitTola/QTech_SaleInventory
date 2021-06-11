@@ -53,6 +53,8 @@ namespace Storm.UI
             ResourceHelper.ApplyResource(this);
             this.InitForm();
             this.OptimizeLoadUI();
+            pSecondMenue2.Hide();
+            pSecondMenue1.Hide();
         }
 
         private void AddTopMenue()
@@ -109,6 +111,9 @@ namespace Storm.UI
             {
                 if (exTab.Tag is Form form)
                 {
+                    pSecondMenue2.Show();
+                    pSecondMenue1.Show();
+
                     FormCollection fc = Application.OpenForms;
                     foreach (Form frm in fc)
                     {
@@ -118,7 +123,6 @@ namespace Storm.UI
                         }
                     }
 
-                    pMenuHeader.Text = form.Text;
                     form.TopLevel = false;
                     form.Enabled = true;
                     form.FormBorderStyle = FormBorderStyle.None;
@@ -128,7 +132,14 @@ namespace Storm.UI
                     ResourceHelper.ApplyResource(form);
                     form.Show();
                 }
+
+                exTab.MouseClick += (ee, o) => { exTab.BackColor = Color.FromArgb(245, 245, 237); };
+                exTab.MouseHover += (ee, o) => { exTab.BackColor = Color.FromArgb(245, 245, 237); };
+
             }
+
+            
+
         }
 
         private void AddPage(string pageName)
@@ -777,5 +788,20 @@ namespace Storm.UI
 
 
         #endregion
+
+        private void _btnUpDown_Click(object sender, EventArgs e)
+        {
+            if (pSecondMenue2.Visible == false)
+            {
+                pSecondMenue2.Show();
+                pSecondMenue1.Show();
+            }
+            else
+            {
+                pSecondMenue2.Hide();
+                pSecondMenue1.Hide();
+
+            }
+        }
     }
 }

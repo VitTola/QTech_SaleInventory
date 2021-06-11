@@ -6,12 +6,11 @@ using System.Windows.Forms;
 namespace QTech.Component
 {
     [DefaultEvent("Click")]
-    public partial class ExTabItem : UserControl
+    public partial class ExTabItem2 : UserControl
     {
-        public ExTabItem()
+        public ExTabItem2()
         {
             InitializeComponent();
-            
         }
 
         bool selected = false;
@@ -31,8 +30,6 @@ namespace QTech.Component
                 lblCaption.Text = value;
             }
         }
-
-
 
         [Browsable(true)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
@@ -71,10 +68,6 @@ namespace QTech.Component
 
                 if (selected)
                 {
-                    panelLeft.BackgroundImage = global::QTech.Component.Properties.Resources.tab_left_selected;
-                    panelMiddle.BackgroundImage = global::QTech.Component.Properties.Resources.tab_middle_selected;
-                    panelRight.BackgroundImage = global::QTech.Component.Properties.Resources.tab_right_selected;
-                    lblCaption.ForeColor = Color.Black;
 
                     if (Parent!=null)
                     {
@@ -92,10 +85,6 @@ namespace QTech.Component
                 }
                 else
                 {
-
-                    panelLeft.BackgroundImage = global::QTech.Component.Properties.Resources.tab_left;
-                    panelMiddle.BackgroundImage = global::QTech.Component.Properties.Resources.tab_middle;
-                    panelRight.BackgroundImage = global::QTech.Component.Properties.Resources.tab_right;
                     lblCaption.ForeColor = Color.Black;
                 } 
             }

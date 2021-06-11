@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel8 = new System.Windows.Forms.Panel();
             this.Body = new System.Windows.Forms.Panel();
             this.topPanel = new QTech.Component.GRAPanel();
             this.colorWithAlpha4 = new QTech.Component.ColorWithAlpha();
+            this.label3 = new System.Windows.Forms.Label();
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.pTopMenu = new QTech.Component.ExTabBar();
             this.pBottom = new QTech.Component.GRAPanel();
@@ -57,16 +59,10 @@
             this.colorWithAlpha5 = new QTech.Component.ColorWithAlpha();
             this.colorWithAlpha6 = new QTech.Component.ColorWithAlpha();
             this.graPanel2 = new QTech.Component.GRAPanel();
-            this.colorWithAlpha13 = new QTech.Component.ColorWithAlpha();
-            this.colorWithAlpha14 = new QTech.Component.ColorWithAlpha();
             this.graPanel3 = new QTech.Component.GRAPanel();
-            this.colorWithAlpha10 = new QTech.Component.ColorWithAlpha();
-            this.colorWithAlpha11 = new QTech.Component.ColorWithAlpha();
-            this.colorWithAlpha12 = new QTech.Component.ColorWithAlpha();
             this.pContainForm = new QTech.Component.GRAPanel();
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();
             this.colorWithAlpha2 = new QTech.Component.ColorWithAlpha();
-            this.pMenuHeader = new QTech.Component.ExTabItem();
             this.pBoder = new QTech.Component.GRAPanel();
             this.colorWithAlpha3 = new QTech.Component.ColorWithAlpha();
             this.pContainBottom = new QTech.Component.GRAPanel();
@@ -78,7 +74,9 @@
             this.cnmStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnChangePassword = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLogOut = new System.Windows.Forms.ToolStripMenuItem();
-            this.label3 = new System.Windows.Forms.Label();
+            this.pSecondMenue2 = new System.Windows.Forms.FlowLayoutPanel();
+            this._btnUpDown = new System.Windows.Forms.PictureBox();
+            this.pSecondMenue1 = new System.Windows.Forms.Panel();
             this.container.SuspendLayout();
             this.topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
@@ -91,12 +89,15 @@
             this.pContainBottom.SuspendLayout();
             this.menuSwitchLinkServer.SuspendLayout();
             this.cnmStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._btnUpDown)).BeginInit();
+            this.pSecondMenue1.SuspendLayout();
             this.SuspendLayout();
             // 
             // container
             // 
             this.container.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.container.Controls.Add(this.mainPanel);
+            this.container.Controls.Add(this.pSecondMenue1);
             this.container.Controls.Add(this.pContainBottom);
             this.container.Controls.Add(this.topPanel);
             this.container.Padding = new System.Windows.Forms.Padding(1, 0, 1, 1);
@@ -159,9 +160,22 @@
             this.colorWithAlpha4.Color = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
             this.colorWithAlpha4.Parent = this.topPanel;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label3.Font = new System.Drawing.Font("Khmer Muol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(87, 6);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(170, 24);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "សម្រាប់ប្រើបណ្ដោះអាសន្ន";
+            // 
             // picLogo
             // 
-            this.picLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.picLogo.BackColor = System.Drawing.Color.NavajoWhite;
             this.picLogo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picLogo.ErrorImage = global::QTech.Properties.Resources.QTech__2_;
             this.picLogo.Image = global::QTech.Properties.Resources.Pheng_Ry;
@@ -176,13 +190,13 @@
             // 
             // pTopMenu
             // 
-            this.pTopMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.pTopMenu.BackColor = System.Drawing.Color.NavajoWhite;
             this.pTopMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.pTopMenu.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.pTopMenu.Location = new System.Drawing.Point(1, 1);
             this.pTopMenu.Name = "pTopMenu";
             this.pTopMenu.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.pTopMenu.Size = new System.Drawing.Size(1276, 39);
+            this.pTopMenu.Size = new System.Drawing.Size(1276, 34);
             this.pTopMenu.TabIndex = 16;
             // 
             // pBottom
@@ -442,11 +456,11 @@
             this.mainPanel.ImagePosition = QTech.Component.ImagePositions.BottomRight;
             this.mainPanel.ImageSize = new System.Drawing.Size(48, 48);
             this.mainPanel.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.mainPanel.Location = new System.Drawing.Point(1, 35);
+            this.mainPanel.Location = new System.Drawing.Point(1, 88);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Padding = new System.Windows.Forms.Padding(3, 3, 4, 2);
             this.mainPanel.Rounded = false;
-            this.mainPanel.Size = new System.Drawing.Size(1278, 637);
+            this.mainPanel.Size = new System.Drawing.Size(1278, 584);
             this.mainPanel.TabIndex = 2;
             // 
             // colorWithAlpha5
@@ -466,8 +480,6 @@
             this.graPanel2.BackColor = System.Drawing.Color.Transparent;
             this.graPanel2.Border = true;
             this.graPanel2.BorderColor = System.Drawing.Color.Transparent;
-            this.graPanel2.Colors.Add(this.colorWithAlpha13);
-            this.graPanel2.Colors.Add(this.colorWithAlpha14);
             this.graPanel2.ContentPadding = new System.Windows.Forms.Padding(0);
             this.graPanel2.Controls.Add(this.graPanel3);
             this.graPanel2.CornerRadius = 5;
@@ -490,32 +502,16 @@
             this.graPanel2.Name = "graPanel2";
             this.graPanel2.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.graPanel2.Rounded = true;
-            this.graPanel2.Size = new System.Drawing.Size(1271, 632);
+            this.graPanel2.Size = new System.Drawing.Size(1271, 579);
             this.graPanel2.TabIndex = 1;
-            // 
-            // colorWithAlpha13
-            // 
-            this.colorWithAlpha13.Alpha = 255;
-            this.colorWithAlpha13.Color = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.colorWithAlpha13.Parent = this.graPanel2;
-            // 
-            // colorWithAlpha14
-            // 
-            this.colorWithAlpha14.Alpha = 255;
-            this.colorWithAlpha14.Color = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.colorWithAlpha14.Parent = this.graPanel2;
             // 
             // graPanel3
             // 
             this.graPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.graPanel3.Border = true;
             this.graPanel3.BorderColor = System.Drawing.Color.Gray;
-            this.graPanel3.Colors.Add(this.colorWithAlpha10);
-            this.graPanel3.Colors.Add(this.colorWithAlpha11);
-            this.graPanel3.Colors.Add(this.colorWithAlpha12);
             this.graPanel3.ContentPadding = new System.Windows.Forms.Padding(0);
             this.graPanel3.Controls.Add(this.pContainForm);
-            this.graPanel3.Controls.Add(this.pMenuHeader);
             this.graPanel3.Controls.Add(this.pBoder);
             this.graPanel3.CornerRadius = 5;
             this.graPanel3.Corners = ((QTech.Component.Corners)((((QTech.Component.Corners.TopLeft | QTech.Component.Corners.TopRight) 
@@ -536,30 +532,12 @@
             this.graPanel3.Location = new System.Drawing.Point(3, 0);
             this.graPanel3.Name = "graPanel3";
             this.graPanel3.Rounded = true;
-            this.graPanel3.Size = new System.Drawing.Size(1268, 632);
+            this.graPanel3.Size = new System.Drawing.Size(1268, 579);
             this.graPanel3.TabIndex = 0;
-            // 
-            // colorWithAlpha10
-            // 
-            this.colorWithAlpha10.Alpha = 255;
-            this.colorWithAlpha10.Color = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.colorWithAlpha10.Parent = this.graPanel3;
-            // 
-            // colorWithAlpha11
-            // 
-            this.colorWithAlpha11.Alpha = 255;
-            this.colorWithAlpha11.Color = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.colorWithAlpha11.Parent = this.graPanel3;
-            // 
-            // colorWithAlpha12
-            // 
-            this.colorWithAlpha12.Alpha = 255;
-            this.colorWithAlpha12.Color = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.colorWithAlpha12.Parent = this.graPanel3;
             // 
             // pContainForm
             // 
-            this.pContainForm.BackColor = System.Drawing.Color.Yellow;
+            this.pContainForm.BackColor = System.Drawing.Color.Transparent;
             this.pContainForm.Border = true;
             this.pContainForm.BorderColor = System.Drawing.Color.Gray;
             this.pContainForm.Colors.Add(this.colorWithAlpha1);
@@ -579,17 +557,17 @@
             this.pContainForm.ImagePadding = new System.Windows.Forms.Padding(5);
             this.pContainForm.ImagePosition = QTech.Component.ImagePositions.BottomRight;
             this.pContainForm.ImageSize = new System.Drawing.Size(48, 48);
-            this.pContainForm.Location = new System.Drawing.Point(0, 22);
+            this.pContainForm.Location = new System.Drawing.Point(0, 0);
             this.pContainForm.Name = "pContainForm";
             this.pContainForm.Padding = new System.Windows.Forms.Padding(2);
             this.pContainForm.Rounded = true;
-            this.pContainForm.Size = new System.Drawing.Size(1268, 610);
+            this.pContainForm.Size = new System.Drawing.Size(1268, 579);
             this.pContainForm.TabIndex = 1;
             // 
             // colorWithAlpha1
             // 
             this.colorWithAlpha1.Alpha = 255;
-            this.colorWithAlpha1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.colorWithAlpha1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.colorWithAlpha1.Parent = this.pContainForm;
             // 
             // colorWithAlpha2
@@ -597,22 +575,6 @@
             this.colorWithAlpha2.Alpha = 255;
             this.colorWithAlpha2.Color = System.Drawing.SystemColors.Control;
             this.colorWithAlpha2.Parent = this.pContainForm;
-            // 
-            // pMenuHeader
-            // 
-            this.pMenuHeader.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.pMenuHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.pMenuHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pMenuHeader.Image = null;
-            this.pMenuHeader.IsTitle = true;
-            this.pMenuHeader.Location = new System.Drawing.Point(0, 0);
-            this.pMenuHeader.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pMenuHeader.Name = "pMenuHeader";
-            this.pMenuHeader.Selected = false;
-            this.pMenuHeader.Size = new System.Drawing.Size(1268, 22);
-            this.pMenuHeader.TabIndex = 0;
-            this.pMenuHeader.Text = "ម៊ឺនុយ";
-            this.pMenuHeader.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pBoder
             // 
@@ -639,13 +601,14 @@
             this.pBoder.Location = new System.Drawing.Point(0, 0);
             this.pBoder.Name = "pBoder";
             this.pBoder.Rounded = true;
-            this.pBoder.Size = new System.Drawing.Size(1268, 632);
+            this.pBoder.Size = new System.Drawing.Size(1268, 579);
             this.pBoder.TabIndex = 2;
             // 
             // colorWithAlpha3
             // 
             this.colorWithAlpha3.Alpha = 255;
             this.colorWithAlpha3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.colorWithAlpha3.Parent = null;
             // 
             // pContainBottom
             // 
@@ -735,24 +698,44 @@
             this.btnLogOut.Size = new System.Drawing.Size(146, 24);
             this.btnLogOut.Text = "ចាកចេញ";
             // 
-            // label3
+            // pSecondMenue2
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label3.Font = new System.Drawing.Font("Khmer Muol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(87, 6);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(170, 24);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "សម្រាប់ប្រើបណ្ដោះអាសន្ន";
+            this.pSecondMenue2.BackColor = System.Drawing.Color.Transparent;
+            this.pSecondMenue2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pSecondMenue2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.pSecondMenue2.Location = new System.Drawing.Point(0, 0);
+            this.pSecondMenue2.Name = "pSecondMenue2";
+            this.pSecondMenue2.Size = new System.Drawing.Size(1249, 53);
+            this.pSecondMenue2.TabIndex = 3;
+            // 
+            // _btnUpDown
+            // 
+            this._btnUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._btnUpDown.Image = global::QTech.Properties.Resources.imgCollapse;
+            this._btnUpDown.Location = new System.Drawing.Point(1258, 37);
+            this._btnUpDown.Name = "_btnUpDown";
+            this._btnUpDown.Size = new System.Drawing.Size(16, 18);
+            this._btnUpDown.TabIndex = 0;
+            this._btnUpDown.TabStop = false;
+            this._btnUpDown.Click += new System.EventHandler(this._btnUpDown_Click);
+            // 
+            // pSecondMenue1
+            // 
+            this.pSecondMenue1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.pSecondMenue1.Controls.Add(this._btnUpDown);
+            this.pSecondMenue1.Controls.Add(this.pSecondMenue2);
+            this.pSecondMenue1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pSecondMenue1.Location = new System.Drawing.Point(1, 35);
+            this.pSecondMenue1.Name = "pSecondMenue1";
+            this.pSecondMenue1.Size = new System.Drawing.Size(1278, 53);
+            this.pSecondMenue1.TabIndex = 4;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(0, 0);
             this.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.Name = "MainForm";
@@ -775,6 +758,8 @@
             this.pContainBottom.ResumeLayout(false);
             this.menuSwitchLinkServer.ResumeLayout(false);
             this.cnmStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this._btnUpDown)).EndInit();
+            this.pSecondMenue1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -788,7 +773,6 @@
         private QTech.Component.GRAPanel topPanel;
         private QTech.Component.GRAPanel graPanel2;
         private QTech.Component.GRAPanel graPanel3;
-        private QTech.Component.ExTabItem pMenuHeader;
         private QTech.Component.GRAPanel pContainForm;
         private System.Windows.Forms.Panel Body;
         private QTech.Component.GRAPanel pBoder;
@@ -826,11 +810,9 @@
         private System.Windows.Forms.Label txtUserName;
         private System.Windows.Forms.Label lblUserDropDown_;
         private System.Windows.Forms.Label lblBranchIcon_;
-        private QTech.Component.ColorWithAlpha colorWithAlpha13;
-        private QTech.Component.ColorWithAlpha colorWithAlpha14;
-        private QTech.Component.ColorWithAlpha colorWithAlpha10;
-        private QTech.Component.ColorWithAlpha colorWithAlpha11;
-        private QTech.Component.ColorWithAlpha colorWithAlpha12;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.FlowLayoutPanel pSecondMenue2;
+        private System.Windows.Forms.PictureBox _btnUpDown;
+        private System.Windows.Forms.Panel pSecondMenue1;
     }
 }
