@@ -38,8 +38,6 @@
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.pTopMenu = new QTech.Component.ExTabBar();
             this.pBottom = new QTech.Component.GRAPanel();
-            this.colorWithAlpha7 = new QTech.Component.ColorWithAlpha();
-            this.colorWithAlpha9 = new QTech.Component.ColorWithAlpha();
             this.pBranch = new System.Windows.Forms.FlowLayoutPanel();
             this.lblUserProfile_ = new System.Windows.Forms.Label();
             this.txtUserName = new System.Windows.Forms.Label();
@@ -69,7 +67,6 @@
             this.pSecondMenue2 = new System.Windows.Forms.FlowLayoutPanel();
             this.colorWithAlpha3 = new QTech.Component.ColorWithAlpha();
             this.pContainBottom = new QTech.Component.GRAPanel();
-            this.colorWithAlpha8 = new QTech.Component.ColorWithAlpha();
             this.menuSwitchLinkServer = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmMenuUITeam = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmMenuTestTeam = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,6 +74,8 @@
             this.cnmStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnChangePassword = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLogOut = new System.Windows.Forms.ToolStripMenuItem();
+            this.colorWithAlpha7 = new QTech.Component.ColorWithAlpha();
+            this.colorWithAlpha8 = new QTech.Component.ColorWithAlpha();
             this.container.SuspendLayout();
             this.topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
@@ -166,7 +165,7 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label3.Font = new System.Drawing.Font("Khmer Muol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.ForeColor = System.Drawing.Color.Blue;
             this.label3.Location = new System.Drawing.Point(87, 6);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(170, 24);
@@ -180,9 +179,9 @@
             this.picLogo.ErrorImage = global::QTech.Properties.Resources.QTech__2_;
             this.picLogo.Image = global::QTech.Properties.Resources.Pheng_Ry;
             this.picLogo.InitialImage = global::QTech.Properties.Resources.QTech__2_;
-            this.picLogo.Location = new System.Drawing.Point(6, 1);
+            this.picLogo.Location = new System.Drawing.Point(0, 1);
             this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(75, 33);
+            this.picLogo.Size = new System.Drawing.Size(75, 30);
             this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picLogo.TabIndex = 0;
             this.picLogo.TabStop = false;
@@ -201,12 +200,12 @@
             // 
             // pBottom
             // 
-            this.pBottom.BackColor = System.Drawing.Color.LightGray;
+            this.pBottom.BackColor = System.Drawing.Color.NavajoWhite;
             this.pBottom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pBottom.Border = true;
             this.pBottom.BorderColor = System.Drawing.Color.Gray;
             this.pBottom.Colors.Add(this.colorWithAlpha7);
-            this.pBottom.Colors.Add(this.colorWithAlpha9);
+            this.pBottom.Colors.Add(this.colorWithAlpha8);
             this.pBottom.ContentPadding = new System.Windows.Forms.Padding(-1, 0, -1, -1);
             this.pBottom.Controls.Add(this.pBranch);
             this.pBottom.Controls.Add(this.flowLayoutPanel2);
@@ -235,18 +234,7 @@
             this.pBottom.Rounded = true;
             this.pBottom.Size = new System.Drawing.Size(1276, 25);
             this.pBottom.TabIndex = 1;
-            // 
-            // colorWithAlpha7
-            // 
-            this.colorWithAlpha7.Alpha = 255;
-            this.colorWithAlpha7.Color = System.Drawing.Color.LightGray;
-            this.colorWithAlpha7.Parent = this.pBottom;
-            // 
-            // colorWithAlpha9
-            // 
-            this.colorWithAlpha9.Alpha = 255;
-            this.colorWithAlpha9.Color = System.Drawing.Color.LightGray;
-            this.colorWithAlpha9.Parent = this.pBottom;
+            this.pBottom.Paint += new System.Windows.Forms.PaintEventHandler(this.pBottom_Paint);
             // 
             // pBranch
             // 
@@ -423,6 +411,7 @@
             this.txtLogin.Size = new System.Drawing.Size(110, 19);
             this.txtLogin.TabIndex = 1;
             this.txtLogin.Text = "01-01-2019 01:01:01";
+            this.txtLogin.Click += new System.EventHandler(this.txtLogin_Click);
             // 
             // label1
             // 
@@ -566,7 +555,7 @@
             // 
             // pContainForm
             // 
-            this.pContainForm.BackColor = System.Drawing.Color.Transparent;
+            this.pContainForm.BackColor = System.Drawing.Color.NavajoWhite;
             this.pContainForm.Border = true;
             this.pContainForm.BorderColor = System.Drawing.Color.Gray;
             this.pContainForm.Colors.Add(this.colorWithAlpha1);
@@ -592,6 +581,7 @@
             this.pContainForm.Rounded = true;
             this.pContainForm.Size = new System.Drawing.Size(1268, 559);
             this.pContainForm.TabIndex = 1;
+            this.pContainForm.Paint += new System.Windows.Forms.PaintEventHandler(this.pContainForm_Paint);
             // 
             // colorWithAlpha1
             // 
@@ -647,7 +637,6 @@
             this.pContainBottom.BackColor = System.Drawing.Color.Transparent;
             this.pContainBottom.Border = true;
             this.pContainBottom.BorderColor = System.Drawing.Color.Gray;
-            this.pContainBottom.Colors.Add(this.colorWithAlpha8);
             this.pContainBottom.ContentPadding = new System.Windows.Forms.Padding(0, -1, 0, 0);
             this.pContainBottom.Controls.Add(this.pBottom);
             this.pContainBottom.CornerRadius = 1;
@@ -672,12 +661,6 @@
             this.pContainBottom.Rounded = true;
             this.pContainBottom.Size = new System.Drawing.Size(1278, 26);
             this.pContainBottom.TabIndex = 2;
-            // 
-            // colorWithAlpha8
-            // 
-            this.colorWithAlpha8.Alpha = 255;
-            this.colorWithAlpha8.Color = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.colorWithAlpha8.Parent = this.pContainBottom;
             // 
             // menuSwitchLinkServer
             // 
@@ -729,6 +712,18 @@
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(146, 24);
             this.btnLogOut.Text = "ចាកចេញ";
+            // 
+            // colorWithAlpha7
+            // 
+            this.colorWithAlpha7.Alpha = 255;
+            this.colorWithAlpha7.Color = System.Drawing.Color.NavajoWhite;
+            this.colorWithAlpha7.Parent = this.pBottom;
+            // 
+            // colorWithAlpha8
+            // 
+            this.colorWithAlpha8.Alpha = 255;
+            this.colorWithAlpha8.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.colorWithAlpha8.Parent = this.pBottom;
             // 
             // MainForm
             // 
@@ -788,10 +783,7 @@
         private QTech.Component.ColorWithAlpha colorWithAlpha4;
         private QTech.Component.ColorWithAlpha colorWithAlpha5;
         private QTech.Component.ColorWithAlpha colorWithAlpha6;
-        private QTech.Component.ColorWithAlpha colorWithAlpha7;
         private QTech.Component.GRAPanel pContainBottom;
-        private QTech.Component.ColorWithAlpha colorWithAlpha8;
-        private QTech.Component.ColorWithAlpha colorWithAlpha9;
         private System.Windows.Forms.PictureBox picLogo;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label txtDomain;
@@ -815,5 +807,7 @@
         private System.Windows.Forms.FlowLayoutPanel pSecondMenue2;
         private System.Windows.Forms.PictureBox _btnUpDown;
         private System.Windows.Forms.Panel pSecondMenue1;
+        private Component.ColorWithAlpha colorWithAlpha7;
+        private Component.ColorWithAlpha colorWithAlpha8;
     }
 }

@@ -76,8 +76,8 @@ namespace QTech.Base.BaseModels
                 Index = 1,
                 Level = 2,
                 ParentKey = AuthKey.Employee,
-                DisplayName = BaseResource.Employees,
-                Icon = BaseResource.Employee_img,
+                DisplayName = BaseResource.Employees+BaseResource.Employees+BaseResource.Employees,
+                Icon = BaseResource.Driver_img,
                 Children = new List<MenuBar>(),
                 FormName = "QTech.Forms.Form1"
             },
@@ -87,7 +87,7 @@ namespace QTech.Base.BaseModels
                 Level = 2,
                 ParentKey = AuthKey.Customer,
                 DisplayName = BaseResource.Customer,
-                Icon = BaseResource.Customer_img,
+                Icon = BaseResource.Category_img,
                 Children = new List<MenuBar>(),
                 FormName = "QTech.Forms.frmCustomer"
 
@@ -98,7 +98,7 @@ namespace QTech.Base.BaseModels
                 Level = 2,
                 ParentKey = AuthKey.Product,
                 DisplayName = BaseResource.Products,
-                Icon = BaseResource.Product_img,
+                Icon = BaseResource.Type_img,
                 Children = new List<MenuBar>(),
                 FormName = "QTech.Forms.frmProduct"
 
@@ -109,22 +109,22 @@ namespace QTech.Base.BaseModels
                 Level = 2,
                 ParentKey = AuthKey.Sale,
                 DisplayName = BaseResource.Sales,
-                Icon = BaseResource.Sale_img,
+                Icon = BaseResource.Type_img,
                 Children = new List<MenuBar>(),
                 FormName = "QTech.Forms.frmSale"
 
             },
-            new MenuBar()
-            {
-                Index = 5,
-                Level = 2,
-                ParentKey = AuthKey.CloseEntryData,
-                DisplayName = BaseResource.CloseEntryData,
-                Icon = BaseResource.CloseDateEntery_img,
-                Children = new List<MenuBar>(),
-                FormName = "QTech.Forms.frmEmployeePay"
+            //new MenuBar()
+            //{
+            //    Index = 5,
+            //    Level = 2,
+            //    ParentKey = AuthKey.CloseEntryData,
+            //    DisplayName = BaseResource.CloseEntryData,
+            //    Icon = BaseResource.Type_img,
+            //    Children = new List<MenuBar>(),
+            //    FormName = "QTech.Forms.frmEmployeePay"
 
-            },
+            //},
 
 
         };

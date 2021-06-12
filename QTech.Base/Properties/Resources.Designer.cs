@@ -102,6 +102,16 @@ namespace QTech.Base.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Category_img {
+            get {
+                object obj = ResourceManager.GetObject("Category_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Christmas_Big_Sale_icon {
             get {
                 object obj = ResourceManager.GetObject("Christmas-Big-Sale-icon", resourceCulture);
@@ -218,6 +228,16 @@ namespace QTech.Base.Properties {
         public static string CustomerType {
             get {
                 return ResourceManager.GetString("CustomerType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Driver_img {
+            get {
+                object obj = ResourceManager.GetObject("Driver_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

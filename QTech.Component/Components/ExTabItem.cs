@@ -32,7 +32,13 @@ namespace QTech.Component
             }
         }
 
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            //lblCaption.ForeColor = Color.Blue;
+            this.Font = new Font("Khmer OS Siemreap", 8,FontStyle.Bold);
 
+        }
 
         [Browsable(true)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]

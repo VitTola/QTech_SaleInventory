@@ -173,6 +173,7 @@ namespace QTech.Component
 
         //    return base.ProcessCmdKey(ref msg, keyData);
         //}
+       
 
         void ExDataGridView_DataSourceChanged(object sender, EventArgs e)
         {
@@ -207,6 +208,13 @@ namespace QTech.Component
                     parent.View();
                 }
             }
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            this.Font = new Font("Khmer OS Siemreap", 8);
+
         }
 
         void ExDataGridView_KeyDown(object sender, KeyEventArgs e)

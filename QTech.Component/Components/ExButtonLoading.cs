@@ -63,7 +63,7 @@ namespace QTech.Component
                 drawFormat.FormatFlags = StringFormatFlags.DirectionVertical;
                 drawFormat.Alignment = StringAlignment.Near;
             }
-            
+
             //var arc = new RectangleF(bounds.Location, size);
             //GraphicsPath path = new GraphicsPath();
 
@@ -88,6 +88,8 @@ namespace QTech.Component
 
             //e.Graphics.DrawPath(new Pen(Color.White), path);
             //e.Graphics.DrawPath(new Pen(ColorTranslator.FromHtml(Properties.Resources.ColorPrimary)), path);
+            this.Font = new Font("Khmer OS Siemreap", 8);
+
             e.Graphics.DrawString(ShortcutText, drawFont, drawBrush, locationF, drawFormat);
         }
 
