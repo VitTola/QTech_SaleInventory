@@ -138,7 +138,7 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ផេង ​​​​រី.
+        ///   Looks up a localized string similar to ផេង ​​​​រី ផ្គត់ផ្គង់ខ្សាច់ និងថ្មគ្រប់ប្រភេទ.
         /// </summary>
         public static string Company {
             get {

@@ -625,6 +625,7 @@
             this._btnUpDown.Size = new System.Drawing.Size(16, 18);
             this._btnUpDown.TabIndex = 0;
             this._btnUpDown.TabStop = false;
+            this._btnUpDown.Click += new System.EventHandler(this._btnUpDown_Click);
             // 
             // pSecondMenue2
             // 

@@ -69,56 +69,56 @@ namespace QTech.Base.BaseModels
         public readonly Dictionary<AuthKey, Assembly> Assemblies = new Dictionary<AuthKey, Assembly>();
         private readonly List<Report> _reports = new List<Report>();
 
-        private readonly List<MenuBar> _secondLevelMenue = new List<MenuBar>()
+        public readonly List<MenuBar> _secondLevelMenue = new List<MenuBar>()
         {
             new MenuBar()
             {
                 Index = 1,
                 Level = 2,
-                Key = AuthKey.Employee,
+                ParentKey = AuthKey.Employee,
                 DisplayName = BaseResource.Employees,
                 Icon = BaseResource.Employee_img,
                 Children = new List<MenuBar>(),
-                FormName = "QTech.App.Forms.frmEmployee"
+                FormName = "QTech.Forms.Form1"
             },
             new MenuBar()
             {
                 Index = 2,
                 Level = 2,
-                Key = AuthKey.Customer,
+                ParentKey = AuthKey.Customer,
                 DisplayName = BaseResource.Customer,
                 Icon = BaseResource.Customer_img,
                 Children = new List<MenuBar>(),
-                FormName = "QTech.App.Forms.frmCustomer"
+                FormName = "QTech.Forms.frmCustomer"
 
             },
             new MenuBar()
             {
                 Index = 3,
                 Level = 2,
-                Key = AuthKey.Product,
+                ParentKey = AuthKey.Product,
                 DisplayName = BaseResource.Products,
                 Icon = BaseResource.Product_img,
                 Children = new List<MenuBar>(),
-                FormName = "QTech.App.Forms.frmProduct"
+                FormName = "QTech.Forms.frmProduct"
 
             },
             new MenuBar()
             {
                 Index = 4,
                 Level = 2,
-                Key = AuthKey.Sale,
+                ParentKey = AuthKey.Sale,
                 DisplayName = BaseResource.Sales,
                 Icon = BaseResource.Sale_img,
                 Children = new List<MenuBar>(),
-                FormName = "QTech.App.Forms.frmSale"
+                FormName = "QTech.Forms.frmSale"
 
             },
             new MenuBar()
             {
                 Index = 5,
                 Level = 2,
-                Key = AuthKey.CloseEntryData,
+                ParentKey = AuthKey.CloseEntryData,
                 DisplayName = BaseResource.CloseEntryData,
                 Icon = BaseResource.CloseDateEntery_img,
                 Children = new List<MenuBar>(),
@@ -133,23 +133,23 @@ namespace QTech.Base.BaseModels
         {
             new MenuBar()
             {
-                Index = 1,
+                Index = 2,
                 Level = 1,
                 Key = AuthKey.Employee,
                 DisplayName = BaseResource.Employees,
                 Icon = BaseResource.Employee_img,
                 Children = new List<MenuBar>(),
-                FormName = "QTech.App.Forms.EmployeePage"
+                FormName = "QTech.Forms.EmployeePage"
             },
             new MenuBar()
             {
-                Index = 2,
+                Index = 1,
                 Level = 1,
                 Key = AuthKey.Customer,
                 DisplayName = BaseResource.Customer,
                 Icon = BaseResource.Customer_img,
                 Children = new List<MenuBar>(),
-                FormName = "QTech.App.Forms.CustomerPage"
+                FormName = "QTech.Forms.CustomerPage"
 
             },
             new MenuBar()
@@ -160,7 +160,7 @@ namespace QTech.Base.BaseModels
                 DisplayName = BaseResource.Products,
                 Icon = BaseResource.Product_img,
                 Children = new List<MenuBar>(),
-                FormName = "QTech.App.Forms.ProductPage"
+                FormName = "QTech.Forms.ProductPage"
 
             },
             new MenuBar()
@@ -171,7 +171,7 @@ namespace QTech.Base.BaseModels
                 DisplayName = BaseResource.Sales,
                 Icon = BaseResource.Sale_img,
                 Children = new List<MenuBar>(),
-                FormName = "QTech.App.Forms.SalePage"
+                FormName = "QTech.Forms.SalePage"
 
             },
             new MenuBar()
@@ -193,7 +193,7 @@ namespace QTech.Base.BaseModels
 
 
         };
-    
+
 
         //init registered dll
         public ModuleManager()

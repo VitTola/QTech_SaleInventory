@@ -98,6 +98,8 @@ namespace QTech.Forms
                     };
                     pTopMenu.AddTabItem(topMenue);
                     topMenue.Click += TopMenue_Click;
+                    topMenue.MouseClick += (ee, o) => { topMenue.BackColor = Color.FromArgb(245, 245, 237); };
+                    topMenue.MouseHover += (ee, o) => { topMenue.BackColor = Color.FromArgb(245, 245, 237); };
                     _lastExtabitem = topMenue;
                 });
             if (_lastExtabitem != null)
@@ -116,37 +118,6 @@ namespace QTech.Forms
             pTopMenu.Text = navMenu.DisplayName;
             ShowPage(navMenu.FormName, navMenu.ModuleLocation);
             ReadSecondLevelMenue(navMenu);
-
-            if (sender is ExTabItem exTab)
-            {
-                if (exTab.Tag is Form form)
-                {
-                    pSecondMenue2.Show();
-                    pSecondMenue1.Show();
-
-                    FormCollection fc = Application.OpenForms;
-                    foreach (Form frm in fc)
-                    {
-                        if (frm.Name == form.Name)
-                        {
-                            return;
-                        }
-                    }
-
-                    form.TopLevel = false;
-                    form.Enabled = true;
-                    form.FormBorderStyle = FormBorderStyle.None;
-                    form.Dock = DockStyle.Fill;
-                    pContainForm.Controls.Add(form);
-                    _pages.Add(form.Name, form);
-                    ResourceHelper.ApplyResource(form);
-                    form.Show();
-                }
-
-                exTab.MouseClick += (ee, o) => { exTab.BackColor = Color.FromArgb(245, 245, 237); };
-                exTab.MouseHover += (ee, o) => { exTab.BackColor = Color.FromArgb(245, 245, 237); };
-
-            }
         }
         public void ShowPage(string formname, string moduleLocation)
         {
@@ -209,19 +180,57 @@ namespace QTech.Forms
 
         private void ReadSecondLevelMenue(MenuBar menuBar)
         {
-            if (menuBar == null)
+            pSecondMenue2.Controls.Clear();
+            var moduleManager = ModuleManager.Instance;
+            _secondLevelMenue = moduleManager._secondLevelMenue;
+
+            if (menuBar == null || _secondLevelMenue ==null)
             {
                 return;
             }
-            var moduleManager = ModuleManager.Instance;
-            _secondLevelMenue = moduleManager.GetMenubars();
+
+            _secondLevelMenue.Where(n=>n.ParentKey==menuBar.Key).OrderByDescending(x => x.Index).ToList()
+                .ForEach(x =>
+                {
+                    var secodMenue = MyTemplateButton(x.DisplayName, x.Icon, x);
+                    pSecondMenue2.Controls.Add(secodMenue);
+                    secodMenue.Click += SecodMenue_Click;
+                    
+                });
+
+            pSecondMenue2.Show();
+            pSecondMenue1.Show();
+        }
+
+        private void SecodMenue_Click(object sender, EventArgs e)
+        {
+            if (sender is Button btn)
+            {
+                if (btn.Tag is MenuBar menuBar)
+                {
+                    ShowPage(menuBar.FormName,menuBar.ModuleLocation);
+
+                }
+            }
 
 
+        }
 
+        private Button MyTemplateButton(string text, Image image, Object obj)
+        {
+            var btn = new Button();
+            btn.FlatStyle = FlatStyle.Flat;
+            btn.FlatAppearance.BorderSize = 0;
+            btn.ImageAlign = ContentAlignment.TopCenter;
+            btn.TextAlign = ContentAlignment.BottomCenter;
+            btn.Height = 70;
+            btn.BackColor = Color.Transparent;
+            btn.Text = text;
+            //.Name = name;
+            btn.Image = image;
+            btn.Tag = obj;
 
-
-
-
+            return btn;
         }
 
 
@@ -244,24 +253,6 @@ namespace QTech.Forms
                 }
             }
         }
-
-        private Button MyTemplateButton(string text, string name, Image image)
-        {
-            var btn = new Button();
-            btn.FlatStyle = FlatStyle.Flat;
-            btn.FlatAppearance.BorderSize = 0;
-            btn.ImageAlign = ContentAlignment.TopCenter;
-            btn.TextAlign = ContentAlignment.BottomCenter;
-            btn.Height = 70;
-            btn.BackColor = Color.Transparent;
-            btn.Text = text;
-            btn.Name = name;
-            btn.Image = image;
-
-
-            return btn;
-        }
-
         private void _btnUpDown_Click(object sender, EventArgs e)
         {
             if (pSecondMenue2.Visible == false)
@@ -276,7 +267,5 @@ namespace QTech.Forms
 
             }
         }
-
-
     }
 }
