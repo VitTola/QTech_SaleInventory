@@ -40,7 +40,7 @@ namespace QTech.Forms
 
         public void Read()
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Save()

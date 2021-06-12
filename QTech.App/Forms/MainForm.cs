@@ -13,17 +13,16 @@ using QTech.Base;
 using QTech.Forms;
 using BaseResource = QTech.Base.Properties.Resources;
 
-namespace Storm.UI
+namespace QTech.Forms
 {
     public partial class MainForm : ExDialog
     {
-        private Dictionary<AuthKey, Button> _secondLevelMenue= new Dictionary<AuthKey, Button>();
+        private List<MenuBar> _secondLevelMenue = new List<MenuBar>();
         private Dictionary<string, Form> _pages = new Dictionary<string, Form>();
         private ExTabItem _lastExtabitem = null;
         private List<MenuBar> _menuBars = new List<MenuBar>();
         private bool _firstTabClick = true;
         AuthKey currentKeyTab;
-
 
         public MainForm()
         {
@@ -61,7 +60,7 @@ namespace Storm.UI
             graPanel3.ResumeLayout(false);
             pContainBottom.ResumeLayout(false);
             ResumeLayout(false);
-            
+
             ResourceHelper.ApplyResource(this);
             this.InitForm();
             this.OptimizeLoadUI();
@@ -157,7 +156,10 @@ namespace Storm.UI
             }
             if (_pages.ContainsKey(formname) == false)
             {
-                Assembly assembly = Assembly.LoadFrom(moduleLocation);
+                //Assembly assembly = Assembly.LoadFrom(@"moduleLocation");
+                //Type type = assembly.GetType(formname);
+
+                Assembly assembly = Assembly.GetExecutingAssembly();
                 Type type = assembly.GetType(formname);
                 if (!(Activator.CreateInstance(type) is Form form)) return;
                 form.TopLevel = false;
@@ -194,7 +196,7 @@ namespace Storm.UI
         {
             if (_pages.ContainsKey(formname) == false)
             {
-                Assembly assembly = Assembly.LoadFrom(moduleLocation);
+                Assembly assembly = Assembly.LoadFrom(Environment.CurrentDirectory);
                 Type type = assembly.GetType(formname);
                 var form = Activator.CreateInstance(type) as Form;
                 form.ShowDialog();
@@ -211,7 +213,8 @@ namespace Storm.UI
             {
                 return;
             }
-
+            var moduleManager = ModuleManager.Instance;
+            _secondLevelMenue = moduleManager.GetMenubars();
 
 
 
@@ -221,7 +224,7 @@ namespace Storm.UI
 
         }
 
-       
+
         private void copyControl(Control sourceControl, Control targetControl)
         {
             // make sure these are the same

@@ -1,4 +1,4 @@
-﻿namespace Storm.UI
+﻿namespace QTech.Forms
 {
     partial class MainForm
     {

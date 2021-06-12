@@ -1,7 +1,9 @@
-﻿using QTech.Base.Enums;
+﻿using QTech.Base.BaseModules;
+using QTech.Base.Enums;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Resources;
@@ -67,7 +69,67 @@ namespace QTech.Base.BaseModels
         public readonly Dictionary<AuthKey, Assembly> Assemblies = new Dictionary<AuthKey, Assembly>();
         private readonly List<Report> _reports = new List<Report>();
 
-        private readonly List<MenuBar> _menuBars = new List<MenuBar>()
+        private readonly List<MenuBar> _secondLevelMenue = new List<MenuBar>()
+        {
+            new MenuBar()
+            {
+                Index = 1,
+                Level = 2,
+                Key = AuthKey.Employee,
+                DisplayName = BaseResource.Employees,
+                Icon = BaseResource.Employee_img,
+                Children = new List<MenuBar>(),
+                FormName = "QTech.App.Forms.frmEmployee"
+            },
+            new MenuBar()
+            {
+                Index = 2,
+                Level = 2,
+                Key = AuthKey.Customer,
+                DisplayName = BaseResource.Customer,
+                Icon = BaseResource.Customer_img,
+                Children = new List<MenuBar>(),
+                FormName = "QTech.App.Forms.frmCustomer"
+
+            },
+            new MenuBar()
+            {
+                Index = 3,
+                Level = 2,
+                Key = AuthKey.Product,
+                DisplayName = BaseResource.Products,
+                Icon = BaseResource.Product_img,
+                Children = new List<MenuBar>(),
+                FormName = "QTech.App.Forms.frmProduct"
+
+            },
+            new MenuBar()
+            {
+                Index = 4,
+                Level = 2,
+                Key = AuthKey.Sale,
+                DisplayName = BaseResource.Sales,
+                Icon = BaseResource.Sale_img,
+                Children = new List<MenuBar>(),
+                FormName = "QTech.App.Forms.frmSale"
+
+            },
+            new MenuBar()
+            {
+                Index = 5,
+                Level = 2,
+                Key = AuthKey.CloseEntryData,
+                DisplayName = BaseResource.CloseEntryData,
+                Icon = BaseResource.CloseDateEntery_img,
+                Children = new List<MenuBar>(),
+                FormName = "QTech.Forms.frmEmployeePay"
+
+            },
+
+
+        };
+
+        public readonly List<MenuBar> _menuBars = new List<MenuBar>()
         {
             new MenuBar()
             {
@@ -77,7 +139,7 @@ namespace QTech.Base.BaseModels
                 DisplayName = BaseResource.Employees,
                 Icon = BaseResource.Employee_img,
                 Children = new List<MenuBar>(),
-                FormName = "EmployeePage"
+                FormName = "QTech.App.Forms.EmployeePage"
             },
             new MenuBar()
             {
@@ -87,6 +149,8 @@ namespace QTech.Base.BaseModels
                 DisplayName = BaseResource.Customer,
                 Icon = BaseResource.Customer_img,
                 Children = new List<MenuBar>(),
+                FormName = "QTech.App.Forms.CustomerPage"
+
             },
             new MenuBar()
             {
@@ -96,6 +160,8 @@ namespace QTech.Base.BaseModels
                 DisplayName = BaseResource.Products,
                 Icon = BaseResource.Product_img,
                 Children = new List<MenuBar>(),
+                FormName = "QTech.App.Forms.ProductPage"
+
             },
             new MenuBar()
             {
@@ -105,6 +171,8 @@ namespace QTech.Base.BaseModels
                 DisplayName = BaseResource.Sales,
                 Icon = BaseResource.Sale_img,
                 Children = new List<MenuBar>(),
+                FormName = "QTech.App.Forms.SalePage"
+
             },
             new MenuBar()
             {
@@ -114,17 +182,23 @@ namespace QTech.Base.BaseModels
                 DisplayName = BaseResource.CloseEntryData,
                 Icon = BaseResource.CloseDateEntery_img,
                 Children = new List<MenuBar>(),
+                FormName = "QTech.Forms.CloseEntryDataPage"
+
             },
 
 
-    };
-    
+
+
+
+
+
+        };
     
 
         //init registered dll
         public ModuleManager()
         {
-           // _registries[AuthKey.BillingPage] = Path.Combine(LocalVariable.ModuleLocation, "Storm.Billing.dll");
+            //_registries[AuthKey.Employee] = Path.Combine("Storm.Billing.dll");
 
         }
 

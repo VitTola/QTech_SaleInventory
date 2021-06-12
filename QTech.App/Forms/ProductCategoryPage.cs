@@ -29,7 +29,7 @@ namespace QTech.Forms
 
         public void Reload()
         {
-            throw new NotImplementedException();
+           
         }
 
         public void Remove()
