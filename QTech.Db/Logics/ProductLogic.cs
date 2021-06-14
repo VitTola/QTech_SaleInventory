@@ -8,9 +8,9 @@ using static QTech.Db.MasterLogic;
 
 namespace QTech.Db.Logics
 {
-    class ProductLogic:DbLogic<Product>
+    class ProductLogic:DbLogic<Product,ProductLogic>
     {
-        public ProductLogic(QTechDbContext qTechDbContext) : base(qTechDbContext)
+        public ProductLogic()
         {
         }
 

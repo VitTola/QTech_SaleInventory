@@ -8,9 +8,9 @@ using static QTech.Db.MasterLogic;
 
 namespace QTech.Db.Logics
 {
-    public class SaleLogic : DbLogic<Sale>
+    public class SaleLogic : DbLogic<Sale,SaleLogic>
     {
-        public SaleLogic(QTechDbContext qTechDbContext) : base(qTechDbContext)
+        public SaleLogic()
         {
         }
 

@@ -1,7 +1,7 @@
 ﻿
 using EasyServer.Domain.Exceptions;
 using EasyServer.Domain.Models;
-using EasyServer.Domain.SearchModels;
+using QTech.Base.BaseModels;
 using QTech.Db;
 using System;
 using System.Collections.Generic;
@@ -26,7 +26,6 @@ namespace QTech.Db
                 where TKey : struct
                 where TSelf : TDbLogic<T, TKey, TSelf>, new()
     {
-
         public static TSelf Instance
         {
             get
@@ -55,18 +54,18 @@ namespace QTech.Db
         {
             return All();
         }
-        public virtual async Task<List<T>> SearchAsync(ISearchModel model)
+        public virtual List<T> SearchAsync(ISearchModel model)
         {
-            return await All().ToListAsync();
+            return  All().ToList();
         }
         public virtual T FindAsync(TKey id)
         {
             return null;
 
         }
-        public virtual async Task<T> AddAsync(T entity)
+        public virtual T AddAsync(T entity)
         {
-            if (await IsExistsAsync(entity))
+            if (IsExistsAsync(entity))
             {
                 throw new UniqueException(model: entity);
             }
@@ -74,21 +73,21 @@ namespace QTech.Db
             entity.RowDate = DateTime.Now;
             SetActive(entity, true);
             _db.Entry(entity).State = EntityState.Added;
-            await _db.SaveChangesAsync();
+             _db.SaveChangesAsync();
             return entity;
         }
-        public virtual async Task<T> UpdateAsync(T entity)
+        public virtual T UpdateAsync(T entity)
         {
             try
             {
-                if (await IsExistsAsync(entity))
+                if (IsExistsAsync(entity))
                 {
                     throw new UniqueException(model: entity);
                 }
 
                 _db.Entry(entity).State = EntityState.Modified;
                 entity.RowDate = DateTime.Now;
-                await _db.SaveChangesAsync();
+                 _db.SaveChangesAsync();
                 return entity;
             }
             catch (Exception ex)
@@ -96,35 +95,35 @@ namespace QTech.Db
                 throw ex;
             }
         }
-        public virtual async Task<T> RemoveAsync(TKey id)
+        public virtual T RemoveAsync(TKey id)
         {
-            var entity = await _db.Set<T>().FindAsync(id);
-            if (!await CanRemoveAsync(entity))
+            var entity =  _db.Set<T>().Find(id);
+            if (!CanRemoveAsync(entity))
             {
                 throw new InusedException(model: entity);
             }
-            return await RemoveAsync(entity);
+            return  RemoveAsync(entity);
         }
-        public virtual async Task<T> RemoveAsync(T entity)
+        public virtual T RemoveAsync(T entity)
         {
             SetActive(entity, false);
             _db.Entry(entity).State = EntityState.Modified;
             entity.RowDate = DateTime.Now;
-            await _db.SaveChangesAsync();
+             _db.SaveChangesAsync();
             return entity;
         }
-        public virtual async Task<bool> CanRemoveAsync(TKey id)
+        public virtual bool CanRemoveAsync(TKey id)
         {
             var entity = FindAsync(id);
-            return await CanRemoveAsync(entity);
+            return  CanRemoveAsync(entity);
         }
-        public virtual async Task<bool> CanRemoveAsync(T entity)
+        public virtual bool CanRemoveAsync(T entity)
         {
-            return await Task.FromResult(true);
+            return false;
         }
-        public virtual async Task<bool> IsExistsAsync(T entity)
+        public virtual bool IsExistsAsync(T entity)
         {
-            return await Task.FromResult(false);
+            return false;
         }
         public virtual async Task<T> GetEntityAsync(T entity)
         {

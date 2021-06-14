@@ -56,7 +56,8 @@ namespace QTech.Component
                 _listModel = value;
             }
         }
-
+        public int CurrentPage { get; }
+        public bool IsPaging { get; set; }
         private bool _isShowAll=false;
         public bool ShowAllOption
         {

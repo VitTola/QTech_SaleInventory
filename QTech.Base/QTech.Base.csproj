@@ -122,6 +122,7 @@
     <Compile Include="BaseModels\ActiveBaseModel.cs" />
     <Compile Include="BaseModels\BaseModel.cs" />
     <Compile Include="BaseModels\BaseModule.cs" />
+    <Compile Include="BaseModels\BaseSearchModel.cs" />
     <Compile Include="BaseModules\LocalVariable.cs" />
     <Compile Include="Enums\AuthKey.cs" />
     <Compile Include="Enums\Currency.cs" />
@@ -147,6 +148,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="SearchModels\EmployeeSearch.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">

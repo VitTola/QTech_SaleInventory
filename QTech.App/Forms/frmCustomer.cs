@@ -20,7 +20,6 @@ namespace QTech.Forms
     {
         Customer model=new Customer();
         Site site = new Site();
-        QTechDbContext db = new QTechDbContext();
         public frmCustomer()
         {
             InitializeComponent();
@@ -77,7 +76,7 @@ namespace QTech.Forms
 
         public async void Save()
         {
-            await btnAdd.RunAsync(() => new CustomerLogic(db).AddAsync(model));
+            await btnAdd.RunAsync(() => CustomerLogic.Instance.AddAsync(model));
         }
 
         public void ViewChangeLog()

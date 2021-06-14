@@ -8,14 +8,14 @@ using static QTech.Db.MasterLogic;
 
 namespace QTech.Db.Logics
 {
-    public class CustomerLogic : DbLogic<Customer>
+    public class CustomerLogic : DbLogic<Customer,CustomerLogic>
     {
-        public CustomerLogic(QTechDbContext qTechDbContext): base(qTechDbContext)
+        public CustomerLogic()
         {
 
         }
 
-        public override Task<Customer> FindAsync(int id)
+        public override Customer FindAsync(int id)
         {
             
             return base.FindAsync(id);

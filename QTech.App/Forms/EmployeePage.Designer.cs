@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            EasyServer.Domain.SearchModels.Paging paging1 = new EasyServer.Domain.SearchModels.Paging();
             this.dgv = new QTech.Component.ExDataGridView();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,14 +40,17 @@
             this.graPanel1 = new QTech.Component.GRAPanel();
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.txtSearch = new QTech.Component.ExTextbox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnRemove = new QTech.Component.ExButtonLoading();
             this.btnUpdate = new QTech.Component.ExButtonLoading();
             this.btnAdd = new QTech.Component.ExButtonLoading();
             this.colorWithAlpha2 = new QTech.Component.ColorWithAlpha();
             this.colorWithAlpha3 = new QTech.Component.ColorWithAlpha();
+            this.pagination = new QTech.Component.ExPaging();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.graPanel1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,36 +62,37 @@
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv.BackgroundColor = System.Drawing.Color.White;
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Ivory;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS Siemreap", 8F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colId,
             this.colName,
             this.colPhone,
             this.colNote});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Khmer OS Siemreap", 8F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
+            this.dgv.Font = new System.Drawing.Font("Khmer OS Siemreap", 8F);
             this.dgv.Location = new System.Drawing.Point(0, 35);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
@@ -177,11 +182,26 @@
             // 
             // flowLayoutPanel2
             // 
+            this.flowLayoutPanel2.Controls.Add(this.txtSearch);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(498, 35);
             this.flowLayoutPanel2.TabIndex = 0;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.BackColor = System.Drawing.Color.White;
+            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSearch.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(4, 4);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 4, 3, 3);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Padding = new System.Windows.Forms.Padding(2, 3, 1, 4);
+            this.txtSearch.PlaceHolderText = "";
+            this.txtSearch.SearchMode = QTech.Component.ExTextbox.SearchModes.OnKeyReturn;
+            this.txtSearch.Size = new System.Drawing.Size(154, 26);
+            this.txtSearch.TabIndex = 0;
             // 
             // flowLayoutPanel1
             // 
@@ -259,11 +279,30 @@
             this.colorWithAlpha3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colorWithAlpha3.Parent = null;
             // 
-            // CustomerPage
+            // pagination
+            // 
+            this.pagination.Action = null;
+            this.pagination.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pagination.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pagination.ListModel = null;
+            this.pagination.Location = new System.Drawing.Point(0, 342);
+            this.pagination.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pagination.MinimumSize = new System.Drawing.Size(380, 33);
+            this.pagination.Name = "pagination";
+            paging1.CurrentPage = 1;
+            paging1.IsPaging = true;
+            paging1.PageSize = 25;
+            this.pagination.Paging = paging1;
+            this.pagination.ShowAllOption = false;
+            this.pagination.Size = new System.Drawing.Size(785, 33);
+            this.pagination.TabIndex = 2;
+            // 
+            // EmployeePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(785, 375);
+            this.Controls.Add(this.pagination);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.graPanel1);
             this.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -272,6 +311,7 @@
             this.Text = "EmployeePage";
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.graPanel1.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -293,5 +333,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colNote;
         private Component.ColorWithAlpha colorWithAlpha2;
         private Component.ColorWithAlpha colorWithAlpha3;
+        private Component.ExTextbox txtSearch;
+        private Component.ExPaging pagination;
     }
 }
