@@ -133,7 +133,7 @@ namespace QTech.Base.BaseModels
         {
             new MenuBar()
             {
-                Index = 2,
+                Index = 1,
                 Level = 1,
                 Key = AuthKey.Employee,
                 DisplayName = BaseResource.Employees,
@@ -143,7 +143,7 @@ namespace QTech.Base.BaseModels
             },
             new MenuBar()
             {
-                Index = 1,
+                Index = 2,
                 Level = 1,
                 Key = AuthKey.Customer,
                 DisplayName = BaseResource.Customer,

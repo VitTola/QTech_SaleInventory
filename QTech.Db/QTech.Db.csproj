@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configs\QTechDbConfigs.cs" />
     <Compile Include="Logics\CustomerLogic.cs" />
     <Compile Include="Logics\DbLogic.cs" />
     <Compile Include="Logics\EmployeeLogic.cs" />

@@ -25,11 +25,11 @@ namespace QTech.Forms
         public async void AddNew()
         {
             var employee = new Employee();
-            var dig = new frmEmployee(Model, GeneralProcess.Add);
+            var dig = new frmEmployee(employee, GeneralProcess.Add);
             if (dig.ShowDialog() == DialogResult.OK)
             {
                 await Search();
-                Model = dig.model;
+                Model = dig.Model;
             }
         }
 
@@ -43,7 +43,6 @@ namespace QTech.Forms
             var id = (int)dgv.SelectedRows[0].Cells[colId.Name].Value;
 
             Model = await btnUpdate.RunAsync(() => EmployeeLogic.Instance.FindAsync(id));
-
             if (Model == null)
             {
                 return;
@@ -97,19 +96,10 @@ namespace QTech.Forms
             var search = new EmployeeSearch()
             {
                 Search = txtSearch.Text,
-                
-                Paging = new Paging()
-                {
-                    PageSize = pagination.Paging.PageSize,
-                    CurrentPage = pagination.CurrentPage,
-                    IsPaging = pagination.IsPaging
-                }
             };
 
-            var result = await dgv.RunAsync(() => EmployeeLogic.Instance.Search(search));
-            pagination.ListModel = result._ToDataTable();
-            var temp = pagination.ListModel;
-            dgv.DataSource = temp;
+            var result = await dgv.RunAsync(() => EmployeeLogic.Instance.SearchAsync(search));
+            dgv.DataSource = result._ToDataTable();
         }
 
         public async void View()
@@ -139,15 +129,17 @@ namespace QTech.Forms
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            Update();
-
+            EditAsync();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
             Remove();
-
         }
 
+        private async void txtSearch_QuickSearch(object sender, EventArgs e)
+        {
+            await Search();
+        }
     }
 }

@@ -2,6 +2,7 @@
 using QTech.Base.Helpers;
 using QTech.Component;
 using QTech.Component.Helpers;
+using QTech.Db.Logics;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,13 +17,13 @@ namespace QTech.Forms
 {
     public partial class frmEmployee : ExDialog, IDialog
     {
-        public Employee model { get; set; }
+        public Employee Model { get; set; }
 
         public frmEmployee(Employee model, GeneralProcess flag)
         {
             InitializeComponent();
 
-            this.model = model;
+            this.Model = model;
             this.Flag = flag;
 
             Bind();
@@ -36,57 +37,83 @@ namespace QTech.Forms
             cboPosition.SetDataSource<Base.Enums.Postion>();
             colName.Visible = true;
             colName.Width = 100;
-            
+
+            Read();
         }
 
         public void InitEvent()
         {
             this.MaximizeBox = false;
             this.Text = Base.Properties.Resources.Employees;
-            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             txtPhone.RegisterEnglishInput();
-            txtName.RegisterPrimaryInputWith(cboPosition);
-
-            dgv.ReadOnly = false;
-            dgv.AllowRowNotFound = false;
-            dgv.AllowUserToAddRows = dgv.AllowUserToDeleteRows = true;
-            dgv.EditMode = DataGridViewEditMode.EditOnEnter;
-
-
-
-            if (Flag == GeneralProcess.Add || Flag == GeneralProcess.Update)
-            {
-                dgv.EditingControlShowing += dgv_EditingControlShowing;
-            }
+            txtName.RegisterPrimaryInputWith(cboPosition,txtNote,txtName);
         }
 
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             e.Control.RegisterEnglishInput();
-
             
-
         }
 
         public bool InValid()
         {
-            //var 
-            //if (!colCurrency.IsValidNumberic)
-            //{
-
-            //}
-
+            if (!txtName.IsValidRequired(lblName.Text) 
+                | !cboPosition.IsValidRequired(lblPosition.Text) 
+                | !txtPhone.IsValidPhone())
+            {
+                return true;
+            }
             return false;
         }
 
         public void Read()
         {
-            throw new NotImplementedException();
+            txtName.Text = Model.Name;
+            txtPhone.Text = Model.Phone;
+            txtNote.Text = Model.Note;
+            cboPosition.Text = Model.Postition;
         }
 
-        public void Save()
+        public async void Save()
         {
-            throw new NotImplementedException();
+            if (Flag == GeneralProcess.View)
+            {
+                Close();
+            }
+
+            if (InValid()) { return; }
+            Write();
+
+            var isExist = await btnSave.RunAsync(() => EmployeeLogic.Instance.IsExistsAsync(Model));
+            if (isExist == null) { return; }
+            if (isExist == true)
+            {
+                txtName.IsExists(lblName.Text);
+                return;
+            }
+
+            var result = await btnSave.RunAsync(() =>
+            {
+                if (Flag == GeneralProcess.Add)
+                {
+                    return EmployeeLogic.Instance.AddAsync(Model);
+                }
+                else if (Flag == GeneralProcess.Update)
+                {
+                    return EmployeeLogic.Instance.UpdateAsync(Model);
+                }
+                else if (Flag == GeneralProcess.Remove)
+                {
+                    return EmployeeLogic.Instance.RemoveAsync(Model);
+                }
+
+                return null;
+            });
+            if (result != null)
+            {
+                Model = result;
+                DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
         }
 
         public void ViewChangeLog()
@@ -96,23 +123,20 @@ namespace QTech.Forms
 
         public void Write()
         {
-            throw new NotImplementedException();
+            Model.Name = txtName.Text;
+            Model.Note = txtNote.Text;
+            Model.Phone = txtPhone.Text;
+            Model.Postition = cboPosition.Text;
         }
 
-        private void lblAdd_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
-            dgv.BeginEdit(true);
+            Save();
         }
 
-        private void lblRemove_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
-            if (dgv?.SelectedRows?.Count > 0)
-            {
-
-
-
-
-            }
+            this.Close();
         }
     }
 }

@@ -1367,18 +1367,6 @@ namespace QTech.Component
             var type = typeof(TResult);
             try
             {
-                // Reject if doing.
-                //if (task.Executing)
-                //{
-                //    if (type.GetInterfaces().Any(x=>x  == typeof(IList)))
-                //    {
-                //        return (TResult)Activator.CreateInstance(typeof(TResult));
-                //    }
-                //    else
-                //    {
-                //        return default;
-                //    }
-                //}
                 task.PreExecute(blockUI);
                 task.Executing = true;
                 foreach (var j in joiner)

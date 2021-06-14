@@ -31,7 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            EasyServer.Domain.SearchModels.Paging paging1 = new EasyServer.Domain.SearchModels.Paging();
             this.dgv = new QTech.Component.ExDataGridView();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,7 +46,6 @@
             this.btnAdd = new QTech.Component.ExButtonLoading();
             this.colorWithAlpha2 = new QTech.Component.ColorWithAlpha();
             this.colorWithAlpha3 = new QTech.Component.ColorWithAlpha();
-            this.pagination = new QTech.Component.ExPaging();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.graPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -202,6 +200,7 @@
             this.txtSearch.SearchMode = QTech.Component.ExTextbox.SearchModes.OnKeyReturn;
             this.txtSearch.Size = new System.Drawing.Size(154, 26);
             this.txtSearch.TabIndex = 0;
+            this.txtSearch.QuickSearch += new System.EventHandler(this.txtSearch_QuickSearch);
             // 
             // flowLayoutPanel1
             // 
@@ -279,30 +278,11 @@
             this.colorWithAlpha3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colorWithAlpha3.Parent = null;
             // 
-            // pagination
-            // 
-            this.pagination.Action = null;
-            this.pagination.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pagination.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pagination.ListModel = null;
-            this.pagination.Location = new System.Drawing.Point(0, 342);
-            this.pagination.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pagination.MinimumSize = new System.Drawing.Size(380, 33);
-            this.pagination.Name = "pagination";
-            paging1.CurrentPage = 1;
-            paging1.IsPaging = true;
-            paging1.PageSize = 25;
-            this.pagination.Paging = paging1;
-            this.pagination.ShowAllOption = false;
-            this.pagination.Size = new System.Drawing.Size(785, 33);
-            this.pagination.TabIndex = 2;
-            // 
             // EmployeePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(785, 375);
-            this.Controls.Add(this.pagination);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.graPanel1);
             this.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -334,6 +314,5 @@
         private Component.ColorWithAlpha colorWithAlpha2;
         private Component.ColorWithAlpha colorWithAlpha3;
         private Component.ExTextbox txtSearch;
-        private Component.ExPaging pagination;
     }
 }

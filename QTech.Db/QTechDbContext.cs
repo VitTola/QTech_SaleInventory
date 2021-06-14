@@ -7,13 +7,16 @@ namespace QTech.Db
     using Newtonsoft.Json;
     using QTech.Base;
     using QTech.Base.Models;
+    using QTech.Db.Configs;
 
+    [DbConfigurationType(typeof(QTechDbConfigs))]
     public class QTechDbContext : DbContext
     {
         //public QTechDbContext()
         //    : base("QTechDbContext")
         //{
         //}
+       
         public QTechDbContext()
             : base("data source="+DataBaseSetting.config.DataSource+";initial catalog="+DataBaseSetting.config.DataBase+";" +
                   "integrated security=True;MultipleActiveResultSets=True;" +"App=EntityFramework")
