@@ -71,16 +71,16 @@ namespace QTech.Base.BaseModels
 
         public readonly List<MenuBar> _secondLevelMenue = new List<MenuBar>()
         {
-            new MenuBar()
-            {
-                Index = 1,
-                Level = 2,
-                ParentKey = AuthKey.Employee,
-                DisplayName = BaseResource.Employees+BaseResource.Employees+BaseResource.Employees,
-                Icon = BaseResource.Driver_img,
-                Children = new List<MenuBar>(),
-                FormName = "QTech.Forms.Form1"
-            },
+            //new MenuBar()
+            //{
+            //    Index = 1,
+            //    Level = 2,
+            //    ParentKey = AuthKey.Employee,
+            //    DisplayName = BaseResource.Employees+BaseResource.Employees+BaseResource.Employees,
+            //    Icon = BaseResource.Driver_img,
+            //    Children = new List<MenuBar>(),
+            //    FormName = "QTech.Forms.Form1"
+            //},
             new MenuBar()
             {
                 Index = 2,

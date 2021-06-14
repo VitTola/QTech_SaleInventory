@@ -38,7 +38,7 @@ namespace QTech.Component
                         && btnUpdate?.Enabled == true
                         && btnUpdate?.Executing ==false)
                     {
-                        page.Edit();
+                        page.EditAsync();
                         return true;
                     }
                 }

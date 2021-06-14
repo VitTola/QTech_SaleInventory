@@ -480,6 +480,6 @@ namespace QTech.Component
         public void AddNew() { }
         public void Remove() { }
         public void View() { }
-        public void Edit() { }
+        public void EditAsync() { }
     }
 }

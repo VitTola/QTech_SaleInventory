@@ -10,9 +10,9 @@ namespace QTech.Db.Logics
 {
     public class CustomerLogic : DbLogic<Customer>
     {
-        Customer c = new Customer();
         public CustomerLogic(QTechDbContext qTechDbContext): base(qTechDbContext)
         {
+
         }
 
         public override Task<Customer> FindAsync(int id)

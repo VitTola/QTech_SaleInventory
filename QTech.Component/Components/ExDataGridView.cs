@@ -251,7 +251,7 @@ namespace QTech.Component
                         && btnUpdate?.Enabled == true
                         && btnUpdate?.Executing == false)
                     {
-                        parent.Edit();
+                        parent.EditAsync();
                     }
                 }
                 else if (e.KeyCode == Keys.Enter)

@@ -7,7 +7,7 @@ namespace QTech.Component
         void AddNew();
         void Remove();
         void View();
-        void Edit();
+        void EditAsync();
         Task Search();
         void Reload();
     }

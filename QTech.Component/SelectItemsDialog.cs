@@ -115,7 +115,7 @@ namespace QTech.Component
              
         }
 
-        public void Edit()
+        public void EditAsync()
         {
              
         }

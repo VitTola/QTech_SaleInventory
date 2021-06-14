@@ -22,7 +22,7 @@ namespace QTech.Forms
             throw new NotImplementedException();
         }
 
-        public void Edit()
+        public void EditAsync()
         {
             throw new NotImplementedException();
         }

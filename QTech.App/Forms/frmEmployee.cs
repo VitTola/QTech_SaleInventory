@@ -1,4 +1,5 @@
-﻿using QTech.Base.Helpers;
+﻿using QTech.Base;
+using QTech.Base.Helpers;
 using QTech.Component;
 using QTech.Component.Helpers;
 using System;
@@ -15,9 +16,15 @@ namespace QTech.Forms
 {
     public partial class frmEmployee : ExDialog, IDialog
     {
-        public frmEmployee()
+        public Employee model { get; set; }
+
+        public frmEmployee(Employee model, GeneralProcess flag)
         {
             InitializeComponent();
+
+            this.model = model;
+            this.Flag = flag;
+
             Bind();
             InitEvent();
         }
@@ -34,6 +41,7 @@ namespace QTech.Forms
 
         public void InitEvent()
         {
+            this.MaximizeBox = false;
             this.Text = Base.Properties.Resources.Employees;
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             txtPhone.RegisterEnglishInput();

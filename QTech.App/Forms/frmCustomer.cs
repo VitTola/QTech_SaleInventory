@@ -37,6 +37,7 @@ namespace QTech.Forms
 
         public void InitEvent()
         {
+            this.MaximizeBox = false;
             this.Text = Base.Properties.Resources.Employees;
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             txtPhone.RegisterEnglishInput();
@@ -76,7 +77,7 @@ namespace QTech.Forms
 
         public async void Save()
         {
-           await new CustomerLogic(db).AddAsync(model);
+            await btnAdd.RunAsync(() => new CustomerLogic(db).AddAsync(model));
         }
 
         public void ViewChangeLog()

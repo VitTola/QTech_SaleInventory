@@ -66,6 +66,9 @@
   <ItemGroup>
     <Compile Include="Logics\CustomerLogic.cs" />
     <Compile Include="Logics\DbLogic.cs" />
+    <Compile Include="Logics\EmployeeLogic.cs" />
+    <Compile Include="Logics\ProductLogic.cs" />
+    <Compile Include="Logics\SaleLogic.cs" />
     <Compile Include="Migrations\202106090612371_v1.0.cs" />
     <Compile Include="Migrations\202106090612371_v1.0.designer.cs">
       <DependentUpon>202106090612371_v1.0.cs</DependentUpon>
