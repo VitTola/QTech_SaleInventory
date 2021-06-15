@@ -16,6 +16,26 @@ namespace QTech.Db.Logics
         {
 
         }
+        public override Customer AddAsync(Customer entity)
+        {
+            base.AddAsync(entity);
+            var sites = entity.Sites;
+            if (sites.Any())
+            {
+                foreach (var s in sites)
+                {
+                    if (s.Active ==false)
+                    {
+                        SiteLogic.Instance.UpdateAsync(s);
+                    }
+                    else
+                    {
+                        SiteLogic.Instance.AddAsync(s);
+                    }
+                }
+            }
+            return entity;
+        }
 
         public override Customer FindAsync(int id)
         {
@@ -29,6 +49,17 @@ namespace QTech.Db.Logics
         public override List<Customer> SearchAsync(ISearchModel model)
         {
             var result = Search(model).ToList();
+            if (result.Any())
+            {
+                foreach (var cus in result)
+                {
+                    var sites = SiteLogic.Instance.SearchAsync(cus.Id);
+                    if (sites.Any())
+                    {
+                        cus.Sites = sites;
+                    }
+                }
+            }
             return result;
         }
         public override IQueryable<Customer> Search(ISearchModel model)

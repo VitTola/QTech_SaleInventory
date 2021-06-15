@@ -63,8 +63,6 @@ namespace QTech.Component
             //LostFocus += ExDataGridView_LostFocus;
             //Leave += ExDataGridView_LostFocus;
 
-            BackgroundColor = Color.FromArgb(245, 245, 237);
-            ColumnHeadersDefaultCellStyle.BackColor = Color.Ivory;
             EnableHeadersVisualStyles = false;
         }
 
@@ -107,6 +105,8 @@ namespace QTech.Component
                 e.Graphics.TranslateTransform(2, 2);
                 //Color color = Color.FromArgb(64, 0, 0, 0);
                 var color = Color.FromArgb(234, 234, 234);
+                BackgroundColor = Color.FromArgb(245, 245, 237);
+                ColumnHeadersDefaultCellStyle.BackColor = Color.Ivory;
                 using (Pen thick_pen = new Pen(color, 4))
                 {
                     e.Graphics.DrawPath(thick_pen, path);
@@ -214,7 +214,6 @@ namespace QTech.Component
         {
             base.OnPaint(e);
             this.Font = new Font("Khmer OS Siemreap", 8);
-            this.BackgroundColor = Color.Ivory;
 
 
         }

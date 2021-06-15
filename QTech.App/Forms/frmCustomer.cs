@@ -13,14 +13,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BaseResource = QTech.Base.Properties.Resources;
 
 namespace QTech.Forms
 {
     public partial class frmCustomer : ExDialog, IDialog
     {
-         public Customer Model=new Customer();
-        Site site = new Site();
-        public frmCustomer(Customer model , GeneralProcess flage)
+        public Customer Model = new Customer();
+        List<Site> sites = new List<Site>();
+        List<Site> _removeSites = new List<Site>();
+
+        public frmCustomer(Customer model, GeneralProcess flage)
         {
             InitializeComponent();
             this.Model = model;
@@ -34,13 +37,13 @@ namespace QTech.Forms
 
         public void Bind()
         {
-           
+            Read();
         }
 
         public void InitEvent()
         {
             this.MaximizeBox = false;
-            this.Text = Base.Properties.Resources.Employees;
+            this.Text = Base.Properties.Resources.Customer;
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             txtPhone.RegisterEnglishInput();
 
@@ -49,6 +52,9 @@ namespace QTech.Forms
             dgv.AllowUserToAddRows = dgv.AllowUserToDeleteRows = true;
             dgv.EditMode = DataGridViewEditMode.EditOnEnter;
             dgv.RegisterEnglishInputColumns(colPhone);
+            dgv.RegisterEnglishInputColumns(colPhone);
+            dgv.RegisterPrimaryInputColumns(colName);
+
 
             dgv.EditingControlShowing += dgv_EditingControlShowing;
         }
@@ -63,24 +69,44 @@ namespace QTech.Forms
 
         public bool InValid()
         {
-            if (!txtName.IsValidRequired(lblCompany_.Text) | txtPhone.IsValidRequired(lblPhone.Text) 
+            if (!txtName.IsValidRequired(lblName.Text) | txtPhone.IsValidRequired(lblPhone.Text)
                 | txtPhone.IsValidPhone())
             {
                 return false;
             }
+
+            var invalidRow = false;
+            var rows = dgv.Rows.OfType<DataGridViewRow>();
+            foreach (DataGridViewRow row in rows)
+            {
+                var cellname = row?.Cells[colName.Name];
+                var cellphone = row?.Cells[colPhone.Name];
+                if (string.IsNullOrEmpty(cellname?.Value?.ToString()) && !string.IsNullOrEmpty(cellphone.Value?.ToString()))
+                {
+                    cellname.ErrorText = BaseResource.MsgNotInputSite;
+                    invalidRow = true;
+                }
+            }
+            if (invalidRow)
+            {
+                return false;
+            }
+
             return true;
         }
 
+
+
         public void Read()
         {
-            throw new NotImplementedException();
+            txtName.Text = Model.Name;
+            txtPhone.Text = Model.Phone;
+            txtNote.Text = Model.Note;
+            if (Model.Sites != null)
+            {
+                dgv.DataSource = Model.Sites;
+            }
         }
-
-        public async void Save()
-        {
-            await btnAdd.RunAsync(() => CustomerLogic.Instance.AddAsync(Model));
-        }
-
         public void ViewChangeLog()
         {
             throw new NotImplementedException();
@@ -96,12 +122,25 @@ namespace QTech.Forms
             Model.Name = txtName.Text;
             Model.Phone = txtPhone.Text;
             Model.Note = txtNote.Text;
-        }
 
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            Write();
-            Save();
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                var site = new Site();
+                site.Name = row?.Cells[colName.Name]?.Value?.ToString();
+                site.Phone = row?.Cells[colPhone.Name]?.Value?.ToString();
+                sites.Add(site);
+            }
+
+            if (_removeSites.Any())
+            {
+                // Prevent update error when have duplicate user station
+                var _rmu = _removeSites.Distinct().ToList();
+                Model.Sites.AddRange(_rmu);
+            }
+            if (sites.Any())
+            {
+                Model.Sites = sites;
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -111,17 +150,93 @@ namespace QTech.Forms
 
         private void lblAdd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            dgv.CurrentCell = dgv.Rows[dgv.NewRowIndex].Cells[colName.Name];
             dgv.BeginEdit(true);
         }
 
         private void lblRemove_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (dgv.SelectedRows.Count == 0 || dgv.SelectedRows[0] == null)
+            if (dgv?.SelectedRows?.Count > 0)
             {
+                var row = dgv.SelectedRows[0];
+                   if(row.Cells[colName.Name].Value == null ||
+                    row.Cells[colPhone.Name].Value == null)
+                {
+                    return;
+                }
+                var idValue = row.Cells[colId.Name].Value;
+                if (idValue == null)
+                {
+                    dgv.Rows.Remove(dgv.CurrentRow);
+                    return;
+                }
+
+                var selectedUser = Model.Sites.FirstOrDefault(x => x.Id == int.Parse(idValue.ToString()));
+                if (selectedUser != null)
+                {
+                    selectedUser.Active = false;
+                }
+                _removeSites.Add(selectedUser);
+
+                if (!row.IsNewRow)
+                {
+                    dgv.Rows.Remove(row);
+                    dgv.EndEdit();
+                }
+            }
+
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            Save();
+        }
+
+        public async void Save()
+        {
+            if (Flag == GeneralProcess.View)
+            {
+                Close();
+            }
+
+            if (InValid()) { return; }
+            Write();
+
+            var isExist = await btnSave.RunAsync(() => CustomerLogic.Instance.IsExistsAsync(Model));
+            if (isExist == null) { return; }
+            if (isExist == true)
+            {
+                txtName.IsExists(lblName.Text);
                 return;
             }
-            var row = dgv.SelectedRows[0];
-            dgv.Rows.Remove(row);
+
+            var result = await btnSave.RunAsync(() =>
+            {
+                if (Flag == GeneralProcess.Add)
+                {
+                    return CustomerLogic.Instance.AddAsync(Model);
+                }
+                else if (Flag == GeneralProcess.Update)
+                {
+                    return CustomerLogic.Instance.UpdateAsync(Model);
+                }
+                else if (Flag == GeneralProcess.Remove)
+                {
+                    return CustomerLogic.Instance.RemoveAsync(Model);
+                }
+
+                return null;
+            });
+            if (result != null)
+            {
+                Model = result;
+                DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
+        }
+
+        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

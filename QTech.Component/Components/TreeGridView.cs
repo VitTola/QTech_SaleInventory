@@ -643,6 +643,7 @@ namespace QTech.Component
                 e.Graphics.TranslateTransform(2, 2);
                 //Color color = Color.FromArgb(64, 0, 0, 0);
                 var color = Color.FromArgb(234, 234, 234);
+                BackgroundColor = Color.FromArgb(245, 245, 237);
                 using (Pen thick_pen = new Pen(color, 4))
                 {
                     e.Graphics.DrawPath(thick_pen, path);

@@ -124,19 +124,7 @@ namespace QTech.Forms
 
         public async void AddNew()
         {
-            var customer = new Customer();
-            var topLavelId = int.Parse(BaseResource.TopLevelNodeId);
-            var id = (int)dgv.SelectedRows[0].Cells[colId.Name].Value;
-            var parentId = (int)dgv.SelectedRows[0].Cells[colParentId.Name].Value;
-            if (id != topLavelId || parentId != topLavelId)
-            {
-                var site = await btnAdd.RunAsync(() => CustomerLogic.Instance.FindAsync(parentId != 0 ? parentId : id));
-                if (site != null)
-                {
-
-                }
-            }
-
+            var customer = new Customer() ;
             var dig = new frmCustomer(customer,GeneralProcess.Add);
             if (dig.ShowDialog() == DialogResult.OK)
             {
@@ -225,7 +213,7 @@ namespace QTech.Forms
             }
 
             dgv.Nodes.Clear();
-            var topLevelNode = new Customer { Id = 0, Code = Name = BaseResource.AllCustomer };
+            var topLevelNode = new Customer { Id = 0, Name = BaseResource.AllCustomer };
             TreeGridNode _topLevelTreeGridNode = AddParentNode(dgv, topLevelNode);
             dgv.NodeExpanded -= Dgv_NodeExpanded;
             _topLevelTreeGridNode.Expand();
@@ -267,7 +255,7 @@ namespace QTech.Forms
 
         private TreeGridNode AddParentNode(dynamic parentNode, Customer customer)
         {
-            var node = dgv.Nodes.Add();
+            var node = parentNode.Nodes.Add();
             node.Height = dgv.RowTemplate.Height;
             node.Tag = customer;
 

@@ -282,6 +282,16 @@ namespace QTech.Base.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap empty_file {
+            get {
+                object obj = ResourceManager.GetObject("empty_file", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Hide {
             get {
                 object obj = ResourceManager.GetObject("Hide", resourceCulture);
@@ -396,6 +406,15 @@ namespace QTech.Base.Properties {
             get {
                 object obj = ResourceManager.GetObject("Money", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to សូមបញ្ចូលឈ្មោះគំរោង!.
+        /// </summary>
+        public static string MsgNotInputSite {
+            get {
+                return ResourceManager.GetString("MsgNotInputSite", resourceCulture);
             }
         }
         

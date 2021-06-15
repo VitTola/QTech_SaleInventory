@@ -150,6 +150,7 @@
     </Compile>
     <Compile Include="SearchModels\CustomerSearch.cs" />
     <Compile Include="SearchModels\EmployeeSearch.cs" />
+    <Compile Include="SearchModels\SiteSearch.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
@@ -187,6 +188,7 @@
     <Content Include="Dll\EasyServer.Domain.dll" />
     <Content Include="Dll\esc-pos-usb-net.dll" />
     <Content Include="Dll\FastMember.dll" />
+    <None Include="Resources\empty_file.png" />
     <None Include="Resources\Site.img.png" />
     <None Include="Resources\Category.img.png" />
     <None Include="Resources\Driver.img.png" />
