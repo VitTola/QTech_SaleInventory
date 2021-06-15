@@ -447,18 +447,18 @@ namespace QTech.Base.Properties {
         /// <summary>
         ///   Looks up a localized string similar to តៃកុងឡាន.
         /// </summary>
-        public static string Postion_Driver {
+        public static string Position_Driver {
             get {
-                return ResourceManager.GetString("Postion_Driver", resourceCulture);
+                return ResourceManager.GetString("Position_Driver", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to ទីផ្សារ.
         /// </summary>
-        public static string Postion_Marketing {
+        public static string Position_Marketing {
             get {
-                return ResourceManager.GetString("Postion_Marketing", resourceCulture);
+                return ResourceManager.GetString("Position_Marketing", resourceCulture);
             }
         }
         

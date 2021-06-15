@@ -66,6 +66,7 @@ namespace QTech.Forms
             this.OptimizeLoadUI();
             pSecondMenue2.Hide();
             pSecondMenue1.Hide();
+            
         }
 
         private void ApplySetting()
@@ -251,19 +252,9 @@ namespace QTech.Forms
             }
         }
 
-        private void pBottom_Paint(object sender, PaintEventArgs e)
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-
-        }
-
-        private void pContainForm_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void txtLogin_Click(object sender, EventArgs e)
-        {
-
+            InputLanguage.CurrentInputLanguage = UI.English;
         }
     }
 }

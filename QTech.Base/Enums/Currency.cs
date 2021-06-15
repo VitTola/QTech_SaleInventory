@@ -12,7 +12,7 @@ namespace QTech.Base.Enums
         Dollar = 2
     }
 
-    public enum Postion
+    public enum Position
     {
         Driver = 1,
         Marketing = 2

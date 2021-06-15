@@ -34,7 +34,7 @@ namespace QTech.Forms
 
         public void Bind()
         {
-            cboPosition.SetDataSource<Base.Enums.Postion>();
+            cboPosition.SetDataSource<Base.Enums.Position>();
             colName.Visible = true;
             colName.Width = 100;
 
@@ -71,7 +71,7 @@ namespace QTech.Forms
             txtName.Text = Model.Name;
             txtPhone.Text = Model.Phone;
             txtNote.Text = Model.Note;
-            cboPosition.Text = Model.Postition;
+            cboPosition.Text = Model.Position;
         }
 
         public async void Save()
@@ -126,7 +126,7 @@ namespace QTech.Forms
             Model.Name = txtName.Text;
             Model.Note = txtNote.Text;
             Model.Phone = txtPhone.Text;
-            Model.Postition = cboPosition.Text;
+            Model.Position = cboPosition.Text;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

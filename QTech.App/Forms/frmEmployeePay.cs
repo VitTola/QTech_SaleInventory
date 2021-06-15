@@ -29,7 +29,7 @@ namespace QTech.Forms
         public void Bind()
         {
             colCurrency.SetDataSource<QTech.Base.Enums.Currency>();
-            cboPosition.SetDataSource<Base.Enums.Postion>();
+            cboPosition.SetDataSource<Base.Enums.Position>();
             
         }
 

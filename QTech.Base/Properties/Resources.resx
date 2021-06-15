@@ -253,10 +253,10 @@
   <data name="Currency_Khmer" xml:space="preserve">
     <value>រៀល</value>
   </data>
-  <data name="Postion_Driver" xml:space="preserve">
+  <data name="Position_Driver" xml:space="preserve">
     <value>តៃកុងឡាន</value>
   </data>
-  <data name="Postion_Marketing" xml:space="preserve">
+  <data name="Position_Marketing" xml:space="preserve">
     <value>ទីផ្សារ</value>
   </data>
   <data name="Save" xml:space="preserve">

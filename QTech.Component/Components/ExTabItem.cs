@@ -11,7 +11,8 @@ namespace QTech.Component
         public ExTabItem()
         {
             InitializeComponent();
-            
+           // this.BorderColor = Color.FromArgb(238, 127, 0);
+
         }
 
         bool selected = false;

@@ -287,6 +287,13 @@ namespace QTech.Component
             Visible = true,
             Dock = DockStyle.Fill
         };
+
+        protected override void OnSizeChanged(EventArgs e)
+        {
+            base.OnSizeChanged(e);
+            panel.Location = new Point(this.Width / 2 - panel.Width / 2, this.Height / 2 - panel.Height / 2);
+        }
+
         public void PreExecute(bool block = false)
         {
             if (block)

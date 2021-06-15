@@ -12,7 +12,7 @@ namespace QTech.Base
         public string Code { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
-        public string Postition { get; set; }
+        public string Position { get; set; }
         public string Note { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QTech.Base;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -7,12 +8,14 @@ using System.Threading.Tasks;
 
 namespace QTech.Db.Configs
 {
-    public class QTechDbConfigs : DbConfiguration
+    public static class QTechDbConfigs
     {
-        public QTechDbConfigs()
-        {
-            //this.SetDefaultConnectionFactory(new System.Data.Entity.Infrastructure.SqlConnectionFactory());
 
+        public static void ConfigureDatabase(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Employee>().Property(x => x.Name).HasMaxLength(50).IsRequired();
         }
+
+        
     }
 }

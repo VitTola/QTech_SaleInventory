@@ -137,7 +137,7 @@
       <DependentUpon>LineDownPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="MyComponents\ExTabItem2.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="MyComponents\ExTabItem2.Designer.cs">
       <DependentUpon>ExTabItem2.cs</DependentUpon>
@@ -645,6 +645,7 @@
     <None Include="Resources\down-arrow-in-small-circle.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\point_loading1.gif" />
     <None Include="Resources\point_loading.gif" />
     <None Include="Resources\report_printing.png" />
     <None Include="Resources\waiting.png" />

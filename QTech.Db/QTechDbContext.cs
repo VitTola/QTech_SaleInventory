@@ -9,7 +9,6 @@ namespace QTech.Db
     using QTech.Base.Models;
     using QTech.Db.Configs;
 
-    [DbConfigurationType(typeof(QTechDbConfigs))]
     public class QTechDbContext : DbContext
     {
         //public QTechDbContext()
@@ -28,7 +27,16 @@ namespace QTech.Db
         public virtual DbSet<Sale> Sales { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<SaleDetail> SaleDetails { get; set; }
-        
+
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+
+
+        }
+
     }
 
     public static class DataBaseSetting

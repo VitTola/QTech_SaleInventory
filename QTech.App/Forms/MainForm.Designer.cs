@@ -38,6 +38,8 @@
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.pTopMenu = new QTech.Component.ExTabBar();
             this.pBottom = new QTech.Component.GRAPanel();
+            this.colorWithAlpha7 = new QTech.Component.ColorWithAlpha();
+            this.colorWithAlpha8 = new QTech.Component.ColorWithAlpha();
             this.pBranch = new System.Windows.Forms.FlowLayoutPanel();
             this.lblUserProfile_ = new System.Windows.Forms.Label();
             this.txtUserName = new System.Windows.Forms.Label();
@@ -74,8 +76,6 @@
             this.cnmStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnChangePassword = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLogOut = new System.Windows.Forms.ToolStripMenuItem();
-            this.colorWithAlpha7 = new QTech.Component.ColorWithAlpha();
-            this.colorWithAlpha8 = new QTech.Component.ColorWithAlpha();
             this.container.SuspendLayout();
             this.topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
@@ -234,7 +234,18 @@
             this.pBottom.Rounded = true;
             this.pBottom.Size = new System.Drawing.Size(1276, 25);
             this.pBottom.TabIndex = 1;
-            this.pBottom.Paint += new System.Windows.Forms.PaintEventHandler(this.pBottom_Paint);
+            // 
+            // colorWithAlpha7
+            // 
+            this.colorWithAlpha7.Alpha = 255;
+            this.colorWithAlpha7.Color = System.Drawing.Color.NavajoWhite;
+            this.colorWithAlpha7.Parent = this.pBottom;
+            // 
+            // colorWithAlpha8
+            // 
+            this.colorWithAlpha8.Alpha = 255;
+            this.colorWithAlpha8.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.colorWithAlpha8.Parent = this.pBottom;
             // 
             // pBranch
             // 
@@ -265,7 +276,7 @@
             this.txtUserName.ForeColor = System.Drawing.Color.Black;
             this.txtUserName.Location = new System.Drawing.Point(29, 0);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(69, 19);
+            this.txtUserName.Size = new System.Drawing.Size(64, 19);
             this.txtUserName.TabIndex = 3;
             this.txtUserName.Text = "អ្នកប្រើប្រាស់";
             // 
@@ -275,7 +286,7 @@
             this.lblUserDropDown_.ForeColor = System.Drawing.Color.Black;
             this.lblUserDropDown_.Image = global::QTech.Properties.Resources.down_arrow_12;
             this.lblUserDropDown_.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblUserDropDown_.Location = new System.Drawing.Point(101, 0);
+            this.lblUserDropDown_.Location = new System.Drawing.Point(96, 0);
             this.lblUserDropDown_.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.lblUserDropDown_.Name = "lblUserDropDown_";
             this.lblUserDropDown_.Size = new System.Drawing.Size(19, 19);
@@ -285,7 +296,7 @@
             // lblBranchIcon_
             // 
             this.lblBranchIcon_.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblBranchIcon_.Location = new System.Drawing.Point(126, 0);
+            this.lblBranchIcon_.Location = new System.Drawing.Point(121, 0);
             this.lblBranchIcon_.Name = "lblBranchIcon_";
             this.lblBranchIcon_.Size = new System.Drawing.Size(20, 20);
             this.lblBranchIcon_.TabIndex = 4;
@@ -326,10 +337,10 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(446, 0);
+            this.label5.Location = new System.Drawing.Point(447, 0);
             this.label5.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 19);
+            this.label5.Size = new System.Drawing.Size(42, 19);
             this.label5.TabIndex = 8;
             this.label5.Text = "ជំនាន់៖";
             // 
@@ -343,7 +354,7 @@
             this.txtDomain.Location = new System.Drawing.Point(357, 0);
             this.txtDomain.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.txtDomain.Name = "txtDomain";
-            this.txtDomain.Size = new System.Drawing.Size(86, 19);
+            this.txtDomain.Size = new System.Drawing.Size(87, 19);
             this.txtDomain.TabIndex = 9;
             this.txtDomain.Text = "Domain: 0.3.334";
             this.txtDomain.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -356,10 +367,10 @@
             this._lblLinkServer.Cursor = System.Windows.Forms.Cursors.Hand;
             this._lblLinkServer.ForeColor = System.Drawing.Color.Black;
             this._lblLinkServer.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this._lblLinkServer.Location = new System.Drawing.Point(289, 0);
+            this._lblLinkServer.Location = new System.Drawing.Point(291, 0);
             this._lblLinkServer.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this._lblLinkServer.Name = "_lblLinkServer";
-            this._lblLinkServer.Size = new System.Drawing.Size(65, 19);
+            this._lblLinkServer.Size = new System.Drawing.Size(63, 19);
             this._lblLinkServer.TabIndex = 10;
             this._lblLinkServer.Text = "Link Server";
             this._lblLinkServer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -367,7 +378,7 @@
             // _lbSocketStatus
             // 
             this._lbSocketStatus.AutoSize = true;
-            this._lbSocketStatus.Location = new System.Drawing.Point(268, 0);
+            this._lbSocketStatus.Location = new System.Drawing.Point(270, 0);
             this._lbSocketStatus.Name = "_lbSocketStatus";
             this._lbSocketStatus.Required = false;
             this._lbSocketStatus.Size = new System.Drawing.Size(15, 19);
@@ -382,10 +393,10 @@
             this._lbSocket.Cursor = System.Windows.Forms.Cursors.Hand;
             this._lbSocket.ForeColor = System.Drawing.Color.Black;
             this._lbSocket.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this._lbSocket.Location = new System.Drawing.Point(219, 0);
+            this._lbSocket.Location = new System.Drawing.Point(222, 0);
             this._lbSocket.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this._lbSocket.Name = "_lbSocket";
-            this._lbSocket.Size = new System.Drawing.Size(46, 19);
+            this._lbSocket.Size = new System.Drawing.Size(45, 19);
             this._lbSocket.TabIndex = 12;
             this._lbSocket.Text = "Socket:";
             this._lbSocket.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -398,7 +409,7 @@
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(1197, -700);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 19);
+            this.label2.Size = new System.Drawing.Size(36, 19);
             this.label2.TabIndex = 7;
             this.label2.Text = "ជំនាន់";
             // 
@@ -408,10 +419,9 @@
             this.txtLogin.ForeColor = System.Drawing.Color.Black;
             this.txtLogin.Location = new System.Drawing.Point(27, 4);
             this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Size = new System.Drawing.Size(110, 19);
+            this.txtLogin.Size = new System.Drawing.Size(104, 19);
             this.txtLogin.TabIndex = 1;
             this.txtLogin.Text = "01-01-2019 01:01:01";
-            this.txtLogin.Click += new System.EventHandler(this.txtLogin_Click);
             // 
             // label1
             // 
@@ -581,7 +591,6 @@
             this.pContainForm.Rounded = true;
             this.pContainForm.Size = new System.Drawing.Size(1268, 559);
             this.pContainForm.TabIndex = 1;
-            this.pContainForm.Paint += new System.Windows.Forms.PaintEventHandler(this.pContainForm_Paint);
             // 
             // colorWithAlpha1
             // 
@@ -713,18 +722,6 @@
             this.btnLogOut.Size = new System.Drawing.Size(146, 24);
             this.btnLogOut.Text = "ចាកចេញ";
             // 
-            // colorWithAlpha7
-            // 
-            this.colorWithAlpha7.Alpha = 255;
-            this.colorWithAlpha7.Color = System.Drawing.Color.NavajoWhite;
-            this.colorWithAlpha7.Parent = this.pBottom;
-            // 
-            // colorWithAlpha8
-            // 
-            this.colorWithAlpha8.Alpha = 255;
-            this.colorWithAlpha8.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.colorWithAlpha8.Parent = this.pBottom;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
@@ -736,6 +733,7 @@
             this.Name = "MainForm";
             this.Text = "Main";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Controls.SetChildIndex(this.container, 0);
             this.container.ResumeLayout(false);
             this.topPanel.ResumeLayout(false);

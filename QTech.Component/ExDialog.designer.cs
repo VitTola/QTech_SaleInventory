@@ -201,7 +201,7 @@ namespace QTech.Component
             this._lblTITLE.Name = "_lblTITLE";
             this._lblTITLE.Size = new System.Drawing.Size(236, 19);
             this._lblTITLE.TabIndex = 1;
-            this._lblTITLE.Text = "ប្រៀនប្រដៅ";
+            this._lblTITLE.Text = "ឃ្យូតិច";
             this._lblTITLE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // imgICON
@@ -224,7 +224,7 @@ namespace QTech.Component
             this.ClientSize = new System.Drawing.Size(284, 249);
             this.Controls.Add(this.container);
             this.Controls.Add(this.digheader);
-            this.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ExDialog";

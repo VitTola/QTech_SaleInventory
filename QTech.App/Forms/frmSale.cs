@@ -28,7 +28,7 @@ namespace QTech.Forms
 
         public void Bind()
         {
-            cboPosition.SetDataSource<Base.Enums.Postion>();
+            cboPosition.SetDataSource<Base.Enums.Position>();
             
         }
 

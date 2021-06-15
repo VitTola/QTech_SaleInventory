@@ -20,6 +20,7 @@ namespace QTech.Forms
         public EmployeePage()
         {
             InitializeComponent();
+            txtSearch.RegisterPrimaryInput();
         }
 
         public async void AddNew()
@@ -140,6 +141,11 @@ namespace QTech.Forms
         private async void txtSearch_QuickSearch(object sender, EventArgs e)
         {
             await Search();
+        }
+
+        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
