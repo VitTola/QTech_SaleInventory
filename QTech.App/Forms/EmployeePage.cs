@@ -54,7 +54,7 @@ namespace QTech.Forms
             if (dig.ShowDialog() == DialogResult.OK)
             {
                 await Search();
-               // dgv.RowSelected(colId.Name, dig.Model.Id);
+                dgv.RowSelected(colId.Name, dig.Model.Id);
             }
         }
 

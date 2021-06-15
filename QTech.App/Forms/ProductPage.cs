@@ -49,18 +49,14 @@ namespace QTech.Forms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            new frmCustomer().ShowDialog();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            new frmCustomer().ShowDialog();
-
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            new frmCustomer().ShowDialog();
 
         }
     }

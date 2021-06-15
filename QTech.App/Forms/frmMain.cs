@@ -56,7 +56,7 @@ namespace SaleInventory
             //btnImp.Click += (o, se) => { new frmImport().ShowDialog(); };
             //btnImpRe.Click += (o, ie) => { new frmImportReport().ShowDialog(); };
             //btnAccSetting.Click += (o, se) => { new frmCreateAccount().ShowDialog(); };
-            btnCus.Click += (o, ce) => { new frmCustomer().ShowDialog(); };
+            //btnCus.Click += (o, ce) => { new frmCustomer().ShowDialog(); };
             //btnLogOut.Click += (o, le) => { this.Hide(); new frmLogin().Show(); };
             //btnCate.Click += (o, ce) => { new frmCategory().ShowDialog(); };
         }

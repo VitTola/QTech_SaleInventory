@@ -18,11 +18,14 @@ namespace QTech.Forms
 {
     public partial class frmCustomer : ExDialog, IDialog
     {
-        Customer model=new Customer();
+         public Customer Model=new Customer();
         Site site = new Site();
-        public frmCustomer()
+        public frmCustomer(Customer model , GeneralProcess flage)
         {
             InitializeComponent();
+            this.Model = model;
+            this.Flag = flage;
+
             Bind();
             InitEvent();
         }
@@ -48,7 +51,6 @@ namespace QTech.Forms
             dgv.RegisterEnglishInputColumns(colPhone);
 
             dgv.EditingControlShowing += dgv_EditingControlShowing;
-
         }
 
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -76,7 +78,7 @@ namespace QTech.Forms
 
         public async void Save()
         {
-            await btnAdd.RunAsync(() => CustomerLogic.Instance.AddAsync(model));
+            await btnAdd.RunAsync(() => CustomerLogic.Instance.AddAsync(Model));
         }
 
         public void ViewChangeLog()
@@ -90,10 +92,10 @@ namespace QTech.Forms
             {
                 return;
             }
-            model.Active = true;
-            model.Name = txtName.Text;
-            model.Phone = txtPhone.Text;
-            model.Note = txtNote.Text;
+            Model.Active = true;
+            Model.Name = txtName.Text;
+            Model.Phone = txtPhone.Text;
+            Model.Note = txtNote.Text;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

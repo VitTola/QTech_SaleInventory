@@ -13,7 +13,7 @@ namespace QTech.Base
         public string Name { get; set; }
         public string Phone { get; set; }
         public string Note { get; set; }
-        public int PositionId { get; set; }
+        public List<Site> Sites{ get; set; }
     }
 
     public class Site : ActiveBaseModel

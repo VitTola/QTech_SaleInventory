@@ -70,6 +70,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to អតិថិជនទាំងអស់.
+        /// </summary>
+        public static string AllCustomer {
+            get {
+                return ResourceManager.GetString("AllCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap billing {
@@ -659,6 +668,16 @@ namespace QTech.Base.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Site_img {
+            get {
+                object obj = ResourceManager.GetObject("Site_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Staff {
             get {
                 object obj = ResourceManager.GetObject("Staff", resourceCulture);
@@ -692,6 +711,15 @@ namespace QTech.Base.Properties {
         public static string Suppliers {
             get {
                 return ResourceManager.GetString("Suppliers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 0.
+        /// </summary>
+        public static string TopLevelNodeId {
+            get {
+                return ResourceManager.GetString("TopLevelNodeId", resourceCulture);
             }
         }
         

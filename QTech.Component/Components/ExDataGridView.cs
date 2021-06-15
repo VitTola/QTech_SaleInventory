@@ -214,6 +214,8 @@ namespace QTech.Component
         {
             base.OnPaint(e);
             this.Font = new Font("Khmer OS Siemreap", 8);
+            this.BackgroundColor = Color.Ivory;
+
 
         }
 
