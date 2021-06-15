@@ -10,6 +10,7 @@ using BaseResource = QTech.Base.Properties.Resources;
 using QTech.Base.Helpers;
 using QTech.Base.SearchModels;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace QTech.Forms
 {
@@ -19,12 +20,22 @@ namespace QTech.Forms
         public CustomerPage()
         {
             InitializeComponent();
+            Bind();
+            InitEvent();
 
         }
         private bool isNodeCollapsed { get; set; } = false;
         private Customer selectedModel { get; set; } = null;
         public Customer Model { get; set; }
 
+        private void Bind()
+        {
+            imageList1.ColorDepth = ColorDepth.Depth32Bit;
+            imageList1.ImageSize = new Size(14, 14);
+            imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            imageList1.Images.Add(nameof(Properties.Resources.Customer_img), Properties.Resources.Customer_img);
+            imageList1.Images.Add(nameof(Properties.Resources.Site_img), Properties.Resources.Site_img);
+        }
         private void InitEvent()
         {
             dgv.RowsDefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(173, 205, 239);
@@ -47,7 +58,6 @@ namespace QTech.Forms
         }
 
       
-
         private void txtSearch_QuickSearch(object sender, EventArgs e)
         {
             Search();
@@ -244,7 +254,7 @@ namespace QTech.Forms
                 node.Height = dgv.RowTemplate.Height;
                 node.Tag = child;
                 node.Height = dgv.RowTemplate.Height;
-                node.Image = imageList1.Images[nameof(BaseResource.Site_img)];
+                node.Image = imageList1.Images[nameof(Properties.Resources.Site_img)];
                 node.Cells[dgv.Columns[colName.Name].Index].Value = child.Name;
                 node.Cells[dgv.Columns[colPhone.Name].Index].Value = child.Phone;
                 node.Cells[dgv.Columns[colNote.Name].Index].Value = child.Note;
@@ -259,7 +269,7 @@ namespace QTech.Forms
             node.Height = dgv.RowTemplate.Height;
             node.Tag = customer;
 
-            node.Image = imageList1.Images[nameof(BaseResource.Customer_img)];
+            node.Image = imageList1.Images[nameof(Properties.Resources.Customer_img)];
             node.Cells[dgv.Columns[colName.Name].Index].Value = customer?.Name;
             node.Cells[dgv.Columns[colPhone.Name].Index].Value = customer?.Phone;
             node.Cells[dgv.Columns[colNote.Name].Index].Value = customer.Note;

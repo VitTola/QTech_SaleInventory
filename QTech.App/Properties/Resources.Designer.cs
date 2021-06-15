@@ -73,6 +73,16 @@ namespace QTech.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Customer_img {
+            get {
+                object obj = ResourceManager.GetObject("Customer_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap customer2 {
             get {
                 object obj = ResourceManager.GetObject("customer2", resourceCulture);
@@ -126,6 +136,16 @@ namespace QTech.Properties {
         internal static System.Drawing.Bitmap QTech__2_ {
             get {
                 object obj = ResourceManager.GetObject("QTech__2_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Site_img {
+            get {
+                object obj = ResourceManager.GetObject("Site_img", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

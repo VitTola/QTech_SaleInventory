@@ -147,7 +147,7 @@ namespace QTech.Base.BaseModels
                 Level = 1,
                 Key = AuthKey.Customer,
                 DisplayName = BaseResource.Customer,
-                Icon = BaseResource.Customer_img,
+                Icon = BaseResource.customer2,
                 Children = new List<MenuBar>(),
                 FormName = "QTech.Forms.CustomerPage"
 

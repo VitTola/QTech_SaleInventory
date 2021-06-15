@@ -272,6 +272,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pheng-Ry.ico" />
+    <None Include="Resources\Site.img.png" />
+    <None Include="Resources\Customer.img.png" />
     <None Include="Resources\Type.img1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
