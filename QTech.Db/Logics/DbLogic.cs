@@ -73,7 +73,7 @@ namespace QTech.Db
             entity.RowDate = DateTime.Now;
             SetActive(entity, true);
             _db.Entry(entity).State = EntityState.Added;
-             _db.SaveChangesAsync();
+             _db.SaveChanges();
             return entity;
         }
         public virtual T UpdateAsync(T entity)

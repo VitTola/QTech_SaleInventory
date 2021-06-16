@@ -1,5 +1,6 @@
 ﻿using QTech.Base;
 using QTech.Base.Helpers;
+using QTech.Base.SearchModels;
 using QTech.Component;
 using QTech.Component.Helpers;
 using QTech.Db;
@@ -61,10 +62,10 @@ namespace QTech.Forms
 
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            if (dgv?.SelectedRows?.Count < 0)
-            {
-                return;
-            }
+            //if (dgv?.SelectedRows?.Count < 0)
+            //{
+            //    return;
+            //}
         }
 
         public bool InValid()
@@ -80,7 +81,7 @@ namespace QTech.Forms
         private bool inValidGridView()
         {
             var invalidRow = false;
-            foreach (DataGridViewRow row in dgv.Rows)
+            foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
             {
                 var cellname = row?.Cells[colName.Name];
                 var cellphone = row?.Cells[colPhone.Name];
@@ -102,15 +103,19 @@ namespace QTech.Forms
             return true;
         }
 
-        public void Read()
+        public async void Read()
         {
             txtName.Text = Model.Name;
             txtPhone.Text = Model.Phone;
             txtNote.Text = Model.Note;
-            if (Model.Sites != null)
+
+            var search = new SiteSearch() { CustomerId = Model.Id };
+            var sites = await dgv.RunAsync(() => SiteLogic.Instance.SearchAsync(search));
+            if (sites.Any())
             {
-                dgv.DataSource = Model.Sites;
+                dgv.DataSource = sites;
             }
+            
         }
         public void ViewChangeLog()
         {
@@ -119,7 +124,7 @@ namespace QTech.Forms
 
         public void Write()
         {
-            if (InValid())
+            if (!InValid())
             {
                 return;
             }
@@ -128,20 +133,19 @@ namespace QTech.Forms
             Model.Phone = txtPhone.Text;
             Model.Note = txtNote.Text;
 
-            foreach (DataGridViewRow row in dgv.Rows)
+            foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
             {
-                var _name = row?.Cells[colName.Name]?.Value?.ToString();
-                var _phone = row?.Cells[colPhone.Name]?.Value?.ToString();
-                if (!string.IsNullOrEmpty(_name) && !string.IsNullOrEmpty(_phone))
+                var _name = row?.Cells[colName.Name]?.Value?.ToString() ?? string.Empty;
+                var _phone = row?.Cells[colPhone.Name]?.Value?.ToString() ?? string.Empty;
+                var ID = row?.Cells[colId.Name]?.Value?.ToString() ?? string.Empty;
+                var site = new Site()
                 {
-                    var site = new Site()
-                    {
-                        Active = true,
-                        Name = _name,
-                        Phone = _phone
-                    };
+                    Active = true,
+                    Name = _name,
+                    Phone = _phone
+                };
                 sites.Add(site);
-                }
+
             }
 
             if (_removeSites.Any())
@@ -163,8 +167,18 @@ namespace QTech.Forms
 
         private void lblAdd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            dgv.CurrentCell = dgv.Rows[dgv.NewRowIndex].Cells[colName.Name];
-            dgv.BeginEdit(true);
+            dgv.AllowUserToAddRows = true;
+            if (!dgv.CurrentCell?.IsInEditMode ?? true)
+            {
+                if (dgv.Rows.OfType<DataGridViewRow>().Where(x => x.IsNewRow).Count() == 1 && dgv.CurrentCell == null)
+                {
+                    dgv.Rows.Clear();
+                }
+                 var index = dgv.Rows[dgv.RowCount-1].Cells[colName.Name];
+                dgv.CurrentCell = index;
+
+                dgv.BeginEdit(true);
+            }
         }
 
         private void lblRemove_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -172,8 +186,8 @@ namespace QTech.Forms
             if (dgv?.SelectedRows?.Count > 0)
             {
                 var row = dgv.SelectedRows[0];
-                   if(row.Cells[colName.Name].Value == null ||
-                    row.Cells[colPhone.Name].Value == null)
+                if (row.Cells[colName.Name].Value == null ||
+                 row.Cells[colPhone.Name].Value == null)
                 {
                     return;
                 }
@@ -212,11 +226,10 @@ namespace QTech.Forms
                 Close();
             }
 
-            if (InValid()) { return; }
+            if (!InValid()) { return; }
             Write();
 
             var isExist = await btnSave.RunAsync(() => CustomerLogic.Instance.IsExistsAsync(Model));
-            if (isExist == null) { return; }
             if (isExist == true)
             {
                 txtName.IsExists(lblName.Text);

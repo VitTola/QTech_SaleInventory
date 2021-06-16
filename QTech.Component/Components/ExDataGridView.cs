@@ -274,7 +274,7 @@ namespace QTech.Component
 
         Panel panel = new Panel()
         {
-            BackColor = Color.Transparent,
+            BackColor = Color.FromArgb(245, 245, 237),
             Size = new Size(110, 110),
             Padding = new Padding(5),
             Visible = false,
@@ -285,7 +285,8 @@ namespace QTech.Component
             Enabled = true,
             Image = Properties.Resources.point_loading,
             SizeMode = PictureBoxSizeMode.StretchImage,
-            Visible = true,
+            BackColor = Color.FromArgb(245, 245, 237),
+        Visible = true,
             Dock = DockStyle.Fill
         };
 

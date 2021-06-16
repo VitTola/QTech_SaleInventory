@@ -46,7 +46,7 @@ namespace QTech.Forms
             dgv.BackgroundColor = System.Drawing.Color.White;
             dgv.ShowLines = false;
             dgv.ShowLines = true;
-            
+   
 
             dgv.KeyDown += dgv_KeyDown;
             dgv.NodeExpanded += Dgv_NodeExpanded;
@@ -54,7 +54,6 @@ namespace QTech.Forms
             txtSearch.RegisterEnglishInput();
             txtSearch.RegisterKeyArrowDown(dgv);
             txtSearch.QuickSearch += txtSearch_QuickSearch;
-
         }
 
       
@@ -79,8 +78,8 @@ namespace QTech.Forms
                 }
                                     
                 e.Node.Nodes.Clear();
-                var Id = int.Parse((dgv.SelectedRows[0].Cells[colId.Name].Value?.ToString() ?? "0"));
-                var search = new SiteSearch() { CustomerId = Id };
+                //var Id = (int)dgv.CurrentRow.Cells[colId.Name].Value;
+                var search = new SiteSearch() { CustomerId = parent.Id };
                 var sites = await dgv.RunAsync(() => SiteLogic.Instance.SearchAsync(search));
 
                 if (sites.Any())
@@ -178,7 +177,7 @@ namespace QTech.Forms
                 return;
             }
 
-            var id = (int)dgv.SelectedRows[0].Cells[colId.Name].Value;
+            var id = (int)dgv.CurrentRow.Cells[colId.Name].Value;
             var canRemove = await btnRemove.RunAsync(() => CustomerLogic.Instance.CanRemoveAsync(id));
             if (canRemove == false)
             {
@@ -231,7 +230,7 @@ namespace QTech.Forms
             {
                 var _treeGridNode = AddParentNode(_topLevelTreeGridNode, parent);
             
-                if (parent.Sites != null)
+                if (parent.Sites != null && parent.Sites.Any())
                 {
                     AddChildNode(_treeGridNode, parent.Sites, parent);
                     dgv.NodeExpanded -= Dgv_NodeExpanded;

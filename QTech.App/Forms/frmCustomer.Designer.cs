@@ -304,6 +304,7 @@
             // 
             // colName
             // 
+            this.colName.DataPropertyName = "Name";
             this.colName.HeaderText = "ឈ្មោះគំរោង";
             this.colName.Name = "colName";
             this.colName.ReadOnly = true;
@@ -312,6 +313,7 @@
             // colPhone
             // 
             this.colPhone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colPhone.DataPropertyName = "Phone";
             this.colPhone.HeaderText = "លេខទូរស័ព្ទ";
             this.colPhone.Name = "colPhone";
             this.colPhone.ReadOnly = true;

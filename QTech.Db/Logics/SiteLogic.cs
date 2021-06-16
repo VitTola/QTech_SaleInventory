@@ -34,7 +34,8 @@ namespace QTech.Db.Logics
         {
             var q = All();
             q = q.Where(x => x.CustomerId == id);
-            return q.ToList();
+            var result = q.ToList();
+            return result;
         }
         public override IQueryable<Site> Search(ISearchModel model)
         {

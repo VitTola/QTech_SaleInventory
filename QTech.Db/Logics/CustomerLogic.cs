@@ -18,7 +18,7 @@ namespace QTech.Db.Logics
         }
         public override Customer AddAsync(Customer entity)
         {
-            base.AddAsync(entity);
+            var Customer = base.AddAsync(entity);
             var sites = entity.Sites;
             if (sites != null && sites.Any())
             {
@@ -30,6 +30,7 @@ namespace QTech.Db.Logics
                     }
                     else
                     {
+                        s.CustomerId = Customer.Id;
                         SiteLogic.Instance.AddAsync(s);
                     }
                 }
@@ -74,5 +75,28 @@ namespace QTech.Db.Logics
            
             return q;
         }
+
+        public override Customer UpdateAsync(Customer entity)
+        {
+            var Customer =  base.UpdateAsync(entity);
+            var sites = entity.Sites;
+            if (sites.Any())
+            {
+                foreach (var s in sites)
+                {
+                    if (s.Active == false)
+                    {
+                        SiteLogic.Instance.UpdateAsync(s);
+                    }
+                    else
+                    {
+                        s.CustomerId = Customer.Id;
+                        SiteLogic.Instance.AddAsync(s);
+                    }
+                }
+            }
+            return entity;
+        }
+
     }
 }

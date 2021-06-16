@@ -13,8 +13,9 @@ namespace QTech.Component
         public ExButtonLoading()
         {
             BackColor = Color.Ivory;
-            FlatStyle = FlatStyle.Flat;
-            FlatAppearance.BorderColor = Color.FromArgb(238, 127, 0);
+            //FlatStyle = FlatStyle.Flat;
+            //FlatAppearance.BorderColor = Color.FromArgb(238, 127, 0);       
+            FlatAppearance.BorderColor = Color.Gray;
         }
         public enum Aligment
         {

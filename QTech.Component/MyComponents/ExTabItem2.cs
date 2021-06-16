@@ -30,7 +30,7 @@ namespace QTech.Component
         {
             base.OnPaint(pevent);
 
-            this.Font = new Font("Khmer OS Siemreap",8,FontStyle.Bold);
+            this.Font = new Font("Khmer OS Siemreap",9);
 
             using (Graphics cg = this.CreateGraphics())
             {

@@ -37,7 +37,7 @@ namespace QTech.Component
         {
             base.OnPaint(e);
             //lblCaption.ForeColor = Color.Blue;
-            this.Font = new Font("Khmer OS Siemreap", 8,FontStyle.Bold);
+            this.Font = new Font("Khmer OS Siemreap", 9);
 
         }
 

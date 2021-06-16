@@ -48,10 +48,7 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtVersion = new System.Windows.Forms.LinkLabel();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtDomain = new System.Windows.Forms.Label();
-            this._lblLinkServer = new System.Windows.Forms.Label();
             this._lbSocketStatus = new QTech.Component.ExLabel();
-            this._lbSocket = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtLogin = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -305,10 +302,7 @@
             // 
             this.flowLayoutPanel2.Controls.Add(this.txtVersion);
             this.flowLayoutPanel2.Controls.Add(this.label5);
-            this.flowLayoutPanel2.Controls.Add(this.txtDomain);
-            this.flowLayoutPanel2.Controls.Add(this._lblLinkServer);
             this.flowLayoutPanel2.Controls.Add(this._lbSocketStatus);
-            this.flowLayoutPanel2.Controls.Add(this._lbSocket);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(740, 2);
@@ -344,63 +338,16 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "ជំនាន់៖";
             // 
-            // txtDomain
-            // 
-            this.txtDomain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDomain.AutoSize = true;
-            this.txtDomain.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txtDomain.ForeColor = System.Drawing.Color.Black;
-            this.txtDomain.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.txtDomain.Location = new System.Drawing.Point(357, 0);
-            this.txtDomain.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.txtDomain.Name = "txtDomain";
-            this.txtDomain.Size = new System.Drawing.Size(87, 19);
-            this.txtDomain.TabIndex = 9;
-            this.txtDomain.Text = "Domain: 0.3.334";
-            this.txtDomain.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.txtDomain.Visible = false;
-            // 
-            // _lblLinkServer
-            // 
-            this._lblLinkServer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._lblLinkServer.AutoSize = true;
-            this._lblLinkServer.Cursor = System.Windows.Forms.Cursors.Hand;
-            this._lblLinkServer.ForeColor = System.Drawing.Color.Black;
-            this._lblLinkServer.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this._lblLinkServer.Location = new System.Drawing.Point(291, 0);
-            this._lblLinkServer.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this._lblLinkServer.Name = "_lblLinkServer";
-            this._lblLinkServer.Size = new System.Drawing.Size(63, 19);
-            this._lblLinkServer.TabIndex = 10;
-            this._lblLinkServer.Text = "Link Server";
-            this._lblLinkServer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // _lbSocketStatus
             // 
             this._lbSocketStatus.AutoSize = true;
-            this._lbSocketStatus.Location = new System.Drawing.Point(270, 0);
+            this._lbSocketStatus.Location = new System.Drawing.Point(426, 0);
             this._lbSocketStatus.Name = "_lbSocketStatus";
             this._lbSocketStatus.Required = false;
             this._lbSocketStatus.Size = new System.Drawing.Size(15, 19);
             this._lbSocketStatus.TabIndex = 0;
             this._lbSocketStatus.Text = " ";
             this._lbSocketStatus.Visible = false;
-            // 
-            // _lbSocket
-            // 
-            this._lbSocket.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._lbSocket.AutoSize = true;
-            this._lbSocket.Cursor = System.Windows.Forms.Cursors.Hand;
-            this._lbSocket.ForeColor = System.Drawing.Color.Black;
-            this._lbSocket.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this._lbSocket.Location = new System.Drawing.Point(222, 0);
-            this._lbSocket.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this._lbSocket.Name = "_lbSocket";
-            this._lbSocket.Size = new System.Drawing.Size(45, 19);
-            this._lbSocket.TabIndex = 12;
-            this._lbSocket.Text = "Socket:";
-            this._lbSocket.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this._lbSocket.Visible = false;
             // 
             // label2
             // 
@@ -618,10 +565,11 @@
             // _btnUpDown
             // 
             this._btnUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._btnUpDown.Image = global::QTech.Properties.Resources.imgCollapse;
+            this._btnUpDown.Image = global::QTech.Properties.Resources.up_img;
             this._btnUpDown.Location = new System.Drawing.Point(1248, 60);
             this._btnUpDown.Name = "_btnUpDown";
             this._btnUpDown.Size = new System.Drawing.Size(16, 18);
+            this._btnUpDown.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this._btnUpDown.TabIndex = 0;
             this._btnUpDown.TabStop = false;
             this._btnUpDown.Click += new System.EventHandler(this._btnUpDown_Click);
@@ -784,16 +732,13 @@
         private QTech.Component.GRAPanel pContainBottom;
         private System.Windows.Forms.PictureBox picLogo;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label txtDomain;
         private System.Windows.Forms.ContextMenuStrip menuSwitchLinkServer;
         private System.Windows.Forms.ToolStripMenuItem tsmMenuUITeam;
         private System.Windows.Forms.ToolStripMenuItem tsmMenuTestTeam;
-        private System.Windows.Forms.Label _lblLinkServer;
         private System.Windows.Forms.ContextMenuStrip cnmStrip;
         private System.Windows.Forms.ToolStripMenuItem btnChangePassword;
         private System.Windows.Forms.ToolStripMenuItem btnLogOut;
         private System.Windows.Forms.ToolStripMenuItem tmsMenuDevTeam;
-        private System.Windows.Forms.Label _lbSocket;
         private QTech.Component.ExLabel _lbSocketStatus;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.FlowLayoutPanel pBranch;
