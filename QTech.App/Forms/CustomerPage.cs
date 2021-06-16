@@ -79,17 +79,15 @@ namespace QTech.Forms
                 }
                                     
                 e.Node.Nodes.Clear();
-                var search = new CustomerSearch()
-                {
-                    Id = parent.Id
-                };
-                var customers = await dgv.RunAsync(() => CustomerLogic.Instance.SearchAsync(search).FirstOrDefault());
+                var Id = int.Parse((dgv.SelectedRows[0].Cells[colId.Name].Value?.ToString() ?? "0"));
+                var search = new SiteSearch() { CustomerId = Id };
+                var sites = await dgv.RunAsync(() => SiteLogic.Instance.SearchAsync(search));
 
-                if (customers.Sites.Any())
+                if (sites.Any())
                 {
                     var dummy = e.Node.Nodes.Add();
                     dummy.Visible = false;
-                    AddChildNode(e.Node, customers.Sites, parent);
+                    AddChildNode(e.Node, sites, parent);
                     return;
                 }
             }
@@ -233,7 +231,7 @@ namespace QTech.Forms
             {
                 var _treeGridNode = AddParentNode(_topLevelTreeGridNode, parent);
             
-                if (parent.Sites.Any())
+                if (parent.Sites != null)
                 {
                     AddChildNode(_treeGridNode, parent.Sites, parent);
                     dgv.NodeExpanded -= Dgv_NodeExpanded;

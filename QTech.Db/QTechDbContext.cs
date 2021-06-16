@@ -32,9 +32,7 @@ namespace QTech.Db
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-
-
+            QTechDbConfigs.ConfigureDatabase(modelBuilder);
         }
 
     }

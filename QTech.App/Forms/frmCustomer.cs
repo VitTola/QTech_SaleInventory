@@ -69,21 +69,28 @@ namespace QTech.Forms
 
         public bool InValid()
         {
-            if (!txtName.IsValidRequired(lblName.Text) | txtPhone.IsValidRequired(lblPhone.Text)
-                | txtPhone.IsValidPhone())
+            if (!txtName.IsValidRequired(lblName.Text) | !txtPhone.IsValidRequired(lblPhone.Text)
+                | !txtPhone.IsValidPhone() | !inValidGridView())
             {
                 return false;
             }
+            return true;
+        }
 
+        private bool inValidGridView()
+        {
             var invalidRow = false;
-            var rows = dgv.Rows.OfType<DataGridViewRow>();
-            foreach (DataGridViewRow row in rows)
+            foreach (DataGridViewRow row in dgv.Rows)
             {
                 var cellname = row?.Cells[colName.Name];
                 var cellphone = row?.Cells[colPhone.Name];
                 if (string.IsNullOrEmpty(cellname?.Value?.ToString()) && !string.IsNullOrEmpty(cellphone.Value?.ToString()))
                 {
                     cellname.ErrorText = BaseResource.MsgNotInputSite;
+                    invalidRow = true;
+                }
+                if (string.IsNullOrEmpty(cellname?.Value?.ToString()) && string.IsNullOrEmpty(cellphone.Value?.ToString()))
+                {
                     invalidRow = true;
                 }
             }
@@ -94,8 +101,6 @@ namespace QTech.Forms
 
             return true;
         }
-
-
 
         public void Read()
         {
@@ -125,10 +130,18 @@ namespace QTech.Forms
 
             foreach (DataGridViewRow row in dgv.Rows)
             {
-                var site = new Site();
-                site.Name = row?.Cells[colName.Name]?.Value?.ToString();
-                site.Phone = row?.Cells[colPhone.Name]?.Value?.ToString();
+                var _name = row?.Cells[colName.Name]?.Value?.ToString();
+                var _phone = row?.Cells[colPhone.Name]?.Value?.ToString();
+                if (!string.IsNullOrEmpty(_name) && !string.IsNullOrEmpty(_phone))
+                {
+                    var site = new Site()
+                    {
+                        Active = true,
+                        Name = _name,
+                        Phone = _phone
+                    };
                 sites.Add(site);
+                }
             }
 
             if (_removeSites.Any())

@@ -20,7 +20,7 @@ namespace QTech.Db.Logics
         {
             base.AddAsync(entity);
             var sites = entity.Sites;
-            if (sites.Any())
+            if (sites != null && sites.Any())
             {
                 foreach (var s in sites)
                 {
@@ -71,6 +71,7 @@ namespace QTech.Db.Logics
             {
                 q = q.Where(x => x.Name.ToLower().Contains(param.Search.ToLower()));
             }
+           
             return q;
         }
     }

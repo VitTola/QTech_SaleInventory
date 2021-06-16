@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace QTech.Db.Logics
 {
-    class SiteLogic : DbLogic<Site, SiteLogic>
+    public class SiteLogic : DbLogic<Site, SiteLogic>
     {
         public SiteLogic()
         {
@@ -39,12 +39,8 @@ namespace QTech.Db.Logics
         public override IQueryable<Site> Search(ISearchModel model)
         {
             var param = model as SiteSearch;
-            var par = param.Search;
             var q = All();
-            if (!string.IsNullOrEmpty(param.Search))
-            {
-                q = q.Where(x => x.CustomerId == param.CustomerId);
-            }
+            q = q.Where(x => x.CustomerId == param.CustomerId);
             return q;
         }
     }
