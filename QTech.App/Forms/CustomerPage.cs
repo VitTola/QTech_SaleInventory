@@ -57,9 +57,9 @@ namespace QTech.Forms
         }
 
       
-        private void txtSearch_QuickSearch(object sender, EventArgs e)
+        private  async void txtSearch_QuickSearch(object sender, EventArgs e)
         {
-            Search();
+           await  Search();
         }
 
         private void Dgv_NodeCollapsed(object sender, CollapsedEventArgs e)
@@ -311,7 +311,7 @@ namespace QTech.Forms
             Remove();
         }
 
-        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgv_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             View();
         }

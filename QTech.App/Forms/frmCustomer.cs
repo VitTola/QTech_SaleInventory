@@ -55,19 +55,15 @@ namespace QTech.Forms
             dgv.RegisterEnglishInputColumns(colPhone);
             dgv.RegisterEnglishInputColumns(colPhone);
             dgv.RegisterPrimaryInputColumns(colName);
+           
 
-
-            dgv.EditingControlShowing += dgv_EditingControlShowing;
+            if (Flag == GeneralProcess.View)
+            {
+                txtName.ReadOnly = txtNote.ReadOnly = txtPhone.ReadOnly =  dgv.ReadOnly = true;
+                flowLayOutLabelRemoveAdd.Enabled = false;
+            }
         }
-
-        private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            //if (dgv?.SelectedRows?.Count < 0)
-            //{
-            //    return;
-            //}
-        }
-
+        
         public bool InValid()
         {
             if (!txtName.IsValidRequired(lblName.Text) | !txtPhone.IsValidRequired(lblPhone.Text)
@@ -113,7 +109,14 @@ namespace QTech.Forms
             var sites = await dgv.RunAsync(() => SiteLogic.Instance.SearchAsync(search));
             if (sites.Any())
             {
-                dgv.DataSource = sites;
+                Model.Sites = sites;
+                foreach (var site in sites)
+                {
+                    var row = newRow(false);
+                    row.Cells[colId.Name].Value = site.Id;
+                    row.Cells[colName.Name].Value = site.Name;
+                    row.Cells[colPhone.Name].Value = site.Phone;
+                }
             }
             
         }
@@ -135,6 +138,11 @@ namespace QTech.Forms
 
             foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
             {
+                var Id =int.Parse(row?.Cells[colId.Name]?.Value?.ToString() ?? "0");
+                if (Model.Sites.Any(x=>x.Id == Id))
+                {
+                    continue;
+                }
                 var _name = row?.Cells[colName.Name]?.Value?.ToString() ?? string.Empty;
                 var _phone = row?.Cells[colPhone.Name]?.Value?.ToString() ?? string.Empty;
                 var ID = row?.Cells[colId.Name]?.Value?.ToString() ?? string.Empty;
@@ -144,19 +152,7 @@ namespace QTech.Forms
                     Name = _name,
                     Phone = _phone
                 };
-                sites.Add(site);
-
-            }
-
-            if (_removeSites.Any())
-            {
-                // Prevent update error when have duplicate user station
-                var _rmu = _removeSites.Distinct().ToList();
-                Model.Sites.AddRange(_rmu);
-            }
-            if (sites.Any())
-            {
-                Model.Sites = sites;
+                Model.Sites.Add(site);
             }
         }
 
@@ -167,20 +163,29 @@ namespace QTech.Forms
 
         private void lblAdd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            dgv.AllowUserToAddRows = true;
             if (!dgv.CurrentCell?.IsInEditMode ?? true)
             {
                 if (dgv.Rows.OfType<DataGridViewRow>().Where(x => x.IsNewRow).Count() == 1 && dgv.CurrentCell == null)
                 {
                     dgv.Rows.Clear();
                 }
-                 var index = dgv.Rows[dgv.RowCount-1].Cells[colName.Name];
+                var index = dgv.Rows[dgv.NewRowIndex].Cells[colName.Name];
                 dgv.CurrentCell = index;
-
                 dgv.BeginEdit(true);
             }
-        }
 
+        }
+        private DataGridViewRow newRow(bool isFocus = false)
+        {
+            var row = dgv.Rows[dgv.Rows.Add()];
+            row.Cells[colId.Name].Value = 0;
+            row.Cells[colId.Name].Value = 0;
+            if (isFocus)
+            {
+                dgv.Focus();
+            }
+            return row;
+        }
         private void lblRemove_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (dgv?.SelectedRows?.Count > 0)
@@ -198,13 +203,14 @@ namespace QTech.Forms
                     return;
                 }
 
-                var selectedUser = Model.Sites.FirstOrDefault(x => x.Id == int.Parse(idValue.ToString()));
-                if (selectedUser != null)
+                Model.Sites.ForEach(x =>
                 {
-                    selectedUser.Active = false;
+                    if (x.Id == int.Parse(idValue.ToString()))
+                    {
+                        x.Active = false;
+                    }
                 }
-                _removeSites.Add(selectedUser);
-
+                );
                 if (!row.IsNewRow)
                 {
                     dgv.Rows.Remove(row);
@@ -213,6 +219,8 @@ namespace QTech.Forms
             }
 
         }
+
+        private void RemoveSite(ref Site site) => site.Active = false;
 
         private void btnSave_Click(object sender, EventArgs e)
         {

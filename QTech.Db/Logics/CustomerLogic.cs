@@ -10,7 +10,7 @@ using static QTech.Db.MasterLogic;
 
 namespace QTech.Db.Logics
 {
-    public class CustomerLogic : DbLogic<Customer,CustomerLogic>
+    public class CustomerLogic : DbLogic<Customer, CustomerLogic>
     {
         public CustomerLogic()
         {
@@ -24,15 +24,7 @@ namespace QTech.Db.Logics
             {
                 foreach (var s in sites)
                 {
-                    if (s.Active ==false)
-                    {
-                        SiteLogic.Instance.UpdateAsync(s);
-                    }
-                    else
-                    {
-                        s.CustomerId = Customer.Id;
-                        SiteLogic.Instance.AddAsync(s);
-                    }
+                    SiteLogic.Instance.AddAsync(s);
                 }
             }
             return entity;
@@ -72,13 +64,13 @@ namespace QTech.Db.Logics
             {
                 q = q.Where(x => x.Name.ToLower().Contains(param.Search.ToLower()));
             }
-           
+
             return q;
         }
 
         public override Customer UpdateAsync(Customer entity)
         {
-            var Customer =  base.UpdateAsync(entity);
+            var Customer = base.UpdateAsync(entity);
             var sites = entity.Sites;
             if (sites.Any())
             {
@@ -90,8 +82,12 @@ namespace QTech.Db.Logics
                     }
                     else
                     {
-                        s.CustomerId = Customer.Id;
-                        SiteLogic.Instance.AddAsync(s);
+                        var isExist = _db.Sites.Any(x => x.Id == s.Id);
+                        if (!isExist)
+                        {
+                            s.CustomerId = Customer.Id;
+                            SiteLogic.Instance.AddAsync(s);
+                        }
                     }
                 }
             }
