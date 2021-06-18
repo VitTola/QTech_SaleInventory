@@ -119,6 +119,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ប្រភេទទំនិញ.
+        /// </summary>
+        public static string Categorys {
+            get {
+                return ResourceManager.GetString("Categorys", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap Christmas_Big_Sale_icon {
@@ -516,6 +525,16 @@ namespace QTech.Base.Properties {
         public static System.Drawing.Bitmap Product_img {
             get {
                 object obj = ResourceManager.GetObject("Product_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Product32x32 {
+            get {
+                object obj = ResourceManager.GetObject("Product32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

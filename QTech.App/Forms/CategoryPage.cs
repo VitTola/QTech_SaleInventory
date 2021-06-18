@@ -14,10 +14,10 @@ using System.Drawing;
 
 namespace QTech.Forms
 {
-    public partial class CustomerPage : ExPage, IPage
+    public partial class CategoryPage : ExPage, IPage
     {
 
-        public CustomerPage()
+        public CategoryPage()
         {
             InitializeComponent();
             Bind();
@@ -312,47 +312,5 @@ namespace QTech.Forms
             View();
         }
 
-        bool _isCollapsed = true;
-        private void picCollapseExpanse_Click(object sender, EventArgs e)
-        {
-            //if (dgv.Executing) { return; }
-            //if ((dgv.Nodes?.Any() ?? true) == false) { return; }
-
-            //if (_isCollapsed)
-            //{
-            //    dgv.Rows.Cast<TreeGridNode>().ToList().ForEach(x => x?.Expand());
-            //    _isCollapsed = false;
-            //}
-            //else
-            //{
-            //    dgv.Rows.Cast<TreeGridNode>().ToList().ForEach(x =>
-            //    {
-            //        if (x.IsExpanded)
-            //        {
-            //            if (x is Customer c)
-            //            {
-
-            //            }
-            //            x?.Collapse();
-            //        }
-            //    });
-            //    _isCollapsed = true;
-            //}
-        }
-
-        private void picCollapseExpanse_MouseHover(object sender, EventArgs e)
-        {
-            picCollapseExpanse.BackColor = Color.LightCyan;
-        }
-
-        private void picCollapseExpanse_MouseLeave(object sender, EventArgs e)
-        {
-            picCollapseExpanse.BackColor = Color.FromArgb(245, 245, 237);
-        }
-
-        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace QTech.Forms
 {
-    partial class CustomerPage
+    partial class CategoryPage
     {
         /// <summary>
         /// Required designer variable.
@@ -35,7 +35,6 @@
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtSearch = new QTech.Component.ExTextbox();
-            this.picCollapseExpanse = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnRemove = new QTech.Component.ExButtonLoading();
             this.btnUpdate = new QTech.Component.ExButtonLoading();
@@ -51,7 +50,6 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.graPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picCollapseExpanse)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
@@ -97,7 +95,6 @@
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.txtSearch);
-            this.flowLayoutPanel2.Controls.Add(this.picCollapseExpanse);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -117,20 +114,6 @@
             this.txtSearch.SearchMode = QTech.Component.ExTextbox.SearchModes.OnKeyReturn;
             this.txtSearch.Size = new System.Drawing.Size(154, 26);
             this.txtSearch.TabIndex = 1;
-            // 
-            // picCollapseExpanse
-            // 
-            this.picCollapseExpanse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.picCollapseExpanse.Image = global::QTech.Properties.Resources.expand_img;
-            this.picCollapseExpanse.Location = new System.Drawing.Point(164, 3);
-            this.picCollapseExpanse.Name = "picCollapseExpanse";
-            this.picCollapseExpanse.Size = new System.Drawing.Size(24, 25);
-            this.picCollapseExpanse.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picCollapseExpanse.TabIndex = 2;
-            this.picCollapseExpanse.TabStop = false;
-            this.picCollapseExpanse.Click += new System.EventHandler(this.picCollapseExpanse_Click);
-            this.picCollapseExpanse.MouseLeave += new System.EventHandler(this.picCollapseExpanse_MouseLeave);
-            this.picCollapseExpanse.MouseHover += new System.EventHandler(this.picCollapseExpanse_MouseHover);
             // 
             // flowLayoutPanel1
             // 
@@ -251,7 +234,6 @@
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(785, 340);
             this.dgv.TabIndex = 1;
-            this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
             this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
             // 
             // colName
@@ -309,7 +291,7 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // CustomerPage
+            // CategoryPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -318,11 +300,10 @@
             this.Controls.Add(this.graPanel1);
             this.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "CustomerPage";
-            this.Text = "CustomerPage";
+            this.Name = "CategoryPage";
+            this.Text = "CategoryPage";
             this.graPanel1.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picCollapseExpanse)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
@@ -348,6 +329,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colParentId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPhone;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNote;
-        private System.Windows.Forms.PictureBox picCollapseExpanse;
     }
 }
