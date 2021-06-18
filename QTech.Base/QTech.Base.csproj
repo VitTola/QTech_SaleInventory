@@ -131,6 +131,7 @@
     <Compile Include="Helpers\MimeType.cs" />
     <Compile Include="Helpers\TempFile.cs" />
     <Compile Include="Helpers\UISetting.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\DbConfig.cs" />
     <Compile Include="Models\Employee.cs" />
@@ -148,6 +149,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="SearchModels\ProductSearch.cs" />
+    <Compile Include="SearchModels\CategorySearch.cs" />
     <Compile Include="SearchModels\CustomerSearch.cs" />
     <Compile Include="SearchModels\EmployeeSearch.cs" />
     <Compile Include="SearchModels\SiteSearch.cs" />

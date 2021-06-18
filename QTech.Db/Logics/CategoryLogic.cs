@@ -1,5 +1,6 @@
 ﻿using QTech.Base;
 using QTech.Base.BaseModels;
+using QTech.Base.Models;
 using QTech.Base.SearchModels;
 using System;
 using System.Collections.Generic;
@@ -10,25 +11,25 @@ using static QTech.Db.MasterLogic;
 
 namespace QTech.Db.Logics
 {
-    public class EmployeeLogic: DbLogic<Employee,EmployeeLogic>
+    public class CategoryLogic : DbLogic<Category, CategoryLogic>
     {
-        public override Employee FindAsync(int id)
+        public override Category FindAsync(int id)
         {
             var result = All().FirstOrDefault(x => x.Active && x.Id == id);
             return result;
         }
-        public override bool CanRemoveAsync(Employee entity)
+        public override bool CanRemoveAsync(Category entity)
         {
             return All().Any(x => x.Id == entity.Id);
         }
-        public override List<Employee> SearchAsync(ISearchModel model)
+        public override List<Category> SearchAsync(ISearchModel model)
         {
             var result = Search(model).ToList();
             return result;
         }
-        public override IQueryable<Employee> Search(ISearchModel model)
+        public override IQueryable<Category> Search(ISearchModel model)
         {
-            var param = model as EmployeeSearch;
+            var param = model as CategorySearch;
             var q = All();
             if (!string.IsNullOrEmpty(param.Search))
             {

@@ -67,6 +67,7 @@
     <Compile Include="Configs\QTechDbConfigs.cs" />
     <Compile Include="Logics\CustomerLogic.cs" />
     <Compile Include="Logics\DbLogic.cs" />
+    <Compile Include="Logics\CategoryLogic.cs" />
     <Compile Include="Logics\EmployeeLogic.cs" />
     <Compile Include="Logics\ProductLogic.cs" />
     <Compile Include="Logics\SaleLogic.cs" />
