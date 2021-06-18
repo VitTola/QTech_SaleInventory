@@ -1,5 +1,6 @@
 ﻿using QTech.Base;
 using QTech.Base.Helpers;
+using QTech.Base.Models;
 using QTech.Component;
 using QTech.Component.Helpers;
 using QTech.Db.Logics;
@@ -17,9 +18,9 @@ namespace QTech.Forms
 {
     public partial class frmCategory : ExDialog, IDialog
     {
-        public Employee Model { get; set; }
+        public Category Model { get; set; }
 
-        public frmCategory(Employee model, GeneralProcess flag)
+        public frmCategory(Category model, GeneralProcess flag)
         {
             InitializeComponent();
 
@@ -34,7 +35,6 @@ namespace QTech.Forms
 
         public void Bind()
         {
-            cboPosition.SetDataSource<Base.Enums.Position>();
             colName.Visible = true;
             colName.Width = 100;
 
@@ -44,9 +44,7 @@ namespace QTech.Forms
         public void InitEvent()
         {
             this.MaximizeBox = false;
-            this.Text = Base.Properties.Resources.Employees;
-            txtPhone.RegisterEnglishInput();
-            txtName.RegisterPrimaryInputWith(cboPosition,txtNote,txtName);
+            this.Text = Base.Properties.Resources.Categorys;
         }
 
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -58,8 +56,7 @@ namespace QTech.Forms
         public bool InValid()
         {
             if (!txtName.IsValidRequired(lblName.Text) 
-                | !cboPosition.IsValidRequired(lblPosition.Text) 
-                | !txtPhone.IsValidPhone())
+              )
             {
                 return true;
             }
@@ -69,9 +66,7 @@ namespace QTech.Forms
         public void Read()
         {
             txtName.Text = Model.Name;
-            txtPhone.Text = Model.Phone;
             txtNote.Text = Model.Note;
-            cboPosition.Text = Model.Position;
         }
 
         public async void Save()
@@ -84,7 +79,7 @@ namespace QTech.Forms
             if (InValid()) { return; }
             Write();
 
-            var isExist = await btnSave.RunAsync(() => EmployeeLogic.Instance.IsExistsAsync(Model));
+            var isExist = await btnSave.RunAsync(() => CategoryLogic.Instance.IsExistsAsync(Model));
             if (isExist == null) { return; }
             if (isExist == true)
             {
@@ -96,15 +91,15 @@ namespace QTech.Forms
             {
                 if (Flag == GeneralProcess.Add)
                 {
-                    return EmployeeLogic.Instance.AddAsync(Model);
+                    return CategoryLogic.Instance.AddAsync(Model);
                 }
                 else if (Flag == GeneralProcess.Update)
                 {
-                    return  EmployeeLogic.Instance.UpdateAsync(Model);
+                    return CategoryLogic.Instance.UpdateAsync(Model);
                 }
                 else if (Flag == GeneralProcess.Remove)
                 {
-                    return EmployeeLogic.Instance.RemoveAsync(Model);
+                    return CategoryLogic.Instance.RemoveAsync(Model);
                 }
 
                 return null;
@@ -125,8 +120,7 @@ namespace QTech.Forms
         {
             Model.Name = txtName.Text;
             Model.Note = txtNote.Text;
-            Model.Phone = txtPhone.Text;
-            Model.Position = cboPosition.Text;
+            
         }
 
         private void btnSave_Click(object sender, EventArgs e)

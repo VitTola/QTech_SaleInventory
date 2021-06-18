@@ -31,7 +31,7 @@ namespace QTech.Db.Logics
         {
             var param = model as CategorySearch;
             var q = All();
-            if (!string.IsNullOrEmpty(param.Search))
+            if (!string.IsNullOrEmpty(param?.Search))
             {
                 q = q.Where(x => x.Name.ToLower().Contains(param.Search.ToLower()));
             }

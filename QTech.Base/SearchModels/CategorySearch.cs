@@ -13,4 +13,3 @@ namespace QTech.Base.SearchModels
         public string Name { get; set; }
     }
 }
-s

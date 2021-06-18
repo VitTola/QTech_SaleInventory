@@ -40,14 +40,10 @@
             this.lblName = new QTech.Component.ExLabel();
             this.lblNote = new QTech.Component.ExLabel();
             this.txtNote = new System.Windows.Forms.TextBox();
-            this.lblPosition = new QTech.Component.ExLabel();
             this.exPanel1 = new QTech.Component.Components.ExPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnClose = new QTech.Component.ExButtonLoading();
             this.btnSave = new QTech.Component.ExButtonLoading();
-            this.cboPosition = new System.Windows.Forms.ComboBox();
-            this.lblPhone = new QTech.Component.ExLabel();
-            this.txtPhone = new System.Windows.Forms.TextBox();
             this.container.SuspendLayout();
             this.exPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -55,16 +51,12 @@
             // 
             // container
             // 
-            this.container.Controls.Add(this.lblPhone);
-            this.container.Controls.Add(this.txtPhone);
-            this.container.Controls.Add(this.cboPosition);
             this.container.Controls.Add(this.exPanel1);
-            this.container.Controls.Add(this.lblPosition);
             this.container.Controls.Add(this.lblNote);
             this.container.Controls.Add(this.txtNote);
             this.container.Controls.Add(this.lblName);
             this.container.Controls.Add(this.txtName);
-            this.container.Size = new System.Drawing.Size(377, 266);
+            this.container.Size = new System.Drawing.Size(440, 219);
             // 
             // colId
             // 
@@ -132,60 +124,50 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(143, 25);
+            this.txtName.Location = new System.Drawing.Point(167, 25);
             this.txtName.Margin = new System.Windows.Forms.Padding(2);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(200, 27);
+            this.txtName.Size = new System.Drawing.Size(233, 28);
             this.txtName.TabIndex = 0;
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(24, 28);
+            this.lblName.Location = new System.Drawing.Point(28, 28);
             this.lblName.Name = "lblName";
             this.lblName.Required = true;
-            this.lblName.Size = new System.Drawing.Size(43, 19);
+            this.lblName.Size = new System.Drawing.Size(40, 19);
             this.lblName.TabIndex = 5;
             this.lblName.Text = "ឈ្មោះ";
             // 
             // lblNote
             // 
             this.lblNote.AutoSize = true;
-            this.lblNote.Location = new System.Drawing.Point(24, 122);
+            this.lblNote.Location = new System.Drawing.Point(28, 60);
             this.lblNote.Name = "lblNote";
             this.lblNote.Required = false;
-            this.lblNote.Size = new System.Drawing.Size(41, 19);
+            this.lblNote.Size = new System.Drawing.Size(39, 19);
             this.lblNote.TabIndex = 13;
             this.lblNote.Text = "ចំណាំ";
             // 
             // txtNote
             // 
-            this.txtNote.Location = new System.Drawing.Point(143, 119);
+            this.txtNote.Location = new System.Drawing.Point(167, 57);
             this.txtNote.Margin = new System.Windows.Forms.Padding(2);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(200, 90);
+            this.txtNote.Size = new System.Drawing.Size(233, 90);
             this.txtNote.TabIndex = 3;
-            // 
-            // lblPosition
-            // 
-            this.lblPosition.AutoSize = true;
-            this.lblPosition.Location = new System.Drawing.Point(24, 59);
-            this.lblPosition.Name = "lblPosition";
-            this.lblPosition.Required = true;
-            this.lblPosition.Size = new System.Drawing.Size(40, 19);
-            this.lblPosition.TabIndex = 15;
-            this.lblPosition.Text = "តួនាទី";
             // 
             // exPanel1
             // 
             this.exPanel1.BackColor = System.Drawing.Color.Transparent;
             this.exPanel1.Controls.Add(this.flowLayoutPanel2);
             this.exPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.exPanel1.Location = new System.Drawing.Point(1, 229);
+            this.exPanel1.Location = new System.Drawing.Point(1, 182);
             this.exPanel1.Name = "exPanel1";
             this.exPanel1.Padding = new System.Windows.Forms.Padding(2);
-            this.exPanel1.Size = new System.Drawing.Size(375, 36);
+            this.exPanel1.Size = new System.Drawing.Size(438, 36);
             this.exPanel1.TabIndex = 17;
             // 
             // flowLayoutPanel2
@@ -196,7 +178,7 @@
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(2, 2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(371, 32);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(434, 32);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // btnClose
@@ -205,12 +187,12 @@
             this.btnClose.DefaultImage = null;
             this.btnClose.Executing = false;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Location = new System.Drawing.Point(294, 3);
+            this.btnClose.Location = new System.Drawing.Point(345, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnClose.ShortcutText = null;
-            this.btnClose.Size = new System.Drawing.Size(75, 27);
+            this.btnClose.Size = new System.Drawing.Size(87, 27);
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "បិទ";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -222,48 +204,23 @@
             this.btnSave.DefaultImage = null;
             this.btnSave.Executing = false;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Location = new System.Drawing.Point(215, 3);
+            this.btnSave.Location = new System.Drawing.Point(254, 3);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnSave.ShortcutText = null;
-            this.btnSave.Size = new System.Drawing.Size(75, 27);
+            this.btnSave.Size = new System.Drawing.Size(87, 27);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "រក្សាទុក";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // cboPosition
+            // frmCategory
             // 
-            this.cboPosition.FormattingEnabled = true;
-            this.cboPosition.Location = new System.Drawing.Point(143, 56);
-            this.cboPosition.Name = "cboPosition";
-            this.cboPosition.Size = new System.Drawing.Size(200, 27);
-            this.cboPosition.TabIndex = 1;
-            // 
-            // lblPhone
-            // 
-            this.lblPhone.AutoSize = true;
-            this.lblPhone.Location = new System.Drawing.Point(24, 91);
-            this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Required = false;
-            this.lblPhone.Size = new System.Drawing.Size(68, 19);
-            this.lblPhone.TabIndex = 20;
-            this.lblPhone.Text = "លេខទូរស័ព្ទ";
-            // 
-            // txtPhone
-            // 
-            this.txtPhone.Location = new System.Drawing.Point(143, 88);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(200, 27);
-            this.txtPhone.TabIndex = 2;
-            // 
-            // frmEmployee
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(377, 287);
+            this.ClientSize = new System.Drawing.Size(440, 240);
+            this.Font = new System.Drawing.Font("Khmer OS Battambang", 8.25F);
             this.Location = new System.Drawing.Point(0, 0);
             this.MaximizeBox = false;
             this.Name = "frmCategory";
@@ -287,15 +244,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.TextBox txtName;
         private Component.ExLabel lblName;
-        private Component.ExLabel lblPosition;
         private Component.ExLabel lblNote;
         private System.Windows.Forms.TextBox txtNote;
         private Component.Components.ExPanel exPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private Component.ExButtonLoading btnClose;
         private Component.ExButtonLoading btnSave;
-        private System.Windows.Forms.ComboBox cboPosition;
-        private Component.ExLabel lblPhone;
-        private System.Windows.Forms.TextBox txtPhone;
     }
 }

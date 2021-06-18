@@ -30,7 +30,6 @@ namespace QTech.Forms
             if (dig.ShowDialog() == DialogResult.OK)
             {
                 await Search();
-                Model = dig.Model;
             }
         }
 
@@ -100,6 +99,10 @@ namespace QTech.Forms
             };
 
             var result = await dgv.RunAsync(() => EmployeeLogic.Instance.SearchAsync(search));
+            if (result == null)
+            {
+                return;
+            }
             dgv.DataSource = result._ToDataTable();
         }
 

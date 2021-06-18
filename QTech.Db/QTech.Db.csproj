@@ -89,6 +89,10 @@
     <Compile Include="Migrations\202106160557565_v1.4.designer.cs">
       <DependentUpon>202106160557565_v1.4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106181156243_v1.5.cs" />
+    <Compile Include="Migrations\202106181156243_v1.5.designer.cs">
+      <DependentUpon>202106181156243_v1.5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QTechDbContext.cs" />
@@ -117,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106160557565_v1.4.resx">
       <DependentUpon>202106160557565_v1.4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106181156243_v1.5.resx">
+      <DependentUpon>202106181156243_v1.5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

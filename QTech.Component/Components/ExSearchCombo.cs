@@ -13,6 +13,16 @@ using EDomain = EasyServer.Domain;
 
 namespace QTech.Component
 {
+    public class DropDownItemModel : ActiveBaseModel
+    {
+        public DropDownItemModel() { }
+
+        public object Id { get; set; }
+        public string DisplayText { get; set; }
+        public string Code { get; set; }
+        public string Name { get; set; }
+        public object ItemObject { get; set; }
+    }
     public partial class ExSearchCombo : ComboBox
     {
         private bool textSearching = false;
