@@ -44,5 +44,10 @@ namespace QTech.Db.Logics
             q = q.Where(x => x.CustomerId == param.CustomerId);
             return q;
         }
+        public override bool IsExistsAsync(Site entity)
+        {
+            var result = _db.Sites.Any(x=>x.Id == entity.Id);
+            return result;
+        }
     }
 }

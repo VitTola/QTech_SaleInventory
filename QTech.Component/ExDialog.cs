@@ -117,6 +117,7 @@ namespace QTech.Component
 
         protected override void OnLoad(EventArgs e)
         {
+            this.Font = new Font("Khmer OS Battambang", this.Font.Size);
             this.ApplyResource();
             this.InitForm();
             this.OptimizeLoadUI();

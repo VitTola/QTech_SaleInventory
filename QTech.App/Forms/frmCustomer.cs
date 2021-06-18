@@ -136,23 +136,41 @@ namespace QTech.Forms
             Model.Phone = txtPhone.Text;
             Model.Note = txtNote.Text;
 
+            if (Model.Sites == null)
+            {
+                Model.Sites = new List<Site>();
+            }
             foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
             {
                 var Id =int.Parse(row?.Cells[colId.Name]?.Value?.ToString() ?? "0");
-                if (Model.Sites.Any(x=>x.Id == Id))
-                {
-                    continue;
-                }
+                var site = Model.Sites?.FirstOrDefault(x => x.Id == Id);
                 var _name = row?.Cells[colName.Name]?.Value?.ToString() ?? string.Empty;
                 var _phone = row?.Cells[colPhone.Name]?.Value?.ToString() ?? string.Empty;
-                var ID = row?.Cells[colId.Name]?.Value?.ToString() ?? string.Empty;
-                var site = new Site()
+                if (site != null)
                 {
-                    Active = true,
-                    Name = _name,
-                    Phone = _phone
-                };
-                Model.Sites.Add(site);
+                    var id = (int)(row?.Cells[colId.Name]?.Value ?? 0);
+                    var s = new Site()
+                    {
+                        Id = id,
+                        Active = true,
+                        Name = _name,
+                        Phone = _phone,
+                        CustomerId = Model.Id
+                      
+                    };
+                    Model.Sites[Model.Sites.IndexOf(site)] = s;
+                }
+                else
+                {
+                    var s = new Site()
+                    {
+                        Active = true,
+                        Name = _name,
+                        Phone = _phone
+                    };
+                    Model.Sites.Add(s);
+                }
+               
             }
         }
 
@@ -219,8 +237,7 @@ namespace QTech.Forms
             }
 
         }
-
-        private void RemoveSite(ref Site site) => site.Active = false;
+        
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -266,11 +283,6 @@ namespace QTech.Forms
                 Model = result;
                 DialogResult = System.Windows.Forms.DialogResult.OK;
             }
-        }
-
-        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

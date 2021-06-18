@@ -272,6 +272,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pheng-Ry.ico" />
+    <None Include="Resources\expand.img.png" />
     <None Include="Resources\up.img.png" />
     <None Include="Resources\Site.img.png" />
     <None Include="Resources\Customer.img.png" />

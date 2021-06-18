@@ -72,27 +72,29 @@ namespace QTech.Db.Logics
         {
             var Customer = base.UpdateAsync(entity);
             var sites = entity.Sites;
+            UpdateSite(sites, Customer);
+            return entity;
+        }
+
+        private async void UpdateSite(List<Site> sites,Customer customer)
+        {
             if (sites.Any())
             {
                 foreach (var s in sites)
                 {
-                    if (s.Active == false)
+                    //var isExist =  _db.Sites.Any(x => x.Id == s.Id);
+                    var isExist = SiteLogic.Instance.IsExistsAsync(s);
+                    if (isExist)
                     {
                         SiteLogic.Instance.UpdateAsync(s);
                     }
                     else
                     {
-                        var isExist = _db.Sites.Any(x => x.Id == s.Id);
-                        if (!isExist)
-                        {
-                            s.CustomerId = Customer.Id;
-                            SiteLogic.Instance.AddAsync(s);
-                        }
+                        s.CustomerId = customer.Id;
+                        SiteLogic.Instance.AddAsync(s);
                     }
                 }
             }
-            return entity;
         }
-
-    }
+}
 }

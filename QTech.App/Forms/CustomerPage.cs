@@ -54,6 +54,7 @@ namespace QTech.Forms
             txtSearch.RegisterEnglishInput();
             txtSearch.RegisterKeyArrowDown(dgv);
             txtSearch.QuickSearch += txtSearch_QuickSearch;
+            
         }
 
       
@@ -78,7 +79,6 @@ namespace QTech.Forms
                 }
                                     
                 e.Node.Nodes.Clear();
-                //var Id = (int)dgv.CurrentRow.Cells[colId.Name].Value;
                 var search = new SiteSearch() { CustomerId = parent.Id };
                 var sites = await dgv.RunAsync(() => SiteLogic.Instance.SearchAsync(search));
 
@@ -89,17 +89,6 @@ namespace QTech.Forms
                     AddChildNode(e.Node, sites, parent);
                     return;
                 }
-            }
-
-            if (selectedModel != null)
-            {
-                var childRow = dgv.Rows.Cast<TreeGridNode>().FirstOrDefault(x => x.Tag is Customer station && station.Name == selectedModel.Name);
-                if (childRow != null)
-                {
-                    childRow.Selected = true;
-                }
-
-                selectedModel = null;
             }
         }
 
@@ -117,16 +106,16 @@ namespace QTech.Forms
 
         private void RefreshAfterOperation(Customer model)
         {
-            //var parentNode = dgv.Rows.Cast<TreeGridNode>().FirstOrDefault(x => x.Tag is Site site && site.Id == model);
-            //if (parentNode != null)
-            //{
-            //    parentNode.Selected = true;
-            //    if (parentNode.IsExpanded)
-            //    {
-            //        parentNode.Collapse();
-            //    }
-            //    parentNode.Expand();
-            //}
+            var parentNode = dgv.Rows.Cast<TreeGridNode>().FirstOrDefault(x => x.Tag is Customer cus && cus.Id == model.Id);
+            if (parentNode != null)
+            {
+                parentNode.Selected = true;
+                if (parentNode.IsExpanded)
+                {
+                    parentNode.Collapse();
+                }
+                parentNode.Expand();
+            }
         }
 
         public async void AddNew()
@@ -148,7 +137,7 @@ namespace QTech.Forms
                 return;
             }
 
-            var id = (int)dgv.SelectedRows[0].Cells[colId.Name].Value;
+            var id = (int)dgv.SelectedRows[0].Cells[colParentId.Name].Value;
 
             Model = await btnUpdate.RunAsync(() => CustomerLogic.Instance.FindAsync(id));
             if (Model == null)
@@ -161,7 +150,8 @@ namespace QTech.Forms
             if (dig.ShowDialog() == DialogResult.OK)
             {
                 await Search();
-                dgv.RowSelected(colId.Name, dig.Model.Id);
+                selectedModel = dig.Model;
+                RefreshAfterOperation(selectedModel);
             }
         }
 
@@ -177,7 +167,7 @@ namespace QTech.Forms
                 return;
             }
 
-            var id = (int)dgv.CurrentRow.Cells[colId.Name].Value;
+            var id = (int)dgv.CurrentRow.Cells[colParentId.Name].Value;
             var canRemove = await btnRemove.RunAsync(() => CustomerLogic.Instance.CanRemoveAsync(id));
             if (canRemove == false)
             {
@@ -234,7 +224,7 @@ namespace QTech.Forms
                 {
                     AddChildNode(_treeGridNode, parent.Sites, parent);
                     dgv.NodeExpanded -= Dgv_NodeExpanded;
-                    _treeGridNode.Expand();
+                   // _treeGridNode.Expand();
                     dgv.NodeExpanded += Dgv_NodeExpanded;
                 }
 
@@ -256,8 +246,10 @@ namespace QTech.Forms
                 node.Cells[dgv.Columns[colPhone.Name].Index].Value = child.Phone;
                 node.Cells[dgv.Columns[colNote.Name].Index].Value = child.Note;
                 node.Cells[dgv.Columns[colId.Name].Index].Value = child.Id;
+                node.Cells[dgv.Columns[colParentId.Name].Index].Value = child.CustomerId;
                
             }
+           // TreeGridNode.Collapse();
         }
 
         private TreeGridNode AddParentNode(dynamic parentNode, Customer customer)
@@ -271,6 +263,7 @@ namespace QTech.Forms
             node.Cells[dgv.Columns[colPhone.Name].Index].Value = customer?.Phone;
             node.Cells[dgv.Columns[colNote.Name].Index].Value = customer.Note;
             node.Cells[dgv.Columns[colId.Name].Index].Value = customer.Id;
+            node.Cells[dgv.Columns[colParentId.Name].Index].Value = customer.Id;
             var dummy = node.Nodes.Add();
             dummy.Visible = false;
             return node;
@@ -283,8 +276,7 @@ namespace QTech.Forms
                 return;
             }
 
-            var id = (int)dgv.SelectedRows[0].Cells[colId.Name].Value;
-
+            var id = (int)dgv.SelectedRows[0].Cells[colParentId.Name].Value;
             Model = await btnUpdate.RunAsync(() => CustomerLogic.Instance.FindAsync(id));
 
             if (Model == null)
@@ -311,9 +303,46 @@ namespace QTech.Forms
             Remove();
         }
 
-        private void dgv_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             View();
+        }
+
+        bool _isCollapsed = true;
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            dgv.Rows.Cast<TreeGridNode>().ToList().ForEach(x =>
+                {
+                    if (x != null)
+                    {
+                        if (_isCollapsed)
+                        {
+                            x.Expand();
+                            _isCollapsed = false;
+                        }
+                        else
+                        {
+                            x.Collapse();
+                            _isCollapsed = true;
+                        }
+                    }
+                }
+                );
+        }
+
+        private void pictureBox1_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox1.BackColor = Color.LightCyan;
+        }
+
+        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox1.BackColor = Color.FromArgb(245, 245, 237);
+        }
+
+        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

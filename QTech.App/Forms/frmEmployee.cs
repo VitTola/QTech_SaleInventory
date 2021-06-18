@@ -100,7 +100,7 @@ namespace QTech.Forms
                 }
                 else if (Flag == GeneralProcess.Update)
                 {
-                    return EmployeeLogic.Instance.UpdateAsync(Model);
+                    return  EmployeeLogic.Instance.UpdateAsync(Model);
                 }
                 else if (Flag == GeneralProcess.Remove)
                 {
