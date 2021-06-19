@@ -13,22 +13,22 @@ namespace QTech.Component
     public partial class SelectItemsDialog : ExDialog ,IPage
     {
 
-        public ISearchModel SearchParameter { get; set; }
-        Func<ISearchModel, List<DropDownItemModel>> _action;
+        public QTech.Base.BaseModels.ISearchModel SearchParameter { get; set; }
+        Func<QTech.Base.BaseModels.ISearchModel, List<DropDownItemModel>> _action;
         DropDownItemModel _itemForAll;
         List<ItemAction> _itemActions;
         private List<DropDownItemModel> _preList = new List<DropDownItemModel>();
         public List<DropDownItemModel> SelectedItems { get; private set; }
         bool _loadAll;
-        public SelectItemsDialog(Func<ISearchModel, List<DropDownItemModel>> action,
-            ISearchModel searchParameter,
+        public SelectItemsDialog(Func<QTech.Base.BaseModels.ISearchModel, List<DropDownItemModel>> action,
+            QTech.Base.BaseModels.ISearchModel searchParameter,
             List<DropDownItemModel> preList,
             List<ItemAction> itemActions,
             DropDownItemModel itemForAll,
             bool loadAll = true,
             bool showAll = false)
         {
-            InitializeComponent();
+            InitializeComponent(); 
             dgv.DataBindingComplete += dgv_DataBindingComplete;
             _loadAll = loadAll;
             _action = action;
@@ -40,7 +40,6 @@ namespace QTech.Component
             txtSearch.Text = searchParameter.Search;
             txtSearch.TextBox.SelectAll();
             txtSearch.RegisterKeyArrowDown(dgv);
-            pagination.ShowAllOption = showAll;
         }
 
         private void dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -62,7 +61,6 @@ namespace QTech.Component
         private async void txtSearch_QuickSearch(object sender, EventArgs e)
         {
             _loadAll = false;
-            pagination.Repaging();
             await Search();
         }
          
@@ -122,31 +120,59 @@ namespace QTech.Component
 
         public async Task Search()
         {
-            SearchParameter.Search = txtSearch.Text.ToLower();
-            if (_loadAll)
-            {
-                SearchParameter.Search = string.Empty; 
-            }
-            SearchParameter.Paging = pagination.Paging;
+            //SearchParameter.Search = txtSearch.Text.ToLower();
+            //if (_loadAll)
+            //{
+            //    SearchParameter.Search = string.Empty; 
+            //}
+            //SearchParameter.Paging = pagination.Paging;
 
-            pagination.ListModel = await dgv.RunAsync(() =>
-            {
-                var result = _action.Invoke(SearchParameter);
-                if (pagination.Paging.CurrentPage == 1)
+            //pagination.ListModel = await dgv.RunAsync(() =>
+            //{
+            //    var result = _action.Invoke(SearchParameter);
+            //    if (pagination.Paging.CurrentPage == 1)
+            //    {
+            //        if (_itemForAll != null)
+            //        {
+            //            result.Insert(0, _itemForAll);
+            //        }
+            //        foreach (var item in _itemActions)
+            //        {
+            //            result.Insert(0, item.ToDropDownItemModel());
+            //        }
+            //    }
+
+            //    return result;
+            //});
+
+                var source = await dgv.RunAsync(()=>
                 {
-                    if (_itemForAll != null)
-                    {
-                        result.Insert(0, _itemForAll);
-                    }
-                    foreach (var item in _itemActions)
-                    {
-                        result.Insert(0, item.ToDropDownItemModel());
-                    }
+                   var result = _action.Invoke(SearchParameter);
+                    
+                    return result;
+                });
+
+            if (source?.Any() == true)
+            {
+                if (_itemForAll != null)
+                {
+                    source.Insert(0, _itemForAll);
                 }
-                
-                return result;
-            });
-            dgv.DataSource = pagination.ListModel; 
+
+                foreach (var item in _itemActions)
+                {
+                    source.Insert(0, new DropDownItemModel()
+                    {
+                        Id = 0,
+                        DisplayText = item.ItemText,
+                        Name = item.ItemText,
+                        ItemObject = item
+                    });
+                }
+
+                dgv.DataSource = source;
+                dgv.RowSelected(colName.Name, txtSearch.Text);
+            }
         }
 
         private async void SelectItemsDialog_Load(object sender, EventArgs e)

@@ -49,7 +49,7 @@ namespace QTech.Component
             return entity.ToString();
         }
 
-        public static DropDownItemModel ToDropDownItemModel(this BaseModel entity)
+        public static DropDownItemModel ToDropDownItemModel(this QTech.Base.BaseModel entity)
         {
             var code = getDisplayValue(entity);
             return new DropDownItemModel()
@@ -125,7 +125,7 @@ namespace QTech.Component
             return list.Select(x => x.ToDropDownItemModel()).ToList();
         }
 
-        public static List<DropDownItemModel> ToDropDownItemModelList<T>(this IEnumerable<T> list) where T : BaseModel
+        public static List<DropDownItemModel> ToDropDownItemModelList<T>(this IEnumerable<T> list) where T : QTech.Base.BaseModel
         {
             return list.Select(x => x.ToDropDownItemModel()).ToList();
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,6 +26,26 @@ namespace QTech.Base
         public object Clone()
         {
             return null;
+        }
+        public override string ToString()
+        {
+            var result = new List<string>();
+            foreach (PropertyInfo propertyInfo in this.GetType().GetProperties()
+                .Where(x => x.Name == "Code" || x.Name == "Name")
+                .OrderBy(x => x.Name)
+            )
+            {
+                result.Add(propertyInfo.GetValue(this)?.ToString());
+            }
+
+            if (result.Any())
+            {
+                return string.Join(" ", result.ToArray());
+            }
+            else
+            {
+                return this.Id.ToString();
+            }
         }
     }
 }

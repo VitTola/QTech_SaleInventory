@@ -31,8 +31,8 @@ namespace QTech.Component
                 base.CellTemplate = value;
             }
         }
-        public Func<ISearchModel, List<DropDownItemModel>> DataSourceFn { get; set; }
-        public Func<ISearchModel> SearchParamFn { get; set; }
+        public Func<QTech.Base.BaseModels.ISearchModel, List<DropDownItemModel>> DataSourceFn { get; set; }
+        public Func<QTech.Base.BaseModels.ISearchModel> SearchParamFn { get; set; }
         public Func<Form> CustomSearchForm { get; set; }
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
@@ -80,7 +80,7 @@ namespace QTech.Component
             }
             editor.ShowAll = col.ShowAll;
 
-            if (Value is BaseModel baseModel)
+            if (Value is QTech.Base.BaseModel baseModel)
             {
                 SelectedObject = baseModel.ToDropDownItemModel();
                 editor.SetValue(baseModel);
@@ -140,7 +140,7 @@ namespace QTech.Component
 
         protected override object GetFormattedValue(object value, int rowIndex, ref DataGridViewCellStyle cellStyle, TypeConverter valueTypeConverter, TypeConverter formattedValueTypeConverter, DataGridViewDataErrorContexts context)
         {
-            if (value is BaseModel val)
+            if (value is QTech.Base.BaseModel val)
             {
                 SelectedObject = val.ToDropDownItemModel();
                 DropDownItems = new List<DropDownItemModel>() { SelectedObject };
@@ -182,7 +182,7 @@ namespace QTech.Component
             }
             set
             {
-                if (value is BaseModel val)
+                if (value is QTech.Base.BaseModel val)
                 {
                     SetValue(val);
                 }

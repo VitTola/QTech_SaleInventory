@@ -34,8 +34,8 @@ namespace QTech.Component
         public List<DropDownItemModel> SelectedItems { get; set; } 
         public DropDownItemModel SelectedObject { get; set; }
 
-        public Func<ISearchModel, List<DropDownItemModel>> DataSourceFn { get; set; }
-        public Func<ISearchModel> SearchParamFn { get; set; }
+        public Func<QTech.Base.BaseModels.ISearchModel, List<DropDownItemModel>> DataSourceFn { get; set; }
+        public Func<QTech.Base.BaseModels.ISearchModel> SearchParamFn { get; set; }
         public Func<Form> CustomSearchForm { get; set; }
         public bool IsGirdViewColumn { get; set; } = false;
 
@@ -90,7 +90,7 @@ namespace QTech.Component
         public bool ShowAll { get; set; } = false;
 
         public void SetValue<T>(T entity) 
-            where T:BaseModel
+            where T: QTech.Base.BaseModel
         {
             if (entity == null)
             {
@@ -172,12 +172,12 @@ namespace QTech.Component
             }
             var searchParam = SearchParamFn();
 
-            //var action = ItemActions?.FirstOrDefault(x => x.Keyword == Text);
-            //if (action!=null)
-            //{
-            //    action.Action?.Invoke();
-            //    return;
-            //}
+            var action = ItemActions?.FirstOrDefault(x => x.Keyword == Text);
+            if (action != null)
+            {
+                action.Action?.Invoke();
+                return;
+            }
 
 
             // If user set request change search value.
@@ -233,9 +233,9 @@ namespace QTech.Component
                             {
                                 var obj = form.SelectedObject;
                                 List<DropDownItemModel> dropDownList = null;
-                                if (obj is BaseModel model)
+                                if (obj is QTech.Base.BaseModel model)
                                 {
-                                    dropDownList = new List<BaseModel>() { model }.ToDropDownItemModelList();
+                                    dropDownList = new List<QTech.Base.BaseModel>() { model }.ToDropDownItemModelList();
                                 }
                                 else if (obj is GuidBaseModel guidModel)
                                 {
@@ -324,32 +324,32 @@ namespace QTech.Component
             }
             base.OnEnter(e);
 
-            //DropDownStyle = ComboBoxStyle.DropDown;
+            DropDownStyle = ComboBoxStyle.DropDown;
         }
 
       
         protected override void OnPreviewKeyDown(PreviewKeyDownEventArgs e)
         {
-            //if (e.KeyData == Keys.Enter)
-            //{
-                 
-            //    e.IsInputKey = false;
-            //    if (DataSourceFn == null)
-            //    {
-            //        return;
-            //    }
-            //    ShowDropDown();
-            //}
-            //if (e.KeyData == Keys.Tab)
-            //{
-            //    e.IsInputKey = false;
-            //    DropDownStyle = ComboBoxStyle.DropDownList;
-            //}
-            //if (e.KeyData == (Keys.Tab | Keys.Shift))
-            //{
-            //    DropDownStyle = ComboBoxStyle.DropDownList;
-            //    e.IsInputKey = false;
-            //} 
+            if (e.KeyData == Keys.Enter)
+            {
+
+                e.IsInputKey = false;
+                if (DataSourceFn == null)
+                {
+                    return;
+                }
+                ShowDropDown();
+            }
+            if (e.KeyData == Keys.Tab)
+            {
+                e.IsInputKey = false;
+                DropDownStyle = ComboBoxStyle.DropDownList;
+            }
+            if (e.KeyData == (Keys.Tab | Keys.Shift))
+            {
+                DropDownStyle = ComboBoxStyle.DropDownList;
+                e.IsInputKey = false;
+            }
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

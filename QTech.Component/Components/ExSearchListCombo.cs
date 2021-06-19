@@ -77,7 +77,7 @@ namespace QTech.Component
         private bool _showSelected = false;
 
         public void SetValue<T>(T entity) 
-            where T:BaseModel
+            where T: QTech.Base.BaseModel
         {
             if (entity == null)
             {
@@ -242,9 +242,9 @@ namespace QTech.Component
                             {
                                 var obj = form.SelectedObject;
                                 List<DropDownItemModel> dropDownList = null;
-                                if (obj is BaseModel model)
+                                if (obj is QTech.Base.BaseModel model)
                                 {
-                                    dropDownList = new List<BaseModel>() { model }.ToDropDownItemModelList();
+                                    dropDownList = new List<QTech.Base.BaseModel>() { model }.ToDropDownItemModelList();
                                 }
                                 else if (obj is GuidBaseModel guidModel)
                                 {

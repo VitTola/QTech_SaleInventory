@@ -1,5 +1,6 @@
 ﻿using QTech.Base.Helpers;
 using QTech.Base.Models;
+using QTech.Base.SearchModels;
 using QTech.Component;
 using QTech.Component.Helpers;
 using QTech.Db.Logics;
@@ -36,8 +37,8 @@ namespace QTech.Forms
 
         public void Bind()
         {
-            //cboCategory.DataSourceFn = p => CategoryLogic.Instance.SearchAsync(p as QTech.Base.SearchModels.CategorySearch);
-
+            cboCategory.DataSourceFn = p => CategoryLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
+            cboCategory.SearchParamFn = () => new CategorySearch();
 
         }
 
@@ -71,9 +72,16 @@ namespace QTech.Forms
             txtName.Text = Model.Name;
             txtNote.Text = Model.Note;
             txtUnitPrice.Text = Model.UnitPrice.ToString();
-            
 
-          //  cboCategory.Text = Model.CategoryId;
+            var _result = this.RunAsync(() =>
+            {
+                var result = CategoryLogic.Instance.FindAsync(Model.Id);
+                return result;
+            }
+            );
+            var _category = _result.Result;
+            cboCategory.SetValue(_category);
+
         }
 
         public async void Save()
