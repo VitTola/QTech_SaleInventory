@@ -1,64 +1,205 @@
-﻿using QTech.Component;
+﻿using QTech.Base;
+using QTech.Base.Helpers;
+using QTech.Base.SearchModels;
+using QTech.Component;
+using QTech.Db.Logics;
 using System;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BaseResource = QTech.Base.Properties.Resources;
 
 
 namespace QTech.Forms
 {
     public partial class SalePage : ExPage, IPage
     {
-       
+        public Sale Model { get; set; }
         public SalePage()
         {
             InitializeComponent();
-
+            InitEvent();
         }
 
-        public void AddNew()
+        private void InitEvent()
         {
-            throw new NotImplementedException();
+            registerSearchMenu();
+            this.Text = BaseResource.Sales;
         }
 
-        public void EditAsync()
+        public async void AddNew()
         {
-            throw new NotImplementedException();
+            var sale = new Sale();
+            var dig = new frmSale(sale, GeneralProcess.Add);
+            if (dig.ShowDialog() == DialogResult.OK)
+            {
+                await Search();
+            }
         }
 
-        public void Reload()
+        public async void EditAsync()
         {
-            
+            if (dgv.SelectedRows.Count == 0)
+            {
+                return;
+            }
+
+            var id = (int)dgv.SelectedRows[0].Cells[colId.Name].Value;
+
+            Model = await btnUpdate.RunAsync(() => SaleLogic.Instance.FindAsync(id));
+            if (Model == null)
+            {
+                return;
+            }
+
+            var dig = new frmSale(Model, GeneralProcess.Update);
+
+            if (dig.ShowDialog() == DialogResult.OK)
+            {
+                await Search();
+                dgv.RowSelected(colId.Name, dig.Model.Id);
+            }
         }
 
-        public void Remove()
+        public async void Reload()
         {
-            throw new NotImplementedException();
+            await Search();
         }
 
-        public Task Search()
+        public async void Remove()
         {
-            throw new NotImplementedException();
+            if (dgv.SelectedRows.Count == 0)
+            {
+                return;
+            }
+
+            var id = (int)dgv.SelectedRows[0].Cells[colId.Name].Value;
+            var canRemove = await btnRemove.RunAsync(() => SaleLogic.Instance.CanRemoveAsync(id));
+            if (canRemove == false)
+            {
+                MsgBox.ShowWarning(EasyServer.Domain.Resources.RowCannotBeRemoved,
+                    GeneralProcess.Remove.GetTextDialog(BaseResource.Sales));
+                return;
+            }
+
+            Model = await btnRemove.RunAsync(() => SaleLogic.Instance.FindAsync(id));
+            if (Model == null)
+            {
+                return;
+            }
+
+            var dig = new frmSale(Model, GeneralProcess.Remove);
+            if (dig.ShowDialog() == DialogResult.OK)
+            {
+                await Search();
+            }
         }
 
-        public void View()
+        public async Task Search()
         {
-            throw new NotImplementedException();
+            var search = new SaleSearch()
+            {
+                Search = txtSearch.Text,
+            };
+
+            var result = await dgv.RunAsync(() => SaleLogic.Instance.SearchAsync(search));
+            if (result == null)
+            {
+                return;
+            }
+            dgv.DataSource = result._ToDataTable();
         }
+
+        public async void View()
+        {
+            if (dgv.SelectedRows.Count == 0)
+            {
+                return;
+            }
+
+            var id = (int)dgv.SelectedRows[0].Cells[colId.Name].Value;
+
+            Model = await btnUpdate.RunAsync(() => SaleLogic.Instance.FindAsync(id));
+
+            if (Model == null)
+            {
+                return;
+            }
+
+            var dig = new frmSale(Model, GeneralProcess.View);
+            dig.ShowDialog();
+        }
+        private void registerSearchMenu()
+        {
+            //txtSearch.AddMenuPattern(
+            //    RequestSearchKey.RequestNo.ToString(),
+            //    RequestSearchKey.RequestNo,
+            //    Properties.Resources.imgRequestNo,
+            //    Properties.Resources.RequestNo,
+            //    Constants.KeyShortcut[RequestSearchKey.RequestNo],
+            //    (s, e) =>
+            //    {
+            //        InputLanguage.CurrentInputLanguage = UI.English;
+            //        txtSearch.ReadOnly = false;
+            //    });
+
+            //txtSearch.AddMenuPattern(
+            //    RequestSearchKey.GeneralInformation.ToString(),
+            //    RequestSearchKey.GeneralInformation,
+            //    Properties.Resources.customer,
+            //    Properties.Resources.GeneralInformation,
+            //    Constants.KeyShortcut[RequestSearchKey.GeneralInformation],
+            //    (s, e) =>
+            //    {
+            //        InputLanguage.CurrentInputLanguage = UI.Primary;
+            //        txtSearch.ReadOnly = false;
+            //    });
+
+            //txtSearch.AddMenuPattern(
+            //    RequestSearchKey.RequestGroupNo.ToString(),
+            //    RequestSearchKey.RequestGroupNo,
+            //    Properties.Resources.imgRequestGroupNo,
+            //    Properties.Resources.RequestGroupNo,
+            //    Constants.KeyShortcut[RequestSearchKey.RequestGroupNo],
+            //    (s, e) =>
+            //    {
+            //        InputLanguage.CurrentInputLanguage = UI.English;
+            //        txtSearch.ReadOnly = false;
+            //    });
+            //txtSearch.AddSeperator();
+            //txtSearch.AddMenuPattern(
+            //    RequestSearchKey.AdvanceSearch.ToString(),
+            //    RequestSearchKey.AdvanceSearch,
+            //    Properties.Resources.filter,
+            //    Storm.Domain.Resources.AdvanceSearch,
+            //    Constants.KeyShortcut[RequestSearchKey.AdvanceSearch],
+            //    (s, e) =>
+            //    {
+            //        InputLanguage.CurrentInputLanguage = UI.English;
+            //        txtSearch.ReadOnly = true;
+            //        btnAdvanceSearch_Click(btnAdvanceSearch, EventArgs.Empty);
+            //    });
+  
+            //InputLanguage.CurrentInputLanguage = UI.English;
+            //txtSearch.ShowMenuPattern(RequestSearchKey.RequestNo);
+            //changeDataVisible();
+        }
+
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            AddNew();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-
+            EditAsync();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-
+            Remove();
         }
     }
 }

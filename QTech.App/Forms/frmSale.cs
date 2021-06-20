@@ -1,4 +1,5 @@
-﻿using QTech.Base.Helpers;
+﻿using QTech.Base;
+using QTech.Base.Helpers;
 using QTech.Component;
 using QTech.Component.Helpers;
 using System;
@@ -15,9 +16,12 @@ namespace QTech.Forms
 {
     public partial class frmSale : ExDialog, IDialog
     {
-        public frmSale()
+        public Sale Model { get; set; }
+        public frmSale(Sale model, GeneralProcess flag)
         {
             InitializeComponent();
+            this.Model = model;
+            this.Flag = flag;
             ResourceHelper.Register(QTech.Base.Properties.Resources.ResourceManager);
             this.ApplyResource();
             Bind();
@@ -28,13 +32,14 @@ namespace QTech.Forms
 
         public void Bind()
         {
+            
             cboPosition.SetDataSource<Base.Enums.Position>();
             
         }
 
         public void InitEvent()
         {
-            this.Text = Base.Properties.Resources.Employees;
+            this.Text = Base.Properties.Resources.Sales;
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             txtName.RegisterPrimaryInputWith(cboPosition);
 
@@ -106,9 +111,20 @@ namespace QTech.Forms
             }
         }
 
+
         private void container_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            Save();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

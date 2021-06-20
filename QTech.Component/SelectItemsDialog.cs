@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace QTech.Component
 {
-    public partial class SelectItemsDialog : ExDialog ,IPage
+    public partial class SelectItemsDialog : ExDialog, IPage
     {
 
         public QTech.Base.BaseModels.ISearchModel SearchParameter { get; set; }
@@ -28,7 +28,7 @@ namespace QTech.Component
             bool loadAll = true,
             bool showAll = false)
         {
-            InitializeComponent(); 
+            InitializeComponent();
             dgv.DataBindingComplete += dgv_DataBindingComplete;
             _loadAll = loadAll;
             _action = action;
@@ -40,6 +40,8 @@ namespace QTech.Component
             txtSearch.Text = searchParameter.Search;
             txtSearch.TextBox.SelectAll();
             txtSearch.RegisterKeyArrowDown(dgv);
+            txtSearch.QuickSearch += TxtSearch_QuickSearch;
+
         }
 
         private void dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -63,22 +65,22 @@ namespace QTech.Component
             _loadAll = false;
             await Search();
         }
-         
+
         void selectedItem()
         {
-            if (dgv.SelectedRows.Count>0)
+            if (dgv.SelectedRows.Count > 0)
             {
-                SelectedItems = dgv.SelectedRows.OfType<DataGridViewRow>().Select(x => (DropDownItemModel)x.DataBoundItem).ToList(); 
-                DialogResult = DialogResult.OK; 
+                SelectedItems = dgv.SelectedRows.OfType<DataGridViewRow>().Select(x => (DropDownItemModel)x.DataBoundItem).ToList();
+                DialogResult = DialogResult.OK;
             }
         }
 
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             selectedItem();
-        }  
+        }
         private void dgv_KeyDown(object sender, KeyEventArgs e)
-        {  
+        {
             if (e.KeyCode == Keys.Enter)
             {
                 selectedItem();
@@ -88,7 +90,7 @@ namespace QTech.Component
         private void btnOK_Click(object sender, EventArgs e)
         {
             selectedItem();
-        } 
+        }
 
         private void SelectItemsDialog_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -100,57 +102,38 @@ namespace QTech.Component
 
         public void AddNew()
         {
-  
+
         }
 
         public void Remove()
         {
- 
+
         }
 
         public void View()
         {
-             
+
         }
 
         public void EditAsync()
         {
-             
+        }
+
+        private async void TxtSearch_QuickSearch(object sender, EventArgs e)
+        {
+            _loadAll = false;
+            await Search();
         }
 
         public async Task Search()
         {
-            //SearchParameter.Search = txtSearch.Text.ToLower();
-            //if (_loadAll)
-            //{
-            //    SearchParameter.Search = string.Empty; 
-            //}
-            //SearchParameter.Paging = pagination.Paging;
+            SearchParameter.Search = txtSearch.Text;
+            var source = await dgv.RunAsync(() =>
+            {
+                var result = _action.Invoke(SearchParameter);
 
-            //pagination.ListModel = await dgv.RunAsync(() =>
-            //{
-            //    var result = _action.Invoke(SearchParameter);
-            //    if (pagination.Paging.CurrentPage == 1)
-            //    {
-            //        if (_itemForAll != null)
-            //        {
-            //            result.Insert(0, _itemForAll);
-            //        }
-            //        foreach (var item in _itemActions)
-            //        {
-            //            result.Insert(0, item.ToDropDownItemModel());
-            //        }
-            //    }
-
-            //    return result;
-            //});
-
-                var source = await dgv.RunAsync(()=>
-                {
-                   var result = _action.Invoke(SearchParameter);
-                    
-                    return result;
-                });
+                return result;
+            });
 
             if (source?.Any() == true)
             {

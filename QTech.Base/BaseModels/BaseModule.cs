@@ -114,17 +114,17 @@ namespace QTech.Base.BaseModels
                 FormName = "QTech.Forms.CategoryPage"
 
             },
-            new MenuBar()
-            {
-                Index = 4,
-                Level = 2,
-                ParentKey = AuthKey.Sale,
-                DisplayName = BaseResource.Sales,
-                Icon = BaseResource.Type_img,
-                Children = new List<MenuBar>(),
-                FormName = "QTech.Forms.frmSale"
+            //new MenuBar()
+            //{
+            //    Index = 4,
+            //    Level = 2,
+            //    ParentKey = AuthKey.Sale,
+            //    DisplayName = BaseResource.Sales,
+            //    Icon = BaseResource.Type_img,
+            //    Children = new List<MenuBar>(),
+            //    FormName = "QTech.Forms.frmSale"
 
-            },
+            //},
             //new MenuBar()
             //{
             //    Index = 5,

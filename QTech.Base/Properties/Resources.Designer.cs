@@ -240,6 +240,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to អ្នកដឹក.
+        /// </summary>
+        public static string Driver {
+            get {
+                return ResourceManager.GetString("Driver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap Driver_img {
@@ -558,6 +567,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to បរិមាណ.
+        /// </summary>
+        public static string Qauntity {
+            get {
+                return ResourceManager.GetString("Qauntity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to លុប.
         /// </summary>
         public static string Remove {
@@ -747,6 +765,15 @@ namespace QTech.Base.Properties {
         public static string TopLevelNodeId {
             get {
                 return ResourceManager.GetString("TopLevelNodeId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to សរុប.
+        /// </summary>
+        public static string Total {
+            get {
+                return ResourceManager.GetString("Total", resourceCulture);
             }
         }
         

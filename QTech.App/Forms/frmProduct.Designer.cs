@@ -56,8 +56,7 @@
             this.container.Controls.Add(this.txtUnitPrice);
             this.container.Controls.Add(this.lblName);
             this.container.Controls.Add(this.txtName);
-            this.container.Location = new System.Drawing.Point(0, 24);
-            this.container.Size = new System.Drawing.Size(441, 239);
+            this.container.Size = new System.Drawing.Size(441, 242);
             // 
             // lblName
             // 
@@ -75,7 +74,7 @@
             this.txtName.Margin = new System.Windows.Forms.Padding(2);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(233, 28);
-            this.txtName.TabIndex = 12;
+            this.txtName.TabIndex = 0;
             // 
             // lblUnitPrice
             // 
@@ -93,7 +92,7 @@
             this.txtUnitPrice.Margin = new System.Windows.Forms.Padding(2);
             this.txtUnitPrice.Name = "txtUnitPrice";
             this.txtUnitPrice.Size = new System.Drawing.Size(233, 28);
-            this.txtUnitPrice.TabIndex = 21;
+            this.txtUnitPrice.TabIndex = 2;
             // 
             // lblNote
             // 
@@ -112,14 +111,14 @@
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(233, 58);
-            this.txtNote.TabIndex = 23;
+            this.txtNote.TabIndex = 3;
             // 
             // exPanel1
             // 
             this.exPanel1.BackColor = System.Drawing.Color.Transparent;
             this.exPanel1.Controls.Add(this.flowLayoutPanel2);
             this.exPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.exPanel1.Location = new System.Drawing.Point(1, 202);
+            this.exPanel1.Location = new System.Drawing.Point(1, 205);
             this.exPanel1.Name = "exPanel1";
             this.exPanel1.Padding = new System.Windows.Forms.Padding(2);
             this.exPanel1.Size = new System.Drawing.Size(439, 36);
@@ -166,6 +165,7 @@
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "រក្សាទុក";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblCategorys
             // 
@@ -193,7 +193,7 @@
             this.cboCategory.SelectedObject = null;
             this.cboCategory.ShowAll = false;
             this.cboCategory.Size = new System.Drawing.Size(233, 27);
-            this.cboCategory.TabIndex = 28;
+            this.cboCategory.TabIndex = 1;
             this.cboCategory.TextAll = "";
             // 
             // frmProduct

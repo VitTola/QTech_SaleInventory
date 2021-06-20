@@ -343,4 +343,13 @@
   <data name="Select" xml:space="preserve">
     <value>ជ្រើសរើស</value>
   </data>
+  <data name="Driver" xml:space="preserve">
+    <value>អ្នកដឹក</value>
+  </data>
+  <data name="Qauntity" xml:space="preserve">
+    <value>បរិមាណ</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>សរុប</value>
+  </data>
 </root>

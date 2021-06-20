@@ -157,7 +157,7 @@
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(233, 90);
-            this.txtNote.TabIndex = 3;
+            this.txtNote.TabIndex = 1;
             // 
             // exPanel1
             // 

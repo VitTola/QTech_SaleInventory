@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,22 +44,22 @@
             this.lblRemove = new System.Windows.Forms.LinkLabel();
             this.lblAdd = new System.Windows.Forms.LinkLabel();
             this.dgv = new QTech.Component.ExDataGridView();
+            this.colName_ = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.colQauntity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDriver = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.exLabel2 = new QTech.Component.ExLabel();
             this.exPanel1 = new QTech.Component.Components.ExPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnClose = new QTech.Component.ExButtonLoading();
-            this.btnAdd = new QTech.Component.ExButtonLoading();
+            this.btnSave = new QTech.Component.ExButtonLoading();
             this.exLabel4 = new QTech.Component.ExLabel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.cboPosition = new System.Windows.Forms.ComboBox();
             this.exLabel5 = new QTech.Component.ExLabel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.exLabel6 = new QTech.Component.ExLabel();
-            this.colName_ = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.colQauntity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDriver = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.container.SuspendLayout();
             this.flowLayOutLabelRemoveAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -154,7 +154,7 @@
             this.txtName.Margin = new System.Windows.Forms.Padding(2);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(200, 27);
-            this.txtName.TabIndex = 0;
+            this.txtName.TabIndex = 2;
             // 
             // exLabel1
             // 
@@ -184,7 +184,7 @@
             this.lblRemove.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.lblRemove.Name = "lblRemove";
             this.lblRemove.Size = new System.Drawing.Size(29, 19);
-            this.lblRemove.TabIndex = 0;
+            this.lblRemove.TabIndex = 1;
             this.lblRemove.TabStop = true;
             this.lblRemove.Text = "លុប";
             this.lblRemove.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblRemove_LinkClicked);
@@ -210,8 +210,8 @@
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv.BackgroundColor = System.Drawing.Color.White;
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -222,16 +222,17 @@
             this.colDriver,
             this.colTotal,
             this.colNote});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Khmer OS Siemreap", 8F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
+            this.dgv.Font = new System.Drawing.Font("Khmer OS Siemreap", 8F);
             this.dgv.Location = new System.Drawing.Point(28, 105);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
@@ -241,122 +242,7 @@
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(651, 297);
-            this.dgv.TabIndex = 4;
-            // 
-            // exLabel2
-            // 
-            this.exLabel2.AutoSize = true;
-            this.exLabel2.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exLabel2.Location = new System.Drawing.Point(27, 80);
-            this.exLabel2.Name = "exLabel2";
-            this.exLabel2.Required = false;
-            this.exLabel2.Size = new System.Drawing.Size(92, 19);
-            this.exLabel2.TabIndex = 11;
-            this.exLabel2.Text = "មុខទំនិញលម្អិត";
-            // 
-            // exPanel1
-            // 
-            this.exPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.exPanel1.Controls.Add(this.flowLayoutPanel2);
-            this.exPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.exPanel1.Location = new System.Drawing.Point(1, 428);
-            this.exPanel1.Name = "exPanel1";
-            this.exPanel1.Padding = new System.Windows.Forms.Padding(2);
-            this.exPanel1.Size = new System.Drawing.Size(706, 36);
-            this.exPanel1.TabIndex = 17;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.btnClose);
-            this.flowLayoutPanel2.Controls.Add(this.btnAdd);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(2, 2);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(702, 32);
-            this.flowLayoutPanel2.TabIndex = 0;
-            // 
-            // btnClose
-            // 
-            this.btnClose.DefaultImage = null;
-            this.btnClose.Executing = false;
-            this.btnClose.Location = new System.Drawing.Point(625, 3);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
-            this.btnClose.ShortcutText = null;
-            this.btnClose.Size = new System.Drawing.Size(75, 27);
-            this.btnClose.TabIndex = 1;
-            this.btnClose.Text = "បិទ";
-            this.btnClose.UseVisualStyleBackColor = true;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.DefaultImage = null;
-            this.btnAdd.Executing = false;
-            this.btnAdd.Location = new System.Drawing.Point(546, 3);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
-            this.btnAdd.ShortcutText = null;
-            this.btnAdd.Size = new System.Drawing.Size(75, 27);
-            this.btnAdd.TabIndex = 0;
-            this.btnAdd.Text = "រក្សាទុក";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            // 
-            // exLabel4
-            // 
-            this.exLabel4.AutoSize = true;
-            this.exLabel4.Location = new System.Drawing.Point(360, 52);
-            this.exLabel4.Name = "exLabel4";
-            this.exLabel4.Required = true;
-            this.exLabel4.Size = new System.Drawing.Size(80, 19);
-            this.exLabel4.TabIndex = 19;
-            this.exLabel4.Text = "លេខវិក្កយបត្រ";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(479, 49);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 27);
-            this.textBox1.TabIndex = 18;
-            // 
-            // cboPosition
-            // 
-            this.cboPosition.FormattingEnabled = true;
-            this.cboPosition.Location = new System.Drawing.Point(143, 49);
-            this.cboPosition.Name = "cboPosition";
-            this.cboPosition.Size = new System.Drawing.Size(200, 27);
-            this.cboPosition.TabIndex = 21;
-            // 
-            // exLabel5
-            // 
-            this.exLabel5.AutoSize = true;
-            this.exLabel5.Location = new System.Drawing.Point(24, 52);
-            this.exLabel5.Name = "exLabel5";
-            this.exLabel5.Required = false;
-            this.exLabel5.Size = new System.Drawing.Size(76, 19);
-            this.exLabel5.TabIndex = 20;
-            this.exLabel5.Text = "ទៅកាន់គំរោង";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(143, 16);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 27);
-            this.comboBox1.TabIndex = 23;
-            // 
-            // exLabel6
-            // 
-            this.exLabel6.AutoSize = true;
-            this.exLabel6.Location = new System.Drawing.Point(24, 19);
-            this.exLabel6.Name = "exLabel6";
-            this.exLabel6.Required = false;
-            this.exLabel6.Size = new System.Drawing.Size(52, 19);
-            this.exLabel6.TabIndex = 22;
-            this.exLabel6.Text = "ក្រុមហ៊ុន";
+            this.dgv.TabIndex = 5;
             // 
             // colName_
             // 
@@ -398,11 +284,131 @@
             this.colNote.Name = "colNote";
             this.colNote.ReadOnly = true;
             // 
+            // exLabel2
+            // 
+            this.exLabel2.AutoSize = true;
+            this.exLabel2.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exLabel2.Location = new System.Drawing.Point(27, 80);
+            this.exLabel2.Name = "exLabel2";
+            this.exLabel2.Required = false;
+            this.exLabel2.Size = new System.Drawing.Size(92, 19);
+            this.exLabel2.TabIndex = 11;
+            this.exLabel2.Text = "មុខទំនិញលម្អិត";
+            // 
+            // exPanel1
+            // 
+            this.exPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.exPanel1.Controls.Add(this.flowLayoutPanel2);
+            this.exPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.exPanel1.Location = new System.Drawing.Point(1, 428);
+            this.exPanel1.Name = "exPanel1";
+            this.exPanel1.Padding = new System.Windows.Forms.Padding(2);
+            this.exPanel1.Size = new System.Drawing.Size(706, 36);
+            this.exPanel1.TabIndex = 17;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.btnClose);
+            this.flowLayoutPanel2.Controls.Add(this.btnSave);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(2, 2);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(702, 32);
+            this.flowLayoutPanel2.TabIndex = 0;
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.Ivory;
+            this.btnClose.DefaultImage = null;
+            this.btnClose.Executing = false;
+            this.btnClose.Location = new System.Drawing.Point(625, 3);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
+            this.btnClose.ShortcutText = null;
+            this.btnClose.Size = new System.Drawing.Size(75, 27);
+            this.btnClose.TabIndex = 1;
+            this.btnClose.Text = "បិទ";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.Ivory;
+            this.btnSave.DefaultImage = null;
+            this.btnSave.Executing = false;
+            this.btnSave.Location = new System.Drawing.Point(546, 3);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
+            this.btnSave.ShortcutText = null;
+            this.btnSave.Size = new System.Drawing.Size(75, 27);
+            this.btnSave.TabIndex = 0;
+            this.btnSave.Text = "រក្សាទុក";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // exLabel4
+            // 
+            this.exLabel4.AutoSize = true;
+            this.exLabel4.Location = new System.Drawing.Point(360, 52);
+            this.exLabel4.Name = "exLabel4";
+            this.exLabel4.Required = true;
+            this.exLabel4.Size = new System.Drawing.Size(80, 19);
+            this.exLabel4.TabIndex = 19;
+            this.exLabel4.Text = "លេខវិក្កយបត្រ";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(479, 49);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(200, 27);
+            this.textBox1.TabIndex = 3;
+            // 
+            // cboPosition
+            // 
+            this.cboPosition.FormattingEnabled = true;
+            this.cboPosition.Location = new System.Drawing.Point(143, 49);
+            this.cboPosition.Name = "cboPosition";
+            this.cboPosition.Size = new System.Drawing.Size(200, 27);
+            this.cboPosition.TabIndex = 1;
+            // 
+            // exLabel5
+            // 
+            this.exLabel5.AutoSize = true;
+            this.exLabel5.Location = new System.Drawing.Point(24, 52);
+            this.exLabel5.Name = "exLabel5";
+            this.exLabel5.Required = false;
+            this.exLabel5.Size = new System.Drawing.Size(76, 19);
+            this.exLabel5.TabIndex = 20;
+            this.exLabel5.Text = "ទៅកាន់គំរោង";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(143, 16);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(200, 27);
+            this.comboBox1.TabIndex = 0;
+            // 
+            // exLabel6
+            // 
+            this.exLabel6.AutoSize = true;
+            this.exLabel6.Location = new System.Drawing.Point(24, 19);
+            this.exLabel6.Name = "exLabel6";
+            this.exLabel6.Required = false;
+            this.exLabel6.Size = new System.Drawing.Size(52, 19);
+            this.exLabel6.TabIndex = 22;
+            this.exLabel6.Text = "ក្រុមហ៊ុន";
+            // 
             // frmSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(708, 486);
+            this.Font = new System.Drawing.Font("Khmer OS System", 8.25F);
             this.Location = new System.Drawing.Point(0, 0);
             this.MaximizeBox = false;
             this.Name = "frmSale";
@@ -437,7 +443,7 @@
         private Component.Components.ExPanel exPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private Component.ExButtonLoading btnClose;
-        private Component.ExButtonLoading btnAdd;
+        private Component.ExButtonLoading btnSave;
         private Component.ExLabel exLabel4;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox comboBox1;

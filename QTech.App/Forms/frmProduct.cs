@@ -53,14 +53,13 @@ namespace QTech.Forms
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             e.Control.RegisterEnglishInput();
-
         }
 
         public bool InValid()
         {
             if (!txtName.IsValidRequired(lblName.Text)
-                |!txtUnitPrice.IsValidNumberic()
-                |!cboCategory.IsValidRequired(lblCategorys.Text))
+                |!cboCategory.IsValidRequired(lblCategorys.Text)
+                |!txtUnitPrice.IsValidNumberic())
             {
                 return true;
             }
@@ -142,6 +141,11 @@ namespace QTech.Forms
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            Save();
         }
     }
 }
