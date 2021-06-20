@@ -67,20 +67,19 @@ namespace QTech.Forms
             return false;
         }
 
-        public void Read()
+        public async void Read()
         {
             txtName.Text = Model.Name;
             txtNote.Text = Model.Note;
             txtUnitPrice.Text = Model.UnitPrice.ToString();
 
-            var _result = this.RunAsync(() =>
+            var _result = await this.RunAsync(() =>
             {
                 var result = CategoryLogic.Instance.FindAsync(Model.Id);
                 return result;
             }
             );
-            var _category = _result.Result;
-            cboCategory.SetValue(_category);
+            cboCategory.SetValue(_result);
 
         }
 
@@ -136,8 +135,13 @@ namespace QTech.Forms
             Model.Name = txtName.Text;
             Model.Note = txtNote.Text;
             Model.UnitPrice = decimal.Parse(txtUnitPrice.Text);
-            //Model.CategoryId = cboPosition.Text;
+            var selectedCat = cboCategory.SelectedObject.ItemObject as Category;
+            Model.CategoryId = selectedCat.Id;
         }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -340,4 +340,7 @@
   <data name="UnitPrice" xml:space="preserve">
     <value>តម្លៃឯកតា</value>
   </data>
+  <data name="Select" xml:space="preserve">
+    <value>ជ្រើសរើស</value>
+  </data>
 </root>
