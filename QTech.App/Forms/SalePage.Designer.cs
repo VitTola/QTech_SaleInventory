@@ -236,8 +236,6 @@
             // 
             this.rdtpPicker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.rdtpPicker.FormattingEnabled = true;
-            this.rdtpPicker.Items.AddRange(new object[] {
-            "AsOfDate"});
             this.rdtpPicker.Location = new System.Drawing.Point(228, 4);
             this.rdtpPicker.Margin = new System.Windows.Forms.Padding(1, 4, 3, 3);
             this.rdtpPicker.Name = "rdtpPicker";

@@ -29,6 +29,7 @@ namespace QTech.Forms
             {
                 await Search();
                 Model = dig.Model;
+                dgv.RowSelected(colId.Name, dig.Model.Id);
             }
         }
 

@@ -96,5 +96,13 @@ namespace QTech.Db.Logics
                 }
             }
         }
+
+        public List<Customer> GetCustomersById(List<int> Ids)
+        {
+            var customers = _db.Customers
+             .Where(cus => Ids.Any(id => id == cus.Id));
+            
+            return customers.ToList();
+        }
 }
 }

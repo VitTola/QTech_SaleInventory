@@ -61,6 +61,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string _string {
+            get {
+                return ResourceManager.GetString("string", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to បន្ថែម.
         /// </summary>
         public static string Add {
@@ -298,6 +307,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ចាប់ពី.
+        /// </summary>
+        public static string FromDate {
+            get {
+                return ResourceManager.GetString("FromDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap Hide {
@@ -363,6 +381,16 @@ namespace QTech.Base.Properties {
         public static string InvoiceNo {
             get {
                 return ResourceManager.GetString("InvoiceNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap InvoiceNo_img {
+            get {
+                object obj = ResourceManager.GetObject("InvoiceNo_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -585,6 +613,16 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap PurchaseOrderNo_img {
+            get {
+                object obj = ResourceManager.GetObject("PurchaseOrderNo_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to បរិមាណ.
         /// </summary>
         public static string Qauntity {
@@ -783,6 +821,15 @@ namespace QTech.Base.Properties {
         public static string ToCompany {
             get {
                 return ResourceManager.GetString("ToCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ដល់.
+        /// </summary>
+        public static string ToDate {
+            get {
+                return ResourceManager.GetString("ToDate", resourceCulture);
             }
         }
         

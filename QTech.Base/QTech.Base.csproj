@@ -126,6 +126,8 @@
     <Compile Include="BaseModules\LocalVariable.cs" />
     <Compile Include="Enums\AuthKey.cs" />
     <Compile Include="Enums\Currency.cs" />
+    <Compile Include="Enums\SaleSearchKey.cs" />
+    <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\JsonNetSerializer.cs" />
     <Compile Include="Helpers\Enums.cs" />
     <Compile Include="Helpers\MimeType.cs" />
@@ -192,6 +194,8 @@
     <Content Include="Dll\EasyServer.Domain.dll" />
     <Content Include="Dll\esc-pos-usb-net.dll" />
     <Content Include="Dll\FastMember.dll" />
+    <None Include="Resources\InvoiceNo.img.png" />
+    <None Include="Resources\PurchaseOrderNo.img.png" />
     <None Include="Resources\Product32x32.png" />
     <None Include="Resources\empty_file.png" />
     <None Include="Resources\Site.img.png" />

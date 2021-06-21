@@ -49,5 +49,13 @@ namespace QTech.Db.Logics
             var result = _db.Sites.Any(x=>x.Id == entity.Id);
             return result;
         }
+
+        public List<Site> GetSiteByIds(List<int> Ids)
+        {
+            var sites = _db.Sites
+             .Where(site => Ids.Any(id => id == site.Id));
+
+            return sites.ToList();
+        }
     }
 }

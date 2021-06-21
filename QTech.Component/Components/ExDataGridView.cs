@@ -213,7 +213,7 @@ namespace QTech.Component
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            this.Font = new Font("Khmer OS Siemreap", 8);
+            this.Font = new Font("Khmer OS System", 8);
 
 
         }

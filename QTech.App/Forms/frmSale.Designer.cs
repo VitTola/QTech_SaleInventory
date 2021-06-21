@@ -89,7 +89,7 @@
             this.container.Controls.Add(this.flowLayOutLabelRemoveAdd);
             this.container.Controls.Add(this.exLabel1);
             this.container.Controls.Add(this.txtName);
-            this.container.Size = new System.Drawing.Size(919, 603);
+            this.container.Size = new System.Drawing.Size(911, 603);
             this.container.Paint += new System.Windows.Forms.PaintEventHandler(this.container_Paint);
             // 
             // colId
@@ -233,7 +233,7 @@
             this.colNote});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS Siemreap", 8F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS System", 8F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -241,7 +241,7 @@
             this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
-            this.dgv.Font = new System.Drawing.Font("Khmer OS Siemreap", 8F);
+            this.dgv.Font = new System.Drawing.Font("Khmer OS System", 8F);
             this.dgv.Location = new System.Drawing.Point(30, 110);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
@@ -330,7 +330,7 @@
             this.exPanel1.Location = new System.Drawing.Point(1, 566);
             this.exPanel1.Name = "exPanel1";
             this.exPanel1.Padding = new System.Windows.Forms.Padding(2);
-            this.exPanel1.Size = new System.Drawing.Size(917, 36);
+            this.exPanel1.Size = new System.Drawing.Size(909, 36);
             this.exPanel1.TabIndex = 17;
             // 
             // flowLayoutPanel2
@@ -341,7 +341,7 @@
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(2, 2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(913, 32);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(905, 32);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // btnClose
@@ -349,7 +349,7 @@
             this.btnClose.BackColor = System.Drawing.Color.Ivory;
             this.btnClose.DefaultImage = null;
             this.btnClose.Executing = false;
-            this.btnClose.Location = new System.Drawing.Point(836, 3);
+            this.btnClose.Location = new System.Drawing.Point(828, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -365,7 +365,7 @@
             this.btnSave.BackColor = System.Drawing.Color.Ivory;
             this.btnSave.DefaultImage = null;
             this.btnSave.Executing = false;
-            this.btnSave.Location = new System.Drawing.Point(757, 3);
+            this.btnSave.Location = new System.Drawing.Point(749, 3);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -477,7 +477,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(919, 624);
+            this.ClientSize = new System.Drawing.Size(911, 624);
             this.Font = new System.Drawing.Font("Khmer OS System", 8.25F);
             this.Location = new System.Drawing.Point(0, 0);
             this.MaximizeBox = false;
