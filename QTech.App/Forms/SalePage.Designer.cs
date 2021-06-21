@@ -33,20 +33,23 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv = new QTech.Component.ExDataGridView();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPurchaseOrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colInvoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colToCompany = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colToSite = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colViewDetail = new System.Windows.Forms.DataGridViewLinkColumn();
             this.graPanel1 = new QTech.Component.GRAPanel();
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtSearch = new QTech.Component.ExTextboxIconPattern();
+            this.rdtpPicker = new QTech.Component.ExReportDatePicker();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnRemove = new QTech.Component.ExButtonLoading();
             this.btnUpdate = new QTech.Component.ExButtonLoading();
             this.btnAdd = new QTech.Component.ExButtonLoading();
             this.colorWithAlpha2 = new QTech.Component.ColorWithAlpha();
             this.colorWithAlpha3 = new QTech.Component.ColorWithAlpha();
-            this.rdtpPicker = new QTech.Component.ExReportDatePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.graPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -77,9 +80,12 @@
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colId,
-            this.colName,
-            this.colPhone,
-            this.colNote});
+            this.colPurchaseOrderNo,
+            this.colInvoiceNo,
+            this.colToCompany,
+            this.colToSite,
+            this.colTotal,
+            this.colViewDetail});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Khmer OS Siemreap", 8F);
@@ -100,7 +106,7 @@
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(782, 608);
+            this.dgv.Size = new System.Drawing.Size(1209, 487);
             this.dgv.TabIndex = 1;
             // 
             // colId
@@ -111,35 +117,58 @@
             this.colId.ReadOnly = true;
             this.colId.Visible = false;
             // 
-            // colName
+            // colPurchaseOrderNo
             // 
-            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colName.DataPropertyName = "Name";
-            this.colName.FillWeight = 40F;
-            this.colName.HeaderText = "ឈ្មោះ";
-            this.colName.MinimumWidth = 300;
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
-            this.colName.Width = 300;
+            this.colPurchaseOrderNo.DataPropertyName = "PurchaseOrderNo";
+            this.colPurchaseOrderNo.FillWeight = 40F;
+            this.colPurchaseOrderNo.HeaderText = "លេខបញ្ជាទិញ";
+            this.colPurchaseOrderNo.MinimumWidth = 200;
+            this.colPurchaseOrderNo.Name = "colPurchaseOrderNo";
+            this.colPurchaseOrderNo.ReadOnly = true;
+            this.colPurchaseOrderNo.Width = 200;
             // 
-            // colPhone
+            // colInvoiceNo
             // 
-            this.colPhone.DataPropertyName = "Phone";
-            this.colPhone.FillWeight = 40F;
-            this.colPhone.HeaderText = "លេខទូរស័ព្ទ";
-            this.colPhone.MinimumWidth = 100;
-            this.colPhone.Name = "colPhone";
-            this.colPhone.ReadOnly = true;
-            this.colPhone.Width = 200;
+            this.colInvoiceNo.DataPropertyName = "InvoiceNo";
+            this.colInvoiceNo.FillWeight = 40F;
+            this.colInvoiceNo.HeaderText = "លេខវិក្កយបត្រ";
+            this.colInvoiceNo.MinimumWidth = 100;
+            this.colInvoiceNo.Name = "colInvoiceNo";
+            this.colInvoiceNo.ReadOnly = true;
+            this.colInvoiceNo.Width = 200;
             // 
-            // colNote
+            // colToCompany
             // 
-            this.colNote.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colNote.DataPropertyName = "Note";
-            this.colNote.FillWeight = 60F;
-            this.colNote.HeaderText = "កំណត់ចំណាំ";
-            this.colNote.Name = "colNote";
-            this.colNote.ReadOnly = true;
+            this.colToCompany.DataPropertyName = "ToCompany";
+            this.colToCompany.FillWeight = 60F;
+            this.colToCompany.HeaderText = "ទៅកាន់ក្រុមហ៊ុន";
+            this.colToCompany.Name = "colToCompany";
+            this.colToCompany.ReadOnly = true;
+            this.colToCompany.Width = 400;
+            // 
+            // colToSite
+            // 
+            this.colToSite.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colToSite.DataPropertyName = "Site";
+            this.colToSite.HeaderText = "ទៅកាន់គំរោង";
+            this.colToSite.Name = "colToSite";
+            this.colToSite.ReadOnly = true;
+            // 
+            // colTotal
+            // 
+            this.colTotal.HeaderText = "សរុបទឹកប្រាក់";
+            this.colTotal.Name = "colTotal";
+            this.colTotal.ReadOnly = true;
+            this.colTotal.Width = 150;
+            // 
+            // colViewDetail
+            // 
+            this.colViewDetail.HeaderText = "មើលលម្អិត";
+            this.colViewDetail.Name = "colViewDetail";
+            this.colViewDetail.ReadOnly = true;
+            this.colViewDetail.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colViewDetail.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colViewDetail.Width = 70;
             // 
             // graPanel1
             // 
@@ -170,7 +199,7 @@
             this.graPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.graPanel1.Name = "graPanel1";
             this.graPanel1.Rounded = true;
-            this.graPanel1.Size = new System.Drawing.Size(782, 35);
+            this.graPanel1.Size = new System.Drawing.Size(1209, 35);
             this.graPanel1.TabIndex = 0;
             // 
             // colorWithAlpha1
@@ -203,6 +232,18 @@
             this.txtSearch.SizeIcon = new System.Drawing.Size(16, 16);
             this.txtSearch.TabIndex = 0;
             // 
+            // rdtpPicker
+            // 
+            this.rdtpPicker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.rdtpPicker.FormattingEnabled = true;
+            this.rdtpPicker.Items.AddRange(new object[] {
+            "AsOfDate"});
+            this.rdtpPicker.Location = new System.Drawing.Point(228, 4);
+            this.rdtpPicker.Margin = new System.Windows.Forms.Padding(1, 4, 3, 3);
+            this.rdtpPicker.Name = "rdtpPicker";
+            this.rdtpPicker.Size = new System.Drawing.Size(200, 27);
+            this.rdtpPicker.TabIndex = 1;
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.btnRemove);
@@ -210,7 +251,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btnAdd);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(495, 0);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(922, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(287, 35);
@@ -279,21 +320,11 @@
             this.colorWithAlpha3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colorWithAlpha3.Parent = null;
             // 
-            // rdtpPicker
-            // 
-            this.rdtpPicker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.rdtpPicker.FormattingEnabled = true;
-            this.rdtpPicker.Location = new System.Drawing.Point(228, 4);
-            this.rdtpPicker.Margin = new System.Windows.Forms.Padding(1, 4, 3, 3);
-            this.rdtpPicker.Name = "rdtpPicker";
-            this.rdtpPicker.Size = new System.Drawing.Size(200, 27);
-            this.rdtpPicker.TabIndex = 1;
-            // 
             // SalePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 643);
+            this.ClientSize = new System.Drawing.Size(1209, 522);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.graPanel1);
             this.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -318,13 +349,16 @@
         private Component.ExButtonLoading btnRemove;
         private Component.ExButtonLoading btnUpdate;
         private Component.ExDataGridView dgv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colPhone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNote;
         private Component.ColorWithAlpha colorWithAlpha2;
         private Component.ColorWithAlpha colorWithAlpha3;
         private Component.ExTextboxIconPattern txtSearch;
         private Component.ExReportDatePicker rdtpPicker;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPurchaseOrderNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colInvoiceNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colToCompany;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colToSite;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTotal;
+        private System.Windows.Forms.DataGridViewLinkColumn colViewDetail;
     }
 }

@@ -19,7 +19,20 @@ namespace QTech.Forms
         public SalePage()
         {
             InitializeComponent();
+            BindData();
             InitEvent();
+        }
+
+        private void BindData()
+        {
+            var maxDate = DateTime.Now;
+            rdtpPicker.CustomDateRang = CustomDateRang.AsOfDate;
+            var peroids = ExReportDatePicker.GetPeroids(maxDate);
+            var customPeroid = ExReportDatePicker.GetPeriod(rdtpPicker.CustomDateRang, maxDate);
+            rdtpPicker.SetMaxDate(maxDate);
+            rdtpPicker.Items.AddRange(peroids.ToArray());
+            rdtpPicker.Items.Add(customPeroid);
+            rdtpPicker.SetSelectePeroid(DatePeroid.Today);
         }
 
         private void InitEvent()
@@ -109,6 +122,9 @@ namespace QTech.Forms
                 return;
             }
             dgv.DataSource = result._ToDataTable();
+
+
+            //dgv.Rows[0].Cells[colViewDetail.Name].Value = "មើលលម្អិត";
         }
 
         public async void View()

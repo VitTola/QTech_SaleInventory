@@ -358,6 +358,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to លេខវិក្កយបត្រ.
+        /// </summary>
+        public static string InvoiceNo {
+            get {
+                return ResourceManager.GetString("InvoiceNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap key {
@@ -567,6 +576,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to លេខបញ្ជាទិញ.
+        /// </summary>
+        public static string PurchaseOrderNo {
+            get {
+                return ResourceManager.GetString("PurchaseOrderNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to បរិមាណ.
         /// </summary>
         public static string Qauntity {
@@ -655,7 +673,7 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to លក់.
+        ///   Looks up a localized string similar to ការលក់.
         /// </summary>
         public static string Sales {
             get {
@@ -760,11 +778,29 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ទៅកាន់ក្រុមហ៊ុន.
+        /// </summary>
+        public static string ToCompany {
+            get {
+                return ResourceManager.GetString("ToCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 0.
         /// </summary>
         public static string TopLevelNodeId {
             get {
                 return ResourceManager.GetString("TopLevelNodeId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ទៅកាន់គំរោង.
+        /// </summary>
+        public static string ToSite {
+            get {
+                return ResourceManager.GetString("ToSite", resourceCulture);
             }
         }
         
@@ -802,6 +838,15 @@ namespace QTech.Base.Properties {
         public static string Update {
             get {
                 return ResourceManager.GetString("Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to មើលម្អិត.
+        /// </summary>
+        public static string ViewDetail {
+            get {
+                return ResourceManager.GetString("ViewDetail", resourceCulture);
             }
         }
     }

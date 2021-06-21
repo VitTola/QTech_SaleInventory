@@ -233,7 +233,7 @@
     <value>ថ្ងៃបង់</value>
   </data>
   <data name="Sales" xml:space="preserve">
-    <value>លក់</value>
+    <value>ការលក់</value>
   </data>
   <data name="Suppliers" xml:space="preserve">
     <value>អ្នកផ្គត់ផ្គង់</value>
@@ -351,5 +351,20 @@
   </data>
   <data name="Total" xml:space="preserve">
     <value>សរុប</value>
+  </data>
+  <data name="InvoiceNo" xml:space="preserve">
+    <value>លេខវិក្កយបត្រ</value>
+  </data>
+  <data name="PurchaseOrderNo" xml:space="preserve">
+    <value>លេខបញ្ជាទិញ</value>
+  </data>
+  <data name="ToCompany" xml:space="preserve">
+    <value>ទៅកាន់ក្រុមហ៊ុន</value>
+  </data>
+  <data name="ToSite" xml:space="preserve">
+    <value>ទៅកាន់គំរោង</value>
+  </data>
+  <data name="ViewDetail" xml:space="preserve">
+    <value>មើលម្អិត</value>
   </data>
 </root>
