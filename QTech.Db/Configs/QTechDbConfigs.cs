@@ -14,6 +14,7 @@ namespace QTech.Db.Configs
         {
             modelBuilder.Entity<Employee>().Property(x => x.Name).HasMaxLength(50).IsRequired();
             modelBuilder.Entity<Customer>().Ignore(x => x.Sites);
+            modelBuilder.Entity<Sale>().Ignore(x => x.SaleDetails);
         }
 
         

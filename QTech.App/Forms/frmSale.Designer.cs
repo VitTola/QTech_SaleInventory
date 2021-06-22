@@ -30,24 +30,16 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCreatedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtPurchaseOrderNo = new System.Windows.Forms.TextBox();
             this.lblPurchaseOrderNo = new QTech.Component.ExLabel();
             this.flowLayOutLabelRemoveAdd = new System.Windows.Forms.FlowLayoutPanel();
             this.lblRemove = new System.Windows.Forms.LinkLabel();
             this.lblAdd = new System.Windows.Forms.LinkLabel();
             this.dgv = new QTech.Component.ExDataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colName_ = new QTech.Component.ExSearchComboColumn();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colProductId = new QTech.Component.ExSearchComboColumn();
             this.colQauntity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDriver = new QTech.Component.ExSearchComboColumn();
+            this.colEmployeeId = new QTech.Component.ExSearchComboColumn();
             this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.exLabel2 = new QTech.Component.ExLabel();
             this.exPanel1 = new QTech.Component.Components.ExPanel();
@@ -89,70 +81,6 @@
             this.container.Controls.Add(this.lblPurchaseOrderNo);
             this.container.Controls.Add(this.txtPurchaseOrderNo);
             this.container.Size = new System.Drawing.Size(911, 603);
-            // 
-            // colId
-            // 
-            this.colId.DataPropertyName = "Id";
-            this.colId.HeaderText = "Id";
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            this.colId.Visible = false;
-            // 
-            // colUserId
-            // 
-            this.colUserId.DataPropertyName = "UserId";
-            this.colUserId.HeaderText = "UserId";
-            this.colUserId.Name = "colUserId";
-            this.colUserId.ReadOnly = true;
-            this.colUserId.Visible = false;
-            // 
-            // colName
-            // 
-            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colName.DataPropertyName = "Name";
-            this.colName.HeaderText = "FullName";
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
-            // 
-            // colCreatedBy
-            // 
-            this.colCreatedBy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCreatedBy.DataPropertyName = "CreatedBy";
-            this.colCreatedBy.HeaderText = "CreateBy";
-            this.colCreatedBy.Name = "colCreatedBy";
-            this.colCreatedBy.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "UserId";
-            this.dataGridViewTextBoxColumn2.HeaderText = "UserId";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Name";
-            this.dataGridViewTextBoxColumn3.HeaderText = "FullName";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "CreatedBy";
-            this.dataGridViewTextBoxColumn4.HeaderText = "CreateBy";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // txtPurchaseOrderNo
             // 
@@ -223,10 +151,10 @@
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.colName_,
+            this.colId,
+            this.colProductId,
             this.colQauntity,
-            this.colDriver,
+            this.colEmployeeId,
             this.colTotal});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -250,27 +178,29 @@
             this.dgv.Size = new System.Drawing.Size(849, 392);
             this.dgv.TabIndex = 4;
             // 
-            // Id
+            // colId
             // 
-            this.Id.HeaderText = "colId";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
+            this.colId.DataPropertyName = "Id";
+            this.colId.HeaderText = "Id";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            this.colId.Visible = false;
             // 
-            // colName_
+            // colProductId
             // 
-            this.colName_.Choose = null;
-            this.colName_.CustomSearchForm = null;
-            this.colName_.DataSourceFn = null;
-            this.colName_.HeaderText = "ឈ្មោះទំនិញ";
-            this.colName_.Name = "colName_";
-            this.colName_.ReadOnly = true;
-            this.colName_.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colName_.SearchParamFn = null;
-            this.colName_.ShowAll = false;
-            this.colName_.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.colName_.TextAll = null;
-            this.colName_.Width = 200;
+            this.colProductId.Choose = null;
+            this.colProductId.CustomSearchForm = null;
+            this.colProductId.DataPropertyName = "ProductId";
+            this.colProductId.DataSourceFn = null;
+            this.colProductId.HeaderText = "ឈ្មោះទំនិញ";
+            this.colProductId.Name = "colProductId";
+            this.colProductId.ReadOnly = true;
+            this.colProductId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colProductId.SearchParamFn = null;
+            this.colProductId.ShowAll = false;
+            this.colProductId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colProductId.TextAll = null;
+            this.colProductId.Width = 200;
             // 
             // colQauntity
             // 
@@ -280,23 +210,25 @@
             this.colQauntity.ReadOnly = true;
             this.colQauntity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // colDriver
+            // colEmployeeId
             // 
-            this.colDriver.Choose = null;
-            this.colDriver.CustomSearchForm = null;
-            this.colDriver.DataSourceFn = null;
-            this.colDriver.HeaderText = "អ្នកដឹក";
-            this.colDriver.Name = "colDriver";
-            this.colDriver.ReadOnly = true;
-            this.colDriver.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colDriver.SearchParamFn = null;
-            this.colDriver.ShowAll = false;
-            this.colDriver.TextAll = null;
-            this.colDriver.Width = 200;
+            this.colEmployeeId.Choose = null;
+            this.colEmployeeId.CustomSearchForm = null;
+            this.colEmployeeId.DataPropertyName = "EmployeeId";
+            this.colEmployeeId.DataSourceFn = null;
+            this.colEmployeeId.HeaderText = "អ្នកដឹក";
+            this.colEmployeeId.Name = "colEmployeeId";
+            this.colEmployeeId.ReadOnly = true;
+            this.colEmployeeId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colEmployeeId.SearchParamFn = null;
+            this.colEmployeeId.ShowAll = false;
+            this.colEmployeeId.TextAll = null;
+            this.colEmployeeId.Width = 200;
             // 
             // colTotal
             // 
             this.colTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colTotal.DataPropertyName = "Total";
             this.colTotal.HeaderText = "សរុប";
             this.colTotal.Name = "colTotal";
             this.colTotal.ReadOnly = true;
@@ -483,7 +415,7 @@
             this.cboSite.SelectedObject = null;
             this.cboSite.ShowAll = false;
             this.cboSite.Size = new System.Drawing.Size(233, 27);
-            this.cboSite.TabIndex = 26;
+            this.cboSite.TabIndex = 27;
             this.cboSite.TextAll = "";
             // 
             // frmSale
@@ -537,12 +469,12 @@
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label lblCurrency_;
         private Component.ExLabel lblTotal;
-        private Component.ExSearchCombo cboSite;
         private Component.ExSearchCombo cboCustomer;
+        private Component.ExSearchCombo cboSite;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private Component.ExSearchComboColumn colName_;
+        private Component.ExSearchComboColumn colProductId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colQauntity;
-        private Component.ExSearchComboColumn colDriver;
+        private Component.ExSearchComboColumn colEmployeeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotal;
     }
 }

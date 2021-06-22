@@ -379,7 +379,19 @@
   <data name="PurchaseOrderNo_img" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PurchaseOrderNo.img.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="string" xml:space="preserve">
-    <value />
+  <data name="MsgPleaseInputDataInTable_" xml:space="preserve">
+    <value>សូមបញ្ចូលទិន្នន័យ ក្នុងតារាង {0}</value>
+  </data>
+  <data name="MsgPleaseInputValue" xml:space="preserve">
+    <value>សូមបញ្ជូលតម្លៃ</value>
+  </data>
+  <data name="EmployeeId" xml:space="preserve">
+    <value>អ្នកដឹក</value>
+  </data>
+  <data name="ProductId" xml:space="preserve">
+    <value>ឈ្មោះទំនិញ</value>
+  </data>
+  <data name="SaleDetail" xml:space="preserve">
+    <value>មុខទំនិញលម្អិត</value>
   </data>
 </root>

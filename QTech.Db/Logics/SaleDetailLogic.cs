@@ -16,6 +16,14 @@ namespace QTech.Db.Logics
         public SaleDetailLogic()
         {
         }
+        public override SaleDetail AddAsync(SaleDetail entity)
+        {
+            return base.AddAsync(entity);
+        }
+        public override SaleDetail UpdateAsync(SaleDetail entity)
+        {
+            return base.UpdateAsync(entity);
+        }
         public override SaleDetail FindAsync(int id)
         {
             var result = All().FirstOrDefault(x => x.Active && x.Id == id);

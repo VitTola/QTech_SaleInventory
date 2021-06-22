@@ -1,6 +1,7 @@
 ﻿using QTech.Base;
 using QTech.Base.Helpers;
 using QTech.Base.Models;
+using QTech.Base.SearchModels;
 using QTech.Component;
 using QTech.Component.Helpers;
 using QTech.Db.Logics;
@@ -13,12 +14,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BaseReource = QTech.Base.Properties.Resources;
 
 namespace QTech.Forms
 {
     public partial class frmSale : ExDialog, IDialog
     {
         public Sale Model { get; set; }
+
         public frmSale(Sale model, GeneralProcess flag)
         {
             InitializeComponent();
@@ -26,6 +29,7 @@ namespace QTech.Forms
             this.Flag = flag;
             ResourceHelper.Register(QTech.Base.Properties.Resources.ResourceManager);
             this.ApplyResource();
+            Read();
             Bind();
             InitEvent();
         }
@@ -34,11 +38,16 @@ namespace QTech.Forms
 
         public void Bind()
         {
-
-            cboSite.SetDataSource<Base.Enums.Position>();
+            cboCustomer.DataSourceFn = p => CustomerLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
+            cboCustomer.SearchParamFn = () => new CustomerSearch();
+            cboSite.DataSourceFn = p => SiteLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
+            cboSite.SearchParamFn = () => new SiteSearch();
+            colProductId.DataSourceFn = p => ProductLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
+            colProductId.SearchParamFn = () => new ProductSearch();
+            colEmployeeId.DataSourceFn = p => EmployeeLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
+            colEmployeeId.SearchParamFn = () => new EmployeeSearch();
 
         }
-
         public void InitEvent()
         {
             this.Text = Base.Properties.Resources.Sales;
@@ -50,33 +59,62 @@ namespace QTech.Forms
             dgv.AllowUserToAddRows = dgv.AllowUserToDeleteRows = true;
             dgv.EditMode = DataGridViewEditMode.EditOnEnter;
 
-
-
             if (Flag == GeneralProcess.Add || Flag == GeneralProcess.Update)
             {
                 dgv.EditingControlShowing += dgv_EditingControlShowing;
             }
         }
-
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             e.Control.RegisterEnglishInput();
-
-
-
         }
-
         public bool InValid()
         {
-            //var 
-            //if (!colCurrency.IsValidNumberic)
-            //{
-
-            //}
+            if (!cboCustomer.IsSelected() | !cboSite.IsSelected() | 
+                !txtPurchaseOrderNo.IsValidRequired(lblPurchaseOrderNo.Text) |
+                !txtInvoiceNo.IsValidRequired(lblInvoiceNo.Text)
+                | !validSaleDetail()
+                )
+            {
+                return true;
+            }
 
             return false;
         }
 
+        private bool validSaleDetail()
+        {
+            var invalidCell = false;
+            var rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => x.Index != dgv.RowCount - 1);
+            if (rows?.Any() != true)
+            {
+                MsgBox.ShowInformation(string.Format(BaseReource.MsgPleaseInputDataInTable_,BaseReource.SaleDetail));
+                return false;
+            }
+
+            foreach (DataGridViewRow row in rows)
+            {
+                var cells = row.Cells.OfType<DataGridViewCell>().Where(x=>x.ColumnIndex != row.Cells[colId.Name].ColumnIndex).ToList();
+                cells.ForEach(x =>
+                {
+                    if (x.Value == null)
+                    {
+                        x.ErrorText = BaseReource.MsgPleaseInputValue;
+                        invalidCell = true;
+                    }
+                    else
+                    {
+                        x.ErrorText = string.Empty;
+                    }
+                });
+            }
+            if (invalidCell)
+            {
+                return false;
+            }
+
+            return true;
+        }
         public async void Read()
         {
             txtPurchaseOrderNo.Text = Model.PurchaseOrderNo;
@@ -117,13 +155,11 @@ namespace QTech.Forms
                     row.Cells[colName.Name].Value = pro?.Name ?? string.Empty;
                     row.Cells[colQauntity.Name].Value = x.Qauntity;
                     var drive = drives?.FirstOrDefault(f => f.Id == x.EmployeeId);
-                    row.Cells[colDriver.Name].Value = drive?.Name ?? string.Empty;
-                    row.Cells[colDriver.Name].Value = drive?.Name ?? string.Empty;
+                    row.Cells[colEmployeeId.Name].Value = drive?.Name ?? string.Empty;
+                    row.Cells[colEmployeeId.Name].Value = drive?.Name ?? string.Empty;
                     row.Cells[colTotal.Name].Value = x.Total;
                 });
             }
-
-
         }
         private DataGridViewRow newRow(bool isFocus = false)
         {
@@ -176,28 +212,56 @@ namespace QTech.Forms
                 DialogResult = System.Windows.Forms.DialogResult.OK;
             }
         }
-
         public void ViewChangeLog()
         {
 
         }
-
         public void Write()
         {
+            Model.PurchaseOrderNo = txtPurchaseOrderNo.Text;
+            Model.InvoiceNo = txtInvoiceNo.Text;
+            var customer = cboCustomer.SelectedObject.ItemObject as Customer;
+            var site = cboSite.SelectedObject.ItemObject as Site;
+            Model.CompanyId = customer.Id;
+            Model.SiteId = site.Id;
 
+            var saleDetail = new SaleDetail();
+            foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
+            {
+                saleDetail.Id = int.Parse(row?.Cells[colId.Name]?.Value?.ToString() ?? "0");
+                saleDetail.ProductId = int.Parse(row.Cells[colProductId.Name].Value.ToString());
+                saleDetail.Qauntity =int.Parse(row.Cells[colQauntity.Name].Value.ToString());
+                saleDetail.EmployeeId = int.Parse(row.Cells[colEmployeeId.Name].Value.ToString());
+                saleDetail.Total = decimal.Parse(row.Cells[colTotal.Name].Value.ToString());
+                Model.SaleDetails.Add(saleDetail);
+            }
         }
 
         private void lblAdd_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            dgv.BeginEdit(true);
+            if (dgv.RowCount == 0 || !string.IsNullOrEmpty(dgv.Rows[dgv.RowCount - 1].Cells[colProductId.Name].Value?.ToString()))
+            {
+                var row = newRow(true);
+            }
+            else
+            {
+                var row = dgv.Rows[dgv.RowCount - 1];
+                if (row != null)
+                {
+                    dgv.Focus();
+                    dgv.CurrentCell = row.Cells[colProductId.Name];
+                }
+            }
         }
 
         private void lblRemove_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (dgv?.SelectedRows?.Count > 0)
+            if (dgv.SelectedRows.Count == 0 || dgv.SelectedRows[0] == null)
             {
-                
+                return;
             }
+            var row = dgv.SelectedRows[0];
+            dgv.Rows.Remove(row);
         }
 
         private void btnSave_Click(object sender, EventArgs e)

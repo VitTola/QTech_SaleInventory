@@ -63,8 +63,9 @@ namespace QTech.Forms
 
         public async void AddNew()
         {
-            var sale = new Sale();
-            var dig = new frmSale(sale, GeneralProcess.Add);
+            Model = new Sale();
+            Model.SaleDetails = new List<SaleDetail>();
+            var dig = new frmSale(Model, GeneralProcess.Add);
             if (dig.ShowDialog() == DialogResult.OK)
             {
                 await Search();

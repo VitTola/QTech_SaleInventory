@@ -16,6 +16,7 @@ namespace QTech.Base
         public int SiteId { get; set; }
         public int CompanyId { get; set; }
         public int EmployeeId { get; set; }
+        public List<SaleDetail> SaleDetails{ get; set; }
 
     }
 

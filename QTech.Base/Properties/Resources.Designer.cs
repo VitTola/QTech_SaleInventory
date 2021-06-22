@@ -61,15 +61,6 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string _string {
-            get {
-                return ResourceManager.GetString("string", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to បន្ថែម.
         /// </summary>
         public static string Add {
@@ -288,6 +279,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to អ្នកដឹក.
+        /// </summary>
+        public static string EmployeeId {
+            get {
+                return ResourceManager.GetString("EmployeeId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to បុគ្គលិក.
         /// </summary>
         public static string Employees {
@@ -464,6 +464,24 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to សូមបញ្ចូលទិន្នន័យ ក្នុងតារាង {0}.
+        /// </summary>
+        public static string MsgPleaseInputDataInTable_ {
+            get {
+                return ResourceManager.GetString("MsgPleaseInputDataInTable_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to សូមបញ្ជូលតម្លៃ.
+        /// </summary>
+        public static string MsgPleaseInputValue {
+            get {
+                return ResourceManager.GetString("MsgPleaseInputValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ឈ្មោះ.
         /// </summary>
         public static string Name {
@@ -595,6 +613,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ឈ្មោះទំនិញ.
+        /// </summary>
+        public static string ProductId {
+            get {
+                return ResourceManager.GetString("ProductId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ទំនិញ.
         /// </summary>
         public static string Products {
@@ -697,6 +724,15 @@ namespace QTech.Base.Properties {
             get {
                 object obj = ResourceManager.GetObject("Sale_img", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to មុខទំនិញលម្អិត.
+        /// </summary>
+        public static string SaleDetail {
+            get {
+                return ResourceManager.GetString("SaleDetail", resourceCulture);
             }
         }
         
