@@ -38,8 +38,8 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.exLabel1 = new QTech.Component.ExLabel();
+            this.txtPurchaseOrderNo = new System.Windows.Forms.TextBox();
+            this.lblPurchaseOrderNo = new QTech.Component.ExLabel();
             this.flowLayOutLabelRemoveAdd = new System.Windows.Forms.FlowLayoutPanel();
             this.lblRemove = new System.Windows.Forms.LinkLabel();
             this.lblAdd = new System.Windows.Forms.LinkLabel();
@@ -49,22 +49,21 @@
             this.colQauntity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDriver = new QTech.Component.ExSearchComboColumn();
             this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.exLabel2 = new QTech.Component.ExLabel();
             this.exPanel1 = new QTech.Component.Components.ExPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnClose = new QTech.Component.ExButtonLoading();
             this.btnSave = new QTech.Component.ExButtonLoading();
-            this.exLabel4 = new QTech.Component.ExLabel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.cboPosition = new System.Windows.Forms.ComboBox();
-            this.exLabel5 = new QTech.Component.ExLabel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.exLabel6 = new QTech.Component.ExLabel();
+            this.lblInvoiceNo = new QTech.Component.ExLabel();
+            this.txtInvoiceNo = new System.Windows.Forms.TextBox();
+            this.lblSite = new QTech.Component.ExLabel();
+            this.lblCustomer = new QTech.Component.ExLabel();
             this.panelTotal = new System.Windows.Forms.Panel();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.lblCurrency_ = new System.Windows.Forms.Label();
             this.lblTotal = new QTech.Component.ExLabel();
+            this.cboCustomer = new QTech.Component.ExSearchCombo();
+            this.cboSite = new QTech.Component.ExSearchCombo();
             this.container.SuspendLayout();
             this.flowLayOutLabelRemoveAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -75,22 +74,21 @@
             // 
             // container
             // 
+            this.container.Controls.Add(this.cboSite);
+            this.container.Controls.Add(this.cboCustomer);
             this.container.Controls.Add(this.lblTotal);
             this.container.Controls.Add(this.panelTotal);
-            this.container.Controls.Add(this.comboBox1);
-            this.container.Controls.Add(this.exLabel6);
-            this.container.Controls.Add(this.cboPosition);
-            this.container.Controls.Add(this.exLabel5);
-            this.container.Controls.Add(this.exLabel4);
-            this.container.Controls.Add(this.textBox1);
+            this.container.Controls.Add(this.lblCustomer);
+            this.container.Controls.Add(this.lblSite);
+            this.container.Controls.Add(this.lblInvoiceNo);
+            this.container.Controls.Add(this.txtInvoiceNo);
             this.container.Controls.Add(this.exPanel1);
             this.container.Controls.Add(this.exLabel2);
             this.container.Controls.Add(this.dgv);
             this.container.Controls.Add(this.flowLayOutLabelRemoveAdd);
-            this.container.Controls.Add(this.exLabel1);
-            this.container.Controls.Add(this.txtName);
+            this.container.Controls.Add(this.lblPurchaseOrderNo);
+            this.container.Controls.Add(this.txtPurchaseOrderNo);
             this.container.Size = new System.Drawing.Size(911, 603);
-            this.container.Paint += new System.Windows.Forms.PaintEventHandler(this.container_Paint);
             // 
             // colId
             // 
@@ -156,23 +154,23 @@
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
-            // txtName
+            // txtPurchaseOrderNo
             // 
-            this.txtName.Location = new System.Drawing.Point(679, 21);
-            this.txtName.Margin = new System.Windows.Forms.Padding(2);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(200, 27);
-            this.txtName.TabIndex = 2;
+            this.txtPurchaseOrderNo.Location = new System.Drawing.Point(679, 21);
+            this.txtPurchaseOrderNo.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPurchaseOrderNo.Name = "txtPurchaseOrderNo";
+            this.txtPurchaseOrderNo.Size = new System.Drawing.Size(200, 27);
+            this.txtPurchaseOrderNo.TabIndex = 2;
             // 
-            // exLabel1
+            // lblPurchaseOrderNo
             // 
-            this.exLabel1.AutoSize = true;
-            this.exLabel1.Location = new System.Drawing.Point(560, 24);
-            this.exLabel1.Name = "exLabel1";
-            this.exLabel1.Required = true;
-            this.exLabel1.Size = new System.Drawing.Size(81, 19);
-            this.exLabel1.TabIndex = 5;
-            this.exLabel1.Text = "លេខបញ្ជាទិញ";
+            this.lblPurchaseOrderNo.AutoSize = true;
+            this.lblPurchaseOrderNo.Location = new System.Drawing.Point(560, 24);
+            this.lblPurchaseOrderNo.Name = "lblPurchaseOrderNo";
+            this.lblPurchaseOrderNo.Required = true;
+            this.lblPurchaseOrderNo.Size = new System.Drawing.Size(81, 19);
+            this.lblPurchaseOrderNo.TabIndex = 5;
+            this.lblPurchaseOrderNo.Text = "លេខបញ្ជាទិញ";
             // 
             // flowLayOutLabelRemoveAdd
             // 
@@ -229,8 +227,7 @@
             this.colName_,
             this.colQauntity,
             this.colDriver,
-            this.colTotal,
-            this.colNote});
+            this.colTotal});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS System", 8F);
@@ -299,17 +296,10 @@
             // 
             // colTotal
             // 
+            this.colTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colTotal.HeaderText = "សរុប";
             this.colTotal.Name = "colTotal";
             this.colTotal.ReadOnly = true;
-            // 
-            // colNote
-            // 
-            this.colNote.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colNote.DataPropertyName = "Note";
-            this.colNote.HeaderText = "ចំណាំ";
-            this.colNote.Name = "colNote";
-            this.colNote.ReadOnly = true;
             // 
             // exLabel2
             // 
@@ -376,62 +366,47 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // exLabel4
+            // lblInvoiceNo
             // 
-            this.exLabel4.AutoSize = true;
-            this.exLabel4.Location = new System.Drawing.Point(560, 57);
-            this.exLabel4.Name = "exLabel4";
-            this.exLabel4.Required = true;
-            this.exLabel4.Size = new System.Drawing.Size(80, 19);
-            this.exLabel4.TabIndex = 19;
-            this.exLabel4.Text = "លេខវិក្កយបត្រ";
+            this.lblInvoiceNo.AutoSize = true;
+            this.lblInvoiceNo.Location = new System.Drawing.Point(560, 57);
+            this.lblInvoiceNo.Name = "lblInvoiceNo";
+            this.lblInvoiceNo.Required = true;
+            this.lblInvoiceNo.Size = new System.Drawing.Size(80, 19);
+            this.lblInvoiceNo.TabIndex = 19;
+            this.lblInvoiceNo.Text = "លេខវិក្កយបត្រ";
             // 
-            // textBox1
+            // txtInvoiceNo
             // 
-            this.textBox1.Location = new System.Drawing.Point(679, 54);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 27);
-            this.textBox1.TabIndex = 3;
+            this.txtInvoiceNo.Location = new System.Drawing.Point(679, 54);
+            this.txtInvoiceNo.Margin = new System.Windows.Forms.Padding(2);
+            this.txtInvoiceNo.Name = "txtInvoiceNo";
+            this.txtInvoiceNo.Size = new System.Drawing.Size(200, 27);
+            this.txtInvoiceNo.TabIndex = 3;
             // 
-            // cboPosition
+            // lblSite
             // 
-            this.cboPosition.FormattingEnabled = true;
-            this.cboPosition.Location = new System.Drawing.Point(149, 54);
-            this.cboPosition.Name = "cboPosition";
-            this.cboPosition.Size = new System.Drawing.Size(200, 27);
-            this.cboPosition.TabIndex = 1;
+            this.lblSite.AutoSize = true;
+            this.lblSite.Location = new System.Drawing.Point(30, 57);
+            this.lblSite.Name = "lblSite";
+            this.lblSite.Required = false;
+            this.lblSite.Size = new System.Drawing.Size(76, 19);
+            this.lblSite.TabIndex = 20;
+            this.lblSite.Text = "ទៅកាន់គំរោង";
             // 
-            // exLabel5
+            // lblCustomer
             // 
-            this.exLabel5.AutoSize = true;
-            this.exLabel5.Location = new System.Drawing.Point(30, 57);
-            this.exLabel5.Name = "exLabel5";
-            this.exLabel5.Required = false;
-            this.exLabel5.Size = new System.Drawing.Size(76, 19);
-            this.exLabel5.TabIndex = 20;
-            this.exLabel5.Text = "ទៅកាន់គំរោង";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(149, 21);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 27);
-            this.comboBox1.TabIndex = 0;
-            // 
-            // exLabel6
-            // 
-            this.exLabel6.AutoSize = true;
-            this.exLabel6.Location = new System.Drawing.Point(30, 24);
-            this.exLabel6.Name = "exLabel6";
-            this.exLabel6.Required = false;
-            this.exLabel6.Size = new System.Drawing.Size(52, 19);
-            this.exLabel6.TabIndex = 22;
-            this.exLabel6.Text = "ក្រុមហ៊ុន";
+            this.lblCustomer.AutoSize = true;
+            this.lblCustomer.Location = new System.Drawing.Point(30, 24);
+            this.lblCustomer.Name = "lblCustomer";
+            this.lblCustomer.Required = false;
+            this.lblCustomer.Size = new System.Drawing.Size(52, 19);
+            this.lblCustomer.TabIndex = 22;
+            this.lblCustomer.Text = "ក្រុមហ៊ុន";
             // 
             // panelTotal
             // 
+            this.panelTotal.BackColor = System.Drawing.Color.Ivory;
             this.panelTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelTotal.Controls.Add(this.txtTotal);
             this.panelTotal.Controls.Add(this.lblCurrency_);
@@ -473,6 +448,44 @@
             this.lblTotal.TabIndex = 24;
             this.lblTotal.Text = "សរុបទឹកប្រាក់";
             // 
+            // cboCustomer
+            // 
+            this.cboCustomer.Choose = "";
+            this.cboCustomer.CustomSearchForm = null;
+            this.cboCustomer.DataSourceFn = null;
+            this.cboCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCustomer.FormattingEnabled = true;
+            this.cboCustomer.IsGirdViewColumn = false;
+            this.cboCustomer.LoadAll = true;
+            this.cboCustomer.Location = new System.Drawing.Point(149, 21);
+            this.cboCustomer.Name = "cboCustomer";
+            this.cboCustomer.SearchParamFn = null;
+            this.cboCustomer.SelectedItems = null;
+            this.cboCustomer.SelectedObject = null;
+            this.cboCustomer.ShowAll = false;
+            this.cboCustomer.Size = new System.Drawing.Size(233, 27);
+            this.cboCustomer.TabIndex = 25;
+            this.cboCustomer.TextAll = "";
+            // 
+            // cboSite
+            // 
+            this.cboSite.Choose = "";
+            this.cboSite.CustomSearchForm = null;
+            this.cboSite.DataSourceFn = null;
+            this.cboSite.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSite.FormattingEnabled = true;
+            this.cboSite.IsGirdViewColumn = false;
+            this.cboSite.LoadAll = true;
+            this.cboSite.Location = new System.Drawing.Point(149, 54);
+            this.cboSite.Name = "cboSite";
+            this.cboSite.SearchParamFn = null;
+            this.cboSite.SelectedItems = null;
+            this.cboSite.SelectedObject = null;
+            this.cboSite.ShowAll = false;
+            this.cboSite.Size = new System.Drawing.Size(233, 27);
+            this.cboSite.TabIndex = 26;
+            this.cboSite.TextAll = "";
+            // 
             // frmSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
@@ -505,32 +518,31 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtPurchaseOrderNo;
         private Component.ExDataGridView dgv;
         private System.Windows.Forms.FlowLayoutPanel flowLayOutLabelRemoveAdd;
         private System.Windows.Forms.LinkLabel lblRemove;
         private System.Windows.Forms.LinkLabel lblAdd;
-        private Component.ExLabel exLabel1;
+        private Component.ExLabel lblPurchaseOrderNo;
         private Component.ExLabel exLabel2;
         private Component.Components.ExPanel exPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private Component.ExButtonLoading btnClose;
         private Component.ExButtonLoading btnSave;
-        private Component.ExLabel exLabel4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private Component.ExLabel exLabel6;
-        private System.Windows.Forms.ComboBox cboPosition;
-        private Component.ExLabel exLabel5;
+        private Component.ExLabel lblInvoiceNo;
+        private System.Windows.Forms.TextBox txtInvoiceNo;
+        private Component.ExLabel lblCustomer;
+        private Component.ExLabel lblSite;
+        private System.Windows.Forms.Panel panelTotal;
+        private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.Label lblCurrency_;
+        private Component.ExLabel lblTotal;
+        private Component.ExSearchCombo cboSite;
+        private Component.ExSearchCombo cboCustomer;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private Component.ExSearchComboColumn colName_;
         private System.Windows.Forms.DataGridViewTextBoxColumn colQauntity;
         private Component.ExSearchComboColumn colDriver;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNote;
-        private System.Windows.Forms.Panel panelTotal;
-        private System.Windows.Forms.TextBox txtTotal;
-        private System.Windows.Forms.Label lblCurrency_;
-        private Component.ExLabel lblTotal;
     }
 }

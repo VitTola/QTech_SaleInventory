@@ -69,6 +69,7 @@
     <Compile Include="Logics\DbLogic.cs" />
     <Compile Include="Logics\CategoryLogic.cs" />
     <Compile Include="Logics\EmployeeLogic.cs" />
+    <Compile Include="Logics\SaleDetailLogic.cs" />
     <Compile Include="Logics\ProductLogic.cs" />
     <Compile Include="Logics\SaleLogic.cs" />
     <Compile Include="Logics\SiteLogic.cs" />

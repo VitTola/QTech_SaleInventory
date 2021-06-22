@@ -1,7 +1,9 @@
 ﻿using QTech.Base;
 using QTech.Base.Helpers;
+using QTech.Base.Models;
 using QTech.Component;
 using QTech.Component.Helpers;
+using QTech.Db.Logics;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,16 +34,16 @@ namespace QTech.Forms
 
         public void Bind()
         {
-            
-            cboPosition.SetDataSource<Base.Enums.Position>();
-            
+
+            cboSite.SetDataSource<Base.Enums.Position>();
+
         }
 
         public void InitEvent()
         {
             this.Text = Base.Properties.Resources.Sales;
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            txtName.RegisterPrimaryInputWith(cboPosition);
+            txtPurchaseOrderNo.RegisterPrimaryInputWith(cboSite);
 
             dgv.ReadOnly = false;
             dgv.AllowRowNotFound = false;
@@ -60,7 +62,7 @@ namespace QTech.Forms
         {
             e.Control.RegisterEnglishInput();
 
-            
+
 
         }
 
@@ -75,24 +77,114 @@ namespace QTech.Forms
             return false;
         }
 
-        public void Read()
+        public async void Read()
         {
-            throw new NotImplementedException();
-        }
+            txtPurchaseOrderNo.Text = Model.PurchaseOrderNo;
+            txtInvoiceNo.Text = Model.InvoiceNo;
 
-        public void Save()
+            Customer cus = null;
+            Site site = null;
+            List<Product> products = null;
+            List<Customer> drives = null;
+            var saleDetails = await this.RunAsync(()=>
+            {
+                cus = CustomerLogic.Instance.FindAsync(Model.CompanyId);
+                site = SiteLogic.Instance.FindAsync(Model.CompanyId);
+                var details = SaleDetailLogic.Instance.GetSaleDetailBySaleId(Model.Id);
+                var productIds = details.Select(x => x.ProductId).Distinct().ToList();
+                var driveIds = details.Select(x => x.EmployeeId).Distinct().ToList();
+                products = ProductLogic.Instance.All().Where(x => x.Active && productIds.Contains(x.Id)).ToList();
+                drives = CustomerLogic.Instance.All().Where(x => x.Active && driveIds.Contains(x.Id)).ToList();
+
+                return details;
+            });
+            if (cus != null)
+            {
+                cboCustomer.SetValue(cus);
+            }
+            if (site != null)
+            {
+                cboSite.SetValue(site);
+            }
+
+            if (saleDetails.Any())
+            {
+                saleDetails.ForEach(x =>
+                {
+                    var row = newRow(false);
+                    row.Cells[colId.Name].Value = x.Id;
+                    var pro = products?.FirstOrDefault(f => f.Id == x.ProductId);
+                    row.Cells[colName.Name].Value = pro?.Name ?? string.Empty;
+                    row.Cells[colQauntity.Name].Value = x.Qauntity;
+                    var drive = drives?.FirstOrDefault(f => f.Id == x.EmployeeId);
+                    row.Cells[colDriver.Name].Value = drive?.Name ?? string.Empty;
+                    row.Cells[colDriver.Name].Value = drive?.Name ?? string.Empty;
+                    row.Cells[colTotal.Name].Value = x.Total;
+                });
+            }
+
+
+        }
+        private DataGridViewRow newRow(bool isFocus = false)
         {
-            throw new NotImplementedException();
+            var row = dgv.Rows[dgv.Rows.Add()];
+            row.Cells[colId.Name].Value = 0;
+            row.Cells[colId.Name].Value = 0;
+            if (isFocus)
+            {
+                dgv.Focus();
+            }
+            return row;
+        }
+        public async void Save()
+        {
+            if (Flag == GeneralProcess.View)
+            {
+                Close();
+            }
+
+            if (InValid()) { return; }
+            Write();
+
+            var isExist = await btnSave.RunAsync(() => SaleLogic.Instance.IsExistsAsync(Model));
+            if (isExist == true)
+            {
+                txtInvoiceNo.IsExists(lblInvoiceNo.Text);
+                return;
+            }
+
+            var result = await btnSave.RunAsync(() =>
+            {
+                if (Flag == GeneralProcess.Add)
+                {
+                    return SaleLogic.Instance.AddAsync(Model);
+                }
+                else if (Flag == GeneralProcess.Update)
+                {
+                    return SaleLogic.Instance.UpdateAsync(Model);
+                }
+                else if (Flag == GeneralProcess.Remove)
+                {
+                    return SaleLogic.Instance.RemoveAsync(Model);
+                }
+
+                return null;
+            });
+            if (result != null)
+            {
+                Model = result;
+                DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
         }
 
         public void ViewChangeLog()
         {
-            throw new NotImplementedException();
+
         }
 
         public void Write()
         {
-            throw new NotImplementedException();
+
         }
 
         private void lblAdd_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
@@ -104,17 +196,8 @@ namespace QTech.Forms
         {
             if (dgv?.SelectedRows?.Count > 0)
             {
-
-
-
-
+                
             }
-        }
-
-
-        private void container_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void btnSave_Click(object sender, EventArgs e)
