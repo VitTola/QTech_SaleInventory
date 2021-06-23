@@ -39,8 +39,9 @@
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colProductId = new QTech.Component.ExSearchComboColumn();
             this.colQauntity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEmployeeId = new QTech.Component.ExSearchComboColumn();
+            this.colUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEmployeeId = new QTech.Component.ExSearchComboColumn();
             this.exLabel2 = new QTech.Component.ExLabel();
             this.exPanel1 = new QTech.Component.Components.ExPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -81,6 +82,7 @@
             this.container.Controls.Add(this.lblPurchaseOrderNo);
             this.container.Controls.Add(this.txtPurchaseOrderNo);
             this.container.Size = new System.Drawing.Size(911, 603);
+            this.container.Paint += new System.Windows.Forms.PaintEventHandler(this.container_Paint);
             // 
             // txtPurchaseOrderNo
             // 
@@ -154,8 +156,9 @@
             this.colId,
             this.colProductId,
             this.colQauntity,
-            this.colEmployeeId,
-            this.colTotal});
+            this.colUnitPrice,
+            this.colTotal,
+            this.colEmployeeId});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS System", 8F);
@@ -210,8 +213,25 @@
             this.colQauntity.ReadOnly = true;
             this.colQauntity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
+            // colUnitPrice
+            // 
+            this.colUnitPrice.DataPropertyName = "UnitPrice";
+            this.colUnitPrice.HeaderText = "តម្ថៃឯកតា";
+            this.colUnitPrice.Name = "colUnitPrice";
+            this.colUnitPrice.ReadOnly = true;
+            this.colUnitPrice.Width = 150;
+            // 
+            // colTotal
+            // 
+            this.colTotal.DataPropertyName = "Total";
+            this.colTotal.HeaderText = "សរុប";
+            this.colTotal.Name = "colTotal";
+            this.colTotal.ReadOnly = true;
+            this.colTotal.Width = 200;
+            // 
             // colEmployeeId
             // 
+            this.colEmployeeId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colEmployeeId.Choose = null;
             this.colEmployeeId.CustomSearchForm = null;
             this.colEmployeeId.DataPropertyName = "EmployeeId";
@@ -223,15 +243,6 @@
             this.colEmployeeId.SearchParamFn = null;
             this.colEmployeeId.ShowAll = false;
             this.colEmployeeId.TextAll = null;
-            this.colEmployeeId.Width = 200;
-            // 
-            // colTotal
-            // 
-            this.colTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colTotal.DataPropertyName = "Total";
-            this.colTotal.HeaderText = "សរុប";
-            this.colTotal.Name = "colTotal";
-            this.colTotal.ReadOnly = true;
             // 
             // exLabel2
             // 
@@ -442,7 +453,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUserId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCreatedBy;
@@ -472,9 +482,11 @@
         private Component.ExSearchCombo cboCustomer;
         private Component.ExSearchCombo cboSite;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private Component.ExSearchComboColumn colProductId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colQauntity;
-        private Component.ExSearchComboColumn colEmployeeId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colUnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotal;
+        private Component.ExSearchComboColumn colEmployeeId;
     }
 }

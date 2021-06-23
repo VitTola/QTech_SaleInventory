@@ -2145,6 +2145,19 @@ namespace QTech.Component
             dic.Remove(fromKey);
             dic[toKey] = value;
         }
+
+        public static void validCurrency(this TextBox txt, object sender, KeyPressEventArgs e)
+        {
+            decimal x;
+            char ch = e.KeyChar;
+            if (ch == (char)8)    //Backspace
+                e.Handled = false;//Remember think "Handled" like barrier to stop any unexpected charactor
+            else if (!char.IsDigit(ch) && ch != '.' || !decimal.TryParse(txt.Text + ch, out x))
+                e.Handled = true;
+        }
     }
+
+
+
 }
 

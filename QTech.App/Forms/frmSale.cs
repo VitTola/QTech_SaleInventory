@@ -46,13 +46,16 @@ namespace QTech.Forms
             colProductId.SearchParamFn = () => new ProductSearch();
             colEmployeeId.DataSourceFn = p => EmployeeLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
             colEmployeeId.SearchParamFn = () => new EmployeeSearch();
-
         }
         public void InitEvent()
         {
             this.Text = Base.Properties.Resources.Sales;
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             txtPurchaseOrderNo.RegisterPrimaryInputWith(cboSite);
+            txtPurchaseOrderNo.RegisterEnglishInputWith(txtPurchaseOrderNo);
+            dgv.RegisterEnglishInputColumns(colQauntity);
+            colUnitPrice.ReadOnly = colTotal.ReadOnly = true;
+
 
             dgv.ReadOnly = false;
             dgv.AllowRowNotFound = false;
@@ -64,10 +67,48 @@ namespace QTech.Forms
                 dgv.EditingControlShowing += dgv_EditingControlShowing;
             }
         }
+
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             e.Control.RegisterEnglishInput();
+            if (e.Control is ExSearchCombo cbo)
+            {
+                cbo.SelectedIndexChanged += Cbo_SelectedIndexChanged;
+            }
+
+            if (e.Control is TextBox txt)
+            {
+                txt.KeyPress += (o, ee) => { txt.validCurrency(sender, ee); };
+                if (dgv.CurrentCell.ColumnIndex == colQauntity.Index)
+                {
+                    txt.KeyUp += Txt_KeyUp;
+                }
+            }
         }
+
+        private void Txt_KeyUp(object sender, KeyEventArgs e)
+        {
+            var unitPrice = decimal.Parse(dgv.CurrentRow?.Cells[colUnitPrice.Name].Value?.ToString()/*?.Split(' ').FirstOrDefault() ?? "1"*/);
+            var qty = int.Parse(dgv.CurrentRow?.Cells[colQauntity.Name].Value?.ToString());
+            dgv.CurrentRow.Cells[colQauntity.Name].Value = (unitPrice * qty).ToString();
+        }
+
+        private async void Cbo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            colUnitPrice.ReadOnly = colTotal.ReadOnly = true;
+            if (dgv.CurrentCell.ColumnIndex == colProductId.Index)
+            {
+                var unitPrice = await dgv.RunAsync(() =>
+                {
+                    var colPro = sender as ExSearchCombo;
+                    var proId = colPro.SelectedObject.ItemObject as Product;
+                    var result = ProductLogic.Instance.FindAsync(proId.Id);
+                    return result?.UnitPrice;
+                });
+                dgv.CurrentRow.Cells[colUnitPrice.Name].Value = unitPrice.ToString();
+            }
+        }
+
         public bool InValid()
         {
             if (!cboCustomer.IsSelected() | !cboSite.IsSelected() | 
@@ -158,6 +199,7 @@ namespace QTech.Forms
                     row.Cells[colEmployeeId.Name].Value = drive?.Name ?? string.Empty;
                     row.Cells[colEmployeeId.Name].Value = drive?.Name ?? string.Empty;
                     row.Cells[colTotal.Name].Value = x.Total;
+                    row.Cells[colUnitPrice.Name].Value = products?.FirstOrDefault(y=> y.Id == x.ProductId)?.UnitPrice;
                 });
             }
         }
@@ -272,6 +314,11 @@ namespace QTech.Forms
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void container_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
