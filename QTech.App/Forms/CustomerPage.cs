@@ -342,12 +342,12 @@ namespace QTech.Forms
 
         private void picCollapseExpanse_MouseHover(object sender, EventArgs e)
         {
-            picCollapseExpanse.BackColor = Color.LightCyan;
+            //picCollapseExpanse.BackColor = Color.LightCyan;
         }
 
         private void picCollapseExpanse_MouseLeave(object sender, EventArgs e)
         {
-            picCollapseExpanse.BackColor = Color.FromArgb(245, 245, 237);
+           // picCollapseExpanse.BackColor = Color.FromArgb(245, 245, 237);
         }
 
         private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)

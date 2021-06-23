@@ -728,6 +728,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to កាលបរិច្ឆេទលក់.
+        /// </summary>
+        public static string SaleDate {
+            get {
+                return ResourceManager.GetString("SaleDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to មុខទំនិញលម្អិត.
         /// </summary>
         public static string SaleDetail {

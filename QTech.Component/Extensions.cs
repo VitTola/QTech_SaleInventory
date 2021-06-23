@@ -2155,6 +2155,26 @@ namespace QTech.Component
             else if (!char.IsDigit(ch) && ch != '.' || !decimal.TryParse(txt.Text + ch, out x))
                 e.Handled = true;
         }
+
+        public static void SetControlsReadOnly(this Form form)
+        {
+            foreach (Control control in form.Controls)
+            {
+                if (control is TextBox c)
+                {
+                    c.ReadOnly = true;
+                }
+                if (control is ComboBox com)
+                {
+                    com.Enabled = false;
+                }
+                if (control is DataGrid g)
+                {
+                   g.ReadOnly  = true;
+                }
+            }
+        }
+
     }
 
 

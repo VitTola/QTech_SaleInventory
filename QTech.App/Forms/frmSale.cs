@@ -21,6 +21,7 @@ namespace QTech.Forms
     public partial class frmSale : ExDialog, IDialog
     {
         public Sale Model { get; set; }
+        private decimal Total;
 
         public frmSale(Sale model, GeneralProcess flag)
         {
@@ -41,7 +42,7 @@ namespace QTech.Forms
             cboCustomer.DataSourceFn = p => CustomerLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
             cboCustomer.SearchParamFn = () => new CustomerSearch();
             cboSite.DataSourceFn = p => SiteLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
-            cboSite.SearchParamFn = () => new SiteSearch();
+            cboSite.SearchParamFn = () => new SiteSearch() { };
             colProductId.DataSourceFn = p => ProductLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
             colProductId.SearchParamFn = () => new ProductSearch();
             colEmployeeId.DataSourceFn = p => EmployeeLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
@@ -65,11 +66,31 @@ namespace QTech.Forms
             if (Flag == GeneralProcess.Add || Flag == GeneralProcess.Update)
             {
                 dgv.EditingControlShowing += dgv_EditingControlShowing;
+                cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
+            }
+            else
+            {
+                txtInvoiceNo.ReadOnly = txtPurchaseOrderNo.ReadOnly = true;
+                cboCustomer.Enabled = cboSite.Enabled = dgv.Enabled = flowLayOutLabelRemoveAdd.Enabled = false;
+            }
+        }
+
+        private void CboCustomer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var customer = cboCustomer.SelectedObject.ItemObject as Customer;
+            if (customer != null)
+            {
+                cboSite.SearchParamFn = () => new SiteSearch() {CustomerId = customer.Id};
             }
         }
 
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
+            colUnitPrice.ReadOnly = colTotal.ReadOnly = true;
+            if (dgv.CurrentCell.ColumnIndex == colEmployeeId.Index)
+            {
+                return;
+            }
             e.Control.RegisterEnglishInput();
             if (e.Control is ExSearchCombo cbo)
             {
@@ -79,34 +100,31 @@ namespace QTech.Forms
             if (e.Control is TextBox txt)
             {
                 txt.KeyPress += (o, ee) => { txt.validCurrency(sender, ee); };
-                if (dgv.CurrentCell.ColumnIndex == colQauntity.Index)
+                if (dgv.CurrentCell.ColumnIndex != colQauntity.Index)
                 {
-                    txt.KeyUp += Txt_KeyUp;
+                    return;
                 }
+                txt.Leave += Txt_Leave;
             }
         }
-
-        private void Txt_KeyUp(object sender, KeyEventArgs e)
+        private void Txt_Leave(object sender, EventArgs e)
         {
-            var unitPrice = decimal.Parse(dgv.CurrentRow?.Cells[colUnitPrice.Name].Value?.ToString()/*?.Split(' ').FirstOrDefault() ?? "1"*/);
-            var qty = int.Parse(dgv.CurrentRow?.Cells[colQauntity.Name].Value?.ToString());
-            dgv.CurrentRow.Cells[colQauntity.Name].Value = (unitPrice * qty).ToString();
+            var unitPrice = decimal.Parse(dgv.CurrentRow?.Cells[colUnitPrice.Name].Value?.ToString());
+            var qty = int.Parse(dgv.CurrentRow?.Cells[colQauntity.Name]?.Value?.ToString());
+            dgv.CurrentRow.Cells[colTotal.Name].Value = (unitPrice * qty).ToString();
+            Total += decimal.Parse(dgv.CurrentRow?.Cells[colTotal.Name]?.Value?.ToString());
+            txtTotal.Text = Total.ToString();
         }
-
         private async void Cbo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            colUnitPrice.ReadOnly = colTotal.ReadOnly = true;
-            if (dgv.CurrentCell.ColumnIndex == colProductId.Index)
+            var unitPrice = await dgv.RunAsync(() =>
             {
-                var unitPrice = await dgv.RunAsync(() =>
-                {
-                    var colPro = sender as ExSearchCombo;
-                    var proId = colPro.SelectedObject.ItemObject as Product;
-                    var result = ProductLogic.Instance.FindAsync(proId.Id);
-                    return result?.UnitPrice;
-                });
-                dgv.CurrentRow.Cells[colUnitPrice.Name].Value = unitPrice.ToString();
-            }
+                var colPro = sender as ExSearchCombo;
+                var proId = colPro.SelectedObject.ItemObject as Product;
+                var result = ProductLogic.Instance.FindAsync(proId.Id);
+                return result?.UnitPrice;
+            });
+            dgv.CurrentRow.Cells[colUnitPrice.Name].Value = unitPrice.ToString();
         }
 
         public bool InValid()
@@ -266,6 +284,7 @@ namespace QTech.Forms
             var site = cboSite.SelectedObject.ItemObject as Site;
             Model.CompanyId = customer.Id;
             Model.SiteId = site.Id;
+            Model.SaleDate = DateTime.Now;
 
             var saleDetail = new SaleDetail();
             foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))

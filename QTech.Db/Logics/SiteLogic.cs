@@ -18,7 +18,7 @@ namespace QTech.Db.Logics
 
         public override Site FindAsync(int id)
         {
-            var result = All().FirstOrDefault(x => x.Active && x.Id == id);
+            var result = All().FirstOrDefault(x => x.Active && x.CustomerId == id);
             return result;
         }
         public override bool CanRemoveAsync(Site entity)
@@ -30,10 +30,10 @@ namespace QTech.Db.Logics
             var result = Search(model).ToList();
             return result;
         }
-        public List<Site> SearchAsync(int id)
+        public List<Site> SearchAsync(int cusId)
         {
             var q = All();
-            q = q.Where(x => x.CustomerId == id);
+            q = q.Where(x => x.CustomerId == cusId);
             var result = q.ToList();
             return result;
         }
@@ -49,13 +49,12 @@ namespace QTech.Db.Logics
             var result = _db.Sites.Any(x=>x.Id == entity.Id);
             return result;
         }
-
         public List<Site> GetSiteByIds(List<int> Ids)
         {
             var sites = _db.Sites
              .Where(site => Ids.Any(id => id == site.Id));
-
             return sites.ToList();
         }
+
     }
 }

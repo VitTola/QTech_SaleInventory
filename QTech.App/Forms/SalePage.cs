@@ -45,6 +45,20 @@ namespace QTech.Forms
             registerSearchMenu();
 
         }
+        private void InitEvent()
+        {
+            this.Text = BaseResource.Sales;
+            dgv.CellContentClick += Dgv_CellContentClick;
+        }
+
+        private void Dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgv.CurrentCell.ColumnIndex != colViewDetail.Index)
+            {
+                return;
+            }
+            View();
+        }
 
         private void txtSearch_PatternChanged(object sender, EventArgs e)
         {
@@ -56,11 +70,7 @@ namespace QTech.Forms
             
         }
 
-        private void InitEvent()
-        {
-            this.Text = BaseResource.Sales;
-        }
-
+        
         public async void AddNew()
         {
             Model = new Sale();
@@ -136,18 +146,23 @@ namespace QTech.Forms
             {
                 Search = txtSearch.Text,
             };
+            List<Customer> _Customers = null;
+            List<Site> _Sites = null;
+            var _sales =await dgv.RunAsync(() =>
+            {
+               var _result = SaleLogic.Instance.SearchAsync(search);
+                var CusIds = _result.Select(x => x.CompanyId).ToList();
+                var SitesIds = _result.Select(x => x.SiteId).ToList();
+                 _Customers = CustomerLogic.Instance.GetCustomersById(CusIds);
+                _Sites = SiteLogic.Instance.GetSiteByIds(SitesIds);
 
-            var result = await dgv.RunAsync(() => SaleLogic.Instance.SearchAsync(search));
-            if (result == null)
+                return _result;
+            });
+            if (_sales == null)
             {
                 return;
             }
-            var CusIds = result.Select(x => x.CompanyId).ToList();
-            var SitesIds = result.Select(x => x.SiteId).ToList();
-            var _Customers = CustomerLogic.Instance.GetCustomersById(CusIds);
-            var _Sites = SiteLogic.Instance.GetSiteByIds(SitesIds);
-
-            result.ForEach(x =>
+            _sales.ForEach(x =>
             {
                 var row = newRow(false);
                 row.Cells[colId.Name].Value = x.Id;
@@ -156,6 +171,7 @@ namespace QTech.Forms
                 row.Cells[colToCompany.Name].Value = _Customers?.FirstOrDefault(cus => cus.Id == x.CompanyId)?.Name;
                 row.Cells[colToSite.Name].Value = _Sites?.FirstOrDefault(s => s.Id == x.SiteId)?.Name;
                 row.Cells[colTotal.Name].Value = x.Total;
+                row.Cells[colSaleDate.Name].Value = x.SaleDate.ToShortDateString();
                 row.Cells[colViewDetail.Name].Value = BaseResource.ViewDetail;
             });
             
@@ -287,6 +303,11 @@ namespace QTech.Forms
         private void btnRemove_Click(object sender, EventArgs e)
         {
             Remove();
+        }
+
+        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

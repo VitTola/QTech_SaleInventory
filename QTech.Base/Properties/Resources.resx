@@ -394,4 +394,7 @@
   <data name="SaleDetail" xml:space="preserve">
     <value>មុខទំនិញលម្អិត</value>
   </data>
+  <data name="SaleDate" xml:space="preserve">
+    <value>កាលបរិច្ឆេទលក់</value>
+  </data>
 </root>

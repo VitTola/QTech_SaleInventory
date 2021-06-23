@@ -64,9 +64,8 @@ namespace QTech.Component
             this.container.Controls.Add(this.dgv);
             this.container.Controls.Add(this.panel1);
             this.container.Controls.Add(this.graPanel1);
-            this.container.Location = new System.Drawing.Point(0, 28);
             this.container.Padding = new System.Windows.Forms.Padding(1, 0, 1, 1);
-            this.container.Size = new System.Drawing.Size(920, 690);
+            this.container.Size = new System.Drawing.Size(636, 566);
             this.container.Text = "container";
             // 
             // colorWithAlpha1
@@ -102,7 +101,7 @@ namespace QTech.Component
             this.graPanel1.Location = new System.Drawing.Point(1, 0);
             this.graPanel1.Name = "graPanel1";
             this.graPanel1.Rounded = true;
-            this.graPanel1.Size = new System.Drawing.Size(918, 41);
+            this.graPanel1.Size = new System.Drawing.Size(634, 41);
             this.graPanel1.TabIndex = 0;
             // 
             // colorWithAlpha2
@@ -116,7 +115,7 @@ namespace QTech.Component
             this.flowLayoutPanel3.Controls.Add(this.btnSelect);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(718, 0);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(434, 0);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Padding = new System.Windows.Forms.Padding(0, 5, 4, 0);
             this.flowLayoutPanel3.Size = new System.Drawing.Size(200, 41);
@@ -145,7 +144,7 @@ namespace QTech.Component
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(918, 41);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(634, 41);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // txtSearch
@@ -184,7 +183,7 @@ namespace QTech.Component
             this.dataGridViewTextBoxColumn4});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS Siemreap", 8F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS System", 8F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -193,7 +192,7 @@ namespace QTech.Component
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
-            this.dgv.Font = new System.Drawing.Font("Khmer OS Siemreap", 8F);
+            this.dgv.Font = new System.Drawing.Font("Khmer OS System", 8F);
             this.dgv.Location = new System.Drawing.Point(1, 41);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
@@ -202,7 +201,7 @@ namespace QTech.Component
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(918, 606);
+            this.dgv.Size = new System.Drawing.Size(634, 482);
             this.dgv.TabIndex = 1;
             this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
             this.dgv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgv_KeyDown);
@@ -277,10 +276,10 @@ namespace QTech.Component
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.flowLayoutPanel4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(1, 647);
+            this.panel1.Location = new System.Drawing.Point(1, 523);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(2, 0, 2, 2);
-            this.panel1.Size = new System.Drawing.Size(918, 42);
+            this.panel1.Size = new System.Drawing.Size(634, 42);
             this.panel1.TabIndex = 4;
             // 
             // flowLayoutPanel4
@@ -290,7 +289,7 @@ namespace QTech.Component
             this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel4.Location = new System.Drawing.Point(2, 0);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(914, 40);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(630, 40);
             this.flowLayoutPanel4.TabIndex = 1;
             // 
             // btnClose
@@ -300,7 +299,7 @@ namespace QTech.Component
             this.btnClose.DefaultImage = null;
             this.btnClose.Executing = false;
             this.btnClose.Font = new System.Drawing.Font("Khmer OS Siemreap", 8F);
-            this.btnClose.Location = new System.Drawing.Point(837, 6);
+            this.btnClose.Location = new System.Drawing.Point(553, 6);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2, 6, 2, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -314,7 +313,7 @@ namespace QTech.Component
             // SelectItemsDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 22F);
-            this.ClientSize = new System.Drawing.Size(920, 718);
+            this.ClientSize = new System.Drawing.Size(636, 587);
             this.Font = new System.Drawing.Font("Khmer OS", 8.25F);
             this.KeyPreview = true;
             this.Location = new System.Drawing.Point(0, 0);

@@ -15,7 +15,19 @@ namespace QTech.Db.Logics
         public SaleLogic()
         {
         }
-
+        //public override Customer AddAsync(Customer entity)
+        //{
+        //    var Customer = base.AddAsync(entity);
+        //    var sites = entity.Sites;
+        //    if (sites != null && sites.Any())
+        //    {
+        //        foreach (var s in sites)
+        //        {
+        //            SiteLogic.Instance.AddAsync(s);
+        //        }
+        //    }
+        //    return entity;
+        //}
         public override Sale AddAsync(Sale entity)
         {
            var result =  base.AddAsync(entity);
