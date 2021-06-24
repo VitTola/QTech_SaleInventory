@@ -80,17 +80,13 @@ namespace QTech.Forms
             var customer = cboCustomer.SelectedObject.ItemObject as Customer;
             if (customer != null)
             {
-                cboSite.SearchParamFn = () => new SiteSearch() {CustomerId = customer.Id};
+                cboSite.SearchParamFn = () => new SiteSearch() { CustomerId = customer.Id };
             }
         }
 
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             colUnitPrice.ReadOnly = colTotal.ReadOnly = true;
-            if (dgv.CurrentCell.ColumnIndex == colEmployeeId.Index)
-            {
-                return;
-            }
             e.Control.RegisterEnglishInput();
             if (e.Control is ExSearchCombo cbo)
             {
@@ -117,6 +113,10 @@ namespace QTech.Forms
         }
         private async void Cbo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (dgv.CurrentCell.ColumnIndex != colProductId.Index)
+            {
+                return;
+            }
             var unitPrice = await dgv.RunAsync(() =>
             {
                 var colPro = sender as ExSearchCombo;
@@ -129,7 +129,7 @@ namespace QTech.Forms
 
         public bool InValid()
         {
-            if (!cboCustomer.IsSelected() | !cboSite.IsSelected() | 
+            if (!cboCustomer.IsSelected() | !cboSite.IsSelected() |
                 !txtPurchaseOrderNo.IsValidRequired(lblPurchaseOrderNo.Text) |
                 !txtInvoiceNo.IsValidRequired(lblInvoiceNo.Text)
                 | !validSaleDetail()
@@ -140,20 +140,19 @@ namespace QTech.Forms
 
             return false;
         }
-
         private bool validSaleDetail()
         {
             var invalidCell = false;
             var rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => x.Index != dgv.RowCount - 1);
             if (rows?.Any() != true)
             {
-                MsgBox.ShowInformation(string.Format(BaseReource.MsgPleaseInputDataInTable_,BaseReource.SaleDetail));
+                MsgBox.ShowInformation(string.Format(BaseReource.MsgPleaseInputDataInTable_, BaseReource.SaleDetail));
                 return false;
             }
 
             foreach (DataGridViewRow row in rows)
             {
-                var cells = row.Cells.OfType<DataGridViewCell>().Where(x=>x.ColumnIndex != row.Cells[colId.Name].ColumnIndex).ToList();
+                var cells = row.Cells.OfType<DataGridViewCell>().Where(x => x.ColumnIndex != row.Cells[colId.Name].ColumnIndex).ToList();
                 cells.ForEach(x =>
                 {
                     if (x.Value == null)
@@ -182,16 +181,16 @@ namespace QTech.Forms
             Customer cus = null;
             Site site = null;
             List<Product> products = null;
-            List<Customer> drives = null;
-            var saleDetails = await this.RunAsync(()=>
+            List<Employee> drivers = null;
+            var saleDetails = await this.RunAsync(() =>
             {
                 cus = CustomerLogic.Instance.FindAsync(Model.CompanyId);
                 site = SiteLogic.Instance.FindAsync(Model.CompanyId);
                 var details = SaleDetailLogic.Instance.GetSaleDetailBySaleId(Model.Id);
                 var productIds = details.Select(x => x.ProductId).Distinct().ToList();
-                var driveIds = details.Select(x => x.EmployeeId).Distinct().ToList();
+                var driverIds = details.Select(x => x.EmployeeId).Distinct().ToList();
                 products = ProductLogic.Instance.All().Where(x => x.Active && productIds.Contains(x.Id)).ToList();
-                drives = CustomerLogic.Instance.All().Where(x => x.Active && driveIds.Contains(x.Id)).ToList();
+                drivers = EmployeeLogic.Instance.All().Where(x => x.Active && driverIds.Contains(x.Id)).ToList();
 
                 return details;
             });
@@ -210,14 +209,43 @@ namespace QTech.Forms
                 {
                     var row = newRow(false);
                     row.Cells[colId.Name].Value = x.Id;
-                    var pro = products?.FirstOrDefault(f => f.Id == x.ProductId);
-                    row.Cells[colName.Name].Value = pro?.Name ?? string.Empty;
                     row.Cells[colQauntity.Name].Value = x.Qauntity;
-                    var drive = drives?.FirstOrDefault(f => f.Id == x.EmployeeId);
-                    row.Cells[colEmployeeId.Name].Value = drive?.Name ?? string.Empty;
-                    row.Cells[colEmployeeId.Name].Value = drive?.Name ?? string.Empty;
                     row.Cells[colTotal.Name].Value = x.Total;
-                    row.Cells[colUnitPrice.Name].Value = products?.FirstOrDefault(y=> y.Id == x.ProductId)?.UnitPrice;
+                    row.Cells[colUnitPrice.Name].Value = products?.FirstOrDefault(y => y.Id == x.ProductId)?.UnitPrice;
+
+                    if (products != null)
+                    {
+                        var pro = products?.FirstOrDefault(f => f.Id == x.ProductId);
+                        var lsProdut = new List<DropDownItemModel>()
+                    {
+                        new DropDownItemModel
+                        {
+                             Id = pro.Id,
+                            Code = pro.Name,
+                            Name = pro.Name,
+                            DisplayText = pro.Name,
+                            ItemObject = pro,
+                        }
+                    };
+                        row.Cells[colProductId.Name].Value = lsProdut;
+                    }
+                    if (drivers != null)
+                    {
+                        var driver = drivers?.FirstOrDefault(f => f.Id == x.EmployeeId);
+                        var lsDriver = new List<DropDownItemModel>()
+                    {
+                        new DropDownItemModel
+                        {
+                            Id = driver.Id,
+                            Code = driver.Name,
+                            Name = driver.Name,
+                            DisplayText = driver.Name,
+                            ItemObject = driver,
+                        }
+                    };
+                        row.Cells[colEmployeeId.Name].Value = lsDriver;
+                    }
+
                 });
             }
         }
@@ -291,7 +319,7 @@ namespace QTech.Forms
             {
                 saleDetail.Id = int.Parse(row?.Cells[colId.Name]?.Value?.ToString() ?? "0");
                 saleDetail.ProductId = int.Parse(row.Cells[colProductId.Name].Value.ToString());
-                saleDetail.Qauntity =int.Parse(row.Cells[colQauntity.Name].Value.ToString());
+                saleDetail.Qauntity = int.Parse(row.Cells[colQauntity.Name].Value.ToString());
                 saleDetail.EmployeeId = int.Parse(row.Cells[colEmployeeId.Name].Value.ToString());
                 saleDetail.Total = decimal.Parse(row.Cells[colTotal.Name].Value.ToString());
                 Model.SaleDetails.Add(saleDetail);

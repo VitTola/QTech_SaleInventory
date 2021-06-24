@@ -96,7 +96,7 @@ namespace QTech.Forms
             {
                 return;
             }
-
+            //Model.SaleDetails=new List<SaleDetail>();
             var dig = new frmSale(Model, GeneralProcess.Update);
 
             if (dig.ShowDialog() == DialogResult.OK)
