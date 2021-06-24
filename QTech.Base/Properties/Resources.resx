@@ -397,4 +397,7 @@
   <data name="SaleDate" xml:space="preserve">
     <value>កាលបរិច្ឆេទលក់</value>
   </data>
+  <data name="PrintInvoice" xml:space="preserve">
+    <value>បោះពុម្ភវិក្កយបត្រ</value>
+  </data>
 </root>

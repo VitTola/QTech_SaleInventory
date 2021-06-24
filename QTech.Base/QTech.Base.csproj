@@ -156,6 +156,7 @@
     <Compile Include="SearchModels\CategorySearch.cs" />
     <Compile Include="SearchModels\CustomerSearch.cs" />
     <Compile Include="SearchModels\EmployeeSearch.cs" />
+    <Compile Include="SearchModels\SaleDetailSearch.cs" />
     <Compile Include="SearchModels\SaleSearch.cs" />
     <Compile Include="SearchModels\SiteSearch.cs" />
   </ItemGroup>

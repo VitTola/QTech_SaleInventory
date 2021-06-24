@@ -18,6 +18,9 @@ namespace QTech.Forms
     public partial class SalePage : ExPage, IPage
     {
         public Sale Model { get; set; }
+        private GeneralProcess flag = GeneralProcess.None;
+        SaleSearchKey saleSearchKey = SaleSearchKey.None;
+
         public SalePage()
         {
             InitializeComponent();
@@ -62,12 +65,12 @@ namespace QTech.Forms
 
         private void txtSearch_PatternChanged(object sender, EventArgs e)
         {
-            
+            saleSearchKey = (SaleSearchKey)txtSearch.SelectedPattern;
         }
 
-        private void txtSearch_QuickSearch(object sender, EventArgs e)
+        private async void txtSearch_QuickSearch(object sender, EventArgs e)
         {
-            
+            await Search();
         }
 
         
@@ -75,7 +78,8 @@ namespace QTech.Forms
         {
             Model = new Sale();
             Model.SaleDetails = new List<SaleDetail>();
-            var dig = new frmSale(Model, GeneralProcess.Add);
+            flag = GeneralProcess.Add;
+            var dig = new frmSale(Model, flag);
             if (dig.ShowDialog() == DialogResult.OK)
             {
                 await Search();
@@ -96,8 +100,9 @@ namespace QTech.Forms
             {
                 return;
             }
-            //Model.SaleDetails=new List<SaleDetail>();
-            var dig = new frmSale(Model, GeneralProcess.Update);
+
+            flag = GeneralProcess.Update;
+            var dig = new frmSale(Model, flag);
 
             if (dig.ShowDialog() == DialogResult.OK)
             {
@@ -140,17 +145,22 @@ namespace QTech.Forms
             }
         }
 
+        private SaleSearch SaleSearchParam()
+        {  
+            var search = new SaleSearch();
+            search.saleSearchKey = this.saleSearchKey;
+            search.Search = txtSearch.Text;
+            return search;
+        }
+
         public async Task Search()
         {
-            var search = new SaleSearch()
-            {
-                Search = txtSearch.Text,
-            };
+            dgv.Rows.Clear();
             List<Customer> _Customers = null;
             List<Site> _Sites = null;
             var _sales =await dgv.RunAsync(() =>
             {
-               var _result = SaleLogic.Instance.SearchAsync(search);
+            var _result = SaleLogic.Instance.SearchAsync(SaleSearchParam());
                 var CusIds = _result.Select(x => x.CompanyId).ToList();
                 var SitesIds = _result.Select(x => x.SiteId).ToList();
                  _Customers = CustomerLogic.Instance.GetCustomersById(CusIds);

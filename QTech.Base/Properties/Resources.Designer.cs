@@ -574,6 +574,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to បោះពុម្ភវិក្កយបត្រ.
+        /// </summary>
+        public static string PrintInvoice {
+            get {
+                return ResourceManager.GetString("PrintInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap product {

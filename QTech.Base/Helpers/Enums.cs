@@ -12,6 +12,7 @@ namespace QTech.Base.Helpers
         Update,
         Remove,
         View,
-        Copy
+        Copy,
+        None
     }
 }

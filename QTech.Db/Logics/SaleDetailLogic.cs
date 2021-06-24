@@ -33,27 +33,33 @@ namespace QTech.Db.Logics
         {
             return All().Any(x => x.Id == entity.Id);
         }
-        //public override List<SaleDetail> SearchAsync(ISearchModel model)
-        //{
-        //    var result = Search(model).ToList();
-        //    return result;
-        //}
-
-        //public override IQueryable<SaleDetail> Search(ISearchModel model)
-        //{
-        //    var param = model as ProductSearch;
-        //    var q = All();
-        //    if (!string.IsNullOrEmpty(param.Search))
-        //    {
-        //        q = q.Where(x => x.Id.ToLower().Contains(param.Search.ToLower()));
-        //    }
-        //    return q;
-        //}
+        public override bool IsExistsAsync(SaleDetail entity)
+        {
+            var result = _db.SaleDetails.Any(x => x.Id == entity.Id);
+            return result;
+        }
 
         public List<SaleDetail> GetSaleDetailBySaleId(int s)
         {
-            var result = _db.SaleDetails.Where(x => x.SaleId == s).ToList();
+            var result = _db.SaleDetails.Where(x => x.SaleId == s && x.Active).ToList();
             return result;
         }
+        public override List<SaleDetail> SearchAsync(ISearchModel model)
+        {
+            var result = Search(model).ToList();
+            return result;
+        }
+        public override IQueryable<SaleDetail> Search(ISearchModel model)
+        {
+            var param = model as SaleDetailSearch;
+            var q = All().Where(x => x.Active);
+
+            if (param.SaleId != 0)
+            {
+                q = q.Where(x => x.SaleId == param.SaleId);
+            }
+            return q;
+        }
+
     }
 }

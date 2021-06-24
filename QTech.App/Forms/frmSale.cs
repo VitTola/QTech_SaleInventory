@@ -56,8 +56,6 @@ namespace QTech.Forms
             txtPurchaseOrderNo.RegisterEnglishInputWith(txtPurchaseOrderNo);
             dgv.RegisterEnglishInputColumns(colQauntity);
             colUnitPrice.ReadOnly = colTotal.ReadOnly = true;
-
-
             dgv.ReadOnly = false;
             dgv.AllowRowNotFound = false;
             dgv.AllowUserToAddRows = dgv.AllowUserToDeleteRows = true;
@@ -96,24 +94,42 @@ namespace QTech.Forms
             if (e.Control is TextBox txt)
             {
                 txt.KeyPress += (o, ee) => { txt.validCurrency(sender, ee); };
-                if (dgv.CurrentCell.ColumnIndex != colQauntity.Index)
+                if (dgv.CurrentCell.ColumnIndex == colQauntity.Index)
                 {
-                    return;
+                    txt.Leave += txtQauntity_Leave;
                 }
-                txt.Leave += Txt_Leave;
+                txt.TextChanged += txtTotal_TextChanged;
             }
         }
-        private void Txt_Leave(object sender, EventArgs e)
-        {
-            var unitPrice = decimal.Parse(dgv.CurrentRow?.Cells[colUnitPrice.Name].Value?.ToString());
-            var qty = int.Parse(dgv.CurrentRow?.Cells[colQauntity.Name]?.Value?.ToString());
-            dgv.CurrentRow.Cells[colTotal.Name].Value = (unitPrice * qty).ToString();
-            Total += decimal.Parse(dgv.CurrentRow?.Cells[colTotal.Name]?.Value?.ToString());
+
+        private void txtTotal_TextChanged(object sender, EventArgs e)
+            {
+            Total = 0;
+            foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
+            {
+                if (string.IsNullOrEmpty(row.Cells[colTotal.Name]?.Value?.ToString() ?? ""))
+                {
+                    continue;
+                }
+                Total += decimal.Parse(row.Cells[colTotal.Name]?.Value?.ToString());
+            }
+                
             txtTotal.Text = Total.ToString();
+        }
+
+        private void txtQauntity_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(dgv.CurrentCell.Value?.ToString() ?? ""))
+            {
+                return;
+            }
+            var unitPrice = decimal.Parse(dgv.CurrentRow?.Cells[colUnitPrice.Name].Value?.ToString() ?? "0");
+            var qty = int.Parse(dgv.CurrentRow?.Cells[colQauntity.Name]?.Value?.ToString() ?? "0");
+            dgv.CurrentRow.Cells[colTotal.Name].Value = (unitPrice * qty).ToString();
         }
         private async void Cbo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (dgv.CurrentCell.ColumnIndex != colProductId.Index)
+            if (string.IsNullOrEmpty(dgv.CurrentCell.Value?.ToString() ?? "") || dgv.CurrentCell.ColumnIndex != colProductId.Index)
             {
                 return;
             }
@@ -152,7 +168,8 @@ namespace QTech.Forms
 
             foreach (DataGridViewRow row in rows)
             {
-                var cells = row.Cells.OfType<DataGridViewCell>().Where(x => x.ColumnIndex != row.Cells[colId.Name].ColumnIndex).ToList();
+                var cells = row.Cells.OfType<DataGridViewCell>().Where(x =>
+                x.ColumnIndex != row.Cells[colId.Name].ColumnIndex && x.ColumnIndex != row.Cells[colSaleId.Name].ColumnIndex).ToList();
                 cells.ForEach(x =>
                 {
                     if (x.Value == null)
@@ -177,6 +194,7 @@ namespace QTech.Forms
         {
             txtPurchaseOrderNo.Text = Model.PurchaseOrderNo;
             txtInvoiceNo.Text = Model.InvoiceNo;
+            txtTotal.Text = Model.Total.ToString();
 
             Customer cus = null;
             Site site = null;
@@ -205,13 +223,16 @@ namespace QTech.Forms
 
             if (saleDetails.Any())
             {
+                Model.SaleDetails = saleDetails;
                 saleDetails.ForEach(x =>
                 {
                     var row = newRow(false);
                     row.Cells[colId.Name].Value = x.Id;
+                    row.Cells[colSaleId.Name].Value = Model.Id;
                     row.Cells[colQauntity.Name].Value = x.Qauntity;
                     row.Cells[colTotal.Name].Value = x.Total;
                     row.Cells[colUnitPrice.Name].Value = products?.FirstOrDefault(y => y.Id == x.ProductId)?.UnitPrice;
+
 
                     if (products != null)
                     {
@@ -313,16 +334,32 @@ namespace QTech.Forms
             Model.CompanyId = customer.Id;
             Model.SiteId = site.Id;
             Model.SaleDate = DateTime.Now;
+            Model.Total = decimal.Parse(txtTotal.Text ?? "0");
 
             var saleDetail = new SaleDetail();
+            if (Model.SaleDetails == null)
+            {
+                Model.SaleDetails = new List<SaleDetail>();
+            }
             foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
             {
+                saleDetail.Active = true;
                 saleDetail.Id = int.Parse(row?.Cells[colId.Name]?.Value?.ToString() ?? "0");
+                saleDetail.SaleId = Model.Id;
                 saleDetail.ProductId = int.Parse(row.Cells[colProductId.Name].Value.ToString());
                 saleDetail.Qauntity = int.Parse(row.Cells[colQauntity.Name].Value.ToString());
                 saleDetail.EmployeeId = int.Parse(row.Cells[colEmployeeId.Name].Value.ToString());
                 saleDetail.Total = decimal.Parse(row.Cells[colTotal.Name].Value.ToString());
-                Model.SaleDetails.Add(saleDetail);
+
+                var _saleDetail = Model.SaleDetails?.FirstOrDefault(x => x.Id == saleDetail.Id);
+                if (_saleDetail != null)
+                {
+                    Model.SaleDetails[Model.SaleDetails.IndexOf(_saleDetail)] = saleDetail;
+                }
+                else
+                {
+                    Model.SaleDetails.Add(saleDetail);
+                }
             }
         }
 
@@ -349,8 +386,27 @@ namespace QTech.Forms
             {
                 return;
             }
+
             var row = dgv.SelectedRows[0];
-            dgv.Rows.Remove(row);
+            var idValue = row.Cells[colId.Name].Value;
+            if (idValue == null)
+            {
+                dgv.Rows.Remove(row);
+                return;
+            }
+            Model.SaleDetails.ForEach(x =>
+            {
+                if (x.Id == int.Parse(idValue.ToString()))
+                {
+                    x.Active = false;
+                }
+            });
+            if (!row.IsNewRow)
+            {
+                dgv.Rows.Remove(row);
+                txtTotal_TextChanged(sender,e);
+                dgv.EndEdit();
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)

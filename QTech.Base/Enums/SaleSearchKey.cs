@@ -11,6 +11,7 @@ namespace QTech.Base.Enums
         PurchaseOrderNo = 1,
         InvoiceNo = 2,
         CompanyName = 3,
-        SiteName=4
+        SiteName=4,
+        None=5,
     }
 }
