@@ -30,8 +30,7 @@ namespace QTech.Forms
         private decimal Total;
         private List<Invoice> invoices = new List<Invoice>();
         private List<InvoiceDetail> invoiceDetails = new List<InvoiceDetail>();
-
-
+        public GeneralProcess Flag { get; set; }
         public frmSale(Sale model, GeneralProcess flag)
         {
             InitializeComponent();
@@ -43,9 +42,6 @@ namespace QTech.Forms
             Bind();
             InitEvent();
         }
-
-        public GeneralProcess Flag { get; set; }
-
         public void Bind()
         {
             cboCustomer.DataSourceFn = p => CustomerLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
@@ -81,7 +77,6 @@ namespace QTech.Forms
                 cboCustomer.Enabled = cboSite.Enabled = dgv.Enabled = flowLayOutLabelRemoveAdd.Enabled = false;
             }
         }
-
         private void CboCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
             var customer = cboCustomer.SelectedObject.ItemObject as Customer;
@@ -334,7 +329,6 @@ namespace QTech.Forms
         {
             var saleDetail = new SaleDetail();
             var invoice = new Invoice();
-            var invoiceDt = new InvoiceDetail();
 
 
             invoice.PurchaseOrderNo = Model.PurchaseOrderNo = txtPurchaseOrderNo.Text;
@@ -349,6 +343,7 @@ namespace QTech.Forms
             invoice.Site = site.Name;
             invoice.Customer = customer.Name;
             invoice.Total = Model.Total;
+            invoice.SaleId = Model.Id;
             invoices.Add(invoice);
 
             if (Model.SaleDetails == null)
@@ -357,6 +352,7 @@ namespace QTech.Forms
             }
             foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
             {
+                var invoiceDt = new InvoiceDetail();
                 saleDetail.Active = true;
                 saleDetail.Id = int.Parse(row?.Cells[colId.Name]?.Value?.ToString() ?? "0");
                 saleDetail.SaleId = Model.Id;
@@ -364,6 +360,13 @@ namespace QTech.Forms
                 saleDetail.Qauntity = int.Parse(row.Cells[colQauntity.Name].Value.ToString());
                 saleDetail.EmployeeId = int.Parse(row.Cells[colEmployeeId.Name].Value.ToString());
                 saleDetail.Total = decimal.Parse(row.Cells[colTotal.Name].Value.ToString());
+
+                var _pro = ProductLogic.Instance.FindAsync(saleDetail.ProductId);
+                invoiceDt.Product = _pro.Name;
+                invoiceDt.Qauntity = int.Parse(row.Cells[colQauntity.Name].Value.ToString());
+                invoiceDt.UnitPrice = decimal.Parse(row.Cells[colUnitPrice.Name].Value.ToString());
+                invoiceDt.Total = decimal.Parse(row.Cells[colTotal.Name].Value.ToString());
+                invoiceDetails.Add(invoiceDt);
 
                 var _saleDetail = Model.SaleDetails?.FirstOrDefault(x => x.Id == saleDetail.Id);
                 if (_saleDetail != null)
@@ -430,25 +433,20 @@ namespace QTech.Forms
         }
         private async void lblPrintInvoice_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //var ls = new List<Invoice>();
-            //var _invoice = new Invoice();
-            //_invoice.Customer = "Joe biden";
-            //_invoice.Employee = "Jab Jean";
-            //_invoice.InvoiceNo = "0000082982";
-            //_invoice.PurchaseOrderNo = "PO099393";
-            //_invoice.SaleDate = DateTime.Now;
-            //_invoice.SaleId = 1;
-            //_invoice.Site = "CAK";
-            //ls.Add(_invoice);
             Write();
-            DataTable Invoice = new DataTable("Invoices");
+            DataTable Invoice = new DataTable("Invoice");
             using (var reader = ObjectReader.Create(invoices))
             {
                 Invoice.Load(reader);
             }
-
+            DataTable InvoiceDetail = new DataTable("InvoiceDetail");
+            using (var reader = ObjectReader.Create(invoiceDetails))
+            {
+                InvoiceDetail.Load(reader);
+            }
             var Invoices = new List<DataTable>();
             Invoices.Add(Invoice);
+            Invoices.Add(InvoiceDetail);
 
             var report = await dgv.RunAsync(() =>
             {
