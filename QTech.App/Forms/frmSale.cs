@@ -81,7 +81,6 @@ namespace QTech.Forms
                 cboSite.SearchParamFn = () => new SiteSearch() { CustomerId = customer.Id };
             }
         }
-
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             colUnitPrice.ReadOnly = colTotal.ReadOnly = true;
@@ -101,7 +100,6 @@ namespace QTech.Forms
                 txt.TextChanged += txtTotal_TextChanged;
             }
         }
-
         private void txtTotal_TextChanged(object sender, EventArgs e)
             {
             Total = 0;
@@ -116,7 +114,6 @@ namespace QTech.Forms
                 
             txtTotal.Text = Total.ToString();
         }
-
         private void txtQauntity_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(dgv.CurrentCell.Value?.ToString() ?? ""))
@@ -142,7 +139,6 @@ namespace QTech.Forms
             });
             dgv.CurrentRow.Cells[colUnitPrice.Name].Value = unitPrice.ToString();
         }
-
         public bool InValid()
         {
             if (!cboCustomer.IsSelected() | !cboSite.IsSelected() |
@@ -362,7 +358,6 @@ namespace QTech.Forms
                 }
             }
         }
-
         private void lblAdd_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (dgv.RowCount == 0 || !string.IsNullOrEmpty(dgv.Rows[dgv.RowCount - 1].Cells[colProductId.Name].Value?.ToString()))
@@ -379,7 +374,6 @@ namespace QTech.Forms
                 }
             }
         }
-
         private void lblRemove_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (dgv.SelectedRows.Count == 0 || dgv.SelectedRows[0] == null)
@@ -408,18 +402,15 @@ namespace QTech.Forms
                 dgv.EndEdit();
             }
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             Save();
         }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        private void container_Paint(object sender, PaintEventArgs e)
+        private void lblPrintInvoice_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
         }
