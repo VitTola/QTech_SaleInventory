@@ -13,6 +13,7 @@ using QTech.Base;
 using QTech.Forms;
 using BaseResource = QTech.Base.Properties.Resources;
 using QTech.Db;
+using Storm.CC.Report.Helpers;
 
 namespace QTech.Forms
 {
@@ -32,6 +33,9 @@ namespace QTech.Forms
 
         private void InitEvent()
         {
+            ReportHelper.Instance.RegisterPath(@"QTech\QTech.App\Reports");
+
+
             this.Text = QTech.Base.Properties.Resources.Company;
 
             container.SuspendLayout();

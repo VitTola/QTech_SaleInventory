@@ -1,11 +1,17 @@
-﻿using QTech.Base;
+﻿using FastMember;
+using QTech.Base;
+using QTech.Base.BaseReport;
 using QTech.Base.Helpers;
 using QTech.Base.Models;
 using QTech.Base.SearchModels;
 using QTech.Component;
 using QTech.Component.Helpers;
 using QTech.Db.Logics;
+using QTech.ReportModels;
+using QTech.Reports;
+using Storm.CC.Report.Helpers;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,6 +28,9 @@ namespace QTech.Forms
     {
         public Sale Model { get; set; }
         private decimal Total;
+        private List<Invoice> invoices = new List<Invoice>();
+        private List<InvoiceDetail> invoiceDetails = new List<InvoiceDetail>();
+
 
         public frmSale(Sale model, GeneralProcess flag)
         {
@@ -101,7 +110,7 @@ namespace QTech.Forms
             }
         }
         private void txtTotal_TextChanged(object sender, EventArgs e)
-            {
+        {
             Total = 0;
             foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
             {
@@ -111,7 +120,7 @@ namespace QTech.Forms
                 }
                 Total += decimal.Parse(row.Cells[colTotal.Name]?.Value?.ToString());
             }
-                
+
             txtTotal.Text = Total.ToString();
         }
         private void txtQauntity_Leave(object sender, EventArgs e)
@@ -323,8 +332,13 @@ namespace QTech.Forms
         }
         public void Write()
         {
-            Model.PurchaseOrderNo = txtPurchaseOrderNo.Text;
-            Model.InvoiceNo = txtInvoiceNo.Text;
+            var saleDetail = new SaleDetail();
+            var invoice = new Invoice();
+            var invoiceDt = new InvoiceDetail();
+
+
+            invoice.PurchaseOrderNo = Model.PurchaseOrderNo = txtPurchaseOrderNo.Text;
+            invoice.InvoiceNo = Model.InvoiceNo = txtInvoiceNo.Text;
             var customer = cboCustomer.SelectedObject.ItemObject as Customer;
             var site = cboSite.SelectedObject.ItemObject as Site;
             Model.CompanyId = customer.Id;
@@ -332,7 +346,11 @@ namespace QTech.Forms
             Model.SaleDate = DateTime.Now;
             Model.Total = decimal.Parse(txtTotal.Text ?? "0");
 
-            var saleDetail = new SaleDetail();
+            invoice.Site = site.Name;
+            invoice.Customer = customer.Name;
+            invoice.Total = Model.Total;
+            invoices.Add(invoice);
+
             if (Model.SaleDetails == null)
             {
                 Model.SaleDetails = new List<SaleDetail>();
@@ -398,7 +416,7 @@ namespace QTech.Forms
             if (!row.IsNewRow)
             {
                 dgv.Rows.Remove(row);
-                txtTotal_TextChanged(sender,e);
+                txtTotal_TextChanged(sender, e);
                 dgv.EndEdit();
             }
         }
@@ -410,9 +428,41 @@ namespace QTech.Forms
         {
             this.Close();
         }
-        private void lblPrintInvoice_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private async void lblPrintInvoice_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            //var ls = new List<Invoice>();
+            //var _invoice = new Invoice();
+            //_invoice.Customer = "Joe biden";
+            //_invoice.Employee = "Jab Jean";
+            //_invoice.InvoiceNo = "0000082982";
+            //_invoice.PurchaseOrderNo = "PO099393";
+            //_invoice.SaleDate = DateTime.Now;
+            //_invoice.SaleId = 1;
+            //_invoice.Site = "CAK";
+            //ls.Add(_invoice);
+            Write();
+            DataTable Invoice = new DataTable("Invoices");
+            using (var reader = ObjectReader.Create(invoices))
+            {
+                Invoice.Load(reader);
+            }
 
+            var Invoices = new List<DataTable>();
+            Invoices.Add(Invoice);
+
+            var report = await dgv.RunAsync(() =>
+            {
+                var r = ReportHelper.Instance.Load(nameof(ReportInvoice), Invoices);
+                r.SummaryInfo.ReportTitle = nameof(ReportInvoice);
+                return r;
+            });
+
+            if (report != null)
+            {
+                var dig = new DialogReportViewer(report);
+                dig.Text = nameof(ReportInvoice);
+                dig.ShowDialog();
+            }
         }
     }
 }

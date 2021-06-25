@@ -198,7 +198,7 @@ namespace QTech.Base.BaseReport
                     return ReportHelper.Instance.Load(_name, _dataTable);
                 });
             } 
-           // viewer.View(_report);
+            viewer.View(_report);
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

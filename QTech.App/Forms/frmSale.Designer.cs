@@ -85,7 +85,6 @@
             this.container.Controls.Add(this.lblPurchaseOrderNo);
             this.container.Controls.Add(this.txtPurchaseOrderNo);
             this.container.Size = new System.Drawing.Size(911, 603);
-            this.container.Paint += new System.Windows.Forms.PaintEventHandler(this.container_Paint);
             // 
             // txtPurchaseOrderNo
             // 

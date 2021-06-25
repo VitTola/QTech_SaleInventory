@@ -16,14 +16,14 @@ namespace QTech.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class Invoice : ReportClass {
+    public class ReportInvoice : ReportClass {
         
-        public Invoice() {
+        public ReportInvoice() {
         }
         
         public override string ResourceName {
             get {
-                return "Invoice.rpt";
+                return "ReportInvoice.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace QTech.Reports {
         
         public override string FullResourceName {
             get {
-                return "QTech.Reports.Invoice.rpt";
+                return "QTech.Reports.ReportInvoice.rpt";
             }
             set {
                 // Do nothing
@@ -74,7 +74,7 @@ namespace QTech.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section DetailSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,25 +82,17 @@ namespace QTech.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
-            get {
-                return this.ReportDefinition.Sections[4];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
-                return this.ReportDefinition.Sections[5];
+                return this.ReportDefinition.Sections[4];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedInvoice : Component, ICachedReport {
+    public class CachedReportInvoice : Component, ICachedReport {
         
-        public CachedInvoice() {
+        public CachedReportInvoice() {
         }
         
         [Browsable(false)]
@@ -137,7 +129,7 @@ namespace QTech.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            Invoice rpt = new Invoice();
+            ReportInvoice rpt = new ReportInvoice();
             rpt.Site = this.Site;
             return rpt;
         }
