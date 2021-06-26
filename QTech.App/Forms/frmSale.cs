@@ -326,9 +326,7 @@ namespace QTech.Forms
         {
             invoiceDetails = new List<InvoiceDetail>();
             invoices = new List<Invoice>();
-            var saleDetail = new SaleDetail();
             var invoice = new Invoice();
-
 
             invoice.PurchaseOrderNo = Model.PurchaseOrderNo = txtPurchaseOrderNo.Text;
             invoice.InvoiceNo = Model.InvoiceNo = txtInvoiceNo.Text;
@@ -336,7 +334,7 @@ namespace QTech.Forms
             var site = cboSite.SelectedObject.ItemObject as Site;
             Model.CompanyId = customer.Id;
             Model.SiteId = site.Id;
-            Model.SaleDate = DateTime.Now;
+            Model.SaleDate = Flag == GeneralProcess.Add ? DateTime.Now : Model.SaleDate;
             Model.Total = decimal.Parse(txtTotal.Text ?? "0");
 
             invoice.Site = site.Name;
@@ -352,6 +350,8 @@ namespace QTech.Forms
             foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
             {
                 var invoiceDt = new InvoiceDetail();
+                var saleDetail = new SaleDetail();
+
                 saleDetail.Active = true;
                 saleDetail.Id = int.Parse(row?.Cells[colId.Name]?.Value?.ToString() ?? "0");
                 saleDetail.SaleId = Model.Id;
@@ -367,9 +367,9 @@ namespace QTech.Forms
                 invoiceDt.Total = decimal.Parse(row.Cells[colTotal.Name].Value.ToString());
                 invoiceDetails.Add(invoiceDt);
 
-                var _saleDetail = Model.SaleDetails?.FirstOrDefault(x => x.Id == saleDetail.Id);
-                if (_saleDetail != null)
+                if (Flag == GeneralProcess.Update)
                 {
+                    var _saleDetail = Model.SaleDetails?.FirstOrDefault(x => x.Id == saleDetail.Id);
                     Model.SaleDetails[Model.SaleDetails.IndexOf(_saleDetail)] = saleDetail;
                 }
                 else
@@ -457,7 +457,7 @@ namespace QTech.Forms
             if (report != null)
             {
                 var dig = new DialogReportViewer(report);
-                dig.Text = nameof(ReportInvoice);
+                dig.Text =QTech.Base.Properties.Resources.Invoice;
                 dig.ShowDialog();
             }
         }

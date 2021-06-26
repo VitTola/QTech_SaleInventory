@@ -17,7 +17,9 @@ namespace QTech.Base
         public int CompanyId { get; set; }
         public int EmployeeId { get; set; }
         public List<SaleDetail> SaleDetails{ get; set; }
-
+        public decimal PaymentRecieve { get; set; }
+        public decimal PaymentLeft { get; set; }
+        public bool IsPaid { get; set; } = false;
     }
 
     public class SaleDetail : ActiveBaseModel

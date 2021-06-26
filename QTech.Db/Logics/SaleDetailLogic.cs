@@ -38,7 +38,6 @@ namespace QTech.Db.Logics
             var result = _db.SaleDetails.Any(x => x.Id == entity.Id);
             return result;
         }
-
         public List<SaleDetail> GetSaleDetailBySaleId(int s)
         {
             var result = _db.SaleDetails.Where(x => x.SaleId == s && x.Active).ToList();

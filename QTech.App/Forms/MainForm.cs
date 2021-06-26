@@ -30,7 +30,6 @@ namespace QTech.Forms
             InitializeComponent();
             InitEvent();
         }
-
         private void InitEvent()
         {
             ReportHelper.Instance.RegisterPath(@"QTech\QTech.App\Reports");
@@ -72,9 +71,10 @@ namespace QTech.Forms
             pSecondMenue1.Hide();
             
         }
-
         private void ApplySetting()
         {
+            txtUserName.Text = BaseResource.Company;
+            txtLogin.Text = DateTime.Now.ToLongDateString();
             DataBaseSetting.ReadSetting();
             this.FormClosing += (e, o) => DataBaseSetting.WriteSetting();
 
@@ -88,7 +88,6 @@ namespace QTech.Forms
 
             AddTopMenue(_menuBars);
         }
-
         private void AddTopMenue(List<MenuBar> topMenuBars)
         {
             topMenuBars.OrderByDescending(x => x.Index).ToList()
@@ -116,7 +115,6 @@ namespace QTech.Forms
                 _lastExtabitem.Selected = true;
             }
         }
-
         private void TopMenue_Click(object sender, EventArgs e)
         {
             var key = ((ExTabItem)sender).Tag ?? string.Empty;
@@ -184,7 +182,6 @@ namespace QTech.Forms
                 }
             }
         }
-
         private void ReadSecondLevelMenue(MenuBar menuBar)
         {
             pSecondMenue2.Hide();
@@ -212,7 +209,6 @@ namespace QTech.Forms
                 pSecondMenue1.Show();
             } 
         }
-
         private void SecodMenue_Click(object sender, EventArgs e)
         {
             if (sender is ExTabItem2 btn)
@@ -224,7 +220,6 @@ namespace QTech.Forms
                 }
             }
         }
-
         private ExTabItem2 MyTemplateButton(string text, Image image, Object obj)
         {
             var btn = new ExTabItem2();
@@ -240,7 +235,6 @@ namespace QTech.Forms
 
             return btn;
         }
-        
         private void _btnUpDown_Click(object sender, EventArgs e)
         {
             if (pSecondMenue2.Visible == false)
@@ -255,7 +249,6 @@ namespace QTech.Forms
 
             }
         }
-
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             InputLanguage.CurrentInputLanguage = UI.English;

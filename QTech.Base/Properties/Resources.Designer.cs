@@ -376,6 +376,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to វិក័យប័ត្រ.
+        /// </summary>
+        public static string Invoice {
+            get {
+                return ResourceManager.GetString("Invoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to លេខវិក្កយបត្រ.
         /// </summary>
         public static string InvoiceNo {
@@ -391,6 +400,15 @@ namespace QTech.Base.Properties {
             get {
                 object obj = ResourceManager.GetObject("InvoiceNo_img", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to បានទួទាត់.
+        /// </summary>
+        public static string IsPaid {
+            get {
+                return ResourceManager.GetString("IsPaid", resourceCulture);
             }
         }
         
@@ -496,6 +514,15 @@ namespace QTech.Base.Properties {
         public static string Note {
             get {
                 return ResourceManager.GetString("Note", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to មិនទាន់ទូទាត់.
+        /// </summary>
+        public static string NotYetPaid {
+            get {
+                return ResourceManager.GetString("NotYetPaid", resourceCulture);
             }
         }
         
@@ -837,6 +864,15 @@ namespace QTech.Base.Properties {
             get {
                 object obj = ResourceManager.GetObject("Staff", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to សា្ថនភាព.
+        /// </summary>
+        public static string Status {
+            get {
+                return ResourceManager.GetString("Status", resourceCulture);
             }
         }
         

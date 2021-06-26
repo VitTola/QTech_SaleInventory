@@ -193,8 +193,7 @@ namespace QTech.Base.BaseModels
                 DisplayName = BaseResource.CloseEntryData,
                 Icon = BaseResource.CloseDateEntery_img,
                 Children = new List<MenuBar>(),
-                FormName = "QTech.Forms.CloseEntryDataPage"
-
+                FormName = "QTech.Forms.CloseDataEntryPage"
             },
 
 

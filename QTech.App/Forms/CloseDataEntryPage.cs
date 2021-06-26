@@ -6,7 +6,6 @@ using QTech.Component;
 using QTech.Db.Logics;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Security.AccessControl;
@@ -17,13 +16,13 @@ using BaseResource = QTech.Base.Properties.Resources;
 
 namespace QTech.Forms
 {
-    public partial class SalePage : ExPage, IPage
+    public partial class CloseDataEntryPage : ExPage, IPage
     {
         public Sale Model { get; set; }
         private GeneralProcess flag = GeneralProcess.None;
         SaleSearchKey saleSearchKey = SaleSearchKey.None;
 
-        public SalePage()
+        public CloseDataEntryPage()
         {
             InitializeComponent();
             BindData();
@@ -177,7 +176,6 @@ namespace QTech.Forms
                     cell.Style.ForeColor = Color.Green;
                 }
             });
-            dgv.Sort(dgv.Columns[colSaleDate.Name], ListSortDirection.Descending);
         }
         private DataGridViewRow newRow(bool isFocus = false)
         {

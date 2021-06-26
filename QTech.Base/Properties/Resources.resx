@@ -400,4 +400,16 @@
   <data name="PrintInvoice" xml:space="preserve">
     <value>បោះពុម្ភវិក័យប័ត្រ</value>
   </data>
+  <data name="IsPaid" xml:space="preserve">
+    <value>បានទួទាត់</value>
+  </data>
+  <data name="NotYetPaid" xml:space="preserve">
+    <value>មិនទាន់ទូទាត់</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>សា្ថនភាព</value>
+  </data>
+  <data name="Invoice" xml:space="preserve">
+    <value>វិក័យប័ត្រ</value>
+  </data>
 </root>

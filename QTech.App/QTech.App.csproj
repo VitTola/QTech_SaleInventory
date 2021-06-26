@@ -68,12 +68,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\CloseEntryDataPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CloseEntryDataPage.Designer.cs">
-      <DependentUpon>CloseEntryDataPage.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\CategoryPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +85,12 @@
     </Compile>
     <Compile Include="Forms\ProductPage.Designer.cs">
       <DependentUpon>ProductPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CloseDataEntryPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CloseDataEntryPage.Designer.cs">
+      <DependentUpon>CloseDataEntryPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SalePage.cs">
       <SubType>Form</SubType>
@@ -180,9 +180,6 @@
       <DependentUpon>ReportInvoice.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="Forms\CloseEntryDataPage.resx">
-      <DependentUpon>CloseEntryDataPage.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CategoryPage.resx">
       <DependentUpon>CategoryPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -191,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ProductPage.resx">
       <DependentUpon>ProductPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CloseDataEntryPage.resx">
+      <DependentUpon>CloseDataEntryPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SalePage.resx">
       <DependentUpon>SalePage.cs</DependentUpon>
