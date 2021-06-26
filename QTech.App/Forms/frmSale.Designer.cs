@@ -450,7 +450,7 @@
             this.lblPrintInvoice.Size = new System.Drawing.Size(94, 19);
             this.lblPrintInvoice.TabIndex = 28;
             this.lblPrintInvoice.TabStop = true;
-            this.lblPrintInvoice.Text = "បោះពុម្ភវិក្កយបត្រ";
+            this.lblPrintInvoice.Text = "បោះពុម្ភវិក័យប័ត្រ";
             this.lblPrintInvoice.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblPrintInvoice_LinkClicked);
             // 
             // frmSale

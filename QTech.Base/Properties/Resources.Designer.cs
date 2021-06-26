@@ -574,7 +574,7 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to បោះពុម្ភវិក្កយបត្រ.
+        ///   Looks up a localized string similar to បោះពុម្ភវិក័យប័ត្រ.
         /// </summary>
         public static string PrintInvoice {
             get {

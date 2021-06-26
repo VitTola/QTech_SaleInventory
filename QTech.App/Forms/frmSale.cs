@@ -28,8 +28,8 @@ namespace QTech.Forms
     {
         public Sale Model { get; set; }
         private decimal Total;
-        private List<Invoice> invoices = new List<Invoice>();
-        private List<InvoiceDetail> invoiceDetails = new List<InvoiceDetail>();
+        private List<Invoice> invoices;
+        private List<InvoiceDetail> invoiceDetails;
         public GeneralProcess Flag { get; set; }
         public frmSale(Sale model, GeneralProcess flag)
         {
@@ -101,18 +101,14 @@ namespace QTech.Forms
                 {
                     txt.Leave += txtQauntity_Leave;
                 }
-                txt.TextChanged += txtTotal_TextChanged;
             }
         }
-        private void txtTotal_TextChanged(object sender, EventArgs e)
+        private void CalculateTotal()
         {
             Total = 0;
             foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
             {
-                if (string.IsNullOrEmpty(row.Cells[colTotal.Name]?.Value?.ToString() ?? ""))
-                {
-                    continue;
-                }
+                if (string.IsNullOrEmpty(row.Cells[colTotal.Name]?.Value?.ToString() ?? "")) continue;
                 Total += decimal.Parse(row.Cells[colTotal.Name]?.Value?.ToString());
             }
 
@@ -127,6 +123,7 @@ namespace QTech.Forms
             var unitPrice = decimal.Parse(dgv.CurrentRow?.Cells[colUnitPrice.Name].Value?.ToString() ?? "0");
             var qty = int.Parse(dgv.CurrentRow?.Cells[colQauntity.Name]?.Value?.ToString() ?? "0");
             dgv.CurrentRow.Cells[colTotal.Name].Value = (unitPrice * qty).ToString();
+            CalculateTotal();
         }
         private async void Cbo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -327,6 +324,8 @@ namespace QTech.Forms
         }
         public void Write()
         {
+            invoiceDetails = new List<InvoiceDetail>();
+            invoices = new List<Invoice>();
             var saleDetail = new SaleDetail();
             var invoice = new Invoice();
 
@@ -419,7 +418,7 @@ namespace QTech.Forms
             if (!row.IsNewRow)
             {
                 dgv.Rows.Remove(row);
-                txtTotal_TextChanged(sender, e);
+                CalculateTotal();
                 dgv.EndEdit();
             }
         }

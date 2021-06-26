@@ -6,6 +6,7 @@ using QTech.Component;
 using QTech.Db.Logics;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Threading.Tasks;
@@ -27,7 +28,6 @@ namespace QTech.Forms
             BindData();
             InitEvent();
         }
-
         private void BindData()
         {
             var maxDate = DateTime.Now;
@@ -50,30 +50,15 @@ namespace QTech.Forms
         }
         private void InitEvent()
         {
-            this.Text = BaseResource.Sales;
-            dgv.CellContentClick += Dgv_CellContentClick;
-        }
-
-        private void Dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgv.CurrentCell.ColumnIndex != colViewDetail.Index)
-            {
-                return;
-            }
-            View();
-        }
-
+            this.Text = BaseResource.Sales;        }
         private void txtSearch_PatternChanged(object sender, EventArgs e)
         {
             saleSearchKey = (SaleSearchKey)txtSearch.SelectedPattern;
         }
-
         private async void txtSearch_QuickSearch(object sender, EventArgs e)
         {
             await Search();
         }
-
-        
         public async void AddNew()
         {
             Model = new Sale();
@@ -86,7 +71,6 @@ namespace QTech.Forms
                 dgv.RowSelected(colId.Name, dig.Model.Id);
             }
         }
-
         public async void EditAsync()
         {
             if (dgv.SelectedRows.Count == 0)
@@ -110,12 +94,10 @@ namespace QTech.Forms
                 dgv.RowSelected(colId.Name, dig.Model.Id);
             }
         }
-
         public async void Reload()
         {
             await Search();
         }
-
         public async void Remove()
         {
             if (dgv.SelectedRows.Count == 0)
@@ -144,7 +126,6 @@ namespace QTech.Forms
                 await Search();
             }
         }
-
         private SaleSearch SaleSearchParam()
         {  
             var search = new SaleSearch();
@@ -152,7 +133,6 @@ namespace QTech.Forms
             search.Search = txtSearch.Text;
             return search;
         }
-
         public async Task Search()
         {
             dgv.Rows.Clear();
@@ -182,10 +162,20 @@ namespace QTech.Forms
                 row.Cells[colToSite.Name].Value = _Sites?.FirstOrDefault(s => s.Id == x.SiteId)?.Name;
                 row.Cells[colTotal.Name].Value = x.Total;
                 row.Cells[colSaleDate.Name].Value = x.SaleDate.ToShortDateString();
-                row.Cells[colViewDetail.Name].Value = BaseResource.ViewDetail;
+                row.Cells[colStatus.Name].Value = BaseResource.ViewDetail;
             });
-            
+            setColStatusForeColor();
         }
+
+        private void setColStatusForeColor()
+        {
+            foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
+            {
+                row.Cells[colStatus.Name].Style.ForeColor = Color.Green;
+            }
+        }
+
+
         private DataGridViewRow newRow(bool isFocus = false)
         {
             var row = dgv.Rows[dgv.Rows.Add()];
@@ -299,22 +289,18 @@ namespace QTech.Forms
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddNew();
         }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             EditAsync();
         }
-
         private void btnRemove_Click(object sender, EventArgs e)
         {
             Remove();
         }
-
         private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
