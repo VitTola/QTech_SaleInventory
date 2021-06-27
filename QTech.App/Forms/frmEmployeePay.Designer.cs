@@ -44,6 +44,10 @@
             this.lblRemove = new System.Windows.Forms.LinkLabel();
             this.lblAdd = new System.Windows.Forms.LinkLabel();
             this.dgv = new QTech.Component.ExDataGridView();
+            this.colPayDate = new QTech.Component.CalendarColumn();
+            this.colPaidAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCurrency = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.exLabel2 = new QTech.Component.ExLabel();
             this.exLabel3 = new QTech.Component.ExLabel();
             this.txtPhone = new System.Windows.Forms.TextBox();
@@ -53,10 +57,6 @@
             this.btnClose = new QTech.Component.ExButtonLoading();
             this.btnAdd = new QTech.Component.ExButtonLoading();
             this.cboPosition = new System.Windows.Forms.ComboBox();
-            this.colPayDate = new QTech.Component.CalendarColumn();
-            this.colPaidAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCurrency = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.container.SuspendLayout();
             this.flowLayOutLabelRemoveAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -217,7 +217,7 @@
             this.colNote});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS System", 8F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -225,6 +225,7 @@
             this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
+            this.dgv.Font = new System.Drawing.Font("Khmer OS System", 8F);
             this.dgv.Location = new System.Drawing.Point(28, 128);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
@@ -236,10 +237,46 @@
             this.dgv.Size = new System.Drawing.Size(651, 297);
             this.dgv.TabIndex = 4;
             // 
+            // colPayDate
+            // 
+            this.colPayDate.DataPropertyName = "PayDate";
+            this.colPayDate.HeaderText = "ថ្ងៃទូទាត់";
+            this.colPayDate.Name = "colPayDate";
+            this.colPayDate.ReadOnly = true;
+            this.colPayDate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colPayDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colPayDate.Width = 140;
+            // 
+            // colPaidAmount
+            // 
+            this.colPaidAmount.DataPropertyName = "PaidAmount";
+            this.colPaidAmount.HeaderText = "ទឹកប្រាក់";
+            this.colPaidAmount.Name = "colPaidAmount";
+            this.colPaidAmount.ReadOnly = true;
+            this.colPaidAmount.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colPaidAmount.Width = 140;
+            // 
+            // colCurrency
+            // 
+            this.colCurrency.HeaderText = "រូបីប័ណ្ណ";
+            this.colCurrency.Name = "colCurrency";
+            this.colCurrency.ReadOnly = true;
+            this.colCurrency.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colCurrency.Width = 70;
+            // 
+            // colNote
+            // 
+            this.colNote.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colNote.DataPropertyName = "Note";
+            this.colNote.HeaderText = "ចំណាំ";
+            this.colNote.Name = "colNote";
+            this.colNote.ReadOnly = true;
+            // 
             // exLabel2
             // 
             this.exLabel2.AutoSize = true;
             this.exLabel2.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
             this.exLabel2.Location = new System.Drawing.Point(27, 103);
             this.exLabel2.Name = "exLabel2";
             this.exLabel2.Required = false;
@@ -299,6 +336,7 @@
             // 
             // btnClose
             // 
+            this.btnClose.BackColor = System.Drawing.Color.Ivory;
             this.btnClose.DefaultImage = null;
             this.btnClose.Executing = false;
             this.btnClose.Location = new System.Drawing.Point(625, 3);
@@ -313,6 +351,7 @@
             // 
             // btnAdd
             // 
+            this.btnAdd.BackColor = System.Drawing.Color.Ivory;
             this.btnAdd.DefaultImage = null;
             this.btnAdd.Executing = false;
             this.btnAdd.Location = new System.Drawing.Point(546, 3);
@@ -333,46 +372,12 @@
             this.cboPosition.Size = new System.Drawing.Size(200, 27);
             this.cboPosition.TabIndex = 18;
             // 
-            // colPayDate
-            // 
-            this.colPayDate.DataPropertyName = "PayDate";
-            this.colPayDate.HeaderText = "ថ្ងៃទូទាត់";
-            this.colPayDate.Name = "colPayDate";
-            this.colPayDate.ReadOnly = true;
-            this.colPayDate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colPayDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.colPayDate.Width = 140;
-            // 
-            // colPaidAmount
-            // 
-            this.colPaidAmount.DataPropertyName = "PaidAmount";
-            this.colPaidAmount.HeaderText = "ទឹកប្រាក់";
-            this.colPaidAmount.Name = "colPaidAmount";
-            this.colPaidAmount.ReadOnly = true;
-            this.colPaidAmount.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colPaidAmount.Width = 140;
-            // 
-            // colCurrency
-            // 
-            this.colCurrency.HeaderText = "រូបីប័ណ្ណ";
-            this.colCurrency.Name = "colCurrency";
-            this.colCurrency.ReadOnly = true;
-            this.colCurrency.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colCurrency.Width = 70;
-            // 
-            // colNote
-            // 
-            this.colNote.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colNote.DataPropertyName = "Note";
-            this.colNote.HeaderText = "ចំណាំ";
-            this.colNote.Name = "colNote";
-            this.colNote.ReadOnly = true;
-            // 
-            // frmEmployees
+            // frmEmployeePay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(708, 503);
+            this.Font = new System.Drawing.Font("Khmer OS System", 8.25F);
             this.Location = new System.Drawing.Point(0, 0);
             this.MaximizeBox = false;
             this.Name = "frmEmployeePay";

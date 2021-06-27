@@ -258,6 +258,7 @@
             // 
             this.exLabel2.AutoSize = true;
             this.exLabel2.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
             this.exLabel2.Location = new System.Drawing.Point(33, 85);
             this.exLabel2.Name = "exLabel2";
             this.exLabel2.Required = false;

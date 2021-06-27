@@ -52,13 +52,11 @@ namespace QTech.Db.Logics
         {
             var param = model as SaleDetailSearch;
             var q = All().Where(x => x.Active);
-
             if (param.SaleId != 0)
             {
                 q = q.Where(x => x.SaleId == param.SaleId);
             }
             return q;
         }
-
     }
 }

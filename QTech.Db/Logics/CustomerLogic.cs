@@ -1,5 +1,6 @@
 ﻿using QTech.Base;
 using QTech.Base.BaseModels;
+using QTech.Base.Models;
 using QTech.Base.SearchModels;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,6 @@ namespace QTech.Db.Logics
             }
             return entity;
         }
-
         public override Customer FindAsync(int id)
         {
             var result = All().FirstOrDefault(x => x.Active && x.Id == id);
@@ -59,7 +59,7 @@ namespace QTech.Db.Logics
         {
             var param = model as CustomerSearch;
             var par = param.Search;
-            var q = All();
+            var q = All().Where(x => x.Active);
             if (!string.IsNullOrEmpty(param.Search))
             {
                 q = q.Where(x => x.Name.ToLower().Contains(param.Search.ToLower()));
@@ -67,22 +67,20 @@ namespace QTech.Db.Logics
 
             return q;
         }
-
         public override Customer UpdateAsync(Customer entity)
         {
             var Customer = base.UpdateAsync(entity);
             var sites = entity.Sites;
             UpdateSite(sites, Customer);
+            AddOrUpdateCustomerPrice(entity.CustomerPrices);
             return entity;
         }
-
-        private async void UpdateSite(List<Site> sites,Customer customer)
+        private void UpdateSite(List<Site> sites,Customer customer)
         {
             if (sites.Any())
             {
                 foreach (var s in sites)
                 {
-                    //var isExist =  _db.Sites.Any(x => x.Id == s.Id);
                     var isExist = SiteLogic.Instance.IsExistsAsync(s);
                     if (isExist)
                     {
@@ -96,12 +94,28 @@ namespace QTech.Db.Logics
                 }
             }
         }
-
+        private void AddOrUpdateCustomerPrice(List<CustomerPrice> customerPrices)
+        {
+            if (!customerPrices.Any())
+            {
+                return;
+            }
+            customerPrices.ForEach(x =>
+            {
+                bool isExist = CustomerPriceLogic.Instance.IsExistsAsync(x);
+                if (isExist)
+                {
+                    CustomerPriceLogic.Instance.AddAsync(x);
+                }
+                else
+                {
+                    CustomerPriceLogic.Instance.AddAsync(x);
+                }
+            });
+        }
         public List<Customer> GetCustomersById(List<int> Ids)
         {
-            var customers = _db.Customers
-             .Where(cus => Ids.Any(id => id == cus.Id));
-            
+            var customers = _db.Customers.Where(cus => cus.Active && Ids.Any(id => id == cus.Id));
             return customers.ToList();
         }
 }

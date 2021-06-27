@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configs\QTechDbConfigs.cs" />
+    <Compile Include="Logics\CustomerPriceLogic.cs" />
     <Compile Include="Logics\CustomerLogic.cs" />
     <Compile Include="Logics\DbLogic.cs" />
     <Compile Include="Logics\CategoryLogic.cs" />
@@ -106,6 +107,10 @@
     <Compile Include="Migrations\202106261529457_v1.8.designer.cs">
       <DependentUpon>202106261529457_v1.8.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106271333143_2.0.cs" />
+    <Compile Include="Migrations\202106271333143_2.0.designer.cs">
+      <DependentUpon>202106271333143_2.0.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QTechDbContext.cs" />
@@ -146,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106261529457_v1.8.resx">
       <DependentUpon>202106261529457_v1.8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106271333143_2.0.resx">
+      <DependentUpon>202106271333143_2.0.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

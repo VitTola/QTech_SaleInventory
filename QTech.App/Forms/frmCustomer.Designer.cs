@@ -31,6 +31,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomer));
             this.exLabel2 = new QTech.Component.ExLabel();
             this.dgv = new QTech.Component.ExDataGridView();
@@ -52,32 +55,38 @@
             this.btnSave = new QTech.Component.ExButtonLoading();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabMain = new System.Windows.Forms.TabControl();
+            this.tabGeneral = new System.Windows.Forms.TabPage();
+            this.tabSetPrice = new System.Windows.Forms.TabPage();
+            this.dgvGoods = new QTech.Component.ExDataGridView();
+            this.lblGoodsAndPrice = new QTech.Component.ExLabel();
+            this.colProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIdd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGoodName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSalePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.flowLayOutLabelRemoveAdd.SuspendLayout();
             this.exPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
+            this.tabMain.SuspendLayout();
+            this.tabGeneral.SuspendLayout();
+            this.tabSetPrice.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGoods)).BeginInit();
             this.SuspendLayout();
             // 
             // container
             // 
+            this.container.Controls.Add(this.tabMain);
             this.container.Controls.Add(this.exPanel1);
-            this.container.Controls.Add(this.lblNote);
-            this.container.Controls.Add(this.txtNote);
-            this.container.Controls.Add(this.lblPhone);
-            this.container.Controls.Add(this.txtPhone);
-            this.container.Controls.Add(this.exLabel2);
-            this.container.Controls.Add(this.dgv);
-            this.container.Controls.Add(this.flowLayOutLabelRemoveAdd);
-            this.container.Controls.Add(this.lblName);
-            this.container.Controls.Add(this.txtName);
-            this.container.Size = new System.Drawing.Size(373, 399);
+            this.container.Size = new System.Drawing.Size(384, 421);
             // 
             // exLabel2
             // 
             this.exLabel2.AutoSize = true;
             this.exLabel2.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exLabel2.Location = new System.Drawing.Point(26, 132);
+            this.exLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.exLabel2.Location = new System.Drawing.Point(28, 126);
             this.exLabel2.Name = "exLabel2";
             this.exLabel2.Required = false;
             this.exLabel2.Size = new System.Drawing.Size(44, 19);
@@ -99,7 +108,7 @@
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS Siemreap", 8F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS System", 8F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -112,7 +121,7 @@
             this.colPhone});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Khmer OS Siemreap", 8F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Khmer OS System", 8F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
@@ -120,8 +129,8 @@
             this.dgv.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
-            this.dgv.Font = new System.Drawing.Font("Khmer OS Siemreap", 8F);
-            this.dgv.Location = new System.Drawing.Point(28, 154);
+            this.dgv.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            this.dgv.Location = new System.Drawing.Point(30, 148);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
             this.dgv.Paging = null;
@@ -161,7 +170,7 @@
             this.flowLayOutLabelRemoveAdd.Controls.Add(this.lblRemove);
             this.flowLayOutLabelRemoveAdd.Controls.Add(this.lblAdd);
             this.flowLayOutLabelRemoveAdd.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayOutLabelRemoveAdd.Location = new System.Drawing.Point(210, 132);
+            this.flowLayOutLabelRemoveAdd.Location = new System.Drawing.Point(212, 126);
             this.flowLayOutLabelRemoveAdd.Name = "flowLayOutLabelRemoveAdd";
             this.flowLayOutLabelRemoveAdd.Size = new System.Drawing.Size(133, 19);
             this.flowLayOutLabelRemoveAdd.TabIndex = 13;
@@ -170,10 +179,10 @@
             // 
             this.lblRemove.AutoSize = true;
             this.lblRemove.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lblRemove.Location = new System.Drawing.Point(102, 0);
+            this.lblRemove.Location = new System.Drawing.Point(101, 0);
             this.lblRemove.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.lblRemove.Name = "lblRemove";
-            this.lblRemove.Size = new System.Drawing.Size(28, 19);
+            this.lblRemove.Size = new System.Drawing.Size(29, 19);
             this.lblRemove.TabIndex = 1;
             this.lblRemove.TabStop = true;
             this.lblRemove.Text = "លុប";
@@ -183,10 +192,10 @@
             // 
             this.lblAdd.AutoSize = true;
             this.lblAdd.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lblAdd.Location = new System.Drawing.Point(66, 0);
+            this.lblAdd.Location = new System.Drawing.Point(64, 0);
             this.lblAdd.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.lblAdd.Name = "lblAdd";
-            this.lblAdd.Size = new System.Drawing.Size(36, 19);
+            this.lblAdd.Size = new System.Drawing.Size(37, 19);
             this.lblAdd.TabIndex = 0;
             this.lblAdd.TabStop = true;
             this.lblAdd.Text = "បន្ថែម";
@@ -195,52 +204,52 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(24, 24);
+            this.lblName.Location = new System.Drawing.Point(26, 18);
             this.lblName.Name = "lblName";
             this.lblName.Required = true;
-            this.lblName.Size = new System.Drawing.Size(76, 19);
+            this.lblName.Size = new System.Drawing.Size(83, 19);
             this.lblName.TabIndex = 15;
             this.lblName.Text = "ឈ្មោះក្រុមហ៊ុន";
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(143, 20);
+            this.txtName.Location = new System.Drawing.Point(145, 14);
             this.txtName.Margin = new System.Windows.Forms.Padding(2);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(200, 28);
+            this.txtName.Size = new System.Drawing.Size(200, 27);
             this.txtName.TabIndex = 0;
             // 
             // lblPhone
             // 
             this.lblPhone.AutoSize = true;
-            this.lblPhone.Location = new System.Drawing.Point(24, 55);
+            this.lblPhone.Location = new System.Drawing.Point(26, 49);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Required = false;
-            this.lblPhone.Size = new System.Drawing.Size(64, 19);
+            this.lblPhone.Size = new System.Drawing.Size(68, 19);
             this.lblPhone.TabIndex = 22;
             this.lblPhone.Text = "លេខទូរស័ព្ទ";
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(143, 51);
+            this.txtPhone.Location = new System.Drawing.Point(145, 45);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(2);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(200, 28);
+            this.txtPhone.Size = new System.Drawing.Size(200, 27);
             this.txtPhone.TabIndex = 1;
             // 
             // lblNote
             // 
             this.lblNote.AutoSize = true;
-            this.lblNote.Location = new System.Drawing.Point(24, 85);
+            this.lblNote.Location = new System.Drawing.Point(26, 79);
             this.lblNote.Name = "lblNote";
             this.lblNote.Required = false;
-            this.lblNote.Size = new System.Drawing.Size(39, 19);
+            this.lblNote.Size = new System.Drawing.Size(41, 19);
             this.lblNote.TabIndex = 24;
             this.lblNote.Text = "ចំណាំ";
             // 
             // txtNote
             // 
-            this.txtNote.Location = new System.Drawing.Point(143, 82);
+            this.txtNote.Location = new System.Drawing.Point(145, 76);
             this.txtNote.Margin = new System.Windows.Forms.Padding(2);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
@@ -252,10 +261,10 @@
             this.exPanel1.BackColor = System.Drawing.Color.Transparent;
             this.exPanel1.Controls.Add(this.flowLayoutPanel2);
             this.exPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.exPanel1.Location = new System.Drawing.Point(1, 362);
+            this.exPanel1.Location = new System.Drawing.Point(1, 384);
             this.exPanel1.Name = "exPanel1";
             this.exPanel1.Padding = new System.Windows.Forms.Padding(2);
-            this.exPanel1.Size = new System.Drawing.Size(371, 36);
+            this.exPanel1.Size = new System.Drawing.Size(382, 36);
             this.exPanel1.TabIndex = 25;
             // 
             // flowLayoutPanel2
@@ -266,7 +275,7 @@
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(2, 2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(367, 32);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(378, 32);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // btnClose
@@ -275,7 +284,7 @@
             this.btnClose.DefaultImage = null;
             this.btnClose.Executing = false;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Location = new System.Drawing.Point(290, 3);
+            this.btnClose.Location = new System.Drawing.Point(301, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -292,7 +301,7 @@
             this.btnSave.DefaultImage = null;
             this.btnSave.Executing = false;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Location = new System.Drawing.Point(211, 3);
+            this.btnSave.Location = new System.Drawing.Point(222, 3);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -317,22 +326,162 @@
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.Width = 150;
             // 
+            // tabMain
+            // 
+            this.tabMain.Controls.Add(this.tabGeneral);
+            this.tabMain.Controls.Add(this.tabSetPrice);
+            this.tabMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabMain.Location = new System.Drawing.Point(1, 1);
+            this.tabMain.Name = "tabMain";
+            this.tabMain.SelectedIndex = 0;
+            this.tabMain.Size = new System.Drawing.Size(382, 383);
+            this.tabMain.TabIndex = 26;
+            // 
+            // tabGeneral
+            // 
+            this.tabGeneral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.tabGeneral.Controls.Add(this.lblName);
+            this.tabGeneral.Controls.Add(this.txtName);
+            this.tabGeneral.Controls.Add(this.lblNote);
+            this.tabGeneral.Controls.Add(this.flowLayOutLabelRemoveAdd);
+            this.tabGeneral.Controls.Add(this.txtNote);
+            this.tabGeneral.Controls.Add(this.dgv);
+            this.tabGeneral.Controls.Add(this.lblPhone);
+            this.tabGeneral.Controls.Add(this.exLabel2);
+            this.tabGeneral.Controls.Add(this.txtPhone);
+            this.tabGeneral.Location = new System.Drawing.Point(4, 28);
+            this.tabGeneral.Name = "tabGeneral";
+            this.tabGeneral.Padding = new System.Windows.Forms.Padding(3);
+            this.tabGeneral.Size = new System.Drawing.Size(374, 351);
+            this.tabGeneral.TabIndex = 0;
+            this.tabGeneral.Text = "ព័ត៍មានទូទៅ";
+            // 
+            // tabSetPrice
+            // 
+            this.tabSetPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.tabSetPrice.Controls.Add(this.dgvGoods);
+            this.tabSetPrice.Controls.Add(this.lblGoodsAndPrice);
+            this.tabSetPrice.Location = new System.Drawing.Point(4, 28);
+            this.tabSetPrice.Name = "tabSetPrice";
+            this.tabSetPrice.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSetPrice.Size = new System.Drawing.Size(374, 351);
+            this.tabSetPrice.TabIndex = 1;
+            this.tabSetPrice.Text = "កំណត់តម្លៃទំនិញ";
+            // 
+            // dgvGoods
+            // 
+            this.dgvGoods.AllowEnterToNextCell = false;
+            this.dgvGoods.AllowRowNotFound = true;
+            this.dgvGoods.AllowRowNumber = false;
+            this.dgvGoods.AllowUserToAddRows = false;
+            this.dgvGoods.AllowUserToDeleteRows = false;
+            this.dgvGoods.AllowUserToResizeRows = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvGoods.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvGoods.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.dgvGoods.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvGoods.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Ivory;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvGoods.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvGoods.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvGoods.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colProductId,
+            this.colIdd,
+            this.colGoodName,
+            this.colSalePrice});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvGoods.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvGoods.EnableHeadersVisualStyles = false;
+            this.dgvGoods.Executing = false;
+            this.dgvGoods.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            this.dgvGoods.Location = new System.Drawing.Point(27, 42);
+            this.dgvGoods.MultiSelect = false;
+            this.dgvGoods.Name = "dgvGoods";
+            this.dgvGoods.Paging = null;
+            this.dgvGoods.ReadOnly = true;
+            this.dgvGoods.RowHeadersVisible = false;
+            this.dgvGoods.RowTemplate.Height = 28;
+            this.dgvGoods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvGoods.Size = new System.Drawing.Size(323, 285);
+            this.dgvGoods.TabIndex = 17;
+            // 
+            // lblGoodsAndPrice
+            // 
+            this.lblGoodsAndPrice.AutoSize = true;
+            this.lblGoodsAndPrice.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGoodsAndPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.lblGoodsAndPrice.Location = new System.Drawing.Point(25, 20);
+            this.lblGoodsAndPrice.Name = "lblGoodsAndPrice";
+            this.lblGoodsAndPrice.Required = false;
+            this.lblGoodsAndPrice.Size = new System.Drawing.Size(137, 19);
+            this.lblGoodsAndPrice.TabIndex = 19;
+            this.lblGoodsAndPrice.Text = "ទំនិញ និងតម្លៃលក់ចេញ";
+            // 
+            // colProductId
+            // 
+            this.colProductId.DataPropertyName = "ProductId";
+            this.colProductId.HeaderText = "Id";
+            this.colProductId.Name = "colProductId";
+            this.colProductId.ReadOnly = true;
+            this.colProductId.Visible = false;
+            // 
+            // colIdd
+            // 
+            this.colIdd.HeaderText = "Idd";
+            this.colIdd.Name = "colIdd";
+            this.colIdd.ReadOnly = true;
+            this.colIdd.Visible = false;
+            // 
+            // colGoodName
+            // 
+            this.colGoodName.DataPropertyName = "Name";
+            this.colGoodName.HeaderText = "ឈ្មោះ";
+            this.colGoodName.Name = "colGoodName";
+            this.colGoodName.ReadOnly = true;
+            this.colGoodName.Width = 160;
+            // 
+            // colSalePrice
+            // 
+            this.colSalePrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colSalePrice.DataPropertyName = "SalePrice";
+            this.colSalePrice.HeaderText = "តម្លៃលក់";
+            this.colSalePrice.Name = "colSalePrice";
+            this.colSalePrice.ReadOnly = true;
+            // 
             // frmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 420);
+            this.ClientSize = new System.Drawing.Size(384, 442);
+            this.Font = new System.Drawing.Font("Khmer OS System", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "frmCustomer";
             this.Text = "frmEmployee";
             this.container.ResumeLayout(false);
-            this.container.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.flowLayOutLabelRemoveAdd.ResumeLayout(false);
             this.flowLayOutLabelRemoveAdd.PerformLayout();
             this.exPanel1.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
+            this.tabMain.ResumeLayout(false);
+            this.tabGeneral.ResumeLayout(false);
+            this.tabGeneral.PerformLayout();
+            this.tabSetPrice.ResumeLayout(false);
+            this.tabSetPrice.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGoods)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -359,5 +508,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPhone;
+        private System.Windows.Forms.TabControl tabMain;
+        private System.Windows.Forms.TabPage tabGeneral;
+        private System.Windows.Forms.TabPage tabSetPrice;
+        private Component.ExDataGridView dgvGoods;
+        private Component.ExLabel lblGoodsAndPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colProductId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colIdd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colGoodName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSalePrice;
     }
 }

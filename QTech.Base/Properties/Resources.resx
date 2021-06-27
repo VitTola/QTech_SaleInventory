@@ -412,4 +412,19 @@
   <data name="Invoice" xml:space="preserve">
     <value>វិក័យប័ត្រ</value>
   </data>
+  <data name="General" xml:space="preserve">
+    <value>ព័ត៌មានទូទៅ</value>
+  </data>
+  <data name="SetPrice" xml:space="preserve">
+    <value>កំណត់តម្លៃទំនិញ</value>
+  </data>
+  <data name="GoodName" xml:space="preserve">
+    <value>ឈ្មោះ</value>
+  </data>
+  <data name="GoodsAndPrice" xml:space="preserve">
+    <value>ទំនិញ និងតម្លៃលក់ចេញ</value>
+  </data>
+  <data name="SalePrice" xml:space="preserve">
+    <value>តម្លៃលក់</value>
+  </data>
 </root>

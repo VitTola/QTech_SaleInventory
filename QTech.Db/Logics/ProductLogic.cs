@@ -29,27 +29,15 @@ namespace QTech.Db.Logics
             var result = Search(model).ToList();
             return result;
         }
-        //public List<Product> SearchAsync(int id)
-        //{
-        //    var q = All();
-        //    q = q.Where(x => x.CustomerId == id);
-        //    var result = q.ToList();
-        //    return result;
-        //}
         public override IQueryable<Product> Search(ISearchModel model)
         {
             var param = model as ProductSearch;
-            var q = All();
+            var q = All().Where(x => x.Active);
             if (!string.IsNullOrEmpty(param.Search))
             {
                 q = q.Where(x => x.Name.ToLower().Contains(param.Search.ToLower()));
             }
             return q;
         }
-        //public override bool IsExistsAsync(Site entity)
-        //{
-        //    var result = _db.Sites.Any(x => x.Id == entity.Id);
-        //    return result;
-        //}
     }
 }

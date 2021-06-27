@@ -316,6 +316,33 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ព័ត៌មានទូទៅ.
+        /// </summary>
+        public static string General {
+            get {
+                return ResourceManager.GetString("General", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ឈ្មោះ.
+        /// </summary>
+        public static string GoodName {
+            get {
+                return ResourceManager.GetString("GoodName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ទំនិញ និងតម្លៃលក់ចេញ.
+        /// </summary>
+        public static string GoodsAndPrice {
+            get {
+                return ResourceManager.GetString("GoodsAndPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap Hide {
@@ -782,6 +809,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to តម្លៃលក់.
+        /// </summary>
+        public static string SalePrice {
+            get {
+                return ResourceManager.GetString("SalePrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap salereport {
@@ -815,6 +851,15 @@ namespace QTech.Base.Properties {
         public static string Select {
             get {
                 return ResourceManager.GetString("Select", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to កំណត់តម្លៃទំនិញ.
+        /// </summary>
+        public static string SetPrice {
+            get {
+                return ResourceManager.GetString("SetPrice", resourceCulture);
             }
         }
         

@@ -1,5 +1,6 @@
 ﻿using QTech.Base;
 using QTech.Base.Helpers;
+using QTech.Base.Models;
 using QTech.Base.SearchModels;
 using QTech.Component;
 using QTech.Component.Helpers;
@@ -23,6 +24,7 @@ namespace QTech.Forms
         public Customer Model = new Customer();
         List<Site> sites = new List<Site>();
         List<Site> _removeSites = new List<Site>();
+        List<CustomerPrice> _customerPrices;
 
         public frmCustomer(Customer model, GeneralProcess flage)
         {
@@ -33,14 +35,11 @@ namespace QTech.Forms
             Bind();
             InitEvent();
         }
-
         public GeneralProcess Flag { get; set; }
-
         public void Bind()
         {
             Read();
         }
-
         public void InitEvent()
         {
             this.MaximizeBox = false;
@@ -55,15 +54,71 @@ namespace QTech.Forms
             dgv.RegisterEnglishInputColumns(colPhone);
             dgv.RegisterEnglishInputColumns(colPhone);
             dgv.RegisterPrimaryInputColumns(colName);
-           
+            
+            tabMain.SelectedIndexChanged += TabMain_SelectedIndexChanged;
+            dgvGoods.EditingControlShowing += DgvGoods_EditingControlShowing;
+            dgvGoods.RegisterEnglishInputColumns(colSalePrice);
+            dgvGoods.ReadOnly = false;
+            dgvGoods.AllowRowNotFound = false;
+            colGoodName.ReadOnly = true;
+            dgvGoods.EditMode = DataGridViewEditMode.EditOnEnter;
+            if (Flag == GeneralProcess.Add)
+            {
+                tabMain.Controls.Remove(tabSetPrice);
+            }
 
             if (Flag == GeneralProcess.View)
             {
-                txtName.ReadOnly = txtNote.ReadOnly = txtPhone.ReadOnly =  dgv.ReadOnly = true;
+                txtName.ReadOnly = txtNote.ReadOnly = txtPhone.ReadOnly = dgv.ReadOnly = true;
                 flowLayOutLabelRemoveAdd.Enabled = false;
+                dgvGoods.ReadOnly = true;
+            }
+
+        }
+        private void DgvGoods_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (dgvGoods.CurrentCell.ColumnIndex == colSalePrice.Index)
+            {
+                if (e.Control is TextBox txt)
+                {
+                    txt.KeyPress += (o, ee) => { txt.validCurrency(sender, ee); };
+                }
             }
         }
-        
+        private async void TabMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabMain.SelectedTab.Equals(tabSetPrice))
+            {
+                dgvGoods.Rows.Clear();
+                var Products = await dgvGoods.RunAsync(() =>
+                {
+                    var search = new ProductSearch();
+                    var prods = ProductLogic.Instance.SearchAsync(search);
+                    _customerPrices = CustomerPriceLogic.Instance.GetCustomerPriceByCustomerId(Model.Id);
+                    return prods;
+                });
+                foreach (var product in Products)
+                {
+                    var row = _newRow(false);
+                    row.Cells[colProductId.Name].Value = product.Id;
+                    row.Cells[colIdd.Name].Value = _customerPrices?.FirstOrDefault(x => x.ProductId == product.Id)?.Id;
+                    row.Cells[colGoodName.Name].Value = product.Name;
+                    row.Cells[colSalePrice.Name].Value = _customerPrices.FirstOrDefault(x => x.ProductId == product.Id)?.SalePrice;
+                }
+                dgvGoods.CurrentCell = dgvGoods.Rows[0].Cells[colSalePrice.Name];
+                dgvGoods.BeginEdit(true);
+            }
+        }
+        private DataGridViewRow _newRow(bool isFocus = false)
+        {
+            var row = dgvGoods.Rows[dgvGoods.Rows.Add()];
+            row.Cells[colProductId.Name].Value = 0;
+            if (isFocus)
+            {
+                dgvGoods.Focus();
+            }
+            return row;
+        }
         public bool InValid()
         {
             if (!txtName.IsValidRequired(lblName.Text) | !txtPhone.IsValidRequired(lblPhone.Text)
@@ -73,7 +128,6 @@ namespace QTech.Forms
             }
             return true;
         }
-
         private bool inValidGridView()
         {
             var invalidRow = false;
@@ -98,7 +152,6 @@ namespace QTech.Forms
 
             return true;
         }
-
         public async void Read()
         {
             txtName.Text = Model.Name;
@@ -118,13 +171,12 @@ namespace QTech.Forms
                     row.Cells[colPhone.Name].Value = site.Phone;
                 }
             }
-            
+
         }
         public void ViewChangeLog()
         {
             throw new NotImplementedException();
         }
-
         public void Write()
         {
             if (!InValid())
@@ -142,7 +194,7 @@ namespace QTech.Forms
             }
             foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
             {
-                var Id =int.Parse(row?.Cells[colId.Name]?.Value?.ToString() ?? "0");
+                var Id = int.Parse(row?.Cells[colId.Name]?.Value?.ToString() ?? "0");
                 var site = Model.Sites?.FirstOrDefault(x => x.Id == Id);
                 var _name = row?.Cells[colName.Name]?.Value?.ToString() ?? string.Empty;
                 var _phone = row?.Cells[colPhone.Name]?.Value?.ToString() ?? string.Empty;
@@ -156,7 +208,6 @@ namespace QTech.Forms
                         Name = _name,
                         Phone = _phone,
                         CustomerId = Model.Id
-                      
                     };
                     Model.Sites[Model.Sites.IndexOf(site)] = s;
                 }
@@ -170,15 +221,33 @@ namespace QTech.Forms
                     };
                     Model.Sites.Add(s);
                 }
-               
+            }
+
+            if (Flag != GeneralProcess.Update)
+            {
+                return;
+            }
+            if (Model.CustomerPrices == null)
+            {
+                Model.CustomerPrices = new List<Base.Models.CustomerPrice>();
+            }
+            foreach (DataGridViewRow row in dgvGoods.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
+            {
+                var c = new CustomerPrice()
+                {
+                    Id = int.Parse(row.Cells[colIdd.Name].Value?.ToString() ?? "0"),
+                    Active = true,
+                    CustomerId = Model.Id,
+                    ProductId = int.Parse(row.Cells[colProductId.Name].Value?.ToString()),
+                    SalePrice = decimal.Parse(row.Cells[colSalePrice.Name]?.Value?.ToString() ?? "0")
+                };
+                Model.CustomerPrices.Add(c);
             }
         }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void lblAdd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (!dgv.CurrentCell?.IsInEditMode ?? true)
@@ -237,13 +306,10 @@ namespace QTech.Forms
             }
 
         }
-        
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             Save();
         }
-
         public async void Save()
         {
             if (Flag == GeneralProcess.View)

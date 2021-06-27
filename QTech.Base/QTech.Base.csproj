@@ -150,6 +150,7 @@
     <Compile Include="BaseReport\ReportHelper.cs" />
     <Compile Include="Helpers\TempFile.cs" />
     <Compile Include="Helpers\UISetting.cs" />
+    <Compile Include="Models\CustomerPrice.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\DbConfig.cs" />

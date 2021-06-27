@@ -32,7 +32,7 @@ namespace QTech.Db.Logics
         }
         public List<Site> SearchAsync(int cusId)
         {
-            var q = All();
+            var q = All().Where(x=>x.Active);
             q = q.Where(x => x.CustomerId == cusId);
             var result = q.ToList();
             return result;
@@ -40,7 +40,7 @@ namespace QTech.Db.Logics
         public override IQueryable<Site> Search(ISearchModel model)
         {
             var param = model as SiteSearch;
-            var q = All();
+            var q = All().Where(x => x.Active);
             q = q.Where(x => x.CustomerId == param.CustomerId);
             return q;
         }
@@ -52,7 +52,7 @@ namespace QTech.Db.Logics
         public List<Site> GetSiteByIds(List<int> Ids)
         {
             var sites = _db.Sites
-             .Where(site => Ids.Any(id => id == site.Id));
+             .Where(site => site.Active && Ids.Any(id => id == site.Id));
             return sites.ToList();
         }
 
