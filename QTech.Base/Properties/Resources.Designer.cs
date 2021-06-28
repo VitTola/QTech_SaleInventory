@@ -572,6 +572,24 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to មិនទាន់បានទូទាត់.
+        /// </summary>
+        public static string PayStatus_NotYetPaid {
+            get {
+                return ResourceManager.GetString("PayStatus_NotYetPaid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to បានទូទាត់.
+        /// </summary>
+        public static string PayStatus_Paid {
+            get {
+                return ResourceManager.GetString("PayStatus_Paid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to លេខទូស័ព្ទ.
         /// </summary>
         public static string Phone {

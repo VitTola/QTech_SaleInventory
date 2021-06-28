@@ -235,6 +235,7 @@
             // 
             // cboPosition
             // 
+            this.cboPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPosition.FormattingEnabled = true;
             this.cboPosition.Location = new System.Drawing.Point(143, 56);
             this.cboPosition.Name = "cboPosition";
@@ -264,6 +265,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(377, 287);
+            this.Font = new System.Drawing.Font("Khmer OS System", 8.25F);
             this.Location = new System.Drawing.Point(0, 0);
             this.MaximizeBox = false;
             this.Name = "frmEmployee";

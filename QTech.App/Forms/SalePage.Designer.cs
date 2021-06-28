@@ -45,13 +45,13 @@
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtSearch = new QTech.Component.ExTextboxIconPattern();
-            this.rdtpPicker = new QTech.Component.ExReportDatePicker();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnRemove = new QTech.Component.ExButtonLoading();
             this.btnUpdate = new QTech.Component.ExButtonLoading();
             this.btnAdd = new QTech.Component.ExButtonLoading();
             this.colorWithAlpha2 = new QTech.Component.ColorWithAlpha();
             this.colorWithAlpha3 = new QTech.Component.ColorWithAlpha();
+            this.cboPayStatus = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.graPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -229,7 +229,7 @@
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.txtSearch);
-            this.flowLayoutPanel2.Controls.Add(this.rdtpPicker);
+            this.flowLayoutPanel2.Controls.Add(this.cboPayStatus);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -249,16 +249,6 @@
             this.txtSearch.Size = new System.Drawing.Size(222, 26);
             this.txtSearch.SizeIcon = new System.Drawing.Size(16, 16);
             this.txtSearch.TabIndex = 0;
-            // 
-            // rdtpPicker
-            // 
-            this.rdtpPicker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.rdtpPicker.FormattingEnabled = true;
-            this.rdtpPicker.Location = new System.Drawing.Point(228, 4);
-            this.rdtpPicker.Margin = new System.Windows.Forms.Padding(1, 4, 3, 3);
-            this.rdtpPicker.Name = "rdtpPicker";
-            this.rdtpPicker.Size = new System.Drawing.Size(200, 27);
-            this.rdtpPicker.TabIndex = 1;
             // 
             // flowLayoutPanel1
             // 
@@ -336,6 +326,15 @@
             this.colorWithAlpha3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colorWithAlpha3.Parent = null;
             // 
+            // cboPayStatus
+            // 
+            this.cboPayStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPayStatus.FormattingEnabled = true;
+            this.cboPayStatus.Location = new System.Drawing.Point(230, 3);
+            this.cboPayStatus.Name = "cboPayStatus";
+            this.cboPayStatus.Size = new System.Drawing.Size(237, 27);
+            this.cboPayStatus.TabIndex = 2;
+            // 
             // SalePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
@@ -368,7 +367,6 @@
         private Component.ColorWithAlpha colorWithAlpha2;
         private Component.ColorWithAlpha colorWithAlpha3;
         private Component.ExTextboxIconPattern txtSearch;
-        private Component.ExReportDatePicker rdtpPicker;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPurchaseOrderNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colInvoiceNo;
@@ -378,5 +376,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colIsPaid;
+        private System.Windows.Forms.ComboBox cboPayStatus;
     }
 }

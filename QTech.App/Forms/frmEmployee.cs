@@ -37,24 +37,21 @@ namespace QTech.Forms
             cboPosition.SetDataSource<Base.Enums.Position>();
             colName.Visible = true;
             colName.Width = 100;
-
             Read();
         }
-
         public void InitEvent()
         {
             this.MaximizeBox = false;
             this.Text = Base.Properties.Resources.Employees;
             txtPhone.RegisterEnglishInput();
             txtName.RegisterPrimaryInputWith(cboPosition,txtNote,txtName);
+            this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
         }
-
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             e.Control.RegisterEnglishInput();
             
         }
-
         public bool InValid()
         {
             if (!txtName.IsValidRequired(lblName.Text) 
@@ -65,7 +62,6 @@ namespace QTech.Forms
             }
             return false;
         }
-
         public void Read()
         {
             txtName.Text = Model.Name;
@@ -73,7 +69,6 @@ namespace QTech.Forms
             txtNote.Text = Model.Note;
             cboPosition.Text = Model.Position;
         }
-
         public async void Save()
         {
             if (Flag == GeneralProcess.View)
@@ -85,7 +80,6 @@ namespace QTech.Forms
             Write();
 
             var isExist = await btnSave.RunAsync(() => EmployeeLogic.Instance.IsExistsAsync(Model));
-            if (isExist == null) { return; }
             if (isExist == true)
             {
                 txtName.IsExists(lblName.Text);
@@ -115,12 +109,10 @@ namespace QTech.Forms
                 DialogResult = System.Windows.Forms.DialogResult.OK;
             }
         }
-
         public void ViewChangeLog()
         {
             throw new NotImplementedException();
         }
-
         public void Write()
         {
             Model.Name = txtName.Text;
@@ -128,12 +120,10 @@ namespace QTech.Forms
             Model.Phone = txtPhone.Text;
             Model.Position = cboPosition.Text;
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             Save();
         }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();

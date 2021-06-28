@@ -113,7 +113,7 @@ namespace QTech.Component
                 _bMaximize.Visible = show;
         }
 
-        
+
 
         protected override void OnLoad(EventArgs e)
         {
@@ -162,7 +162,7 @@ namespace QTech.Component
                 var exPagings = this.GetAllControls().OfType<ExPaging>();
                 if (exPagings != null)
                 {
-                    foreach(var paging in exPagings)
+                    foreach (var paging in exPagings)
                     {
                         paging.Repaging();
                     }
@@ -204,13 +204,36 @@ namespace QTech.Component
                     btnSave.Visible = (flag != GeneralProcess.View);
                     btnSave.ShortcutText = Conts.DialogKeyText[DialogProcess.Save];
                 }
+
+                //if (flag == GeneralProcess.View)
+                //{
+                //    foreach (Control c in container.Controls)
+                //    {
+                //        if (c.GetType() == typeof(TextBox))
+                //        {
+                //            ((TextBox)c).ReadOnly = true;
+                //        }
+                //        if (c is ComboBox com)
+                //        {
+                //            com.KeyPress += (o, ee) => {ee.Handled = true; };
+                //        }
+                //        if (c is ExSearchCombo exCom)
+                //        {
+                //            exCom.KeyPress += (o, ee) => { ee.Handled = true; };
+                //        }
+                //        if (c is DataGrid g)
+                //        {
+                //            g.ReadOnly = true;
+                //        }
+                //    }
+                //}
             }
 
             base.OnLoad(e);
         }
 
         protected override void OnClosing(CancelEventArgs e)
-        { 
+        {
             base.OnClosing(e);
 
             if (Executing)
@@ -219,7 +242,7 @@ namespace QTech.Component
                 return;
             }
 
-            if(this.GetAllControls().OfType<IAsyncTask>().Any(x=>x.Executing))
+            if (this.GetAllControls().OfType<IAsyncTask>().Any(x => x.Executing))
             {
                 e.Cancel = true;
                 return;
@@ -234,7 +257,7 @@ namespace QTech.Component
                         report.Close();
                         report.Dispose();
                         viewer.ReportSource = null;
-                    } 
+                    }
                 }
             }
         }
@@ -264,7 +287,7 @@ namespace QTech.Component
         //    }
         //}
 
-     
+
 
         protected override void WndProc(ref Message m)
         {
@@ -415,7 +438,7 @@ namespace QTech.Component
             container.Invalidate();
 
         }
-         
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (this is IDialog dialog)
@@ -446,9 +469,9 @@ namespace QTech.Component
                 {
                     var btnChangeLog = this.GetAllControls().OfType<ExButtonLoading>()
                     .FirstOrDefault(x => x.Name == $"btn{nameof(EDomain.Resources.ChangeLog)}");
-                    if (btnChangeLog?.Visible == true 
+                    if (btnChangeLog?.Visible == true
                         && btnChangeLog?.Enabled == true
-                        && btnChangeLog?.Executing==false)
+                        && btnChangeLog?.Executing == false)
                     {
                         dialog.ViewChangeLog();
                         return true;
@@ -459,7 +482,7 @@ namespace QTech.Component
                 {
                     var btnClose = this.GetAllControls().OfType<ExButtonLoading>()
                    .FirstOrDefault(x => x.Name == $"btn{nameof(EDomain.Resources.Close)}");
-                    if (btnClose?.Visible == true 
+                    if (btnClose?.Visible == true
                         && btnClose?.Enabled == true
                         && btnClose?.Executing == false)
                     {
@@ -474,7 +497,7 @@ namespace QTech.Component
                 {
                     var btnAdd = this.GetAllControls().OfType<ExButtonLoading>()
                     .FirstOrDefault(x => x.Name == $"btn{nameof(EDomain.Resources.Add)}");
-                    if (btnAdd?.Visible == true 
+                    if (btnAdd?.Visible == true
                         && btnAdd?.Enabled == true
                         && btnAdd?.Executing == false)
                     {
@@ -486,7 +509,7 @@ namespace QTech.Component
                 {
                     var btnUpdate = this.GetAllControls().OfType<ExButtonLoading>()
                    .FirstOrDefault(x => x.Name == $"btn{nameof(EDomain.Resources.Update)}");
-                    if (btnUpdate?.Visible == true 
+                    if (btnUpdate?.Visible == true
                         && btnUpdate?.Enabled == true
                         && btnUpdate?.Executing == false)
                     {
@@ -552,7 +575,7 @@ namespace QTech.Component
 
             return base.ProcessCmdKey(ref msg, keyData);
         }
-         
+
     }
 
     internal class CotrolDialogButton : Button

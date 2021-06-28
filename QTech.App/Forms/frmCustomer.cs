@@ -66,13 +66,7 @@ namespace QTech.Forms
             {
                 tabMain.Controls.Remove(tabSetPrice);
             }
-
-            if (Flag == GeneralProcess.View)
-            {
-                txtName.ReadOnly = txtNote.ReadOnly = txtPhone.ReadOnly = dgv.ReadOnly = true;
-                flowLayOutLabelRemoveAdd.Enabled = false;
-                dgvGoods.ReadOnly = true;
-            }
+            this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
 
         }
         private void DgvGoods_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)

@@ -30,7 +30,6 @@ namespace QTech.Forms
             Bind();
             InitEvent();
         }
-
         public GeneralProcess Flag { get; set; }
 
         public void Bind()
@@ -40,19 +39,17 @@ namespace QTech.Forms
 
             Read();
         }
-
         public void InitEvent()
         {
+            this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
             this.MaximizeBox = false;
             this.Text = Base.Properties.Resources.Categorys;
         }
-
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             e.Control.RegisterEnglishInput();
             
         }
-
         public bool InValid()
         {
             if (!txtName.IsValidRequired(lblName.Text) 
@@ -62,13 +59,11 @@ namespace QTech.Forms
             }
             return false;
         }
-
         public void Read()
         {
             txtName.Text = Model.Name;
             txtNote.Text = Model.Note;
         }
-
         public async void Save()
         {
             if (Flag == GeneralProcess.View)
@@ -110,24 +105,20 @@ namespace QTech.Forms
                 DialogResult = System.Windows.Forms.DialogResult.OK;
             }
         }
-
         public void ViewChangeLog()
         {
             throw new NotImplementedException();
         }
-
         public void Write()
         {
             Model.Name = txtName.Text;
             Model.Note = txtNote.Text;
             
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             Save();
         }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();

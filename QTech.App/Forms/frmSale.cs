@@ -71,11 +71,7 @@ namespace QTech.Forms
                 dgv.EditingControlShowing += dgv_EditingControlShowing;
                 cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
             }
-            else
-            {
-                txtInvoiceNo.ReadOnly = txtPurchaseOrderNo.ReadOnly = true;
-                cboCustomer.Enabled = cboSite.Enabled = dgv.Enabled = flowLayOutLabelRemoveAdd.Enabled = false;
-            }
+            this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
         }
         private void CboCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {

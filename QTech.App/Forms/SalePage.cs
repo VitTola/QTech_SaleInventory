@@ -31,27 +31,23 @@ namespace QTech.Forms
         }
         private void BindData()
         {
-            var maxDate = DateTime.Now;
-            rdtpPicker.CustomDateRang = CustomDateRang.None;
-            //rdtpPicker.CustomDateRang = 
-            var peroids = ExReportDatePicker.GetPeroids(maxDate);
-            var customPeroid = ExReportDatePicker.GetPeriod(rdtpPicker.CustomDateRang, maxDate);
-            rdtpPicker.SetMaxDate(maxDate);
-            rdtpPicker.Items.AddRange(peroids.ToArray());
-            rdtpPicker.Items.Add(customPeroid);
-            rdtpPicker.SetSelectePeroid(DatePeroid.Today);
-
             txtSearch.RegisterEnglishInput();
             txtSearch.RegisterKeyArrowDown(dgv);
             txtSearch.QuickSearch += txtSearch_QuickSearch;
             txtSearch.PatternChanged += txtSearch_PatternChanged;
-            //rdtpPicker.ValueChanged += txtSearch_QuickSearch;
             registerSearchMenu();
-
+            cboPayStatus.SetDataSource<PayStatus>();
         }
         private void InitEvent()
         {
-            this.Text = BaseResource.Sales;        }
+            this.Text = BaseResource.Sales;
+            cboPayStatus.SelectedIndexChanged += CboPayStatus_SelectedIndexChanged;
+        }
+
+        private async void CboPayStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            await Search();
+        }
         private void txtSearch_PatternChanged(object sender, EventArgs e)
         {
             saleSearchKey = (SaleSearchKey)txtSearch.SelectedPattern;
@@ -127,21 +123,22 @@ namespace QTech.Forms
                 await Search();
             }
         }
-        private SaleSearch SaleSearchParam()
-        {  
-            var search = new SaleSearch();
-            search.saleSearchKey = this.saleSearchKey;
-            search.Search = txtSearch.Text;
-            return search;
-        }
+       
         public async Task Search()
         {
             dgv.Rows.Clear();
             List<Customer> _Customers = null;
             List<Site> _Sites = null;
+            var _payStatus = (PayStatus)cboPayStatus.SelectedValue;
             var _sales =await dgv.RunAsync(() =>
             {
-            var _result = SaleLogic.Instance.SearchAsync(SaleSearchParam());
+                var search = new SaleSearch()
+                {
+                saleSearchKey = this.saleSearchKey,
+                Search = txtSearch.Text,
+                payStatus = _payStatus
+            };
+            var _result = SaleLogic.Instance.SearchAsync(search);
                 var CusIds = _result.Select(x => x.CompanyId).ToList();
                 var SitesIds = _result.Select(x => x.SiteId).ToList();
                  _Customers = CustomerLogic.Instance.GetCustomersById(CusIds);

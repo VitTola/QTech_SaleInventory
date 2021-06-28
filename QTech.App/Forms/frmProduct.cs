@@ -34,27 +34,24 @@ namespace QTech.Forms
 
         public GeneralProcess Flag { get; set; }
 
-
         public void Bind()
         {
             cboCategory.DataSourceFn = p => CategoryLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
             cboCategory.SearchParamFn = () => new CategorySearch();
 
         }
-
         public void InitEvent()
         {
             this.MaximizeBox = false;
             this.Text = Base.Properties.Resources.Products;
             txtUnitPrice.RegisterEnglishInput();
             txtName.RegisterPrimaryInputWith(txtNote, txtName);
+            this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
         }
-
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             e.Control.RegisterEnglishInput();
         }
-
         public bool InValid()
         {
             if (!txtName.IsValidRequired(lblName.Text)
@@ -65,7 +62,6 @@ namespace QTech.Forms
             }
             return false;
         }
-
         public async void Read()
         {
             txtName.Text = Model.Name;
@@ -81,7 +77,6 @@ namespace QTech.Forms
             cboCategory.SetValue(_result);
 
         }
-
         public async void Save()
         {
             if (Flag == GeneralProcess.View)
@@ -93,7 +88,6 @@ namespace QTech.Forms
             Write();
 
             var isExist = await btnSave.RunAsync(() =>ProductLogic.Instance.IsExistsAsync(Model));
-            if (isExist == null) { return; }
             if (isExist == true)
             {
                 txtName.IsExists(lblName.Text);
@@ -123,12 +117,10 @@ namespace QTech.Forms
                 DialogResult = System.Windows.Forms.DialogResult.OK;
             }
         }
-
         public void ViewChangeLog()
         {
             throw new NotImplementedException();
         }
-
         public void Write()
         {
             Model.Name = txtName.Text;
@@ -137,12 +129,10 @@ namespace QTech.Forms
             var selectedCat = cboCategory.SelectedObject.ItemObject as Category;
             Model.CategoryId = selectedCat.Id;
         }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             Save();

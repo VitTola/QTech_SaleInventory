@@ -141,6 +141,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Enums\AuthKey.cs" />
+    <Compile Include="Enums\PayStatus.cs" />
     <Compile Include="Enums\Currency.cs" />
     <Compile Include="Enums\SaleSearchKey.cs" />
     <Compile Include="Helpers\Constants.cs" />

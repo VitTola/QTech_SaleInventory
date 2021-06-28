@@ -427,4 +427,10 @@
   <data name="SalePrice" xml:space="preserve">
     <value>តម្លៃលក់</value>
   </data>
+  <data name="PayStatus_NotYetPaid" xml:space="preserve">
+    <value>មិនទាន់បានទូទាត់</value>
+  </data>
+  <data name="PayStatus_Paid" xml:space="preserve">
+    <value>បានទូទាត់</value>
+  </data>
 </root>

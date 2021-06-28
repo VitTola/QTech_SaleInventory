@@ -88,6 +88,14 @@ namespace QTech.Db.Logics
                 var siteIds = _db.Sites.Where(c => c.Name.ToLower().Contains(param.Search.ToLower())).Select(y => y.Id).ToList();
                 q = q.Where(x => siteIds.Any(y => x.CompanyId == y));
             }
+            if (param.payStatus == PayStatus.Paid)
+            {
+                q = q.Where(x => x.IsPaid);
+            }
+            else
+            {
+                q = q.Where(x => !x.IsPaid);
+            }
             return q;
         }
 

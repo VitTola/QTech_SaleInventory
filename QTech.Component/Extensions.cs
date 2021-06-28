@@ -2156,7 +2156,7 @@ namespace QTech.Component
                 e.Handled = true;
         }
 
-        public static void SetControlsReadOnly(this Form form)
+        public static void SetControlsReadOnly(this Control form)
         {
             foreach (Control control in form.Controls)
             {
@@ -2174,7 +2174,6 @@ namespace QTech.Component
                 }
             }
         }
-
     }
 
 
