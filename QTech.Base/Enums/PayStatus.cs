@@ -8,7 +8,8 @@ namespace QTech.Base.Enums
 {
     public enum PayStatus
     {
-        NotYetPaid = 1,
-        Paid =2,
+        All=1,
+        NotYetPaid = 2,
+        Paid =3,
     }
 }

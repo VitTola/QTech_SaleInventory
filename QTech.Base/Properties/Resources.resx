@@ -433,4 +433,7 @@
   <data name="PayStatus_Paid" xml:space="preserve">
     <value>បានទូទាត់</value>
   </data>
+  <data name="PayStatus_All" xml:space="preserve">
+    <value>ស្ថានភាពទាំងអស់</value>
+  </data>
 </root>

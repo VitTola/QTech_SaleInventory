@@ -50,7 +50,16 @@ namespace QTech.Forms
         }
         private void InitEvent()
         {
-            this.Text = BaseResource.Sales;        }
+            dgv.CellContentClick += Dgv_CellContentClick;
+            this.Text = BaseResource.Sales;
+        }
+        private void Dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == colMark_.Index)
+            {
+                dgv.CurrentRow.Cells[colMark_.Name].Value = !(bool)(dgv.CurrentRow.Cells[colMark_.Name]?.Value);
+            }
+        }
         private void txtSearch_PatternChanged(object sender, EventArgs e)
         {
             saleSearchKey = (SaleSearchKey)txtSearch.SelectedPattern;
@@ -140,7 +149,7 @@ namespace QTech.Forms
             List<Site> _Sites = null;
             var _sales =await dgv.RunAsync(() =>
             {
-            var _result = SaleLogic.Instance.SearchAsync(SaleSearchParam());
+            var _result = SaleLogic.Instance.SearchAsync(SaleSearchParam()).Where(x=>!x.IsPaid).ToList();
                 var CusIds = _result.Select(x => x.CompanyId).ToList();
                 var SitesIds = _result.Select(x => x.SiteId).ToList();
                  _Customers = CustomerLogic.Instance.GetCustomersById(CusIds);
@@ -176,6 +185,12 @@ namespace QTech.Forms
                     cell.Style.ForeColor = Color.Green;
                 }
             });
+
+            //Initailize colMark_
+            foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
+            {
+                row.Cells[colMark_.Name].Value = false;
+            }
         }
         private DataGridViewRow newRow(bool isFocus = false)
         {
@@ -255,7 +270,7 @@ namespace QTech.Forms
              });
 
             InputLanguage.CurrentInputLanguage = UI.English;
-            txtSearch.ShowMenuPattern(SaleSearchKey.PurchaseOrderNo);
+            txtSearch.ShowMenuPattern(SaleSearchKey.CompanyName);
            // changeDataVisible();
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -302,6 +317,12 @@ namespace QTech.Forms
         {
             Remove();
         }
- 
+        private void chkMarkAll__CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
+            {
+                row.Cells[colMark_.Name].Value = chkMarkAll_.Checked;
+            }
+        }
     }
 }

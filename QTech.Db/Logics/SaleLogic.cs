@@ -92,7 +92,7 @@ namespace QTech.Db.Logics
             {
                 q = q.Where(x => x.IsPaid);
             }
-            else
+            else if(param.payStatus == PayStatus.NotYetPaid)
             {
                 q = q.Where(x => !x.IsPaid);
             }

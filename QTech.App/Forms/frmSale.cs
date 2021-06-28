@@ -30,6 +30,7 @@ namespace QTech.Forms
         private decimal Total;
         private List<Invoice> invoices;
         private List<InvoiceDetail> invoiceDetails;
+        private List<CustomerPrice> customerPrices;
         public GeneralProcess Flag { get; set; }
         public frmSale(Sale model, GeneralProcess flag)
         {
@@ -73,13 +74,19 @@ namespace QTech.Forms
             }
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
         }
-        private void CboCustomer_SelectedIndexChanged(object sender, EventArgs e)
+        private async void CboCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
             var customer = cboCustomer.SelectedObject.ItemObject as Customer;
+
             if (customer != null)
             {
                 cboSite.SearchParamFn = () => new SiteSearch() { CustomerId = customer.Id };
             }
+            customerPrices = await dgv.RunAsync(() =>
+            {
+                var result = CustomerPriceLogic.Instance.GetCustomerPriceByCustomerId(customer.Id);
+                return result;
+            });
         }
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
@@ -110,7 +117,7 @@ namespace QTech.Forms
 
             txtTotal.Text = Total.ToString();
         }
-        private void txtQauntity_Leave(object sender, EventArgs e)
+        private  void txtQauntity_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(dgv.CurrentCell.Value?.ToString() ?? ""))
             {
@@ -127,13 +134,35 @@ namespace QTech.Forms
             {
                 return;
             }
-            var unitPrice = await dgv.RunAsync(() =>
+            if (!cboCustomer.IsSelected())
             {
-                var colPro = sender as ExSearchCombo;
-                var proId = colPro.SelectedObject.ItemObject as Product;
-                var result = ProductLogic.Instance.FindAsync(proId.Id);
-                return result?.UnitPrice;
-            });
+                return;
+            }
+
+            decimal unitPrice = 0 ;
+            bool IsNotPriceByCustomer = true;
+            var _productId = int.Parse(dgv.CurrentCell.Value.ToString());
+            if (customerPrices.Any())
+            {
+                var _cusPrice = customerPrices.FirstOrDefault(x => x.ProductId == _productId);
+                if (_cusPrice != null)
+                {
+                    unitPrice = _cusPrice.SalePrice;
+                    IsNotPriceByCustomer = false;
+                }
+            }
+            if (IsNotPriceByCustomer)
+            {
+                var pro = await dgv.RunAsync(() =>
+                {
+                    var colPro = sender as ExSearchCombo;
+                    var proId = colPro.SelectedObject.ItemObject as Product;
+                    var result = ProductLogic.Instance.FindAsync(proId.Id);
+                    return result;
+                });
+                unitPrice = pro.UnitPrice;
+            }
+
             dgv.CurrentRow.Cells[colUnitPrice.Name].Value = unitPrice.ToString();
         }
         public bool InValid()

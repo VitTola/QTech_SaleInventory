@@ -572,6 +572,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ស្ថានភាពទាំងអស់.
+        /// </summary>
+        public static string PayStatus_All {
+            get {
+                return ResourceManager.GetString("PayStatus_All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to មិនទាន់បានទូទាត់.
         /// </summary>
         public static string PayStatus_NotYetPaid {
