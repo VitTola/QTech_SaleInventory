@@ -10,6 +10,7 @@ namespace QTech.Base.Models
     {
         public string Code { get; set; }
         public string Name { get; set; }
+        public decimal ImportPrice { get; set; }
         public decimal UnitPrice { get; set; }
         public string Note { get; set; }
         public int CategoryId { get; set; }

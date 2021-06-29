@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtPurchaseOrderNo = new System.Windows.Forms.TextBox();
             this.lblPurchaseOrderNo = new QTech.Component.ExLabel();
             this.flowLayOutLabelRemoveAdd = new System.Windows.Forms.FlowLayoutPanel();
@@ -52,28 +52,28 @@
             this.txtInvoiceNo = new System.Windows.Forms.TextBox();
             this.lblSite = new QTech.Component.ExLabel();
             this.lblCustomer = new QTech.Component.ExLabel();
-            this.panelTotal = new System.Windows.Forms.Panel();
-            this.txtTotal = new System.Windows.Forms.TextBox();
-            this.lblCurrency_ = new System.Windows.Forms.Label();
             this.lblTotal = new QTech.Component.ExLabel();
             this.cboCustomer = new QTech.Component.ExSearchCombo();
             this.cboSite = new QTech.Component.ExSearchCombo();
             this.lblPrintInvoice = new QTech.Component.Components.ExLinkLabel();
+            this.pnlExpect = new System.Windows.Forms.Panel();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.lblCur2 = new System.Windows.Forms.Label();
             this.container.SuspendLayout();
             this.flowLayOutLabelRemoveAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.exPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
-            this.panelTotal.SuspendLayout();
+            this.pnlExpect.SuspendLayout();
             this.SuspendLayout();
             // 
             // container
             // 
+            this.container.Controls.Add(this.pnlExpect);
             this.container.Controls.Add(this.lblPrintInvoice);
             this.container.Controls.Add(this.cboSite);
             this.container.Controls.Add(this.cboCustomer);
             this.container.Controls.Add(this.lblTotal);
-            this.container.Controls.Add(this.panelTotal);
             this.container.Controls.Add(this.lblCustomer);
             this.container.Controls.Add(this.lblSite);
             this.container.Controls.Add(this.lblInvoiceNo);
@@ -148,8 +148,8 @@
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv.BackgroundColor = System.Drawing.Color.White;
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -162,14 +162,14 @@
             this.colUnitPrice,
             this.colTotal,
             this.colEmployeeId});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS System", 8F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
             this.dgv.Font = new System.Drawing.Font("Khmer OS System", 8F);
@@ -358,44 +358,10 @@
             this.lblCustomer.TabIndex = 22;
             this.lblCustomer.Text = "ក្រុមហ៊ុន";
             // 
-            // panelTotal
-            // 
-            this.panelTotal.BackColor = System.Drawing.Color.Ivory;
-            this.panelTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelTotal.Controls.Add(this.txtTotal);
-            this.panelTotal.Controls.Add(this.lblCurrency_);
-            this.panelTotal.Location = new System.Drawing.Point(659, 513);
-            this.panelTotal.Name = "panelTotal";
-            this.panelTotal.Padding = new System.Windows.Forms.Padding(0, 3, 3, 0);
-            this.panelTotal.Size = new System.Drawing.Size(220, 27);
-            this.panelTotal.TabIndex = 23;
-            // 
-            // txtTotal
-            // 
-            this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTotal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtTotal.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.txtTotal.Location = new System.Drawing.Point(0, 3);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.ReadOnly = true;
-            this.txtTotal.Size = new System.Drawing.Size(215, 19);
-            this.txtTotal.TabIndex = 0;
-            this.txtTotal.TabStop = false;
-            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // lblCurrency_
-            // 
-            this.lblCurrency_.AutoSize = true;
-            this.lblCurrency_.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblCurrency_.Location = new System.Drawing.Point(215, 3);
-            this.lblCurrency_.Name = "lblCurrency_";
-            this.lblCurrency_.Size = new System.Drawing.Size(0, 19);
-            this.lblCurrency_.TabIndex = 0;
-            // 
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(560, 519);
+            this.lblTotal.Location = new System.Drawing.Point(560, 515);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Required = false;
             this.lblTotal.Size = new System.Drawing.Size(76, 19);
@@ -454,6 +420,42 @@
             this.lblPrintInvoice.Text = "បោះពុម្ភវិក័យប័ត្រ";
             this.lblPrintInvoice.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblPrintInvoice_LinkClicked);
             // 
+            // pnlExpect
+            // 
+            this.pnlExpect.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlExpect.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlExpect.Controls.Add(this.txtTotal);
+            this.pnlExpect.Controls.Add(this.lblCur2);
+            this.pnlExpect.Location = new System.Drawing.Point(679, 511);
+            this.pnlExpect.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlExpect.Name = "pnlExpect";
+            this.pnlExpect.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.pnlExpect.Size = new System.Drawing.Size(200, 27);
+            this.pnlExpect.TabIndex = 29;
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTotal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtTotal.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.Location = new System.Drawing.Point(0, 2);
+            this.txtTotal.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.ReadOnly = true;
+            this.txtTotal.Size = new System.Drawing.Size(165, 19);
+            this.txtTotal.TabIndex = 0;
+            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // lblCur2
+            // 
+            this.lblCur2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblCur2.Location = new System.Drawing.Point(165, 2);
+            this.lblCur2.Name = "lblCur2";
+            this.lblCur2.Size = new System.Drawing.Size(33, 23);
+            this.lblCur2.TabIndex = 1;
+            this.lblCur2.Text = "USD";
+            this.lblCur2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
@@ -471,8 +473,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.exPanel1.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
-            this.panelTotal.ResumeLayout(false);
-            this.panelTotal.PerformLayout();
+            this.pnlExpect.ResumeLayout(false);
+            this.pnlExpect.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -500,9 +502,6 @@
         private System.Windows.Forms.TextBox txtInvoiceNo;
         private Component.ExLabel lblCustomer;
         private Component.ExLabel lblSite;
-        private System.Windows.Forms.Panel panelTotal;
-        private System.Windows.Forms.TextBox txtTotal;
-        private System.Windows.Forms.Label lblCurrency_;
         private Component.ExLabel lblTotal;
         private Component.ExSearchCombo cboCustomer;
         private Component.ExSearchCombo cboSite;
@@ -515,5 +514,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotal;
         private Component.ExSearchComboColumn colEmployeeId;
         private Component.Components.ExLinkLabel lblPrintInvoice;
+        private System.Windows.Forms.Panel pnlExpect;
+        private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.Label lblCur2;
     }
 }

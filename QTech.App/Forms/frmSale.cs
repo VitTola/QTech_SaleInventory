@@ -73,6 +73,8 @@ namespace QTech.Forms
                 cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
             }
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
+            txtTotal.ReadOnly = true;
+
         }
         private async void CboCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -160,6 +160,7 @@ namespace QTech.Component
 
         private async void SelectItemsDialog_Load(object sender, EventArgs e)
         {
+            txtSearch.Text = string.Empty;
             if (_preList?.Any() == true)
             {
                 if (_itemForAll != null)

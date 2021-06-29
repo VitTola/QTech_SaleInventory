@@ -27,6 +27,7 @@ using EasyServer.Domain.Helpers;
 using Easy.Domain.Helpers;
 using EasyServer.Domain.Models;
 using QTech.Base.Helpers;
+using QTech.Component.MyComponents;
 
 namespace QTech.Component
 {
@@ -2147,6 +2148,16 @@ namespace QTech.Component
         }
 
         public static void validCurrency(this TextBox txt, object sender, KeyPressEventArgs e)
+        {
+            decimal x;
+            char ch = e.KeyChar;
+            if (ch == (char)8)    //Backspace
+                e.Handled = false;//Remember think "Handled" like barrier to stop any unexpected charactor
+            else if (!char.IsDigit(ch) && ch != '.' || !decimal.TryParse(txt.Text + ch, out x))
+                e.Handled = true;
+        }
+
+        public static void validCurrencyPanel(this CurrencyTextboxPanel txt, object sender, KeyPressEventArgs e)
         {
             decimal x;
             char ch = e.KeyChar;

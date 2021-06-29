@@ -136,6 +136,12 @@
     <Compile Include="LineDownPanel.designer.cs">
       <DependentUpon>LineDownPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyComponents\CurrencyTextbox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyComponents\CurrencyTextbox.Designer.cs">
+      <DependentUpon>CurrencyTextbox.cs</DependentUpon>
+    </Compile>
     <Compile Include="MyComponents\ExTabItem2.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -386,9 +392,7 @@
     <Compile Include="ExMessage.Designer.cs">
       <DependentUpon>ExMessage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\ExSearchCombo.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Components\ExSearchCombo.cs" />
     <Compile Include="Components\ExSearchCombo.Designer.cs">
       <DependentUpon>ExSearchCombo.cs</DependentUpon>
     </Compile>
@@ -501,6 +505,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interface\PrinterPickerDialog.resx">
       <DependentUpon>PrinterPickerDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyComponents\CurrencyTextbox.resx">
+      <DependentUpon>CurrencyTextbox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyComponents\ExTabItem2.resx">
       <DependentUpon>ExTabItem2.cs</DependentUpon>

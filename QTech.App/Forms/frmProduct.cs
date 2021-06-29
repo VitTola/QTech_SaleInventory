@@ -47,6 +47,8 @@ namespace QTech.Forms
             txtUnitPrice.RegisterEnglishInput();
             txtName.RegisterPrimaryInputWith(txtNote, txtName);
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
+            txtUnitPrice.KeyPress += (sender, e) => txtUnitPrice.validCurrency(sender, e);
+            txtImportPrice.KeyPress += (sender, e) => txtImportPrice.validCurrency(sender,e);
         }
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
@@ -56,7 +58,8 @@ namespace QTech.Forms
         {
             if (!txtName.IsValidRequired(lblName.Text)
                 |!cboCategory.IsValidRequired(lblCategorys.Text)
-                |!txtUnitPrice.IsValidNumberic())
+                |!txtUnitPrice.IsValidNumberic()
+                |!txtImportPrice.IsValidNumberic())
             {
                 return true;
             }
@@ -67,6 +70,7 @@ namespace QTech.Forms
             txtName.Text = Model.Name;
             txtNote.Text = Model.Note;
             txtUnitPrice.Text = Model.UnitPrice.ToString();
+            txtImportPrice.Text = Model.ImportPrice.ToString();
 
             var _result = await this.RunAsync(() =>
             {
@@ -126,6 +130,7 @@ namespace QTech.Forms
             Model.Name = txtName.Text;
             Model.Note = txtNote.Text;
             Model.UnitPrice = decimal.Parse(txtUnitPrice.Text);
+            Model.ImportPrice = decimal.Parse(txtImportPrice.Text);
             var selectedCat = cboCategory.SelectedObject.ItemObject as Category;
             Model.CategoryId = selectedCat.Id;
         }
