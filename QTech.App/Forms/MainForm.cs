@@ -182,6 +182,7 @@ namespace QTech.Forms
                 }
             }
         }
+
         private void ReadSecondLevelMenue(MenuBar menuBar)
         {
             pSecondMenue2.Hide();
@@ -196,7 +197,7 @@ namespace QTech.Forms
                 return;
             }
 
-            var childButtons = _secondLevelMenue.Where(n => n.ParentKey == menuBar.Key).OrderByDescending(x => x.Index).ToList();
+            var childButtons = _secondLevelMenue.Where(n => n.ParentKey == menuBar.Key).OrderBy(x => x.Index).ToList();
             if (childButtons.Any())
             {
                 childButtons.ForEach(x =>
@@ -207,6 +208,10 @@ namespace QTech.Forms
                  });
                 pSecondMenue2.Show();
                 pSecondMenue1.Show();
+                if( pSecondMenue2?.Controls[0] is ExTabItem2 btn)
+                {
+                    btn.PerformClick();
+                }
             } 
         }
         private void SecodMenue_Click(object sender, EventArgs e)
@@ -218,6 +223,9 @@ namespace QTech.Forms
                     ShowPage(menuBar.FormName,menuBar.ModuleLocation);
 
                 }
+                btn.BackColor = Color.FromArgb(250, 214, 173) ;
+                pSecondMenue2.Controls.OfType<ExTabItem2>().Where(x => x != btn).ToList()
+                    .ForEach(y => y.BackColor = Color.Transparent);
             }
         }
         private ExTabItem2 MyTemplateButton(string text, Image image, Object obj)

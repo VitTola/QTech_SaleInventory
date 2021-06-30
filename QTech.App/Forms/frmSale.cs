@@ -459,6 +459,7 @@ namespace QTech.Forms
         }
         private async void lblPrintInvoice_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            if (InValid()) return;
             Write();
             DataTable Invoice = new DataTable("Invoice");
             using (var reader = ObjectReader.Create(invoices))

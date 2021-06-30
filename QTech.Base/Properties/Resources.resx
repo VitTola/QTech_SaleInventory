@@ -436,4 +436,19 @@
   <data name="PayStatus_All" xml:space="preserve">
     <value>ស្ថានភាពទាំងអស់</value>
   </data>
+  <data name="str" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Report_" xml:space="preserve">
+    <value>របាយការណ៍</value>
+  </data>
+  <data name="Report_img32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Report_img32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sale_img32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sale_img32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CreateInvoice" xml:space="preserve">
+    <value>បង្កើតវិក័យប័ត្រ</value>
+  </data>
 </root>

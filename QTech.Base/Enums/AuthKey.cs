@@ -13,6 +13,7 @@ namespace QTech.Base.Enums
         Product = 3,
         Sale = 5,
         Supplier = 6,
-        CloseEntryData = 7,
+        Report = 7,
+        CloseEntryData = 8,
     }
 }

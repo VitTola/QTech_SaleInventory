@@ -175,6 +175,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to បង្កើតវិក័យប័ត្រ.
+        /// </summary>
+        public static string CreateInvoice {
+            get {
+                return ResourceManager.GetString("CreateInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to រូបិយប័ណ្ណ.
         /// </summary>
         public static string Currency {
@@ -768,11 +777,30 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to របាយការណ៍.
+        /// </summary>
+        public static string Report_ {
+            get {
+                return ResourceManager.GetString("Report_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap Report_img {
             get {
                 object obj = ResourceManager.GetObject("Report_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Report_img32 {
+            get {
+                object obj = ResourceManager.GetObject("Report_img32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -813,6 +841,16 @@ namespace QTech.Base.Properties {
         public static System.Drawing.Bitmap Sale_img {
             get {
                 object obj = ResourceManager.GetObject("Sale_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap sale_img32 {
+            get {
+                object obj = ResourceManager.GetObject("sale_img32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -945,6 +983,15 @@ namespace QTech.Base.Properties {
         public static string Status {
             get {
                 return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string str {
+            get {
+                return ResourceManager.GetString("str", resourceCulture);
             }
         }
         

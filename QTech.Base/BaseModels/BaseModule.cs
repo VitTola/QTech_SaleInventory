@@ -101,7 +101,6 @@ namespace QTech.Base.BaseModels
                 Icon = BaseResource.Product32x32,
                 Children = new List<MenuBar>(),
                 FormName = "QTech.Forms.ProductPage"
-
             },
               new MenuBar()
             {
@@ -114,28 +113,28 @@ namespace QTech.Base.BaseModels
                 FormName = "QTech.Forms.CategoryPage"
 
             },
-            //new MenuBar()
-            //{
-            //    Index = 4,
-            //    Level = 2,
-            //    ParentKey = AuthKey.Sale,
-            //    DisplayName = BaseResource.Sales,
-            //    Icon = BaseResource.Type_img,
-            //    Children = new List<MenuBar>(),
-            //    FormName = "QTech.Forms.frmSale"
+            new MenuBar()
+            {
+                Index = 4,
+                Level = 2,
+                ParentKey = AuthKey.Sale,
+                DisplayName = BaseResource.Sales,
+                Icon = BaseResource.sale_img32,
+                Children = new List<MenuBar>(),
+                FormName = "QTech.Forms.SalePage"
 
-            //},
-            //new MenuBar()
-            //{
-            //    Index = 5,
-            //    Level = 2,
-            //    ParentKey = AuthKey.CloseEntryData,
-            //    DisplayName = BaseResource.CloseEntryData,
-            //    Icon = BaseResource.Type_img,
-            //    Children = new List<MenuBar>(),
-            //    FormName = "QTech.Forms.frmEmployeePay"
+            },
+            new MenuBar()
+            {
+                Index = 5,
+                Level = 2,
+                ParentKey = AuthKey.Sale,
+                DisplayName = BaseResource.CreateInvoice,
+                Icon = BaseResource.Report_img32,
+                Children = new List<MenuBar>(),
+                FormName = "QTech.Forms.CloseDataEntryPage"
 
-            //},
+            },
 
 
         };
@@ -171,7 +170,7 @@ namespace QTech.Base.BaseModels
                 DisplayName = BaseResource.Products,
                 Icon = BaseResource.Product_img,
                 Children = new List<MenuBar>(),
-                FormName = "QTech.Forms.ProductPage"
+                FormName = ""
 
             },
             new MenuBar()
@@ -182,26 +181,19 @@ namespace QTech.Base.BaseModels
                 DisplayName = BaseResource.Sales,
                 Icon = BaseResource.Sale_img,
                 Children = new List<MenuBar>(),
-                FormName = "QTech.Forms.SalePage"
+                FormName = ""
 
             },
             new MenuBar()
             {
                 Index = 5,
                 Level = 1,
-                Key = AuthKey.CloseEntryData,
-                DisplayName = BaseResource.CloseEntryData,
+                Key = AuthKey.Report,
+                DisplayName = BaseResource.Report_,
                 Icon = BaseResource.CloseDateEntery_img,
                 Children = new List<MenuBar>(),
-                FormName = "QTech.Forms.CloseDataEntryPage"
+                FormName = "QTech.Forms.ReportViewPage"
             },
-
-
-
-
-
-
-
         };
 
 
