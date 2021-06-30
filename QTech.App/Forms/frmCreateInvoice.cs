@@ -24,7 +24,7 @@ using BaseReource = QTech.Base.Properties.Resources;
 
 namespace QTech.Forms
 {
-    public partial class frmSale : ExDialog, IDialog
+    public partial class frmCreateInvoice : ExDialog, IDialog
     {
         public Sale Model { get; set; }
         private decimal Total;
@@ -32,7 +32,7 @@ namespace QTech.Forms
         private List<RepoInvoiceDetail> invoiceDetails;
         private List<CustomerPrice> customerPrices;
         public GeneralProcess Flag { get; set; }
-        public frmSale(Sale model, GeneralProcess flag)
+        public frmCreateInvoice(Sale model, GeneralProcess flag)
         {
             InitializeComponent();
             this.Model = model;

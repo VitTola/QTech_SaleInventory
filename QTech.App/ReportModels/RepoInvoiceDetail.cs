@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QTech.ReportModels
 {
-    public class InvoiceDetail
+    public class RepoInvoiceDetail
     {
         public int SaleId { get; set; }
         public string Employee { get; set; }

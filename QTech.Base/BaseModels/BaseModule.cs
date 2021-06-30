@@ -132,7 +132,7 @@ namespace QTech.Base.BaseModels
                 DisplayName = BaseResource.CreateInvoice,
                 Icon = BaseResource.Report_img32,
                 Children = new List<MenuBar>(),
-                FormName = "QTech.Forms.CloseDataEntryPage"
+                FormName = "QTech.Forms.CreateInvoicePage"
 
             },
 
