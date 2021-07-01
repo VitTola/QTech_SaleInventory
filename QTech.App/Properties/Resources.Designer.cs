@@ -143,6 +143,16 @@ namespace QTech.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Printer {
+            get {
+                object obj = ResourceManager.GetObject("Printer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap QTech__2_ {
             get {
                 object obj = ResourceManager.GetObject("QTech__2_", resourceCulture);

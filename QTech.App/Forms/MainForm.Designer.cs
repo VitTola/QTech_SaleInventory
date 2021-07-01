@@ -273,7 +273,7 @@
             this.txtUserName.ForeColor = System.Drawing.Color.Black;
             this.txtUserName.Location = new System.Drawing.Point(29, 0);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(64, 19);
+            this.txtUserName.Size = new System.Drawing.Size(69, 19);
             this.txtUserName.TabIndex = 3;
             this.txtUserName.Text = "អ្នកប្រើប្រាស់";
             // 
@@ -283,7 +283,7 @@
             this.lblUserDropDown_.ForeColor = System.Drawing.Color.Black;
             this.lblUserDropDown_.Image = global::QTech.Properties.Resources.down_arrow_12;
             this.lblUserDropDown_.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblUserDropDown_.Location = new System.Drawing.Point(96, 0);
+            this.lblUserDropDown_.Location = new System.Drawing.Point(101, 0);
             this.lblUserDropDown_.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.lblUserDropDown_.Name = "lblUserDropDown_";
             this.lblUserDropDown_.Size = new System.Drawing.Size(19, 19);
@@ -293,7 +293,7 @@
             // lblBranchIcon_
             // 
             this.lblBranchIcon_.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblBranchIcon_.Location = new System.Drawing.Point(121, 0);
+            this.lblBranchIcon_.Location = new System.Drawing.Point(126, 0);
             this.lblBranchIcon_.Name = "lblBranchIcon_";
             this.lblBranchIcon_.Size = new System.Drawing.Size(20, 20);
             this.lblBranchIcon_.TabIndex = 4;
@@ -331,17 +331,17 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(447, 0);
+            this.label5.Location = new System.Drawing.Point(446, 0);
             this.label5.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 19);
+            this.label5.Size = new System.Drawing.Size(43, 19);
             this.label5.TabIndex = 8;
             this.label5.Text = "ជំនាន់៖";
             // 
             // _lbSocketStatus
             // 
             this._lbSocketStatus.AutoSize = true;
-            this._lbSocketStatus.Location = new System.Drawing.Point(426, 0);
+            this._lbSocketStatus.Location = new System.Drawing.Point(425, 0);
             this._lbSocketStatus.Name = "_lbSocketStatus";
             this._lbSocketStatus.Required = false;
             this._lbSocketStatus.Size = new System.Drawing.Size(15, 19);
@@ -356,7 +356,7 @@
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(1197, -700);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 19);
+            this.label2.Size = new System.Drawing.Size(37, 19);
             this.label2.TabIndex = 7;
             this.label2.Text = "ជំនាន់";
             // 
@@ -366,7 +366,7 @@
             this.txtLogin.ForeColor = System.Drawing.Color.Black;
             this.txtLogin.Location = new System.Drawing.Point(27, 4);
             this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Size = new System.Drawing.Size(104, 19);
+            this.txtLogin.Size = new System.Drawing.Size(110, 19);
             this.txtLogin.TabIndex = 1;
             this.txtLogin.Text = "01-01-2019 01:01:01";
             // 
@@ -675,6 +675,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.Font = new System.Drawing.Font("Khmer OS System", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(0, 0);
             this.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);

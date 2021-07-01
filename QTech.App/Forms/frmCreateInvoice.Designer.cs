@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCreateInvoice));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.exLabel2 = new QTech.Component.ExLabel();
             this.exPanel1 = new QTech.Component.Components.ExPanel();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnPrint = new QTech.Component.ExButtonLoading();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnClose = new QTech.Component.ExButtonLoading();
             this.btnSave = new QTech.Component.ExButtonLoading();
@@ -41,7 +44,6 @@
             this.lblCustomer = new QTech.Component.ExLabel();
             this.lblTotal = new QTech.Component.ExLabel();
             this.cboCustomer = new QTech.Component.ExSearchCombo();
-            this.lblPrintInvoice = new QTech.Component.Components.ExLinkLabel();
             this.pnlExpect = new System.Windows.Forms.Panel();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.lblCur2 = new System.Windows.Forms.Label();
@@ -72,6 +74,7 @@
             this.exLabel3 = new QTech.Component.ExLabel();
             this.container.SuspendLayout();
             this.exPanel1.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.pnlExpect.SuspendLayout();
             this.panelGrid.SuspendLayout();
@@ -91,7 +94,6 @@
             this.container.Controls.Add(this.panelGrid);
             this.container.Controls.Add(this.dtpInvoicingDate);
             this.container.Controls.Add(this.pnlExpect);
-            this.container.Controls.Add(this.lblPrintInvoice);
             this.container.Controls.Add(this.cboCustomer);
             this.container.Controls.Add(this.lblTotal);
             this.container.Controls.Add(this.lblCustomer);
@@ -116,6 +118,7 @@
             // exPanel1
             // 
             this.exPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.exPanel1.Controls.Add(this.flowLayoutPanel3);
             this.exPanel1.Controls.Add(this.flowLayoutPanel2);
             this.exPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.exPanel1.Location = new System.Drawing.Point(1, 824);
@@ -123,6 +126,34 @@
             this.exPanel1.Padding = new System.Windows.Forms.Padding(2);
             this.exPanel1.Size = new System.Drawing.Size(1440, 36);
             this.exPanel1.TabIndex = 17;
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.btnPrint);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(2, 2);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(279, 32);
+            this.flowLayoutPanel3.TabIndex = 2;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.Ivory;
+            this.btnPrint.DefaultImage = null;
+            this.btnPrint.Executing = false;
+            this.btnPrint.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
+            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrint.Location = new System.Drawing.Point(2, 3);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
+            this.btnPrint.ShortcutText = "P";
+            this.btnPrint.Size = new System.Drawing.Size(89, 27);
+            this.btnPrint.TabIndex = 2;
+            this.btnPrint.Text = "បោះពុម្ភ";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // flowLayoutPanel2
             // 
@@ -195,7 +226,7 @@
             // 
             this.lblCustomer.AutoSize = true;
             this.lblCustomer.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustomer.Location = new System.Drawing.Point(30, 33);
+            this.lblCustomer.Location = new System.Drawing.Point(20, 33);
             this.lblCustomer.Name = "lblCustomer";
             this.lblCustomer.Required = true;
             this.lblCustomer.Size = new System.Drawing.Size(56, 27);
@@ -224,7 +255,7 @@
             this.cboCustomer.FormattingEnabled = true;
             this.cboCustomer.IsGirdViewColumn = false;
             this.cboCustomer.LoadAll = true;
-            this.cboCustomer.Location = new System.Drawing.Point(149, 29);
+            this.cboCustomer.Location = new System.Drawing.Point(139, 29);
             this.cboCustomer.Name = "cboCustomer";
             this.cboCustomer.SearchParamFn = null;
             this.cboCustomer.SelectedItems = null;
@@ -233,21 +264,6 @@
             this.cboCustomer.Size = new System.Drawing.Size(200, 35);
             this.cboCustomer.TabIndex = 25;
             this.cboCustomer.TextAll = "";
-            // 
-            // lblPrintInvoice
-            // 
-            this.lblPrintInvoice.AutoSize = true;
-            this.lblPrintInvoice.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrintInvoice.Location = new System.Drawing.Point(6, 732);
-            this.lblPrintInvoice.Name = "lblPrintInvoice";
-            this.lblPrintInvoice.RightSpace = 10;
-            this.lblPrintInvoice.ShortcutText = "";
-            this.lblPrintInvoice.ShowShortcutText = false;
-            this.lblPrintInvoice.Size = new System.Drawing.Size(101, 27);
-            this.lblPrintInvoice.TabIndex = 28;
-            this.lblPrintInvoice.TabStop = true;
-            this.lblPrintInvoice.Text = "បោះពុម្ភវិក័យប័ត្រ";
-            this.lblPrintInvoice.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblPrintInvoice_LinkClicked);
             // 
             // pnlExpect
             // 
@@ -303,7 +319,7 @@
             // chkMarkAll_
             // 
             this.chkMarkAll_.AutoSize = true;
-            this.chkMarkAll_.Location = new System.Drawing.Point(15, 50);
+            this.chkMarkAll_.Location = new System.Drawing.Point(14, 49);
             this.chkMarkAll_.Name = "chkMarkAll_";
             this.chkMarkAll_.Size = new System.Drawing.Size(15, 14);
             this.chkMarkAll_.TabIndex = 15;
@@ -318,19 +334,19 @@
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AllowUserToResizeColumns = false;
             this.dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgv.BackgroundColor = System.Drawing.Color.White;
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Ivory;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colMark_,
@@ -343,18 +359,18 @@
             this.colTotal,
             this.colStatus,
             this.colIsPaid});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Khmer OS System", 8F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
-            this.dgv.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            this.dgv.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
             this.dgv.Location = new System.Drawing.Point(0, 39);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
@@ -463,8 +479,8 @@
             // 
             this.rdtpPicker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.rdtpPicker.FormattingEnabled = true;
-            this.rdtpPicker.Location = new System.Drawing.Point(4, 4);
-            this.rdtpPicker.Margin = new System.Windows.Forms.Padding(4, 4, 2, 4);
+            this.rdtpPicker.Location = new System.Drawing.Point(6, 6);
+            this.rdtpPicker.Margin = new System.Windows.Forms.Padding(6, 6, 2, 4);
             this.rdtpPicker.Name = "rdtpPicker";
             this.rdtpPicker.Size = new System.Drawing.Size(200, 27);
             this.rdtpPicker.TabIndex = 2;
@@ -475,7 +491,7 @@
             this.dtpInvoicingDate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.dtpInvoicingDate.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpInvoicingDate.FormattingEnabled = true;
-            this.dtpInvoicingDate.Location = new System.Drawing.Point(1207, 29);
+            this.dtpInvoicingDate.Location = new System.Drawing.Point(1228, 29);
             this.dtpInvoicingDate.Margin = new System.Windows.Forms.Padding(4, 4, 2, 4);
             this.dtpInvoicingDate.Name = "dtpInvoicingDate";
             this.dtpInvoicingDate.Size = new System.Drawing.Size(200, 35);
@@ -486,7 +502,7 @@
             this.lblInvoicingDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblInvoicingDate.AutoSize = true;
             this.lblInvoicingDate.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvoicingDate.Location = new System.Drawing.Point(1079, 33);
+            this.lblInvoicingDate.Location = new System.Drawing.Point(1100, 33);
             this.lblInvoicingDate.Name = "lblInvoicingDate";
             this.lblInvoicingDate.Required = true;
             this.lblInvoicingDate.Size = new System.Drawing.Size(86, 27);
@@ -603,6 +619,7 @@
             this.container.ResumeLayout(false);
             this.container.PerformLayout();
             this.exPanel1.ResumeLayout(false);
+            this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
             this.pnlExpect.ResumeLayout(false);
             this.pnlExpect.PerformLayout();
@@ -637,7 +654,6 @@
         private Component.ExLabel lblTotal;
         private Component.ExSearchCombo cboCustomer;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private Component.Components.ExLinkLabel lblPrintInvoice;
         private System.Windows.Forms.Panel pnlExpect;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label lblCur2;
@@ -666,5 +682,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colIsPaid;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private Component.ExButtonLoading btnPrint;
     }
 }

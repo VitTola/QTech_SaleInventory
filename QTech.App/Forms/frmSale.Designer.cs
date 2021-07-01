@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSale));
             this.txtPurchaseOrderNo = new System.Windows.Forms.TextBox();
             this.lblPurchaseOrderNo = new QTech.Component.ExLabel();
             this.flowLayOutLabelRemoveAdd = new System.Windows.Forms.FlowLayoutPanel();
@@ -45,6 +46,8 @@
             this.colEmployeeId = new QTech.Component.ExSearchComboColumn();
             this.exLabel2 = new QTech.Component.ExLabel();
             this.exPanel1 = new QTech.Component.Components.ExPanel();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnPrint = new QTech.Component.ExButtonLoading();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnClose = new QTech.Component.ExButtonLoading();
             this.btnSave = new QTech.Component.ExButtonLoading();
@@ -52,7 +55,7 @@
             this.txtInvoiceNo = new System.Windows.Forms.TextBox();
             this.lblSite = new QTech.Component.ExLabel();
             this.lblCustomer = new QTech.Component.ExLabel();
-            this.lblTotal = new QTech.Component.ExLabel();
+            this.lblTotalAmount = new QTech.Component.ExLabel();
             this.cboCustomer = new QTech.Component.ExSearchCombo();
             this.cboSite = new QTech.Component.ExSearchCombo();
             this.lblPrintInvoice = new QTech.Component.Components.ExLinkLabel();
@@ -63,6 +66,7 @@
             this.flowLayOutLabelRemoveAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.exPanel1.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.pnlExpect.SuspendLayout();
             this.SuspendLayout();
@@ -73,7 +77,7 @@
             this.container.Controls.Add(this.lblPrintInvoice);
             this.container.Controls.Add(this.cboSite);
             this.container.Controls.Add(this.cboCustomer);
-            this.container.Controls.Add(this.lblTotal);
+            this.container.Controls.Add(this.lblTotalAmount);
             this.container.Controls.Add(this.lblCustomer);
             this.container.Controls.Add(this.lblSite);
             this.container.Controls.Add(this.lblInvoiceNo);
@@ -269,6 +273,7 @@
             // exPanel1
             // 
             this.exPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.exPanel1.Controls.Add(this.flowLayoutPanel3);
             this.exPanel1.Controls.Add(this.flowLayoutPanel2);
             this.exPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.exPanel1.Location = new System.Drawing.Point(1, 566);
@@ -277,15 +282,43 @@
             this.exPanel1.Size = new System.Drawing.Size(909, 36);
             this.exPanel1.TabIndex = 17;
             // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.btnPrint);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(2, 2);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(279, 32);
+            this.flowLayoutPanel3.TabIndex = 3;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.Ivory;
+            this.btnPrint.DefaultImage = null;
+            this.btnPrint.Executing = false;
+            this.btnPrint.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
+            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrint.Location = new System.Drawing.Point(2, 3);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
+            this.btnPrint.ShortcutText = "P";
+            this.btnPrint.Size = new System.Drawing.Size(89, 27);
+            this.btnPrint.TabIndex = 2;
+            this.btnPrint.Text = "បោះពុម្ភ";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.btnClose);
             this.flowLayoutPanel2.Controls.Add(this.btnSave);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(2, 2);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(452, 2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(905, 32);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(455, 32);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // btnClose
@@ -293,7 +326,7 @@
             this.btnClose.BackColor = System.Drawing.Color.Ivory;
             this.btnClose.DefaultImage = null;
             this.btnClose.Executing = false;
-            this.btnClose.Location = new System.Drawing.Point(828, 3);
+            this.btnClose.Location = new System.Drawing.Point(378, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -309,7 +342,7 @@
             this.btnSave.BackColor = System.Drawing.Color.Ivory;
             this.btnSave.DefaultImage = null;
             this.btnSave.Executing = false;
-            this.btnSave.Location = new System.Drawing.Point(749, 3);
+            this.btnSave.Location = new System.Drawing.Point(299, 3);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -358,15 +391,15 @@
             this.lblCustomer.TabIndex = 22;
             this.lblCustomer.Text = "ក្រុមហ៊ុន";
             // 
-            // lblTotal
+            // lblTotalAmount
             // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(560, 515);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Required = false;
-            this.lblTotal.Size = new System.Drawing.Size(76, 19);
-            this.lblTotal.TabIndex = 24;
-            this.lblTotal.Text = "សរុបទឹកប្រាក់";
+            this.lblTotalAmount.AutoSize = true;
+            this.lblTotalAmount.Location = new System.Drawing.Point(560, 515);
+            this.lblTotalAmount.Name = "lblTotalAmount";
+            this.lblTotalAmount.Required = false;
+            this.lblTotalAmount.Size = new System.Drawing.Size(76, 19);
+            this.lblTotalAmount.TabIndex = 24;
+            this.lblTotalAmount.Text = "សរុបទឹកប្រាក់";
             // 
             // cboCustomer
             // 
@@ -418,7 +451,6 @@
             this.lblPrintInvoice.TabIndex = 28;
             this.lblPrintInvoice.TabStop = true;
             this.lblPrintInvoice.Text = "បោះពុម្ភវិក័យប័ត្រ";
-            this.lblPrintInvoice.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblPrintInvoice_LinkClicked);
             // 
             // pnlExpect
             // 
@@ -472,6 +504,7 @@
             this.flowLayOutLabelRemoveAdd.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.exPanel1.ResumeLayout(false);
+            this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
             this.pnlExpect.ResumeLayout(false);
             this.pnlExpect.PerformLayout();
@@ -502,7 +535,7 @@
         private System.Windows.Forms.TextBox txtInvoiceNo;
         private Component.ExLabel lblCustomer;
         private Component.ExLabel lblSite;
-        private Component.ExLabel lblTotal;
+        private Component.ExLabel lblTotalAmount;
         private Component.ExSearchCombo cboCustomer;
         private Component.ExSearchCombo cboSite;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
@@ -517,5 +550,7 @@
         private System.Windows.Forms.Panel pnlExpect;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label lblCur2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private Component.ExButtonLoading btnPrint;
     }
 }

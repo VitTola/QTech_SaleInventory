@@ -175,6 +175,26 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap CornerLeft {
+            get {
+                object obj = ResourceManager.GetObject("CornerLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap CornerRight {
+            get {
+                object obj = ResourceManager.GetObject("CornerRight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to បង្កើតវិក័យប័ត្រ.
         /// </summary>
         public static string CreateInvoice {
@@ -677,6 +697,25 @@ namespace QTech.Base.Properties {
         public static System.Drawing.Bitmap prepaid {
             get {
                 object obj = ResourceManager.GetObject("prepaid", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to បោះពុម្ភ.
+        /// </summary>
+        public static string Print {
+            get {
+                return ResourceManager.GetString("Print", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Printer {
+            get {
+                object obj = ResourceManager.GetObject("Printer", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

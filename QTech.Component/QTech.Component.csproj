@@ -697,6 +697,9 @@
     <None Include="Resources\bullet.png" />
     <None Include="Resources\channel_disconnect.png" />
     <None Include="Resources\channel_connected.png" />
+    <None Include="Resources\CornerRight.png" />
+    <None Include="Resources\CornerLeft.png" />
+    <None Include="Resources\Center.png" />
     <Content Include="Resources\edit.png" />
     <None Include="Resources\empty_avatar.png" />
     <None Include="Resources\jpg.png" />

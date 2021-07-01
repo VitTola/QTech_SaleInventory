@@ -457,7 +457,9 @@ namespace QTech.Forms
         {
             this.Close();
         }
-        private async void lblPrintInvoice_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+      
+
+        private async void btnPrint_Click(object sender, EventArgs e)
         {
             if (InValid()) return;
             Write();
@@ -485,7 +487,7 @@ namespace QTech.Forms
             if (report != null)
             {
                 var dig = new DialogReportViewer(report);
-                dig.Text =QTech.Base.Properties.Resources.Invoice;
+                dig.Text = QTech.Base.Properties.Resources.Invoice;
                 dig.ShowDialog();
             }
         }
