@@ -440,6 +440,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ថ្ងៃចេញវិក័យប័ត្រ.
+        /// </summary>
+        public static string InvoicingDate {
+            get {
+                return ResourceManager.GetString("InvoicingDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to បានទួទាត់.
         /// </summary>
         public static string IsPaid {
@@ -455,6 +464,15 @@ namespace QTech.Base.Properties {
             get {
                 object obj = ResourceManager.GetObject("key", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ទឹកប្រាក់នៅសល់.
+        /// </summary>
+        public static string LeftAmount {
+            get {
+                return ResourceManager.GetString("LeftAmount", resourceCulture);
             }
         }
         
@@ -1066,6 +1084,15 @@ namespace QTech.Base.Properties {
         public static string Total {
             get {
                 return ResourceManager.GetString("Total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to សរុបទឹកប្រាក់.
+        /// </summary>
+        public static string TotalAmount {
+            get {
+                return ResourceManager.GetString("TotalAmount", resourceCulture);
             }
         }
         

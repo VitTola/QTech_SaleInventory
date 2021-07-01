@@ -451,4 +451,13 @@
   <data name="CreateInvoice" xml:space="preserve">
     <value>បង្កើតវិក័យប័ត្រ</value>
   </data>
+  <data name="InvoicingDate" xml:space="preserve">
+    <value>ថ្ងៃចេញវិក័យប័ត្រ</value>
+  </data>
+  <data name="LeftAmount" xml:space="preserve">
+    <value>ទឹកប្រាក់នៅសល់</value>
+  </data>
+  <data name="TotalAmount" xml:space="preserve">
+    <value>សរុបទឹកប្រាក់</value>
+  </data>
 </root>

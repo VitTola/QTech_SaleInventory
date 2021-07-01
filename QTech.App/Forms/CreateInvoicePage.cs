@@ -1,226 +1,64 @@
 ﻿using QTech.Base;
-using QTech.Base.Enums;
-using QTech.Base.Helpers;
-using QTech.Base.SearchModels;
 using QTech.Component;
 using QTech.Db.Logics;
 using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BaseResource = QTech.Base.Properties.Resources;
-
+using QTech.Base.Helpers;
+using QTech.Base.SearchModels;
+using System.Collections.Generic;
+using System.Drawing;
+using QTech.Base.Enums;
 
 namespace QTech.Forms
 {
     public partial class CreateInvoicePage : ExPage, IPage
     {
-        public Sale Model { get; set; }
-        private GeneralProcess flag = GeneralProcess.None;
-        SaleSearchKey saleSearchKey = SaleSearchKey.None;
 
         public CreateInvoicePage()
         {
             InitializeComponent();
-            BindData();
+            Bind();
             InitEvent();
-        }
-        private void BindData()
-        {
-            var maxDate = DateTime.Now;
-            rdtpPicker.CustomDateRang = CustomDateRang.None;
-            //rdtpPicker.CustomDateRang = 
-            var peroids = ExReportDatePicker.GetPeroids(maxDate);
-            var customPeroid = ExReportDatePicker.GetPeriod(rdtpPicker.CustomDateRang, maxDate);
-            rdtpPicker.SetMaxDate(maxDate);
-            rdtpPicker.Items.AddRange(peroids.ToArray());
-            rdtpPicker.Items.Add(customPeroid);
-            rdtpPicker.SetSelectePeroid(DatePeroid.Today);
-
-            txtSearch.RegisterEnglishInput();
-            txtSearch.RegisterKeyArrowDown(dgv);
-            txtSearch.QuickSearch += txtSearch_QuickSearch;
-            txtSearch.PatternChanged += txtSearch_PatternChanged;
-            //rdtpPicker.ValueChanged += txtSearch_QuickSearch;
             registerSearchMenu();
+        }
+        private bool isNodeCollapsed { get; set; } = false;
+        private Invoice selectedModel { get; set; } = null;
+        public Invoice Model { get; set; }
+        private void Bind()
+        {
+            cboCustomer.DataSourceFn = p => CustomerLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
+            cboCustomer.SearchParamFn = () => new CustomerSearch();
+            cboStatus.SetDataSource<PayStatus>();
 
+            imageList1.ColorDepth = ColorDepth.Depth32Bit;
+            imageList1.ImageSize = new Size(14, 14);
+            imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            imageList1.Images.Add(nameof(Properties.Resources.Customer_img), Properties.Resources.Customer_img);
+            imageList1.Images.Add(nameof(Properties.Resources.Site_img), Properties.Resources.Site_img);
         }
         private void InitEvent()
         {
-            dgv.CellContentClick += Dgv_CellContentClick;
-            this.Text = BaseResource.Sales;
-        }
-        private void Dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == colMark_.Index)
-            {
-                dgv.CurrentRow.Cells[colMark_.Name].Value = !(bool)(dgv.CurrentRow.Cells[colMark_.Name]?.Value);
-            }
-        }
-        private void txtSearch_PatternChanged(object sender, EventArgs e)
-        {
-            saleSearchKey = (SaleSearchKey)txtSearch.SelectedPattern;
-        }
-        private async void txtSearch_QuickSearch(object sender, EventArgs e)
-        {
-            await Search();
-        }
-        public async void AddNew()
-        {
-            Model = new Sale();
-            Model.SaleDetails = new List<SaleDetail>();
-            flag = GeneralProcess.Add;
-            var dig = new frmSale(Model, flag);
-            if (dig.ShowDialog() == DialogResult.OK)
-            {
-                await Search();
-                dgv.RowSelected(colId.Name, dig.Model.Id);
-            }
-        }
-        public async void EditAsync()
-        {
-            if (dgv.SelectedRows.Count == 0)
-            {
-                return;
-            }
+            dgv.RowsDefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(173, 205, 239);
+            dgv.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dgv.RowTemplate.Height = 28;
+            dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgv.ColumnHeadersHeight = 28;
+            dgv.BackgroundColor = System.Drawing.Color.White;
+            dgv.ShowLines = false;
+            dgv.ShowLines = true;
 
-            var id = (int)dgv.SelectedRows[0].Cells[colId.Name].Value;
-            Model = await btnUpdate.RunAsync(() => SaleLogic.Instance.FindAsync(id));
-            if (Model == null)
-            {
-                return;
-            }
 
-            flag = GeneralProcess.Update;
-            var dig = new frmSale(Model, flag);
+            dgv.KeyDown += dgv_KeyDown;
+            dgv.NodeExpanded += Dgv_NodeExpanded;
+            dgv.NodeCollapsed += Dgv_NodeCollapsed;
+            txtSearch.RegisterEnglishInput();
+            txtSearch.RegisterKeyArrowDown(dgv);
+            txtSearch.QuickSearch += txtSearch_QuickSearch;
 
-            if (dig.ShowDialog() == DialogResult.OK)
-            {
-                await Search();
-                dgv.RowSelected(colId.Name, dig.Model.Id);
-            }
-        }
-        public async void Reload()
-        {
-            await Search();
-        }
-        public async void Remove()
-        {
-            if (dgv.SelectedRows.Count == 0)
-            {
-                return;
-            }
-
-            var id = (int)dgv.SelectedRows[0].Cells[colId.Name].Value;
-            var canRemove = await btnRemove.RunAsync(() => SaleLogic.Instance.CanRemoveAsync(id));
-            if (canRemove == false)
-            {
-                MsgBox.ShowWarning(EasyServer.Domain.Resources.RowCannotBeRemoved,
-                    GeneralProcess.Remove.GetTextDialog(BaseResource.Sales));
-                return;
-            }
-
-            Model = await btnRemove.RunAsync(() => SaleLogic.Instance.FindAsync(id));
-            if (Model == null)
-            {
-                return;
-            }
-
-            var dig = new frmSale(Model, GeneralProcess.Remove);
-            if (dig.ShowDialog() == DialogResult.OK)
-            {
-                await Search();
-            }
-        }
-        private SaleSearch SaleSearchParam()
-        {  
-            var search = new SaleSearch();
-            search.saleSearchKey = this.saleSearchKey;
-            search.Search = txtSearch.Text;
-            return search;
-        }
-        public async Task Search()
-        {
-            dgv.Rows.Clear();
-            List<Customer> _Customers = null;
-            List<Site> _Sites = null;
-            var _sales =await dgv.RunAsync(() =>
-            {
-            var _result = SaleLogic.Instance.SearchAsync(SaleSearchParam()).Where(x=>!x.IsPaid).ToList();
-                var CusIds = _result.Select(x => x.CompanyId).ToList();
-                var SitesIds = _result.Select(x => x.SiteId).ToList();
-                 _Customers = CustomerLogic.Instance.GetCustomersById(CusIds);
-                _Sites = SiteLogic.Instance.GetSiteByIds(SitesIds);
-
-                return _result;
-            });
-            if (_sales == null)
-            {
-                return;
-            }
-            _sales.ForEach(x =>
-            {
-                var row = newRow(false);
-                row.Cells[colId.Name].Value = x.Id;
-                row.Cells[colPurchaseOrderNo.Name].Value = x.PurchaseOrderNo;
-                row.Cells[colInvoiceNo.Name].Value = x.InvoiceNo;
-                row.Cells[colToCompany.Name].Value = _Customers?.FirstOrDefault(cus => cus.Id == x.CompanyId)?.Name;
-                row.Cells[colToSite.Name].Value = _Sites?.FirstOrDefault(s => s.Id == x.SiteId)?.Name;
-                row.Cells[colTotal.Name].Value = x.Total;
-                row.Cells[colSaleDate.Name].Value = x.SaleDate.ToShortDateString();
-                row.Cells[colIsPaid.Name].Value = x.IsPaid;
-
-                var cell = row.Cells[colStatus.Name];
-                if (x.IsPaid)
-                {
-                    row.Cells[colStatus.Name].Value = BaseResource.IsPaid;
-                    cell.Style.ForeColor = Color.Red;
-                }
-                else
-                {
-                    row.Cells[colStatus.Name].Value = BaseResource.NotYetPaid;
-                    cell.Style.ForeColor = Color.Green;
-                }
-            });
-
-            //Initailize colMark_
-            foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
-            {
-                row.Cells[colMark_.Name].Value = false;
-            }
-        }
-        private DataGridViewRow newRow(bool isFocus = false)
-        {
-            var row = dgv.Rows[dgv.Rows.Add()];
-            row.Cells[colId.Name].Value = 0;
-            row.Cells[colId.Name].Value = 0;
-            if (isFocus)
-            {
-                dgv.Focus();
-            }
-            return row;
-        }
-        public async void View()
-        {
-            if (dgv.SelectedRows.Count == 0)
-            {
-                return;
-            }
-
-            var id = (int)dgv.SelectedRows[0].Cells[colId.Name].Value;
-
-            Model = await btnUpdate.RunAsync(() => SaleLogic.Instance.FindAsync(id));
-
-            if (Model == null)
-            {
-                return;
-            }
-
-            var dig = new frmSale(Model, GeneralProcess.View);
-            dig.ShowDialog();
         }
         private void registerSearchMenu()
         {
@@ -246,64 +84,231 @@ namespace QTech.Forms
                  InputLanguage.CurrentInputLanguage = UI.English;
                  txtSearch.ReadOnly = false;
              });
-            txtSearch.AddMenuPattern(
-             SaleSearchKey.CompanyName.ToString(),
-             SaleSearchKey.CompanyName,
-             BaseResource.customer2,
-             BaseResource.Customer,
-             Constants.KeyShortcut[SaleSearchKey.CompanyName],
-             (s, e) =>
-             {
-                 InputLanguage.CurrentInputLanguage = UI.English;
-                 txtSearch.ReadOnly = false;
-             });
-            txtSearch.AddMenuPattern(
-             SaleSearchKey.SiteName.ToString(),
-             SaleSearchKey.SiteName,
-             BaseResource.home,
-             BaseResource.Site,
-             Constants.KeyShortcut[SaleSearchKey.SiteName],
-             (s, e) =>
-             {
-                 InputLanguage.CurrentInputLanguage = UI.English;
-                 txtSearch.ReadOnly = false;
-             });
-
             InputLanguage.CurrentInputLanguage = UI.English;
-            txtSearch.ShowMenuPattern(SaleSearchKey.CompanyName);
-           // changeDataVisible();
+            txtSearch.ShowMenuPattern(SaleSearchKey.PurchaseOrderNo);
+            // changeDataVisible();
         }
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        private async void txtSearch_QuickSearch(object sender, EventArgs e)
         {
-            if (keyData == Constants.KeyShortcut[SaleSearchKey.PurchaseOrderNo])
+            await Search();
+        }
+        private void Dgv_NodeCollapsed(object sender, CollapsedEventArgs e)
+        {
+            if (sender is TreeGridNode treeGrid)
             {
-                InputLanguage.CurrentInputLanguage = UI.English;
-                txtSearch.ReadOnly = false;
-                txtSearch.ShowMenuPattern(SaleSearchKey.PurchaseOrderNo);
-                return true;
+
             }
-            else if(keyData == Constants.KeyShortcut[SaleSearchKey.InvoiceNo])
+            isNodeCollapsed = true;
+        }
+        private async void Dgv_NodeExpanded(object sender, ExpandedEventArgs e)
+        {
+            if (e.Node.Tag is Customer parent)
             {
-                InputLanguage.CurrentInputLanguage = UI.English;
-                txtSearch.ReadOnly = false;
-                txtSearch.ShowMenuPattern(SaleSearchKey.InvoiceNo);
-                return true;
+                //In case top level node is expanded manually
+                if (parent.Id == int.Parse(BaseResource.TopLevelNodeId))
+                {
+                    return;
+                }
+
+                e.Node.Nodes.Clear();
+                var search = new SiteSearch() { CustomerId = parent.Id };
+                var sites = await dgv.RunAsync(() => SiteLogic.Instance.SearchAsync(search));
+
+                if (sites.Any())
+                {
+                    var dummy = e.Node.Nodes.Add();
+                    dummy.Visible = false;
+                    AddChildNode(e.Node, sites, parent);
+                    return;
+                }
             }
-            else if (keyData == Constants.KeyShortcut[SaleSearchKey.CompanyName])
+        }
+        private void dgv_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Right)
             {
-                InputLanguage.CurrentInputLanguage = UI.English;
-                txtSearch.ReadOnly = false;
-                txtSearch.ShowMenuPattern(SaleSearchKey.CompanyName);
-                return true;
+                dgv.CurrentNode?.Expand();
             }
-            else if (keyData == Constants.KeyShortcut[SaleSearchKey.SiteName])
+            else if (e.KeyCode == Keys.Left)
             {
-                InputLanguage.CurrentInputLanguage = UI.English;
-                txtSearch.ReadOnly = false;
-                txtSearch.ShowMenuPattern(SaleSearchKey.SiteName);
-                return true;
+                dgv.CurrentNode?.Collapse();
             }
-            return base.ProcessCmdKey(ref msg, keyData);
+        }
+        private void RefreshAfterOperation(Customer model)
+        {
+            var parentNode = dgv.Rows.Cast<TreeGridNode>().FirstOrDefault(x => x.Tag is Customer cus && cus.Id == model.Id);
+            if (parentNode != null)
+            {
+                parentNode.Selected = true;
+                if (parentNode.IsExpanded)
+                {
+                    parentNode.Collapse();
+                }
+                parentNode.Expand();
+            }
+        }
+        public async void AddNew()
+        {
+            var customer = new Invoice();
+            var dig = new frmCreateInvoice(customer, GeneralProcess.Add);
+            if (dig.ShowDialog() == DialogResult.OK)
+            {
+                await Search();
+                selectedModel = dig.Model;
+               // RefreshAfterOperation(selectedModel);
+            }
+        }
+        public async void EditAsync()
+        {
+            //if (dgv.SelectedRows.Count == 0)
+            //{
+            //    return;
+            //}
+
+            //var id = (int)dgv.SelectedRows[0].Cells[colParentId.Name].Value;
+
+            //Model = await btnUpdate.RunAsync(() => CustomerLogic.Instance.FindAsync(id));
+            //if (Model == null)
+            //{
+            //    return;
+            //}
+
+            //var dig = new frmCustomer(Model, GeneralProcess.Update);
+
+            //if (dig.ShowDialog() == DialogResult.OK)
+            //{
+            //    await Search();
+            //    selectedModel = dig.Model;
+            //    RefreshAfterOperation(selectedModel);
+            //}
+        }
+        public async void Reload()
+        {
+            await Search();
+        }
+        public async void Remove()
+        {
+            //if (dgv.SelectedRows.Count == 0)
+            //{
+            //    return;
+            //}
+
+            //var id = (int)dgv.CurrentRow.Cells[colParentId.Name].Value;
+            //var canRemove = await btnRemove.RunAsync(() => CustomerLogic.Instance.CanRemoveAsync(id));
+            //if (canRemove == false)
+            //{
+            //    MsgBox.ShowWarning(EasyServer.Domain.Resources.RowCannotBeRemoved,
+            //        GeneralProcess.Remove.GetTextDialog(BaseResource.Employees));
+            //    return;
+            //}
+
+            //Model = await btnRemove.RunAsync(() => CustomerLogic.Instance.FindAsync(id));
+            //if (Model == null)
+            //{
+            //    return;
+            //}
+
+            //var dig = new frmCustomer(Model, GeneralProcess.Remove);
+            //if (dig.ShowDialog() == DialogResult.OK)
+            //{
+            //    await Search();
+            //}
+        }
+        public async Task Search()
+        {
+            var search = new CustomerSearch()
+            {
+                Search = txtSearch.Text,
+            };
+
+            var result = await dgv.RunAsync(() => CustomerLogic.Instance.SearchAsync(search));
+            if (result != null)
+            {
+                TreeGridFillData(result);
+            }
+        }
+        private void TreeGridFillData(List<Customer> customers)
+        {
+            if (customers == null)
+            {
+                return;
+            }
+
+            dgv.Nodes.Clear();
+            var topLevelNode = new Customer { Id = 0, Name = BaseResource.AllCustomer };
+            TreeGridNode _topLevelTreeGridNode = AddParentNode(dgv, topLevelNode);
+            dgv.NodeExpanded -= Dgv_NodeExpanded;
+            _topLevelTreeGridNode.Expand();
+            dgv.NodeExpanded += Dgv_NodeExpanded;
+
+            foreach (var parent in customers)
+            {
+                var _treeGridNode = AddParentNode(_topLevelTreeGridNode, parent);
+
+                if (parent.Sites != null && parent.Sites.Any())
+                {
+                    AddChildNode(_treeGridNode, parent.Sites, parent);
+                    dgv.NodeExpanded -= Dgv_NodeExpanded;
+                    // _treeGridNode.Expand();
+                    dgv.NodeExpanded += Dgv_NodeExpanded;
+                }
+
+                var dummy = _treeGridNode.Nodes.Add();
+                dummy.Visible = false;
+            }
+        }
+        private void AddChildNode(TreeGridNode TreeGridNode, IEnumerable<Site> children, Customer parent)
+        {
+            //foreach (var child in children)
+            //{
+            //    var node = TreeGridNode.Nodes.Add();
+            //    var font = dgv.DefaultCellStyle.Font;
+            //    node.Height = dgv.RowTemplate.Height;
+            //    node.Tag = child;
+            //    node.Height = dgv.RowTemplate.Height;
+            //    node.Image = imageList1.Images[nameof(Properties.Resources.Site_img)];
+            //    node.Cells[dgv.Columns[colName.Name].Index].Value = child.Name;
+            //    node.Cells[dgv.Columns[colPhone.Name].Index].Value = child.Phone;
+            //    node.Cells[dgv.Columns[colNote.Name].Index].Value = child.Note;
+            //    node.Cells[dgv.Columns[colId.Name].Index].Value = child.Id;
+            //    node.Cells[dgv.Columns[colParentId.Name].Index].Value = child.CustomerId;
+
+            //}
+            // TreeGridNode.Collapse();
+        }
+        private TreeGridNode AddParentNode(dynamic parentNode, Customer customer)
+        {
+            var node = parentNode.Nodes.Add();
+            //node.Height = dgv.RowTemplate.Height;
+            //node.Tag = customer;
+
+            //node.Image = imageList1.Images[nameof(Properties.Resources.Customer_img)];
+            //node.Cells[dgv.Columns[colName.Name].Index].Value = customer?.Name;
+            //node.Cells[dgv.Columns[colPhone.Name].Index].Value = customer?.Phone;
+            //node.Cells[dgv.Columns[colNote.Name].Index].Value = customer.Note;
+            //node.Cells[dgv.Columns[colId.Name].Index].Value = customer.Id;
+            //node.Cells[dgv.Columns[colParentId.Name].Index].Value = customer.Id;
+            //var dummy = node.Nodes.Add();
+            //dummy.Visible = false;
+            return node;
+        }
+        public async void View()
+        {
+            //if (dgv.SelectedRows.Count == 0)
+            //{
+            //    return;
+            //}
+
+            //var id = (int)dgv.SelectedRows[0].Cells[colParentId.Name].Value;
+            //Model = await btnUpdate.RunAsync(() => CustomerLogic.Instance.FindAsync(id));
+
+            //if (Model == null)
+            //{
+            //    return;
+            //}
+
+            //var dig = new frmCustomer(Model, GeneralProcess.View);
+            //dig.ShowDialog();
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -317,12 +322,48 @@ namespace QTech.Forms
         {
             Remove();
         }
-        private void chkMarkAll__CheckedChanged(object sender, EventArgs e)
+        private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
-            {
-                row.Cells[colMark_.Name].Value = chkMarkAll_.Checked;
-            }
+            View();
+        }
+        bool _isCollapsed = true;
+        private void picCollapseExpanse_Click(object sender, EventArgs e)
+        {
+            //if (dgv.Executing) { return; }
+            //if ((dgv.Nodes?.Any() ?? true) == false) { return; }
+
+            //if (_isCollapsed)
+            //{
+            //    dgv.Rows.Cast<TreeGridNode>().ToList().ForEach(x => x?.Expand());
+            //    _isCollapsed = false;
+            //}
+            //else
+            //{
+            //    dgv.Rows.Cast<TreeGridNode>().ToList().ForEach(x =>
+            //    {
+            //        if (x.IsExpanded)
+            //        {
+            //            if (x is Customer c)
+            //            {
+
+            //            }
+            //            x?.Collapse();
+            //        }
+            //    });
+            //    _isCollapsed = true;
+            //}
+        }
+        private void picCollapseExpanse_MouseHover(object sender, EventArgs e)
+        {
+            //picCollapseExpanse.BackColor = Color.LightCyan;
+        }
+        private void picCollapseExpanse_MouseLeave(object sender, EventArgs e)
+        {
+           // picCollapseExpanse.BackColor = Color.FromArgb(245, 245, 237);
+        }
+        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

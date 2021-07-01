@@ -151,6 +151,7 @@
     <Compile Include="BaseReport\ReportHelper.cs" />
     <Compile Include="Helpers\TempFile.cs" />
     <Compile Include="Helpers\UISetting.cs" />
+    <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\CustomerPrice.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -188,6 +189,7 @@
     <Compile Include="SearchModels\CustomerSearch.cs" />
     <Compile Include="SearchModels\EmployeeSearch.cs" />
     <Compile Include="SearchModels\SaleDetailSearch.cs" />
+    <Compile Include="SearchModels\InvoiceSearch.cs" />
     <Compile Include="SearchModels\SaleSearch.cs" />
     <Compile Include="SearchModels\SiteSearch.cs" />
   </ItemGroup>
