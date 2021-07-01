@@ -12,7 +12,9 @@ namespace QTech.Base.SearchModels
     {
         public SaleSearchKey saleSearchKey { get; set; }
         public PayStatus payStatus { get; set; }
-
         public int Id { get; set; }
+        public int CustomerId { get; set; }
+        public DateTime FromDate { get; set; }
+        public DateTime ToDate { get; set; }
     }
 }

@@ -98,6 +98,19 @@ namespace QTech.Db.Logics
             }
             return q;
         }
+        public List<Sale> GetSaleByCustomerId(ISearchModel model)
+        {
+            var param = model as SaleSearch;
+
+            if (param.FromDate != null && param.ToDate !=null )
+            {
+                var result = _db.Sales.Where(x => x.CompanyId == param.CustomerId &&
+                x.SaleDate>= param.FromDate && x.SaleDate <= param.ToDate && !x.IsPaid).ToList();
+                return result;
+            }
+            return null;
+        }
+
 
     }
 }

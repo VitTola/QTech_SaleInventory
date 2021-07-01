@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCreateInvoice));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.exLabel2 = new QTech.Component.ExLabel();
             this.exPanel1 = new QTech.Component.Components.ExPanel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
@@ -61,7 +61,7 @@
             this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIsPaid = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.flowLayoutPanelTopGrid = new System.Windows.Forms.FlowLayoutPanel();
-            this.rdtpPicker = new QTech.Component.ExReportDatePicker();
+            this.dtpSearchDate = new QTech.Component.ExReportDatePicker();
             this.dtpInvoicingDate = new QTech.Component.ExReportDatePicker();
             this.lblInvoicingDate = new QTech.Component.ExLabel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -290,6 +290,7 @@
             this.txtTotal.ReadOnly = true;
             this.txtTotal.Size = new System.Drawing.Size(165, 19);
             this.txtTotal.TabIndex = 0;
+            this.txtTotal.Text = "0";
             this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblCur2
@@ -324,6 +325,7 @@
             this.chkMarkAll_.Size = new System.Drawing.Size(15, 14);
             this.chkMarkAll_.TabIndex = 15;
             this.chkMarkAll_.UseVisualStyleBackColor = true;
+            this.chkMarkAll_.Click += new System.EventHandler(this.chkMarkAll__Click);
             // 
             // dgv
             // 
@@ -334,19 +336,19 @@
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AllowUserToResizeColumns = false;
             this.dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dgv.BackgroundColor = System.Drawing.Color.White;
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Ivory;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Ivory;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colMark_,
@@ -359,14 +361,14 @@
             this.colTotal,
             this.colStatus,
             this.colIsPaid});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle12;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
@@ -468,27 +470,28 @@
             // flowLayoutPanelTopGrid
             // 
             this.flowLayoutPanelTopGrid.BackColor = System.Drawing.Color.Transparent;
-            this.flowLayoutPanelTopGrid.Controls.Add(this.rdtpPicker);
+            this.flowLayoutPanelTopGrid.Controls.Add(this.dtpSearchDate);
             this.flowLayoutPanelTopGrid.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanelTopGrid.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanelTopGrid.Name = "flowLayoutPanelTopGrid";
             this.flowLayoutPanelTopGrid.Size = new System.Drawing.Size(1420, 39);
             this.flowLayoutPanelTopGrid.TabIndex = 0;
             // 
-            // rdtpPicker
+            // dtpSearchDate
             // 
-            this.rdtpPicker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.rdtpPicker.FormattingEnabled = true;
-            this.rdtpPicker.Location = new System.Drawing.Point(6, 6);
-            this.rdtpPicker.Margin = new System.Windows.Forms.Padding(6, 6, 2, 4);
-            this.rdtpPicker.Name = "rdtpPicker";
-            this.rdtpPicker.Size = new System.Drawing.Size(200, 27);
-            this.rdtpPicker.TabIndex = 2;
+            this.dtpSearchDate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.dtpSearchDate.FormattingEnabled = true;
+            this.dtpSearchDate.Location = new System.Drawing.Point(6, 6);
+            this.dtpSearchDate.Margin = new System.Windows.Forms.Padding(6, 6, 2, 4);
+            this.dtpSearchDate.Name = "dtpSearchDate";
+            this.dtpSearchDate.Size = new System.Drawing.Size(200, 27);
+            this.dtpSearchDate.TabIndex = 2;
             // 
             // dtpInvoicingDate
             // 
             this.dtpInvoicingDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpInvoicingDate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.dtpInvoicingDate.Enabled = false;
             this.dtpInvoicingDate.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpInvoicingDate.FormattingEnabled = true;
             this.dtpInvoicingDate.Location = new System.Drawing.Point(1228, 29);
@@ -534,7 +537,10 @@
             this.txtPaidAmount.ReadOnly = true;
             this.txtPaidAmount.Size = new System.Drawing.Size(165, 19);
             this.txtPaidAmount.TabIndex = 0;
+            this.txtPaidAmount.Text = "0";
             this.txtPaidAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPaidAmount.TextChanged += new System.EventHandler(this.txtPaidAmount_TextChanged);
+            this.txtPaidAmount.Leave += new System.EventHandler(this.txtPaidAmount_Leave);
             // 
             // label1
             // 
@@ -583,6 +589,7 @@
             this.txtLeftAmount.ReadOnly = true;
             this.txtLeftAmount.Size = new System.Drawing.Size(165, 19);
             this.txtLeftAmount.TabIndex = 0;
+            this.txtLeftAmount.Text = "0";
             this.txtLeftAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label2
@@ -662,7 +669,7 @@
         private Component.ExDataGridView dgv;
         private System.Windows.Forms.CheckBox chkMarkAll_;
         private Component.ExLabel lblInvoicingDate;
-        private Component.ExReportDatePicker rdtpPicker;
+        private Component.ExReportDatePicker dtpSearchDate;
         private Component.ExReportDatePicker dtpInvoicingDate;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtLeftAmount;
