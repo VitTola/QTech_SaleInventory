@@ -1,4 +1,5 @@
 ﻿using EasyServer.Domain.Models;
+using QTech.Base.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,8 @@ namespace QTech.Base
         public List<SaleDetail> SaleDetails{ get; set; }
         public decimal PaymentRecieve { get; set; }
         public decimal PaymentLeft { get; set; }
-        public bool IsPaid { get; set; } = false;
+       // public bool IsPaid { get; set; } = false;
+        public PayStatus PayStatus { get; set; }
     }
 
     public class SaleDetail : ActiveBaseModel

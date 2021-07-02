@@ -646,6 +646,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to រងចាំទូទាត់.
+        /// </summary>
+        public static string PayStatus_WaitPayment {
+            get {
+                return ResourceManager.GetString("PayStatus_WaitPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to លេខទូស័ព្ទ.
         /// </summary>
         public static string Phone {

@@ -16,8 +16,10 @@ namespace QTech.Db.Configs
             modelBuilder.Entity<Customer>().Ignore(x => x.Sites);
             modelBuilder.Entity<Sale>().Ignore(x => x.SaleDetails);
             modelBuilder.Entity<Customer>().Ignore(x => x.CustomerPrices);
+            modelBuilder.Entity<Invoice>().Ignore(x => x.InvoiceDetails);
+
         }
 
-        
+
     }
 }

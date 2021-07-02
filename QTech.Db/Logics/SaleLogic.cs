@@ -90,11 +90,11 @@ namespace QTech.Db.Logics
             }
             if (param.payStatus == PayStatus.Paid)
             {
-                q = q.Where(x => x.IsPaid);
+                q = q.Where(x => x.PayStatus == PayStatus.Paid);
             }
-            else if(param.payStatus == PayStatus.NotYetPaid)
+            else if (param.payStatus == PayStatus.NotYetPaid)
             {
-                q = q.Where(x => !x.IsPaid);
+                q = q.Where(x => x.PayStatus == PayStatus.NotYetPaid);
             }
             return q;
         }
@@ -105,7 +105,7 @@ namespace QTech.Db.Logics
             if (param.FromDate != null && param.ToDate !=null )
             {
                 var result = _db.Sales.Where(x => x.CompanyId == param.CustomerId &&
-                x.SaleDate>= param.FromDate && x.SaleDate <= param.ToDate && !x.IsPaid).ToList();
+                x.SaleDate>= param.FromDate && x.SaleDate <= param.ToDate && x.PayStatus == PayStatus.NotYetPaid).ToList();
                 return result;
             }
             return null;

@@ -1,5 +1,6 @@
 ﻿using QTech.Base;
 using QTech.Base.BaseModels;
+using QTech.Base.Enums;
 using QTech.Base.Models;
 using QTech.Base.SearchModels;
 using System;
@@ -42,17 +43,54 @@ namespace QTech.Db.Logics
         }
         public override Invoice AddAsync(Invoice entity)
         {
+            entity.InvoiceNo = NewInvoiceNumber();
             var invoice = base.AddAsync(entity);
             var invoiceDetail = entity.InvoiceDetails;
-            if (invoiceDetail != null && invoiceDetail.Any())
+            if (invoiceDetail.Any())
             {
                 foreach (var s in invoiceDetail)
                 {
+                    s.InvoiceId = invoice.Id;
                     InvoiceDetailLogic.Instance.AddAsync(s);
                 }
+
+                //Update Sale Payment Status
+                var saleIds = invoiceDetail.Select(x => x.SaleId).ToList();
+                _db.Sales.Where(x => x.Active && saleIds.Any(y => y == x.Id)).ToList()
+                    .ForEach(x =>
+                    {
+                        x.PayStatus = PayStatus.WaitPayment;
+                    });
+                _db.SaveChanges();
             }
+
             return invoice;
         }
+        private string NewInvoiceNumber()
+        {
+            string invoiceNo;
+            try
+            {
+                var lastInvoiceNo = _db.Invoices.Max(x => x.InvoiceNo);
+                      
+                if (lastInvoiceNo == null)
+                {
+                    invoiceNo = "SYSINV-000001";
+                }
+                else
+                {
+                    int interval = int.Parse(lastInvoiceNo.Substring(7,6));
+                    interval = interval + 1;
+                    invoiceNo = string.Format("SYSINV-{0:000000}",interval);
+                }
+                return invoiceNo;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        
         public override Invoice UpdateAsync(Invoice entity)
         {
             var invoice = base.UpdateAsync(entity);

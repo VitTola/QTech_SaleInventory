@@ -29,6 +29,8 @@ namespace QTech.Db
         public virtual DbSet<SaleDetail> SaleDetails { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<CustomerPrice> CustomerPrices { get; set; }
+        public virtual DbSet<Invoice> Invoices { get; set; }
+        public virtual DbSet<InvoiceDetail> InvoiceDetails { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

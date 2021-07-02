@@ -62,7 +62,6 @@
             this.colIsPaid = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.flowLayoutPanelTopGrid = new System.Windows.Forms.FlowLayoutPanel();
             this.dtpSearchDate = new QTech.Component.ExReportDatePicker();
-            this.dtpInvoicingDate = new QTech.Component.ExReportDatePicker();
             this.lblInvoicingDate = new QTech.Component.ExLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtPaidAmount = new System.Windows.Forms.TextBox();
@@ -74,6 +73,7 @@
             this.exLabel3 = new QTech.Component.ExLabel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.dtpInvoicingDate = new QTech.Component.ExDateTimePicker();
             this.container.SuspendLayout();
             this.exPanel1.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -478,19 +478,6 @@
             this.dtpSearchDate.Size = new System.Drawing.Size(200, 27);
             this.dtpSearchDate.TabIndex = 2;
             // 
-            // dtpInvoicingDate
-            // 
-            this.dtpInvoicingDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpInvoicingDate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.dtpInvoicingDate.Enabled = false;
-            this.dtpInvoicingDate.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpInvoicingDate.FormattingEnabled = true;
-            this.dtpInvoicingDate.Location = new System.Drawing.Point(1224, 19);
-            this.dtpInvoicingDate.Margin = new System.Windows.Forms.Padding(4, 4, 2, 4);
-            this.dtpInvoicingDate.Name = "dtpInvoicingDate";
-            this.dtpInvoicingDate.Size = new System.Drawing.Size(200, 35);
-            this.dtpInvoicingDate.TabIndex = 3;
-            // 
             // lblInvoicingDate
             // 
             this.lblInvoicingDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -621,18 +608,27 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.dtpInvoicingDate);
             this.panel4.Controls.Add(this.cboCustomer);
             this.panel4.Controls.Add(this.txtInvoiceNo);
             this.panel4.Controls.Add(this.lblInvoicingDate);
             this.panel4.Controls.Add(this.lblInvoiceNo);
             this.panel4.Controls.Add(this.exLabel2);
             this.panel4.Controls.Add(this.lblCustomer);
-            this.panel4.Controls.Add(this.dtpInvoicingDate);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(1, 1);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1440, 85);
             this.panel4.TabIndex = 35;
+            // 
+            // dtpInvoicingDate
+            // 
+            this.dtpInvoicingDate.Location = new System.Drawing.Point(1215, 23);
+            this.dtpInvoicingDate.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
+            this.dtpInvoicingDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.dtpInvoicingDate.Name = "dtpInvoicingDate";
+            this.dtpInvoicingDate.Size = new System.Drawing.Size(200, 27);
+            this.dtpInvoicingDate.TabIndex = 32;
             // 
             // frmCreateInvoice
             // 
@@ -642,6 +638,7 @@
             this.Font = new System.Drawing.Font("Khmer OS System", 8.25F);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "frmCreateInvoice";
+            this.Opacity = 0D;
             this.Text = "frmCreateInvoice";
             this.container.ResumeLayout(false);
             this.exPanel1.ResumeLayout(false);
@@ -693,7 +690,6 @@
         private System.Windows.Forms.CheckBox chkMarkAll_;
         private Component.ExLabel lblInvoicingDate;
         private Component.ExReportDatePicker dtpSearchDate;
-        private Component.ExReportDatePicker dtpInvoicingDate;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtLeftAmount;
         private System.Windows.Forms.Label label2;
@@ -716,5 +712,6 @@
         private Component.ExButtonLoading btnPrint;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
+        private Component.ExDateTimePicker dtpInvoicingDate;
     }
 }

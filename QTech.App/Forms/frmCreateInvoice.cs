@@ -1,6 +1,7 @@
 ﻿using FastMember;
 using QTech.Base;
 using QTech.Base.BaseReport;
+using QTech.Base.Enums;
 using QTech.Base.Helpers;
 using QTech.Base.Models;
 using QTech.Base.SearchModels;
@@ -20,7 +21,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BaseReource = QTech.Base.Properties.Resources;
+using BaseResource = QTech.Base.Properties.Resources;
 
 namespace QTech.Forms
 {
@@ -28,9 +29,6 @@ namespace QTech.Forms
     {
         public Invoice Model { get; set; }
         private decimal Total;
-        private List<RepoInvoice> invoices;
-        private List<RepoInvoiceDetail> invoiceDetails;
-        private List<CustomerPrice> customerPrices;
         private int AllSales = 0, CheckingAmount = 0;
 
         public GeneralProcess Flag { get; set; }
@@ -55,12 +53,6 @@ namespace QTech.Forms
             dtpSearchDate.Items.AddRange(peroids.ToArray());
             dtpSearchDate.Items.Add(customPeroid);
             dtpSearchDate.SetSelectePeroid(DatePeroid.LastMonth);
-
-            dtpInvoicingDate.Items.AddRange(peroids.ToArray());
-            dtpInvoicingDate.Items.Add(customPeroid);
-            dtpInvoicingDate.SetSelectePeroid(DatePeroid.Today);
-
-            dtpInvoicingDate.SetSelectePeroid(DatePeroid.Today);
 
             cboCustomer.DataSourceFn = p => CustomerLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
             cboCustomer.SearchParamFn = () => new CustomerSearch();
@@ -118,6 +110,10 @@ namespace QTech.Forms
         }
         private async void InsertGridViewData()
         {
+            if (!cboCustomer.IsSelected())
+            {
+                return;
+            }
             AllSales = 0;
             dgv.Rows.Clear();
             var customer = cboCustomer.SelectedObject.ItemObject as Customer;
@@ -155,17 +151,22 @@ namespace QTech.Forms
                     row.Cells[colToSite.Name].Value = _sites?.FirstOrDefault(s => s.Id == x.SiteId)?.Name;
                     row.Cells[colTotal.Name].Value = x.Total;
                     row.Cells[colSaleDate.Name].Value = x.SaleDate.ToShortDateString();
-                    row.Cells[colIsPaid.Name].Value = x.IsPaid;
+                    row.Cells[colIsPaid.Name].Value = x.PayStatus;
 
                     var cell = row.Cells[colStatus.Name];
-                    if (x.IsPaid)
+                    if (x.PayStatus == PayStatus.Paid)
                     {
-                        row.Cells[colStatus.Name].Value = BaseReource.IsPaid;
+                        row.Cells[colStatus.Name].Value = BaseResource.IsPaid;
                         cell.Style.ForeColor = Color.Red;
+                    }
+                    else if (x.PayStatus == PayStatus.WaitPayment)
+                    {
+                        row.Cells[colStatus.Name].Value = BaseResource.PayStatus_WaitPayment;
+                        cell.Style.ForeColor = Color.Orange;
                     }
                     else
                     {
-                        row.Cells[colStatus.Name].Value = BaseReource.NotYetPaid;
+                        row.Cells[colStatus.Name].Value = BaseResource.NotYetPaid;
                         cell.Style.ForeColor = Color.Green;
                     }
 
@@ -198,42 +199,7 @@ namespace QTech.Forms
             }
             txtTotal.Text = txtLeftAmount.Text = Total.ToString();
         }
-        private async void Cbo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(dgv.CurrentCell.Value?.ToString() ?? ""))
-            {
-                return;
-            }
-            if (!cboCustomer.IsSelected())
-            {
-                return;
-            }
-
-            decimal unitPrice = 0;
-            bool IsNotPriceByCustomer = true;
-            var _productId = int.Parse(dgv.CurrentCell.Value.ToString());
-            if (customerPrices.Any())
-            {
-                var _cusPrice = customerPrices.FirstOrDefault(x => x.ProductId == _productId);
-                if (_cusPrice != null)
-                {
-                    unitPrice = _cusPrice.SalePrice;
-                    IsNotPriceByCustomer = false;
-                }
-            }
-            if (IsNotPriceByCustomer)
-            {
-                var pro = await dgv.RunAsync(() =>
-                {
-                    var colPro = sender as ExSearchCombo;
-                    var proId = colPro.SelectedObject.ItemObject as Product;
-                    var result = ProductLogic.Instance.FindAsync(proId.Id);
-                    return result;
-                });
-                unitPrice = pro.UnitPrice;
-            }
-
-        }
+       
         public bool InValid()
         {
             bool _isValid = true;
@@ -255,6 +221,10 @@ namespace QTech.Forms
         }
         public async void Read()
         {
+            if (Flag == GeneralProcess.Add)
+            {
+                return;
+            }
             Customer customer = null;
             List<InvoiceDetail> invoiceDetails = null ;
             List<Sale> sales = null;
@@ -273,7 +243,7 @@ namespace QTech.Forms
                 cboCustomer.SetValue(customer);
             }
             txtInvoiceNo.Text = Model.InvoiceNo;
-            //dtpInvoicingDate.SelectedValue =
+            dtpInvoicingDate.Value = Model.InvoicingDate;
             DataGridFillValue(sales, customer, sites);
         }
         private DataGridViewRow newRow(bool isFocus = false)
@@ -304,28 +274,28 @@ namespace QTech.Forms
                 return;
             }
 
-            //var result = await btnSave.RunAsync(() =>
-            //{
-            //    if (Flag == GeneralProcess.Add)
-            //    {
-            //        return SaleLogic.Instance.AddAsync(Model);
-            //    }
-            //    else if (Flag == GeneralProcess.Update)
-            //    {
-            //        return SaleLogic.Instance.UpdateAsync(Model);
-            //    }
-            //    else if (Flag == GeneralProcess.Remove)
-            //    {
-            //        return SaleLogic.Instance.RemoveAsync(Model);
-            //    }
+            var result = await btnSave.RunAsync(() =>
+            {
+                if (Flag == GeneralProcess.Add)
+                {
+                    return InvoiceLogic.Instance.AddAsync(Model);
+                }
+                else if (Flag == GeneralProcess.Update)
+                {
+                    return InvoiceLogic.Instance.UpdateAsync(Model);
+                }
+                else if (Flag == GeneralProcess.Remove)
+                {
+                    return InvoiceLogic.Instance.RemoveAsync(Model);
+                }
 
-            //    return null;
-            //});
-            //if (result != null)
-            //{
-            //    Model = result;
-            //    DialogResult = System.Windows.Forms.DialogResult.OK;
-            //}
+                return null;
+            });
+            if (result != null)
+            {
+                Model = result;
+                DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
         }
         public void ViewChangeLog()
         {
@@ -333,60 +303,32 @@ namespace QTech.Forms
         }
         public void Write()
         {
-            //invoiceDetails = new List<RepoInvoiceDetail>();
-            //invoices = new List<RepoInvoice>();
-            //var invoice = new RepoInvoice();
+            if (Model.InvoiceDetails == null)
+            {
+                Model.InvoiceDetails = new List<InvoiceDetail>();
+            }
 
-            //invoice.PurchaseOrderNo = Model.PurchaseOrderNo = txtPurchaseOrderNo.Text;
-            //invoice.InvoiceNo = Model.InvoiceNo = txtInvoiceNo.Text;
-            //var customer = cboCustomer.SelectedObject.ItemObject as Customer;
-            //var site = cboSite.SelectedObject.ItemObject as Site;
-            //Model.CompanyId = customer.Id;
-            //Model.SiteId = site.Id;
-            //Model.SaleDate = Flag == GeneralProcess.Add ? DateTime.Now : Model.SaleDate;
-            //Model.Total = decimal.Parse(txtTotal.Text ?? "0");
+            var customer = cboCustomer.SelectedObject.ItemObject as Customer;
+            Model.CustomerId = customer.Id;
+            Model.InvoiceNo = txtInvoiceNo.Text;
+            Model.InvoicingDate = dtpInvoicingDate.Value;
+            Model.TotalAmount = decimal.Parse(txtTotal.Text);
+            Model.PaidAmount = decimal.Parse(txtPaidAmount.Text);
+            Model.LeftAmount = decimal.Parse(txtLeftAmount.Text);
 
-            //invoice.Site = site.Name;
-            //invoice.Customer = customer.Name;
-            //invoice.Total = Model.Total;
-            //invoice.SaleId = Model.Id;
-            //invoices.Add(invoice);
-
-            //if (Model.SaleDetails == null)
-            //{
-            //    Model.SaleDetails = new List<SaleDetail>();
-            //}
-            //foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
-            //{
-            //    var invoiceDt = new RepoInvoiceDetail();
-            //    var saleDetail = new SaleDetail();
-
-            //    saleDetail.Active = true;
-            //    saleDetail.Id = int.Parse(row?.Cells[colId.Name]?.Value?.ToString() ?? "0");
-            //    saleDetail.SaleId = Model.Id;
-            //    saleDetail.ProductId = int.Parse(row.Cells[colProductId.Name].Value.ToString());
-            //    saleDetail.Qauntity = int.Parse(row.Cells[colQauntity.Name].Value.ToString());
-            //    saleDetail.EmployeeId = int.Parse(row.Cells[colEmployeeId.Name].Value.ToString());
-            //    saleDetail.Total = decimal.Parse(row.Cells[colTotal.Name].Value.ToString());
-
-            //    var _pro = ProductLogic.Instance.FindAsync(saleDetail.ProductId);
-            //    invoiceDt.Product = _pro.Name;
-            //    invoiceDt.Qauntity = int.Parse(row.Cells[colQauntity.Name].Value.ToString());
-            //    invoiceDt.UnitPrice = decimal.Parse(row.Cells[colUnitPrice.Name].Value.ToString());
-            //    invoiceDt.Total = decimal.Parse(row.Cells[colTotal.Name].Value.ToString());
-            //    invoiceDetails.Add(invoiceDt);
-
-            //    if (Flag == GeneralProcess.Update)
-            //    {
-            //        var _saleDetail = Model.SaleDetails?.FirstOrDefault(x => x.Id == saleDetail.Id);
-            //        Model.SaleDetails[Model.SaleDetails.IndexOf(_saleDetail)] = saleDetail;
-            //    }
-            //    else
-            //    {
-            //        Model.SaleDetails.Add(saleDetail);
-            //    }
+            var Rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
+            foreach (DataGridViewRow row in Rows)
+            {
+                InvoiceDetail invoiceDt = new InvoiceDetail();
+                var _isChecked = (bool)(row.Cells[colMark_.Name].Value ?? false);
+                if (_isChecked)
+                {
+                    invoiceDt.SaleId = int.Parse(row.Cells[colId.Name].Value?.ToString());
+                    invoiceDt.InvoiceId = Model.Id;
+                    Model.InvoiceDetails.Add(invoiceDt);
+                }
+            }
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             Save();
@@ -398,35 +340,35 @@ namespace QTech.Forms
 
         private async void btnPrint_Click(object sender, EventArgs e)
         {
-            if (InValid()) return;
-            Write();
-            DataTable Invoice = new DataTable("Invoice");
-            using (var reader = ObjectReader.Create(invoices))
-            {
-                Invoice.Load(reader);
-            }
-            DataTable InvoiceDetail = new DataTable("InvoiceDetail");
-            using (var reader = ObjectReader.Create(invoiceDetails))
-            {
-                InvoiceDetail.Load(reader);
-            }
-            var Invoices = new List<DataTable>();
-            Invoices.Add(Invoice);
-            Invoices.Add(InvoiceDetail);
+            //if (InValid()) return;
+            //Write();
+            //DataTable Invoice = new DataTable("Invoice");
+            //using (var reader = ObjectReader.Create(invoices))
+            //{
+            //    Invoice.Load(reader);
+            //}
+            //DataTable InvoiceDetail = new DataTable("InvoiceDetail");
+            //using (var reader = ObjectReader.Create(invoiceDetails))
+            //{
+            //    InvoiceDetail.Load(reader);
+            //}
+            //var Invoices = new List<DataTable>();
+            //Invoices.Add(Invoice);
+            //Invoices.Add(InvoiceDetail);
 
-            var report = await dgv.RunAsync(() =>
-            {
-                var r = ReportHelper.Instance.Load(nameof(ReportInvoice), Invoices);
-                r.SummaryInfo.ReportTitle = nameof(ReportInvoice);
-                return r;
-            });
+            //var report = await dgv.RunAsync(() =>
+            //{
+            //    var r = ReportHelper.Instance.Load(nameof(ReportInvoice), Invoices);
+            //    r.SummaryInfo.ReportTitle = nameof(ReportInvoice);
+            //    return r;
+            //});
 
-            if (report != null)
-            {
-                var dig = new DialogReportViewer(report);
-                dig.Text = QTech.Base.Properties.Resources.Invoice;
-                dig.ShowDialog();
-            }
+            //if (report != null)
+            //{
+            //    var dig = new DialogReportViewer(report);
+            //    dig.Text = QTech.Base.Properties.Resources.Invoice;
+            //    dig.ShowDialog();
+            //}
         }
 
         private void txtPaidAmount_TextChanged(object sender, EventArgs e)

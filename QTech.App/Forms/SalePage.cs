@@ -43,7 +43,6 @@ namespace QTech.Forms
             this.Text = BaseResource.Sales;
             cboPayStatus.SelectedIndexChanged += CboPayStatus_SelectedIndexChanged;
         }
-
         private async void CboPayStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             await Search();
@@ -122,8 +121,7 @@ namespace QTech.Forms
             {
                 await Search();
             }
-        }
-       
+        }       
         public async Task Search()
         {
             dgv.Rows.Clear();
@@ -160,13 +158,18 @@ namespace QTech.Forms
                 row.Cells[colToSite.Name].Value = _Sites?.FirstOrDefault(s => s.Id == x.SiteId)?.Name;
                 row.Cells[colTotal.Name].Value = x.Total;
                 row.Cells[colSaleDate.Name].Value = x.SaleDate.ToShortDateString();
-                row.Cells[colIsPaid.Name].Value = x.IsPaid;
+                row.Cells[colIsPaid.Name].Value = x.PayStatus;
 
                 var cell = row.Cells[colStatus.Name];
-                if (x.IsPaid)
+                if (x.PayStatus == PayStatus.Paid)
                 {
                     row.Cells[colStatus.Name].Value = BaseResource.IsPaid;
                     cell.Style.ForeColor = Color.Red;
+                }
+                else if(x.PayStatus == PayStatus.WaitPayment)
+                {
+                    row.Cells[colStatus.Name].Value = BaseResource.PayStatus_WaitPayment;
+                    cell.Style.ForeColor = Color.Orange;
                 }
                 else
                 {

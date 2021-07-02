@@ -472,4 +472,7 @@
   <data name="Print" xml:space="preserve">
     <value>បោះពុម្ភ</value>
   </data>
+  <data name="PayStatus_WaitPayment" xml:space="preserve">
+    <value>រងចាំទូទាត់</value>
+  </data>
 </root>

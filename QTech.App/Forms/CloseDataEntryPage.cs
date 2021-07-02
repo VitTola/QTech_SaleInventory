@@ -144,53 +144,53 @@ namespace QTech.Forms
         }
         public async Task Search()
         {
-            dgv.Rows.Clear();
-            List<Customer> _Customers = null;
-            List<Site> _Sites = null;
-            var _sales =await dgv.RunAsync(() =>
-            {
-            var _result = SaleLogic.Instance.SearchAsync(SaleSearchParam()).Where(x=>!x.IsPaid).ToList();
-                var CusIds = _result.Select(x => x.CompanyId).ToList();
-                var SitesIds = _result.Select(x => x.SiteId).ToList();
-                 _Customers = CustomerLogic.Instance.GetCustomersById(CusIds);
-                _Sites = SiteLogic.Instance.GetSiteByIds(SitesIds);
+            //dgv.Rows.Clear();
+            //List<Customer> _Customers = null;
+            //List<Site> _Sites = null;
+            //var _sales =await dgv.RunAsync(() =>
+            //{
+            //var _result = SaleLogic.Instance.SearchAsync(SaleSearchParam()).Where(x=>!x.IsPaid).ToList();
+            //    var CusIds = _result.Select(x => x.CompanyId).ToList();
+            //    var SitesIds = _result.Select(x => x.SiteId).ToList();
+            //     _Customers = CustomerLogic.Instance.GetCustomersById(CusIds);
+            //    _Sites = SiteLogic.Instance.GetSiteByIds(SitesIds);
 
-                return _result;
-            });
-            if (_sales == null)
-            {
-                return;
-            }
-            _sales.ForEach(x =>
-            {
-                var row = newRow(false);
-                row.Cells[colId.Name].Value = x.Id;
-                row.Cells[colPurchaseOrderNo.Name].Value = x.PurchaseOrderNo;
-                row.Cells[colInvoiceNo.Name].Value = x.InvoiceNo;
-                row.Cells[colToCompany.Name].Value = _Customers?.FirstOrDefault(cus => cus.Id == x.CompanyId)?.Name;
-                row.Cells[colToSite.Name].Value = _Sites?.FirstOrDefault(s => s.Id == x.SiteId)?.Name;
-                row.Cells[colTotal.Name].Value = x.Total;
-                row.Cells[colSaleDate.Name].Value = x.SaleDate.ToShortDateString();
-                row.Cells[colIsPaid.Name].Value = x.IsPaid;
+            //    return _result;
+            //});
+            //if (_sales == null)
+            //{
+            //    return;
+            //}
+            //_sales.ForEach(x =>
+            //{
+            //    var row = newRow(false);
+            //    row.Cells[colId.Name].Value = x.Id;
+            //    row.Cells[colPurchaseOrderNo.Name].Value = x.PurchaseOrderNo;
+            //    row.Cells[colInvoiceNo.Name].Value = x.InvoiceNo;
+            //    row.Cells[colToCompany.Name].Value = _Customers?.FirstOrDefault(cus => cus.Id == x.CompanyId)?.Name;
+            //    row.Cells[colToSite.Name].Value = _Sites?.FirstOrDefault(s => s.Id == x.SiteId)?.Name;
+            //    row.Cells[colTotal.Name].Value = x.Total;
+            //    row.Cells[colSaleDate.Name].Value = x.SaleDate.ToShortDateString();
+            //    row.Cells[colIsPaid.Name].Value = x.IsPaid;
 
-                var cell = row.Cells[colStatus.Name];
-                if (x.IsPaid)
-                {
-                    row.Cells[colStatus.Name].Value = BaseResource.IsPaid;
-                    cell.Style.ForeColor = Color.Red;
-                }
-                else
-                {
-                    row.Cells[colStatus.Name].Value = BaseResource.NotYetPaid;
-                    cell.Style.ForeColor = Color.Green;
-                }
-            });
+            //    var cell = row.Cells[colStatus.Name];
+            //    if (x.IsPaid)
+            //    {
+            //        row.Cells[colStatus.Name].Value = BaseResource.IsPaid;
+            //        cell.Style.ForeColor = Color.Red;
+            //    }
+            //    else
+            //    {
+            //        row.Cells[colStatus.Name].Value = BaseResource.NotYetPaid;
+            ////        cell.Style.ForeColor = Color.Green;
+            ////    }
+            //});
 
-            //Initailize colMark_
-            foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
-            {
-                row.Cells[colMark_.Name].Value = false;
-            }
+            ////Initailize colMark_
+            //foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
+            //{
+            //    row.Cells[colMark_.Name].Value = false;
+            //}
         }
         private DataGridViewRow newRow(bool isFocus = false)
         {
