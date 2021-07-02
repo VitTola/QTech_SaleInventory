@@ -110,7 +110,12 @@ namespace QTech.Db.Logics
             }
             return null;
         }
-
+        public List<Sale> GetSaleByIds(List<int> saleIds)
+        {
+            var q = All().Where(x => x.Active);
+            q = q.Where(s=> saleIds.Any(i=> i == s.Id));
+            return q.ToList();
+        }
 
     }
 }

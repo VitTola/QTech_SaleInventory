@@ -88,7 +88,6 @@ namespace QTech.Forms
             dtpInvoicingDate.Enabled = false;
             dgv.Columns.OfType<DataGridViewColumn>().Where(x => x.Name != colMark_.Name).ToList().ForEach(x => x.ReadOnly = true);
         }
-
         private void Dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == colMark_.Index)
@@ -109,12 +108,10 @@ namespace QTech.Forms
                 CalculateTotal();
             }
         }
-
         private void dtpSearchDate_SelectedIndexChanged(object sender, EventArgs e)
         {
             InsertGridViewData();
         }
-
         private void CboCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
             InsertGridViewData();
@@ -134,15 +131,18 @@ namespace QTech.Forms
                 CustomerId = customer.Id
             };
 
-            List<Site> _site = new List<Site>();
+            List<Site> _sites = null;
             var sales = await dgv.RunAsync(() =>
             {
                 var result = SaleLogic.Instance.GetSaleByCustomerId(search);
                 var SitesIds = result?.Select(x => x.SiteId).ToList();
-                _site = SiteLogic.Instance.GetSiteByIds(SitesIds);
+                _sites = SiteLogic.Instance.GetSiteByIds(SitesIds);
                 return result;
             });
-
+            DataGridFillValue(sales,customer,_sites);
+        }
+        private void DataGridFillValue(List<Sale> sales, Customer customer = null,List<Site> _sites = null)
+        {
             if (sales.Any())
             {
                 sales.ForEach(x =>
@@ -152,7 +152,7 @@ namespace QTech.Forms
                     row.Cells[colPurchaseOrderNo.Name].Value = x.PurchaseOrderNo;
                     row.Cells[colInvoiceNo.Name].Value = x.InvoiceNo;
                     row.Cells[colToCompany.Name].Value = customer.Name;
-                    row.Cells[colToSite.Name].Value = _site?.FirstOrDefault(s => s.Id == x.SiteId)?.Name;
+                    row.Cells[colToSite.Name].Value = _sites?.FirstOrDefault(s => s.Id == x.SiteId)?.Name;
                     row.Cells[colTotal.Name].Value = x.Total;
                     row.Cells[colSaleDate.Name].Value = x.SaleDate.ToShortDateString();
                     row.Cells[colIsPaid.Name].Value = x.IsPaid;
@@ -180,7 +180,6 @@ namespace QTech.Forms
                 }
             }
         }
-
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
 
@@ -199,7 +198,6 @@ namespace QTech.Forms
             }
             txtTotal.Text = txtLeftAmount.Text = Total.ToString();
         }
-
         private async void Cbo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(dgv.CurrentCell.Value?.ToString() ?? ""))
@@ -238,95 +236,45 @@ namespace QTech.Forms
         }
         public bool InValid()
         {
-            if (!cboCustomer.IsSelected() |
-                !txtInvoiceNo.IsValidRequired(lblInvoiceNo.Text)
-                )
+            bool _isValid = true;
+            if (cboCustomer.IsSelected())
             {
-                return true;
+                _isValid = false;
             }
 
-            return false;
+            var Rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
+            foreach (DataGridViewRow row in Rows)
+            {
+                if ((bool)row.Cells[colMark_.Name]?.Value)
+                {
+                    _isValid = false;
+                    break;
+                }
+            }
+            return _isValid;
         }
-       
         public async void Read()
         {
-            //txtPurchaseOrderNo.Text = Model.PurchaseOrderNo;
-            //txtInvoiceNo.Text = Model.InvoiceNo;
-            //txtTotal.Text = Model.Total.ToString();
-
-            //Customer cus = null;
-            //Site site = null;
-            //List<Product> products = null;
-            //List<Employee> drivers = null;
-            //var saleDetails = await this.RunAsync(() =>
-            //{
-            //    cus = CustomerLogic.Instance.FindAsync(Model.CompanyId);
-            //    site = SiteLogic.Instance.FindAsync(Model.CompanyId);
-            //    var details = SaleDetailLogic.Instance.GetSaleDetailBySaleId(Model.Id);
-            //    var productIds = details.Select(x => x.ProductId).Distinct().ToList();
-            //    var driverIds = details.Select(x => x.EmployeeId).Distinct().ToList();
-            //    products = ProductLogic.Instance.All().Where(x => x.Active && productIds.Contains(x.Id)).ToList();
-            //    drivers = EmployeeLogic.Instance.All().Where(x => x.Active && driverIds.Contains(x.Id)).ToList();
-
-            //    return details;
-            //});
-            //if (cus != null)
-            //{
-            //    cboCustomer.SetValue(cus);
-            //}
-            //if (site != null)
-            //{
-            //    cboSite.SetValue(site);
-            //}
-
-            //if (saleDetails.Any())
-            //{
-            //    Model.SaleDetails = saleDetails;
-            //    saleDetails.ForEach(x =>
-            //    {
-            //        var row = newRow(false);
-            //        row.Cells[colId.Name].Value = x.Id;
-            //        row.Cells[colSaleId.Name].Value = Model.Id;
-            //        row.Cells[colQauntity.Name].Value = x.Qauntity;
-            //        row.Cells[colTotal.Name].Value = x.Total;
-            //        row.Cells[colUnitPrice.Name].Value = products?.FirstOrDefault(y => y.Id == x.ProductId)?.UnitPrice;
-
-
-            //        if (products != null)
-            //        {
-            //            var pro = products?.FirstOrDefault(f => f.Id == x.ProductId);
-            //            var lsProdut = new List<DropDownItemModel>()
-            //        {
-            //            new DropDownItemModel
-            //            {
-            //                 Id = pro.Id,
-            //                Code = pro.Name,
-            //                Name = pro.Name,
-            //                DisplayText = pro.Name,
-            //                ItemObject = pro,
-            //            }
-            //        };
-            //            row.Cells[colProductId.Name].Value = lsProdut;
-            //        }
-            //        if (drivers != null)
-            //        {
-            //            var driver = drivers?.FirstOrDefault(f => f.Id == x.EmployeeId);
-            //            var lsDriver = new List<DropDownItemModel>()
-            //        {
-            //            new DropDownItemModel
-            //            {
-            //                Id = driver.Id,
-            //                Code = driver.Name,
-            //                Name = driver.Name,
-            //                DisplayText = driver.Name,
-            //                ItemObject = driver,
-            //            }
-            //        };
-            //            row.Cells[colEmployeeId.Name].Value = lsDriver;
-            //        }
-
-            //    });
-            //}
+            Customer customer = null;
+            List<InvoiceDetail> invoiceDetails = null ;
+            List<Sale> sales = null;
+            List<Site> sites = null;
+            var result = await this.RunAsync(() =>
+            {
+                customer = CustomerLogic.Instance.FindAsync(Model.CustomerId);
+                invoiceDetails = InvoiceDetailLogic.Instance.GetInvoiceDetailByInvoiceId(Model.Id);
+                var saleIds = invoiceDetails?.Select(x => x.SaleId).ToList();
+                sales = SaleLogic.Instance.GetSaleByIds(saleIds);
+                sites = SiteLogic.Instance.GetSiteByIds(sales.Select(x=>x.SiteId).ToList());
+                return customer;
+            });
+            if (customer != null)
+            {
+                cboCustomer.SetValue(customer);
+            }
+            txtInvoiceNo.Text = Model.InvoiceNo;
+            //dtpInvoicingDate.SelectedValue =
+            DataGridFillValue(sales, customer, sites);
         }
         private DataGridViewRow newRow(bool isFocus = false)
         {
@@ -341,20 +289,20 @@ namespace QTech.Forms
         }
         public async void Save()
         {
-            //if (Flag == GeneralProcess.View)
-            //{
-            //    Close();
-            //}
+            if (Flag == GeneralProcess.View)
+            {
+                Close();
+            }
 
-            //if (InValid()) { return; }
-            //Write();
+            if (InValid()) { return; }
+            Write();
 
-            //var isExist = await btnSave.RunAsync(() => SaleLogic.Instance.IsExistsAsync(Model));
-            //if (isExist == true)
-            //{
-            //    txtInvoiceNo.IsExists(lblInvoiceNo.Text);
-            //    return;
-            //}
+            var isExist = await btnSave.RunAsync(() => InvoiceLogic.Instance.IsExistsAsync(Model));
+            if (isExist == true)
+            {
+                txtInvoiceNo.IsExists(lblInvoiceNo.Text);
+                return;
+            }
 
             //var result = await btnSave.RunAsync(() =>
             //{

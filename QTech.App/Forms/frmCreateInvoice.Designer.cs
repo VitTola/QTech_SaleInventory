@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCreateInvoice));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.exLabel2 = new QTech.Component.ExLabel();
             this.exPanel1 = new QTech.Component.Components.ExPanel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
@@ -72,6 +72,8 @@
             this.txtLeftAmount = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.exLabel3 = new QTech.Component.ExLabel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.container.SuspendLayout();
             this.exPanel1.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -82,25 +84,16 @@
             this.flowLayoutPanelTopGrid.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // container
             // 
-            this.container.Controls.Add(this.panel2);
-            this.container.Controls.Add(this.exLabel3);
-            this.container.Controls.Add(this.panel1);
-            this.container.Controls.Add(this.exLabel1);
-            this.container.Controls.Add(this.lblInvoicingDate);
             this.container.Controls.Add(this.panelGrid);
-            this.container.Controls.Add(this.dtpInvoicingDate);
-            this.container.Controls.Add(this.pnlExpect);
-            this.container.Controls.Add(this.cboCustomer);
-            this.container.Controls.Add(this.lblTotal);
-            this.container.Controls.Add(this.lblCustomer);
-            this.container.Controls.Add(this.lblInvoiceNo);
-            this.container.Controls.Add(this.txtInvoiceNo);
+            this.container.Controls.Add(this.panel4);
+            this.container.Controls.Add(this.panel3);
             this.container.Controls.Add(this.exPanel1);
-            this.container.Controls.Add(this.exLabel2);
             this.container.Size = new System.Drawing.Size(1442, 861);
             // 
             // exLabel2
@@ -108,7 +101,7 @@
             this.exLabel2.AutoSize = true;
             this.exLabel2.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.exLabel2.Location = new System.Drawing.Point(10, 65);
+            this.exLabel2.Location = new System.Drawing.Point(10, 57);
             this.exLabel2.Name = "exLabel2";
             this.exLabel2.Required = false;
             this.exLabel2.Size = new System.Drawing.Size(114, 27);
@@ -203,7 +196,7 @@
             this.lblInvoiceNo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblInvoiceNo.AutoSize = true;
             this.lblInvoiceNo.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvoiceNo.Location = new System.Drawing.Point(568, 33);
+            this.lblInvoiceNo.Location = new System.Drawing.Point(564, 23);
             this.lblInvoiceNo.Name = "lblInvoiceNo";
             this.lblInvoiceNo.Required = true;
             this.lblInvoiceNo.Size = new System.Drawing.Size(86, 27);
@@ -214,7 +207,7 @@
             // 
             this.txtInvoiceNo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtInvoiceNo.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInvoiceNo.Location = new System.Drawing.Point(687, 29);
+            this.txtInvoiceNo.Location = new System.Drawing.Point(683, 19);
             this.txtInvoiceNo.Margin = new System.Windows.Forms.Padding(2);
             this.txtInvoiceNo.Name = "txtInvoiceNo";
             this.txtInvoiceNo.ReadOnly = true;
@@ -226,7 +219,7 @@
             // 
             this.lblCustomer.AutoSize = true;
             this.lblCustomer.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustomer.Location = new System.Drawing.Point(20, 33);
+            this.lblCustomer.Location = new System.Drawing.Point(16, 23);
             this.lblCustomer.Name = "lblCustomer";
             this.lblCustomer.Required = true;
             this.lblCustomer.Size = new System.Drawing.Size(56, 27);
@@ -238,7 +231,7 @@
             this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(1112, 714);
+            this.lblTotal.Location = new System.Drawing.Point(1110, 16);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Required = false;
             this.lblTotal.Size = new System.Drawing.Size(89, 27);
@@ -255,7 +248,7 @@
             this.cboCustomer.FormattingEnabled = true;
             this.cboCustomer.IsGirdViewColumn = false;
             this.cboCustomer.LoadAll = true;
-            this.cboCustomer.Location = new System.Drawing.Point(139, 29);
+            this.cboCustomer.Location = new System.Drawing.Point(135, 19);
             this.cboCustomer.Name = "cboCustomer";
             this.cboCustomer.SearchParamFn = null;
             this.cboCustomer.SelectedItems = null;
@@ -272,7 +265,7 @@
             this.pnlExpect.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlExpect.Controls.Add(this.txtTotal);
             this.pnlExpect.Controls.Add(this.lblCur2);
-            this.pnlExpect.Location = new System.Drawing.Point(1233, 710);
+            this.pnlExpect.Location = new System.Drawing.Point(1231, 12);
             this.pnlExpect.Margin = new System.Windows.Forms.Padding(2);
             this.pnlExpect.Name = "pnlExpect";
             this.pnlExpect.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -305,16 +298,14 @@
             // 
             // panelGrid
             // 
-            this.panelGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelGrid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelGrid.Controls.Add(this.chkMarkAll_);
             this.panelGrid.Controls.Add(this.dgv);
             this.panelGrid.Controls.Add(this.flowLayoutPanelTopGrid);
-            this.panelGrid.Location = new System.Drawing.Point(10, 92);
+            this.panelGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelGrid.Location = new System.Drawing.Point(1, 86);
             this.panelGrid.Name = "panelGrid";
-            this.panelGrid.Size = new System.Drawing.Size(1422, 613);
+            this.panelGrid.Size = new System.Drawing.Size(1440, 625);
             this.panelGrid.TabIndex = 30;
             // 
             // chkMarkAll_
@@ -336,19 +327,19 @@
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AllowUserToResizeColumns = false;
             this.dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv.BackgroundColor = System.Drawing.Color.White;
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Ivory;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colMark_,
@@ -361,14 +352,14 @@
             this.colTotal,
             this.colStatus,
             this.colIsPaid});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
@@ -381,7 +372,7 @@
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1420, 572);
+            this.dgv.Size = new System.Drawing.Size(1438, 584);
             this.dgv.TabIndex = 2;
             // 
             // colMark_
@@ -474,7 +465,7 @@
             this.flowLayoutPanelTopGrid.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanelTopGrid.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanelTopGrid.Name = "flowLayoutPanelTopGrid";
-            this.flowLayoutPanelTopGrid.Size = new System.Drawing.Size(1420, 39);
+            this.flowLayoutPanelTopGrid.Size = new System.Drawing.Size(1438, 39);
             this.flowLayoutPanelTopGrid.TabIndex = 0;
             // 
             // dtpSearchDate
@@ -494,7 +485,7 @@
             this.dtpInvoicingDate.Enabled = false;
             this.dtpInvoicingDate.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpInvoicingDate.FormattingEnabled = true;
-            this.dtpInvoicingDate.Location = new System.Drawing.Point(1228, 29);
+            this.dtpInvoicingDate.Location = new System.Drawing.Point(1224, 19);
             this.dtpInvoicingDate.Margin = new System.Windows.Forms.Padding(4, 4, 2, 4);
             this.dtpInvoicingDate.Name = "dtpInvoicingDate";
             this.dtpInvoicingDate.Size = new System.Drawing.Size(200, 35);
@@ -505,7 +496,7 @@
             this.lblInvoicingDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblInvoicingDate.AutoSize = true;
             this.lblInvoicingDate.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvoicingDate.Location = new System.Drawing.Point(1100, 33);
+            this.lblInvoicingDate.Location = new System.Drawing.Point(1096, 23);
             this.lblInvoicingDate.Name = "lblInvoicingDate";
             this.lblInvoicingDate.Required = true;
             this.lblInvoicingDate.Size = new System.Drawing.Size(86, 27);
@@ -519,7 +510,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.txtPaidAmount);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(1233, 741);
+            this.panel1.Location = new System.Drawing.Point(1231, 43);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -557,7 +548,7 @@
             this.exLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exLabel1.AutoSize = true;
             this.exLabel1.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exLabel1.Location = new System.Drawing.Point(1113, 745);
+            this.exLabel1.Location = new System.Drawing.Point(1111, 47);
             this.exLabel1.Name = "exLabel1";
             this.exLabel1.Required = false;
             this.exLabel1.Size = new System.Drawing.Size(100, 27);
@@ -571,7 +562,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.txtLeftAmount);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(1233, 772);
+            this.panel2.Location = new System.Drawing.Point(1231, 74);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -607,12 +598,41 @@
             this.exLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exLabel3.AutoSize = true;
             this.exLabel3.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exLabel3.Location = new System.Drawing.Point(1114, 776);
+            this.exLabel3.Location = new System.Drawing.Point(1112, 78);
             this.exLabel3.Name = "exLabel3";
             this.exLabel3.Required = false;
             this.exLabel3.Size = new System.Drawing.Size(66, 27);
             this.exLabel3.TabIndex = 32;
             this.exLabel3.Text = "សមតុល្យ";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.pnlExpect);
+            this.panel3.Controls.Add(this.panel2);
+            this.panel3.Controls.Add(this.lblTotal);
+            this.panel3.Controls.Add(this.exLabel3);
+            this.panel3.Controls.Add(this.exLabel1);
+            this.panel3.Controls.Add(this.panel1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(1, 711);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1440, 113);
+            this.panel3.TabIndex = 34;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.cboCustomer);
+            this.panel4.Controls.Add(this.txtInvoiceNo);
+            this.panel4.Controls.Add(this.lblInvoicingDate);
+            this.panel4.Controls.Add(this.lblInvoiceNo);
+            this.panel4.Controls.Add(this.exLabel2);
+            this.panel4.Controls.Add(this.lblCustomer);
+            this.panel4.Controls.Add(this.dtpInvoicingDate);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(1, 1);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1440, 85);
+            this.panel4.TabIndex = 35;
             // 
             // frmCreateInvoice
             // 
@@ -624,7 +644,6 @@
             this.Name = "frmCreateInvoice";
             this.Text = "frmCreateInvoice";
             this.container.ResumeLayout(false);
-            this.container.PerformLayout();
             this.exPanel1.ResumeLayout(false);
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
@@ -638,6 +657,10 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -691,5 +714,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn colIsPaid;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private Component.ExButtonLoading btnPrint;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel3;
     }
 }

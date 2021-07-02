@@ -54,5 +54,12 @@ namespace QTech.Db.Logics
             }
             return q;
         }
+        public List<InvoiceDetail> GetInvoiceDetailByInvoiceId(int invoiceId)
+        {
+            var q = All().Where(x => x.Active);
+            q = q.Where(x => x.InvoiceId == invoiceId);
+            return q.ToList();
+        }
+
     }
 }
