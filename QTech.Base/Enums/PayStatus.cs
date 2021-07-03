@@ -13,4 +13,13 @@ namespace QTech.Base.Enums
         WaitPayment = 2,
         All =3,
     }
+
+    public enum InvoiceStatus
+    {
+        WaitPayment = 0,
+        PaySome = 1,
+        Paid =2
+    }
+
+
 }

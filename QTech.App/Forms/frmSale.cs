@@ -457,8 +457,6 @@ namespace QTech.Forms
         {
             this.Close();
         }
-      
-
         private async void btnPrint_Click(object sender, EventArgs e)
         {
             if (InValid()) return;

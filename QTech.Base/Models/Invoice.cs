@@ -1,4 +1,5 @@
 ﻿using EasyServer.Domain.Models;
+using QTech.Base.Enums;
 using QTech.Base.Models;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace QTech.Base
         public decimal TotalAmount { get; set; }
         public decimal PaidAmount { get; set; }
         public decimal LeftAmount { get; set; }
+        public InvoiceStatus InvoiceStatus { get; set; }
         public List<InvoiceDetail> InvoiceDetails{ get; set; }
     }
 

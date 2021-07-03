@@ -34,6 +34,9 @@
             this.graPanel1 = new QTech.Component.GRAPanel();
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.txtSearch = new QTech.Component.ExTextboxIconPattern();
+            this.cboCustomer = new QTech.Component.ExSearchCombo();
+            this.cboStatus = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnRemove = new QTech.Component.ExButtonLoading();
             this.btnUpdate = new QTech.Component.ExButtonLoading();
@@ -43,6 +46,7 @@
             this.dgv = new QTech.Component.TreeGridView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.colInvoiceNo = new QTech.Component.TreeGridColumn();
+            this.colParentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colInvoicingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,9 +54,6 @@
             this.colPaidAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLeftAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtSearch = new QTech.Component.ExTextboxIconPattern();
-            this.cboStatus = new System.Windows.Forms.ComboBox();
-            this.cboCustomer = new QTech.Component.ExSearchCombo();
             this.graPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -88,7 +89,7 @@
             this.graPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.graPanel1.Name = "graPanel1";
             this.graPanel1.Rounded = true;
-            this.graPanel1.Size = new System.Drawing.Size(1788, 35);
+            this.graPanel1.Size = new System.Drawing.Size(1320, 35);
             this.graPanel1.TabIndex = 0;
             // 
             // colorWithAlpha1
@@ -108,6 +109,48 @@
             this.flowLayoutPanel2.Size = new System.Drawing.Size(879, 35);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
+            // txtSearch
+            // 
+            this.txtSearch.BackColor = System.Drawing.Color.White;
+            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSearch.Location = new System.Drawing.Point(3, 4);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 4, 2, 3);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.ReadOnly = false;
+            this.txtSearch.SearchMode = QTech.Component.ExTextboxIconPattern.SearchModes.OnKeyReturn;
+            this.txtSearch.SelectedMenuPattern = null;
+            this.txtSearch.Size = new System.Drawing.Size(222, 26);
+            this.txtSearch.SizeIcon = new System.Drawing.Size(16, 16);
+            this.txtSearch.TabIndex = 1;
+            // 
+            // cboCustomer
+            // 
+            this.cboCustomer.Choose = "";
+            this.cboCustomer.CustomSearchForm = null;
+            this.cboCustomer.DataSourceFn = null;
+            this.cboCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCustomer.FormattingEnabled = true;
+            this.cboCustomer.IsGirdViewColumn = false;
+            this.cboCustomer.LoadAll = true;
+            this.cboCustomer.Location = new System.Drawing.Point(230, 3);
+            this.cboCustomer.Name = "cboCustomer";
+            this.cboCustomer.SearchParamFn = null;
+            this.cboCustomer.SelectedItems = null;
+            this.cboCustomer.SelectedObject = null;
+            this.cboCustomer.ShowAll = false;
+            this.cboCustomer.Size = new System.Drawing.Size(233, 27);
+            this.cboCustomer.TabIndex = 26;
+            this.cboCustomer.TextAll = "";
+            // 
+            // cboStatus
+            // 
+            this.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboStatus.FormattingEnabled = true;
+            this.cboStatus.Location = new System.Drawing.Point(469, 3);
+            this.cboStatus.Name = "cboStatus";
+            this.cboStatus.Size = new System.Drawing.Size(222, 27);
+            this.cboStatus.TabIndex = 2;
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.btnRemove);
@@ -115,7 +158,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btnAdd);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(1501, 0);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(1033, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(287, 35);
@@ -204,6 +247,7 @@
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colInvoiceNo,
+            this.colParentId,
             this.colId,
             this.colInvoicingDate,
             this.colCustomer,
@@ -228,9 +272,8 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             this.dgv.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1788, 570);
+            this.dgv.Size = new System.Drawing.Size(1320, 570);
             this.dgv.TabIndex = 1;
-            this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
             this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
             // 
             // imageList1
@@ -249,6 +292,14 @@
             this.colInvoiceNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colInvoiceNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colInvoiceNo.Width = 200;
+            // 
+            // colParentId
+            // 
+            this.colParentId.HeaderText = "colParentId";
+            this.colParentId.Name = "colParentId";
+            this.colParentId.ReadOnly = true;
+            this.colParentId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colParentId.Visible = false;
             // 
             // colId
             // 
@@ -313,53 +364,11 @@
             this.colStatus.ReadOnly = true;
             this.colStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // txtSearch
-            // 
-            this.txtSearch.BackColor = System.Drawing.Color.White;
-            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSearch.Location = new System.Drawing.Point(3, 4);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 4, 2, 3);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.ReadOnly = false;
-            this.txtSearch.SearchMode = QTech.Component.ExTextboxIconPattern.SearchModes.OnKeyReturn;
-            this.txtSearch.SelectedMenuPattern = null;
-            this.txtSearch.Size = new System.Drawing.Size(222, 26);
-            this.txtSearch.SizeIcon = new System.Drawing.Size(16, 16);
-            this.txtSearch.TabIndex = 1;
-            // 
-            // cboStatus
-            // 
-            this.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboStatus.FormattingEnabled = true;
-            this.cboStatus.Location = new System.Drawing.Point(469, 3);
-            this.cboStatus.Name = "cboStatus";
-            this.cboStatus.Size = new System.Drawing.Size(222, 27);
-            this.cboStatus.TabIndex = 2;
-            // 
-            // cboCustomer
-            // 
-            this.cboCustomer.Choose = "";
-            this.cboCustomer.CustomSearchForm = null;
-            this.cboCustomer.DataSourceFn = null;
-            this.cboCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCustomer.FormattingEnabled = true;
-            this.cboCustomer.IsGirdViewColumn = false;
-            this.cboCustomer.LoadAll = true;
-            this.cboCustomer.Location = new System.Drawing.Point(230, 3);
-            this.cboCustomer.Name = "cboCustomer";
-            this.cboCustomer.SearchParamFn = null;
-            this.cboCustomer.SelectedItems = null;
-            this.cboCustomer.SelectedObject = null;
-            this.cboCustomer.ShowAll = false;
-            this.cboCustomer.Size = new System.Drawing.Size(233, 27);
-            this.cboCustomer.TabIndex = 26;
-            this.cboCustomer.TextAll = "";
-            // 
             // CreateInvoicePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1788, 605);
+            this.ClientSize = new System.Drawing.Size(1320, 605);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.graPanel1);
             this.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -387,7 +396,11 @@
         private Component.ColorWithAlpha colorWithAlpha3;
         private Component.TreeGridView dgv;
         private System.Windows.Forms.ImageList imageList1;
+        private Component.ExTextboxIconPattern txtSearch;
+        private System.Windows.Forms.ComboBox cboStatus;
+        private Component.ExSearchCombo cboCustomer;
         private Component.TreeGridColumn colInvoiceNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colParentId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colInvoicingDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCustomer;
@@ -395,8 +408,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colPaidAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLeftAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
-        private Component.ExTextboxIconPattern txtSearch;
-        private System.Windows.Forms.ComboBox cboStatus;
-        private Component.ExSearchCombo cboCustomer;
     }
 }

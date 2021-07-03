@@ -11,8 +11,8 @@ namespace QTech.Base.SearchModels
     public class InvoiceSearch : QTechSearch.BasicSearchModel
     {
         public SaleSearchKey saleSearchKey { get; set; }
-        public PayStatus payStatus { get; set; }
-
+        public InvoiceStatus InvoiceStatus { get; set; }
+        public int CustomerId { get; set; }
         public int Id { get; set; }
     }
 }

@@ -29,16 +29,36 @@ namespace QTech.Db.Logics
         public override List<Invoice> SearchAsync(ISearchModel model)
         {
             var result = Search(model).ToList();
+            if (result != null)
+            {
+                List<InvoiceDetail> invoiceDetails = null;
+                result.ForEach(x=> {
+                    invoiceDetails = InvoiceDetailLogic.Instance.GetInvoiceDetailByInvoiceId(x.Id);
+                    result[result.IndexOf(x)].InvoiceDetails = invoiceDetails;
+                });
+            }
+            
             return result;
         }
         public override IQueryable<Invoice> Search(ISearchModel model)
         {
-            var param = model as ProductSearch;
+            var param = model as InvoiceSearch;
             var q = All().Where(x => x.Active);
             if (!string.IsNullOrEmpty(param.Search))
             {
                 q = q.Where(x => x.InvoiceNo.ToLower().Contains(param.Search.ToLower()));
             }
+            if (param.CustomerId != 0)
+            {
+                q = q.Where(x=>x.CustomerId == param.CustomerId);
+            }
+            if (param.InvoiceStatus == InvoiceStatus.WaitPayment |
+                param.InvoiceStatus == InvoiceStatus.Paid |
+                param.InvoiceStatus == InvoiceStatus.PaySome)
+            {
+                q = q.Where(x => x.InvoiceStatus == param.InvoiceStatus);
+            }
+           
             return q;
         }
         public override Invoice AddAsync(Invoice entity)
@@ -90,7 +110,6 @@ namespace QTech.Db.Logics
                 throw;
             }
         }
-        
         public override Invoice UpdateAsync(Invoice entity)
         {
             var invoice = base.UpdateAsync(entity);
@@ -116,6 +135,11 @@ namespace QTech.Db.Logics
                     }
                 }
             }
+        }
+        public override bool CanRemoveAsync(int id)
+        {
+            var result = All().Any(x => x.Active && x.Id == id && x.InvoiceStatus != InvoiceStatus.Paid);
+            return result;
         }
 
     }

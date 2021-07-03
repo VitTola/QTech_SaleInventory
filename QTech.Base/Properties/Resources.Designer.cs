@@ -460,6 +460,33 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to បានទូទាត់.
+        /// </summary>
+        public static string InvoiceStatus_Paid {
+            get {
+                return ResourceManager.GetString("InvoiceStatus_Paid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to មិនទាន់ទូទាត់ផ្តាច់.
+        /// </summary>
+        public static string InvoiceStatus_PaySome {
+            get {
+                return ResourceManager.GetString("InvoiceStatus_PaySome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to រងចាំទូទាត់.
+        /// </summary>
+        public static string InvoiceStatus_WaitPayment {
+            get {
+                return ResourceManager.GetString("InvoiceStatus_WaitPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ថ្ងៃចេញវិក័យប័ត្រ.
         /// </summary>
         public static string InvoicingDate {
@@ -543,6 +570,24 @@ namespace QTech.Base.Properties {
             get {
                 object obj = ResourceManager.GetObject("Money", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to វិក័យប័ត្របានទូទាត់រូចរាល់ មិនអាចលុបបាប!.
+        /// </summary>
+        public static string MsgInvoiceAlreadyPaid {
+            get {
+                return ResourceManager.GetString("MsgInvoiceAlreadyPaid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to វិក័យប័ត្របានទូទាត់រួចរាល់ មិនអាចកែប្រែបាន!.
+        /// </summary>
+        public static string MsgInvoiceAlreadyPaidCannotEdit {
+            get {
+                return ResourceManager.GetString("MsgInvoiceAlreadyPaidCannotEdit", resourceCulture);
             }
         }
         
@@ -1030,6 +1075,15 @@ namespace QTech.Base.Properties {
         public static string Site {
             get {
                 return ResourceManager.GetString("Site", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string sss {
+            get {
+                return ResourceManager.GetString("sss", resourceCulture);
             }
         }
         

@@ -475,4 +475,22 @@
   <data name="PayStatus_WaitPayment" xml:space="preserve">
     <value>រងចាំទូទាត់</value>
   </data>
+  <data name="InvoiceStatus_Paid" xml:space="preserve">
+    <value>បានទូទាត់</value>
+  </data>
+  <data name="InvoiceStatus_PaySome" xml:space="preserve">
+    <value>មិនទាន់ទូទាត់ផ្តាច់</value>
+  </data>
+  <data name="InvoiceStatus_WaitPayment" xml:space="preserve">
+    <value>រងចាំទូទាត់</value>
+  </data>
+  <data name="sss" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MsgInvoiceAlreadyPaid" xml:space="preserve">
+    <value>វិក័យប័ត្របានទូទាត់រូចរាល់ មិនអាចលុបបាប!</value>
+  </data>
+  <data name="MsgInvoiceAlreadyPaidCannotEdit" xml:space="preserve">
+    <value>វិក័យប័ត្របានទូទាត់រួចរាល់ មិនអាចកែប្រែបាន!</value>
+  </data>
 </root>

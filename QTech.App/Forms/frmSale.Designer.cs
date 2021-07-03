@@ -58,7 +58,6 @@
             this.lblTotalAmount = new QTech.Component.ExLabel();
             this.cboCustomer = new QTech.Component.ExSearchCombo();
             this.cboSite = new QTech.Component.ExSearchCombo();
-            this.lblPrintInvoice = new QTech.Component.Components.ExLinkLabel();
             this.pnlExpect = new System.Windows.Forms.Panel();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.lblCur2 = new System.Windows.Forms.Label();
@@ -74,7 +73,6 @@
             // container
             // 
             this.container.Controls.Add(this.pnlExpect);
-            this.container.Controls.Add(this.lblPrintInvoice);
             this.container.Controls.Add(this.cboSite);
             this.container.Controls.Add(this.cboCustomer);
             this.container.Controls.Add(this.lblTotalAmount);
@@ -439,19 +437,6 @@
             this.cboSite.TabIndex = 27;
             this.cboSite.TextAll = "";
             // 
-            // lblPrintInvoice
-            // 
-            this.lblPrintInvoice.AutoSize = true;
-            this.lblPrintInvoice.Location = new System.Drawing.Point(30, 513);
-            this.lblPrintInvoice.Name = "lblPrintInvoice";
-            this.lblPrintInvoice.RightSpace = 10;
-            this.lblPrintInvoice.ShortcutText = "";
-            this.lblPrintInvoice.ShowShortcutText = false;
-            this.lblPrintInvoice.Size = new System.Drawing.Size(94, 19);
-            this.lblPrintInvoice.TabIndex = 28;
-            this.lblPrintInvoice.TabStop = true;
-            this.lblPrintInvoice.Text = "បោះពុម្ភវិក័យប័ត្រ";
-            // 
             // pnlExpect
             // 
             this.pnlExpect.BackColor = System.Drawing.SystemColors.Control;
@@ -546,7 +531,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colUnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotal;
         private Component.ExSearchComboColumn colEmployeeId;
-        private Component.Components.ExLinkLabel lblPrintInvoice;
         private System.Windows.Forms.Panel pnlExpect;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label lblCur2;
