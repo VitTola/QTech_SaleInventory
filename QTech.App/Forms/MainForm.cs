@@ -115,10 +115,13 @@ namespace QTech.Forms
                 _lastExtabitem.Selected = true;
             }
         }
+
+        private MenuBar ClickedButton;
         private void TopMenue_Click(object sender, EventArgs e)
         {
             var key = ((ExTabItem)sender).Tag ?? string.Empty;
             var navMenu = _menuBars.FirstOrDefault(y => y.Key.ToString() == key.ToString());
+           
             currentKeyTab = navMenu.Key;
             pTopMenu.Text = navMenu.DisplayName;
             ShowPage(navMenu.FormName, navMenu.ModuleLocation);
@@ -185,34 +188,44 @@ namespace QTech.Forms
 
         private void ReadSecondLevelMenue(MenuBar menuBar)
         {
-            pSecondMenue2.Hide();
-            pSecondMenue1.Hide();
-
-            pSecondMenue2.Controls.Clear();
-            var moduleManager = ModuleManager.Instance;
-            _secondLevelMenue = moduleManager._secondLevelMenue;
-
-            if (menuBar == null || _secondLevelMenue ==null)
+            if (ClickedButton == menuBar)
             {
-                return;
-            }
-
-            var childButtons = _secondLevelMenue.Where(n => n.ParentKey == menuBar.Key).OrderBy(x => x.Index).ToList();
-            if (childButtons.Any())
-            {
-                childButtons.ForEach(x =>
-                 {
-                     var secodMenue = MyTemplateButton(x.DisplayName, x.Icon, x);
-                     pSecondMenue2.Controls.Add(secodMenue);
-                     secodMenue.Click += SecodMenue_Click;
-                 });
                 pSecondMenue2.Show();
                 pSecondMenue1.Show();
-                if( pSecondMenue2?.Controls[0] is ExTabItem2 btn)
+            }
+            else
+            {
+                pSecondMenue2.Hide();
+                pSecondMenue1.Hide();
+
+                pSecondMenue2.Controls.Clear();
+                var moduleManager = ModuleManager.Instance;
+                _secondLevelMenue = moduleManager._secondLevelMenue;
+
+                if (menuBar == null || _secondLevelMenue == null)
                 {
-                    btn.PerformClick();
+                    return;
                 }
-            } 
+
+                var childButtons = _secondLevelMenue.Where(n => n.ParentKey == menuBar.Key).OrderBy(x => x.Index).ToList();
+                if (childButtons.Any())
+                {
+                    childButtons.ForEach(x =>
+                    {
+                        var secodMenue = MyTemplateButton(x.DisplayName, x.Icon, x);
+                        pSecondMenue2.Controls.Add(secodMenue);
+                        secodMenue.Click += SecodMenue_Click;
+                    });
+                    pSecondMenue2.Show();
+                    pSecondMenue1.Show();
+                    if (pSecondMenue2?.Controls[0] is ExTabItem2 btn)
+                    {
+                        btn.PerformClick();
+                    }
+                }
+                ClickedButton = menuBar;
+            }
+           
         }
         private void SecodMenue_Click(object sender, EventArgs e)
         {
@@ -254,7 +267,6 @@ namespace QTech.Forms
             {
                 pSecondMenue2.Hide();
                 pSecondMenue1.Hide();
-
             }
         }
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)

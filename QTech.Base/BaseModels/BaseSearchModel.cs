@@ -35,4 +35,61 @@ namespace QTech.Base.BaseModels
         internal int RowCount { get; set; }
 
     }
+    public class PagedResult<T> : Paging where T : class
+    {
+        public IQueryable<T> Results { get; set; }
+        public IEnumerable<T> EnumerableResults { get; set; }
+        public PagedResult()
+        {
+        }
+    }
+
+    public static class PageResultExt
+    {
+        public static PagedResult<T> GetPaged<T>(this IQueryable<T> query,
+                                            int page, int pageSize, bool rowCount = true) where T : class
+        {
+            var result = new PagedResult<T>();
+            pageSize = pageSize == 0 ? Paging.DEFAULT_PAGE_SIZE : pageSize;
+
+            result.CurrentPage = Math.Max(1, page);
+            result.PageSize = Math.Min(pageSize, Paging.MAX_RECORD);
+            if (rowCount)
+            {
+                result.RowCount = query.Count();
+                var pageCount = (double)result.RowCount / result.PageSize;
+                result.PageCount = (int)Math.Ceiling(pageCount);
+            }
+            var skip = (result.CurrentPage - 1) * result.PageSize;
+            result.Results = query.Skip(skip).Take(result.PageSize);
+            return result;
+        }
+        public static PagedResult<T> GetPaged<T>(this IQueryable<T> query, Paging paging) where T : class
+        {
+            return query.GetPaged(paging.CurrentPage, paging.PageSize, paging.IncludeCount);
+        }
+        //
+        public static PagedResult<T> GetPaged<T>(this IEnumerable<T> query,
+                                            int page, int pageSize, bool rowCount = true) where T : class
+        {
+            var result = new PagedResult<T>();
+            pageSize = pageSize == 0 ? Paging.DEFAULT_PAGE_SIZE : pageSize;
+
+            result.CurrentPage = Math.Max(1, page);
+            result.PageSize = Math.Min(pageSize, Paging.MAX_RECORD);
+            if (rowCount)
+            {
+                result.RowCount = query.Count();
+                var pageCount = (double)result.RowCount / result.PageSize;
+                result.PageCount = (int)Math.Ceiling(pageCount);
+            }
+            var skip = (result.CurrentPage - 1) * result.PageSize;
+            result.EnumerableResults = query.Skip(skip).Take(result.PageSize);
+            return result;
+        }
+        public static PagedResult<T> GetPaged<T>(this IEnumerable<T> query, Paging paging) where T : class
+        {
+            return query.GetPaged(paging.CurrentPage, paging.PageSize, true);
+        }
+    }
 }
