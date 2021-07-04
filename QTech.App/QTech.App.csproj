@@ -196,8 +196,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportModels\MonthlyInvoice.cs" />
+    <Compile Include="ReportModels\QTech.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QTech.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ReportModels\RepoInvoice.cs" />
     <Compile Include="ReportModels\RepoInvoiceDetail.cs" />
+    <Compile Include="Reports\ReportMonthlyInvoice.cs">
+      <DependentUpon>ReportMonthlyInvoice.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reports\ReportInvoice.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -283,6 +295,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\ReportMonthlyInvoice.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportMonthlyInvoice.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\ReportInvoice.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReportInvoice.cs</LastGenOutput>
@@ -316,6 +332,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ReportModels\QTech.xsc">
+      <DependentUpon>QTech.xsd</DependentUpon>
+    </None>
+    <None Include="ReportModels\QTech.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QTech.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ReportModels\QTech.xss">
+      <DependentUpon>QTech.xsd</DependentUpon>
+    </None>
     <None Include="Resources\calendar.png" />
   </ItemGroup>
   <ItemGroup>

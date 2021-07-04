@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace QTech.ReportModels
 {
-    public class RepoInvoice
+    public class MonthlyInvoice
     {
-        public int SaleId { get; set; }
-        public DateTime SaleDate { get; set; }
+        public string SaleDate { get; set; }
         public string InvoiceNo { get; set; }
-        public string Total { get; set; }
+        public string TotalInKh { get; set; }
+        public string TotalInUSD { get; set; }
         public string PurchaseOrderNo { get; set; }
         public string Site { get; set; }
-        public string Customer { get; set; }
-        public string Employee { get; set; }
+
     }
 }

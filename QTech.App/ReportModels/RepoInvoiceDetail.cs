@@ -11,9 +11,9 @@ namespace QTech.ReportModels
         public int SaleId { get; set; }
         public string Employee { get; set; }
         public string Product { get; set; }
-        public Decimal UnitPrice { get; set; }
+        public string UnitPrice { get; set; }
         public int Qauntity { get; set; }
-        public decimal Total { get; set; }
+        public string Total { get; set; }
 
     }
 }

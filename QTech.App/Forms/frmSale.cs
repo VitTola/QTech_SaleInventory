@@ -366,7 +366,7 @@ namespace QTech.Forms
 
             invoice.Site = site.Name;
             invoice.Customer = customer.Name;
-            invoice.Total = Model.Total;
+            invoice.Total = String.Format("{0:C}", Model.Total);
             invoice.SaleId = Model.Id;
             invoices.Add(invoice);
 
@@ -390,8 +390,10 @@ namespace QTech.Forms
                 var _pro = ProductLogic.Instance.FindAsync(saleDetail.ProductId);
                 invoiceDt.Product = _pro.Name;
                 invoiceDt.Qauntity = int.Parse(row.Cells[colQauntity.Name].Value.ToString());
-                invoiceDt.UnitPrice = decimal.Parse(row.Cells[colUnitPrice.Name].Value.ToString());
-                invoiceDt.Total = decimal.Parse(row.Cells[colTotal.Name].Value.ToString());
+                var unitP = decimal.Parse(row.Cells[colUnitPrice.Name].Value.ToString());
+                var totalP = decimal.Parse(row.Cells[colTotal.Name].Value.ToString());
+                invoiceDt.UnitPrice = String.Format("{0:C}", unitP);
+                invoiceDt.Total = String.Format("{0:C}", totalP);
                 invoiceDetails.Add(invoiceDt);
 
                 if (Flag == GeneralProcess.Update)
