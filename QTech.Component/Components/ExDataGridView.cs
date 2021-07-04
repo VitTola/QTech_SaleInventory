@@ -4,10 +4,11 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.ComponentModel;
 using System.Drawing.Drawing2D;
-using EasyServer.Domain.SearchModels;
+//using EasyServer.Domain.SearchModels;
 using EasyServer.Domain.Helpers;
 using QTech.Component.Properties;
 using EDomain = EasyServer.Domain;
+using QTech.Base.BaseModels;
 
 namespace QTech.Component
 {

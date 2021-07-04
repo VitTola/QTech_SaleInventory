@@ -12,6 +12,7 @@ using QTech.Base.SearchModels;
 using System.Collections.Generic;
 using System.Drawing;
 using QTech.Base.Enums;
+using QTech.Base.BaseModels;
 
 namespace QTech.Forms
 {
@@ -232,7 +233,8 @@ namespace QTech.Forms
                 search.InvoiceStatus = (InvoiceStatus)cboStatus.SelectedValue;
             }
             search.Search = txtSearch.Text;
-           
+            search.Paging = new Paging() { IsPaging = true, PageSize = 25 };
+        
             var result = await dgv.RunAsync(() =>
             {
                var allInvoices =  InvoiceLogic.Instance.SearchAsync(search);

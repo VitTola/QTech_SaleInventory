@@ -493,4 +493,10 @@
   <data name="MsgInvoiceAlreadyPaidCannotEdit" xml:space="preserve">
     <value>វិក័យប័ត្របានទូទាត់រួចរាល់ មិនអាចកែប្រែបាន!</value>
   </data>
+  <data name="NextPaging" xml:space="preserve">
+    <value>មើលបន្ទាប់</value>
+  </data>
+  <data name="PreviousPaging" xml:space="preserve">
+    <value>ត្រលប់ក្រោយ</value>
+  </data>
 </root>

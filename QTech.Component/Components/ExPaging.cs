@@ -8,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EasyServer.Domain.Models;
-using EasyServer.Domain.SearchModels;
+using QTech.Base.BaseModels;
+//using EasyServer.Domain.SearchModels;
 using EDomain = EasyServer.Domain;
 
 namespace QTech.Component
 {
     public partial class ExPaging : UserControl
     {
-        public EDomain.SearchModels.Paging Paging { get; set; } = new EDomain.SearchModels.Paging() { IsPaging = true, CurrentPage = 1, PageSize = 25 };
+        public Paging Paging { get; set; } = new Paging() { IsPaging = true, CurrentPage = 1, PageSize = 25 };
         private dynamic _listModel;
         public dynamic ListModel
         {
@@ -102,7 +103,7 @@ namespace QTech.Component
             {
                 Paging.CurrentPage = 1;
                 lblPreviousPaging.Enabled =
-                    lblNextPaging.Enabled = true;
+                lblNextPaging.Enabled = true;
             }         
         }
 
@@ -124,6 +125,7 @@ namespace QTech.Component
                     Action.Invoke();
                 }
             }
+            _lblCurrentPage.Text = $"ទំព័រទី៖ {Paging.CurrentPage}";
         }
 
         public void PreviousPage()
@@ -146,6 +148,8 @@ namespace QTech.Component
                     Action.Invoke();
                 }
             }
+            _lblCurrentPage.Text = $"ទំព័រទី៖ {Paging.CurrentPage}";
+
         }
 
         public void ShowAll()

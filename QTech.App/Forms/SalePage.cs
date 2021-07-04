@@ -1,4 +1,5 @@
 ﻿using QTech.Base;
+using QTech.Base.BaseModels;
 using QTech.Base.Enums;
 using QTech.Base.Helpers;
 using QTech.Base.SearchModels;
@@ -121,29 +122,38 @@ namespace QTech.Forms
             {
                 await Search();
             }
-        }       
+        }
+        
         public async Task Search()
         {
             dgv.Rows.Clear();
             List<Customer> _Customers = null;
             List<Site> _Sites = null;
             var _payStatus = (PayStatus)cboPayStatus.SelectedValue;
-            var _sales =await dgv.RunAsync(() =>
+            var search = new SaleSearch()
             {
-                var search = new SaleSearch()
-                {
                 saleSearchKey = this.saleSearchKey,
                 Search = txtSearch.Text,
-                payStatus = _payStatus
+                payStatus = _payStatus,
+                Paging = new Paging()
+                {
+                    PageSize = 2,
+                    CurrentPage =pagination.CurrentPage,
+                    IsPaging = true,
+                    
+                    
+                }
             };
-            var _result = SaleLogic.Instance.SearchAsync(search);
-                var CusIds = _result.Select(x => x.CompanyId).ToList();
-                var SitesIds = _result.Select(x => x.SiteId).ToList();
+            var _sales = await dgv.RunAsync(() =>
+             {
+                 var _result = SaleLogic.Instance.SearchAsync(search);
+                 var CusIds = _result.Select(x => x.CompanyId).ToList();
+                 var SitesIds = _result.Select(x => x.SiteId).ToList();
                  _Customers = CustomerLogic.Instance.GetCustomersById(CusIds);
-                _Sites = SiteLogic.Instance.GetSiteByIds(SitesIds);
+                 _Sites = SiteLogic.Instance.GetSiteByIds(SitesIds);
 
-                return _result;
-            });
+                 return _result;
+             });
             if (_sales == null)
             {
                 return;
@@ -166,7 +176,7 @@ namespace QTech.Forms
                     row.Cells[colStatus.Name].Value = BaseResource.IsPaid;
                     cell.Style.ForeColor = Color.Red;
                 }
-                else if(x.PayStatus == PayStatus.WaitPayment)
+                else if (x.PayStatus == PayStatus.WaitPayment)
                 {
                     row.Cells[colStatus.Name].Value = BaseResource.PayStatus_WaitPayment;
                     cell.Style.ForeColor = Color.Orange;
@@ -258,7 +268,7 @@ namespace QTech.Forms
 
             InputLanguage.CurrentInputLanguage = UI.English;
             txtSearch.ShowMenuPattern(SaleSearchKey.PurchaseOrderNo);
-           // changeDataVisible();
+            // changeDataVisible();
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -269,7 +279,7 @@ namespace QTech.Forms
                 txtSearch.ShowMenuPattern(SaleSearchKey.PurchaseOrderNo);
                 return true;
             }
-            else if(keyData == Constants.KeyShortcut[SaleSearchKey.InvoiceNo])
+            else if (keyData == Constants.KeyShortcut[SaleSearchKey.InvoiceNo])
             {
                 InputLanguage.CurrentInputLanguage = UI.English;
                 txtSearch.ReadOnly = false;
@@ -304,6 +314,6 @@ namespace QTech.Forms
         {
             Remove();
         }
- 
+
     }
 }

@@ -47,7 +47,7 @@ namespace QTech.Base.BaseModels
     public static class PageResultExt
     {
         public static PagedResult<T> GetPaged<T>(this IQueryable<T> query,
-                                            int page, int pageSize, bool rowCount = true) where T : class
+                                            int page, int pageSize, bool rowCount = true) where T : ActiveBaseModel
         {
             var result = new PagedResult<T>();
             pageSize = pageSize == 0 ? Paging.DEFAULT_PAGE_SIZE : pageSize;
@@ -61,10 +61,10 @@ namespace QTech.Base.BaseModels
                 result.PageCount = (int)Math.Ceiling(pageCount);
             }
             var skip = (result.CurrentPage - 1) * result.PageSize;
-            result.Results = query.Skip(skip).Take(result.PageSize);
+            result.Results = query.OrderBy(x => x.RowDate).Skip(skip).Take(result.PageSize);
             return result;
         }
-        public static PagedResult<T> GetPaged<T>(this IQueryable<T> query, Paging paging) where T : class
+        public static PagedResult<T> GetPaged<T>(this IQueryable<T> query, Paging paging) where T : ActiveBaseModel
         {
             return query.GetPaged(paging.CurrentPage, paging.PageSize, paging.IncludeCount);
         }

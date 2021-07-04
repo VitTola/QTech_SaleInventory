@@ -4,6 +4,7 @@ using QTech.Base.Enums;
 using QTech.Base.SearchModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -99,6 +100,11 @@ namespace QTech.Db.Logics
             if (param.payStatus == PayStatus.WaitPayment)
             {
                 q = q.Where(x => x.PayStatus == PayStatus.WaitPayment);
+            }
+            if (param?.Paging?.IsPaging == true)
+            {
+                q = q.GetPaged(param.Paging).Results.OrderBy(x=>x.Id);
+                
             }
             return q;
         }

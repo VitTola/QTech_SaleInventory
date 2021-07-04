@@ -628,6 +628,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to មើលបន្ទាប់.
+        /// </summary>
+        public static string NextPaging {
+            get {
+                return ResourceManager.GetString("NextPaging", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ចំណាំ.
         /// </summary>
         public static string Note {
@@ -752,6 +761,15 @@ namespace QTech.Base.Properties {
             get {
                 object obj = ResourceManager.GetObject("prepaid", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ត្រលប់ក្រោយ.
+        /// </summary>
+        public static string PreviousPaging {
+            get {
+                return ResourceManager.GetString("PreviousPaging", resourceCulture);
             }
         }
         

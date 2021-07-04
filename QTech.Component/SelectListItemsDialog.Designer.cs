@@ -1,4 +1,5 @@
-﻿using EDomain = EasyServer.Domain;
+﻿using QTech.Base.BaseModels;
+using EDomain = EasyServer.Domain;
 namespace QTech.Component
 {
     partial class SelectListItemsDialog
@@ -30,7 +31,7 @@ namespace QTech.Component
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            EDomain.SearchModels.Paging paging1 = new EDomain.SearchModels.Paging();
+            Paging paging1 = new Paging();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();

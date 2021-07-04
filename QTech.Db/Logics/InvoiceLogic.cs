@@ -58,7 +58,10 @@ namespace QTech.Db.Logics
             {
                 q = q.Where(x => x.InvoiceStatus == param.InvoiceStatus);
             }
-           
+            if (param?.Paging?.IsPaging == true)
+            {
+                q = q.GetPaged(param.Paging).Results;
+            }
             return q;
         }
         public override Invoice AddAsync(Invoice entity)

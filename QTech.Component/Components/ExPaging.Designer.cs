@@ -40,7 +40,7 @@
             // 
             this.lblNextPaging.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblNextPaging.AutoSize = true;
-            this.lblNextPaging.Image = global::QTech.Component.Properties.Resources.img_right_arrow;
+            this.lblNextPaging.Image = global::QTech.Component.Properties.Resources.Forward;
             this.lblNextPaging.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblNextPaging.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lblNextPaging.Location = new System.Drawing.Point(109, 5);
@@ -69,7 +69,7 @@
             // 
             this.lblPreviousPaging.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblPreviousPaging.AutoSize = true;
-            this.lblPreviousPaging.Image = global::QTech.Component.Properties.Resources.img_left_arrow;
+            this.lblPreviousPaging.Image = global::QTech.Component.Properties.Resources.Backward;
             this.lblPreviousPaging.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.lblPreviousPaging.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lblPreviousPaging.Location = new System.Drawing.Point(3, 5);
