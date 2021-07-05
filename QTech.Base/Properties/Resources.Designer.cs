@@ -1088,6 +1088,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to បង្ហាញទាំងអស់.
+        /// </summary>
+        public static string ShowAllPaging {
+            get {
+                return ResourceManager.GetString("ShowAllPaging", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to គំរោង.
         /// </summary>
         public static string Site {

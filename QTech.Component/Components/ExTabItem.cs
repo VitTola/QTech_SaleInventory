@@ -171,5 +171,12 @@ namespace QTech.Component
         {
             base.OnMouseMove(e);
         }
+        public void SetWhitBackGround()
+        {
+            panelLeft.BackgroundImage = global::QTech.Component.Properties.Resources.tab_left_selected;
+            panelMiddle.BackgroundImage = global::QTech.Component.Properties.Resources.tab_middle_selected;
+            panelRight.BackgroundImage = global::QTech.Component.Properties.Resources.tab_right_selected;
+            lblCaption.ForeColor = Color.Black;
+        }
     }
 }

@@ -95,6 +95,7 @@ namespace QTech.Forms
                 {
                     var topMenue = new ExTabItem
                     {
+                        Height = 45,
                         Name = x.FormName,
                         Tag = x.Key,
                         Text = x.DisplayName,
@@ -105,8 +106,6 @@ namespace QTech.Forms
                 };
                     pTopMenu.AddTabItem(topMenue);
                     topMenue.Click += TopMenue_Click;
-                    //topMenue.MouseClick += (ee, o) => { topMenue.BackColor = Color.FromArgb(245, 245, 237); };
-                    //topMenue.MouseHover += (ee, o) => { topMenue.BackColor = Color.FromArgb(245, 245, 237); };
                     _lastExtabitem = topMenue;
                 });
             if (_lastExtabitem != null)
@@ -125,7 +124,14 @@ namespace QTech.Forms
             currentKeyTab = navMenu.Key;
             pTopMenu.Text = navMenu.DisplayName;
             ShowPage(navMenu.FormName, navMenu.ModuleLocation);
+            if (sender is ExTabItem exTab)
+            {
+                exTab.SetWhitBackGround();
+            }
             ReadSecondLevelMenue(navMenu);
+            
+
+            
         }
         public void ShowPage(string formname, string moduleLocation)
         {
@@ -273,5 +279,7 @@ namespace QTech.Forms
         {
             InputLanguage.CurrentInputLanguage = UI.English;
         }
+
+        
     }
 }

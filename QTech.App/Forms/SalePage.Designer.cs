@@ -366,7 +366,7 @@ namespace QTech.Forms
             paging1.IsPaging = true;
             paging1.PageSize = 2;
             this.pagination.Paging = paging1;
-            this.pagination.ShowAllOption = false;
+            this.pagination.ShowAllOption = true;
             this.pagination.Size = new System.Drawing.Size(536, 33);
             this.pagination.TabIndex = 0;
             // 

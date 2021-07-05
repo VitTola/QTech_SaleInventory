@@ -33,7 +33,7 @@ namespace QTech.Forms
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            Paging paging1 = new Paging();
+            QTech.Base.BaseModels.Paging paging1 = new QTech.Base.BaseModels.Paging();
             this.graPanel1 = new QTech.Component.GRAPanel();
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -394,8 +394,8 @@ namespace QTech.Forms
             paging1.IsPaging = true;
             paging1.PageSize = 25;
             this.pagination.Paging = paging1;
-            this.pagination.ShowAllOption = false;
-            this.pagination.Size = new System.Drawing.Size(380, 33);
+            this.pagination.ShowAllOption = true;
+            this.pagination.Size = new System.Drawing.Size(504, 33);
             this.pagination.TabIndex = 0;
             // 
             // CreateInvoicePage

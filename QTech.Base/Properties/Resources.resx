@@ -499,4 +499,7 @@
   <data name="PreviousPaging" xml:space="preserve">
     <value>ត្រលប់ក្រោយ</value>
   </data>
+  <data name="ShowAllPaging" xml:space="preserve">
+    <value>បង្ហាញទាំងអស់</value>
+  </data>
 </root>
