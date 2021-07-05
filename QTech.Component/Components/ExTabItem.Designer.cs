@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExTabItem));
             this.panelRight = new System.Windows.Forms.Panel();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.panelMiddle = new System.Windows.Forms.Panel();
@@ -40,8 +39,8 @@
             // 
             // panelRight
             // 
-            this.panelRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.panelRight.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelRight.BackgroundImage")));
+            this.panelRight.BackColor = System.Drawing.Color.Transparent;
+            this.panelRight.BackgroundImage = global::QTech.Component.Properties.Resources.rightcorner;
             this.panelRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelRight.Location = new System.Drawing.Point(200, 0);
             this.panelRight.Name = "panelRight";
@@ -50,8 +49,8 @@
             // 
             // panelLeft
             // 
-            this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.panelLeft.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelLeft.BackgroundImage")));
+            this.panelLeft.BackColor = System.Drawing.Color.Transparent;
+            this.panelLeft.BackgroundImage = global::QTech.Component.Properties.Resources.lefcorner;
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Name = "panelLeft";
@@ -61,7 +60,7 @@
             // panelMiddle
             // 
             this.panelMiddle.BackColor = System.Drawing.Color.Transparent;
-            this.panelMiddle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelMiddle.BackgroundImage")));
+            this.panelMiddle.BackgroundImage = global::QTech.Component.Properties.Resources.center3;
             this.panelMiddle.Controls.Add(this.picBox);
             this.panelMiddle.Controls.Add(this.lblCaption);
             this.panelMiddle.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -89,7 +88,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCaption.BackColor = System.Drawing.Color.Transparent;
             this.lblCaption.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblCaption.ForeColor = System.Drawing.Color.Black;
+            this.lblCaption.ForeColor = System.Drawing.Color.White;
             this.lblCaption.Location = new System.Drawing.Point(25, 1);
             this.lblCaption.Name = "lblCaption";
             this.lblCaption.Size = new System.Drawing.Size(174, 21);
@@ -106,7 +105,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.panelRight);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panelMiddle);

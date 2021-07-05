@@ -652,6 +652,7 @@
     <None Include="Resources\down-arrow-in-small-circle.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\rightcorner.png" />
     <None Include="Resources\point_loading1.gif" />
     <None Include="Resources\point_loading.gif" />
     <None Include="Resources\report_printing.png" />
@@ -701,6 +702,8 @@
     <None Include="Resources\CornerLeft.png" />
     <None Include="Resources\Center.png" />
     <None Include="Resources\Backward.png" />
+    <None Include="Resources\center2.png" />
+    <None Include="Resources\center3.png" />
     <Content Include="Resources\edit.png" />
     <None Include="Resources\empty_avatar.png" />
     <None Include="Resources\jpg.png" />
@@ -764,6 +767,7 @@
     <None Include="Resources\img_input.png" />
     <None Include="Resources\img_read.png" />
     <None Include="Resources\Forward.png" />
+    <None Include="Resources\lefcorner.png" />
     <Content Include="Resources\map-point.png" />
     <None Include="Resources\maximize.png" />
     <Content Include="Resources\menu.png" />

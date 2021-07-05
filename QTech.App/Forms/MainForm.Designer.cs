@@ -186,7 +186,7 @@
             // 
             // pTopMenu
             // 
-            this.pTopMenu.BackColor = System.Drawing.Color.NavajoWhite;
+            this.pTopMenu.BackColor = System.Drawing.Color.White;
             this.pTopMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.pTopMenu.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.pTopMenu.Location = new System.Drawing.Point(1, 1);

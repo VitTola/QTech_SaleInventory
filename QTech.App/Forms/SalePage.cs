@@ -135,16 +135,9 @@ namespace QTech.Forms
                 saleSearchKey = this.saleSearchKey,
                 Search = txtSearch.Text,
                 payStatus = _payStatus,
-                Paging = new Paging()
-                {
-                    PageSize = 2,
-                    CurrentPage =pagination.CurrentPage,
-                    IsPaging = true,
-                    
-                    
-                }
+                Paging = pagination.Paging
             };
-            var _sales = await dgv.RunAsync(() =>
+            pagination.ListModel = await dgv.RunAsync(() =>
              {
                  var _result = SaleLogic.Instance.SearchAsync(search);
                  var CusIds = _result.Select(x => x.CompanyId).ToList();
@@ -154,11 +147,12 @@ namespace QTech.Forms
 
                  return _result;
              });
-            if (_sales == null)
+            if (pagination.ListModel == null)
             {
                 return;
             }
-            _sales.ForEach(x =>
+            List<Sale> sales = pagination.ListModel;
+            sales.ForEach(x =>
             {
                 var row = newRow(false);
                 row.Cells[colId.Name].Value = x.Id;

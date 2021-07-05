@@ -235,7 +235,7 @@ namespace QTech.Forms
             search.Search = txtSearch.Text;
             search.Paging = new Paging() { IsPaging = true, PageSize = 25 };
         
-            var result = await dgv.RunAsync(() =>
+            pagination.ListModel = await dgv.RunAsync(() =>
             {
                var allInvoices =  InvoiceLogic.Instance.SearchAsync(search);
                 if (allInvoices.Any())
@@ -246,9 +246,11 @@ namespace QTech.Forms
 
                 return allInvoices;
             });
-            if (result != null)
+
+            if (pagination.ListModel != null)
             {
-                TreeGridFillData(result);
+                List<Invoice> invoices = pagination.ListModel;
+                TreeGridFillData(invoices);
             }
         }
         private void TreeGridFillData(List<Invoice> invoices)

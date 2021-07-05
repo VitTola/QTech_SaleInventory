@@ -78,9 +78,9 @@ namespace QTech.Component
 
                 if (selected)
                 {
-                    panelLeft.BackgroundImage = global::QTech.Component.Properties.Resources.tab_left_selected;
-                    panelMiddle.BackgroundImage = global::QTech.Component.Properties.Resources.tab_middle_selected;
-                    panelRight.BackgroundImage = global::QTech.Component.Properties.Resources.tab_right_selected;
+                    panelLeft.BackgroundImage = global::QTech.Component.Properties.Resources.lefcorner;
+                    panelMiddle.BackgroundImage = global::QTech.Component.Properties.Resources.center3;
+                    panelRight.BackgroundImage = global::QTech.Component.Properties.Resources.rightcorner;
                     lblCaption.ForeColor = Color.Black;
 
                     if (Parent!=null)
@@ -100,9 +100,9 @@ namespace QTech.Component
                 else
                 {
 
-                    panelLeft.BackgroundImage = global::QTech.Component.Properties.Resources.tab_left;
-                    panelMiddle.BackgroundImage = global::QTech.Component.Properties.Resources.tab_middle;
-                    panelRight.BackgroundImage = global::QTech.Component.Properties.Resources.tab_right;
+                    panelLeft.BackgroundImage = global::QTech.Component.Properties.Resources.lefcorner;
+                    panelMiddle.BackgroundImage = global::QTech.Component.Properties.Resources.center3;
+                    panelRight.BackgroundImage = global::QTech.Component.Properties.Resources.rightcorner;
                     lblCaption.ForeColor = Color.Black;
                 } 
             }

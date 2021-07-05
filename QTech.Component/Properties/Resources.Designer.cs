@@ -182,6 +182,26 @@ namespace QTech.Component.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap center2 {
+            get {
+                object obj = ResourceManager.GetObject("center2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap center3 {
+            get {
+                object obj = ResourceManager.GetObject("center3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap channel_connected {
             get {
                 object obj = ResourceManager.GetObject("channel_connected", resourceCulture);
@@ -1037,6 +1057,16 @@ namespace QTech.Component.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap lefcorner {
+            get {
+                object obj = ResourceManager.GetObject("lefcorner", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap map_point {
             get {
                 object obj = ResourceManager.GetObject("map-point", resourceCulture);
@@ -1377,6 +1407,16 @@ namespace QTech.Component.Properties {
         public static System.Drawing.Bitmap right_traingle {
             get {
                 object obj = ResourceManager.GetObject("right_traingle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap rightcorner {
+            get {
+                object obj = ResourceManager.GetObject("rightcorner", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

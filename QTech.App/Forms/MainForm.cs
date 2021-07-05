@@ -105,8 +105,8 @@ namespace QTech.Forms
                 };
                     pTopMenu.AddTabItem(topMenue);
                     topMenue.Click += TopMenue_Click;
-                    topMenue.MouseClick += (ee, o) => { topMenue.BackColor = Color.FromArgb(245, 245, 237); };
-                    topMenue.MouseHover += (ee, o) => { topMenue.BackColor = Color.FromArgb(245, 245, 237); };
+                    //topMenue.MouseClick += (ee, o) => { topMenue.BackColor = Color.FromArgb(245, 245, 237); };
+                    //topMenue.MouseHover += (ee, o) => { topMenue.BackColor = Color.FromArgb(245, 245, 237); };
                     _lastExtabitem = topMenue;
                 });
             if (_lastExtabitem != null)
