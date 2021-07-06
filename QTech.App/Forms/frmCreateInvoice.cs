@@ -78,6 +78,7 @@ namespace QTech.Forms
             txtTotal.ReadOnly = txtLeftAmount.ReadOnly = true;
             txtInvoiceNo.ReadOnly = true;
             dtpInvoicingDate.Enabled = false;
+            //txtPaidAmount.SetTextBoxValueWhenMouseInOut("0");
             dgv.Columns.OfType<DataGridViewColumn>().Where(x => x.Name != colMark_.Name).ToList().ForEach(x => x.ReadOnly = true);
         }
         private void Dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -317,8 +318,21 @@ namespace QTech.Forms
             Model.InvoiceNo = txtInvoiceNo.Text;
             Model.InvoicingDate = dtpInvoicingDate.Value;
             Model.TotalAmount = decimal.Parse(txtTotal.Text);
-            Model.PaidAmount = decimal.Parse(txtPaidAmount.Text);
+            Model.PaidAmount = decimal.Parse(string.IsNullOrEmpty(txtPaidAmount.Text) ? "0" : txtPaidAmount.Text);
             Model.LeftAmount = decimal.Parse(txtLeftAmount.Text);
+            if (Model.PaidAmount == 0)
+            {
+                Model.InvoiceStatus = InvoiceStatus.WaitPayment;
+            }
+            else if (Model.LeftAmount == 0)
+            {
+                Model.InvoiceStatus = InvoiceStatus.Paid;
+            }
+            else
+            {
+                Model.InvoiceStatus = InvoiceStatus.PaySome;
+            }
+
 
             var Rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
             foreach (DataGridViewRow row in Rows)

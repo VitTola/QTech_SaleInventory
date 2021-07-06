@@ -298,19 +298,19 @@ namespace QTech.Forms
                 node.Cells[dgv.Columns[colInvoicingDate.Name].Index].Value = sale.SaleDate;
                 node.Cells[dgv.Columns[colCustomer.Name].Index].Value = Customers.FirstOrDefault(x => x.Id == parent.CustomerId)?.Name;
                 node.Cells[dgv.Columns[colTotalAmount.Name].Index].Value = sale.Total;
-                node.Cells[dgv.Columns[colPaidAmount.Name].Index].Value = sale.PaymentRecieve;
-                node.Cells[dgv.Columns[colLeftAmount.Name].Index].Value = sale.PaymentLeft;
-                
-                if (sale.PayStatus == PayStatus.Paid)
-                {
-                    node.Cells[dgv.Columns[colStatus.Name].Index].Value = BaseResource.InvoiceStatus_Paid;
-                    node.Cells[dgv.Columns[colStatus.Name].Index].Style.ForeColor = Color.Red;
-                }
-                else if (sale.PayStatus == PayStatus.WaitPayment)
-                {
-                    node.Cells[dgv.Columns[colStatus.Name].Index].Value = BaseResource.InvoiceStatus_PaySome;
-                    node.Cells[dgv.Columns[colStatus.Name].Index].Style.ForeColor = Color.Orange;
-                }
+               
+                //node.Cells[dgv.Columns[colPaidAmount.Name].Index].Value = sale.PaymentRecieve;
+                //node.Cells[dgv.Columns[colLeftAmount.Name].Index].Value = sale.PaymentLeft;
+                //if (sale.PayStatus == PayStatus.Paid)
+                //{
+                //    node.Cells[dgv.Columns[colStatus.Name].Index].Value = BaseResource.InvoiceStatus_Paid;
+                //    node.Cells[dgv.Columns[colStatus.Name].Index].Style.ForeColor = Color.Red;
+                //}
+                //else if (sale.PayStatus == PayStatus.WaitPayment)
+                //{
+                //    node.Cells[dgv.Columns[colStatus.Name].Index].Value = BaseResource.InvoiceStatus_PaySome;
+                //    node.Cells[dgv.Columns[colStatus.Name].Index].Style.ForeColor = Color.Orange;
+                //}
             }
             TreeGridNode.Collapse();
         }

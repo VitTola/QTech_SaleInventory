@@ -77,6 +77,14 @@ namespace QTech.Forms
 
             var id = (int)dgv.SelectedRows[0].Cells[colId.Name].Value;
             Model = await btnUpdate.RunAsync(() => SaleLogic.Instance.FindAsync(id));
+            if (Model.PayStatus != PayStatus.NotYetPaid)
+            {
+                MsgBox.ShowWarning(BaseResource.MsgInvoiceAlreadyPaidCannotEdit,
+                    GeneralProcess.Remove.GetTextDialog(BaseResource.Invoice));
+                return;
+            }
+
+            Model = await btnUpdate.RunAsync(() => SaleLogic.Instance.FindAsync(id));
             if (Model == null)
             {
                 return;

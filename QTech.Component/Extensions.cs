@@ -2185,6 +2185,19 @@ namespace QTech.Component
                 }
             }
         }
+
+        public static void SetTextBoxValueWhenMouseInOut(this TextBox txt, string leftValue)
+        {
+            txt.Click += (sender, e) => {
+                if (decimal.Parse(txt.Text) <= 0)
+                {
+                    txt.Text = string.Empty;
+                }
+            };
+            txt.MouseLeave += (sender, e) => { txt.Text = leftValue; };
+        }
+
+
     }
 
 

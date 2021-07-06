@@ -353,10 +353,9 @@ namespace QTech.Forms
             // pagination
             // 
             this.pagination.Action = null;
-            this.pagination.AllowDrop = true;
             this.pagination.Dock = System.Windows.Forms.DockStyle.Left;
             this.pagination.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pagination.IsPaging = true;
+            this.pagination.IsPaging = false;
             this.pagination.ListModel = null;
             this.pagination.Location = new System.Drawing.Point(3, 4);
             this.pagination.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -364,10 +363,10 @@ namespace QTech.Forms
             this.pagination.Name = "pagination";
             paging1.CurrentPage = 1;
             paging1.IsPaging = true;
-            paging1.PageSize = 2;
+            paging1.PageSize = 25;
             this.pagination.Paging = paging1;
-            this.pagination.ShowAllOption = true;
-            this.pagination.Size = new System.Drawing.Size(536, 33);
+            this.pagination.ShowAllOption = false;
+            this.pagination.Size = new System.Drawing.Size(485, 33);
             this.pagination.TabIndex = 0;
             // 
             // SalePage
