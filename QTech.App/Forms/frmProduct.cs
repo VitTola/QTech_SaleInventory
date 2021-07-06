@@ -74,7 +74,7 @@ namespace QTech.Forms
 
             var _result = await this.RunAsync(() =>
             {
-                var result = CategoryLogic.Instance.FindAsync(Model.Id);
+                var result = CategoryLogic.Instance.FindAsync(Model.CategoryId);
                 return result;
             }
             );

@@ -83,7 +83,7 @@
             this.graPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.graPanel1.Name = "graPanel1";
             this.graPanel1.Rounded = true;
-            this.graPanel1.Size = new System.Drawing.Size(785, 35);
+            this.graPanel1.Size = new System.Drawing.Size(865, 35);
             this.graPanel1.TabIndex = 0;
             // 
             // colorWithAlpha1
@@ -122,7 +122,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btnAdd);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(498, 0);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(578, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(287, 35);
@@ -232,7 +232,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             this.dgv.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(785, 340);
+            this.dgv.Size = new System.Drawing.Size(865, 437);
             this.dgv.TabIndex = 1;
             this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
             this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
@@ -296,7 +296,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(785, 375);
+            this.ClientSize = new System.Drawing.Size(865, 472);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.graPanel1);
             this.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

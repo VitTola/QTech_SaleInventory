@@ -122,8 +122,7 @@ namespace QTech.Forms
             {
                 await Search();
             }
-        }
-        
+        }        
         public async Task Search()
         {
             dgv.Rows.Clear();

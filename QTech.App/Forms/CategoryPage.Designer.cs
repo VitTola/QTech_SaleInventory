@@ -225,7 +225,7 @@
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS Siemreap", 8F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS System", 8F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -238,7 +238,7 @@
             this.dataGridViewTextBoxColumn4});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Khmer OS Siemreap", 8F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Khmer OS System", 8F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
@@ -247,7 +247,7 @@
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
-            this.dgv.Font = new System.Drawing.Font("Khmer OS Siemreap", 8F);
+            this.dgv.Font = new System.Drawing.Font("Khmer OS System", 8F);
             this.dgv.Location = new System.Drawing.Point(0, 35);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";

@@ -37,7 +37,19 @@ namespace QTech.Db.Logics
         }
         public override bool CanRemoveAsync(Customer entity)
         {
-            return All().Any(x => x.Id == entity.Id);
+            if (!All().Any(x =>x.Active && x.Id == entity.Id))
+            {
+                return false;
+            }
+            else if (_db.Sales.Any(x=>x.Active && x.CompanyId == entity.Id))
+            {
+                return false;
+            }
+            else if (_db.CustomerPrices.Any(x=>x.Active && x.CustomerId ==entity.Id))
+            {
+                return false;
+            }
+            return true;
         }
         public override List<Customer> SearchAsync(ISearchModel model)
         {

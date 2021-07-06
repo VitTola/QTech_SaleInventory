@@ -24,7 +24,16 @@ namespace QTech.Db.Logics
         }
         public override bool CanRemoveAsync(Invoice entity)
         {
-            return All().Any(x => x.Id == entity.Id);
+            if (!All().Any(x => x.Active && x.Id == entity.Id))
+            {
+                return false;
+            }
+            else if (_db.Invoices.Any(x=>(x.Active && x.InvoiceStatus == InvoiceStatus.Paid) || 
+            (x.Active && x.InvoiceStatus == InvoiceStatus.PaySome)))
+            {
+                return false;
+            }
+            return true;
         }
         public override List<Invoice> SearchAsync(ISearchModel model)
         {
@@ -82,7 +91,14 @@ namespace QTech.Db.Logics
                 _db.Sales.Where(x => x.Active && saleIds.Any(y => y == x.Id)).ToList()
                     .ForEach(x =>
                     {
-                        x.PayStatus = PayStatus.WaitPayment;
+                        if (entity.TotalAmount - entity.PaidAmount == 0)
+                        {
+                            x.PayStatus = PayStatus.Paid;
+                        }
+                        else 
+                        {
+                            x.PayStatus = PayStatus.WaitPayment;
+                        }
                     });
                 _db.SaveChanges();
             }
@@ -144,6 +160,25 @@ namespace QTech.Db.Logics
             var result = All().Any(x => x.Active && x.Id == id && x.InvoiceStatus != InvoiceStatus.Paid);
             return result;
         }
+        public override Invoice RemoveAsync(Invoice entity)
+        {
+           var result =  base.RemoveAsync(entity);
+            var invoiceDetail = entity.InvoiceDetails;
+            //Update Sale Payment Status
+            if (invoiceDetail.Any())
+            {
+                //Update Sale Payment Status
+                var saleIds = invoiceDetail.Select(x => x.SaleId).ToList();
+                _db.Sales.Where(x => x.Active && saleIds.Any(y => y == x.Id)).ToList()
+                    .ForEach(x =>
+                    {
+                        x.PayStatus = PayStatus.NotYetPaid;
+                    });
+                _db.SaveChanges();
+            }
+            return result;
+        }
+
 
     }
 }
