@@ -167,8 +167,8 @@ namespace QTech.Forms
             }
 
             var id = (int)dgv.SelectedRows[0].Cells[colParentId.Name].Value;
-            var canEdit = await btnUpdate.RunAsync(() => InvoiceLogic.Instance.CanRemoveAsync(id));
-            if (canEdit == false)
+            Model = await btnRemove.RunAsync(() => InvoiceLogic.Instance.FindAsync(id));
+            if (Model.InvoiceStatus == InvoiceStatus.Paid)
             {
                 MsgBox.ShowWarning(BaseResource.MsgInvoiceAlreadyPaidCannotEdit,
                     GeneralProcess.Remove.GetTextDialog(BaseResource.Invoice));
@@ -199,8 +199,9 @@ namespace QTech.Forms
                 return;
             }
 
-            var id = (int)dgv.CurrentRow.Cells[colParentId.Name].Value;
-            var canRemove = await btnRemove.RunAsync(() => InvoiceLogic.Instance.CanRemoveAsync(id));
+            var id = (int)dgv.SelectedRows[0].Cells[colParentId.Name].Value;
+            Model = await btnRemove.RunAsync(() => InvoiceLogic.Instance.FindAsync(id));
+            var canRemove = await btnRemove.RunAsync(() => InvoiceLogic.Instance.CanRemoveAsync(Model));
             if (canRemove == false)
             {
                 MsgBox.ShowWarning(BaseResource.MsgInvoiceAlreadyPaid,

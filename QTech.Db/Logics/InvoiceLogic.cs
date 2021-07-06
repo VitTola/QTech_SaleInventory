@@ -28,8 +28,11 @@ namespace QTech.Db.Logics
             {
                 return false;
             }
-            else if (_db.Invoices.Any(x=>(x.Active && x.InvoiceStatus == InvoiceStatus.Paid) || 
-            (x.Active && x.InvoiceStatus == InvoiceStatus.PaySome)))
+            else if (entity.InvoiceStatus == InvoiceStatus.Paid)
+            {
+                return false;
+            }
+            if (entity.InvoiceStatus == InvoiceStatus.PaySome)
             {
                 return false;
             }
@@ -176,8 +179,16 @@ namespace QTech.Db.Logics
         }
         public override bool CanRemoveAsync(int id)
         {
-            var result = All().Any(x => x.Active && x.Id == id && x.InvoiceStatus != InvoiceStatus.Paid);
-            return result;
+            if (!All().Any(x => x.Active && x.Id == id))
+            {
+                return false;
+            }
+            else if (_db.Invoices.Any(x => (x.Active && x.InvoiceStatus == InvoiceStatus.Paid) ||
+            (x.Active && x.InvoiceStatus == InvoiceStatus.PaySome)))
+            {
+                return false;
+            }
+            return true;
         }
         public override Invoice RemoveAsync(Invoice entity)
         {
