@@ -19,7 +19,15 @@ namespace QTech.Db.Logics
         }
         public override bool CanRemoveAsync(Employee entity)
         {
-            return All().Any(x => x.Id == entity.Id);
+            if (!All().Any(x => x.Active && x.Id == entity.Id))
+            {
+                return false;
+            }
+            else if(_db.SaleDetails.Any(x=>x.EmployeeId == entity.Id))
+            {
+                return false;
+            }
+            return true;
         }
         public override List<Employee> SearchAsync(ISearchModel model)
         {

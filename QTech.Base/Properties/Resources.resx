@@ -502,4 +502,7 @@
   <data name="ShowAllPaging" xml:space="preserve">
     <value>បង្ហាញទាំងអស់</value>
   </data>
+  <data name="OK" xml:space="preserve">
+    <value>យល់ព្រម</value>
+  </data>
 </root>
