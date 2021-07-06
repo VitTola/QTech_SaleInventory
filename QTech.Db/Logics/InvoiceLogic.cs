@@ -85,7 +85,22 @@ namespace QTech.Db.Logics
                     s.InvoiceId = invoice.Id;
                     InvoiceDetailLogic.Instance.AddAsync(s);
                 }
-                UpdateSales(invoiceDetails, entity);
+
+                //Update Sale Payment Status
+                var saleIds = invoiceDetails.Select(x => x.SaleId).ToList();
+                _db.Sales.Where(x => x.Active && saleIds.Any(y => y == x.Id)).ToList()
+                    .ForEach(x =>
+                    {
+                        if (entity.TotalAmount - entity.PaidAmount == 0)
+                        {
+                            x.PayStatus = PayStatus.Paid;
+                        }
+                        else 
+                        {
+                            x.PayStatus = PayStatus.WaitPayment;
+                        }
+                    });
+                _db.SaveChanges();
             }
 
             return invoice;
@@ -182,6 +197,7 @@ namespace QTech.Db.Logics
             }
             return result;
         }
+
 
 
     }
