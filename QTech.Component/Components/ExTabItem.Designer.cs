@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExTabItem));
             this.panelRight = new System.Windows.Forms.Panel();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.panelMiddle = new System.Windows.Forms.Panel();
@@ -40,33 +41,33 @@
             // panelRight
             // 
             this.panelRight.BackColor = System.Drawing.Color.Transparent;
-            this.panelRight.BackgroundImage = global::QTech.Component.Properties.Resources.rightcorner;
+            this.panelRight.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelRight.BackgroundImage")));
             this.panelRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelRight.Location = new System.Drawing.Point(200, 0);
+            this.panelRight.Location = new System.Drawing.Point(198, 0);
             this.panelRight.Name = "panelRight";
-            this.panelRight.Size = new System.Drawing.Size(6, 23);
+            this.panelRight.Size = new System.Drawing.Size(8, 34);
             this.panelRight.TabIndex = 6;
             // 
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.Transparent;
-            this.panelLeft.BackgroundImage = global::QTech.Component.Properties.Resources.lefcorner;
+            this.panelLeft.BackgroundImage = global::QTech.Component.Properties.Resources.lefcornerF;
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(4, 23);
+            this.panelLeft.Size = new System.Drawing.Size(4, 34);
             this.panelLeft.TabIndex = 5;
             // 
             // panelMiddle
             // 
             this.panelMiddle.BackColor = System.Drawing.Color.Transparent;
-            this.panelMiddle.BackgroundImage = global::QTech.Component.Properties.Resources.center3;
+            this.panelMiddle.BackgroundImage = global::QTech.Component.Properties.Resources.center5;
             this.panelMiddle.Controls.Add(this.picBox);
             this.panelMiddle.Controls.Add(this.lblCaption);
             this.panelMiddle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMiddle.Location = new System.Drawing.Point(0, 0);
             this.panelMiddle.Name = "panelMiddle";
-            this.panelMiddle.Size = new System.Drawing.Size(206, 23);
+            this.panelMiddle.Size = new System.Drawing.Size(206, 34);
             this.panelMiddle.TabIndex = 7;
             // 
             // picBox
@@ -76,7 +77,7 @@
             this.picBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picBox.Location = new System.Drawing.Point(7, 2);
             this.picBox.Name = "picBox";
-            this.picBox.Size = new System.Drawing.Size(16, 20);
+            this.picBox.Size = new System.Drawing.Size(16, 31);
             this.picBox.TabIndex = 4;
             this.picBox.TabStop = false;
             this.picBox.Click += new System.EventHandler(this.picBox_Click);
@@ -91,7 +92,7 @@
             this.lblCaption.ForeColor = System.Drawing.Color.White;
             this.lblCaption.Location = new System.Drawing.Point(25, 1);
             this.lblCaption.Name = "lblCaption";
-            this.lblCaption.Size = new System.Drawing.Size(174, 21);
+            this.lblCaption.Size = new System.Drawing.Size(171, 32);
             this.lblCaption.TabIndex = 3;
             this.lblCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblCaption.Click += new System.EventHandler(this.lblCaption_Click);
@@ -110,7 +111,7 @@
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panelMiddle);
             this.Name = "ExTabItem";
-            this.Size = new System.Drawing.Size(206, 23);
+            this.Size = new System.Drawing.Size(206, 34);
             this.panelMiddle.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).EndInit();
             this.ResumeLayout(false);

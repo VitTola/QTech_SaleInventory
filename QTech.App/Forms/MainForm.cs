@@ -124,10 +124,6 @@ namespace QTech.Forms
             currentKeyTab = navMenu.Key;
             pTopMenu.Text = navMenu.DisplayName;
             ShowPage(navMenu.FormName, navMenu.ModuleLocation);
-            if (sender is ExTabItem exTab)
-            {
-                exTab.SetWhitBackGround();
-            }
             ReadSecondLevelMenue(navMenu);
             
 

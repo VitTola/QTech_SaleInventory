@@ -78,9 +78,9 @@ namespace QTech.Component
 
                 if (selected)
                 {
-                    panelLeft.BackgroundImage = global::QTech.Component.Properties.Resources.lefcorner;
-                    panelMiddle.BackgroundImage = global::QTech.Component.Properties.Resources.center3;
-                    panelRight.BackgroundImage = global::QTech.Component.Properties.Resources.rightcorner;
+                    panelLeft.BackgroundImage = global::QTech.Component.Properties.Resources.leftcornerW;
+                    panelMiddle.BackgroundImage = global::QTech.Component.Properties.Resources.centerW;
+                    panelRight.BackgroundImage = global::QTech.Component.Properties.Resources.rightCornerW;
                     lblCaption.ForeColor = Color.Black;
 
                     if (Parent!=null)
@@ -100,11 +100,12 @@ namespace QTech.Component
                 else
                 {
 
-                    panelLeft.BackgroundImage = global::QTech.Component.Properties.Resources.lefcorner;
-                    panelMiddle.BackgroundImage = global::QTech.Component.Properties.Resources.center3;
-                    panelRight.BackgroundImage = global::QTech.Component.Properties.Resources.rightcorner;
-                    lblCaption.ForeColor = Color.Black;
-                } 
+                    panelLeft.BackgroundImage = global::QTech.Component.Properties.Resources.lefcornerF;
+                    panelMiddle.BackgroundImage = global::QTech.Component.Properties.Resources.center5;
+                    panelRight.BackgroundImage = global::QTech.Component.Properties.Resources.rightCornerF;
+                    lblCaption.ForeColor = Color.White;
+
+                }
             }
             get
             {
@@ -130,7 +131,7 @@ namespace QTech.Component
         {
             if (!selected && !isTitle)
             {
-                lblCaption.ForeColor = Color.Firebrick;
+                lblCaption.ForeColor = Color.Yellow;
             }
         }
 
@@ -140,7 +141,7 @@ namespace QTech.Component
         {
             if (!selected && !isTitle)
             {
-                lblCaption.ForeColor = Color.Black;
+                lblCaption.ForeColor = Color.White;
             }
         } 
         
@@ -170,13 +171,6 @@ namespace QTech.Component
         private void lblCaption_MouseMove(object sender, MouseEventArgs e)
         {
             base.OnMouseMove(e);
-        }
-        public void SetWhitBackGround()
-        {
-            panelLeft.BackgroundImage = global::QTech.Component.Properties.Resources.tab_left_selected;
-            panelMiddle.BackgroundImage = global::QTech.Component.Properties.Resources.tab_middle_selected;
-            panelRight.BackgroundImage = global::QTech.Component.Properties.Resources.tab_right_selected;
-            lblCaption.ForeColor = Color.Black;
         }
     }
 }
