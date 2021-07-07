@@ -173,7 +173,7 @@ namespace QTech.Forms
 
             var id = (int)dgv.CurrentRow.Cells[colParentId.Name].Value;
             var canRemove = await btnRemove.RunAsync(() => CustomerLogic.Instance.CanRemoveAsync(id));
-            if (canRemove == false)
+            if (canRemove == false || Model.Id == 0)
             {
                 MsgBox.ShowWarning(EasyServer.Domain.Resources.RowCannotBeRemoved,
                     GeneralProcess.Remove.GetTextDialog(BaseResource.Employees));

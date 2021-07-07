@@ -404,7 +404,6 @@ namespace QTech.Forms
                 dig.ShowDialog();
             }
         }
-
         private void txtPaidAmount_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtPaidAmount.Text))

@@ -1,6 +1,7 @@
 ﻿using QTech.Base;
 using QTech.Base.BaseModels;
 using QTech.Base.Enums;
+using QTech.Base.Helpers;
 using QTech.Base.SearchModels;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,10 @@ namespace QTech.Db.Logics
                 x.SaleId = result.Id;
                 SaleDetailLogic.Instance.AddAsync(x);
             });
+            if (entity.CompanyId == 0)
+            {
+                AddInvoice(result, GeneralProcess.Add);
+            }
             return result;
         }
         public override Sale UpdateAsync(Sale entity)
@@ -134,6 +139,35 @@ namespace QTech.Db.Logics
             q = q.Where(s=> saleIds.Any(i=> i == s.Id));
             return q.ToList();
         }
+        public override Sale RemoveAsync(Sale entity)
+        {
+            var result = base.RemoveAsync(entity);
+            return result;
+        }
+        private void AddInvoice(Sale sale, GeneralProcess flag)
+        {
+            var Model = new Invoice();
+            if (Model.InvoiceDetails == null)
+            {
+                Model.InvoiceDetails = new List<InvoiceDetail>();
+            }
+            Model.CustomerId = sale.CompanyId;
+            Model.InvoicingDate = sale.SaleDate ;
+            Model.TotalAmount = sale.Total;
+            Model.PaidAmount = 0;
+            Model.LeftAmount = sale.Total;
+            Model.InvoiceStatus = InvoiceStatus.WaitPayment;
+            
+            Model.InvoiceDetails.Add(
+                new InvoiceDetail()
+                {
+                    SaleId = sale.Id,
+
+                });
+            InvoiceLogic.Instance.AddAsync(Model);
+        }
+
+
 
     }
 }
