@@ -95,7 +95,7 @@ namespace QTech.Forms
                 {
                     var topMenue = new ExTabItem
                     {
-                        Height = 45,
+                        Height = 60,
                         Name = x.FormName,
                         Tag = x.Key,
                         Text = x.DisplayName,
