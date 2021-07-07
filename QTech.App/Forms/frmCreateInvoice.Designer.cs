@@ -94,7 +94,7 @@
             this.container.Controls.Add(this.panel4);
             this.container.Controls.Add(this.panel3);
             this.container.Controls.Add(this.exPanel1);
-            this.container.Size = new System.Drawing.Size(1442, 861);
+            this.container.Size = new System.Drawing.Size(1442, 862);
             // 
             // exLabel2
             // 
@@ -114,7 +114,7 @@
             this.exPanel1.Controls.Add(this.flowLayoutPanel3);
             this.exPanel1.Controls.Add(this.flowLayoutPanel2);
             this.exPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.exPanel1.Location = new System.Drawing.Point(1, 824);
+            this.exPanel1.Location = new System.Drawing.Point(1, 825);
             this.exPanel1.Name = "exPanel1";
             this.exPanel1.Padding = new System.Windows.Forms.Padding(2);
             this.exPanel1.Size = new System.Drawing.Size(1440, 36);
@@ -305,7 +305,7 @@
             this.panelGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelGrid.Location = new System.Drawing.Point(1, 86);
             this.panelGrid.Name = "panelGrid";
-            this.panelGrid.Size = new System.Drawing.Size(1440, 625);
+            this.panelGrid.Size = new System.Drawing.Size(1440, 626);
             this.panelGrid.TabIndex = 30;
             // 
             // chkMarkAll_
@@ -372,7 +372,7 @@
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1438, 584);
+            this.dgv.Size = new System.Drawing.Size(1438, 585);
             this.dgv.TabIndex = 2;
             // 
             // colMark_
@@ -601,7 +601,7 @@
             this.panel3.Controls.Add(this.exLabel1);
             this.panel3.Controls.Add(this.panel1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(1, 711);
+            this.panel3.Location = new System.Drawing.Point(1, 712);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1440, 113);
             this.panel3.TabIndex = 34;

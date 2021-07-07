@@ -166,7 +166,15 @@ namespace QTech.Db.Logics
                 });
             InvoiceLogic.Instance.AddAsync(Model);
         }
-
+        public override bool CanRemoveAsync(int id)
+        {
+            var entity = base.FindAsync(id);
+            if (entity.PayStatus != PayStatus.NotYetPaid)
+            {
+                return false;
+            }
+            return true;
+        }
 
 
     }

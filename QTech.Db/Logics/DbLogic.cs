@@ -60,8 +60,8 @@ namespace QTech.Db
         }
         public virtual T FindAsync(TKey id)
         {
-            return null;
-
+            var result = _db.Set<T>().Find(id);
+            return result;
         }
         public virtual T AddAsync(T entity)
         {
@@ -73,7 +73,7 @@ namespace QTech.Db
             entity.RowDate = DateTime.Now;
             SetActive(entity, true);
             _db.Entry(entity).State = EntityState.Added;
-             _db.SaveChanges();
+            _db.SaveChanges();
             return entity;
         }
         public virtual T UpdateAsync(T entity)
@@ -87,7 +87,7 @@ namespace QTech.Db
 
                 _db.Entry(entity).State = EntityState.Modified;
                 entity.RowDate = DateTime.Now;
-                 _db.SaveChangesAsync();
+                 _db.SaveChanges();
                 return entity;
             }
             catch (Exception ex)
@@ -109,7 +109,7 @@ namespace QTech.Db
             SetActive(entity, false);
             _db.Entry(entity).State = EntityState.Modified;
             entity.RowDate = DateTime.Now;
-             _db.SaveChangesAsync();
+             _db.SaveChanges();
             return entity;
         }
         public virtual bool CanRemoveAsync(TKey id)

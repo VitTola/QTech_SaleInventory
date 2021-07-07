@@ -125,9 +125,6 @@ namespace QTech.Forms
             pTopMenu.Text = navMenu.DisplayName;
             ShowPage(navMenu.FormName, navMenu.ModuleLocation);
             ReadSecondLevelMenue(navMenu);
-            
-
-            
         }
         public void ShowPage(string formname, string moduleLocation)
         {
@@ -238,7 +235,7 @@ namespace QTech.Forms
                     ShowPage(menuBar.FormName,menuBar.ModuleLocation);
 
                 }
-                btn.BackColor = Color.FromArgb(250, 214, 173) ;
+                btn.BackColor = Color.FromArgb(250, 193, 196) ;
                 pSecondMenue2.Controls.OfType<ExTabItem2>().Where(x => x != btn).ToList()
                     .ForEach(y => y.BackColor = Color.Transparent);
             }
