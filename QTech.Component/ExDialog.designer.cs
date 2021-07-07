@@ -53,11 +53,11 @@ namespace QTech.Component
             // 
             this.container.BackColor = System.Drawing.Color.Transparent;
             this.container.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.container.Location = new System.Drawing.Point(0, 21);
+            this.container.Location = new System.Drawing.Point(0, 20);
             this.container.Margin = new System.Windows.Forms.Padding(0);
             this.container.Name = "container";
             this.container.Padding = new System.Windows.Forms.Padding(1);
-            this.container.Size = new System.Drawing.Size(284, 228);
+            this.container.Size = new System.Drawing.Size(284, 229);
             this.container.TabIndex = 0;
             this.container.Paint += new System.Windows.Forms.PaintEventHandler(this.container_Paint);
             this.container.Resize += new System.EventHandler(this.container_Resize);
@@ -93,25 +93,25 @@ namespace QTech.Component
             this.digheader.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.digheader.Name = "digheader";
             this.digheader.Rounded = true;
-            this.digheader.Size = new System.Drawing.Size(284, 21);
+            this.digheader.Size = new System.Drawing.Size(284, 20);
             this.digheader.TabIndex = 1;
             // 
             // colorWithAlpha1
             // 
             this.colorWithAlpha1.Alpha = 255;
-            this.colorWithAlpha1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.colorWithAlpha1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(55)))), ((int)(((byte)(59)))));
             this.colorWithAlpha1.Parent = this.digheader;
             // 
             // colorWithAlpha2
             // 
             this.colorWithAlpha2.Alpha = 255;
-            this.colorWithAlpha2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.colorWithAlpha2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(55)))), ((int)(((byte)(59)))));
             this.colorWithAlpha2.Parent = this.digheader;
             // 
             // colorWithAlpha3
             // 
             this.colorWithAlpha3.Alpha = 255;
-            this.colorWithAlpha3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.colorWithAlpha3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(55)))), ((int)(((byte)(59)))));
             this.colorWithAlpha3.Parent = this.digheader;
             // 
             // flowLayoutPanel1
@@ -125,7 +125,7 @@ namespace QTech.Component
             this.flowLayoutPanel1.Location = new System.Drawing.Point(216, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(68, 19);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(68, 18);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // _bClose
@@ -182,7 +182,7 @@ namespace QTech.Component
             // bar
             // 
             this.bar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bar.Location = new System.Drawing.Point(0, 19);
+            this.bar.Location = new System.Drawing.Point(0, 18);
             this.bar.Maximum = 10000;
             this.bar.Name = "bar";
             this.bar.Size = new System.Drawing.Size(284, 2);
@@ -197,6 +197,7 @@ namespace QTech.Component
             | System.Windows.Forms.AnchorStyles.Right)));
             this._lblTITLE.BackColor = System.Drawing.Color.Transparent;
             this._lblTITLE.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._lblTITLE.ForeColor = System.Drawing.Color.White;
             this._lblTITLE.Location = new System.Drawing.Point(24, 1);
             this._lblTITLE.Name = "_lblTITLE";
             this._lblTITLE.Size = new System.Drawing.Size(236, 19);

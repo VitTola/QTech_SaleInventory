@@ -553,7 +553,7 @@
             // 
             // pSecondMenue1
             // 
-            this.pSecondMenue1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.pSecondMenue1.BackColor = System.Drawing.Color.White;
             this.pSecondMenue1.Controls.Add(this._btnUpDown);
             this.pSecondMenue1.Controls.Add(this.pSecondMenue2);
             this.pSecondMenue1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -576,7 +576,7 @@
             // 
             // pSecondMenue2
             // 
-            this.pSecondMenue2.BackColor = System.Drawing.Color.Transparent;
+            this.pSecondMenue2.BackColor = System.Drawing.Color.White;
             this.pSecondMenue2.Dock = System.Windows.Forms.DockStyle.Left;
             this.pSecondMenue2.Location = new System.Drawing.Point(0, 0);
             this.pSecondMenue2.Name = "pSecondMenue2";
