@@ -67,7 +67,6 @@ namespace QTech.Forms
                 tabMain.Controls.Remove(tabSetPrice);
             }
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
-
         }
         private void DgvGoods_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
@@ -151,9 +150,8 @@ namespace QTech.Forms
             txtName.Text = Model.Name;
             txtPhone.Text = Model.Phone;
             txtNote.Text = Model.Note;
-
-            var search = new SiteSearch() { CustomerId = Model.Id };
-            var sites = await dgv.RunAsync(() => SiteLogic.Instance.SearchAsync(search));
+            
+            var sites = await dgv.RunAsync(() => SiteLogic.Instance.GetSiteByCustomerIds(Model.Id));
             if (sites.Any())
             {
                 Model.Sites = sites;
@@ -190,8 +188,8 @@ namespace QTech.Forms
             {
                 var Id = int.Parse(row?.Cells[colId.Name]?.Value?.ToString() ?? "0");
                 var site = Model.Sites?.FirstOrDefault(x => x.Id == Id);
-                var _name = row?.Cells[colName.Name]?.Value?.ToString() ?? string.Empty;
-                var _phone = row?.Cells[colPhone.Name]?.Value?.ToString() ?? string.Empty;
+                var _name = row?.Cells[colName.Name].Value?.ToString();
+                var _phone = row?.Cells[colPhone.Name].Value?.ToString();
                 if (site != null)
                 {
                     var id = (int)(row?.Cells[colId.Name]?.Value ?? 0);

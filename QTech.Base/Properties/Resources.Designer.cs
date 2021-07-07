@@ -432,6 +432,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to តម្លៃនាំចូល.
+        /// </summary>
+        public static string ImportPrice {
+            get {
+                return ResourceManager.GetString("ImportPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to វិក័យប័ត្រ.
         /// </summary>
         public static string Invoice {

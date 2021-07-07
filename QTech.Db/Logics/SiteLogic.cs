@@ -55,6 +55,12 @@ namespace QTech.Db.Logics
              .Where(site => site.Active && Ids.Any(id => id == site.Id));
             return sites.ToList();
         }
+        public List<Site> GetSiteByCustomerIds(int id)
+        {
+            var sites = _db.Sites
+             .Where(site => site.Active && site.CustomerId == id);
+            return sites.ToList();
+        }
 
     }
 }

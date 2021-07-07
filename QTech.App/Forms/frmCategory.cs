@@ -44,6 +44,7 @@ namespace QTech.Forms
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
             this.MaximizeBox = false;
             this.Text = Base.Properties.Resources.Categorys;
+            txtNote.RegisterPrimaryInput();
         }
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {

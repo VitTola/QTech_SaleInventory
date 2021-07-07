@@ -55,8 +55,7 @@ namespace QTech.Forms
         public bool InValid()
         {
             if (!txtName.IsValidRequired(lblName.Text) 
-                | !cboPosition.IsValidRequired(lblPosition.Text) 
-                | !txtPhone.IsValidPhone())
+                | !cboPosition.IsValidRequired(lblPosition.Text))
             {
                 return true;
             }

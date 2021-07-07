@@ -69,7 +69,7 @@ namespace QTech.Forms
             this.OptimizeLoadUI();
             pSecondMenue2.Hide();
             pSecondMenue1.Hide();
-            
+
         }
         private void ApplySetting()
         {
@@ -103,7 +103,7 @@ namespace QTech.Forms
                         TextAlignment = ContentAlignment.MiddleLeft,
                         BorderStyle = BorderStyle.None,
                         Padding = new Padding() { All = 0 },
-                };
+                    };
                     pTopMenu.AddTabItem(topMenue);
                     topMenue.Click += TopMenue_Click;
                     _lastExtabitem = topMenue;
@@ -120,7 +120,7 @@ namespace QTech.Forms
         {
             var key = ((ExTabItem)sender).Tag ?? string.Empty;
             var navMenu = _menuBars.FirstOrDefault(y => y.Key.ToString() == key.ToString());
-           
+
             currentKeyTab = navMenu.Key;
             pTopMenu.Text = navMenu.DisplayName;
             ShowPage(navMenu.FormName, navMenu.ModuleLocation);
@@ -187,7 +187,10 @@ namespace QTech.Forms
 
         private void ReadSecondLevelMenue(MenuBar menuBar)
         {
-            if (ClickedButton == menuBar)
+            var moduleManager = ModuleManager.Instance;
+            _secondLevelMenue = moduleManager._secondLevelMenue;
+
+            if (ClickedButton == menuBar && _secondLevelMenue.Any(x => x.ParentKey == menuBar.Key))
             {
                 pSecondMenue2.Show();
                 pSecondMenue1.Show();
@@ -198,9 +201,6 @@ namespace QTech.Forms
                 pSecondMenue1.Hide();
 
                 pSecondMenue2.Controls.Clear();
-                var moduleManager = ModuleManager.Instance;
-                _secondLevelMenue = moduleManager._secondLevelMenue;
-
                 if (menuBar == null || _secondLevelMenue == null)
                 {
                     return;
@@ -222,9 +222,11 @@ namespace QTech.Forms
                         btn.PerformClick();
                     }
                 }
+
+
                 ClickedButton = menuBar;
             }
-           
+
         }
         private void SecodMenue_Click(object sender, EventArgs e)
         {
@@ -232,10 +234,10 @@ namespace QTech.Forms
             {
                 if (btn.Tag is MenuBar menuBar)
                 {
-                    ShowPage(menuBar.FormName,menuBar.ModuleLocation);
+                    ShowPage(menuBar.FormName, menuBar.ModuleLocation);
 
                 }
-                btn.BackColor = Color.FromArgb(250, 193, 196) ;
+                btn.BackColor = Color.FromArgb(250, 193, 196);
                 pSecondMenue2.Controls.OfType<ExTabItem2>().Where(x => x != btn).ToList()
                     .ForEach(y => y.BackColor = Color.Transparent);
             }
@@ -273,6 +275,6 @@ namespace QTech.Forms
             InputLanguage.CurrentInputLanguage = UI.English;
         }
 
-        
+
     }
 }

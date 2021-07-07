@@ -505,4 +505,7 @@
   <data name="OK" xml:space="preserve">
     <value>យល់ព្រម</value>
   </data>
+  <data name="ImportPrice" xml:space="preserve">
+    <value>តម្លៃនាំចូល</value>
+  </data>
 </root>

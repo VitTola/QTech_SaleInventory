@@ -21,10 +21,11 @@ namespace QTech.Db.Logics
         {
             var Customer = base.AddAsync(entity);
             var sites = entity.Sites;
-            if (sites != null && sites.Any())
+            if (sites.Any())
             {
                 foreach (var s in sites)
                 {
+                    s.CustomerId = Customer.Id;
                     SiteLogic.Instance.AddAsync(s);
                 }
             }
@@ -37,11 +38,7 @@ namespace QTech.Db.Logics
         }
         public override bool CanRemoveAsync(Customer entity)
         {
-            if (!All().Any(x =>x.Active && x.Id == entity.Id))
-            {
-                return false;
-            }
-            else if (_db.Sales.Any(x=>x.Active && x.CompanyId == entity.Id))
+            if (_db.Sales.Any(x=>x.Active && x.CompanyId == entity.Id))
             {
                 return false;
             }

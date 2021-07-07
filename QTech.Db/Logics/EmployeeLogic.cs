@@ -37,7 +37,7 @@ namespace QTech.Db.Logics
         public override IQueryable<Employee> Search(ISearchModel model)
         {
             var param = model as EmployeeSearch;
-            var q = All().Where(x => x.Active);
+            var q = All();
             if (!string.IsNullOrEmpty(param.Search))
             {
                 q = q.Where(x => x.Name.ToLower().Contains(param.Search.ToLower()));
