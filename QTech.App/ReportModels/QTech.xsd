@@ -24,6 +24,18 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="RportDriverDeliveryDetail" msprop:Generator_TableClassName="RportDriverDeliveryDetailDataTable" msprop:Generator_TableVarName="tableRportDriverDeliveryDetail" msprop:Generator_RowChangedName="RportDriverDeliveryDetailRowChanged" msprop:Generator_TablePropName="RportDriverDeliveryDetail" msprop:Generator_RowDeletingName="RportDriverDeliveryDetailRowDeleting" msprop:Generator_RowChangingName="RportDriverDeliveryDetailRowChanging" msprop:Generator_RowEvHandlerName="RportDriverDeliveryDetailRowChangeEventHandler" msprop:Generator_RowDeletedName="RportDriverDeliveryDetailRowDeleted" msprop:Generator_RowClassName="RportDriverDeliveryDetailRow" msprop:Generator_UserTableName="RportDriverDeliveryDetail" msprop:Generator_RowEvArgName="RportDriverDeliveryDetailRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SaleDate" msprop:Generator_ColumnVarNameInTable="columnSaleDate" msprop:Generator_ColumnPropNameInRow="SaleDate" msprop:Generator_ColumnPropNameInTable="SaleDateColumn" msprop:Generator_UserColumnName="SaleDate" type="xs:string" minOccurs="0" />
+              <xs:element name="InvoiceNo" msprop:Generator_ColumnVarNameInTable="columnInvoiceNo" msprop:Generator_ColumnPropNameInRow="InvoiceNo" msprop:Generator_ColumnPropNameInTable="InvoiceNoColumn" msprop:Generator_UserColumnName="InvoiceNo" type="xs:string" minOccurs="0" />
+              <xs:element name="PurchaseOrderNo" msprop:Generator_ColumnVarNameInTable="columnPurchaseOrderNo" msprop:Generator_ColumnPropNameInRow="PurchaseOrderNo" msprop:Generator_ColumnPropNameInTable="PurchaseOrderNoColumn" msprop:Generator_UserColumnName="PurchaseOrderNo" type="xs:string" minOccurs="0" />
+              <xs:element name="Company" msprop:Generator_ColumnVarNameInTable="columnCompany" msprop:Generator_ColumnPropNameInRow="Company" msprop:Generator_ColumnPropNameInTable="CompanyColumn" msprop:Generator_UserColumnName="Company" type="xs:string" minOccurs="0" />
+              <xs:element name="Site" msprop:Generator_ColumnVarNameInTable="columnSite" msprop:Generator_ColumnPropNameInRow="Site" msprop:Generator_ColumnPropNameInTable="SiteColumn" msprop:Generator_UserColumnName="Site" type="xs:string" minOccurs="0" />
+              <xs:element name="SubTotal" msprop:Generator_ColumnVarNameInTable="columnSubTotal" msprop:Generator_ColumnPropNameInRow="SubTotal" msprop:Generator_ColumnPropNameInTable="SubTotalColumn" msprop:Generator_UserColumnName="SubTotal" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

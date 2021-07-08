@@ -55,16 +55,20 @@
     <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="DocumentFormat.OpenXml">
-      <HintPath>..\EasyOrder.Base\Dll\DocumentFormat.OpenXml.dll</HintPath>
+      <HintPath>..\..\..\Easy Order\Easy Order.C#\EasyOrder\EasyOrder.Base\Dll\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
     <Reference Include="EasyServer.Domain">
       <HintPath>..\..\..\Easy Order\Easy Order.C#\EasyOrder\EasyOrder.Base\Dll\EasyServer.Domain.dll</HintPath>
     </Reference>
     <Reference Include="esc-pos-usb-net">
-      <HintPath>..\EasyOrder.Base\Dll\esc-pos-usb-net.dll</HintPath>
+      <HintPath>..\QTech.Base\Dll\esc-pos-usb-net.dll</HintPath>
     </Reference>
     <Reference Include="FastMember">
-      <HintPath>..\EasyOrder.Base\Dll\FastMember.dll</HintPath>
+      <HintPath>..\..\..\Easy Order\Easy Order.C#\EasyOrder\EasyOrder.Base\Dll\FastMember.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.Acrobat, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Interop.Acrobat.1.0.1\lib\net\Interop.Acrobat.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -75,10 +79,6 @@
     </Reference>
     <Reference Include="RestSharp, Version=106.6.3.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.106.6.3\lib\net452\RestSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Storm.Domain, Version=0.8.226.1019, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\EasyOrder.Base\Dll\Storm.Domain.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
