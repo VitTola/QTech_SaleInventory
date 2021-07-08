@@ -761,7 +761,7 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public RportDriverDeliveryDetailRow AddRportDriverDeliveryDetailRow(string SaleDate, string InvoiceNo, string PurchaseOrderNo, string Company, string Site, string SubTotal) {
+            public RportDriverDeliveryDetailRow AddRportDriverDeliveryDetailRow(System.DateTime SaleDate, string InvoiceNo, string PurchaseOrderNo, string Company, string Site, decimal SubTotal) {
                 RportDriverDeliveryDetailRow rowRportDriverDeliveryDetailRow = ((RportDriverDeliveryDetailRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         SaleDate,
@@ -803,7 +803,7 @@ namespace QTech.ReportModels {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnSaleDate = new global::System.Data.DataColumn("SaleDate", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnSaleDate = new global::System.Data.DataColumn("SaleDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSaleDate);
                 this.columnInvoiceNo = new global::System.Data.DataColumn("InvoiceNo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInvoiceNo);
@@ -813,7 +813,7 @@ namespace QTech.ReportModels {
                 base.Columns.Add(this.columnCompany);
                 this.columnSite = new global::System.Data.DataColumn("Site", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSite);
-                this.columnSubTotal = new global::System.Data.DataColumn("SubTotal", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnSubTotal = new global::System.Data.DataColumn("SubTotal", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSubTotal);
             }
             
@@ -1140,10 +1140,10 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string SaleDate {
+            public System.DateTime SaleDate {
                 get {
                     try {
-                        return ((string)(this[this.tableRportDriverDeliveryDetail.SaleDateColumn]));
+                        return ((global::System.DateTime)(this[this.tableRportDriverDeliveryDetail.SaleDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'SaleDate\' in table \'RportDriverDeliveryDetail\' is DBNull.", e);
@@ -1221,10 +1221,10 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string SubTotal {
+            public decimal SubTotal {
                 get {
                     try {
-                        return ((string)(this[this.tableRportDriverDeliveryDetail.SubTotalColumn]));
+                        return ((decimal)(this[this.tableRportDriverDeliveryDetail.SubTotalColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'SubTotal\' in table \'RportDriverDeliveryDetail\' is DBNull.", e);

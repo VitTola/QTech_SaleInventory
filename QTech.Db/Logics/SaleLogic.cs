@@ -2,6 +2,7 @@
 using QTech.Base.BaseModels;
 using QTech.Base.Enums;
 using QTech.Base.Helpers;
+using QTech.Base.OutFaceModels;
 using QTech.Base.SearchModels;
 using System;
 using System.Collections.Generic;
@@ -177,5 +178,51 @@ namespace QTech.Db.Logics
         }
 
 
+        //GET REPORTS
+        public List<DriverDeliveryDetail> GetDriverDeliveryDetails(ReportDriverDeliverySearch param)
+        {
+            var q = All();
+            if (param.D1 != null && param.D1 != null)
+            {
+                q = q.Where(x=>x.SaleDate > param.D1 && x.SaleDate < param.D2);
+            }
+            if (param.DriverId != 0)
+            {
+                q = from s in q
+                    join sd in _db.SaleDetails on s.Id equals sd.SaleId
+                    join e in _db.Employees on sd.EmployeeId equals e.Id
+                    where e.Id == param.DriverId
+                    select s;
+            }
+            if (param.CustomerId != 0)
+            {
+                q = from s in q
+                        join c in _db.Customers on s.CompanyId equals c.Id
+                        where c.Id == param.CustomerId
+                        select s;
+            }
+            if (param.SiteId != 0)
+            {
+                q = from s in q
+                    join ss in _db.Sites on s.SiteId equals ss.Id
+                    where ss.Id == param.SiteId
+                    select s;
+            }
+
+            var result = from s in q
+                         join c in _db.Customers on s.CompanyId equals c.Id
+                         join ss in _db.Sites on s.SiteId equals ss.Id
+                         select new DriverDeliveryDetail()
+                         {
+                             SaleDate = s.SaleDate,
+                             InvoiceNo = s.InvoiceNo.ToString(),
+                             PurchaseOrderNo = s.PurchaseOrderNo.ToString(),
+                             Company = c.Name,
+                             Site = ss.Name,
+                             SubTotal = s.Total
+                         };
+
+            return result.ToList();
+        }
     }
 }

@@ -77,29 +77,47 @@ namespace QTech.Reports
             {
                 return;
             }
+            
 
-            List<DriverDeliveryDetail> driverDeliveryDetails = new List<DriverDeliveryDetail>();
+            var driver = cboDriver.SelectedObject.ItemObject as Employee;
+            var company = cboCompany.SelectedObject.ItemObject as Customer;
+            var site = cboSite.SelectedObject.ItemObject as Site;
 
-
-            var reportHeader = new Dictionary<string, object>()
+            var searchParam = new ReportDriverDeliverySearch()
             {
-
-
-
+                D1 = dtpPeroid.SelectedPeroid.FromDate.Date,
+                D2 = dtpPeroid.SelectedPeroid.ToDate.Date,
+                DriverId = driver?.Id ?? 0,
+                CustomerId = company?.Id ?? 0,
+                SiteId = site?.Id ?? 0
             };
 
 
-            DataTable Invoice = new DataTable("RportDriverDeliveryDetail");
+            var driverDeliveryDetails = await btnView.RunAsync(() =>
+            {
+                var result = SaleLogic.Instance.GetDriverDeliveryDetails(searchParam);
+                return result;
+            });
+
+            var reportHeader = new Dictionary<string, object>()
+            {
+                { "D1" , dtpPeroid.SelectedPeroid.FromDate.Date.ToString(FormatHelper.DateTime[FormatHelper.DateTimeType.ShortDate]) },
+                { "D2" , dtpPeroid.SelectedPeroid.ToDate.Date.ToString(FormatHelper.DateTime[FormatHelper.DateTimeType.ShortDate]) },
+                {"Driver",cboDriver.Text }
+            };
+
+
+            DataTable driverDeleryDetail = new DataTable("RportDriverDeliveryDetail");
             using (var reader = ObjectReader.Create(driverDeliveryDetails))
             {
-                Invoice.Load(reader);
+                driverDeleryDetail.Load(reader);
             }
-            var Invoices = new List<DataTable>();
-            Invoices.Add(Invoice);
+            var _driverDeliveryDetails = new List<DataTable>();
+            _driverDeliveryDetails.Add(driverDeleryDetail);
 
             var report = await btnView.RunAsync(() =>
             {
-                var r = ReportHelper.Instance.Load(nameof(RportDriverDeliveryDetail), Invoices, reportHeader);
+                var r = ReportHelper.Instance.Load(nameof(RportDriverDeliveryDetail), _driverDeliveryDetails, reportHeader);
                 r.SummaryInfo.ReportTitle = nameof(RportDriverDeliveryDetail);
                 return r;
             });
@@ -136,7 +154,7 @@ namespace QTech.Reports
             DataSourceFn = p => SiteLogic.Instance.SearchAsync(p).ToDropDownItemModelList(),
             SearchParamFn = () => new SiteSearch() { }
         };
-       
+
 
         private bool _isAdvanceInvalid = false;
         public void Find()
@@ -167,7 +185,7 @@ namespace QTech.Reports
                 {cboCompany.Name, cboCompany },
                 {cboSite.Name, cboSite },
             };
-            
+
 
             _advanceFilters.IniAdvanceFilter();
             dig = new CustomAdvanceFilter(_advanceFilters, inValid);

@@ -94,7 +94,7 @@
             this.container.Controls.Add(this.panel4);
             this.container.Controls.Add(this.panel3);
             this.container.Controls.Add(this.exPanel1);
-            this.container.Size = new System.Drawing.Size(1442, 862);
+            this.container.Size = new System.Drawing.Size(1277, 668);
             // 
             // exLabel2
             // 
@@ -114,10 +114,10 @@
             this.exPanel1.Controls.Add(this.flowLayoutPanel3);
             this.exPanel1.Controls.Add(this.flowLayoutPanel2);
             this.exPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.exPanel1.Location = new System.Drawing.Point(1, 825);
+            this.exPanel1.Location = new System.Drawing.Point(1, 631);
             this.exPanel1.Name = "exPanel1";
             this.exPanel1.Padding = new System.Windows.Forms.Padding(2);
-            this.exPanel1.Size = new System.Drawing.Size(1440, 36);
+            this.exPanel1.Size = new System.Drawing.Size(1275, 36);
             this.exPanel1.TabIndex = 17;
             // 
             // flowLayoutPanel3
@@ -156,7 +156,7 @@
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(2, 2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1436, 32);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1271, 32);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // btnClose
@@ -164,7 +164,7 @@
             this.btnClose.BackColor = System.Drawing.Color.Ivory;
             this.btnClose.DefaultImage = null;
             this.btnClose.Executing = false;
-            this.btnClose.Location = new System.Drawing.Point(1359, 3);
+            this.btnClose.Location = new System.Drawing.Point(1194, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -180,7 +180,7 @@
             this.btnSave.BackColor = System.Drawing.Color.Ivory;
             this.btnSave.DefaultImage = null;
             this.btnSave.Executing = false;
-            this.btnSave.Location = new System.Drawing.Point(1280, 3);
+            this.btnSave.Location = new System.Drawing.Point(1115, 3);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -196,7 +196,7 @@
             this.lblInvoiceNo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblInvoiceNo.AutoSize = true;
             this.lblInvoiceNo.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvoiceNo.Location = new System.Drawing.Point(564, 23);
+            this.lblInvoiceNo.Location = new System.Drawing.Point(481, 23);
             this.lblInvoiceNo.Name = "lblInvoiceNo";
             this.lblInvoiceNo.Required = true;
             this.lblInvoiceNo.Size = new System.Drawing.Size(86, 27);
@@ -207,7 +207,7 @@
             // 
             this.txtInvoiceNo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtInvoiceNo.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInvoiceNo.Location = new System.Drawing.Point(683, 19);
+            this.txtInvoiceNo.Location = new System.Drawing.Point(600, 19);
             this.txtInvoiceNo.Margin = new System.Windows.Forms.Padding(2);
             this.txtInvoiceNo.Name = "txtInvoiceNo";
             this.txtInvoiceNo.ReadOnly = true;
@@ -231,7 +231,7 @@
             this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(1110, 16);
+            this.lblTotal.Location = new System.Drawing.Point(945, 16);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Required = false;
             this.lblTotal.Size = new System.Drawing.Size(89, 27);
@@ -265,7 +265,7 @@
             this.pnlExpect.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlExpect.Controls.Add(this.txtTotal);
             this.pnlExpect.Controls.Add(this.lblCur2);
-            this.pnlExpect.Location = new System.Drawing.Point(1231, 12);
+            this.pnlExpect.Location = new System.Drawing.Point(1066, 12);
             this.pnlExpect.Margin = new System.Windows.Forms.Padding(2);
             this.pnlExpect.Name = "pnlExpect";
             this.pnlExpect.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -305,7 +305,7 @@
             this.panelGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelGrid.Location = new System.Drawing.Point(1, 86);
             this.panelGrid.Name = "panelGrid";
-            this.panelGrid.Size = new System.Drawing.Size(1440, 626);
+            this.panelGrid.Size = new System.Drawing.Size(1275, 432);
             this.panelGrid.TabIndex = 30;
             // 
             // chkMarkAll_
@@ -372,7 +372,7 @@
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1438, 585);
+            this.dgv.Size = new System.Drawing.Size(1273, 391);
             this.dgv.TabIndex = 2;
             // 
             // colMark_
@@ -465,7 +465,7 @@
             this.flowLayoutPanelTopGrid.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanelTopGrid.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanelTopGrid.Name = "flowLayoutPanelTopGrid";
-            this.flowLayoutPanelTopGrid.Size = new System.Drawing.Size(1438, 39);
+            this.flowLayoutPanelTopGrid.Size = new System.Drawing.Size(1273, 39);
             this.flowLayoutPanelTopGrid.TabIndex = 0;
             // 
             // dtpSearchDate
@@ -483,7 +483,7 @@
             this.lblInvoicingDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblInvoicingDate.AutoSize = true;
             this.lblInvoicingDate.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvoicingDate.Location = new System.Drawing.Point(1096, 23);
+            this.lblInvoicingDate.Location = new System.Drawing.Point(931, 23);
             this.lblInvoicingDate.Name = "lblInvoicingDate";
             this.lblInvoicingDate.Required = true;
             this.lblInvoicingDate.Size = new System.Drawing.Size(86, 27);
@@ -497,7 +497,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.txtPaidAmount);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(1231, 43);
+            this.panel1.Location = new System.Drawing.Point(1066, 43);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -535,7 +535,7 @@
             this.exLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exLabel1.AutoSize = true;
             this.exLabel1.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exLabel1.Location = new System.Drawing.Point(1111, 47);
+            this.exLabel1.Location = new System.Drawing.Point(946, 47);
             this.exLabel1.Name = "exLabel1";
             this.exLabel1.Required = false;
             this.exLabel1.Size = new System.Drawing.Size(100, 27);
@@ -549,7 +549,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.txtLeftAmount);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(1231, 74);
+            this.panel2.Location = new System.Drawing.Point(1066, 74);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -585,7 +585,7 @@
             this.exLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exLabel3.AutoSize = true;
             this.exLabel3.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exLabel3.Location = new System.Drawing.Point(1112, 78);
+            this.exLabel3.Location = new System.Drawing.Point(947, 78);
             this.exLabel3.Name = "exLabel3";
             this.exLabel3.Required = false;
             this.exLabel3.Size = new System.Drawing.Size(66, 27);
@@ -601,9 +601,9 @@
             this.panel3.Controls.Add(this.exLabel1);
             this.panel3.Controls.Add(this.panel1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(1, 712);
+            this.panel3.Location = new System.Drawing.Point(1, 518);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1440, 113);
+            this.panel3.Size = new System.Drawing.Size(1275, 113);
             this.panel3.TabIndex = 34;
             // 
             // panel4
@@ -618,12 +618,13 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(1, 1);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1440, 85);
+            this.panel4.Size = new System.Drawing.Size(1275, 85);
             this.panel4.TabIndex = 35;
             // 
             // dtpInvoicingDate
             // 
-            this.dtpInvoicingDate.Location = new System.Drawing.Point(1215, 23);
+            this.dtpInvoicingDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpInvoicingDate.Location = new System.Drawing.Point(1044, 23);
             this.dtpInvoicingDate.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
             this.dtpInvoicingDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.dtpInvoicingDate.Name = "dtpInvoicingDate";
@@ -634,7 +635,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1442, 882);
+            this.ClientSize = new System.Drawing.Size(1277, 688);
             this.Font = new System.Drawing.Font("Khmer OS System", 8.25F);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "frmCreateInvoice";

@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configs\QTechDbConfigs.cs" />
+    <Compile Include="Logics\DriverDeliveryDetailLogic.cs" />
     <Compile Include="Logics\CustomerPriceLogic.cs" />
     <Compile Include="Logics\CustomerLogic.cs" />
     <Compile Include="Logics\DbLogic.cs" />
