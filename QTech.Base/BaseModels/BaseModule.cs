@@ -81,17 +81,17 @@ namespace QTech.Base.BaseModels
             //    Children = new List<MenuBar>(),
             //    FormName = "QTech.Forms.Form1"
             //},
-            //new MenuBar()
-            //{
-            //    Index = 2,
-            //    Level = 2,
-            //    ParentKey = AuthKey.Customer,
-            //    DisplayName = BaseResource.Customer,
-            //    Icon = BaseResource.Category_img,
-            //    Children = new List<MenuBar>(),
-            //    FormName = "QTech.Forms.frmCustomer"
+            new MenuBar()
+            {
+                Index = 1,
+                Level = 2,
+                ParentKey = AuthKey.Report,
+                DisplayName = BaseResource.ReportDriverDeliveryDetail,
+                Icon = BaseResource.delivery,
+                Children = new List<MenuBar>(),
+                FormName = "QTech.Reports.ReportDriverDeliveryPage"
 
-            //},
+            },
             new MenuBar()
             {
                 Index = 1,
@@ -192,7 +192,7 @@ namespace QTech.Base.BaseModels
                 DisplayName = BaseResource.Report_,
                 Icon = BaseResource.CloseDateEntery_img,
                 Children = new List<MenuBar>(),
-                FormName = "QTech.Forms.ReportViewPage"
+                FormName = ""
             },
         };
 

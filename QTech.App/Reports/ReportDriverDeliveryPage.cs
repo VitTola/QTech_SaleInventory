@@ -11,8 +11,14 @@ using QTech.Base.Helpers;
 using QTech.Base.SearchModels;
 using System.Collections.Generic;
 using System.Drawing;
+using QTech.Component.Interfaces;
+using System.Data;
+using FastMember;
+using QTech.ReportModels;
+using Storm.CC.Report.Helpers;
+using QTech.Component.Helpers;
 
-namespace QTech.Forms
+namespace QTech.Reports
 {
     public partial class ReportDriverDeliveryPage : ExPage, IPage
     {
@@ -22,100 +28,224 @@ namespace QTech.Forms
             InitializeComponent();
             Bind();
             InitEvent();
-
+            InitAdvanceFilter();
         }
-        private bool isNodeCollapsed { get; set; } = false;
-        private Customer selectedModel { get; set; } = null;
-        public Customer Model { get; set; }
+        Dictionary<string, Control> _advanceFilters;
+        CustomAdvanceFilter dig;
+
 
         private void Bind()
         {
-            
+            var maxDate = DateTime.Now;
+            dtpPeroid.CustomDateRang = CustomDateRang.None;
+            var peroids = ExReportDatePicker.GetPeroids(maxDate);
+            var customPeroid = ExReportDatePicker.GetPeriod(dtpPeroid.CustomDateRang, maxDate);
+            dtpPeroid.SetMaxDate(maxDate);
+            dtpPeroid.Items.AddRange(peroids.ToArray());
+            dtpPeroid.Items.Add(customPeroid);
+            dtpPeroid.SetSelectePeroid(DatePeroid.Today);
         }
+
         private void InitEvent()
         {
-           
-
+            btnAdvanceSearch.Click += btnAdvanceSearch_Click;
+            //dig.FormClosed += dig_FormClosed;
         }
 
+        public void AddNew() { }
 
-        private async void txtSearch_QuickSearch(object sender, EventArgs e)
-        {
-            await Search();
-        }
-
-        private void Dgv_NodeCollapsed(object sender, CollapsedEventArgs e)
-        {
-            
-        }
-
-        private async void Dgv_NodeExpanded(object sender, ExpandedEventArgs e)
-        {
-            
-        }
-
-        private void dgv_KeyDown(object sender, KeyEventArgs e)
-        {
-            
-        }
-
-        private void RefreshAfterOperation(Customer model)
-        {
-            
-        }
-
-        public async void AddNew()
-        { }
-
-        public async void EditAsync()
-        {
-           
-        }
+        public void Edit() { }
 
         public async void Reload()
         {
             await Search();
         }
 
-        public async void Remove()
+        public void Remove()
         {
-            
+
         }
 
         public async Task Search()
         {
-            
+            await Task.Delay(0);
         }
-        
-      
-
-       
 
         public async void View()
         {
+            if (inValid() || btnView.Executing)
+            {
+                return;
+            }
+
+            List<DriverDeliveryDetail> driverDeliveryDetails = new List<DriverDeliveryDetail>();
+
+
+            var reportHeader = new Dictionary<string, object>()
+            {
+
+
+
+            };
+
+
+            DataTable Invoice = new DataTable("RportDriverDeliveryDetail");
+            using (var reader = ObjectReader.Create(driverDeliveryDetails))
+            {
+                Invoice.Load(reader);
+            }
+            var Invoices = new List<DataTable>();
+            Invoices.Add(Invoice);
+
+            var report = await btnView.RunAsync(() =>
+            {
+                var r = ReportHelper.Instance.Load(nameof(RportDriverDeliveryDetail), Invoices, reportHeader);
+                r.SummaryInfo.ReportTitle = nameof(RportDriverDeliveryDetail);
+                return r;
+            });
+
+            if (report != null)
+            {
+                viewer.View(report);
+            }
+        }
+
+        ExSearchCombo cboDriver = new ExSearchCombo
+        {
+            Name = BaseResource.Driver,
+            TextAll = BaseResource.Driver,
+            DataSourceFn = p => EmployeeLogic.Instance.SearchAsync(p).ToDropDownItemModelList(),
+            SearchParamFn = () => new EmployeeSearch(),
+            Choose = BaseResource.Driver,
+        };
+
+        ExSearchCombo cboCompany = new ExSearchCombo
+        {
+            Name = BaseResource.Customer,
+            TextAll = BaseResource.Customer,
+            DataSourceFn = p => CustomerLogic.Instance.SearchAsync(p).ToDropDownItemModelList(),
+            SearchParamFn = () => new CustomerSearch(),
+            Choose = BaseResource.Customer,
+        };
+
+        ExSearchCombo cboSite = new ExSearchCombo
+        {
+            Name = BaseResource.Site,
+            TextAll = BaseResource.Site,
+            Choose = BaseResource.Site,
+            DataSourceFn = p => SiteLogic.Instance.SearchAsync(p).ToDropDownItemModelList(),
+            SearchParamFn = () => new SiteSearch() { }
+        };
+       
+
+        private bool _isAdvanceInvalid = false;
+        public void Find()
+        {
+            if (btnView.Executing)
+            {
+                return;
+            }
+            btnAdvanceSearch.HideValidation();
+            if (dig.ShowDialog() == DialogResult.OK)
+            {
+                if (btnView.Enabled && btnView.Visible)
+                {
+                    View();
+                }
+            }
+            if (_isAdvanceInvalid)
+            {
+                btnAdvanceSearch.ShowValidation(BaseResource.MsgPleaseSelectValue);
+            }
+        }
+
+        private void InitAdvanceFilter()
+        {
+            _advanceFilters = new Dictionary<string, Control>()
+            {
+                {cboDriver.Name, cboDriver },
+                {cboCompany.Name, cboCompany },
+                {cboSite.Name, cboSite },
+            };
             
+
+            _advanceFilters.IniAdvanceFilter();
+            dig = new CustomAdvanceFilter(_advanceFilters, inValid);
+
+            foreach (var item in _advanceFilters.Values)
+            {
+                if (item is ExSearchListCombo cbo)
+                {
+                    if (!item.IsHandleCreated)
+                    {
+                        item.CreateControl();
+                    }
+                    if (cbo.SelectedItems.Any())
+                    {
+                        cbo.SelectedValue = cbo.SelectedItems[0].Id;
+                    }
+                }
+                else if (item is ComboBox comboBox)
+                {
+                    if (!item.IsHandleCreated)
+                    {
+                        comboBox.CreateControl();
+                    }
+                }
+            }
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private bool inValid()
         {
-            AddNew();
+            _isAdvanceInvalid = false;
+            if (!dtpPeroid.IsSelected())
+            {
+                return true;
+            }
+
+            if (!cboDriver.IsSelected() | !cboCompany.IsSelected() | !cboSite.IsSelected())
+            {
+                _isAdvanceInvalid = true;
+                btnAdvanceSearch.ShowValidation(BaseResource.MsgPleaseSelectValue);
+                return true;
+            }
+            return false;
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void btnAdvanceSearch_Click(object sender, EventArgs e)
         {
-            EditAsync();
+            Find();
         }
 
-        private void btnRemove_Click(object sender, EventArgs e)
+        private void dig_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Remove();
+            btnAdvanceSearch.HideValidation();
+            _isAdvanceInvalid = false;
         }
 
-        private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.O))
+            {
+                View();
+                return true;
+            }
+            else if (keyData == Keys.F3)
+            {
+                Find();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        public void EditAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
         {
             View();
         }
-
-        
     }
 }

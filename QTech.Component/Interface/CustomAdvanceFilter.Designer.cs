@@ -42,7 +42,7 @@
             // 
             this.container.Controls.Add(this.flowLayoutPanel4);
             this.container.Controls.Add(this.exPanel);
-            this.container.Size = new System.Drawing.Size(345, 111);
+            this.container.Size = new System.Drawing.Size(345, 112);
             this.container.Text = "container";
             // 
             // flowLayoutPanel3
@@ -59,7 +59,7 @@
             this.exPanel.BackColor = System.Drawing.Color.Transparent;
             this.exPanel.Controls.Add(this.flowLayoutPanel2);
             this.exPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.exPanel.Location = new System.Drawing.Point(1, 74);
+            this.exPanel.Location = new System.Drawing.Point(1, 75);
             this.exPanel.Name = "exPanel";
             this.exPanel.Padding = new System.Windows.Forms.Padding(2);
             this.exPanel.Size = new System.Drawing.Size(343, 36);
@@ -105,6 +105,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(345, 132);
+            this.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Location = new System.Drawing.Point(0, 0);
             this.MaximizeBox = false;
             this.Name = "CustomAdvanceFilter";

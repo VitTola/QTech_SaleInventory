@@ -1,4 +1,4 @@
-﻿namespace QTech.Forms
+﻿namespace QTech.Reports
 {
     partial class ReportDriverDeliveryPage
     {
@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.graPanel1 = new QTech.Component.GRAPanel();
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.dtpPeroid = new QTech.Component.ExReportDatePicker();
+            this.btnAdvanceSearch = new QTech.Component.ExButtonLoading();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnRemove = new QTech.Component.ExButtonLoading();
+            this.btnView = new QTech.Component.ExButtonLoading();
             this.colorWithAlpha2 = new QTech.Component.ColorWithAlpha();
             this.colorWithAlpha3 = new QTech.Component.ColorWithAlpha();
             this.colName = new QTech.Component.TreeGridColumn();
@@ -41,9 +42,9 @@
             this.colParentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.viewer = new QTech.Component.ExReportViewer();
             this.graPanel1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,7 +77,7 @@
             this.graPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.graPanel1.Name = "graPanel1";
             this.graPanel1.Rounded = true;
-            this.graPanel1.Size = new System.Drawing.Size(865, 35);
+            this.graPanel1.Size = new System.Drawing.Size(1241, 35);
             this.graPanel1.TabIndex = 0;
             // 
             // colorWithAlpha1
@@ -87,39 +88,64 @@
             // 
             // flowLayoutPanel2
             // 
+            this.flowLayoutPanel2.Controls.Add(this.dtpPeroid);
+            this.flowLayoutPanel2.Controls.Add(this.btnAdvanceSearch);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(498, 35);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(936, 35);
             this.flowLayoutPanel2.TabIndex = 0;
+            // 
+            // dtpPeroid
+            // 
+            this.dtpPeroid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.dtpPeroid.FormattingEnabled = true;
+            this.dtpPeroid.Location = new System.Drawing.Point(3, 3);
+            this.dtpPeroid.Name = "dtpPeroid";
+            this.dtpPeroid.Size = new System.Drawing.Size(200, 27);
+            this.dtpPeroid.TabIndex = 29;
+            // 
+            // btnAdvanceSearch
+            // 
+            this.btnAdvanceSearch.DefaultImage = null;
+            this.btnAdvanceSearch.Executing = false;
+            this.btnAdvanceSearch.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            this.btnAdvanceSearch.Location = new System.Drawing.Point(206, 3);
+            this.btnAdvanceSearch.Margin = new System.Windows.Forms.Padding(0, 3, 4, 4);
+            this.btnAdvanceSearch.Name = "btnAdvanceSearch";
+            this.btnAdvanceSearch.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
+            this.btnAdvanceSearch.ShortcutText = "F3";
+            this.btnAdvanceSearch.Size = new System.Drawing.Size(94, 29);
+            this.btnAdvanceSearch.TabIndex = 19;
+            this.btnAdvanceSearch.Text = "ស្វែងរកបន្ថែម";
+            this.btnAdvanceSearch.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.btnRemove);
+            this.flowLayoutPanel1.Controls.Add(this.btnView);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(578, 0);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(954, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(287, 35);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
-            // btnRemove
+            // btnView
             // 
-            this.btnRemove.BackColor = System.Drawing.Color.Ivory;
-            this.btnRemove.DefaultImage = null;
-            this.btnRemove.Executing = false;
-            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemove.Location = new System.Drawing.Point(193, 4);
-            this.btnRemove.Margin = new System.Windows.Forms.Padding(0, 4, 4, 2);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
-            this.btnRemove.ShortcutText = null;
-            this.btnRemove.Size = new System.Drawing.Size(90, 27);
-            this.btnRemove.TabIndex = 2;
-            this.btnRemove.Text = "លុប";
-            this.btnRemove.UseVisualStyleBackColor = true;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            this.btnView.DefaultImage = null;
+            this.btnView.Executing = false;
+            this.btnView.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            this.btnView.Location = new System.Drawing.Point(202, 3);
+            this.btnView.Margin = new System.Windows.Forms.Padding(0, 3, 4, 4);
+            this.btnView.Name = "btnView";
+            this.btnView.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
+            this.btnView.ShortcutText = "O";
+            this.btnView.Size = new System.Drawing.Size(81, 29);
+            this.btnView.TabIndex = 30;
+            this.btnView.Text = "មើល";
+            this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // colorWithAlpha2
             // 
@@ -154,12 +180,6 @@
             // 
             this.colNote.Name = "colNote";
             // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            // 
             // viewer
             // 
             this.viewer.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -167,7 +187,7 @@
             this.viewer.IsNotDrillSubReport = true;
             this.viewer.Location = new System.Drawing.Point(0, 35);
             this.viewer.Name = "viewer";
-            this.viewer.Size = new System.Drawing.Size(865, 437);
+            this.viewer.Size = new System.Drawing.Size(1241, 550);
             this.viewer.TabIndex = 1;
             this.viewer.Viewer = QTech.Component.ExReportViewer.ViewerType.Crystal;
             // 
@@ -175,7 +195,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(865, 472);
+            this.ClientSize = new System.Drawing.Size(1241, 585);
             this.Controls.Add(this.viewer);
             this.Controls.Add(this.graPanel1);
             this.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -183,6 +203,7 @@
             this.Name = "ReportDriverDeliveryPage";
             this.Text = "ReportDriverDeliveryPage";
             this.graPanel1.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -194,15 +215,16 @@
         private Component.ColorWithAlpha colorWithAlpha1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private Component.ExButtonLoading btnRemove;
         private Component.ColorWithAlpha colorWithAlpha2;
         private Component.ColorWithAlpha colorWithAlpha3;
-        private System.Windows.Forms.ImageList imageList1;
         private Component.TreeGridColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colParentId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPhone;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNote;
         private Component.ExReportViewer viewer;
+        private Component.ExReportDatePicker dtpPeroid;
+        private Component.ExButtonLoading btnAdvanceSearch;
+        private Component.ExButtonLoading btnView;
     }
 }

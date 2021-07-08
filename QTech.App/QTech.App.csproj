@@ -200,6 +200,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportModels\DriverDeliveryDetail.cs" />
     <Compile Include="ReportModels\MonthlyInvoice.cs" />
     <Compile Include="ReportModels\QTech.Designer.cs">
       <AutoGen>True</AutoGen>

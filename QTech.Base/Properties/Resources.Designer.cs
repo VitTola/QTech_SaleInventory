@@ -70,6 +70,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ស្វែងរកបន្ថែម.
+        /// </summary>
+        public static string AdvanceSearch {
+            get {
+                return ResourceManager.GetString("AdvanceSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to អតិថិជនទាំងអស់.
         /// </summary>
         public static string AllCustomer {
@@ -265,6 +274,16 @@ namespace QTech.Base.Properties {
         public static string CustomerType {
             get {
                 return ResourceManager.GetString("CustomerType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap delivery {
+            get {
+                object obj = ResourceManager.GetObject("delivery", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -637,6 +656,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to សូមធ្វើការជ្រើសរើស!.
+        /// </summary>
+        public static string MsgPleaseSelectValue {
+            get {
+                return ResourceManager.GetString("MsgPleaseSelectValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ឈ្មោះ.
         /// </summary>
         public static string Name {
@@ -972,6 +1000,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to របាយការណ៍ដឹកតាមតៃកុងឡាន.
+        /// </summary>
+        public static string ReportDriverDeliveryDetail {
+            get {
+                return ResourceManager.GetString("ReportDriverDeliveryDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap RyLogo {
@@ -1277,6 +1314,15 @@ namespace QTech.Base.Properties {
         public static string Update {
             get {
                 return ResourceManager.GetString("Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to មើល.
+        /// </summary>
+        public static string View {
+            get {
+                return ResourceManager.GetString("View", resourceCulture);
             }
         }
         
