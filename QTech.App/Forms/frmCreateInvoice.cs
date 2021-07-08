@@ -151,7 +151,7 @@ namespace QTech.Forms
                     row.Cells[colToCompany.Name].Value = customer.Name;
                     row.Cells[colToSite.Name].Value = _sites?.FirstOrDefault(s => s.Id == x.SiteId)?.Name;
                     row.Cells[colTotal.Name].Value = x.Total;
-                    row.Cells[colSaleDate.Name].Value = x.SaleDate.ToShortDateString();
+                    row.Cells[colSaleDate.Name].Value = x.SaleDate.ToString("dd-MMM-yyyy hh:mm");
                     row.Cells[colIsPaid.Name].Value = x.PayStatus;
                     if (Flag ==GeneralProcess.Add)
                     {
@@ -333,7 +333,7 @@ namespace QTech.Forms
                 Model.InvoiceStatus = InvoiceStatus.PaySome;
             }
 
-
+            dgv.EndEdit();
             var Rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
             foreach (DataGridViewRow row in Rows)
             {

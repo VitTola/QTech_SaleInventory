@@ -47,7 +47,11 @@ namespace QTech.Forms
             this.colorWithAlpha2 = new QTech.Component.ColorWithAlpha();
             this.colorWithAlpha3 = new QTech.Component.ColorWithAlpha();
             this.dgv = new QTech.Component.TreeGridView();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pagination = new QTech.Component.ExPaging();
             this.colInvoiceNo = new QTech.Component.TreeGridColumn();
+            this.colRowDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colParentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colInvoicingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,9 +60,6 @@ namespace QTech.Forms
             this.colPaidAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLeftAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.pagination = new QTech.Component.ExPaging();
             this.graPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -253,6 +254,7 @@ namespace QTech.Forms
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colInvoiceNo,
+            this.colRowDate,
             this.colParentId,
             this.colId,
             this.colInvoicingDate,
@@ -282,6 +284,40 @@ namespace QTech.Forms
             this.dgv.TabIndex = 1;
             this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
             // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.pagination);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 572);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(1320, 33);
+            this.flowLayoutPanel3.TabIndex = 3;
+            // 
+            // pagination
+            // 
+            this.pagination.Action = null;
+            this.pagination.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pagination.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pagination.IsPaging = false;
+            this.pagination.ListModel = null;
+            this.pagination.Location = new System.Drawing.Point(3, 4);
+            this.pagination.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pagination.MinimumSize = new System.Drawing.Size(380, 33);
+            this.pagination.Name = "pagination";
+            paging1.CurrentPage = 1;
+            paging1.IsPaging = true;
+            paging1.PageSize = 25;
+            this.pagination.Paging = paging1;
+            this.pagination.ShowAllOption = true;
+            this.pagination.Size = new System.Drawing.Size(504, 33);
+            this.pagination.TabIndex = 0;
+            // 
             // colInvoiceNo
             // 
             this.colInvoiceNo.DataPropertyName = "InvoiceNo";
@@ -292,6 +328,14 @@ namespace QTech.Forms
             this.colInvoiceNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colInvoiceNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colInvoiceNo.Width = 200;
+            // 
+            // colRowDate
+            // 
+            this.colRowDate.HeaderText = "RowDate";
+            this.colRowDate.Name = "colRowDate";
+            this.colRowDate.ReadOnly = true;
+            this.colRowDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colRowDate.Visible = false;
             // 
             // colParentId
             // 
@@ -364,40 +408,6 @@ namespace QTech.Forms
             this.colStatus.ReadOnly = true;
             this.colStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.Controls.Add(this.pagination);
-            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 572);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(1320, 33);
-            this.flowLayoutPanel3.TabIndex = 3;
-            // 
-            // pagination
-            // 
-            this.pagination.Action = null;
-            this.pagination.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pagination.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pagination.IsPaging = false;
-            this.pagination.ListModel = null;
-            this.pagination.Location = new System.Drawing.Point(3, 4);
-            this.pagination.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pagination.MinimumSize = new System.Drawing.Size(380, 33);
-            this.pagination.Name = "pagination";
-            paging1.CurrentPage = 1;
-            paging1.IsPaging = true;
-            paging1.PageSize = 25;
-            this.pagination.Paging = paging1;
-            this.pagination.ShowAllOption = true;
-            this.pagination.Size = new System.Drawing.Size(504, 33);
-            this.pagination.TabIndex = 0;
-            // 
             // CreateInvoicePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
@@ -435,7 +445,10 @@ namespace QTech.Forms
         private Component.ExTextboxIconPattern txtSearch;
         private System.Windows.Forms.ComboBox cboStatus;
         private Component.ExSearchCombo cboCustomer;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private Component.ExPaging pagination;
         private Component.TreeGridColumn colInvoiceNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRowDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn colParentId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colInvoicingDate;
@@ -444,7 +457,5 @@ namespace QTech.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn colPaidAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLeftAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private Component.ExPaging pagination;
     }
 }

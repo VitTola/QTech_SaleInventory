@@ -168,8 +168,9 @@ namespace QTech.Forms
                 row.Cells[colToCompany.Name].Value = _Customers?.FirstOrDefault(cus => cus.Id == x.CompanyId)?.Name;
                 row.Cells[colToSite.Name].Value = _Sites?.FirstOrDefault(s => s.Id == x.SiteId)?.Name;
                 row.Cells[colTotal.Name].Value = x.Total;
-                row.Cells[colSaleDate.Name].Value = x.SaleDate.ToShortDateString();
+                row.Cells[colSaleDate.Name].Value = x.SaleDate.ToString("dd-MMM-yyyy hh:mm");
                 row.Cells[colIsPaid.Name].Value = x.PayStatus;
+                row.Cells[colRowDate.Name].Value = x.RowDate;
 
                 var cell = row.Cells[colStatus.Name];
                 if (x.PayStatus == PayStatus.Paid)
@@ -188,7 +189,7 @@ namespace QTech.Forms
                     cell.Style.ForeColor = Color.Green;
                 }
             });
-            dgv.Sort(dgv.Columns[colSaleDate.Name], ListSortDirection.Descending);
+            dgv.Sort(dgv.Columns[colRowDate.Name], ListSortDirection.Descending);
         }
         private DataGridViewRow newRow(bool isFocus = false)
         {

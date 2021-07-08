@@ -86,7 +86,7 @@
             this.container.Controls.Add(this.flowLayOutLabelRemoveAdd);
             this.container.Controls.Add(this.lblPurchaseOrderNo);
             this.container.Controls.Add(this.txtPurchaseOrderNo);
-            this.container.Size = new System.Drawing.Size(911, 603);
+            this.container.Size = new System.Drawing.Size(911, 604);
             // 
             // txtPurchaseOrderNo
             // 
@@ -274,7 +274,7 @@
             this.exPanel1.Controls.Add(this.flowLayoutPanel3);
             this.exPanel1.Controls.Add(this.flowLayoutPanel2);
             this.exPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.exPanel1.Location = new System.Drawing.Point(1, 566);
+            this.exPanel1.Location = new System.Drawing.Point(1, 567);
             this.exPanel1.Name = "exPanel1";
             this.exPanel1.Padding = new System.Windows.Forms.Padding(2);
             this.exPanel1.Size = new System.Drawing.Size(909, 36);

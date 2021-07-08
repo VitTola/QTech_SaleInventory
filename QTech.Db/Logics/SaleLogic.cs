@@ -100,7 +100,7 @@ namespace QTech.Db.Logics
             if (_saleSearchKey == SaleSearchKey.SiteName && !string.IsNullOrEmpty(param.Search))
             {
                 var siteIds = _db.Sites.Where(c => c.Name.ToLower().Contains(param.Search.ToLower())).Select(y => y.Id).ToList();
-                q = q.Where(x => siteIds.Any(y => x.CompanyId == y));
+                q = q.Where(x => siteIds.Any(y => x.SiteId == y));
             }
             if (param.payStatus == PayStatus.Paid)
             {

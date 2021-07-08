@@ -48,7 +48,7 @@
             this.container.Controls.Add(this.pictureBox);
             this.container.Controls.Add(this.flowLayoutPanel1);
             this.container.Controls.Add(this.lblMessage);
-            this.container.Size = new System.Drawing.Size(422, 132);
+            this.container.Size = new System.Drawing.Size(422, 133);
             this.container.Text = "container";
             // 
             // flowLayoutPanel1
@@ -63,7 +63,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btnOK);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(1, 101);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(1, 102);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
@@ -156,7 +156,7 @@
             // 
             // pictureBox
             // 
-            this.pictureBox.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.pictureBox.Location = new System.Drawing.Point(16, 19);
             this.pictureBox.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox.Name = "pictureBox";
@@ -170,6 +170,7 @@
             this.lblMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.lblMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lblMessage.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMessage.Location = new System.Drawing.Point(57, 19);
@@ -177,7 +178,7 @@
             this.lblMessage.Multiline = true;
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.ReadOnly = true;
-            this.lblMessage.Size = new System.Drawing.Size(359, 68);
+            this.lblMessage.Size = new System.Drawing.Size(359, 69);
             this.lblMessage.TabIndex = 0;
             this.lblMessage.TabStop = false;
             // 
@@ -185,6 +186,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.ClientSize = new System.Drawing.Size(422, 153);
+            this.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Location = new System.Drawing.Point(0, 0);
             this.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.MinimizeBox = false;

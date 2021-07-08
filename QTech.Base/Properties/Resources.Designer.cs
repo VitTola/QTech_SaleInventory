@@ -583,6 +583,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to បានយកទៅប្រើប្រាស់ហើយ មិនអាចលុបបានទេ!.
+        /// </summary>
+        public static string MsgDataCurrentlyInUsed {
+            get {
+                return ResourceManager.GetString("MsgDataCurrentlyInUsed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to វិក័យប័ត្របានទូទាត់រូចរាល់ មិនអាចលុបបាប!.
         /// </summary>
         public static string MsgInvoiceAlreadyPaid {

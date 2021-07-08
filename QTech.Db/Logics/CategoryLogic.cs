@@ -22,6 +22,14 @@ namespace QTech.Db.Logics
         {
             return All().Any(x => x.Id == entity.Id);
         }
+        public override bool CanRemoveAsync(int id)
+        {
+            if (_db.Products.Any(x=>x.CategoryId == id))
+            {
+                return false;
+            }
+            return true;
+        }
         public override List<Category> SearchAsync(ISearchModel model)
         {
             var result = Search(model).ToList();

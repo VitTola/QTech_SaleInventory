@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using QTech.Base.Enums;
 using QTech.Base.BaseModels;
+using System.ComponentModel;
 
 namespace QTech.Forms
 {
@@ -253,6 +254,7 @@ namespace QTech.Forms
                 List<Invoice> invoices = pagination.ListModel;
                 TreeGridFillData(invoices);
             }
+            dgv.Sort(dgv.Columns[colRowDate.Name], ListSortDirection.Descending);
         }
         private void TreeGridFillData(List<Invoice> invoices)
         {
@@ -296,22 +298,9 @@ namespace QTech.Forms
                 node.Cells[dgv.Columns[colId.Name].Index].Value = sale.Id;
                 node.Cells[dgv.Columns[colParentId.Name].Index].Value = parent.Id;
                 node.Cells[dgv.Columns[colInvoiceNo.Name].Index].Value = sale.InvoiceNo;
-                node.Cells[dgv.Columns[colInvoicingDate.Name].Index].Value = sale.SaleDate;
+                node.Cells[dgv.Columns[colInvoicingDate.Name].Index].Value = sale.SaleDate.ToString("dd-MMM-yyyy hh:mm");
                 node.Cells[dgv.Columns[colCustomer.Name].Index].Value = Customers.FirstOrDefault(x => x.Id == parent.CustomerId)?.Name;
                 node.Cells[dgv.Columns[colTotalAmount.Name].Index].Value = sale.Total;
-               
-                //node.Cells[dgv.Columns[colPaidAmount.Name].Index].Value = sale.PaymentRecieve;
-                //node.Cells[dgv.Columns[colLeftAmount.Name].Index].Value = sale.PaymentLeft;
-                //if (sale.PayStatus == PayStatus.Paid)
-                //{
-                //    node.Cells[dgv.Columns[colStatus.Name].Index].Value = BaseResource.InvoiceStatus_Paid;
-                //    node.Cells[dgv.Columns[colStatus.Name].Index].Style.ForeColor = Color.Red;
-                //}
-                //else if (sale.PayStatus == PayStatus.WaitPayment)
-                //{
-                //    node.Cells[dgv.Columns[colStatus.Name].Index].Value = BaseResource.InvoiceStatus_PaySome;
-                //    node.Cells[dgv.Columns[colStatus.Name].Index].Style.ForeColor = Color.Orange;
-                //}
             }
             TreeGridNode.Collapse();
         }
@@ -325,11 +314,12 @@ namespace QTech.Forms
             node.Cells[dgv.Columns[colId.Name].Index].Value = invoice.Id;
             node.Cells[dgv.Columns[colParentId.Name].Index].Value = invoice.Id;
             node.Cells[dgv.Columns[colInvoiceNo.Name].Index].Value = invoice.InvoiceNo;
-            node.Cells[dgv.Columns[colInvoicingDate.Name].Index].Value = invoice.InvoicingDate;
+            node.Cells[dgv.Columns[colInvoicingDate.Name].Index].Value = invoice.InvoicingDate.ToString("dd-MMM-yyyy hh:mm"); 
             node.Cells[dgv.Columns[colCustomer.Name].Index].Value = Customers.FirstOrDefault(x=>x.Id == invoice.CustomerId)?.Name;
             node.Cells[dgv.Columns[colTotalAmount.Name].Index].Value = invoice.TotalAmount;
             node.Cells[dgv.Columns[colPaidAmount.Name].Index].Value = invoice.PaidAmount;
             node.Cells[dgv.Columns[colLeftAmount.Name].Index].Value = invoice.LeftAmount;
+            node.Cells[dgv.Columns[colRowDate.Name].Index].Value = invoice.RowDate;
 
             if (invoice.InvoiceStatus == InvoiceStatus.Paid)
             {

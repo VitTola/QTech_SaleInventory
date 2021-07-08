@@ -18,12 +18,20 @@ namespace QTech.Db.Logics
 
         public override Site FindAsync(int id)
         {
-            var result = All().FirstOrDefault(x => x.Active && x.CustomerId == id);
+            var result = All().FirstOrDefault(x => x.Active && x.Id == id);
             return result;
         }
         public override bool CanRemoveAsync(Site entity)
         {
             return All().Any(x => x.Id == entity.Id);
+        }
+        public override bool CanRemoveAsync(int id)
+        {
+            if (_db.Sales.Any(x=>x.Active && x.SiteId == id))
+            {
+                return false;
+            }
+            return true;
         }
         public override List<Site> SearchAsync(ISearchModel model)
         {

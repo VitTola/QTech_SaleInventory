@@ -508,4 +508,7 @@
   <data name="ImportPrice" xml:space="preserve">
     <value>តម្លៃនាំចូល</value>
   </data>
+  <data name="MsgDataCurrentlyInUsed" xml:space="preserve">
+    <value>បានយកទៅប្រើប្រាស់ហើយ មិនអាចលុបបានទេ!</value>
+  </data>
 </root>

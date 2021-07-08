@@ -31,7 +31,6 @@ namespace QTech.Forms
             Bind();
             InitEvent();
         }
-
         public GeneralProcess Flag { get; set; }
 
         public void Bind()
@@ -44,11 +43,13 @@ namespace QTech.Forms
         {
             this.MaximizeBox = false;
             this.Text = Base.Properties.Resources.Products;
-            txtUnitPrice.RegisterEnglishInput();
+            txtUnitPrice.RegisterEnglishInputWith(txtImportPrice);
             txtName.RegisterPrimaryInputWith(txtNote, txtName);
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
             txtUnitPrice.KeyPress += (sender, e) => txtUnitPrice.validCurrency(sender, e);
             txtImportPrice.KeyPress += (sender, e) => txtImportPrice.validCurrency(sender,e);
+            txtName.RegisterKeyEnterNextControlWith(cboCategory, txtImportPrice, txtUnitPrice, txtNote);
+
         }
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {

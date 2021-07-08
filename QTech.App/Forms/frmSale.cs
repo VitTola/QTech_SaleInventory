@@ -227,7 +227,7 @@ namespace QTech.Forms
             var saleDetails = await this.RunAsync(() =>
             {
                 cus = CustomerLogic.Instance.FindAsync(Model.CompanyId);
-                site = SiteLogic.Instance.FindAsync(Model.CompanyId);
+                site = SiteLogic.Instance.FindAsync(Model.SiteId);
                 var details = SaleDetailLogic.Instance.GetSaleDetailBySaleId(Model.Id);
                 var productIds = details.Select(x => x.ProductId).Distinct().ToList();
                 var driverIds = details.Select(x => x.EmployeeId).Distinct().ToList();
@@ -374,6 +374,8 @@ namespace QTech.Forms
             {
                 Model.SaleDetails = new List<SaleDetail>();
             }
+            
+            dgv.EndEdit();
             foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
             {
                 var invoiceDt = new RepoInvoiceDetail();

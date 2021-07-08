@@ -66,7 +66,7 @@
             this.container.Controls.Add(this.lblUnitPrice);
             this.container.Controls.Add(this.lblName);
             this.container.Controls.Add(this.txtName);
-            this.container.Size = new System.Drawing.Size(378, 271);
+            this.container.Size = new System.Drawing.Size(378, 272);
             // 
             // lblName
             // 
@@ -113,14 +113,14 @@
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(200, 58);
-            this.txtNote.TabIndex = 2;
+            this.txtNote.TabIndex = 4;
             // 
             // exPanel1
             // 
             this.exPanel1.BackColor = System.Drawing.Color.Transparent;
             this.exPanel1.Controls.Add(this.flowLayoutPanel2);
             this.exPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.exPanel1.Location = new System.Drawing.Point(1, 234);
+            this.exPanel1.Location = new System.Drawing.Point(1, 235);
             this.exPanel1.Name = "exPanel1";
             this.exPanel1.Padding = new System.Windows.Forms.Padding(2);
             this.exPanel1.Size = new System.Drawing.Size(376, 36);
@@ -148,7 +148,7 @@
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnClose.ShortcutText = null;
             this.btnClose.Size = new System.Drawing.Size(75, 27);
-            this.btnClose.TabIndex = 1;
+            this.btnClose.TabIndex = 6;
             this.btnClose.Text = "បិទ";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -164,7 +164,7 @@
             this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnSave.ShortcutText = null;
             this.btnSave.Size = new System.Drawing.Size(75, 27);
-            this.btnSave.TabIndex = 0;
+            this.btnSave.TabIndex = 5;
             this.btnSave.Text = "រក្សាទុក";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);

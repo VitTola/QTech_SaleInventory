@@ -175,6 +175,7 @@ namespace QTech.Forms
             {
                 return;
             }
+            
             Model.Active = true;
             Model.Name = txtName.Text;
             Model.Phone = txtPhone.Text;
@@ -184,12 +185,14 @@ namespace QTech.Forms
             {
                 Model.Sites = new List<Site>();
             }
+
+            dgv.EndEdit();
             foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
             {
                 var Id = int.Parse(row?.Cells[colId.Name]?.Value?.ToString() ?? "0");
                 var site = Model.Sites?.FirstOrDefault(x => x.Id == Id);
-                var _name = row?.Cells[colName.Name].Value?.ToString();
-                var _phone = row?.Cells[colPhone.Name].Value?.ToString();
+                var _phone = row.Cells[colPhone.Name].Value?.ToString();
+                var _name = row.Cells[colName.Name].Value?.ToString();
                 if (site != null)
                 {
                     var id = (int)(row?.Cells[colId.Name]?.Value ?? 0);
@@ -265,17 +268,30 @@ namespace QTech.Forms
             }
             return row;
         }
-        private void lblRemove_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private async void lblRemove_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            var row = dgv.SelectedRows[0];
+            var idValue = row.Cells[colId.Name].Value;
+            int siteId = int.Parse(idValue.ToString());
+            if (siteId != 0)
+            {
+                var canRemove = await dgv.RunAsync(() => SiteLogic.Instance.CanRemoveAsync(siteId));
+                if (!canRemove)
+                {
+                    MsgBox.ShowWarning(BaseResource.Site + BaseResource.MsgDataCurrentlyInUsed,
+                   GeneralProcess.Remove.GetTextDialog(BaseResource.Site));
+                    return;
+                }
+            }
+
             if (dgv?.SelectedRows?.Count > 0)
             {
-                var row = dgv.SelectedRows[0];
                 if (row.Cells[colName.Name].Value == null ||
                  row.Cells[colPhone.Name].Value == null)
                 {
                     return;
                 }
-                var idValue = row.Cells[colId.Name].Value;
+
                 if (idValue == null)
                 {
                     dgv.Rows.Remove(dgv.CurrentRow);
