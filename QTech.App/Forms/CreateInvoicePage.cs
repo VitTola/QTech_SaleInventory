@@ -256,8 +256,11 @@ namespace QTech.Forms
             }
             dgv.Sort(dgv.Columns[colRowDate.Name], ListSortDirection.Descending);
         }
+
+        int row = 1;
         private void TreeGridFillData(List<Invoice> invoices)
         {
+            row = 1;
             if (invoices == null)
             {
                 return;
@@ -305,7 +308,6 @@ namespace QTech.Forms
             TreeGridNode.Collapse();
         }
 
-        int row = 1;
         private TreeGridNode AddParentNode(dynamic parentNode, Invoice invoice)
         {
             dgv.Columns[colInvoiceNo.Name].DisplayIndex = 0;

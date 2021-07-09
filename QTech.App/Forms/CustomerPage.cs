@@ -206,8 +206,11 @@ namespace QTech.Forms
                 TreeGridFillData(result);
             }
         }
+
+        int row = 1;
         private void TreeGridFillData(List<Customer> customers)
         {
+            row = 1;
             if (customers == null)
             {
                 return;
@@ -248,7 +251,6 @@ namespace QTech.Forms
             }
         }
 
-        int row = 1;
         private TreeGridNode AddParentNode(dynamic parentNode, Customer customer)
         {
             dgv.Columns[colName.Name].DisplayIndex = 0;

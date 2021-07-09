@@ -55,7 +55,7 @@ namespace QTech.Reports
         private void CboCompany_SelectedIndexChanged(object sender, EventArgs e)
         {
             var company = cboCompany.SelectedObject.ItemObject as Customer;
-            cboCompany.SearchParamFn = () => new SiteSearch() { CustomerId = company.Id };
+            cboSite.SearchParamFn = () => new SiteSearch() { CustomerId = company == null ? 0 : company.Id };
         }
 
         public void AddNew() { }

@@ -67,7 +67,7 @@ namespace QTech.Db.Logics
         public override IQueryable<Customer> Search(ISearchModel model)
         {
             var param = model as CustomerSearch;
-            var par = param.Search;
+            var par = param?.Search;
             var q = All().Where(x => x.Active);
             if (!string.IsNullOrEmpty(param.Search))
             {

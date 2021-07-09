@@ -61,6 +61,7 @@ namespace QTech.Forms
             dgvGoods.ReadOnly = false;
             dgvGoods.AllowRowNotFound = false;
             colGoodName.ReadOnly = true;
+            colCategory_.ReadOnly = true;
             dgvGoods.EditMode = DataGridViewEditMode.EditOnEnter;
             if (Flag == GeneralProcess.Add)
             {
@@ -82,12 +83,14 @@ namespace QTech.Forms
         {
             if (tabMain.SelectedTab.Equals(tabSetPrice))
             {
+                var categorys = new List<Category>();
                 dgvGoods.Rows.Clear();
                 var Products = await dgvGoods.RunAsync(() =>
                 {
                     var search = new ProductSearch();
                     var prods = ProductLogic.Instance.SearchAsync(search);
                     _customerPrices = CustomerPriceLogic.Instance.GetCustomerPriceByCustomerId(Model.Id);
+                    categorys = CategoryLogic.Instance.SearchAsync(new CategorySearch());
                     return prods;
                 });
                 foreach (var product in Products)
@@ -97,6 +100,8 @@ namespace QTech.Forms
                     row.Cells[colIdd.Name].Value = _customerPrices?.FirstOrDefault(x => x.ProductId == product.Id)?.Id;
                     row.Cells[colGoodName.Name].Value = product.Name;
                     row.Cells[colSalePrice.Name].Value = _customerPrices.FirstOrDefault(x => x.ProductId == product.Id)?.SalePrice;
+                    row.Cells[colCategory_.Name].Value = categorys.FirstOrDefault(x=>x.Id == product.CategoryId);
+
                 }
                 dgvGoods.CurrentCell = dgvGoods.Rows[0].Cells[colSalePrice.Name];
                 dgvGoods.BeginEdit(true);
@@ -163,7 +168,6 @@ namespace QTech.Forms
                     row.Cells[colPhone.Name].Value = site.Phone;
                 }
             }
-
         }
         public void ViewChangeLog()
         {

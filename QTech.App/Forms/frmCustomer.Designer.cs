@@ -63,6 +63,7 @@
             this.colProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIdd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGoodName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCategory_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSalePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -392,6 +393,7 @@
             this.colProductId,
             this.colIdd,
             this.colGoodName,
+            this.colCategory_,
             this.colSalePrice});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
@@ -442,7 +444,13 @@
             this.colGoodName.HeaderText = "colGoodName";
             this.colGoodName.Name = "colGoodName";
             this.colGoodName.ReadOnly = true;
-            this.colGoodName.Width = 180;
+            this.colGoodName.Width = 140;
+            // 
+            // colCategory_
+            // 
+            this.colCategory_.HeaderText = "ប្រភេទ";
+            this.colCategory_.Name = "colCategory_";
+            this.colCategory_.ReadOnly = true;
             // 
             // colSalePrice
             // 
@@ -506,6 +514,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colProductId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIdd;
         private System.Windows.Forms.DataGridViewTextBoxColumn colGoodName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCategory_;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSalePrice;
     }
 }

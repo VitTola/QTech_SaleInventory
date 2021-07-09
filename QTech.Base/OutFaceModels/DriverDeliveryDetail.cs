@@ -8,6 +8,7 @@ namespace QTech.Base.OutFaceModels
 {
     public class DriverDeliveryDetail
     {
+        public int SaleId { get; set; }
         public DateTime SaleDate { get; set; }
         public string InvoiceNo { get; set; }
         public string PurchaseOrderNo { get; set; }

@@ -177,7 +177,6 @@ namespace QTech.Db.Logics
             return true;
         }
 
-
         //GET REPORTS
         public List<DriverDeliveryDetail> GetDriverDeliveryDetails(ReportDriverDeliverySearch param)
         {
@@ -214,6 +213,7 @@ namespace QTech.Db.Logics
                          join ss in _db.Sites on s.SiteId equals ss.Id
                          select new DriverDeliveryDetail()
                          {
+                             SaleId = s.Id,
                              SaleDate = s.SaleDate,
                              InvoiceNo = s.InvoiceNo.ToString(),
                              PurchaseOrderNo = s.PurchaseOrderNo.ToString(),
@@ -221,8 +221,8 @@ namespace QTech.Db.Logics
                              Site = ss.Name,
                              SubTotal = s.Total
                          };
-
-            return result.ToList();
+            var res = result.ToList();
+            return result.GroupBy(x => x.SaleId).Select(y => y.FirstOrDefault()).ToList();
         }
     }
 }
