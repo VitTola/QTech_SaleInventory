@@ -48,8 +48,11 @@ namespace QTech.Db.Logics
         public override IQueryable<Site> Search(ISearchModel model)
         {
             var param = model as SiteSearch;
-            var q = All().Where(x => x.Active);
-            q = q.Where(x => x.CustomerId == param.CustomerId);
+            var q = All();
+            if (param.CustomerId != 0)
+            {
+                q = q.Where(x => x.CustomerId == param.CustomerId);
+            }
             return q;
         }
         public override bool IsExistsAsync(Site entity)

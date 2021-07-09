@@ -304,14 +304,19 @@ namespace QTech.Forms
             }
             TreeGridNode.Collapse();
         }
+
+        int row = 1;
         private TreeGridNode AddParentNode(dynamic parentNode, Invoice invoice)
         {
+            dgv.Columns[colInvoiceNo.Name].DisplayIndex = 0;
             var node = parentNode.Nodes.Add();
+            dgv.Columns[colInvoiceNo.Name].DisplayIndex = 1;
             node.Height = dgv.RowTemplate.Height;
             node.Tag = invoice;
 
             node.Image = imageList1.Images[nameof(QTech.Base.Properties.Resources.InvoiceNo_img)];
             node.Cells[dgv.Columns[colId.Name].Index].Value = invoice.Id;
+            node.Cells[dgv.Columns[colRow_.Name].Index].Value = row++;
             node.Cells[dgv.Columns[colParentId.Name].Index].Value = invoice.Id;
             node.Cells[dgv.Columns[colInvoiceNo.Name].Index].Value = invoice.InvoiceNo;
             node.Cells[dgv.Columns[colInvoicingDate.Name].Index].Value = invoice.InvoicingDate.ToString("dd-MMM-yyyy hh:mm"); 

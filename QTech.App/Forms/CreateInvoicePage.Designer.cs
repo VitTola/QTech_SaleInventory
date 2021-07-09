@@ -32,8 +32,9 @@ namespace QTech.Forms
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             QTech.Base.BaseModels.Paging paging1 = new QTech.Base.BaseModels.Paging();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.graPanel1 = new QTech.Component.GRAPanel();
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -51,6 +52,7 @@ namespace QTech.Forms
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.pagination = new QTech.Component.ExPaging();
             this.colInvoiceNo = new QTech.Component.TreeGridColumn();
+            this.colRow_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colRowDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colParentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -254,6 +256,7 @@ namespace QTech.Forms
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colInvoiceNo,
+            this.colRow_,
             this.colRowDate,
             this.colParentId,
             this.colId,
@@ -275,10 +278,10 @@ namespace QTech.Forms
             this.dgv.ReadOnly = true;
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgv.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgv.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(1320, 570);
             this.dgv.TabIndex = 1;
@@ -328,6 +331,16 @@ namespace QTech.Forms
             this.colInvoiceNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colInvoiceNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colInvoiceNo.Width = 200;
+            // 
+            // colRow_
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colRow_.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colRow_.HeaderText = "";
+            this.colRow_.Name = "colRow_";
+            this.colRow_.ReadOnly = true;
+            this.colRow_.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colRow_.Width = 50;
             // 
             // colRowDate
             // 
@@ -448,6 +461,7 @@ namespace QTech.Forms
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private Component.ExPaging pagination;
         private Component.TreeGridColumn colInvoiceNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRow_;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRowDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn colParentId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;

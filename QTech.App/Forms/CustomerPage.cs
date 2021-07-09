@@ -214,21 +214,14 @@ namespace QTech.Forms
             }
 
             dgv.Nodes.Clear();
-            var topLevelNode = new Customer { Id = 0, Name = BaseResource.AllCustomer };
-            TreeGridNode _topLevelTreeGridNode = AddParentNode(dgv, topLevelNode);
-            dgv.NodeExpanded -= Dgv_NodeExpanded;
-            _topLevelTreeGridNode.Expand();
-            dgv.NodeExpanded += Dgv_NodeExpanded;
-
             foreach (var parent in customers)
             {
-                var _treeGridNode = AddParentNode(_topLevelTreeGridNode, parent);
+                var _treeGridNode = AddParentNode(dgv, parent);
 
                 if (parent.Sites != null && parent.Sites.Any())
                 {
                     AddChildNode(_treeGridNode, parent.Sites, parent);
                     dgv.NodeExpanded -= Dgv_NodeExpanded;
-                    // _treeGridNode.Expand();
                     dgv.NodeExpanded += Dgv_NodeExpanded;
                 }
 
@@ -253,12 +246,14 @@ namespace QTech.Forms
                 node.Cells[dgv.Columns[colParentId.Name].Index].Value = child.CustomerId;
 
             }
-            // TreeGridNode.Collapse();
         }
 
+        int row = 1;
         private TreeGridNode AddParentNode(dynamic parentNode, Customer customer)
         {
+            dgv.Columns[colName.Name].DisplayIndex = 0;
             var node = parentNode.Nodes.Add();
+            dgv.Columns[colName.Name].DisplayIndex = 1;
             node.Height = dgv.RowTemplate.Height;
             node.Tag = customer;
 
@@ -268,6 +263,7 @@ namespace QTech.Forms
             node.Cells[dgv.Columns[colNote.Name].Index].Value = customer.Note;
             node.Cells[dgv.Columns[colId.Name].Index].Value = customer.Id;
             node.Cells[dgv.Columns[colParentId.Name].Index].Value = customer.Id;
+            node.Cells[dgv.Columns[colRow_.Name].Index].Value = row++;
             var dummy = node.Nodes.Add();
             dummy.Visible = false;
             return node;

@@ -171,5 +171,9 @@ namespace QTech.Forms
             View();
         }
 
+        private void dgv_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            dgv.Rows[e.RowIndex].Cells[colRow_.Name].Value = (e.RowIndex + 1).ToString();
+        }
     }
 }

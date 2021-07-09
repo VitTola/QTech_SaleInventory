@@ -49,7 +49,13 @@ namespace QTech.Reports
         private void InitEvent()
         {
             btnAdvanceSearch.Click += btnAdvanceSearch_Click;
-            //dig.FormClosed += dig_FormClosed;
+            cboCompany.SelectedIndexChanged += CboCompany_SelectedIndexChanged;
+        }
+
+        private void CboCompany_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var company = cboCompany.SelectedObject.ItemObject as Customer;
+            cboCompany.SearchParamFn = () => new SiteSearch() { CustomerId = company.Id };
         }
 
         public void AddNew() { }
