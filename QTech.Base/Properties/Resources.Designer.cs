@@ -451,7 +451,7 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to តម្លៃនាំចូល.
+        ///   Looks up a localized string similar to តម្លៃនាំចូល/m³.
         /// </summary>
         public static string ImportPrice {
             get {
@@ -1300,7 +1300,7 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to តម្លៃឯកតា.
+        ///   Looks up a localized string similar to តម្លៃឯកតា/m³.
         /// </summary>
         public static string UnitPrice {
             get {

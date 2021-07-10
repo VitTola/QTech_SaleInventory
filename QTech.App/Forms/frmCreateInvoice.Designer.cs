@@ -50,16 +50,6 @@
             this.panelGrid = new System.Windows.Forms.Panel();
             this.chkMarkAll_ = new System.Windows.Forms.CheckBox();
             this.dgv = new QTech.Component.ExDataGridView();
-            this.colMark_ = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPurchaseOrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colInvoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colToCompany = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colToSite = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSaleDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIsPaid = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.flowLayoutPanelTopGrid = new System.Windows.Forms.FlowLayoutPanel();
             this.dtpSearchDate = new QTech.Component.ExReportDatePicker();
             this.lblInvoicingDate = new QTech.Component.ExLabel();
@@ -74,6 +64,16 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dtpInvoicingDate = new QTech.Component.ExDateTimePicker();
+            this.colMark_ = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPurchaseOrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colInvoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colToCompany = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colToSite = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSaleDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIsPaid = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.container.SuspendLayout();
             this.exPanel1.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -101,7 +101,7 @@
             this.exLabel2.AutoSize = true;
             this.exLabel2.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.exLabel2.Location = new System.Drawing.Point(10, 57);
+            this.exLabel2.Location = new System.Drawing.Point(12, 57);
             this.exLabel2.Name = "exLabel2";
             this.exLabel2.Required = false;
             this.exLabel2.Size = new System.Drawing.Size(114, 27);
@@ -196,7 +196,7 @@
             this.lblInvoiceNo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblInvoiceNo.AutoSize = true;
             this.lblInvoiceNo.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvoiceNo.Location = new System.Drawing.Point(481, 23);
+            this.lblInvoiceNo.Location = new System.Drawing.Point(503, 23);
             this.lblInvoiceNo.Name = "lblInvoiceNo";
             this.lblInvoiceNo.Required = true;
             this.lblInvoiceNo.Size = new System.Drawing.Size(86, 27);
@@ -207,7 +207,7 @@
             // 
             this.txtInvoiceNo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtInvoiceNo.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInvoiceNo.Location = new System.Drawing.Point(600, 19);
+            this.txtInvoiceNo.Location = new System.Drawing.Point(622, 19);
             this.txtInvoiceNo.Margin = new System.Windows.Forms.Padding(2);
             this.txtInvoiceNo.Name = "txtInvoiceNo";
             this.txtInvoiceNo.ReadOnly = true;
@@ -219,7 +219,7 @@
             // 
             this.lblCustomer.AutoSize = true;
             this.lblCustomer.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustomer.Location = new System.Drawing.Point(16, 23);
+            this.lblCustomer.Location = new System.Drawing.Point(12, 23);
             this.lblCustomer.Name = "lblCustomer";
             this.lblCustomer.Required = true;
             this.lblCustomer.Size = new System.Drawing.Size(56, 27);
@@ -231,7 +231,7 @@
             this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(945, 16);
+            this.lblTotal.Location = new System.Drawing.Point(943, 16);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Required = false;
             this.lblTotal.Size = new System.Drawing.Size(89, 27);
@@ -248,7 +248,7 @@
             this.cboCustomer.FormattingEnabled = true;
             this.cboCustomer.IsGirdViewColumn = false;
             this.cboCustomer.LoadAll = true;
-            this.cboCustomer.Location = new System.Drawing.Point(135, 19);
+            this.cboCustomer.Location = new System.Drawing.Point(137, 19);
             this.cboCustomer.Name = "cboCustomer";
             this.cboCustomer.SearchParamFn = null;
             this.cboCustomer.SelectedItems = null;
@@ -265,7 +265,7 @@
             this.pnlExpect.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlExpect.Controls.Add(this.txtTotal);
             this.pnlExpect.Controls.Add(this.lblCur2);
-            this.pnlExpect.Location = new System.Drawing.Point(1066, 12);
+            this.pnlExpect.Location = new System.Drawing.Point(1064, 12);
             this.pnlExpect.Margin = new System.Windows.Forms.Padding(2);
             this.pnlExpect.Name = "pnlExpect";
             this.pnlExpect.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -311,7 +311,7 @@
             // chkMarkAll_
             // 
             this.chkMarkAll_.AutoSize = true;
-            this.chkMarkAll_.Location = new System.Drawing.Point(14, 49);
+            this.chkMarkAll_.Location = new System.Drawing.Point(23, 49);
             this.chkMarkAll_.Name = "chkMarkAll_";
             this.chkMarkAll_.Size = new System.Drawing.Size(15, 14);
             this.chkMarkAll_.TabIndex = 15;
@@ -329,6 +329,9 @@
             this.dgv.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv.BackgroundColor = System.Drawing.Color.White;
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -360,11 +363,10 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
             this.dgv.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            this.dgv.Location = new System.Drawing.Point(0, 39);
+            this.dgv.Location = new System.Drawing.Point(10, 39);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
             this.dgv.Paging = null;
@@ -372,8 +374,182 @@
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1273, 391);
+            this.dgv.Size = new System.Drawing.Size(1253, 391);
             this.dgv.TabIndex = 2;
+            // 
+            // flowLayoutPanelTopGrid
+            // 
+            this.flowLayoutPanelTopGrid.BackColor = System.Drawing.Color.Transparent;
+            this.flowLayoutPanelTopGrid.Controls.Add(this.dtpSearchDate);
+            this.flowLayoutPanelTopGrid.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowLayoutPanelTopGrid.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanelTopGrid.Name = "flowLayoutPanelTopGrid";
+            this.flowLayoutPanelTopGrid.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.flowLayoutPanelTopGrid.Size = new System.Drawing.Size(1273, 39);
+            this.flowLayoutPanelTopGrid.TabIndex = 0;
+            // 
+            // dtpSearchDate
+            // 
+            this.dtpSearchDate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.dtpSearchDate.FormattingEnabled = true;
+            this.dtpSearchDate.Location = new System.Drawing.Point(10, 6);
+            this.dtpSearchDate.Margin = new System.Windows.Forms.Padding(6, 6, 2, 4);
+            this.dtpSearchDate.Name = "dtpSearchDate";
+            this.dtpSearchDate.Size = new System.Drawing.Size(200, 27);
+            this.dtpSearchDate.TabIndex = 2;
+            // 
+            // lblInvoicingDate
+            // 
+            this.lblInvoicingDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblInvoicingDate.AutoSize = true;
+            this.lblInvoicingDate.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvoicingDate.Location = new System.Drawing.Point(946, 23);
+            this.lblInvoicingDate.Name = "lblInvoicingDate";
+            this.lblInvoicingDate.Required = true;
+            this.lblInvoicingDate.Size = new System.Drawing.Size(86, 27);
+            this.lblInvoicingDate.TabIndex = 31;
+            this.lblInvoicingDate.Text = "កាលបរិច្ឋេទធ្វើ";
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txtPaidAmount);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(1064, 43);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.panel1.Size = new System.Drawing.Size(200, 27);
+            this.panel1.TabIndex = 31;
+            // 
+            // txtPaidAmount
+            // 
+            this.txtPaidAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPaidAmount.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtPaidAmount.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPaidAmount.Location = new System.Drawing.Point(0, 2);
+            this.txtPaidAmount.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
+            this.txtPaidAmount.Name = "txtPaidAmount";
+            this.txtPaidAmount.ReadOnly = true;
+            this.txtPaidAmount.Size = new System.Drawing.Size(165, 19);
+            this.txtPaidAmount.TabIndex = 0;
+            this.txtPaidAmount.Text = "0";
+            this.txtPaidAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPaidAmount.TextChanged += new System.EventHandler(this.txtPaidAmount_TextChanged);
+            this.txtPaidAmount.Leave += new System.EventHandler(this.txtPaidAmount_Leave);
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label1.Location = new System.Drawing.Point(165, 2);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 23);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "USD";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // exLabel1
+            // 
+            this.exLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.exLabel1.AutoSize = true;
+            this.exLabel1.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exLabel1.Location = new System.Drawing.Point(944, 47);
+            this.exLabel1.Name = "exLabel1";
+            this.exLabel1.Required = false;
+            this.exLabel1.Size = new System.Drawing.Size(100, 27);
+            this.exLabel1.TabIndex = 30;
+            this.exLabel1.Text = "ទឹកប្រាក់បានបង់";
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.txtLeftAmount);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Location = new System.Drawing.Point(1064, 74);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.panel2.Size = new System.Drawing.Size(200, 27);
+            this.panel2.TabIndex = 33;
+            // 
+            // txtLeftAmount
+            // 
+            this.txtLeftAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtLeftAmount.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtLeftAmount.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLeftAmount.Location = new System.Drawing.Point(0, 2);
+            this.txtLeftAmount.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
+            this.txtLeftAmount.Name = "txtLeftAmount";
+            this.txtLeftAmount.ReadOnly = true;
+            this.txtLeftAmount.Size = new System.Drawing.Size(165, 19);
+            this.txtLeftAmount.TabIndex = 0;
+            this.txtLeftAmount.Text = "0";
+            this.txtLeftAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label2
+            // 
+            this.label2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label2.Location = new System.Drawing.Point(165, 2);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(33, 23);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "USD";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // exLabel3
+            // 
+            this.exLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.exLabel3.AutoSize = true;
+            this.exLabel3.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exLabel3.Location = new System.Drawing.Point(945, 78);
+            this.exLabel3.Name = "exLabel3";
+            this.exLabel3.Required = false;
+            this.exLabel3.Size = new System.Drawing.Size(66, 27);
+            this.exLabel3.TabIndex = 32;
+            this.exLabel3.Text = "សមតុល្យ";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.pnlExpect);
+            this.panel3.Controls.Add(this.panel2);
+            this.panel3.Controls.Add(this.lblTotal);
+            this.panel3.Controls.Add(this.exLabel3);
+            this.panel3.Controls.Add(this.exLabel1);
+            this.panel3.Controls.Add(this.panel1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(1, 518);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1275, 113);
+            this.panel3.TabIndex = 34;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.dtpInvoicingDate);
+            this.panel4.Controls.Add(this.cboCustomer);
+            this.panel4.Controls.Add(this.txtInvoiceNo);
+            this.panel4.Controls.Add(this.lblInvoicingDate);
+            this.panel4.Controls.Add(this.lblInvoiceNo);
+            this.panel4.Controls.Add(this.exLabel2);
+            this.panel4.Controls.Add(this.lblCustomer);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(1, 1);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1275, 85);
+            this.panel4.TabIndex = 35;
+            // 
+            // dtpInvoicingDate
+            // 
+            this.dtpInvoicingDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpInvoicingDate.Location = new System.Drawing.Point(1059, 23);
+            this.dtpInvoicingDate.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
+            this.dtpInvoicingDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.dtpInvoicingDate.Name = "dtpInvoicingDate";
+            this.dtpInvoicingDate.Size = new System.Drawing.Size(200, 27);
+            this.dtpInvoicingDate.TabIndex = 32;
             // 
             // colMark_
             // 
@@ -409,7 +585,7 @@
             this.colInvoiceNo.MinimumWidth = 100;
             this.colInvoiceNo.Name = "colInvoiceNo";
             this.colInvoiceNo.ReadOnly = true;
-            this.colInvoiceNo.Width = 250;
+            this.colInvoiceNo.Width = 200;
             // 
             // colToCompany
             // 
@@ -457,179 +633,6 @@
             this.colIsPaid.Name = "colIsPaid";
             this.colIsPaid.ReadOnly = true;
             this.colIsPaid.Visible = false;
-            // 
-            // flowLayoutPanelTopGrid
-            // 
-            this.flowLayoutPanelTopGrid.BackColor = System.Drawing.Color.Transparent;
-            this.flowLayoutPanelTopGrid.Controls.Add(this.dtpSearchDate);
-            this.flowLayoutPanelTopGrid.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanelTopGrid.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanelTopGrid.Name = "flowLayoutPanelTopGrid";
-            this.flowLayoutPanelTopGrid.Size = new System.Drawing.Size(1273, 39);
-            this.flowLayoutPanelTopGrid.TabIndex = 0;
-            // 
-            // dtpSearchDate
-            // 
-            this.dtpSearchDate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.dtpSearchDate.FormattingEnabled = true;
-            this.dtpSearchDate.Location = new System.Drawing.Point(6, 6);
-            this.dtpSearchDate.Margin = new System.Windows.Forms.Padding(6, 6, 2, 4);
-            this.dtpSearchDate.Name = "dtpSearchDate";
-            this.dtpSearchDate.Size = new System.Drawing.Size(200, 27);
-            this.dtpSearchDate.TabIndex = 2;
-            // 
-            // lblInvoicingDate
-            // 
-            this.lblInvoicingDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblInvoicingDate.AutoSize = true;
-            this.lblInvoicingDate.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvoicingDate.Location = new System.Drawing.Point(931, 23);
-            this.lblInvoicingDate.Name = "lblInvoicingDate";
-            this.lblInvoicingDate.Required = true;
-            this.lblInvoicingDate.Size = new System.Drawing.Size(86, 27);
-            this.lblInvoicingDate.TabIndex = 31;
-            this.lblInvoicingDate.Text = "កាលបរិច្ឋេទធ្វើ";
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.txtPaidAmount);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(1066, 43);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.panel1.Size = new System.Drawing.Size(200, 27);
-            this.panel1.TabIndex = 31;
-            // 
-            // txtPaidAmount
-            // 
-            this.txtPaidAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPaidAmount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPaidAmount.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaidAmount.Location = new System.Drawing.Point(0, 2);
-            this.txtPaidAmount.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
-            this.txtPaidAmount.Name = "txtPaidAmount";
-            this.txtPaidAmount.ReadOnly = true;
-            this.txtPaidAmount.Size = new System.Drawing.Size(165, 19);
-            this.txtPaidAmount.TabIndex = 0;
-            this.txtPaidAmount.Text = "0";
-            this.txtPaidAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtPaidAmount.TextChanged += new System.EventHandler(this.txtPaidAmount_TextChanged);
-            this.txtPaidAmount.Leave += new System.EventHandler(this.txtPaidAmount_Leave);
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label1.Location = new System.Drawing.Point(165, 2);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 23);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "USD";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // exLabel1
-            // 
-            this.exLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.exLabel1.AutoSize = true;
-            this.exLabel1.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exLabel1.Location = new System.Drawing.Point(946, 47);
-            this.exLabel1.Name = "exLabel1";
-            this.exLabel1.Required = false;
-            this.exLabel1.Size = new System.Drawing.Size(100, 27);
-            this.exLabel1.TabIndex = 30;
-            this.exLabel1.Text = "ទឹកប្រាក់បានបង់";
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.txtLeftAmount);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(1066, 74);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.panel2.Size = new System.Drawing.Size(200, 27);
-            this.panel2.TabIndex = 33;
-            // 
-            // txtLeftAmount
-            // 
-            this.txtLeftAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtLeftAmount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtLeftAmount.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLeftAmount.Location = new System.Drawing.Point(0, 2);
-            this.txtLeftAmount.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
-            this.txtLeftAmount.Name = "txtLeftAmount";
-            this.txtLeftAmount.ReadOnly = true;
-            this.txtLeftAmount.Size = new System.Drawing.Size(165, 19);
-            this.txtLeftAmount.TabIndex = 0;
-            this.txtLeftAmount.Text = "0";
-            this.txtLeftAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label2.Location = new System.Drawing.Point(165, 2);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 23);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "USD";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // exLabel3
-            // 
-            this.exLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.exLabel3.AutoSize = true;
-            this.exLabel3.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exLabel3.Location = new System.Drawing.Point(947, 78);
-            this.exLabel3.Name = "exLabel3";
-            this.exLabel3.Required = false;
-            this.exLabel3.Size = new System.Drawing.Size(66, 27);
-            this.exLabel3.TabIndex = 32;
-            this.exLabel3.Text = "សមតុល្យ";
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.pnlExpect);
-            this.panel3.Controls.Add(this.panel2);
-            this.panel3.Controls.Add(this.lblTotal);
-            this.panel3.Controls.Add(this.exLabel3);
-            this.panel3.Controls.Add(this.exLabel1);
-            this.panel3.Controls.Add(this.panel1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(1, 518);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1275, 113);
-            this.panel3.TabIndex = 34;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.dtpInvoicingDate);
-            this.panel4.Controls.Add(this.cboCustomer);
-            this.panel4.Controls.Add(this.txtInvoiceNo);
-            this.panel4.Controls.Add(this.lblInvoicingDate);
-            this.panel4.Controls.Add(this.lblInvoiceNo);
-            this.panel4.Controls.Add(this.exLabel2);
-            this.panel4.Controls.Add(this.lblCustomer);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(1, 1);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1275, 85);
-            this.panel4.TabIndex = 35;
-            // 
-            // dtpInvoicingDate
-            // 
-            this.dtpInvoicingDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpInvoicingDate.Location = new System.Drawing.Point(1044, 23);
-            this.dtpInvoicingDate.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
-            this.dtpInvoicingDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.dtpInvoicingDate.Name = "dtpInvoicingDate";
-            this.dtpInvoicingDate.Size = new System.Drawing.Size(200, 27);
-            this.dtpInvoicingDate.TabIndex = 32;
             // 
             // frmCreateInvoice
             // 
@@ -699,6 +702,11 @@
         private System.Windows.Forms.TextBox txtPaidAmount;
         private System.Windows.Forms.Label label1;
         private Component.ExLabel exLabel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private Component.ExButtonLoading btnPrint;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel3;
+        private Component.ExDateTimePicker dtpInvoicingDate;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colMark_;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPurchaseOrderNo;
@@ -709,10 +717,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colIsPaid;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private Component.ExButtonLoading btnPrint;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel3;
-        private Component.ExDateTimePicker dtpInvoicingDate;
     }
 }
