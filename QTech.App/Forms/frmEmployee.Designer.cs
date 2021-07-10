@@ -54,32 +54,32 @@
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
             this.tabGeneralTotal = new System.Windows.Forms.TabPage();
-            this.dtpDoDate = new QTech.Component.ExDateTimePicker();
-            this.lblDoDate = new QTech.Component.ExLabel();
-            this.txtPayNote = new System.Windows.Forms.TextBox();
-            this.exLabel2 = new QTech.Component.ExLabel();
-            this.flowLayOutLabelRemoveAdd = new System.Windows.Forms.FlowLayoutPanel();
-            this.lblRemove = new System.Windows.Forms.LinkLabel();
-            this.lblUpdate = new System.Windows.Forms.LinkLabel();
-            this.dgv = new QTech.Component.ExDataGridView();
-            this.exLabel3 = new QTech.Component.ExLabel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtPayAmount = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.exLabel1 = new QTech.Component.ExLabel();
+            this.flowLayOutLabelRemoveAdd = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblRemove = new System.Windows.Forms.LinkLabel();
+            this.lblUpdate = new System.Windows.Forms.LinkLabel();
+            this.dgv = new QTech.Component.ExDataGridView();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDoDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.exLabel3 = new QTech.Component.ExLabel();
+            this.txtPayNote = new System.Windows.Forms.TextBox();
+            this.exLabel2 = new QTech.Component.ExLabel();
+            this.dtpDoDate = new QTech.Component.ExDateTimePicker();
+            this.lblDoDate = new QTech.Component.ExLabel();
             this.container.SuspendLayout();
             this.exPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.tabMain.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.tabGeneralTotal.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.flowLayOutLabelRemoveAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // container
@@ -328,47 +328,52 @@
             this.tabGeneralTotal.TabIndex = 1;
             this.tabGeneralTotal.Text = "ទូទាត់ទូទៅ";
             // 
-            // dtpDoDate
+            // panel2
             // 
-            this.dtpDoDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpDoDate.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDoDate.Location = new System.Drawing.Point(142, 18);
-            this.dtpDoDate.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
-            this.dtpDoDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.dtpDoDate.Name = "dtpDoDate";
-            this.dtpDoDate.Size = new System.Drawing.Size(200, 27);
-            this.dtpDoDate.TabIndex = 34;
+            this.panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.txtPayAmount);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Location = new System.Drawing.Point(142, 48);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.panel2.Size = new System.Drawing.Size(200, 27);
+            this.panel2.TabIndex = 43;
             // 
-            // lblDoDate
+            // txtPayAmount
             // 
-            this.lblDoDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDoDate.AutoSize = true;
-            this.lblDoDate.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDoDate.Location = new System.Drawing.Point(29, 22);
-            this.lblDoDate.Name = "lblDoDate";
-            this.lblDoDate.Required = true;
-            this.lblDoDate.Size = new System.Drawing.Size(80, 19);
-            this.lblDoDate.TabIndex = 33;
-            this.lblDoDate.Text = "កាលបរិច្ឋេទធ្វើ";
+            this.txtPayAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPayAmount.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtPayAmount.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPayAmount.Location = new System.Drawing.Point(0, 2);
+            this.txtPayAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPayAmount.Multiline = true;
+            this.txtPayAmount.Name = "txtPayAmount";
+            this.txtPayAmount.Size = new System.Drawing.Size(154, 23);
+            this.txtPayAmount.TabIndex = 0;
+            this.txtPayAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // txtPayNote
+            // label2
             // 
-            this.txtPayNote.Location = new System.Drawing.Point(142, 80);
-            this.txtPayNote.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPayNote.Multiline = true;
-            this.txtPayNote.Name = "txtPayNote";
-            this.txtPayNote.Size = new System.Drawing.Size(200, 27);
-            this.txtPayNote.TabIndex = 37;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label2.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(154, 2);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 23);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "USD";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // exLabel2
+            // exLabel1
             // 
-            this.exLabel2.AutoSize = true;
-            this.exLabel2.Location = new System.Drawing.Point(29, 84);
-            this.exLabel2.Name = "exLabel2";
-            this.exLabel2.Required = false;
-            this.exLabel2.Size = new System.Drawing.Size(41, 19);
-            this.exLabel2.TabIndex = 38;
-            this.exLabel2.Text = "ចំណាំ";
+            this.exLabel1.AutoSize = true;
+            this.exLabel1.Location = new System.Drawing.Point(29, 52);
+            this.exLabel1.Name = "exLabel1";
+            this.exLabel1.Required = false;
+            this.exLabel1.Size = new System.Drawing.Size(52, 19);
+            this.exLabel1.TabIndex = 42;
+            this.exLabel1.Text = "ទឹកប្រាក់";
             // 
             // flowLayOutLabelRemoveAdd
             // 
@@ -453,65 +458,6 @@
             this.dgv.Size = new System.Drawing.Size(315, 138);
             this.dgv.TabIndex = 40;
             // 
-            // exLabel3
-            // 
-            this.exLabel3.AutoSize = true;
-            this.exLabel3.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.exLabel3.Location = new System.Drawing.Point(25, 114);
-            this.exLabel3.Name = "exLabel3";
-            this.exLabel3.Required = false;
-            this.exLabel3.Size = new System.Drawing.Size(150, 19);
-            this.exLabel3.TabIndex = 41;
-            this.exLabel3.Text = "ទឹកប្រាក់មិនទាន់ទូទាត់ផ្តាច់";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.txtPayAmount);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(142, 49);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.panel2.Size = new System.Drawing.Size(200, 27);
-            this.panel2.TabIndex = 43;
-            // 
-            // txtPayAmount
-            // 
-            this.txtPayAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPayAmount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPayAmount.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPayAmount.Location = new System.Drawing.Point(0, 2);
-            this.txtPayAmount.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPayAmount.Multiline = true;
-            this.txtPayAmount.Name = "txtPayAmount";
-            this.txtPayAmount.Size = new System.Drawing.Size(154, 23);
-            this.txtPayAmount.TabIndex = 0;
-            this.txtPayAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label2.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(154, 2);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 23);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "USD";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // exLabel1
-            // 
-            this.exLabel1.AutoSize = true;
-            this.exLabel1.Location = new System.Drawing.Point(29, 53);
-            this.exLabel1.Name = "exLabel1";
-            this.exLabel1.Required = false;
-            this.exLabel1.Size = new System.Drawing.Size(52, 19);
-            this.exLabel1.TabIndex = 42;
-            this.exLabel1.Text = "ទឹកប្រាក់";
-            // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "Id";
@@ -543,6 +489,60 @@
             this.colNote.Name = "colNote";
             this.colNote.ReadOnly = true;
             // 
+            // exLabel3
+            // 
+            this.exLabel3.AutoSize = true;
+            this.exLabel3.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.exLabel3.Location = new System.Drawing.Point(25, 114);
+            this.exLabel3.Name = "exLabel3";
+            this.exLabel3.Required = false;
+            this.exLabel3.Size = new System.Drawing.Size(150, 19);
+            this.exLabel3.TabIndex = 41;
+            this.exLabel3.Text = "ទឹកប្រាក់មិនទាន់ទូទាត់ផ្តាច់";
+            // 
+            // txtPayNote
+            // 
+            this.txtPayNote.Location = new System.Drawing.Point(142, 79);
+            this.txtPayNote.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPayNote.Multiline = true;
+            this.txtPayNote.Name = "txtPayNote";
+            this.txtPayNote.Size = new System.Drawing.Size(200, 27);
+            this.txtPayNote.TabIndex = 37;
+            // 
+            // exLabel2
+            // 
+            this.exLabel2.AutoSize = true;
+            this.exLabel2.Location = new System.Drawing.Point(29, 83);
+            this.exLabel2.Name = "exLabel2";
+            this.exLabel2.Required = false;
+            this.exLabel2.Size = new System.Drawing.Size(41, 19);
+            this.exLabel2.TabIndex = 38;
+            this.exLabel2.Text = "ចំណាំ";
+            // 
+            // dtpDoDate
+            // 
+            this.dtpDoDate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dtpDoDate.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDoDate.Location = new System.Drawing.Point(142, 17);
+            this.dtpDoDate.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
+            this.dtpDoDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.dtpDoDate.Name = "dtpDoDate";
+            this.dtpDoDate.Size = new System.Drawing.Size(200, 27);
+            this.dtpDoDate.TabIndex = 34;
+            // 
+            // lblDoDate
+            // 
+            this.lblDoDate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblDoDate.AutoSize = true;
+            this.lblDoDate.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDoDate.Location = new System.Drawing.Point(29, 21);
+            this.lblDoDate.Name = "lblDoDate";
+            this.lblDoDate.Required = true;
+            this.lblDoDate.Size = new System.Drawing.Size(80, 19);
+            this.lblDoDate.TabIndex = 33;
+            this.lblDoDate.Text = "កាលបរិច្ឋេទធ្វើ";
+            // 
             // frmEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
@@ -561,11 +561,11 @@
             this.tabGeneral.PerformLayout();
             this.tabGeneralTotal.ResumeLayout(false);
             this.tabGeneralTotal.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.flowLayOutLabelRemoveAdd.ResumeLayout(false);
             this.flowLayOutLabelRemoveAdd.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }

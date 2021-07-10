@@ -144,6 +144,7 @@
     <Compile Include="Enums\PayStatus.cs" />
     <Compile Include="Enums\Currency.cs" />
     <Compile Include="Enums\SaleSearchKey.cs" />
+    <Compile Include="Enums\SupplierPayStatus.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\JsonNetSerializer.cs" />
     <Compile Include="Helpers\Enums.cs" />
@@ -151,6 +152,7 @@
     <Compile Include="BaseReport\ReportHelper.cs" />
     <Compile Include="Helpers\TempFile.cs" />
     <Compile Include="Helpers\UISetting.cs" />
+    <Compile Include="Models\SupplierGeneralPaid.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\CustomerPrice.cs" />
     <Compile Include="Models\Category.cs" />
