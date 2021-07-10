@@ -60,7 +60,7 @@ namespace QTech.Forms
         }
         public void InitEvent()
         {
-            this.Text = Base.Properties.Resources.CreateInvoice;
+            this.Text = Flag.GetTextDialog(Base.Properties.Resources.CreateInvoice);
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv.ReadOnly = false;
             dgv.AllowRowNotFound = false;

@@ -43,7 +43,7 @@ namespace QTech.Forms
         public void InitEvent()
         {
             this.MaximizeBox = false;
-            this.Text = Base.Properties.Resources.Customer;
+            this.Text = Flag.GetTextDialog(Base.Properties.Resources.Customer);
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             txtPhone.RegisterEnglishInput();
 

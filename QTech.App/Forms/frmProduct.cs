@@ -42,7 +42,7 @@ namespace QTech.Forms
         public void InitEvent()
         {
             this.MaximizeBox = false;
-            this.Text = Base.Properties.Resources.Products;
+            this.Text =Flag.GetTextDialog(Base.Properties.Resources.Products);
             txtUnitPrice.RegisterEnglishInputWith(txtImportPrice);
             txtName.RegisterPrimaryInputWith(txtNote, txtName);
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);

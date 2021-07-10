@@ -526,4 +526,13 @@
   <data name="View" xml:space="preserve">
     <value>មើល</value>
   </data>
+  <data name="Amount" xml:space="preserve">
+    <value>ទឹកប្រាក់</value>
+  </data>
+  <data name="DoDate" xml:space="preserve">
+    <value>ថ្ងៃធ្វើ</value>
+  </data>
+  <data name="GeneralTotal" xml:space="preserve">
+    <value>ទូទាត់ទូទៅ</value>
+  </data>
 </root>

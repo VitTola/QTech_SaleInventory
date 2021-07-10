@@ -56,7 +56,7 @@ namespace QTech.Forms
         }
         public void InitEvent()
         {
-            this.Text = Base.Properties.Resources.Sales;
+            this.Text = Flag.GetTextDialog(Base.Properties.Resources.Sales);
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             txtPurchaseOrderNo.RegisterPrimaryInputWith(cboSite);
             txtPurchaseOrderNo.RegisterEnglishInputWith(txtPurchaseOrderNo);

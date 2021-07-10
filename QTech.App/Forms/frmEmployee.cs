@@ -42,7 +42,7 @@ namespace QTech.Forms
         public void InitEvent()
         {
             this.MaximizeBox = false;
-            this.Text = Base.Properties.Resources.Employees;
+            this.Text = Flag.GetTextDialog(Base.Properties.Resources.Employees);
             txtPhone.RegisterEnglishInput();
             txtName.RegisterPrimaryInputWith(cboPosition,txtNote,txtName);
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);

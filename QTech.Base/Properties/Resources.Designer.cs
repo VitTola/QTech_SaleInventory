@@ -88,6 +88,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ទឹកប្រាក់.
+        /// </summary>
+        public static string Amount {
+            get {
+                return ResourceManager.GetString("Amount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap billing {
@@ -288,6 +297,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ថ្ងៃធ្វើ.
+        /// </summary>
+        public static string DoDate {
+            get {
+                return ResourceManager.GetString("DoDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to អ្នកដឹក.
         /// </summary>
         public static string Driver {
@@ -369,6 +387,15 @@ namespace QTech.Base.Properties {
         public static string General {
             get {
                 return ResourceManager.GetString("General", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ទូទាត់ទូទៅ.
+        /// </summary>
+        public static string GeneralTotal {
+            get {
+                return ResourceManager.GetString("GeneralTotal", resourceCulture);
             }
         }
         
