@@ -71,16 +71,26 @@ namespace QTech.Base.BaseModels
 
         public readonly List<MenuBar> _secondLevelMenue = new List<MenuBar>()
         {
-            //new MenuBar()
-            //{
-            //    Index = 1,
-            //    Level = 2,
-            //    ParentKey = AuthKey.Employee,
-            //    DisplayName = BaseResource.Employees+BaseResource.Employees+BaseResource.Employees,
-            //    Icon = BaseResource.Driver_img,
-            //    Children = new List<MenuBar>(),
-            //    FormName = "QTech.Forms.Form1"
-            //},
+            new MenuBar()
+            {
+                Index = 1,
+                Level = 2,
+                ParentKey = AuthKey.Employee,
+                DisplayName = BaseResource.Employees,
+                Icon = BaseResource.GeneralEmployee,
+                Children = new List<MenuBar>(),
+                FormName = "QTech.Forms.EmployeePage"
+            },
+            new MenuBar()
+            {
+                Index = 2,
+                Level = 2,
+                ParentKey = AuthKey.Employee,
+                DisplayName = BaseResource.RuningBill,
+                Icon = BaseResource.RunningBill_img,
+                Children = new List<MenuBar>(),
+                FormName = "QTech.Forms.EmployeeBillingPage"
+            },
             new MenuBar()
             {
                 Index = 1,
@@ -135,25 +145,23 @@ namespace QTech.Base.BaseModels
                 FormName = "QTech.Forms.CreateInvoicePage"
 
             },
-
-
         };
 
         public readonly List<MenuBar> _menuBars = new List<MenuBar>()
         {
             new MenuBar()
             {
-                Index = 1,
+                Index = 2,
                 Level = 1,
                 Key = AuthKey.Employee,
                 DisplayName = BaseResource.Employees,
                 Icon = BaseResource.Employee_img,
                 Children = new List<MenuBar>(),
-                FormName = "QTech.Forms.EmployeePage"
+                FormName = ""
             },
             new MenuBar()
             {
-                Index = 2,
+                Index = 1,
                 Level = 1,
                 Key = AuthKey.Customer,
                 DisplayName = BaseResource.Customer,

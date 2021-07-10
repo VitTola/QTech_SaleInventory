@@ -391,6 +391,16 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap GeneralEmployee {
+            get {
+                object obj = ResourceManager.GetObject("GeneralEmployee", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ទូទាត់ទូទៅ.
         /// </summary>
         public static string GeneralTotal {
@@ -1045,6 +1055,25 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ការទូទាត់.
+        /// </summary>
+        public static string RuningBill {
+            get {
+                return ResourceManager.GetString("RuningBill", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap RunningBill_img {
+            get {
+                object obj = ResourceManager.GetObject("RunningBill_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap RyLogo {
@@ -1230,15 +1259,6 @@ namespace QTech.Base.Properties {
         public static string Status {
             get {
                 return ResourceManager.GetString("Status", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string str {
-            get {
-                return ResourceManager.GetString("str", resourceCulture);
             }
         }
         

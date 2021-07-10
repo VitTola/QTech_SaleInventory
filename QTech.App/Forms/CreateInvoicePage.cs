@@ -224,6 +224,7 @@ namespace QTech.Forms
         }
         public async Task Search()
         {
+            dgv.Columns[colInvoiceNo.Name].DisplayIndex = 1;
             var _selectdCus = cboCustomer?.SelectedObject?.ItemObject as Customer;
             var search = new InvoiceSearch();
             if (_selectdCus != null)

@@ -152,6 +152,7 @@
     <Compile Include="BaseReport\ReportHelper.cs" />
     <Compile Include="Helpers\TempFile.cs" />
     <Compile Include="Helpers\UISetting.cs" />
+    <Compile Include="Models\EmployeeBill.cs" />
     <Compile Include="Models\SupplierGeneralPaid.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\CustomerPrice.cs" />
@@ -247,6 +248,8 @@
     <Content Include="Dll\esc-pos-usb-net.dll" />
     <Content Include="Dll\FastMember.dll" />
     <Content Include="Dll\QTech.Component.dll" />
+    <None Include="Resources\GeneralEmployee.png" />
+    <None Include="Resources\RunningBill_img.png" />
     <None Include="Resources\delivery.png" />
     <None Include="Resources\Printer.png" />
     <None Include="Resources\CornerLeft.png" />

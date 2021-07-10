@@ -195,6 +195,7 @@ namespace QTech.Forms
 
         public async Task Search()
         {
+            dgv.Columns[colName.Name].DisplayIndex = 1;
             var search = new CustomerSearch()
             {
                 Search = txtSearch.Text,
@@ -247,7 +248,6 @@ namespace QTech.Forms
                 node.Cells[dgv.Columns[colNote.Name].Index].Value = child.Note;
                 node.Cells[dgv.Columns[colId.Name].Index].Value = child.Id;
                 node.Cells[dgv.Columns[colParentId.Name].Index].Value = child.CustomerId;
-
             }
         }
 

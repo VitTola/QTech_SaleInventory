@@ -436,8 +436,8 @@
   <data name="PayStatus_All" xml:space="preserve">
     <value>ស្ថានភាពទាំងអស់</value>
   </data>
-  <data name="str" xml:space="preserve">
-    <value />
+  <data name="RuningBill" xml:space="preserve">
+    <value>ការទូទាត់</value>
   </data>
   <data name="Report_" xml:space="preserve">
     <value>របាយការណ៍</value>
@@ -537,5 +537,11 @@
   </data>
   <data name="MsgConfirmingRemoveSupplierPaid" xml:space="preserve">
     <value>តើអ្នកពិតជាចង់លុបមែនទេ?</value>
+  </data>
+  <data name="RunningBill_img" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RunningBill_img.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GeneralEmployee" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GeneralEmployee.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

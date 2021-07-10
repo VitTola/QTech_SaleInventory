@@ -144,6 +144,12 @@
     <Compile Include="Forms\CloseDataEntryPage.Designer.cs">
       <DependentUpon>CloseDataEntryPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmEmployeeBilling.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEmployeeBilling.Designer.cs">
+      <DependentUpon>frmEmployeeBilling.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ReportViewPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,11 +162,11 @@
     <Compile Include="Forms\SalePage.Designer.cs">
       <DependentUpon>SalePage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ProductCategoryPage.cs">
+    <Compile Include="Forms\EmployeeBillingPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ProductCategoryPage.Designer.cs">
-      <DependentUpon>ProductCategoryPage.cs</DependentUpon>
+    <Compile Include="Forms\EmployeeBillingPage.Designer.cs">
+      <DependentUpon>EmployeeBillingPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SupplierPage.cs">
       <SubType>Form</SubType>
@@ -287,14 +293,17 @@
     <EmbeddedResource Include="Forms\CloseDataEntryPage.resx">
       <DependentUpon>CloseDataEntryPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEmployeeBilling.resx">
+      <DependentUpon>frmEmployeeBilling.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReportViewPage.resx">
       <DependentUpon>ReportViewPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SalePage.resx">
       <DependentUpon>SalePage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ProductCategoryPage.resx">
-      <DependentUpon>ProductCategoryPage.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\EmployeeBillingPage.resx">
+      <DependentUpon>EmployeeBillingPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SupplierPage.resx">
       <DependentUpon>SupplierPage.cs</DependentUpon>
