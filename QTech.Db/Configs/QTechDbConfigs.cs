@@ -1,4 +1,5 @@
 ﻿using QTech.Base;
+using QTech.Base.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -17,6 +18,7 @@ namespace QTech.Db.Configs
             modelBuilder.Entity<Sale>().Ignore(x => x.SaleDetails);
             modelBuilder.Entity<Customer>().Ignore(x => x.CustomerPrices);
             modelBuilder.Entity<Invoice>().Ignore(x => x.InvoiceDetails);
+            modelBuilder.Entity<Employee>().Ignore(x => x.SupplierGeneralPaids);
 
         }
 

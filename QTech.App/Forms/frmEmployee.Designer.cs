@@ -31,7 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCreatedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,23 +53,22 @@
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
             this.tabGeneralTotal = new System.Windows.Forms.TabPage();
+            this.dtpDoDate = new QTech.Component.ExDateTimePicker();
+            this.lblDoDate = new QTech.Component.ExLabel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtPayAmount = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.exLabel1 = new QTech.Component.ExLabel();
             this.flowLayOutLabelRemoveAdd = new System.Windows.Forms.FlowLayoutPanel();
             this.lblRemove = new System.Windows.Forms.LinkLabel();
-            this.lblUpdate = new System.Windows.Forms.LinkLabel();
             this.dgv = new QTech.Component.ExDataGridView();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDoDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.exLabel3 = new QTech.Component.ExLabel();
             this.txtPayNote = new System.Windows.Forms.TextBox();
             this.exLabel2 = new QTech.Component.ExLabel();
-            this.dtpDoDate = new QTech.Component.ExDateTimePicker();
-            this.lblDoDate = new QTech.Component.ExLabel();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDoDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.container.SuspendLayout();
             this.exPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -88,37 +86,17 @@
             this.container.Controls.Add(this.exPanel1);
             this.container.Size = new System.Drawing.Size(382, 370);
             // 
-            // colId
-            // 
-            this.colId.DataPropertyName = "Id";
-            this.colId.HeaderText = "Id";
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            this.colId.Visible = false;
-            // 
             // colUserId
             // 
-            this.colUserId.DataPropertyName = "UserId";
-            this.colUserId.HeaderText = "UserId";
             this.colUserId.Name = "colUserId";
-            this.colUserId.ReadOnly = true;
-            this.colUserId.Visible = false;
             // 
             // colName
             // 
-            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colName.DataPropertyName = "Name";
-            this.colName.HeaderText = "FullName";
             this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
             // 
             // colCreatedBy
             // 
-            this.colCreatedBy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCreatedBy.DataPropertyName = "CreatedBy";
-            this.colCreatedBy.HeaderText = "CreateBy";
             this.colCreatedBy.Name = "colCreatedBy";
-            this.colCreatedBy.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -312,6 +290,8 @@
             // tabGeneralTotal
             // 
             this.tabGeneralTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.tabGeneralTotal.Controls.Add(this.dtpDoDate);
+            this.tabGeneralTotal.Controls.Add(this.lblDoDate);
             this.tabGeneralTotal.Controls.Add(this.panel2);
             this.tabGeneralTotal.Controls.Add(this.exLabel1);
             this.tabGeneralTotal.Controls.Add(this.flowLayOutLabelRemoveAdd);
@@ -319,14 +299,29 @@
             this.tabGeneralTotal.Controls.Add(this.exLabel3);
             this.tabGeneralTotal.Controls.Add(this.txtPayNote);
             this.tabGeneralTotal.Controls.Add(this.exLabel2);
-            this.tabGeneralTotal.Controls.Add(this.dtpDoDate);
-            this.tabGeneralTotal.Controls.Add(this.lblDoDate);
             this.tabGeneralTotal.Location = new System.Drawing.Point(4, 28);
             this.tabGeneralTotal.Name = "tabGeneralTotal";
             this.tabGeneralTotal.Padding = new System.Windows.Forms.Padding(3);
             this.tabGeneralTotal.Size = new System.Drawing.Size(372, 300);
             this.tabGeneralTotal.TabIndex = 1;
             this.tabGeneralTotal.Text = "ទូទាត់ទូទៅ";
+            // 
+            // dtpDoDate
+            // 
+            this.dtpDoDate.Location = new System.Drawing.Point(142, 17);
+            this.dtpDoDate.Name = "dtpDoDate";
+            this.dtpDoDate.Size = new System.Drawing.Size(200, 27);
+            this.dtpDoDate.TabIndex = 45;
+            // 
+            // lblDoDate
+            // 
+            this.lblDoDate.AutoSize = true;
+            this.lblDoDate.Location = new System.Drawing.Point(29, 21);
+            this.lblDoDate.Name = "lblDoDate";
+            this.lblDoDate.Required = false;
+            this.lblDoDate.Size = new System.Drawing.Size(52, 19);
+            this.lblDoDate.TabIndex = 44;
+            this.lblDoDate.Text = "ទឹកប្រាក់";
             // 
             // panel2
             // 
@@ -368,7 +363,7 @@
             // exLabel1
             // 
             this.exLabel1.AutoSize = true;
-            this.exLabel1.Location = new System.Drawing.Point(29, 52);
+            this.exLabel1.Location = new System.Drawing.Point(29, 50);
             this.exLabel1.Name = "exLabel1";
             this.exLabel1.Required = false;
             this.exLabel1.Size = new System.Drawing.Size(52, 19);
@@ -378,7 +373,6 @@
             // flowLayOutLabelRemoveAdd
             // 
             this.flowLayOutLabelRemoveAdd.Controls.Add(this.lblRemove);
-            this.flowLayOutLabelRemoveAdd.Controls.Add(this.lblUpdate);
             this.flowLayOutLabelRemoveAdd.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayOutLabelRemoveAdd.Location = new System.Drawing.Point(209, 114);
             this.flowLayOutLabelRemoveAdd.Name = "flowLayOutLabelRemoveAdd";
@@ -396,18 +390,7 @@
             this.lblRemove.TabIndex = 0;
             this.lblRemove.TabStop = true;
             this.lblRemove.Text = "លុប";
-            // 
-            // lblUpdate
-            // 
-            this.lblUpdate.AutoSize = true;
-            this.lblUpdate.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lblUpdate.Location = new System.Drawing.Point(64, 0);
-            this.lblUpdate.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.lblUpdate.Name = "lblUpdate";
-            this.lblUpdate.Size = new System.Drawing.Size(37, 19);
-            this.lblUpdate.TabIndex = 0;
-            this.lblUpdate.TabStop = true;
-            this.lblUpdate.Text = "កែប្រែ";
+            this.lblRemove.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblRemove_LinkClicked);
             // 
             // dgv
             // 
@@ -432,7 +415,7 @@
             this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn5,
+            this.colId,
             this.colDoDate,
             this.colAmount,
             this.colNote});
@@ -457,37 +440,6 @@
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(315, 138);
             this.dgv.TabIndex = 40;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Id";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Id";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Visible = false;
-            // 
-            // colDoDate
-            // 
-            this.colDoDate.DataPropertyName = "DoDate";
-            this.colDoDate.HeaderText = "កាលបរិច្ឆេទ";
-            this.colDoDate.Name = "colDoDate";
-            this.colDoDate.ReadOnly = true;
-            // 
-            // colAmount
-            // 
-            this.colAmount.DataPropertyName = "Amount";
-            this.colAmount.HeaderText = "ទឹកប្រាក់";
-            this.colAmount.Name = "colAmount";
-            this.colAmount.ReadOnly = true;
-            this.colAmount.Width = 70;
-            // 
-            // colNote
-            // 
-            this.colNote.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colNote.DataPropertyName = "Note";
-            this.colNote.HeaderText = "ចំណាំ";
-            this.colNote.Name = "colNote";
-            this.colNote.ReadOnly = true;
             // 
             // exLabel3
             // 
@@ -520,28 +472,36 @@
             this.exLabel2.TabIndex = 38;
             this.exLabel2.Text = "ចំណាំ";
             // 
-            // dtpDoDate
+            // colId
             // 
-            this.dtpDoDate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dtpDoDate.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDoDate.Location = new System.Drawing.Point(142, 17);
-            this.dtpDoDate.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
-            this.dtpDoDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.dtpDoDate.Name = "dtpDoDate";
-            this.dtpDoDate.Size = new System.Drawing.Size(200, 27);
-            this.dtpDoDate.TabIndex = 34;
+            this.colId.DataPropertyName = "Id";
+            this.colId.HeaderText = "Id";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            this.colId.Visible = false;
             // 
-            // lblDoDate
+            // colDoDate
             // 
-            this.lblDoDate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblDoDate.AutoSize = true;
-            this.lblDoDate.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDoDate.Location = new System.Drawing.Point(29, 21);
-            this.lblDoDate.Name = "lblDoDate";
-            this.lblDoDate.Required = true;
-            this.lblDoDate.Size = new System.Drawing.Size(80, 19);
-            this.lblDoDate.TabIndex = 33;
-            this.lblDoDate.Text = "កាលបរិច្ឋេទធ្វើ";
+            this.colDoDate.DataPropertyName = "DoDate";
+            this.colDoDate.HeaderText = "កាលបរិច្ឆេទ";
+            this.colDoDate.Name = "colDoDate";
+            this.colDoDate.ReadOnly = true;
+            // 
+            // colAmount
+            // 
+            this.colAmount.DataPropertyName = "Amount";
+            this.colAmount.HeaderText = "ទឹកប្រាក់";
+            this.colAmount.Name = "colAmount";
+            this.colAmount.ReadOnly = true;
+            this.colAmount.Width = 70;
+            // 
+            // colNote
+            // 
+            this.colNote.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colNote.DataPropertyName = "Note";
+            this.colNote.HeaderText = "ចំណាំ";
+            this.colNote.Name = "colNote";
+            this.colNote.ReadOnly = true;
             // 
             // frmEmployee
             // 
@@ -571,7 +531,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUserId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCreatedBy;
@@ -594,20 +553,19 @@
         private System.Windows.Forms.TabControl tabMain;
         private System.Windows.Forms.TabPage tabGeneral;
         private System.Windows.Forms.TabPage tabGeneralTotal;
-        private Component.ExDateTimePicker dtpDoDate;
-        private Component.ExLabel lblDoDate;
         private System.Windows.Forms.TextBox txtPayNote;
         private Component.ExLabel exLabel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayOutLabelRemoveAdd;
         private System.Windows.Forms.LinkLabel lblRemove;
-        private System.Windows.Forms.LinkLabel lblUpdate;
         private Component.ExDataGridView dgv;
         private Component.ExLabel exLabel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtPayAmount;
         private System.Windows.Forms.Label label2;
         private Component.ExLabel exLabel1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private Component.ExDateTimePicker dtpDoDate;
+        private Component.ExLabel lblDoDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDoDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNote;

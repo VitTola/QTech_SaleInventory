@@ -17,6 +17,41 @@ namespace QTech.Db.Logics
             var result = All().FirstOrDefault(x => x.Active && x.Id == id);
             return result;
         }
+        public override Employee AddAsync(Employee entity)
+        {
+            var employee = base.AddAsync(entity);
+            return employee;
+        }
+        public override Employee UpdateAsync(Employee entity)
+        {
+            var employee = base.UpdateAsync(entity);
+            if (entity.SupplierGeneralPaids.Any())
+            {
+                employee.SupplierGeneralPaids.ForEach(x=>
+                {
+                    if (x.Id == 0)
+                    {
+                        x.EmployeeId = employee.Id;
+                        SupplierGeneralPaidLogic.Instance.AddAsync(x);
+                    }
+                    else
+                    {
+                        SupplierGeneralPaidLogic.Instance.RemoveAsync(x);
+                    }
+                });
+            }
+
+            return entity;
+        }
+        public override Employee RemoveAsync(Employee entity)
+        {
+            var employee = base.RemoveAsync(entity);
+            if (entity.SupplierGeneralPaids.Any())
+            {
+                entity.SupplierGeneralPaids.ForEach(x => SupplierGeneralPaidLogic.Instance.RemoveAsync(x));
+            }
+            return employee;
+        }
         public override bool CanRemoveAsync(Employee entity)
         {
             if (!All().Any(x => x.Active && x.Id == entity.Id))

@@ -1,4 +1,5 @@
 ﻿using EasyServer.Domain.Models;
+using QTech.Base.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,6 @@ namespace QTech.Base
         public string Phone { get; set; }
         public string Position { get; set; }
         public string Note { get; set; }
+        public List<SupplierGeneralPaid> SupplierGeneralPaids { get; set; }
     }
 }
