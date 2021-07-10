@@ -629,6 +629,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to តើអ្នកពិតជាចង់លុបមែនទេ?.
+        /// </summary>
+        public static string MsgConfirmingRemoveSupplierPaid {
+            get {
+                return ResourceManager.GetString("MsgConfirmingRemoveSupplierPaid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to បានយកទៅប្រើប្រាស់ហើយ មិនអាចលុបបានទេ!.
         /// </summary>
         public static string MsgDataCurrentlyInUsed {

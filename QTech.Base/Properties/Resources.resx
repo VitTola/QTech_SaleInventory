@@ -535,4 +535,7 @@
   <data name="GeneralTotal" xml:space="preserve">
     <value>ទូទាត់ទូទៅ</value>
   </data>
+  <data name="MsgConfirmingRemoveSupplierPaid" xml:space="preserve">
+    <value>តើអ្នកពិតជាចង់លុបមែនទេ?</value>
+  </data>
 </root>

@@ -257,7 +257,6 @@ namespace QTech.Forms
                     row.Cells[colTotal.Name].Value = x.Total;
                     row.Cells[colUnitPrice.Name].Value = products?.FirstOrDefault(y => y.Id == x.ProductId)?.UnitPrice;
 
-
                     if (products != null)
                     {
                         var pro = products?.FirstOrDefault(f => f.Id == x.ProductId);

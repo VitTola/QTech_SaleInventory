@@ -1,5 +1,7 @@
 ﻿using QTech.Base;
 using QTech.Base.Helpers;
+using QTech.Base.Models;
+using QTech.Base.SearchModels;
 using QTech.Component;
 using QTech.Component.Helpers;
 using QTech.Db.Logics;
@@ -12,12 +14,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BaseResource = QTech.Base.Properties.Resources;
 
 namespace QTech.Forms
 {
     public partial class frmEmployee : ExDialog, IDialog
     {
         public Employee Model { get; set; }
+        private int selectedSupplierPaidId;
 
         public frmEmployee(Employee model, GeneralProcess flag)
         {
@@ -46,6 +50,64 @@ namespace QTech.Forms
             txtPhone.RegisterEnglishInput();
             txtName.RegisterPrimaryInputWith(cboPosition,txtNote,txtName);
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
+            dgv.ReadOnly = true;
+            if (Flag == GeneralProcess.Add)
+            {
+                tabMain.Controls.Remove(tabGeneralTotal);
+            }
+            tabMain.SelectedIndexChanged += TabMain_SelectedIndexChanged;
+            dgv.Columns[colDoDate.Name].DefaultCellStyle.Format = "dd-MMM-yyyy hh:mm";
+        }
+
+        private void Dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgv.RowCount > 0)
+            {
+                var selectedRow = dgv.SelectedRows;
+                dtpDoDate.Value =Convert.ToDateTime(selectedRow[0].Cells[colDoDate.Name].Value.ToString());
+                txtPayAmount.Text = selectedRow[0].Cells[colAmount.Name].Value.ToString();
+                txtPayNote.Text = selectedRow[0].Cells[colNote.Name].Value.ToString();
+
+                selectedSupplierPaidId= int.Parse(selectedRow[0].Cells[colId.Name].Value.ToString());
+            }
+
+            
+        }
+
+        private async void TabMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabMain.SelectedTab.Equals(tabGeneralTotal))
+            {
+                var search = new SupplierGeneralPaidSearch() { EmployeeId = Model.Id };
+                var SupplierGeneralPaids = await dgv.RunAsync(() =>
+                {
+                    var result = SupplierGeneralPaidLogic.Instance.SearchAsync(search);
+                    return result;
+                });
+                if (SupplierGeneralPaids == null)
+                {
+                    return;
+                }
+                SupplierGeneralPaids.ForEach(x=>
+                {
+                    var row = newRow(false);
+                    row.Cells[colId.Name].Value = x.Id;
+                    row.Cells[colDoDate.Name].Value = x.DoDate;
+                    row.Cells[colAmount.Name].Value = x.Amount;
+                    row.Cells[colNote.Name].Value = x.Note;
+                });
+            }
+        }
+        private DataGridViewRow newRow(bool isFocus = false)
+        {
+            var row = dgv.Rows[dgv.Rows.Add()];
+            row.Cells[colId.Name].Value = 0;
+            row.Cells[colId.Name].Value = 0;
+            if (isFocus)
+            {
+                dgv.Focus();
+            }
+            return row;
         }
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
@@ -118,6 +180,21 @@ namespace QTech.Forms
             Model.Note = txtNote.Text;
             Model.Phone = txtPhone.Text;
             Model.Position = cboPosition.Text;
+
+            if (!string.IsNullOrEmpty(txtPayAmount.Text))
+            {
+                if (Model.SupplierGeneralPaids == null)
+                {
+                    Model.SupplierGeneralPaids = new List<SupplierGeneralPaid>();
+                }
+                Model.SupplierGeneralPaids.Add(
+                    new SupplierGeneralPaid()
+                    {
+                        DoDate = dtpDoDate.Value,
+                        Amount = decimal.Parse(txtPayAmount.Text),
+                        Note = txtPayNote.Text
+                    });
+            }
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -126,6 +203,37 @@ namespace QTech.Forms
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void lblRemove_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var result = MsgBox.ShowQuestion(BaseResource.MsgConfirmingRemoveSupplierPaid,
+                GeneralProcess.Remove.GetTextDialog(""));
+            if (result == DialogResult.Yes)
+            {
+                if (dgv.SelectedRows.Count == 0 || dgv.SelectedRows[0] == null)
+                {
+                    return;
+                }
+                
+                var row = dgv.SelectedRows[0];
+                var idValue = row.Cells[colId.Name].Value;
+                if (idValue != null)
+                {
+                    if (Model.SupplierGeneralPaids == null)
+                    {
+                        Model.SupplierGeneralPaids = new List<SupplierGeneralPaid>();
+                    }
+                    Model.SupplierGeneralPaids.Add(new SupplierGeneralPaid() {
+                        Id = (int)idValue,
+                        DoDate = Convert.ToDateTime(row.Cells[colDoDate.Name].Value.ToString()),
+                        Amount = decimal.Parse(row.Cells[colAmount.Name].Value.ToString()),
+                        Note = row.Cells[colNote.Name].Value.ToString()
+                    });
+                    dgv.Rows.Remove(row);
+                    return;
+                }
+            }
         }
     }
 }
