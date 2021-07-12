@@ -143,6 +143,7 @@
     <Compile Include="Enums\AuthKey.cs" />
     <Compile Include="Enums\PayStatus.cs" />
     <Compile Include="Enums\Currency.cs" />
+    <Compile Include="Enums\PermissionType.cs" />
     <Compile Include="Enums\SaleSearchKey.cs" />
     <Compile Include="Enums\SupplierPayStatus.cs" />
     <Compile Include="Helpers\Constants.cs" />
@@ -152,6 +153,7 @@
     <Compile Include="BaseReport\ReportHelper.cs" />
     <Compile Include="Helpers\TempFile.cs" />
     <Compile Include="Helpers\UISetting.cs" />
+    <Compile Include="Models\PurchaseOrder.cs" />
     <Compile Include="Models\EmployeeBill.cs" />
     <Compile Include="Models\SupplierGeneralPaid.cs" />
     <Compile Include="Models\Invoice.cs" />
@@ -163,6 +165,7 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Sale.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserPermission.cs" />
     <Compile Include="OutFaceModels\DriverDeliveryDetail.cs" />
     <Compile Include="OutFaceModels\SaleInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

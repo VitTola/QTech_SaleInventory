@@ -32,6 +32,12 @@ namespace QTech.Db
         public virtual DbSet<Invoice> Invoices { get; set; }
         public virtual DbSet<InvoiceDetail> InvoiceDetails { get; set; }
         public virtual DbSet<SupplierGeneralPaid> SupplierGeneralPaids { get; set; }
+        public virtual DbSet<EmployeeBill> EmployeeBills { get; set; }
+        public virtual DbSet<QTech.Base.Models.User> Users { get; set; }
+        public virtual DbSet<Base.Permission> Permissions { get; set; }
+        public virtual DbSet<UserPermission> UserPermissions { get; set; }
+        public virtual DbSet<POProductPrice> POProductPrices { get; set; }
+        public virtual DbSet<PurchaseOrder> PurchaseOrders { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

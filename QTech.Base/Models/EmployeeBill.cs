@@ -8,9 +8,11 @@ namespace QTech.Base.Models
 {
     public class EmployeeBill : QTech.Base.ActiveBaseModel
     {
-        public string Code { get; set; }
-        public string Name { get; set; }
-        public string Note { get; set; }
-
+        public DateTime DoDate{ get; set; }
+        public decimal Total { get; set; }
+        public int CustomerId { get; set; }
+        public int SiteId { get; set; }
+        public int EmployeeId { get; set; }
+        public List<int> SaleDetailIds{ get; set; }
     }
 }

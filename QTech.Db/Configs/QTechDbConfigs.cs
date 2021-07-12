@@ -19,9 +19,10 @@ namespace QTech.Db.Configs
             modelBuilder.Entity<Customer>().Ignore(x => x.CustomerPrices);
             modelBuilder.Entity<Invoice>().Ignore(x => x.InvoiceDetails);
             modelBuilder.Entity<Employee>().Ignore(x => x.SupplierGeneralPaids);
+            modelBuilder.Entity<EmployeeBill>().Ignore(x => x.SaleDetailIds);
+            modelBuilder.Entity<QTech.Base.Models.User>().Ignore(x => x.UserPermissions);
+            modelBuilder.Entity<QTech.Base.Models.PurchaseOrder>().Ignore(x => x.POProductPrices);
 
         }
-
-
     }
 }

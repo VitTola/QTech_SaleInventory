@@ -32,5 +32,6 @@ namespace QTech.Base
         public int Qauntity { get; set; }
         public decimal Total{ get; set; }
         public SupplierPayStatus SupplierPayStatus { get; set; }
+        public int EmployeeBillId { get; set; }
     }
 }
