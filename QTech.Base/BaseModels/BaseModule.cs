@@ -125,7 +125,7 @@ namespace QTech.Base.BaseModels
             },
             new MenuBar()
             {
-                Index = 4,
+                Index = 2,
                 Level = 2,
                 ParentKey = AuthKey.Sale,
                 DisplayName = BaseResource.Sales,
@@ -136,13 +136,24 @@ namespace QTech.Base.BaseModels
             },
             new MenuBar()
             {
-                Index = 5,
+                Index = 3,
                 Level = 2,
                 ParentKey = AuthKey.Sale,
                 DisplayName = BaseResource.CreateInvoice,
                 Icon = BaseResource.Report_img32,
                 Children = new List<MenuBar>(),
                 FormName = "QTech.Forms.CreateInvoicePage"
+
+            },
+            new MenuBar()
+            {
+                Index = 1,
+                Level = 2,
+                ParentKey = AuthKey.Sale,
+                DisplayName = BaseResource.PurchaseOrderNo,
+                Icon = BaseResource.PurchaseOrder_img,
+                Children = new List<MenuBar>(),
+                FormName = "QTech.Forms.PurchaseOrderPage"
 
             },
         };

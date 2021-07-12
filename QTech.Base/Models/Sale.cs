@@ -22,6 +22,7 @@ namespace QTech.Base
         public decimal PaymentLeft { get; set; }
        // public bool IsPaid { get; set; } = false;
         public PayStatus PayStatus { get; set; }
+        public  decimal Expense { get; set; }
     }
 
     public class SaleDetail : ActiveBaseModel
@@ -33,5 +34,7 @@ namespace QTech.Base
         public decimal Total{ get; set; }
         public SupplierPayStatus SupplierPayStatus { get; set; }
         public int EmployeeBillId { get; set; }
+        public decimal Expense { get; set; }
+
     }
 }

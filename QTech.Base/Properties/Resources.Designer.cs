@@ -960,6 +960,16 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap PurchaseOrder_img {
+            get {
+                object obj = ResourceManager.GetObject("PurchaseOrder_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to លេខបញ្ជាទិញ.
         /// </summary>
         public static string PurchaseOrderNo {
@@ -1259,6 +1269,15 @@ namespace QTech.Base.Properties {
         public static string Status {
             get {
                 return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string str {
+            get {
+                return ResourceManager.GetString("str", resourceCulture);
             }
         }
         

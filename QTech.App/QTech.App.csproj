@@ -108,6 +108,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\frmPurchaseOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPurchaseOrder.Designer.cs">
+      <DependentUpon>frmPurchaseOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PurchaseOrderPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PurchaseOrderPage.Designer.cs">
+      <DependentUpon>PurchaseOrderPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CategoryPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -275,6 +287,12 @@
       <DependentUpon>RportDriverDeliveryDetail.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="Forms\frmPurchaseOrder.resx">
+      <DependentUpon>frmPurchaseOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PurchaseOrderPage.resx">
+      <DependentUpon>PurchaseOrderPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CategoryPage.resx">
       <DependentUpon>CategoryPage.cs</DependentUpon>
     </EmbeddedResource>

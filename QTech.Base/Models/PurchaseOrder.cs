@@ -26,3 +26,4 @@ namespace QTech.Base.Models
         public string Note { get; set; }
     }
 }
+

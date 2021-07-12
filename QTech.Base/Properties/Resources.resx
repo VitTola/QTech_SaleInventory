@@ -544,4 +544,10 @@
   <data name="GeneralEmployee" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GeneralEmployee.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="PurchaseOrder_img" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PurchaseOrder_img.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="str" xml:space="preserve">
+    <value />
+  </data>
 </root>
