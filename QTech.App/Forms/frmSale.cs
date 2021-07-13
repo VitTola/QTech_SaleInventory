@@ -53,13 +53,19 @@ namespace QTech.Forms
             colProductId.SearchParamFn = () => new ProductSearch();
             colEmployeeId.DataSourceFn = p => EmployeeLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
             colEmployeeId.SearchParamFn = () => new EmployeeSearch();
+            cboPurchaseOrderNo.DataSourceFn = p =>{
+                var result = PurchaseOrderLogic.Instance.SearchAsync(p).Where(x => !x.IsReachQty);
+                return result.ToDropDownItemModelList();
+            };
+            cboPurchaseOrderNo.SearchParamFn = () => new PurchaseOrderSearch();
+            
         }
         public void InitEvent()
         {
             this.Text = Flag.GetTextDialog(Base.Properties.Resources.Sales);
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            txtPurchaseOrderNo.RegisterPrimaryInputWith(cboSite);
-            txtPurchaseOrderNo.RegisterEnglishInputWith(txtPurchaseOrderNo);
+            cboPurchaseOrderNo.RegisterPrimaryInputWith(cboSite);
+            cboPurchaseOrderNo.RegisterEnglishInputWith(cboPurchaseOrderNo);
             dgv.RegisterEnglishInputColumns(colQauntity);
             colUnitPrice.ReadOnly = colTotal.ReadOnly = true;
             dgv.ReadOnly = false;
@@ -74,8 +80,23 @@ namespace QTech.Forms
             }
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
             txtTotal.ReadOnly = true;
+            cboPurchaseOrderNo.DropDownStyle = ComboBoxStyle.DropDown;
+            dgv.CellBeginEdit += Dgv_CellBeginEdit;
 
         }
+
+        private void Dgv_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(cboPurchaseOrderNo.Text))
+            {
+                MsgBox.ShowInformation(BaseReource.MsgChoosePurchaseOrderNoFirst);
+                dgv.EndEdit();
+                dgv.Enabled = false;
+                cboPurchaseOrderNo.Select();
+                dgv.Enabled = true;
+            }
+        }
+
         private async void CboCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
             var customer = cboCustomer.SelectedObject.ItemObject as Customer;
@@ -170,7 +191,7 @@ namespace QTech.Forms
         public bool InValid()
         {
             if (!cboCustomer.IsSelected() | !cboSite.IsSelected() |
-                !txtPurchaseOrderNo.IsValidRequired(lblPurchaseOrderNo.Text) |
+                !cboPurchaseOrderNo.IsValidRequired(lblPurchaseOrderNo.Text) |
                 !txtInvoiceNo.IsValidRequired(lblInvoiceNo.Text)
                 | !validSaleDetail()
                 )
@@ -216,7 +237,7 @@ namespace QTech.Forms
         }
         public async void Read()
         {
-            txtPurchaseOrderNo.Text = Model.PurchaseOrderNo;
+            cboPurchaseOrderNo.Text = Model.PurchaseOrderNo;
             txtInvoiceNo.Text = Model.InvoiceNo;
             txtTotal.Text = Model.Total.ToString();
 
@@ -354,7 +375,7 @@ namespace QTech.Forms
             invoices = new List<RepoInvoice>();
             var invoice = new RepoInvoice();
 
-            invoice.PurchaseOrderNo = Model.PurchaseOrderNo = txtPurchaseOrderNo.Text;
+            invoice.PurchaseOrderNo = Model.PurchaseOrderNo = cboPurchaseOrderNo.Text;
             invoice.InvoiceNo = Model.InvoiceNo = txtInvoiceNo.Text;
             var customer = cboCustomer.SelectedObject.ItemObject as Customer;
             var site = cboSite.SelectedObject.ItemObject as Site;

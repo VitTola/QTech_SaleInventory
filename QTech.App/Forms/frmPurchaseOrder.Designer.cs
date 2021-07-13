@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtPurchaseOrderNo = new System.Windows.Forms.TextBox();
             this.lblPurchaseOrderNo = new QTech.Component.ExLabel();
             this.dgv = new QTech.Component.ExDataGridView();
@@ -46,7 +47,7 @@
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colProductId_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCategory_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colQauntity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLeftQauntity_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUnitPrice_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,8 +97,8 @@
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv.BackgroundColor = System.Drawing.Color.White;
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -106,19 +107,19 @@
             this.colId,
             this.colProductId_,
             this.colProductId,
-            this.colCategory,
+            this.colCategory_,
             this.colQauntity,
             this.colLeftQauntity_,
             this.colUnitPrice_,
             this.colNote});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS System", 8F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
             this.dgv.Font = new System.Drawing.Font("Khmer OS System", 8F);
@@ -162,7 +163,7 @@
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(2, 2);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(279, 32);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(391, 32);
             this.flowLayoutPanel3.TabIndex = 3;
             // 
             // flowLayoutPanel2
@@ -280,12 +281,12 @@
             this.colProductId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colProductId.Width = 150;
             // 
-            // colCategory
+            // colCategory_
             // 
-            this.colCategory.DataPropertyName = "Category";
-            this.colCategory.HeaderText = "ប្រភេទ";
-            this.colCategory.Name = "colCategory";
-            this.colCategory.ReadOnly = true;
+            this.colCategory_.DataPropertyName = "Category";
+            this.colCategory_.HeaderText = "ប្រភេទ";
+            this.colCategory_.Name = "colCategory_";
+            this.colCategory_.ReadOnly = true;
             // 
             // colQauntity
             // 
@@ -297,6 +298,8 @@
             // 
             // colLeftQauntity_
             // 
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Green;
+            this.colLeftQauntity_.DefaultCellStyle = dataGridViewCellStyle5;
             this.colLeftQauntity_.HeaderText = "បរិមាណនៅសល់";
             this.colLeftQauntity_.Name = "colLeftQauntity_";
             this.colLeftQauntity_.ReadOnly = true;
@@ -361,7 +364,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colProductId_;
         private System.Windows.Forms.DataGridViewTextBoxColumn colProductId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCategory;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCategory_;
         private System.Windows.Forms.DataGridViewTextBoxColumn colQauntity;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLeftQauntity_;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUnitPrice_;

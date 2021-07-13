@@ -31,7 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSale));
-            this.txtPurchaseOrderNo = new System.Windows.Forms.TextBox();
             this.lblPurchaseOrderNo = new QTech.Component.ExLabel();
             this.flowLayOutLabelRemoveAdd = new System.Windows.Forms.FlowLayoutPanel();
             this.lblRemove = new System.Windows.Forms.LinkLabel();
@@ -61,6 +60,7 @@
             this.pnlExpect = new System.Windows.Forms.Panel();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.lblCur2 = new System.Windows.Forms.Label();
+            this.cboPurchaseOrderNo = new QTech.Component.ExSearchCombo();
             this.container.SuspendLayout();
             this.flowLayOutLabelRemoveAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -72,6 +72,7 @@
             // 
             // container
             // 
+            this.container.Controls.Add(this.cboPurchaseOrderNo);
             this.container.Controls.Add(this.pnlExpect);
             this.container.Controls.Add(this.cboSite);
             this.container.Controls.Add(this.cboCustomer);
@@ -85,16 +86,7 @@
             this.container.Controls.Add(this.dgv);
             this.container.Controls.Add(this.flowLayOutLabelRemoveAdd);
             this.container.Controls.Add(this.lblPurchaseOrderNo);
-            this.container.Controls.Add(this.txtPurchaseOrderNo);
             this.container.Size = new System.Drawing.Size(911, 604);
-            // 
-            // txtPurchaseOrderNo
-            // 
-            this.txtPurchaseOrderNo.Location = new System.Drawing.Point(679, 21);
-            this.txtPurchaseOrderNo.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPurchaseOrderNo.Name = "txtPurchaseOrderNo";
-            this.txtPurchaseOrderNo.Size = new System.Drawing.Size(200, 27);
-            this.txtPurchaseOrderNo.TabIndex = 2;
             // 
             // lblPurchaseOrderNo
             // 
@@ -414,8 +406,8 @@
             this.cboCustomer.SelectedItems = null;
             this.cboCustomer.SelectedObject = null;
             this.cboCustomer.ShowAll = false;
-            this.cboCustomer.Size = new System.Drawing.Size(233, 27);
-            this.cboCustomer.TabIndex = 25;
+            this.cboCustomer.Size = new System.Drawing.Size(200, 27);
+            this.cboCustomer.TabIndex = 0;
             this.cboCustomer.TextAll = "";
             // 
             // cboSite
@@ -433,8 +425,8 @@
             this.cboSite.SelectedItems = null;
             this.cboSite.SelectedObject = null;
             this.cboSite.ShowAll = false;
-            this.cboSite.Size = new System.Drawing.Size(233, 27);
-            this.cboSite.TabIndex = 27;
+            this.cboSite.Size = new System.Drawing.Size(200, 27);
+            this.cboSite.TabIndex = 1;
             this.cboSite.TextAll = "";
             // 
             // pnlExpect
@@ -473,6 +465,25 @@
             this.lblCur2.Text = "USD";
             this.lblCur2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // cboPurchaseOrderNo
+            // 
+            this.cboPurchaseOrderNo.Choose = "";
+            this.cboPurchaseOrderNo.CustomSearchForm = null;
+            this.cboPurchaseOrderNo.DataSourceFn = null;
+            this.cboPurchaseOrderNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPurchaseOrderNo.FormattingEnabled = true;
+            this.cboPurchaseOrderNo.IsGirdViewColumn = false;
+            this.cboPurchaseOrderNo.LoadAll = true;
+            this.cboPurchaseOrderNo.Location = new System.Drawing.Point(679, 21);
+            this.cboPurchaseOrderNo.Name = "cboPurchaseOrderNo";
+            this.cboPurchaseOrderNo.SearchParamFn = null;
+            this.cboPurchaseOrderNo.SelectedItems = null;
+            this.cboPurchaseOrderNo.SelectedObject = null;
+            this.cboPurchaseOrderNo.ShowAll = false;
+            this.cboPurchaseOrderNo.Size = new System.Drawing.Size(200, 27);
+            this.cboPurchaseOrderNo.TabIndex = 2;
+            this.cboPurchaseOrderNo.TextAll = "";
+            // 
             // frmSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
@@ -505,7 +516,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.TextBox txtPurchaseOrderNo;
         private Component.ExDataGridView dgv;
         private System.Windows.Forms.FlowLayoutPanel flowLayOutLabelRemoveAdd;
         private System.Windows.Forms.LinkLabel lblRemove;
@@ -536,5 +546,6 @@
         private System.Windows.Forms.Label lblCur2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private Component.ExButtonLoading btnPrint;
+        private Component.ExSearchCombo cboPurchaseOrderNo;
     }
 }

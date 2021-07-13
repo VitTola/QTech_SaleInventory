@@ -52,6 +52,7 @@ namespace QTech.Forms
             txtNote.RegisterPrimaryInputWith();
             txtPurchaseOrderNo.RegisterEnglishInputWith(txtPurchaseOrderNo);
             dgv.RegisterEnglishInputColumns(colQauntity,colUnitPrice_);
+            dgv.RegisterPrimaryInputColumns(colNote);
             dgv.AllowRowNotFound = false;
             dgv.AllowUserToAddRows = dgv.AllowUserToDeleteRows = true;
             dgv.EditMode = DataGridViewEditMode.EditOnEnter;
@@ -61,16 +62,45 @@ namespace QTech.Forms
                 dgv.EditingControlShowing += dgv_EditingControlShowing;
             }
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
-            colProductId.ReadOnly = colLeftQauntity_.ReadOnly = colCategory.ReadOnly = true;
+            colProductId.ReadOnly = colLeftQauntity_.ReadOnly = colCategory_.ReadOnly = true;
 
         }
        
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
            
+            if (dgv.CurrentCell.ColumnIndex == colQauntity.Index)
+            {
+                if (e.Control is TextBox txt)
+                {
+                    txt.Leave += Txt_Leave;
+                }
+            }
         }
-        
-       
+
+        private void Txt_Leave(object sender, EventArgs e)
+        {
+            if (Flag == GeneralProcess.Update)
+            {
+                var rowId = int.Parse(dgv.CurrentRow.Cells[colId.Name].Value?.ToString() ?? "0");
+                var firstQty = POProductPrices.FirstOrDefault(x => x.Id == rowId)?.StartQauntity;
+                var currentValue = int.Parse(dgv.CurrentRow.Cells[colQauntity.Name].Value?.ToString() ?? "0");
+                if (currentValue != firstQty)
+                {
+                    var leftQty = int.Parse(dgv.CurrentRow.Cells[colLeftQauntity_.Name].Value?.ToString() ?? "0");
+                    dgv.CurrentRow.Cells[colLeftQauntity_.Name].Value = leftQty + (currentValue - firstQty);
+                }
+            }
+            else if (Flag == GeneralProcess.Add)
+            {
+                dgv.CurrentRow.Cells[colLeftQauntity_.Name].Value = dgv.CurrentRow.Cells[colQauntity.Name].Value;
+            }
+            if (sender is TextBox txt)
+            {
+                txt.Leave -= Txt_Leave;
+            }
+        }
+
         public bool InValid()
         {
             if (!cboCustomer.IsSelected() |
@@ -138,14 +168,14 @@ namespace QTech.Forms
             foreach (var product in Products)
             {
                 var row = _newRow(false);
-                row.Cells[colId.Name].Value = POProductPrices?.FirstOrDefault(x => x.ProductId == product.Id)?.Id;
+                row.Cells[colId.Name].Value = POProductPrices?.FirstOrDefault(x => x.ProductId == product.Id && x.PurchaseOrderId == Model.Id)?.Id;
                 row.Cells[colProductId.Name].Value = product?.Name;
                 row.Cells[colProductId_.Name].Value = product?.Id;
-                row.Cells[colCategory.Name].Value = categorys?.FirstOrDefault(x=>x.Id == product.CategoryId)?.Name;
+                row.Cells[colCategory_.Name].Value = categorys?.FirstOrDefault(x=>x.Id == product.CategoryId)?.Name;
                 row.Cells[colQauntity.Name].Value = POProductPrices?.FirstOrDefault(x => x.ProductId == product.Id)?.StartQauntity;
-                row.Cells[colLeftQauntity_.Name].Value = POProductPrices?.FirstOrDefault(x => x.ProductId == product.Id)?.LeftQauntity;
-                row.Cells[colUnitPrice_.Name].Value = POProductPrices?.FirstOrDefault(x => x.ProductId == product.Id)?.SalePrice;
-                row.Cells[colNote.Name].Value = POProductPrices?.FirstOrDefault(x => x.ProductId == product.Id)?.Note;
+                row.Cells[colLeftQauntity_.Name].Value = POProductPrices?.FirstOrDefault(x => x.ProductId == product.Id && x.PurchaseOrderId == Model.Id)?.LeftQauntity;
+                row.Cells[colUnitPrice_.Name].Value = POProductPrices?.FirstOrDefault(x => x.ProductId == product.Id && x.PurchaseOrderId == Model.Id)?.SalePrice;
+                row.Cells[colNote.Name].Value = POProductPrices?.FirstOrDefault(x => x.ProductId == product.Id && x.PurchaseOrderId == Model.Id)?.Note;
             }
             //dgv.CurrentCell = dgv.Rows[0].Cells[colQauntity.Name];
             dgv.BeginEdit(true);
@@ -219,15 +249,16 @@ namespace QTech.Forms
             dgv.EndEdit();
             foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
             {
-                var _POProductPrice = new POProductPrice();
-                _POProductPrice.Id = int.Parse(row.Cells[colId.Name].Value?.ToString() ?? "0");
-                _POProductPrice.PurchaseOrderId = int.Parse(row.Cells[colProductId_.Name].Value?.ToString() ?? "0");
-                _POProductPrice.StartQauntity = int.Parse(row.Cells[colQauntity.Name].Value.ToString());
-                _POProductPrice.LeftQauntity = int.Parse(row.Cells[colLeftQauntity_.Name].Value?.ToString() ?? "0");
-                _POProductPrice.SalePrice = decimal.Parse(row.Cells[colUnitPrice_.Name].Value?.ToString());
-                _POProductPrice.Note = row.Cells[colNote.Name].Value?.ToString();
-                _POProductPrice.ProductId = int.Parse(row.Cells[colProductId_.Name].Value?.ToString());
-                Model.POProductPrices.Add(_POProductPrice);
+                var _pOProductPrice = new POProductPrice();
+                _pOProductPrice.Active = true;
+                _pOProductPrice.Id = int.Parse(row.Cells[colId.Name].Value?.ToString() ?? "0");
+                _pOProductPrice.PurchaseOrderId = Model.Id;
+                _pOProductPrice.StartQauntity = int.Parse(row.Cells[colQauntity.Name].Value?.ToString() ?? "0");
+                _pOProductPrice.LeftQauntity = int.Parse(row.Cells[colLeftQauntity_.Name].Value?.ToString() ?? "0");
+                _pOProductPrice.SalePrice = decimal.Parse(row.Cells[colUnitPrice_.Name].Value?.ToString() ?? "0");
+                _pOProductPrice.Note = row.Cells[colNote.Name].Value?.ToString();
+                _pOProductPrice.ProductId = int.Parse(row.Cells[colProductId_.Name].Value?.ToString());
+                Model.POProductPrices.Add(_pOProductPrice);
             }
         }
         private void btnSave_Click(object sender, EventArgs e)

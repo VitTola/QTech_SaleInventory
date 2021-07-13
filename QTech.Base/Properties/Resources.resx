@@ -550,4 +550,7 @@
   <data name="str" xml:space="preserve">
     <value />
   </data>
+  <data name="MsgChoosePurchaseOrderNoFirst" xml:space="preserve">
+    <value>សូមជ្រើសរើស​ ឬបញ្ចូលលេខបញ្ជាទិញជាមុន !</value>
+  </data>
 </root>

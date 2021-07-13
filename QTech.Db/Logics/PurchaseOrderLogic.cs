@@ -18,6 +18,7 @@ namespace QTech.Db.Logics
             {
                 purchaseOrder.POProductPrices.ForEach(x => {
                     x.PurchaseOrderId = purchaseOrder.Id;
+                    //x.LeftQauntity = x.StartQauntity;
                     POProductPriceLogic.Instance.AddAsync(x);
                 });
             }
@@ -26,12 +27,14 @@ namespace QTech.Db.Logics
         public override PurchaseOrder UpdateAsync(PurchaseOrder entity)
         {
             var purchaseOrder = base.UpdateAsync(entity);
+
             if (purchaseOrder.POProductPrices.Any())
             {
                 purchaseOrder.POProductPrices.ForEach(x => {
                     if (x.Id == 0)
                     {
                         x.PurchaseOrderId = purchaseOrder.Id;
+                        //x.LeftQauntity = x.StartQauntity;
                         POProductPriceLogic.Instance.AddAsync(x);
                     }
                     else

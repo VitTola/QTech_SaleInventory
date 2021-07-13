@@ -639,6 +639,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to សូមជ្រើសរើស​ ឬបញ្ចូលលេខបញ្ជាទិញជាមុន !.
+        /// </summary>
+        public static string MsgChoosePurchaseOrderNoFirst {
+            get {
+                return ResourceManager.GetString("MsgChoosePurchaseOrderNoFirst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to តើអ្នកពិតជាចង់លុបមែនទេ?.
         /// </summary>
         public static string MsgConfirmingRemoveSupplierPaid {
