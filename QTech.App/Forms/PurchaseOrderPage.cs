@@ -12,6 +12,7 @@ using QTech.Base.SearchModels;
 using System.Collections.Generic;
 using System.Drawing;
 using QTech.Base.Models;
+using System.ComponentModel;
 
 namespace QTech.Forms
 {
@@ -143,11 +144,10 @@ namespace QTech.Forms
                     row.Cells[colName_.Name].Value = x.Name;
                     row.Cells[colCustomer.Name].Value = Customers?.FirstOrDefault(z => z.Id == x.CustomerId)?.Name;
                     row.Cells[colNote_.Name].Value = x.Note;
-
-
-
+                    row.Cells[colRowDate.Name].Value = x.RowDate;
                 });
             }
+            dgv.Sort(dgv.Columns[colRowDate.Name], ListSortDirection.Descending);
         }
         private DataGridViewRow _newRow(bool isFocus = false)
         {

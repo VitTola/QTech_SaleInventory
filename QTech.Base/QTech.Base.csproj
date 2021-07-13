@@ -191,6 +191,7 @@
       <DependentUpon>ReportNotFound.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SearchModels\PurchaseOrderSearch.cs" />
     <Compile Include="SearchModels\SupplierGeneralPaidSearch.cs" />
     <Compile Include="SearchModels\ProductSearch.cs" />
     <Compile Include="SearchModels\CategorySearch.cs" />

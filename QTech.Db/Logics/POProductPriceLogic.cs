@@ -14,5 +14,13 @@ namespace QTech.Db.Logics
             var result = All().Where(x => x.PurchaseOrderId == PoId);
             return result.ToList();
         }
+        public override POProductPrice AddAsync(POProductPrice entity)
+        {
+            return base.AddAsync(entity);
+        }
+        public override POProductPrice UpdateAsync(POProductPrice entity)
+        {
+            return base.UpdateAsync(entity);
+        }
     }
 }

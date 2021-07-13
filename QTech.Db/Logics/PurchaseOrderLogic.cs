@@ -1,5 +1,6 @@
 ﻿using QTech.Base.BaseModels;
 using QTech.Base.Models;
+using QTech.Base.SearchModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,7 @@ namespace QTech.Db.Logics
                     }
                     else
                     {
-                        POProductPriceLogic.Instance.AddAsync(x);
+                        POProductPriceLogic.Instance.UpdateAsync(x);
                     }
                 });
             }
@@ -44,7 +45,13 @@ namespace QTech.Db.Logics
         }
         public override IQueryable<PurchaseOrder> Search(ISearchModel model)
         {
-            return All();
+            var  q = All();
+            var param = model as PurchaseOrderSearch;
+            if (param?.Paging?.IsPaging == true)
+            {
+                q = q.GetPaged(param.Paging).Results.OrderBy(x => x.Id);
+            }
+            return q;
         }
         public override List<PurchaseOrder> SearchAsync(ISearchModel model)
         {

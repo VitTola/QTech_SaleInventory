@@ -49,6 +49,7 @@
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.pagination = new QTech.Component.ExPaging();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRowDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colRow_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -230,6 +231,7 @@
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colId,
+            this.colRowDate,
             this.colRow_,
             this.colName_,
             this.colCustomer,
@@ -294,6 +296,13 @@
             this.colId.Name = "colId";
             this.colId.ReadOnly = true;
             this.colId.Visible = false;
+            // 
+            // colRowDate
+            // 
+            this.colRowDate.HeaderText = "RowDate";
+            this.colRowDate.Name = "colRowDate";
+            this.colRowDate.ReadOnly = true;
+            this.colRowDate.Visible = false;
             // 
             // colRow_
             // 
@@ -369,6 +378,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private Component.ExPaging pagination;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRowDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRow_;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName_;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCustomer;

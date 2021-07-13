@@ -44,6 +44,7 @@
             this.lblNote = new QTech.Component.ExLabel();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colProductId_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colQauntity = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -103,6 +104,7 @@
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colId,
+            this.colProductId_,
             this.colProductId,
             this.colCategory,
             this.colQauntity,
@@ -262,6 +264,13 @@
             this.colId.ReadOnly = true;
             this.colId.Visible = false;
             // 
+            // colProductId_
+            // 
+            this.colProductId_.HeaderText = "colProductId_";
+            this.colProductId_.Name = "colProductId_";
+            this.colProductId_.ReadOnly = true;
+            this.colProductId_.Visible = false;
+            // 
             // colProductId
             // 
             this.colProductId.DataPropertyName = "ProductId";
@@ -350,6 +359,7 @@
         private Component.ExLabel lblNote;
         private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colProductId_;
         private System.Windows.Forms.DataGridViewTextBoxColumn colProductId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn colQauntity;

@@ -140,6 +140,7 @@ namespace QTech.Forms
                 var row = _newRow(false);
                 row.Cells[colId.Name].Value = POProductPrices?.FirstOrDefault(x => x.ProductId == product.Id)?.Id;
                 row.Cells[colProductId.Name].Value = product?.Name;
+                row.Cells[colProductId_.Name].Value = product?.Id;
                 row.Cells[colCategory.Name].Value = categorys?.FirstOrDefault(x=>x.Id == product.CategoryId)?.Name;
                 row.Cells[colQauntity.Name].Value = POProductPrices?.FirstOrDefault(x => x.ProductId == product.Id)?.StartQauntity;
                 row.Cells[colLeftQauntity_.Name].Value = POProductPrices?.FirstOrDefault(x => x.ProductId == product.Id)?.LeftQauntity;
@@ -220,12 +221,13 @@ namespace QTech.Forms
             {
                 var _POProductPrice = new POProductPrice();
                 _POProductPrice.Id = int.Parse(row.Cells[colId.Name].Value?.ToString() ?? "0");
-                _POProductPrice.PurchaseOrderId = Model.Id;
+                _POProductPrice.PurchaseOrderId = int.Parse(row.Cells[colProductId_.Name].Value?.ToString() ?? "0");
                 _POProductPrice.StartQauntity = int.Parse(row.Cells[colQauntity.Name].Value.ToString());
                 _POProductPrice.LeftQauntity = int.Parse(row.Cells[colLeftQauntity_.Name].Value?.ToString() ?? "0");
                 _POProductPrice.SalePrice = decimal.Parse(row.Cells[colUnitPrice_.Name].Value?.ToString());
                 _POProductPrice.Note = row.Cells[colNote.Name].Value?.ToString();
-                
+                _POProductPrice.ProductId = int.Parse(row.Cells[colProductId_.Name].Value?.ToString());
+                Model.POProductPrices.Add(_POProductPrice);
             }
         }
         private void btnSave_Click(object sender, EventArgs e)
