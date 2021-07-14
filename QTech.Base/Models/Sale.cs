@@ -23,6 +23,7 @@ namespace QTech.Base
        // public bool IsPaid { get; set; } = false;
         public PayStatus PayStatus { get; set; }
         public  decimal Expense { get; set; }
+        public int PurchaseOrderId { get; set; }
     }
 
     public class SaleDetail : ActiveBaseModel

@@ -51,7 +51,7 @@ namespace QTech.Forms
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             txtNote.RegisterPrimaryInputWith();
             txtPurchaseOrderNo.RegisterEnglishInputWith(txtPurchaseOrderNo);
-            dgv.RegisterEnglishInputColumns(colQauntity,colUnitPrice_);
+            dgv.RegisterEnglishInputColumns(colQauntity, colUnitPrice_);
             dgv.RegisterPrimaryInputColumns(colNote);
             dgv.AllowRowNotFound = false;
             dgv.AllowUserToAddRows = dgv.AllowUserToDeleteRows = true;
@@ -65,31 +65,37 @@ namespace QTech.Forms
             colProductId.ReadOnly = colLeftQauntity_.ReadOnly = colCategory_.ReadOnly = true;
 
         }
-       
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-           
-            if (dgv.CurrentCell.ColumnIndex == colQauntity.Index)
+            if (e.Control is TextBox txt)
             {
-                if (e.Control is TextBox txt)
+                if (dgv.CurrentCell.ColumnIndex == colQauntity.Index)
                 {
                     txt.Leave += Txt_Leave;
                 }
+                if (dgv.CurrentCell.ColumnIndex == colQauntity.Index || dgv.CurrentCell.ColumnIndex == colUnitPrice_.Index)
+                {
+                    txt.KeyPress += Txt_KeyPress;
+                }
             }
         }
-
+        private void Txt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var _sender = sender as TextBox;
+            _sender.validCurrency(_sender, e);
+            _sender.KeyPress -= Txt_KeyPress;
+        }
         private void Txt_Leave(object sender, EventArgs e)
         {
             if (Flag == GeneralProcess.Update)
             {
                 var rowId = int.Parse(dgv.CurrentRow.Cells[colId.Name].Value?.ToString() ?? "0");
                 var firstQty = POProductPrices.FirstOrDefault(x => x.Id == rowId)?.StartQauntity;
+
                 var currentValue = int.Parse(dgv.CurrentRow.Cells[colQauntity.Name].Value?.ToString() ?? "0");
-                if (currentValue != firstQty)
-                {
-                    var leftQty = int.Parse(dgv.CurrentRow.Cells[colLeftQauntity_.Name].Value?.ToString() ?? "0");
-                    dgv.CurrentRow.Cells[colLeftQauntity_.Name].Value = leftQty + (currentValue - firstQty);
-                }
+                var firstLeftQty = POProductPrices.FirstOrDefault(x => x.Id == rowId)?.LeftQauntity;
+                dgv.CurrentRow.Cells[colLeftQauntity_.Name].Value = firstLeftQty;
+                dgv.CurrentRow.Cells[colLeftQauntity_.Name].Value = firstLeftQty + (currentValue - firstQty);
             }
             else if (Flag == GeneralProcess.Add)
             {
@@ -100,7 +106,6 @@ namespace QTech.Forms
                 txt.Leave -= Txt_Leave;
             }
         }
-
         public bool InValid()
         {
             if (!cboCustomer.IsSelected() |
@@ -125,7 +130,7 @@ namespace QTech.Forms
             foreach (DataGridViewRow row in rows)
             {
                 var cells = row.Cells.OfType<DataGridViewCell>().Where(x =>
-                x.ColumnIndex == row.Cells[colQauntity.Name].ColumnIndex  && x.ColumnIndex == row.Cells[colUnitPrice_.Name].ColumnIndex).ToList();
+                x.ColumnIndex == row.Cells[colQauntity.Name].ColumnIndex && x.ColumnIndex == row.Cells[colUnitPrice_.Name].ColumnIndex).ToList();
                 cells.ForEach(x =>
                 {
                     if (x.Value == null)
@@ -171,7 +176,7 @@ namespace QTech.Forms
                 row.Cells[colId.Name].Value = POProductPrices?.FirstOrDefault(x => x.ProductId == product.Id && x.PurchaseOrderId == Model.Id)?.Id;
                 row.Cells[colProductId.Name].Value = product?.Name;
                 row.Cells[colProductId_.Name].Value = product?.Id;
-                row.Cells[colCategory_.Name].Value = categorys?.FirstOrDefault(x=>x.Id == product.CategoryId)?.Name;
+                row.Cells[colCategory_.Name].Value = categorys?.FirstOrDefault(x => x.Id == product.CategoryId)?.Name;
                 row.Cells[colQauntity.Name].Value = POProductPrices?.FirstOrDefault(x => x.ProductId == product.Id)?.StartQauntity;
                 row.Cells[colLeftQauntity_.Name].Value = POProductPrices?.FirstOrDefault(x => x.ProductId == product.Id && x.PurchaseOrderId == Model.Id)?.LeftQauntity;
                 row.Cells[colUnitPrice_.Name].Value = POProductPrices?.FirstOrDefault(x => x.ProductId == product.Id && x.PurchaseOrderId == Model.Id)?.SalePrice;
@@ -245,7 +250,7 @@ namespace QTech.Forms
             {
                 Model.POProductPrices = new List<POProductPrice>();
             }
-            
+
             dgv.EndEdit();
             foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
             {
@@ -269,6 +274,6 @@ namespace QTech.Forms
         {
             this.Close();
         }
-       
+
     }
 }

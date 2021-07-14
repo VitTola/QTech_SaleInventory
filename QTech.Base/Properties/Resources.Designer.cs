@@ -720,6 +720,24 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ចំនួនបានបញ្ចូលលើចំនួយទំនិញដែលនៅសល់ក្នុង PO!.
+        /// </summary>
+        public static string MsgProductOverQty {
+            get {
+                return ResourceManager.GetString("MsgProductOverQty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ទំនិញដល់ចំនួនដែលបានកំណត់ទុកក្នុង PO ហើយ!.
+        /// </summary>
+        public static string MsgProductQtyReachLimit {
+            get {
+                return ResourceManager.GetString("MsgProductQtyReachLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ឈ្មោះ.
         /// </summary>
         public static string Name {

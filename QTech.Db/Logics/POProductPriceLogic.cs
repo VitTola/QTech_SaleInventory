@@ -22,5 +22,6 @@ namespace QTech.Db.Logics
         {
             return base.UpdateAsync(entity);
         }
+
     }
 }

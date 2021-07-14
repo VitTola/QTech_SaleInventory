@@ -553,4 +553,10 @@
   <data name="MsgChoosePurchaseOrderNoFirst" xml:space="preserve">
     <value>សូមជ្រើសរើស​ ឬបញ្ចូលលេខបញ្ជាទិញជាមុន !</value>
   </data>
+  <data name="MsgProductOverQty" xml:space="preserve">
+    <value>ចំនួនបានបញ្ចូលលើចំនួយទំនិញដែលនៅសល់ក្នុង PO!</value>
+  </data>
+  <data name="MsgProductQtyReachLimit" xml:space="preserve">
+    <value>ទំនិញដល់ចំនួនដែលបានកំណត់ទុកក្នុង PO ហើយ!</value>
+  </data>
 </root>

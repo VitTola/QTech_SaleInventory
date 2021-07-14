@@ -53,12 +53,13 @@ namespace QTech.Forms
             colProductId.SearchParamFn = () => new ProductSearch();
             colEmployeeId.DataSourceFn = p => EmployeeLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
             colEmployeeId.SearchParamFn = () => new EmployeeSearch();
-            cboPurchaseOrderNo.DataSourceFn = p =>{
+            cboPurchaseOrderNo.DataSourceFn = p =>
+            {
                 var result = PurchaseOrderLogic.Instance.SearchAsync(p).Where(x => !x.IsReachQty);
                 return result.ToDropDownItemModelList();
             };
             cboPurchaseOrderNo.SearchParamFn = () => new PurchaseOrderSearch();
-            
+
         }
         public void InitEvent()
         {
@@ -82,9 +83,9 @@ namespace QTech.Forms
             txtTotal.ReadOnly = true;
             cboPurchaseOrderNo.DropDownStyle = ComboBoxStyle.DropDown;
             dgv.CellBeginEdit += Dgv_CellBeginEdit;
+            colLeftQty_.ReadOnly = true;
 
         }
-
         private void Dgv_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             if (string.IsNullOrEmpty(cboPurchaseOrderNo.Text))
@@ -96,7 +97,6 @@ namespace QTech.Forms
                 dgv.Enabled = true;
             }
         }
-
         private async void CboCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
             var customer = cboCustomer.SelectedObject.ItemObject as Customer;
@@ -140,7 +140,7 @@ namespace QTech.Forms
 
             txtTotal.Text = Total.ToString();
         }
-        private  void txtQauntity_Leave(object sender, EventArgs e)
+        private void txtQauntity_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(dgv.CurrentCell.Value?.ToString() ?? ""))
             {
@@ -149,7 +149,12 @@ namespace QTech.Forms
             var unitPrice = decimal.Parse(dgv.CurrentRow?.Cells[colUnitPrice.Name].Value?.ToString() ?? "0");
             var qty = int.Parse(dgv.CurrentRow?.Cells[colQauntity.Name]?.Value?.ToString() ?? "0");
             dgv.CurrentRow.Cells[colTotal.Name].Value = (unitPrice * qty).ToString();
+            CheckValidProductByPO();
             CalculateTotal();
+            if (sender is TextBox txt)
+            {
+                txt.Leave -= txtQauntity_Leave;
+            }
         }
         private async void Cbo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -161,32 +166,100 @@ namespace QTech.Forms
             {
                 return;
             }
+            CheckValidProductByPO();
 
-            decimal unitPrice = 0 ;
-            bool IsNotPriceByCustomer = true;
+            decimal unitPrice = 0;
+            bool IsNotPriceByPO = true;
             var _productId = int.Parse(dgv.CurrentCell.Value.ToString());
-            if (customerPrices.Any())
+
+            if (!string.IsNullOrEmpty(cboPurchaseOrderNo.Text))
             {
-                var _cusPrice = customerPrices.FirstOrDefault(x => x.ProductId == _productId);
-                if (_cusPrice != null)
+                var purchaseOrderNo = cboPurchaseOrderNo.SelectedObject?.ItemObject as PurchaseOrder;
+                if (purchaseOrderNo != null)
                 {
-                    unitPrice = _cusPrice.SalePrice;
-                    IsNotPriceByCustomer = false;
+                    var pOProductPrice = await dgv.RunAsync(() =>
+                    {
+                        var result = POProductPriceLogic.Instance.GetPOProductPriceByPO(purchaseOrderNo.Id);
+                        return result;
+                    });
+                    if (pOProductPrice.Any())
+                    {
+                        var _poPrice = pOProductPrice.FirstOrDefault(x => x.ProductId == _productId);
+                        if (_poPrice != null)
+                        {
+                            unitPrice = _poPrice.SalePrice;
+                            IsNotPriceByPO = false;
+                        }
+                    }
+                    dgv.CurrentRow.Cells[colLeftQty_.Name].Value = pOProductPrice.FirstOrDefault(x => x.ProductId == _productId).LeftQauntity;
+
                 }
             }
-            if (IsNotPriceByCustomer)
+            if (IsNotPriceByPO)
             {
-                var pro = await dgv.RunAsync(() =>
+                bool IsNotPriceByCustomer = true;
+                if (customerPrices.Any())
                 {
-                    var colPro = sender as ExSearchCombo;
-                    var proId = colPro.SelectedObject.ItemObject as Product;
-                    var result = ProductLogic.Instance.FindAsync(proId.Id);
+                    var _cusPrice = customerPrices.FirstOrDefault(x => x.ProductId == _productId);
+                    if (_cusPrice != null)
+                    {
+                        unitPrice = _cusPrice.SalePrice;
+                        IsNotPriceByCustomer = false;
+                    }
+                }
+                if (IsNotPriceByCustomer)
+                {
+                    var pro = await dgv.RunAsync(() =>
+                    {
+                        var result = ProductLogic.Instance.FindAsync(_productId);
+                        return result;
+                    });
+                    unitPrice = pro.UnitPrice;
+                }
+            }
+            dgv.CurrentRow.Cells[colUnitPrice.Name].Value = unitPrice.ToString();
+        }
+        DataGridViewCell Err = null;
+        private async void CheckValidProductByPO()
+        {
+            var purchaseOrderNo = cboPurchaseOrderNo.SelectedObject?.ItemObject as PurchaseOrder;
+            if (purchaseOrderNo != null)
+            {
+                var pOProductPrices = await dgv.RunAsync(() =>
+                {
+                    var result = POProductPriceLogic.Instance.GetPOProductPriceByPO(purchaseOrderNo.Id);
                     return result;
                 });
-                unitPrice = pro.UnitPrice;
-            }
+                if (pOProductPrices.Any())
+                {
+                    var inputQty = int.Parse(dgv.CurrentRow.Cells[colQauntity.Name].Value?.ToString() ?? "0");
 
-            dgv.CurrentRow.Cells[colUnitPrice.Name].Value = unitPrice.ToString();
+                    var _productId = int.Parse(dgv.CurrentRow.Cells[colProductId.Name].Value.ToString());
+                    if (_productId != 0)
+                    {
+                        var pOProductPrice = pOProductPrices.FirstOrDefault(x => x.ProductId == _productId);
+                        if (pOProductPrice?.LeftQauntity == 0)
+                        {
+                            Err = ((DataGridViewCell)(dgv.CurrentRow.Cells[colProductId.Name]));
+                            Err.ErrorText = BaseReource.MsgProductQtyReachLimit;
+                        }
+                        else if (inputQty > pOProductPrice?.LeftQauntity)
+                        {
+                            Err = ((DataGridViewCell)dgv.CurrentRow.Cells[colQauntity.Name]);
+                            Err.ErrorText = BaseReource.MsgProductOverQty + $" (ចំនួននៅសល់ {pOProductPrice.LeftQauntity})";
+                        }
+                        else
+                        {
+                            if (Err != null)
+                            {
+                                Err.ErrorText = string.Empty;
+                            }
+                        }
+
+                    }
+
+                }
+            }
         }
         public bool InValid()
         {
@@ -237,14 +310,11 @@ namespace QTech.Forms
         }
         public async void Read()
         {
-            cboPurchaseOrderNo.Text = Model.PurchaseOrderNo;
-            txtInvoiceNo.Text = Model.InvoiceNo;
-            txtTotal.Text = Model.Total.ToString();
-
             Customer cus = null;
             Site site = null;
             List<Product> products = null;
             List<Employee> drivers = null;
+            PurchaseOrder purchaseOrder = null;
             var saleDetails = await this.RunAsync(() =>
             {
                 cus = CustomerLogic.Instance.FindAsync(Model.CompanyId);
@@ -255,8 +325,23 @@ namespace QTech.Forms
                 products = ProductLogic.Instance.All().Where(x => x.Active && productIds.Contains(x.Id)).ToList();
                 drivers = EmployeeLogic.Instance.All().Where(x => x.Active && driverIds.Contains(x.Id)).ToList();
 
+                if (Model.PurchaseOrderId != 0)
+                {
+                    purchaseOrder = PurchaseOrderLogic.Instance.FindAsync(Model.PurchaseOrderId);
+                }
                 return details;
             });
+
+            txtInvoiceNo.Text = Model.InvoiceNo;
+            txtTotal.Text = Model.Total.ToString();
+            if (Model.PurchaseOrderId != 0)
+            {
+                cboPurchaseOrderNo.SetValue(purchaseOrder);
+            }
+            else
+            {
+                cboPurchaseOrderNo.Text = Model.PurchaseOrderNo;
+            }
             if (cus != null)
             {
                 cboCustomer.SetValue(cus);
@@ -375,14 +460,19 @@ namespace QTech.Forms
             invoices = new List<RepoInvoice>();
             var invoice = new RepoInvoice();
 
-            invoice.PurchaseOrderNo = Model.PurchaseOrderNo = cboPurchaseOrderNo.Text;
+            invoice.PurchaseOrderNo = cboPurchaseOrderNo.Text;
             invoice.InvoiceNo = Model.InvoiceNo = txtInvoiceNo.Text;
             var customer = cboCustomer.SelectedObject.ItemObject as Customer;
             var site = cboSite.SelectedObject.ItemObject as Site;
+
             Model.CompanyId = customer.Id;
             Model.SiteId = site.Id;
             Model.SaleDate = Flag == GeneralProcess.Add ? DateTime.Now : Model.SaleDate;
             Model.Total = decimal.Parse(txtTotal.Text ?? "0");
+            Model.PurchaseOrderNo = cboPurchaseOrderNo.Text;
+
+            var purchaseOrder = cboPurchaseOrderNo.SelectedObject?.ItemObject as PurchaseOrder;
+            Model.PurchaseOrderId = purchaseOrder == null ? 0 : purchaseOrder.Id;
 
             invoice.Site = site.Name;
             invoice.Customer = customer.Name;
@@ -394,7 +484,7 @@ namespace QTech.Forms
             {
                 Model.SaleDetails = new List<SaleDetail>();
             }
-            
+
             dgv.EndEdit();
             foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
             {
