@@ -48,7 +48,7 @@ namespace QTech.Forms
             cboCustomer.DataSourceFn = p => CustomerLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
             cboCustomer.SearchParamFn = () => new CustomerSearch();
             cboSite.DataSourceFn = p => SiteLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
-            cboSite.SearchParamFn = () => new SiteSearch() { };
+            cboSite.SearchParamFn = () => new SiteSearch() {};
             colProductId.DataSourceFn = p => ProductLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
             colProductId.SearchParamFn = () => new ProductSearch();
             colEmployeeId.DataSourceFn = p => EmployeeLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
@@ -82,19 +82,24 @@ namespace QTech.Forms
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
             txtTotal.ReadOnly = true;
             cboPurchaseOrderNo.DropDownStyle = ComboBoxStyle.DropDown;
-            dgv.CellBeginEdit += Dgv_CellBeginEdit;
+            dgv.EditingControlShowing += Dgv_EditingControlShowing;
+            dgv.MouseClick += Dgv_MouseClick;
             colLeftQty_.ReadOnly = true;
-
         }
-        private void Dgv_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        private void Dgv_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(cboPurchaseOrderNo.Text) && Flag != GeneralProcess.View)
+            {
+                dgv.ReadOnly = false;
+            }
+        }
+        private void Dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             if (string.IsNullOrEmpty(cboPurchaseOrderNo.Text))
             {
-                MsgBox.ShowInformation(BaseReource.MsgChoosePurchaseOrderNoFirst);
                 dgv.EndEdit();
-                dgv.Enabled = false;
-                cboPurchaseOrderNo.Select();
-                dgv.Enabled = true;
+                dgv.ReadOnly = true;
+                cboPurchaseOrderNo.IsSelected();
             }
         }
         private async void CboCustomer_SelectedIndexChanged(object sender, EventArgs e)
@@ -103,8 +108,11 @@ namespace QTech.Forms
 
             if (customer != null)
             {
-                cboSite.SearchParamFn = () => new SiteSearch() { CustomerId = customer.Id };
+                var cusId = customer.Id == 0 ? -1 : customer.Id;
+                cboSite.SearchParamFn = () => new SiteSearch() { CustomerId = cusId };
+                cboPurchaseOrderNo.SearchParamFn = () => new PurchaseOrderSearch() { CustomerId = cusId };
             }
+
             customerPrices = await dgv.RunAsync(() =>
             {
                 var result = CustomerPriceLogic.Instance.GetCustomerPriceByCustomerId(customer.Id);
@@ -287,7 +295,8 @@ namespace QTech.Forms
             foreach (DataGridViewRow row in rows)
             {
                 var cells = row.Cells.OfType<DataGridViewCell>().Where(x =>
-                x.ColumnIndex != row.Cells[colId.Name].ColumnIndex && x.ColumnIndex != row.Cells[colSaleId.Name].ColumnIndex).ToList();
+                x.ColumnIndex != row.Cells[colId.Name].ColumnIndex && x.ColumnIndex != row.Cells[colSaleId.Name].ColumnIndex
+                && x.ColumnIndex != row.Cells[colLeftQty_.Name].ColumnIndex).ToList();
                 cells.ForEach(x =>
                 {
                     if (x.Value == null)
@@ -315,6 +324,7 @@ namespace QTech.Forms
             List<Product> products = null;
             List<Employee> drivers = null;
             PurchaseOrder purchaseOrder = null;
+            List<POProductPrice> pOProductPrices = null;
             var saleDetails = await this.RunAsync(() =>
             {
                 cus = CustomerLogic.Instance.FindAsync(Model.CompanyId);
@@ -328,12 +338,15 @@ namespace QTech.Forms
                 if (Model.PurchaseOrderId != 0)
                 {
                     purchaseOrder = PurchaseOrderLogic.Instance.FindAsync(Model.PurchaseOrderId);
+                    pOProductPrices = POProductPriceLogic.Instance.GetPOProductPriceByPO(Model.PurchaseOrderId);
                 }
                 return details;
             });
 
+            //Read Sale
             txtInvoiceNo.Text = Model.InvoiceNo;
             txtTotal.Text = Model.Total.ToString();
+            txtExpense.Text = Model.Expense.ToString();
             if (Model.PurchaseOrderId != 0)
             {
                 cboPurchaseOrderNo.SetValue(purchaseOrder);
@@ -351,6 +364,7 @@ namespace QTech.Forms
                 cboSite.SetValue(site);
             }
 
+            //Read SaleDetail
             if (saleDetails.Any())
             {
                 Model.SaleDetails = saleDetails;
@@ -362,6 +376,7 @@ namespace QTech.Forms
                     row.Cells[colQauntity.Name].Value = x.Qauntity;
                     row.Cells[colTotal.Name].Value = x.Total;
                     row.Cells[colUnitPrice.Name].Value = products?.FirstOrDefault(y => y.Id == x.ProductId)?.UnitPrice;
+                    row.Cells[colLeftQty_.Name].Value = pOProductPrices?.FirstOrDefault(r => r.ProductId == x.ProductId)?.LeftQauntity;
 
                     if (products != null)
                     {
@@ -370,7 +385,7 @@ namespace QTech.Forms
                     {
                         new DropDownItemModel
                         {
-                             Id = pro.Id,
+                            Id = pro.Id,
                             Code = pro.Name,
                             Name = pro.Name,
                             DisplayText = pro.Name,
@@ -398,6 +413,14 @@ namespace QTech.Forms
 
                 });
             }
+
+
+            //NOT ALLOW UPDATE WHEN អតិថិជន ប្រភេទ ផ្សេងៗ
+            if (Flag == GeneralProcess.Update)
+            {
+                cboCustomer.Enabled = false;
+            }
+
         }
         private DataGridViewRow newRow(bool isFocus = false)
         {
@@ -456,12 +479,6 @@ namespace QTech.Forms
         }
         public void Write()
         {
-            invoiceDetails = new List<RepoInvoiceDetail>();
-            invoices = new List<RepoInvoice>();
-            var invoice = new RepoInvoice();
-
-            invoice.PurchaseOrderNo = cboPurchaseOrderNo.Text;
-            invoice.InvoiceNo = Model.InvoiceNo = txtInvoiceNo.Text;
             var customer = cboCustomer.SelectedObject.ItemObject as Customer;
             var site = cboSite.SelectedObject.ItemObject as Site;
 
@@ -470,15 +487,11 @@ namespace QTech.Forms
             Model.SaleDate = Flag == GeneralProcess.Add ? DateTime.Now : Model.SaleDate;
             Model.Total = decimal.Parse(txtTotal.Text ?? "0");
             Model.PurchaseOrderNo = cboPurchaseOrderNo.Text;
+            Model.Expense = decimal.Parse(txtExpense.Text);
+            Model.InvoiceNo = txtInvoiceNo.Text;
 
             var purchaseOrder = cboPurchaseOrderNo.SelectedObject?.ItemObject as PurchaseOrder;
             Model.PurchaseOrderId = purchaseOrder == null ? 0 : purchaseOrder.Id;
-
-            invoice.Site = site.Name;
-            invoice.Customer = customer.Name;
-            invoice.Total = String.Format("{0:C}", Model.Total);
-            invoice.SaleId = Model.Id;
-            invoices.Add(invoice);
 
             if (Model.SaleDetails == null)
             {
@@ -488,7 +501,6 @@ namespace QTech.Forms
             dgv.EndEdit();
             foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
             {
-                var invoiceDt = new RepoInvoiceDetail();
                 var saleDetail = new SaleDetail();
 
                 saleDetail.Active = true;
@@ -498,15 +510,6 @@ namespace QTech.Forms
                 saleDetail.Qauntity = int.Parse(row.Cells[colQauntity.Name].Value.ToString());
                 saleDetail.EmployeeId = int.Parse(row.Cells[colEmployeeId.Name].Value.ToString());
                 saleDetail.Total = decimal.Parse(row.Cells[colTotal.Name].Value.ToString());
-
-                var _pro = ProductLogic.Instance.FindAsync(saleDetail.ProductId);
-                invoiceDt.Product = _pro.Name;
-                invoiceDt.Qauntity = int.Parse(row.Cells[colQauntity.Name].Value.ToString());
-                var unitP = decimal.Parse(row.Cells[colUnitPrice.Name].Value.ToString());
-                var totalP = decimal.Parse(row.Cells[colTotal.Name].Value.ToString());
-                invoiceDt.UnitPrice = String.Format("{0:C}", unitP);
-                invoiceDt.Total = String.Format("{0:C}", totalP);
-                invoiceDetails.Add(invoiceDt);
 
                 if (Flag == GeneralProcess.Update)
                 {
@@ -519,8 +522,47 @@ namespace QTech.Forms
                 }
             }
         }
+        private void WriteInvoice()
+        {
+            invoiceDetails = new List<RepoInvoiceDetail>();
+            invoices = new List<RepoInvoice>();
+            var invoice = new RepoInvoice();
+
+            invoice.PurchaseOrderNo = cboPurchaseOrderNo.Text;
+            invoice.InvoiceNo = Model.InvoiceNo = txtInvoiceNo.Text;
+            var customer = cboCustomer.SelectedObject.ItemObject as Customer;
+            var site = cboSite.SelectedObject.ItemObject as Site;
+            var purchaseOrder = cboPurchaseOrderNo.SelectedObject?.ItemObject as PurchaseOrder;
+            Model.PurchaseOrderId = purchaseOrder == null ? 0 : purchaseOrder.Id;
+
+            invoice.Site = site.Name;
+            invoice.Customer = customer.Name;
+            invoice.Total = String.Format("{0:C}", Model.Total);
+            invoice.SaleId = Model.Id;
+            invoices.Add(invoice);
+
+            dgv.EndEdit();
+            foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
+            {
+                var invoiceDt = new RepoInvoiceDetail();
+
+                var proId = int.Parse(row.Cells[colProductId.Name].Value.ToString());
+                var _pro = ProductLogic.Instance.FindAsync(proId);
+                invoiceDt.Product = _pro.Name;
+                invoiceDt.Qauntity = int.Parse(row.Cells[colQauntity.Name].Value.ToString());
+                var unitP = decimal.Parse(row.Cells[colUnitPrice.Name].Value.ToString());
+                var totalP = decimal.Parse(row.Cells[colTotal.Name].Value.ToString());
+                invoiceDt.UnitPrice = String.Format("{0:C}", unitP);
+                invoiceDt.Total = String.Format("{0:C}", totalP);
+                invoiceDetails.Add(invoiceDt);
+            }
+        }
         private void lblAdd_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            if (!string.IsNullOrEmpty(cboPurchaseOrderNo.Text))
+            {
+                dgv.ReadOnly = false;
+            }
             if (dgv.RowCount == 0 || !string.IsNullOrEmpty(dgv.Rows[dgv.RowCount - 1].Cells[colProductId.Name].Value?.ToString()))
             {
                 var row = newRow(true);
@@ -574,7 +616,7 @@ namespace QTech.Forms
         private async void btnPrint_Click(object sender, EventArgs e)
         {
             if (InValid()) return;
-            Write();
+            WriteInvoice();
             DataTable Invoice = new DataTable("Invoice");
             using (var reader = ObjectReader.Create(invoices))
             {

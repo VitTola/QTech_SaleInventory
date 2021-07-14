@@ -122,7 +122,7 @@ namespace QTech.Forms
         public async Task Search()
         {
             dgv.Rows.Clear();
-            var search = new CustomerSearch()
+            var search = new PurchaseOrderSearch()
             {
                 Search = txtSearch.Text,
             };

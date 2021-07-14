@@ -50,6 +50,10 @@ namespace QTech.Db.Logics
         {
             var  q = All();
             var param = model as PurchaseOrderSearch;
+            if (param?.CustomerId != 0)
+            {
+                q = q.Where(x => x.CustomerId == param.CustomerId);
+            }
             if (param?.Paging?.IsPaging == true)
             {
                 q = q.GetPaged(param.Paging).Results.OrderBy(x => x.Id);

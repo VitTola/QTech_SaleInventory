@@ -22,6 +22,10 @@ namespace QTech.Db.Logics
         public override Sale AddAsync(Sale entity)
         {
            var result =  base.AddAsync(entity);
+            if (entity.SaleDetails.Any() && result.PurchaseOrderId !=0)
+            {
+                UpdatePOProductPriceQty(result.PurchaseOrderId, entity.SaleDetails, GeneralProcess.Add);
+            }
             entity.SaleDetails.ForEach(x =>
             {
                 x.SaleId = result.Id;
@@ -36,6 +40,10 @@ namespace QTech.Db.Logics
         public override Sale UpdateAsync(Sale entity)
         {
             var result = base.UpdateAsync(entity);
+            if (entity.SaleDetails.Any() && result.PurchaseOrderId != 0)
+            {
+                UpdatePOProductPriceQty(result.PurchaseOrderId, entity.SaleDetails, GeneralProcess.Update);
+            }
             UpdateSaleDetail(result.SaleDetails, result);
             return result;
         }
@@ -143,6 +151,10 @@ namespace QTech.Db.Logics
         public override Sale RemoveAsync(Sale entity)
         {
             var result = base.RemoveAsync(entity);
+            if (entity.SaleDetails.Any() && result.PurchaseOrderId != 0)
+            {
+                UpdatePOProductPriceQty(result.PurchaseOrderId, entity.SaleDetails, GeneralProcess.Remove);
+            }
             return result;
         }
         private void AddInvoice(Sale sale, GeneralProcess flag)
@@ -175,6 +187,53 @@ namespace QTech.Db.Logics
                 return false;
             }
             return true;
+        }
+
+        //UPDATE QAUNTITY IN POProductPrice
+        private void UpdatePOProductPriceQty(int POId, List<SaleDetail> saleDetails, GeneralProcess flag)
+        {
+            if (saleDetails == null)
+            {
+                return;
+            }
+            var pOProductPrices = POProductPriceLogic.Instance.GetPOProductPriceByPO(POId);
+            List<SaleDetail> currentSaleDetails = null;
+            if (flag == GeneralProcess.Update)
+            {
+                var saleId = saleDetails.FirstOrDefault().SaleId;
+                currentSaleDetails = SaleDetailLogic.Instance.GetSaleDetailBySaleId(saleId);
+            }
+            if (pOProductPrices.Any())
+            {
+                pOProductPrices.ForEach(x=> {
+                    var saleDetail = saleDetails?.FirstOrDefault(r=>r.ProductId == x.ProductId);
+                    if (saleDetail == null) return;
+                    if (flag == GeneralProcess.Add)
+                    {
+                        x.LeftQauntity = x.LeftQauntity - saleDetail.Qauntity;
+                    }
+                    else if(flag == GeneralProcess.Update)
+                    {
+                        int currentSaleDetail = (int)currentSaleDetails?.FirstOrDefault(r=>r.ProductId == x.ProductId)?.Qauntity;
+                        int newSaleDetail =(int) saleDetails?.FirstOrDefault(r=>r.ProductId == x.ProductId)?.Qauntity;
+                        if (currentSaleDetail > newSaleDetail)
+                        {
+                            x.LeftQauntity = x.LeftQauntity + (currentSaleDetail - newSaleDetail);
+                        }
+                        else
+                        {
+                            x.LeftQauntity = x.LeftQauntity - (newSaleDetail - currentSaleDetail);
+                        }
+                    }
+                    else
+                    {
+                        x.LeftQauntity = x.LeftQauntity + saleDetail.Qauntity;
+                    }
+                    
+                    POProductPriceLogic.Instance.UpdateAsync(x);
+                });
+            }
+               
         }
 
         //GET REPORTS

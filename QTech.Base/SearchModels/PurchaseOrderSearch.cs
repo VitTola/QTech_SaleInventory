@@ -9,5 +9,7 @@ namespace QTech.Base.SearchModels
 {
     public class PurchaseOrderSearch : QTechSearch.BasicSearchModel
     {
+        public int CustomerId { get; set; }
+
     }
 }
