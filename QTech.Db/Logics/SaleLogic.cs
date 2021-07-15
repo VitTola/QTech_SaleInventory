@@ -233,7 +233,19 @@ namespace QTech.Db.Logics
                     POProductPriceLogic.Instance.UpdateAsync(x);
                 });
             }
-               
+
+            //After doing all stuff check wether PurchaseOrder is ReachLimitQty
+            var finalPOProductPrices = POProductPriceLogic.Instance.GetPOProductPriceByPO(POId);
+            var isReachLimitQty = !finalPOProductPrices.Any(x=>x.LeftQauntity > 0);
+            if (isReachLimitQty)
+            {
+                var po = PurchaseOrderLogic.Instance.FindAsync(POId);
+                if (po != null)
+                {
+                    po.IsReachQty = true;
+                    PurchaseOrderLogic.Instance.UpdateAsync(po);
+                }
+            }
         }
 
         //GET REPORTS

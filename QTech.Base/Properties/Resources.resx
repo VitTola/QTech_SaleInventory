@@ -559,4 +559,7 @@
   <data name="MsgProductQtyReachLimit" xml:space="preserve">
     <value>ទំនិញដល់ចំនួនដែលបានកំណត់ទុកក្នុង PO ហើយ!</value>
   </data>
+  <data name="MsgCannotChangeCustomerAndPO" xml:space="preserve">
+    <value>អតិថិជន និងលេខ PO មិនអាចកែបានទេ!​ អ្នកអាចធ្វើការលុបការលក់នេះហើយបង្កើតថ្មី​ ។</value>
+  </data>
 </root>

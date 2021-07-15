@@ -639,6 +639,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to អតិថិជន និងលេខ PO មិនអាចកែបានទេ!​ អ្នកអាចធ្វើការលុបការលក់នេះហើយបង្កើតថ្មី​ ។.
+        /// </summary>
+        public static string MsgCannotChangeCustomerAndPO {
+            get {
+                return ResourceManager.GetString("MsgCannotChangeCustomerAndPO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to សូមជ្រើសរើស​ ឬបញ្ចូលលេខបញ្ជាទិញជាមុន !.
         /// </summary>
         public static string MsgChoosePurchaseOrderNoFirst {

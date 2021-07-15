@@ -147,7 +147,7 @@ namespace QTech.Forms
             }
 
             txtTotal.Text = Total.ToString();
-        }
+        }                       
         private void txtQauntity_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(dgv.CurrentCell.Value?.ToString() ?? ""))
@@ -416,11 +416,8 @@ namespace QTech.Forms
 
 
             //NOT ALLOW UPDATE WHEN អតិថិជន ប្រភេទ ផ្សេងៗ
-            if (Flag == GeneralProcess.Update)
-            {
-                cboCustomer.Enabled = false;
-            }
-
+            cboCustomer.Enabled = Flag != GeneralProcess.Update;
+            cboPurchaseOrderNo.Enabled = Model.PurchaseOrderId == 0;
         }
         private DataGridViewRow newRow(bool isFocus = false)
         {

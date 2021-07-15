@@ -114,7 +114,6 @@ namespace QTech.Forms
                 _lastExtabitem.Selected = true;
             }
         }
-
         private MenuBar ClickedButton;
         private void TopMenue_Click(object sender, EventArgs e)
         {
@@ -184,7 +183,6 @@ namespace QTech.Forms
                 }
             }
         }
-
         private void ReadSecondLevelMenue(MenuBar menuBar)
         {
             var moduleManager = ModuleManager.Instance;
@@ -274,7 +272,5 @@ namespace QTech.Forms
         {
             InputLanguage.CurrentInputLanguage = UI.English;
         }
-
-
     }
 }
