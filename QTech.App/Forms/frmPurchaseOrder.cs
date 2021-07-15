@@ -63,6 +63,7 @@ namespace QTech.Forms
             }
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
             colProductId.ReadOnly = colLeftQauntity_.ReadOnly = colCategory_.ReadOnly = true;
+            dgv.EditColumnIcon(colQauntity,colUnitPrice_,colNote);
 
         }
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)

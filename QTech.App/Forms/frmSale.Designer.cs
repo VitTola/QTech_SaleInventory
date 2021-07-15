@@ -67,6 +67,15 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtExpense = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabMain = new System.Windows.Forms.TabControl();
+            this.tabCompany_ = new System.Windows.Forms.TabPage();
+            this.tabGeneral_ = new System.Windows.Forms.TabPage();
+            this.txtPhone = new System.Windows.Forms.TextBox();
+            this.txtInvoiceNo1 = new System.Windows.Forms.TextBox();
+            this.lblInvoiceNo1 = new QTech.Component.ExLabel();
+            this.txtCustomer = new System.Windows.Forms.TextBox();
+            this.lblCustomer1 = new QTech.Component.ExLabel();
+            this.lblPhone = new QTech.Component.ExLabel();
             this.container.SuspendLayout();
             this.flowLayOutLabelRemoveAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -75,32 +84,28 @@
             this.flowLayoutPanel2.SuspendLayout();
             this.pnlExpect.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tabMain.SuspendLayout();
+            this.tabCompany_.SuspendLayout();
+            this.tabGeneral_.SuspendLayout();
             this.SuspendLayout();
             // 
             // container
             // 
+            this.container.Controls.Add(this.tabMain);
             this.container.Controls.Add(this.panel1);
             this.container.Controls.Add(this.lblExpense_);
-            this.container.Controls.Add(this.cboPurchaseOrderNo);
             this.container.Controls.Add(this.pnlExpect);
-            this.container.Controls.Add(this.cboSite);
-            this.container.Controls.Add(this.cboCustomer);
             this.container.Controls.Add(this.lblTotalAmount);
-            this.container.Controls.Add(this.lblCustomer);
-            this.container.Controls.Add(this.lblSite);
-            this.container.Controls.Add(this.lblInvoiceNo);
-            this.container.Controls.Add(this.txtInvoiceNo);
             this.container.Controls.Add(this.exPanel1);
             this.container.Controls.Add(this.exLabel2);
             this.container.Controls.Add(this.dgv);
             this.container.Controls.Add(this.flowLayOutLabelRemoveAdd);
-            this.container.Controls.Add(this.lblPurchaseOrderNo);
-            this.container.Size = new System.Drawing.Size(911, 604);
+            this.container.Size = new System.Drawing.Size(910, 646);
             // 
             // lblPurchaseOrderNo
             // 
             this.lblPurchaseOrderNo.AutoSize = true;
-            this.lblPurchaseOrderNo.Location = new System.Drawing.Point(560, 25);
+            this.lblPurchaseOrderNo.Location = new System.Drawing.Point(552, 23);
             this.lblPurchaseOrderNo.Name = "lblPurchaseOrderNo";
             this.lblPurchaseOrderNo.Required = true;
             this.lblPurchaseOrderNo.Size = new System.Drawing.Size(81, 19);
@@ -112,7 +117,7 @@
             this.flowLayOutLabelRemoveAdd.Controls.Add(this.lblRemove);
             this.flowLayOutLabelRemoveAdd.Controls.Add(this.lblAdd);
             this.flowLayOutLabelRemoveAdd.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayOutLabelRemoveAdd.Location = new System.Drawing.Point(780, 85);
+            this.flowLayOutLabelRemoveAdd.Location = new System.Drawing.Point(780, 128);
             this.flowLayOutLabelRemoveAdd.Name = "flowLayOutLabelRemoveAdd";
             this.flowLayOutLabelRemoveAdd.Size = new System.Drawing.Size(99, 19);
             this.flowLayOutLabelRemoveAdd.TabIndex = 3;
@@ -177,7 +182,7 @@
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
             this.dgv.Font = new System.Drawing.Font("Khmer OS System", 8F);
-            this.dgv.Location = new System.Drawing.Point(30, 110);
+            this.dgv.Location = new System.Drawing.Point(30, 154);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
             this.dgv.Paging = null;
@@ -272,7 +277,7 @@
             this.exLabel2.AutoSize = true;
             this.exLabel2.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.exLabel2.Location = new System.Drawing.Point(33, 85);
+            this.exLabel2.Location = new System.Drawing.Point(27, 128);
             this.exLabel2.Name = "exLabel2";
             this.exLabel2.Required = false;
             this.exLabel2.Size = new System.Drawing.Size(92, 19);
@@ -285,10 +290,10 @@
             this.exPanel1.Controls.Add(this.flowLayoutPanel3);
             this.exPanel1.Controls.Add(this.flowLayoutPanel2);
             this.exPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.exPanel1.Location = new System.Drawing.Point(1, 567);
+            this.exPanel1.Location = new System.Drawing.Point(1, 609);
             this.exPanel1.Name = "exPanel1";
             this.exPanel1.Padding = new System.Windows.Forms.Padding(2);
-            this.exPanel1.Size = new System.Drawing.Size(909, 36);
+            this.exPanel1.Size = new System.Drawing.Size(908, 36);
             this.exPanel1.TabIndex = 17;
             // 
             // flowLayoutPanel3
@@ -325,7 +330,7 @@
             this.flowLayoutPanel2.Controls.Add(this.btnSave);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(452, 2);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(451, 2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(455, 32);
             this.flowLayoutPanel2.TabIndex = 0;
@@ -365,7 +370,7 @@
             // lblInvoiceNo
             // 
             this.lblInvoiceNo.AutoSize = true;
-            this.lblInvoiceNo.Location = new System.Drawing.Point(560, 58);
+            this.lblInvoiceNo.Location = new System.Drawing.Point(552, 56);
             this.lblInvoiceNo.Name = "lblInvoiceNo";
             this.lblInvoiceNo.Required = true;
             this.lblInvoiceNo.Size = new System.Drawing.Size(80, 19);
@@ -374,7 +379,7 @@
             // 
             // txtInvoiceNo
             // 
-            this.txtInvoiceNo.Location = new System.Drawing.Point(679, 54);
+            this.txtInvoiceNo.Location = new System.Drawing.Point(671, 52);
             this.txtInvoiceNo.Margin = new System.Windows.Forms.Padding(2);
             this.txtInvoiceNo.Name = "txtInvoiceNo";
             this.txtInvoiceNo.Size = new System.Drawing.Size(200, 27);
@@ -383,7 +388,7 @@
             // lblSite
             // 
             this.lblSite.AutoSize = true;
-            this.lblSite.Location = new System.Drawing.Point(30, 58);
+            this.lblSite.Location = new System.Drawing.Point(27, 56);
             this.lblSite.Name = "lblSite";
             this.lblSite.Required = true;
             this.lblSite.Size = new System.Drawing.Size(76, 19);
@@ -393,7 +398,7 @@
             // lblCustomer
             // 
             this.lblCustomer.AutoSize = true;
-            this.lblCustomer.Location = new System.Drawing.Point(30, 25);
+            this.lblCustomer.Location = new System.Drawing.Point(27, 23);
             this.lblCustomer.Name = "lblCustomer";
             this.lblCustomer.Required = true;
             this.lblCustomer.Size = new System.Drawing.Size(52, 19);
@@ -403,7 +408,7 @@
             // lblTotalAmount
             // 
             this.lblTotalAmount.AutoSize = true;
-            this.lblTotalAmount.Location = new System.Drawing.Point(560, 515);
+            this.lblTotalAmount.Location = new System.Drawing.Point(562, 564);
             this.lblTotalAmount.Name = "lblTotalAmount";
             this.lblTotalAmount.Required = false;
             this.lblTotalAmount.Size = new System.Drawing.Size(76, 19);
@@ -419,7 +424,7 @@
             this.cboCustomer.FormattingEnabled = true;
             this.cboCustomer.IsGirdViewColumn = false;
             this.cboCustomer.LoadAll = true;
-            this.cboCustomer.Location = new System.Drawing.Point(149, 21);
+            this.cboCustomer.Location = new System.Drawing.Point(146, 19);
             this.cboCustomer.Name = "cboCustomer";
             this.cboCustomer.SearchParamFn = null;
             this.cboCustomer.SelectedItems = null;
@@ -438,7 +443,7 @@
             this.cboSite.FormattingEnabled = true;
             this.cboSite.IsGirdViewColumn = false;
             this.cboSite.LoadAll = true;
-            this.cboSite.Location = new System.Drawing.Point(149, 54);
+            this.cboSite.Location = new System.Drawing.Point(146, 52);
             this.cboSite.Name = "cboSite";
             this.cboSite.SearchParamFn = null;
             this.cboSite.SelectedItems = null;
@@ -454,7 +459,7 @@
             this.pnlExpect.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlExpect.Controls.Add(this.txtTotal);
             this.pnlExpect.Controls.Add(this.lblCur2);
-            this.pnlExpect.Location = new System.Drawing.Point(679, 511);
+            this.pnlExpect.Location = new System.Drawing.Point(681, 560);
             this.pnlExpect.Margin = new System.Windows.Forms.Padding(2);
             this.pnlExpect.Name = "pnlExpect";
             this.pnlExpect.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -493,7 +498,7 @@
             this.cboPurchaseOrderNo.FormattingEnabled = true;
             this.cboPurchaseOrderNo.IsGirdViewColumn = false;
             this.cboPurchaseOrderNo.LoadAll = true;
-            this.cboPurchaseOrderNo.Location = new System.Drawing.Point(679, 21);
+            this.cboPurchaseOrderNo.Location = new System.Drawing.Point(671, 19);
             this.cboPurchaseOrderNo.Name = "cboPurchaseOrderNo";
             this.cboPurchaseOrderNo.SearchParamFn = null;
             this.cboPurchaseOrderNo.SelectedItems = null;
@@ -506,7 +511,7 @@
             // lblExpense_
             // 
             this.lblExpense_.AutoSize = true;
-            this.lblExpense_.Location = new System.Drawing.Point(30, 515);
+            this.lblExpense_.Location = new System.Drawing.Point(27, 564);
             this.lblExpense_.Name = "lblExpense_";
             this.lblExpense_.Required = false;
             this.lblExpense_.Size = new System.Drawing.Size(85, 19);
@@ -519,7 +524,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.txtExpense);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(149, 511);
+            this.panel1.Location = new System.Drawing.Point(146, 560);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -548,11 +553,110 @@
             this.label1.Text = "USD";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // tabMain
+            // 
+            this.tabMain.Controls.Add(this.tabCompany_);
+            this.tabMain.Controls.Add(this.tabGeneral_);
+            this.tabMain.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tabMain.Location = new System.Drawing.Point(1, 1);
+            this.tabMain.Name = "tabMain";
+            this.tabMain.SelectedIndex = 0;
+            this.tabMain.Size = new System.Drawing.Size(908, 124);
+            this.tabMain.TabIndex = 32;
+            // 
+            // tabCompany_
+            // 
+            this.tabCompany_.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.tabCompany_.Controls.Add(this.cboCustomer);
+            this.tabCompany_.Controls.Add(this.lblPurchaseOrderNo);
+            this.tabCompany_.Controls.Add(this.txtInvoiceNo);
+            this.tabCompany_.Controls.Add(this.cboPurchaseOrderNo);
+            this.tabCompany_.Controls.Add(this.lblInvoiceNo);
+            this.tabCompany_.Controls.Add(this.lblSite);
+            this.tabCompany_.Controls.Add(this.cboSite);
+            this.tabCompany_.Controls.Add(this.lblCustomer);
+            this.tabCompany_.Location = new System.Drawing.Point(4, 28);
+            this.tabCompany_.Name = "tabCompany_";
+            this.tabCompany_.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCompany_.Size = new System.Drawing.Size(900, 92);
+            this.tabCompany_.TabIndex = 0;
+            this.tabCompany_.Text = "លក់សម្រាប់ក្រុមហ៊ុន";
+            // 
+            // tabGeneral_
+            // 
+            this.tabGeneral_.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.tabGeneral_.Controls.Add(this.lblPhone);
+            this.tabGeneral_.Controls.Add(this.txtPhone);
+            this.tabGeneral_.Controls.Add(this.txtInvoiceNo1);
+            this.tabGeneral_.Controls.Add(this.lblInvoiceNo1);
+            this.tabGeneral_.Controls.Add(this.txtCustomer);
+            this.tabGeneral_.Controls.Add(this.lblCustomer1);
+            this.tabGeneral_.Location = new System.Drawing.Point(4, 28);
+            this.tabGeneral_.Name = "tabGeneral_";
+            this.tabGeneral_.Padding = new System.Windows.Forms.Padding(3);
+            this.tabGeneral_.Size = new System.Drawing.Size(900, 92);
+            this.tabGeneral_.TabIndex = 1;
+            this.tabGeneral_.Text = "លក់ទូទៅ";
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(671, 18);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(200, 27);
+            this.txtPhone.TabIndex = 24;
+            // 
+            // txtInvoiceNo1
+            // 
+            this.txtInvoiceNo1.Location = new System.Drawing.Point(141, 49);
+            this.txtInvoiceNo1.Margin = new System.Windows.Forms.Padding(2);
+            this.txtInvoiceNo1.Name = "txtInvoiceNo1";
+            this.txtInvoiceNo1.Size = new System.Drawing.Size(200, 27);
+            this.txtInvoiceNo1.TabIndex = 22;
+            // 
+            // lblInvoiceNo1
+            // 
+            this.lblInvoiceNo1.AutoSize = true;
+            this.lblInvoiceNo1.Location = new System.Drawing.Point(22, 53);
+            this.lblInvoiceNo1.Name = "lblInvoiceNo1";
+            this.lblInvoiceNo1.Required = true;
+            this.lblInvoiceNo1.Size = new System.Drawing.Size(80, 19);
+            this.lblInvoiceNo1.TabIndex = 23;
+            this.lblInvoiceNo1.Text = "លេខវិក្កយបត្រ";
+            // 
+            // txtCustomer
+            // 
+            this.txtCustomer.Location = new System.Drawing.Point(142, 18);
+            this.txtCustomer.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCustomer.Name = "txtCustomer";
+            this.txtCustomer.Size = new System.Drawing.Size(200, 27);
+            this.txtCustomer.TabIndex = 20;
+            // 
+            // lblCustomer1
+            // 
+            this.lblCustomer1.AutoSize = true;
+            this.lblCustomer1.Location = new System.Drawing.Point(23, 22);
+            this.lblCustomer1.Name = "lblCustomer1";
+            this.lblCustomer1.Required = true;
+            this.lblCustomer1.Size = new System.Drawing.Size(83, 19);
+            this.lblCustomer1.TabIndex = 21;
+            this.lblCustomer1.Text = "ឈ្មោះអតិថិជន";
+            // 
+            // lblPhone
+            // 
+            this.lblPhone.AutoSize = true;
+            this.lblPhone.Location = new System.Drawing.Point(557, 21);
+            this.lblPhone.Name = "lblPhone";
+            this.lblPhone.Required = true;
+            this.lblPhone.Size = new System.Drawing.Size(64, 19);
+            this.lblPhone.TabIndex = 25;
+            this.lblPhone.Text = "លេខទូស័ព្ទ";
+            // 
             // frmSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(911, 624);
+            this.ClientSize = new System.Drawing.Size(910, 666);
             this.Font = new System.Drawing.Font("Khmer OS System", 8.25F);
             this.Location = new System.Drawing.Point(0, 0);
             this.MaximizeBox = false;
@@ -570,6 +674,11 @@
             this.pnlExpect.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.tabMain.ResumeLayout(false);
+            this.tabCompany_.ResumeLayout(false);
+            this.tabCompany_.PerformLayout();
+            this.tabGeneral_.ResumeLayout(false);
+            this.tabGeneral_.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -606,6 +715,10 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private Component.ExButtonLoading btnPrint;
         private Component.ExSearchCombo cboPurchaseOrderNo;
+        private Component.ExLabel lblExpense_;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox txtExpense;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSaleId;
         private Component.ExSearchComboColumn colProductId;
@@ -614,9 +727,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colUnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotal;
         private Component.ExSearchComboColumn colEmployeeId;
-        private Component.ExLabel lblExpense_;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtExpense;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabControl tabMain;
+        private System.Windows.Forms.TabPage tabCompany_;
+        private System.Windows.Forms.TabPage tabGeneral_;
+        private System.Windows.Forms.TextBox txtInvoiceNo1;
+        private Component.ExLabel lblInvoiceNo1;
+        private System.Windows.Forms.TextBox txtCustomer;
+        private Component.ExLabel lblCustomer1;
+        private System.Windows.Forms.TextBox txtPhone;
+        private Component.ExLabel lblPhone;
     }
 }

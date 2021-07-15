@@ -145,6 +145,7 @@
     <Compile Include="Enums\Currency.cs" />
     <Compile Include="Enums\PermissionType.cs" />
     <Compile Include="Enums\SaleSearchKey.cs" />
+    <Compile Include="Enums\SaleType.cs" />
     <Compile Include="Enums\SupplierPayStatus.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\JsonNetSerializer.cs" />
@@ -191,6 +192,7 @@
       <DependentUpon>ReportNotFound.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SearchModels\EmployeeBillSearch.cs" />
     <Compile Include="SearchModels\PurchaseOrderSearch.cs" />
     <Compile Include="SearchModels\SupplierGeneralPaidSearch.cs" />
     <Compile Include="SearchModels\ProductSearch.cs" />

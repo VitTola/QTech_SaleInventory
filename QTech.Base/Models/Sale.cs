@@ -24,6 +24,9 @@ namespace QTech.Base
         public PayStatus PayStatus { get; set; }
         public  decimal Expense { get; set; }
         public int PurchaseOrderId { get; set; }
+        public SaleType SaleType { get; set; }
+        public string CustomerName { get; set; }
+        public string Phone { get; set; }
     }
 
     public class SaleDetail : ActiveBaseModel

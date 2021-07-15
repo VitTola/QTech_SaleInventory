@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configs\QTechDbConfigs.cs" />
+    <Compile Include="Logics\EmployeeBillLogic.cs" />
     <Compile Include="Logics\POProductPriceLogic.cs" />
     <Compile Include="Logics\PurchaseOrderLogic.cs" />
     <Compile Include="Logics\SupplierGeneralPaidLogic.cs" />
@@ -179,6 +180,14 @@
     <Compile Include="Migrations\202107140707542_v3.0.designer.cs">
       <DependentUpon>202107140707542_v3.0.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107151144184_v3.1.cs" />
+    <Compile Include="Migrations\202107151144184_v3.1.designer.cs">
+      <DependentUpon>202107151144184_v3.1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107151249234_v3.2.cs" />
+    <Compile Include="Migrations\202107151249234_v3.2.designer.cs">
+      <DependentUpon>202107151249234_v3.2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QTechDbContext.cs" />
@@ -252,6 +261,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107140707542_v3.0.resx">
       <DependentUpon>202107140707542_v3.0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107151144184_v3.1.resx">
+      <DependentUpon>202107151144184_v3.1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107151249234_v3.2.resx">
+      <DependentUpon>202107151249234_v3.2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

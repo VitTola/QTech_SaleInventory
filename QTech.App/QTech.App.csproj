@@ -150,12 +150,6 @@
     <Compile Include="Forms\ProductPage.Designer.cs">
       <DependentUpon>ProductPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CloseDataEntryPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CloseDataEntryPage.Designer.cs">
-      <DependentUpon>CloseDataEntryPage.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\frmEmployeeBilling.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,12 +240,6 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\TestForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\TestForm.Designer.cs">
-      <DependentUpon>TestForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportModels\DriverDeliveryDetail.cs" />
@@ -308,9 +296,6 @@
     <EmbeddedResource Include="Forms\ProductPage.resx">
       <DependentUpon>ProductPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CloseDataEntryPage.resx">
-      <DependentUpon>CloseDataEntryPage.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmEmployeeBilling.resx">
       <DependentUpon>frmEmployeeBilling.cs</DependentUpon>
     </EmbeddedResource>
@@ -361,9 +346,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\TestForm.resx">
-      <DependentUpon>TestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

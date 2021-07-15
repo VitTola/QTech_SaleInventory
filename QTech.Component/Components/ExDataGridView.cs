@@ -287,7 +287,7 @@ namespace QTech.Component
             Image = Properties.Resources.point_loading,
             SizeMode = PictureBoxSizeMode.StretchImage,
             BackColor = Color.FromArgb(245, 245, 237),
-        Visible = true,
+             Visible = true,
             Dock = DockStyle.Fill
         };
 

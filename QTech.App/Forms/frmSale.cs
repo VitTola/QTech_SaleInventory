@@ -1,6 +1,7 @@
 ﻿using FastMember;
 using QTech.Base;
 using QTech.Base.BaseReport;
+using QTech.Base.Enums;
 using QTech.Base.Helpers;
 using QTech.Base.Models;
 using QTech.Base.SearchModels;
@@ -48,7 +49,7 @@ namespace QTech.Forms
             cboCustomer.DataSourceFn = p => CustomerLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
             cboCustomer.SearchParamFn = () => new CustomerSearch();
             cboSite.DataSourceFn = p => SiteLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
-            cboSite.SearchParamFn = () => new SiteSearch() {};
+            cboSite.SearchParamFn = () => new SiteSearch() { };
             colProductId.DataSourceFn = p => ProductLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
             colProductId.SearchParamFn = () => new ProductSearch();
             colEmployeeId.DataSourceFn = p => EmployeeLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
@@ -66,25 +67,23 @@ namespace QTech.Forms
             this.Text = Flag.GetTextDialog(Base.Properties.Resources.Sales);
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             cboPurchaseOrderNo.RegisterPrimaryInputWith(cboSite);
-            cboPurchaseOrderNo.RegisterEnglishInputWith(cboPurchaseOrderNo);
+            cboPurchaseOrderNo.RegisterEnglishInputWith(cboPurchaseOrderNo, txtInvoiceNo, txtInvoiceNo1, txtCustomer, txtPhone);
             dgv.RegisterEnglishInputColumns(colQauntity);
-            colUnitPrice.ReadOnly = colTotal.ReadOnly = true;
-            dgv.ReadOnly = false;
             dgv.AllowRowNotFound = false;
             dgv.AllowUserToAddRows = dgv.AllowUserToDeleteRows = true;
             dgv.EditMode = DataGridViewEditMode.EditOnEnter;
-
-            if (Flag == GeneralProcess.Add || Flag == GeneralProcess.Update)
-            {
-                dgv.EditingControlShowing += dgv_EditingControlShowing;
-                cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
-            }
+            dgv.EditingControlShowing += dgv_EditingControlShowing;
+            cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
-            txtTotal.ReadOnly = true;
-            cboPurchaseOrderNo.DropDownStyle = ComboBoxStyle.DropDown;
             dgv.EditingControlShowing += Dgv_EditingControlShowing;
             dgv.MouseClick += Dgv_MouseClick;
-            colLeftQty_.ReadOnly = true;
+            dgv.EditColumnIcon(colProductId, colQauntity, colUnitPrice, colEmployeeId);
+            txtTotal.ReadOnly = colLeftQty_.ReadOnly = true;
+
+            if (Flag != GeneralProcess.Add)
+            {
+                tabMain.Controls.Remove(Model.SaleType == SaleType.Company ? tabGeneral_ : tabCompany_);
+            }
         }
         private void Dgv_MouseClick(object sender, MouseEventArgs e)
         {
@@ -92,14 +91,23 @@ namespace QTech.Forms
             {
                 dgv.ReadOnly = false;
             }
+            if (tabMain.SelectedTab.Equals(tabGeneral_) && Flag != GeneralProcess.View)
+            {
+                dgv.ReadOnly = false;
+            }
         }
         private void Dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            if (string.IsNullOrEmpty(cboPurchaseOrderNo.Text))
+            if (string.IsNullOrEmpty(cboPurchaseOrderNo.Text) && tabMain.SelectedTab.Equals(tabCompany_))
             {
                 dgv.EndEdit();
                 dgv.ReadOnly = true;
                 cboPurchaseOrderNo.IsSelected();
+            }
+            else
+            {
+                dgv.ReadOnly = false;
+                dgv.BeginEdit(true);
             }
         }
         private async void CboCustomer_SelectedIndexChanged(object sender, EventArgs e)
@@ -121,7 +129,7 @@ namespace QTech.Forms
         }
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            colUnitPrice.ReadOnly = colTotal.ReadOnly = true;
+            colTotal.ReadOnly = colLeftQty_.ReadOnly = true;
             e.Control.RegisterEnglishInput();
             if (e.Control is ExSearchCombo cbo)
             {
@@ -135,8 +143,22 @@ namespace QTech.Forms
                 {
                     txt.Leave += txtQauntity_Leave;
                 }
+                else if (dgv.CurrentCell.ColumnIndex == colUnitPrice.Index)
+                {
+                    txt.Leave += Txt_Leave;
+                }
             }
         }
+
+        private void Txt_Leave(object sender, EventArgs e)
+        {
+            CalculateTotal();
+            if (sender is TextBox txt)
+            {
+                txt.Leave -= txtQauntity_Leave;
+            }
+        }
+
         private void CalculateTotal()
         {
             Total = 0;
@@ -147,7 +169,7 @@ namespace QTech.Forms
             }
 
             txtTotal.Text = Total.ToString();
-        }                       
+        }
         private void txtQauntity_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(dgv.CurrentCell.Value?.ToString() ?? ""))
@@ -271,11 +293,23 @@ namespace QTech.Forms
         }
         public bool InValid()
         {
-            if (!cboCustomer.IsSelected() | !cboSite.IsSelected() |
-                !cboPurchaseOrderNo.IsValidRequired(lblPurchaseOrderNo.Text) |
-                !txtInvoiceNo.IsValidRequired(lblInvoiceNo.Text)
-                | !validSaleDetail()
-                )
+            if (tabMain.SelectedTab.Equals(tabCompany_))
+            {
+                if (!cboCustomer.IsSelected() | !cboPurchaseOrderNo.IsSelected()
+                    | !txtInvoiceNo.IsValidRequired(lblInvoiceNo.Text) | !cboSite.IsSelected())
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                if (!txtCustomer.IsValidRequired(lblCustomer1.Text) | !txtInvoiceNo1.IsValidRequired(lblInvoiceNo1.Text))
+                {
+                    return true;
+                }
+            }
+
+            if (!validSaleDetail())
             {
                 return true;
             }
@@ -319,6 +353,11 @@ namespace QTech.Forms
         }
         public async void Read()
         {
+            if (Flag == GeneralProcess.Add)
+            {
+                return;
+            }
+
             Customer cus = null;
             Site site = null;
             List<Product> products = null;
@@ -344,24 +383,29 @@ namespace QTech.Forms
             });
 
             //Read Sale
-            txtInvoiceNo.Text = Model.InvoiceNo;
-            txtTotal.Text = Model.Total.ToString();
-            txtExpense.Text = Model.Expense.ToString();
-            if (Model.PurchaseOrderId != 0)
+            if (Model?.SaleType == SaleType.Company)
             {
-                cboPurchaseOrderNo.SetValue(purchaseOrder);
+                txtInvoiceNo.Text = Model.InvoiceNo;
+                txtTotal.Text = Model.Total.ToString();
+                txtExpense.Text = Model.Expense.ToString();
+                if (purchaseOrder != null)
+                {
+                    cboPurchaseOrderNo.SetValue(purchaseOrder);
+                }
+                if (cus != null)
+                {
+                    cboCustomer.SetValue(cus);
+                }
+                if (site != null)
+                {
+                    cboSite.SetValue(site);
+                }
             }
             else
             {
-                cboPurchaseOrderNo.Text = Model.PurchaseOrderNo;
-            }
-            if (cus != null)
-            {
-                cboCustomer.SetValue(cus);
-            }
-            if (site != null)
-            {
-                cboSite.SetValue(site);
+                txtCustomer.Text = Model.CustomerName;
+                txtInvoiceNo1.Text = Model.InvoiceNo;
+                txtPhone.Text = Model.Phone;
             }
 
             //Read SaleDetail
@@ -413,11 +457,6 @@ namespace QTech.Forms
 
                 });
             }
-
-
-            //NOT ALLOW UPDATE WHEN អតិថិជន ប្រភេទ ផ្សេងៗ
-            cboCustomer.Enabled = Flag != GeneralProcess.Update;
-            cboPurchaseOrderNo.Enabled = Model.PurchaseOrderId == 0;
         }
         private DataGridViewRow newRow(bool isFocus = false)
         {
@@ -476,19 +515,28 @@ namespace QTech.Forms
         }
         public void Write()
         {
-            var customer = cboCustomer.SelectedObject.ItemObject as Customer;
-            var site = cboSite.SelectedObject.ItemObject as Site;
+            if (tabMain.SelectedTab.Equals(tabCompany_))
+            {
+                var customer = cboCustomer.SelectedObject.ItemObject as Customer;
+                var site = cboSite?.SelectedObject?.ItemObject as Site;
+                Model.CompanyId = customer.Id;
+                Model.SiteId = site?.Id ?? 0;
+                Model.PurchaseOrderNo = cboPurchaseOrderNo.Text;
+                Model.InvoiceNo = txtInvoiceNo.Text;
+                var purchaseOrder = cboPurchaseOrderNo.SelectedObject?.ItemObject as PurchaseOrder;
+                Model.PurchaseOrderId = purchaseOrder == null ? 0 : purchaseOrder.Id;
+                Model.SaleType = SaleType.Company;
+            }
+            else
+            {
+                Model.CustomerName = txtCustomer.Text;
+                Model.Phone = txtPhone.Text;
+                Model.SaleType = SaleType.General;
+            }
 
-            Model.CompanyId = customer.Id;
-            Model.SiteId = site.Id;
             Model.SaleDate = Flag == GeneralProcess.Add ? DateTime.Now : Model.SaleDate;
             Model.Total = decimal.Parse(txtTotal.Text ?? "0");
-            Model.PurchaseOrderNo = cboPurchaseOrderNo.Text;
             Model.Expense = decimal.Parse(txtExpense.Text);
-            Model.InvoiceNo = txtInvoiceNo.Text;
-
-            var purchaseOrder = cboPurchaseOrderNo.SelectedObject?.ItemObject as PurchaseOrder;
-            Model.PurchaseOrderId = purchaseOrder == null ? 0 : purchaseOrder.Id;
 
             if (Model.SaleDetails == null)
             {
@@ -525,15 +573,23 @@ namespace QTech.Forms
             invoices = new List<RepoInvoice>();
             var invoice = new RepoInvoice();
 
-            invoice.PurchaseOrderNo = cboPurchaseOrderNo.Text;
-            invoice.InvoiceNo = Model.InvoiceNo = txtInvoiceNo.Text;
-            var customer = cboCustomer.SelectedObject.ItemObject as Customer;
-            var site = cboSite.SelectedObject.ItemObject as Site;
-            var purchaseOrder = cboPurchaseOrderNo.SelectedObject?.ItemObject as PurchaseOrder;
-            Model.PurchaseOrderId = purchaseOrder == null ? 0 : purchaseOrder.Id;
+            if (tabMain.SelectedTab.Equals(tabCompany_))
+            {
+                invoice.PurchaseOrderNo = cboPurchaseOrderNo.Text;
+                invoice.InvoiceNo = Model.InvoiceNo = txtInvoiceNo.Text;
+                var customer = cboCustomer.SelectedObject.ItemObject as Customer;
+                var site = cboSite?.SelectedObject?.ItemObject as Site;
+                var purchaseOrder = cboPurchaseOrderNo.SelectedObject?.ItemObject as PurchaseOrder;
+                Model.PurchaseOrderId = purchaseOrder == null ? 0 : purchaseOrder.Id;
+                invoice.Site = site?.Name;
+                invoice.Customer = customer.Name;
+            }
+            else
+            {
+                invoice.InvoiceNo = txtInvoiceNo1.Text;
+                invoice.Customer = txtCustomer.Text;
+            }
 
-            invoice.Site = site.Name;
-            invoice.Customer = customer.Name;
             invoice.Total = String.Format("{0:C}", Model.Total);
             invoice.SaleId = Model.Id;
             invoices.Add(invoice);
@@ -556,6 +612,10 @@ namespace QTech.Forms
         }
         private void lblAdd_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            if (tabMain.SelectedTab.Equals(tabGeneral_) && Flag != GeneralProcess.View)
+            {
+                dgv.ReadOnly = false;
+            }
             if (!string.IsNullOrEmpty(cboPurchaseOrderNo.Text))
             {
                 dgv.ReadOnly = false;
