@@ -70,12 +70,12 @@
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabCompany_ = new System.Windows.Forms.TabPage();
             this.tabGeneral_ = new System.Windows.Forms.TabPage();
+            this.lblPhone = new QTech.Component.ExLabel();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.txtInvoiceNo1 = new System.Windows.Forms.TextBox();
             this.lblInvoiceNo1 = new QTech.Component.ExLabel();
             this.txtCustomer = new System.Windows.Forms.TextBox();
             this.lblCustomer1 = new QTech.Component.ExLabel();
-            this.lblPhone = new QTech.Component.ExLabel();
             this.container.SuspendLayout();
             this.flowLayOutLabelRemoveAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -594,9 +594,19 @@
             this.tabGeneral_.Location = new System.Drawing.Point(4, 28);
             this.tabGeneral_.Name = "tabGeneral_";
             this.tabGeneral_.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGeneral_.Size = new System.Drawing.Size(900, 92);
+            this.tabGeneral_.Size = new System.Drawing.Size(274, 92);
             this.tabGeneral_.TabIndex = 1;
             this.tabGeneral_.Text = "លក់ទូទៅ";
+            // 
+            // lblPhone
+            // 
+            this.lblPhone.AutoSize = true;
+            this.lblPhone.Location = new System.Drawing.Point(557, 21);
+            this.lblPhone.Name = "lblPhone";
+            this.lblPhone.Required = true;
+            this.lblPhone.Size = new System.Drawing.Size(64, 19);
+            this.lblPhone.TabIndex = 25;
+            this.lblPhone.Text = "លេខទូស័ព្ទ";
             // 
             // txtPhone
             // 
@@ -641,16 +651,6 @@
             this.lblCustomer1.Size = new System.Drawing.Size(83, 19);
             this.lblCustomer1.TabIndex = 21;
             this.lblCustomer1.Text = "ឈ្មោះអតិថិជន";
-            // 
-            // lblPhone
-            // 
-            this.lblPhone.AutoSize = true;
-            this.lblPhone.Location = new System.Drawing.Point(557, 21);
-            this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Required = true;
-            this.lblPhone.Size = new System.Drawing.Size(64, 19);
-            this.lblPhone.TabIndex = 25;
-            this.lblPhone.Text = "លេខទូស័ព្ទ";
             // 
             // frmSale
             // 

@@ -57,8 +57,6 @@ namespace QTech.Forms
             }
             tabMain.SelectedIndexChanged += TabMain_SelectedIndexChanged;
             dgv.Columns[colDoDate.Name].DefaultCellStyle.Format = "dd-MMM-yyyy hh:mm";
-            dgv.EditColumnIcon(colAmount, colNote);
-
         }
 
         private void Dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

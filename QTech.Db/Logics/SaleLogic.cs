@@ -31,7 +31,7 @@ namespace QTech.Db.Logics
                 x.SaleId = result.Id;
                 SaleDetailLogic.Instance.AddAsync(x);
             });
-            if (entity.CompanyId == 0)
+            if (entity.SaleType == SaleType.General)
             {
                 AddInvoice(result, GeneralProcess.Add);
             }

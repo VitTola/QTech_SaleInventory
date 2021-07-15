@@ -113,7 +113,6 @@ namespace QTech.Forms
         private async void CboCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
             var customer = cboCustomer.SelectedObject.ItemObject as Customer;
-
             if (customer != null)
             {
                 var cusId = customer.Id == 0 ? -1 : customer.Id;
@@ -126,6 +125,9 @@ namespace QTech.Forms
                 var result = CustomerPriceLogic.Instance.GetCustomerPriceByCustomerId(customer.Id);
                 return result;
             });
+
+            cboSite.SetValue(null);
+            cboPurchaseOrderNo.SetValue(null);
         }
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
@@ -149,16 +151,10 @@ namespace QTech.Forms
                 }
             }
         }
-
         private void Txt_Leave(object sender, EventArgs e)
         {
-            CalculateTotal();
-            if (sender is TextBox txt)
-            {
-                txt.Leave -= txtQauntity_Leave;
-            }
+            txtQauntity_Leave(sender,e);
         }
-
         private void CalculateTotal()
         {
             Total = 0;
@@ -192,7 +188,7 @@ namespace QTech.Forms
             {
                 return;
             }
-            if (!cboCustomer.IsSelected())
+            if (!cboCustomer.IsSelected() && tabMain.SelectedTab.Equals(tabCompany_))
             {
                 return;
             }
@@ -202,7 +198,7 @@ namespace QTech.Forms
             bool IsNotPriceByPO = true;
             var _productId = int.Parse(dgv.CurrentCell.Value.ToString());
 
-            if (!string.IsNullOrEmpty(cboPurchaseOrderNo.Text))
+            if (!string.IsNullOrEmpty(cboPurchaseOrderNo.Text) && tabMain.SelectedTab.Equals(tabCompany_))
             {
                 var purchaseOrderNo = cboPurchaseOrderNo.SelectedObject?.ItemObject as PurchaseOrder;
                 if (purchaseOrderNo != null)
@@ -212,7 +208,7 @@ namespace QTech.Forms
                         var result = POProductPriceLogic.Instance.GetPOProductPriceByPO(purchaseOrderNo.Id);
                         return result;
                     });
-                    if (pOProductPrice.Any())
+                    if (pOProductPrice?.Any() ?? false)
                     {
                         var _poPrice = pOProductPrice.FirstOrDefault(x => x.ProductId == _productId);
                         if (_poPrice != null)
@@ -228,7 +224,7 @@ namespace QTech.Forms
             if (IsNotPriceByPO)
             {
                 bool IsNotPriceByCustomer = true;
-                if (customerPrices.Any())
+                if (customerPrices?.Any() ?? false)
                 {
                     var _cusPrice = customerPrices.FirstOrDefault(x => x.ProductId == _productId);
                     if (_cusPrice != null)
@@ -535,8 +531,8 @@ namespace QTech.Forms
             }
 
             Model.SaleDate = Flag == GeneralProcess.Add ? DateTime.Now : Model.SaleDate;
-            Model.Total = decimal.Parse(txtTotal.Text ?? "0");
-            Model.Expense = decimal.Parse(txtExpense.Text);
+            Model.Total = decimal.Parse(!string.IsNullOrEmpty(txtTotal.Text) ? txtTotal.Text : "0" );
+            Model.Expense = decimal.Parse(!string.IsNullOrEmpty(txtExpense.Text) ? txtExpense.Text : "0");
 
             if (Model.SaleDetails == null)
             {

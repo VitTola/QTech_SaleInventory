@@ -68,7 +68,7 @@ namespace QTech.Forms
                 tabMain.Controls.Remove(tabSetPrice);
             }
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
-            dgv.EditColumnIcon(colName,colPhone);
+            dgv.EditColumnIcon(colName, colPhone);
             dgvGoods.EditColumnIcon(colGoodName,colSalePrice);
 
         }
