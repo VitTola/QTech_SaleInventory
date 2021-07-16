@@ -311,7 +311,7 @@
             // chkMarkAll_
             // 
             this.chkMarkAll_.AutoSize = true;
-            this.chkMarkAll_.Location = new System.Drawing.Point(23, 49);
+            this.chkMarkAll_.Location = new System.Drawing.Point(14, 49);
             this.chkMarkAll_.Name = "chkMarkAll_";
             this.chkMarkAll_.Size = new System.Drawing.Size(15, 14);
             this.chkMarkAll_.TabIndex = 15;
@@ -329,9 +329,6 @@
             this.dgv.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv.BackgroundColor = System.Drawing.Color.White;
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -363,10 +360,11 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
             this.dgv.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            this.dgv.Location = new System.Drawing.Point(10, 39);
+            this.dgv.Location = new System.Drawing.Point(0, 39);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
             this.dgv.Paging = null;
@@ -374,7 +372,7 @@
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1253, 430);
+            this.dgv.Size = new System.Drawing.Size(1273, 391);
             this.dgv.TabIndex = 2;
             // 
             // colMark_

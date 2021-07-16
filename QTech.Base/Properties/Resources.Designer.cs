@@ -488,7 +488,7 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to តម្លៃនាំចូល/m³.
+        ///   Looks up a localized string similar to តម្លៃនាំចូល/គីប.
         /// </summary>
         public static string ImportPrice {
             get {
@@ -1034,6 +1034,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Qauntity_3 {
+            get {
+                return ResourceManager.GetString("Qauntity_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to លុប.
         /// </summary>
         public static string Remove {
@@ -1281,15 +1290,6 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string sss {
-            get {
-                return ResourceManager.GetString("sss", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap Staff {
@@ -1305,15 +1305,6 @@ namespace QTech.Base.Properties {
         public static string Status {
             get {
                 return ResourceManager.GetString("Status", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string str {
-            get {
-                return ResourceManager.GetString("str", resourceCulture);
             }
         }
         
@@ -1411,7 +1402,7 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to តម្លៃឯកតា/m³.
+        ///   Looks up a localized string similar to តម្លៃឯកតា/គីប.
         /// </summary>
         public static string UnitPrice {
             get {

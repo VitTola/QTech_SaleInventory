@@ -218,7 +218,7 @@ namespace QTech.Forms
             }
 
             dgv.Nodes.Clear();
-            foreach (var parent in customers)
+            foreach (var parent in customers.OrderByDescending(x => x.RowDate))
             {
                 var _treeGridNode = AddParentNode(dgv, parent);
 

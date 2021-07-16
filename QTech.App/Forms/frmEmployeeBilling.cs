@@ -85,12 +85,11 @@ namespace QTech.Forms
                 return;
             }
             
-
             var driver = cboDriver.SelectedObject.ItemObject as Employee;
             var company = cboCompany.SelectedObject.ItemObject as Customer;
             var site = cboSite.SelectedObject.ItemObject as Site;
 
-            var searchParam = new ReportDriverDeliverySearch()
+            var searchParam = new EmployeeBillSearch()
             {
                 D1 = dtpPeroid.SelectedPeroid.FromDate.Date,
                 D2 = dtpPeroid.SelectedPeroid.ToDate.Date,
@@ -99,36 +98,12 @@ namespace QTech.Forms
                 SiteId = site?.Id ?? 0
             };
 
-
-            var driverDeliveryDetails = await btnView.RunAsync(() =>
-            {
-                var result = SaleLogic.Instance.GetDriverDeliveryDetails(searchParam);
-                return result;
-            });
-
-            var reportHeader = new Dictionary<string, object>()
-            {
-                { "D1" , dtpPeroid.SelectedPeroid.FromDate.Date.ToString(FormatHelper.DateTime[FormatHelper.DateTimeType.ShortDate]) },
-                { "D2" , dtpPeroid.SelectedPeroid.ToDate.Date.ToString(FormatHelper.DateTime[FormatHelper.DateTimeType.ShortDate]) },
-                {"Driver",cboDriver.Text }
-            };
-
-
-            DataTable driverDeleryDetail = new DataTable("RportDriverDeliveryDetail");
-            using (var reader = ObjectReader.Create(driverDeliveryDetails))
-            {
-                driverDeleryDetail.Load(reader);
-            }
-            var _driverDeliveryDetails = new List<DataTable>();
-            _driverDeliveryDetails.Add(driverDeleryDetail);
-
-            //var report = await btnView.RunAsync(() =>
+            //var driverDeliveryDetails = await btnView.RunAsync(() =>
             //{
-            //    var r = ReportHelper.Instance.Load(nameof(RportDriverDeliveryDetail), _driverDeliveryDetails, reportHeader);
-            //    r.SummaryInfo.ReportTitle = nameof(RportDriverDeliveryDetail);
-            //    return r;
+            //    var result = SaleLogic.Instance.GetDriverDeliveryDetails(searchParam);
+            //    return result;
             //});
-
+            
             
         }
 

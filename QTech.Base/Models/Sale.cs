@@ -27,6 +27,8 @@ namespace QTech.Base
         public SaleType SaleType { get; set; }
         public string CustomerName { get; set; }
         public string Phone { get; set; }
+        public decimal Profit { get; set; }
+
     }
 
     public class SaleDetail : ActiveBaseModel
@@ -39,6 +41,14 @@ namespace QTech.Base
         public SupplierPayStatus SupplierPayStatus { get; set; }
         public int EmployeeBillId { get; set; }
         public decimal Expense { get; set; }
+        public decimal ImportTotal { get; set; }
+        public decimal Profit { get; set; }
 
     }
 }
+
+
+
+
+
+

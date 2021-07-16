@@ -420,7 +420,6 @@
             this.cboCustomer.Choose = "";
             this.cboCustomer.CustomSearchForm = null;
             this.cboCustomer.DataSourceFn = null;
-            this.cboCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCustomer.FormattingEnabled = true;
             this.cboCustomer.IsGirdViewColumn = false;
             this.cboCustomer.LoadAll = true;
@@ -594,7 +593,7 @@
             this.tabGeneral_.Location = new System.Drawing.Point(4, 28);
             this.tabGeneral_.Name = "tabGeneral_";
             this.tabGeneral_.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGeneral_.Size = new System.Drawing.Size(274, 92);
+            this.tabGeneral_.Size = new System.Drawing.Size(900, 92);
             this.tabGeneral_.TabIndex = 1;
             this.tabGeneral_.Text = "លក់ទូទៅ";
             // 

@@ -255,7 +255,7 @@ namespace QTech.Forms
                 List<Invoice> invoices = pagination.ListModel;
                 TreeGridFillData(invoices);
             }
-            dgv.Sort(dgv.Columns[colRowDate.Name], ListSortDirection.Descending);
+            //dgv.Sort(dgv.Columns[colRowDate.Name], ListSortDirection.Descending);
         }
 
         int row = 1;
@@ -268,7 +268,7 @@ namespace QTech.Forms
             }
 
             dgv.Nodes.Clear();
-            foreach (var parent in invoices)
+            foreach (var parent in invoices.OrderByDescending(x=>x.RowDate))
             {
                 var _treeGridNode = AddParentNode(dgv, parent);
 

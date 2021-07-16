@@ -338,7 +338,7 @@
     <value>..\Resources\Product32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="UnitPrice" xml:space="preserve">
-    <value>តម្លៃឯកតា/m³</value>
+    <value>តម្លៃឯកតា/គីប</value>
   </data>
   <data name="Select" xml:space="preserve">
     <value>ជ្រើសរើស</value>
@@ -484,9 +484,6 @@
   <data name="InvoiceStatus_WaitPayment" xml:space="preserve">
     <value>រងចាំទូទាត់</value>
   </data>
-  <data name="sss" xml:space="preserve">
-    <value />
-  </data>
   <data name="MsgInvoiceAlreadyPaid" xml:space="preserve">
     <value>វិក័យប័ត្របានទូទាត់រូចរាល់ មិនអាចលុបបាប!</value>
   </data>
@@ -506,7 +503,7 @@
     <value>យល់ព្រម</value>
   </data>
   <data name="ImportPrice" xml:space="preserve">
-    <value>តម្លៃនាំចូល/m³</value>
+    <value>តម្លៃនាំចូល/គីប</value>
   </data>
   <data name="MsgDataCurrentlyInUsed" xml:space="preserve">
     <value>បានយកទៅប្រើប្រាស់ហើយ មិនអាចលុបបានទេ!</value>
@@ -547,9 +544,6 @@
   <data name="PurchaseOrder_img" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PurchaseOrder_img.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="str" xml:space="preserve">
-    <value />
-  </data>
   <data name="MsgChoosePurchaseOrderNoFirst" xml:space="preserve">
     <value>សូមជ្រើសរើស​ ឬបញ្ចូលលេខបញ្ជាទិញជាមុន !</value>
   </data>
@@ -561,5 +555,8 @@
   </data>
   <data name="MsgCannotChangeCustomerAndPO" xml:space="preserve">
     <value>អតិថិជន និងលេខ PO មិនអាចកែបានទេ!​ អ្នកអាចធ្វើការលុបការលក់នេះហើយបង្កើតថ្មី​ ។</value>
+  </data>
+  <data name="Qauntity_3" xml:space="preserve">
+    <value />
   </data>
 </root>
