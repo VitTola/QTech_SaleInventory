@@ -416,6 +416,7 @@ namespace QTech.Forms
                     row.Cells[colQauntity.Name].Value = x.Qauntity;
                     row.Cells[colTotal.Name].Value = x.Total;
                     row.Cells[colUnitPrice.Name].Value = products?.FirstOrDefault(y => y.Id == x.ProductId)?.UnitPrice;
+                    row.Cells[colImportPrice.Name].Value = products?.FirstOrDefault(y => y.Id == x.ProductId)?.ImportPrice;
                     row.Cells[colLeftQty_.Name].Value = pOProductPrices?.FirstOrDefault(r => r.ProductId == x.ProductId)?.LeftQauntity;
 
                     if (products != null)
@@ -547,10 +548,14 @@ namespace QTech.Forms
                 saleDetail.Active = true;
                 saleDetail.Id = int.Parse(row?.Cells[colId.Name]?.Value?.ToString() ?? "0");
                 saleDetail.SaleId = Model.Id;
-                saleDetail.ProductId = int.Parse(row.Cells[colProductId.Name].Value.ToString());
-                saleDetail.Qauntity = int.Parse(row.Cells[colQauntity.Name].Value.ToString());
-                saleDetail.EmployeeId = int.Parse(row.Cells[colEmployeeId.Name].Value.ToString());
-                saleDetail.Total = decimal.Parse(row.Cells[colTotal.Name].Value.ToString());
+                saleDetail.ProductId = int.Parse(row.Cells[colProductId.Name].Value?.ToString() ?? "0");
+                saleDetail.Qauntity = int.Parse(row.Cells[colQauntity.Name].Value?.ToString() ?? "0");
+                saleDetail.EmployeeId = int.Parse(row.Cells[colEmployeeId.Name].Value?.ToString() ?? "0");
+                saleDetail.Total = decimal.Parse(row.Cells[colTotal.Name].Value?.ToString() ?? "0");
+
+                //ImportTotal
+                var importPrice = decimal.Parse(row.Cells[colImportPrice.Name].Value?.ToString() ?? "0");
+                saleDetail.ImportTotalAmount = importPrice * saleDetail.Qauntity;
 
                 if (Flag == GeneralProcess.Update)
                 {

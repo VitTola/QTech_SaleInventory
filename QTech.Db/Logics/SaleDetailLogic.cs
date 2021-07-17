@@ -1,6 +1,7 @@
 ﻿using QTech.Base;
 using QTech.Base.BaseModels;
 using QTech.Base.Models;
+using QTech.Base.OutFaceModels;
 using QTech.Base.SearchModels;
 using System;
 using System.Collections.Generic;
@@ -57,6 +58,41 @@ namespace QTech.Db.Logics
                 q = q.Where(x => x.SaleId == param.SaleId);
             }
             return q;
+        }
+
+        public List<EmployeeBillOutFace> GetEmployeeBillOutFaces(ISearchModel model)
+        {
+            var param = model as EmployeeBillSearch;
+            var q = All();
+            var result = from saleDetail in q
+                         join employee in _db.Employees on saleDetail.EmployeeId equals employee.Id
+                         join sale in _db.Sales on saleDetail.SaleId equals sale.Id
+                         join customer in _db.Customers on sale.CompanyId equals customer.Id
+                         join site in _db.Sites on sale.SiteId equals site.Id
+                         join product in _db.Products on saleDetail.ProductId equals product.Id
+                         join category in _db.Categories on product.CategoryId equals category.Id
+                         where sale.SaleDate >= param.D1 && sale.SaleDate <= param.D2
+                         && (param.DriverId == 0 ? true : employee.Id == param.DriverId) 
+                         && (param.CustomerId == 0 ? true : customer.Id == param.CustomerId) 
+                         && (param.SiteId == 0 ? true : site.Id == param.SiteId)
+                         select new EmployeeBillOutFace()
+                         {
+                             PurchaseOrderNo = sale.PurchaseOrderNo,
+                             InvoiceNo = sale.InvoiceNo,
+                             ToCompany = customer.Name,
+                             ToSite = site.Name,
+                             SaleDate = sale.SaleDate,
+                             Product = product.Name,
+                             Category = category.Name,
+                             ImportPrice = product.ImportPrice,
+                             Qauntity = saleDetail.Qauntity,
+                             ImportTotalAmount = saleDetail.ImportTotalAmount,
+                             
+                             SaleDetailId = saleDetail.Id
+                         };
+
+            var res =result.GroupBy(x => x.SaleDetailId).Select(y => y.FirstOrDefault()).ToList();
+            return res;
         }
     }
 }

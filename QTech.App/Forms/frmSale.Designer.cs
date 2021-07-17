@@ -30,21 +30,13 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSale));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblPurchaseOrderNo = new QTech.Component.ExLabel();
             this.flowLayOutLabelRemoveAdd = new System.Windows.Forms.FlowLayoutPanel();
             this.lblRemove = new System.Windows.Forms.LinkLabel();
             this.lblAdd = new System.Windows.Forms.LinkLabel();
             this.dgv = new QTech.Component.ExDataGridView();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSaleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colProductId = new QTech.Component.ExSearchComboColumn();
-            this.colQauntity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLeftQty_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEmployeeId = new QTech.Component.ExSearchComboColumn();
             this.exLabel2 = new QTech.Component.ExLabel();
             this.exPanel1 = new QTech.Component.Components.ExPanel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
@@ -76,6 +68,15 @@
             this.lblInvoiceNo1 = new QTech.Component.ExLabel();
             this.txtCustomer = new System.Windows.Forms.TextBox();
             this.lblCustomer1 = new QTech.Component.ExLabel();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colImportPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSaleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colProductId = new QTech.Component.ExSearchComboColumn();
+            this.colQauntity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLeftQty_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEmployeeId = new QTech.Component.ExSearchComboColumn();
             this.container.SuspendLayout();
             this.flowLayOutLabelRemoveAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -164,6 +165,7 @@
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colId,
+            this.colImportPrice,
             this.colSaleId,
             this.colProductId,
             this.colQauntity,
@@ -192,85 +194,6 @@
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(849, 392);
             this.dgv.TabIndex = 4;
-            // 
-            // colId
-            // 
-            this.colId.DataPropertyName = "Id";
-            this.colId.HeaderText = "Id";
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            this.colId.Visible = false;
-            // 
-            // colSaleId
-            // 
-            this.colSaleId.HeaderText = "SaleId";
-            this.colSaleId.Name = "colSaleId";
-            this.colSaleId.ReadOnly = true;
-            this.colSaleId.Visible = false;
-            // 
-            // colProductId
-            // 
-            this.colProductId.Choose = null;
-            this.colProductId.CustomSearchForm = null;
-            this.colProductId.DataPropertyName = "ProductId";
-            this.colProductId.DataSourceFn = null;
-            this.colProductId.HeaderText = "ឈ្មោះទំនិញ";
-            this.colProductId.Name = "colProductId";
-            this.colProductId.ReadOnly = true;
-            this.colProductId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colProductId.SearchParamFn = null;
-            this.colProductId.ShowAll = false;
-            this.colProductId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.colProductId.TextAll = null;
-            this.colProductId.Width = 200;
-            // 
-            // colQauntity
-            // 
-            this.colQauntity.DataPropertyName = "Qauntity";
-            this.colQauntity.HeaderText = "បរិមាណ";
-            this.colQauntity.Name = "colQauntity";
-            this.colQauntity.ReadOnly = true;
-            this.colQauntity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // colLeftQty_
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Green;
-            this.colLeftQty_.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colLeftQty_.HeaderText = "បរិមាននៅសល់ក្នុង PO";
-            this.colLeftQty_.Name = "colLeftQty_";
-            this.colLeftQty_.ReadOnly = true;
-            this.colLeftQty_.Width = 150;
-            // 
-            // colUnitPrice
-            // 
-            this.colUnitPrice.DataPropertyName = "UnitPrice";
-            this.colUnitPrice.HeaderText = "តម្ថៃឯកតា";
-            this.colUnitPrice.Name = "colUnitPrice";
-            this.colUnitPrice.ReadOnly = true;
-            // 
-            // colTotal
-            // 
-            this.colTotal.DataPropertyName = "Total";
-            this.colTotal.HeaderText = "សរុប";
-            this.colTotal.Name = "colTotal";
-            this.colTotal.ReadOnly = true;
-            // 
-            // colEmployeeId
-            // 
-            this.colEmployeeId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colEmployeeId.Choose = null;
-            this.colEmployeeId.CustomSearchForm = null;
-            this.colEmployeeId.DataPropertyName = "EmployeeId";
-            this.colEmployeeId.DataSourceFn = null;
-            this.colEmployeeId.HeaderText = "អ្នកដឹក";
-            this.colEmployeeId.Name = "colEmployeeId";
-            this.colEmployeeId.ReadOnly = true;
-            this.colEmployeeId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colEmployeeId.SearchParamFn = null;
-            this.colEmployeeId.ShowAll = false;
-            this.colEmployeeId.TextAll = null;
             // 
             // exLabel2
             // 
@@ -420,6 +343,7 @@
             this.cboCustomer.Choose = "";
             this.cboCustomer.CustomSearchForm = null;
             this.cboCustomer.DataSourceFn = null;
+            this.cboCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCustomer.FormattingEnabled = true;
             this.cboCustomer.IsGirdViewColumn = false;
             this.cboCustomer.LoadAll = true;
@@ -593,7 +517,7 @@
             this.tabGeneral_.Location = new System.Drawing.Point(4, 28);
             this.tabGeneral_.Name = "tabGeneral_";
             this.tabGeneral_.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGeneral_.Size = new System.Drawing.Size(900, 92);
+            this.tabGeneral_.Size = new System.Drawing.Size(274, 92);
             this.tabGeneral_.TabIndex = 1;
             this.tabGeneral_.Text = "លក់ទូទៅ";
             // 
@@ -650,6 +574,92 @@
             this.lblCustomer1.Size = new System.Drawing.Size(83, 19);
             this.lblCustomer1.TabIndex = 21;
             this.lblCustomer1.Text = "ឈ្មោះអតិថិជន";
+            // 
+            // colId
+            // 
+            this.colId.DataPropertyName = "Id";
+            this.colId.HeaderText = "Id";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            this.colId.Visible = false;
+            // 
+            // colImportPrice
+            // 
+            this.colImportPrice.HeaderText = "ImportPrice";
+            this.colImportPrice.Name = "colImportPrice";
+            this.colImportPrice.ReadOnly = true;
+            this.colImportPrice.Visible = false;
+            // 
+            // colSaleId
+            // 
+            this.colSaleId.HeaderText = "SaleId";
+            this.colSaleId.Name = "colSaleId";
+            this.colSaleId.ReadOnly = true;
+            this.colSaleId.Visible = false;
+            // 
+            // colProductId
+            // 
+            this.colProductId.Choose = null;
+            this.colProductId.CustomSearchForm = null;
+            this.colProductId.DataPropertyName = "ProductId";
+            this.colProductId.DataSourceFn = null;
+            this.colProductId.HeaderText = "ឈ្មោះទំនិញ";
+            this.colProductId.Name = "colProductId";
+            this.colProductId.ReadOnly = true;
+            this.colProductId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colProductId.SearchParamFn = null;
+            this.colProductId.ShowAll = false;
+            this.colProductId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colProductId.TextAll = null;
+            this.colProductId.Width = 200;
+            // 
+            // colQauntity
+            // 
+            this.colQauntity.DataPropertyName = "Qauntity";
+            this.colQauntity.HeaderText = "បរិមាណ";
+            this.colQauntity.Name = "colQauntity";
+            this.colQauntity.ReadOnly = true;
+            this.colQauntity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // colLeftQty_
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Green;
+            this.colLeftQty_.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colLeftQty_.HeaderText = "បរិមាននៅសល់ក្នុង PO";
+            this.colLeftQty_.Name = "colLeftQty_";
+            this.colLeftQty_.ReadOnly = true;
+            this.colLeftQty_.Width = 150;
+            // 
+            // colUnitPrice
+            // 
+            this.colUnitPrice.DataPropertyName = "UnitPrice";
+            this.colUnitPrice.HeaderText = "តម្ថៃឯកតា";
+            this.colUnitPrice.Name = "colUnitPrice";
+            this.colUnitPrice.ReadOnly = true;
+            // 
+            // colTotal
+            // 
+            this.colTotal.DataPropertyName = "Total";
+            this.colTotal.HeaderText = "សរុប";
+            this.colTotal.Name = "colTotal";
+            this.colTotal.ReadOnly = true;
+            // 
+            // colEmployeeId
+            // 
+            this.colEmployeeId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colEmployeeId.Choose = null;
+            this.colEmployeeId.CustomSearchForm = null;
+            this.colEmployeeId.DataPropertyName = "EmployeeId";
+            this.colEmployeeId.DataSourceFn = null;
+            this.colEmployeeId.HeaderText = "អ្នកដឹក";
+            this.colEmployeeId.Name = "colEmployeeId";
+            this.colEmployeeId.ReadOnly = true;
+            this.colEmployeeId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colEmployeeId.SearchParamFn = null;
+            this.colEmployeeId.ShowAll = false;
+            this.colEmployeeId.TextAll = null;
             // 
             // frmSale
             // 
@@ -718,14 +728,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtExpense;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSaleId;
-        private Component.ExSearchComboColumn colProductId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colQauntity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colLeftQty_;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colUnitPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTotal;
-        private Component.ExSearchComboColumn colEmployeeId;
         private System.Windows.Forms.TabControl tabMain;
         private System.Windows.Forms.TabPage tabCompany_;
         private System.Windows.Forms.TabPage tabGeneral_;
@@ -735,5 +737,14 @@
         private Component.ExLabel lblCustomer1;
         private System.Windows.Forms.TextBox txtPhone;
         private Component.ExLabel lblPhone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colImportPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSaleId;
+        private Component.ExSearchComboColumn colProductId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colQauntity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLeftQty_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colUnitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTotal;
+        private Component.ExSearchComboColumn colEmployeeId;
     }
 }

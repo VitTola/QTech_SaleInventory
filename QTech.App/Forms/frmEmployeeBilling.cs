@@ -18,6 +18,7 @@ using QTech.ReportModels;
 using Storm.CC.Report.Helpers;
 using QTech.Component.Helpers;
 using QTech.Base.Models;
+using QTech.Base.OutFaceModels;
 
 namespace QTech.Forms
 {
@@ -51,6 +52,7 @@ namespace QTech.Forms
         {
             btnAdvanceSearch.Click += btnAdvanceSearch_Click;
             cboCompany.SelectedIndexChanged += CboCompany_SelectedIndexChanged;
+            colMark_.ReadOnly = false;
         }
 
         private void CboCompany_SelectedIndexChanged(object sender, EventArgs e)
@@ -80,6 +82,7 @@ namespace QTech.Forms
 
         public async void View()
         {
+            dgv.Rows.Clear();
             if (inValid() || btnView.Executing)
             {
                 return;
@@ -98,15 +101,46 @@ namespace QTech.Forms
                 SiteId = site?.Id ?? 0
             };
 
-            //var driverDeliveryDetails = await btnView.RunAsync(() =>
-            //{
-            //    var result = SaleLogic.Instance.GetDriverDeliveryDetails(searchParam);
-            //    return result;
-            //});
-            
-            
-        }
+            var employeeBills = await btnView.RunAsync(() =>
+            {
+                var result = SaleDetailLogic.Instance.GetEmployeeBillOutFaces(searchParam);
+                return result;
+            });
+            FillGiridView(employeeBills);
 
+        }
+        private void FillGiridView(List<EmployeeBillOutFace> employeeBillOutFaces)
+        {
+            if (employeeBillOutFaces == null)
+            {
+                return;
+            }
+            employeeBillOutFaces.ForEach(x=> {
+                var row = newRow(false);
+                row.Cells[colId.Name].Value = x.SaleDetailId;
+                row.Cells[colPurchaseOrderNo.Name].Value = x.PurchaseOrderNo;
+                row.Cells[colInvoiceNo.Name].Value = x.InvoiceNo;
+                row.Cells[colToCompany.Name].Value = x.ToCompany;
+                row.Cells[colToSite.Name].Value = x.ToSite;
+                row.Cells[colSaleDate.Name].Value = x.SaleDate.ToString("dd-MMM-yyyy hh:mm"); 
+                row.Cells[colProducts.Name].Value = x.Product;
+                row.Cells[colImportPrice.Name].Value = x.ImportPrice;
+                row.Cells[colQauntity_3.Name].Value = x.Qauntity;
+                row.Cells[colTotal.Name].Value = x.ImportTotalAmount;
+
+            });
+        }
+        private DataGridViewRow newRow(bool isFocus = false)
+        {
+            var row = dgv.Rows[dgv.Rows.Add()];
+            row.Cells[colId.Name].Value = 0;
+            row.Cells[colId.Name].Value = 0;
+            if (isFocus)
+            {
+                dgv.Focus();
+            }
+            return row;
+        }
         ExSearchCombo cboDriver = new ExSearchCombo
         {
             Name = BaseResource.Driver,

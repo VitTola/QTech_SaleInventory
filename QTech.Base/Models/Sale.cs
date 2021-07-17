@@ -41,7 +41,7 @@ namespace QTech.Base
         public SupplierPayStatus SupplierPayStatus { get; set; }
         public int EmployeeBillId { get; set; }
         public decimal Expense { get; set; }
-        public decimal ImportTotal { get; set; }
+        public decimal ImportTotalAmount { get; set; }
         public decimal Profit { get; set; }
 
     }
