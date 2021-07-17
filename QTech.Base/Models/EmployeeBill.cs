@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QTech.Base.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,9 @@ namespace QTech.Base.Models
         public int CustomerId { get; set; }
         public int SiteId { get; set; }
         public int EmployeeId { get; set; }
+        public decimal PaidAmount { get; set; }
+        public decimal LeftAmount { get; set; }
+        public InvoiceStatus InvoiceStatus { get; set; }
         public List<int> SaleDetailIds{ get; set; }
     }
 }

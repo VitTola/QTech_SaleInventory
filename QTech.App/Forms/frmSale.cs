@@ -553,9 +553,10 @@ namespace QTech.Forms
                 saleDetail.EmployeeId = int.Parse(row.Cells[colEmployeeId.Name].Value?.ToString() ?? "0");
                 saleDetail.Total = decimal.Parse(row.Cells[colTotal.Name].Value?.ToString() ?? "0");
 
-                //ImportTotal
+                //ImportTotal & Profit
                 var importPrice = decimal.Parse(row.Cells[colImportPrice.Name].Value?.ToString() ?? "0");
                 saleDetail.ImportTotalAmount = importPrice * saleDetail.Qauntity;
+                saleDetail.Profit = saleDetail.Total - saleDetail.ImportTotalAmount;
 
                 if (Flag == GeneralProcess.Update)
                 {

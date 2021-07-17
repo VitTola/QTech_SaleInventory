@@ -29,6 +29,9 @@ namespace QTech.Db.Logics
             return q;
         }
 
-
+        public List<SupplierGeneralPaid> GetSupplierGeneralPaidByEmpId(int employeeId)
+        {
+            return _db.SupplierGeneralPaids.Where(x => !x.IsCalculated && x.EmployeeId == employeeId).ToList();
+        }
     }
 }

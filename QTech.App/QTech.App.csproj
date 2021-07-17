@@ -441,6 +441,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pheng-Ry.ico" />
+    <None Include="Resources\lineDown1.png" />
+    <None Include="Resources\lineDown.png" />
     <None Include="Resources\Print.png" />
     <None Include="Resources\Printer.png" />
     <None Include="Resources\expand.img.png" />
