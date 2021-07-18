@@ -71,10 +71,14 @@ namespace QTech.Db.Logics
                          join site in _db.Sites on sale.SiteId equals site.Id
                          join product in _db.Products on saleDetail.ProductId equals product.Id
                          join category in _db.Categories on product.CategoryId equals category.Id
-                         where sale.SaleDate >= param.D1 && sale.SaleDate <= param.D2
+                         where param.EmployeeBillId != 0 ?
+                         (saleDetail.EmployeeBillId == param.EmployeeBillId)
+                         :
+                         (sale.SaleDate >= param.D1 && sale.SaleDate <= param.D2
                          && (param.DriverId == 0 ? true : employee.Id == param.DriverId) 
                          && (param.CustomerId == 0 ? true : customer.Id == param.CustomerId) 
                          && (param.SiteId == 0 ? true : site.Id == param.SiteId)
+                         && (saleDetail.PayStatus == Base.Enums.PayStatus.NotYetPaid))
                          select new EmployeeBillOutFace()
                          {
                              PurchaseOrderNo = sale.PurchaseOrderNo,
@@ -88,10 +92,10 @@ namespace QTech.Db.Logics
                              Qauntity = saleDetail.Qauntity,
                              ImportTotalAmount = saleDetail.ImportTotalAmount,
                              
-                             SaleDetailId = saleDetail.Id
+                             saleDetail = saleDetail
                          };
 
-            var res =result.GroupBy(x => x.SaleDetailId).Select(y => y.FirstOrDefault()).ToList();
+            var res =result.GroupBy(x => x.saleDetail).Select(y => y.FirstOrDefault()).ToList();
             return res;
         }
     }

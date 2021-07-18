@@ -19,16 +19,21 @@ using Storm.CC.Report.Helpers;
 using QTech.Component.Helpers;
 using QTech.Base.Models;
 using QTech.Base.OutFaceModels;
+using QTech.Base.Enums;
 
 namespace QTech.Forms
 {
     public partial class frmEmployeeBilling : ExDialog, QTech.Component.Helpers.IDialog
     {
         public EmployeeBill Model{ get; set; }
+        public GeneralProcess Flag { get; set; }
         public frmEmployeeBilling(EmployeeBill model, GeneralProcess flag)
         {
             InitializeComponent();
+            Model = model;
+            Flag = flag;
             Bind();
+            Read();
             InitEvent();
             InitAdvanceFilter();
         }
@@ -37,7 +42,6 @@ namespace QTech.Forms
         private decimal Total=0, prePaid = 0;
         private int AllSales = 0, CheckingAmount = 0;
         private List<SupplierGeneralPaid> SupplierGeneralPrepaids;
-
 
         private void Bind()
         {
@@ -116,14 +120,17 @@ namespace QTech.Forms
             dgv.Rows.Clear();
             txtPrePaid.Text = txtTotal.Text = txtPaidAmount.Text = txtLeftAmount.Text = "0";
             Total = 0; prePaid = 0;
-            if (inValid() || btnView.Executing)
+            if (btnView.Executing)
             {
                 return;
             }
-            
-            var driver = cboDriver.SelectedObject.ItemObject as Employee;
-            var company = cboCompany.SelectedObject.ItemObject as Customer;
-            var site = cboSite.SelectedObject.ItemObject as Site;
+            if (inValid() && Flag == GeneralProcess.Add)
+            {
+                return;
+            }
+            var driver = cboDriver?.SelectedObject?.ItemObject as Employee;
+            var company = cboCompany?.SelectedObject?.ItemObject as Customer;
+            var site = cboSite?.SelectedObject?.ItemObject as Site;
             SupplierGeneralPrepaids = SupplierGeneralPaidLogic.Instance.GetSupplierGeneralPaidByEmpId(driver?.Id ?? -1);
             SupplierGeneralPrepaids.ForEach(x => prePaid += x.Amount);
             txtPrePaid.Text = prePaid.ToString();
@@ -135,7 +142,8 @@ namespace QTech.Forms
                 D2 = dtpPeroid.SelectedPeroid.ToDate.Date,
                 DriverId = driver?.Id ?? 0,
                 CustomerId = company?.Id ?? 0,
-                SiteId = site?.Id ?? 0
+                SiteId = site?.Id ?? 0,
+                EmployeeBillId = Model.Id
             };
 
             var employeeBills = await btnView.RunAsync(() =>
@@ -159,7 +167,8 @@ namespace QTech.Forms
             AllSales = 0;
             employeeBillOutFaces.ForEach(x=> {
                 var row = newRow(false);
-                row.Cells[colId.Name].Value = x.SaleDetailId;
+                row.Cells[colId.Name].Value = x.saleDetail.Id;
+                row.Cells[colTag.Name].Value = x.saleDetail;
                 row.Cells[colPurchaseOrderNo.Name].Value = x.PurchaseOrderNo;
                 row.Cells[colInvoiceNo.Name].Value = x.InvoiceNo;
                 row.Cells[colToCompany.Name].Value = x.ToCompany;
@@ -194,13 +203,13 @@ namespace QTech.Forms
             }
             return row;
         }
+
+        #region INIT ADVANT SEARCH
         ExSearchCombo cboDriver = new ExSearchCombo
         {
             Name = BaseResource.Driver,
-            TextAll = BaseResource.Driver,
             DataSourceFn = p => EmployeeLogic.Instance.SearchAsync(p).ToDropDownItemModelList(),
             SearchParamFn = () => new EmployeeSearch(),
-            Choose = BaseResource.Driver,
         };
 
         ExSearchCombo cboCompany = new ExSearchCombo
@@ -220,12 +229,8 @@ namespace QTech.Forms
             DataSourceFn = p => SiteLogic.Instance.SearchAsync(p).ToDropDownItemModelList(),
             SearchParamFn = () => new SiteSearch() { }
         };
-
-
+        #endregion
         private bool _isAdvanceInvalid = false;
-
-        public GeneralProcess Flag { get; set; }
-
         public void Find()
         {
             if (btnView.Executing)
@@ -344,9 +349,9 @@ namespace QTech.Forms
             View();
         }
 
-        public void Read()
+        public async void Read()
         {
-            throw new NotImplementedException();
+           await Search();
         }
 
         void IDialog.InitEvent()
@@ -358,18 +363,45 @@ namespace QTech.Forms
         {
             Model.DoDate = DateTime.Now;
             Model.Total = decimal.Parse(!string.IsNullOrEmpty(txtTotal.Text) ? txtTotal.Text : "0");
+            Model.PaidAmount = decimal.Parse(!string.IsNullOrEmpty(txtPaidAmount.Text) ? txtPaidAmount.Text : "0");
+            Model.LeftAmount = decimal.Parse(!string.IsNullOrEmpty(txtLeftAmount.Text) ? txtLeftAmount.Text : "0");
+            var employee = cboDriver.SelectedObject.ItemObject as Employee;
+            Model.EmployeeId = employee.Id;
 
+            if (Model.PaidAmount == 0)
+            {
+                Model.InvoiceStatus = InvoiceStatus.WaitPayment;
+            }
+            else if (Model.LeftAmount == 0)
+            {
+                Model.InvoiceStatus = InvoiceStatus.Paid;
+            }
+            else
+            {
+                Model.InvoiceStatus = InvoiceStatus.PaySome;
+            }
+
+            if (Model.SaleDetails == null)
+            {
+                Model.SaleDetails = new List<SaleDetail>();
+            }
             dgv.EndEdit();
             var Rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
             foreach (DataGridViewRow row in Rows)
             {
-                InvoiceDetail invoiceDt = new InvoiceDetail();
                 var _isChecked = (bool)(row.Cells[colMark_.Name].Value ?? false);
                 if (_isChecked)
                 {
-                    invoiceDt.SaleId = int.Parse(row.Cells[colId.Name].Value?.ToString());
-                    invoiceDt.InvoiceId = Model.Id;
-                  //  Model.InvoiceDetails.Add(invoiceDt);
+                    var saleDetail = (row.Cells[colTag.Name].Value) as SaleDetail;
+                    if (Model.PaidAmount == 0)
+                    {
+                        saleDetail.PayStatus = PayStatus.WaitPayment;
+                    }
+                    else if (Model.LeftAmount == 0)
+                    {
+                        saleDetail.PayStatus = PayStatus.Paid;
+                    }
+                    Model.SaleDetails.Add(saleDetail);
                 }
             }
         }
@@ -381,12 +413,63 @@ namespace QTech.Forms
 
         public bool InValid()
         {
-            throw new NotImplementedException();
+            bool _isValid = true;
+            var employee = cboDriver.SelectedObject.ItemObject as Employee;
+            if (employee == null || employee.Id == 0 )
+            {
+                _isValid = false;
+            }
+
+            var Rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
+            foreach (DataGridViewRow row in Rows)
+            {
+                if ((bool)row.Cells[colMark_.Name]?.Value)
+                {
+                    _isValid = false;
+                    break;
+                }
+            }
+            return _isValid;
         }
 
-        public void Save()
+        public async void Save()
         {
-            throw new NotImplementedException();
+            if (Flag == GeneralProcess.View)
+            {
+                Close();
+            }
+
+            if (InValid()) { return; }
+            Write();
+
+            var isExist = await btnSave.RunAsync(() => EmployeeBillLogic.Instance.IsExistsAsync(Model));
+            if (isExist == true)
+            {
+                return;
+            }
+
+            var result = await btnSave.RunAsync(() =>
+            {
+                if (Flag == GeneralProcess.Add)
+                {
+                    return EmployeeBillLogic.Instance.AddAsync(Model);
+                }
+                else if (Flag == GeneralProcess.Update)
+                {
+                    return EmployeeBillLogic.Instance.UpdateAsync(Model);
+                }
+                else if (Flag == GeneralProcess.Remove)
+                {
+                    return EmployeeBillLogic.Instance.RemoveAsync(Model);
+                }
+
+                return null;
+            });
+            if (result != null)
+            {
+                Model = result;
+                DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
         }
 
         public void ViewChangeLog()
@@ -418,6 +501,22 @@ namespace QTech.Forms
             var total = decimal.Parse(txtTotal.Text ?? "0");
             txtLeftAmount.Text = (total - (pay + prePaid)).ToString();
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            Save();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void lblPrePaid_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
         private void txtPaidAmount_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtPaidAmount.Text))

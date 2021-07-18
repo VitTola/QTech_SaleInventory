@@ -21,6 +21,6 @@ namespace QTech.Base.OutFaceModels
         public decimal EmployeeOweAmount { get; set; }
 
         //Query in use
-        public int SaleDetailId { get; set; }
+        public SaleDetail saleDetail{ get; set; }
     }
 }

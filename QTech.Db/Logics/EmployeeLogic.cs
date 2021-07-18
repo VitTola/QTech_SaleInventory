@@ -1,5 +1,6 @@
 ﻿using QTech.Base;
 using QTech.Base.BaseModels;
+using QTech.Base.Enums;
 using QTech.Base.SearchModels;
 using System;
 using System.Collections.Generic;
@@ -78,6 +79,10 @@ namespace QTech.Db.Logics
                 q = q.Where(x => x.Name.ToLower().Contains(param.Search.ToLower()));
             }
             return q;
+        }
+        public override bool CanRemoveAsync(int id)
+        {
+            return _db.EmployeeBills.Any(x=>x.Id == id && x.InvoiceStatus == InvoiceStatus.WaitPayment);
         }
     }
 }

@@ -113,7 +113,10 @@ namespace QTech.Forms
                 }
 
                 e.Node.Nodes.Clear();
-                var search = new SiteSearch() { CustomerId = parent.Id };
+                var search = new SiteSearch() {
+                    Paging = pagination.Paging,
+                    CustomerId = parent.Id
+                };
                 var sites = await dgv.RunAsync(() => SiteLogic.Instance.SearchAsync(search));
 
                 if (sites.Any())
@@ -236,7 +239,7 @@ namespace QTech.Forms
                 search.InvoiceStatus = (InvoiceStatus)cboStatus.SelectedValue;
             }
             search.Search = txtSearch.Text;
-            search.Paging = new Paging() { IsPaging = true, PageSize = 25 };
+            search.Paging = pagination.Paging;
         
             pagination.ListModel = await dgv.RunAsync(() =>
             {

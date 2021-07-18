@@ -125,6 +125,7 @@ namespace QTech.Forms
             var search = new PurchaseOrderSearch()
             {
                 Search = txtSearch.Text,
+                Paging = pagination.Paging
             };
             var Customers = new List<Customer>();
             pagination.ListModel = await dgv.RunAsync(() =>

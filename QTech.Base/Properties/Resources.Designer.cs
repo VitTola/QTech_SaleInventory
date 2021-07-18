@@ -79,6 +79,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ទាំងអស់.
+        /// </summary>
+        public static string All_ {
+            get {
+                return ResourceManager.GetString("All_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to អតិថិជនទាំងអស់.
         /// </summary>
         public static string AllCustomer {

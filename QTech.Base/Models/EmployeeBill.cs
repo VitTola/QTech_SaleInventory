@@ -9,6 +9,7 @@ namespace QTech.Base.Models
 {
     public class EmployeeBill : QTech.Base.ActiveBaseModel
     {
+        public string BillNo { get; set; }
         public DateTime DoDate{ get; set; }
         public decimal Total { get; set; }
         public int CustomerId { get; set; }
@@ -17,6 +18,6 @@ namespace QTech.Base.Models
         public decimal PaidAmount { get; set; }
         public decimal LeftAmount { get; set; }
         public InvoiceStatus InvoiceStatus { get; set; }
-        public List<int> SaleDetailIds{ get; set; }
+        public List<SaleDetail> SaleDetails{ get; set; }
     }
 }
