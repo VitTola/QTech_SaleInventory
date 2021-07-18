@@ -70,7 +70,7 @@
             // picLoading
             // 
             this.picLoading.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picLoading.Image = global::QTech.Component.Properties.Resources.point_loading;
+            this.picLoading.Image = global::QTech.Component.Properties.Resources.dgvloading;
             this.picLoading.Location = new System.Drawing.Point(5, 5);
             this.picLoading.Name = "picLoading";
             this.picLoading.Size = new System.Drawing.Size(90, 90);

@@ -83,7 +83,7 @@ namespace QTech.Component
         PictureBox picLoading = new PictureBox()
         {
             Enabled = true,
-            Image = Properties.Resources.point_loading,
+            Image = Properties.Resources.dgvloading,
             SizeMode = PictureBoxSizeMode.StretchImage,
             Visible = true,
             Dock = DockStyle.Fill

@@ -712,6 +712,7 @@
     <None Include="Resources\centerW.png" />
     <None Include="Resources\center5.png" />
     <None Include="Resources\close.png" />
+    <None Include="Resources\dgvloading.gif" />
     <Content Include="Resources\edit.png" />
     <None Include="Resources\empty_avatar.png" />
     <None Include="Resources\jpg.png" />

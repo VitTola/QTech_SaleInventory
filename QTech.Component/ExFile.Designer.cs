@@ -145,7 +145,7 @@
             // 
             this.picDgvLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.picDgvLoading.BackColor = System.Drawing.Color.Transparent;
-            this.picDgvLoading.Image = global::QTech.Component.Properties.Resources.point_loading;
+            this.picDgvLoading.Image = global::QTech.Component.Properties.Resources.dgvloading;
             this.picDgvLoading.Location = new System.Drawing.Point(191, 45);
             this.picDgvLoading.Name = "picDgvLoading";
             this.picDgvLoading.Size = new System.Drawing.Size(81, 58);

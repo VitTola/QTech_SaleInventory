@@ -275,20 +275,20 @@ namespace QTech.Component
 
         Panel panel = new Panel()
         {
-            BackColor = Color.FromArgb(245, 245, 237),
+            BorderStyle = BorderStyle.None,
             Size = new Size(110, 110),
-            Padding = new Padding(5),
-            Visible = false,
+            BackColor = Color.FromArgb(245, 245, 237),
+            Visible = false
         };
-
         PictureBox picLoading = new PictureBox()
         {
             Enabled = true,
-            Image = Properties.Resources.point_loading,
+            Image = Properties.Resources.dgvloading,
             SizeMode = PictureBoxSizeMode.StretchImage,
+            Visible = true,
+            Dock = DockStyle.Fill,
+            BorderStyle = BorderStyle.None,
             BackColor = Color.FromArgb(245, 245, 237),
-             Visible = true,
-            Dock = DockStyle.Fill
         };
 
         protected override void OnSizeChanged(EventArgs e)

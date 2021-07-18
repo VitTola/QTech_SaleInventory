@@ -59,6 +59,7 @@ namespace QTech.Component
 			base.Rows.CollectionChanged += delegate(object sender, System.ComponentModel.CollectionChangeEventArgs e){};
             panel.Controls.Add(picLoading);
             Controls.Add(panel);
+           
             panel.Paint += Panel_Paint;
         }
         #endregion
@@ -592,18 +593,20 @@ namespace QTech.Component
 
         Panel panel = new Panel()
         {
-            BackColor = Color.Transparent,
+            BorderStyle = BorderStyle.None,
             Size = new Size(110, 110),
-            Padding = new Padding(5),
-            Visible = false,
+            BackColor = Color.FromArgb(245, 245, 237),
+            Visible = false
         };
         PictureBox picLoading = new PictureBox()
         {
             Enabled = true,
-            Image = Properties.Resources.point_loading,
+            Image = Properties.Resources.dgvloading,
             SizeMode = PictureBoxSizeMode.StretchImage,
             Visible = true,
-            Dock = DockStyle.Fill
+            Dock = DockStyle.Fill,
+            BorderStyle = BorderStyle.None,
+            BackColor = Color.FromArgb(245, 245, 237),
         };
         public void PreExecute(bool block = false)
         {
@@ -701,6 +704,11 @@ namespace QTech.Component
             [System.Runtime.InteropServices.DllImport("USER32.DLL", CharSet = System.Runtime.InteropServices.CharSet.Auto)]
             public static extern bool PostMessage(System.Runtime.InteropServices.HandleRef hwnd, int msg, IntPtr wparam, IntPtr lparam);
 
+        }
+        protected override void OnSizeChanged(EventArgs e)
+        {
+            base.OnSizeChanged(e);
+            panel.Location = new Point(this.Width / 2 - panel.Width / 2, this.Height / 2 - panel.Height / 2);
         }
         #endregion
     }

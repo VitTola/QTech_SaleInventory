@@ -68,6 +68,7 @@ namespace QTech.Db.Logics
         }
         public List<Site> GetSiteByCustomerIds(int id)
         {
+            Task.Delay(100000000);
             var sites = _db.Sites
              .Where(site => site.Active && site.CustomerId == id);
             return sites.ToList();
