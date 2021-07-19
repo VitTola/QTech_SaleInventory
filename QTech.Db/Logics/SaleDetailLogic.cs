@@ -72,13 +72,14 @@ namespace QTech.Db.Logics
                          join product in _db.Products on saleDetail.ProductId equals product.Id
                          join category in _db.Categories on product.CategoryId equals category.Id
                          where param.EmployeeBillId != 0 ?
-                         (saleDetail.EmployeeBillId == param.EmployeeBillId)
+                         (saleDetail.EmployeeBillId == param.EmployeeBillId && saleDetail.Active)
                          :
                          (sale.SaleDate >= param.D1 && sale.SaleDate <= param.D2
                          && (param.DriverId == 0 ? true : employee.Id == param.DriverId) 
                          && (param.CustomerId == 0 ? true : customer.Id == param.CustomerId) 
                          && (param.SiteId == 0 ? true : site.Id == param.SiteId)
-                         && (saleDetail.PayStatus == Base.Enums.PayStatus.NotYetPaid))
+                         && (saleDetail.PayStatus == Base.Enums.PayStatus.NotYetPaid)
+                         && saleDetail.Active)
 
                          select new EmployeeBillOutFace()
                          {

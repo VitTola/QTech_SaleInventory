@@ -68,7 +68,7 @@ namespace QTech.Db.Logics
                 }
                 else
                 {
-                    int interval = int.Parse(lastInvoiceNo.Substring(7, 6));
+                    int interval = int.Parse(lastInvoiceNo.Substring(5, 6));
                     interval = interval + 1;
                     invoiceNo = string.Format("SYSB-{0:000000}", interval);
                 }

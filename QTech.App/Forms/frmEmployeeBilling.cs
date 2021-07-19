@@ -45,6 +45,7 @@ namespace QTech.Forms
 
         private void Bind()
         {
+            this.Text = Flag.GetTextDialog(Base.Properties.Resources.EmployeeBill);
             var maxDate = DateTime.Now;
             dtpPeroid.CustomDateRang = CustomDateRang.None;
             var peroids = ExReportDatePicker.GetPeroids(maxDate);
@@ -70,24 +71,34 @@ namespace QTech.Forms
             btnLeft_.Click += BtnLeft_Click;
             btnRigt_.Click += BtnRigt_Click;
         }
-
         private void BtnRigt_Click(object sender, EventArgs e)
         {
             if (dgv.SelectedRows.Count == 0) return;
             dgv.EndEdit();
-            var Rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
-            foreach (DataGridViewRow row in Rows.Where(r => (bool)r.Cells[colMark_.Name].Value))
+            var Rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow && (bool)(x.Cells[colMark_.Name].Value))?.ToList();
+            foreach (DataGridViewRow row in Rows)
             {
-                dgvResult.Rows.Add(row);
-                dgv.Rows.Remove(row);
+                var r = newRow(dgvResult);
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    r.Cells[cell.ColumnIndex].Value = cell.Value;
+                }
             }
+            Rows.ForEach(r => dgv.Rows.Remove(r));
+            CalculateTotal();
         }
         private void BtnLeft_Click(object sender, EventArgs e)
         {
             if (dgvResult.SelectedRows.Count == 0) return;
             dgvResult.EndEdit();
-            dgv.Rows.Add(dgvResult.CurrentRow);
+            var row = dgvResult.CurrentRow;
+            int index = dgv.Rows.Add(row.Clone() as DataGridViewRow);
+            foreach (DataGridViewCell o in row.Cells)
+            {
+                dgv.Rows[index].Cells[o.ColumnIndex].Value = o.Value;
+            }
             dgvResult.Rows.Remove(dgvResult.CurrentRow);
+            CalculateTotal();
         }
         private void CboCompany_SelectedIndexChanged1(object sender, EventArgs e)
         {
@@ -110,7 +121,7 @@ namespace QTech.Forms
                 }
                 chkMarkAll_.Checked = CheckingAmount == AllSales ? true : false;
 
-                CalculateTotal();
+                //CalculateTotal();
             }
         }
         private void CboCompany_SelectedIndexChanged(object sender, EventArgs e)
@@ -165,6 +176,41 @@ namespace QTech.Forms
             var employeeBills = await Search();
             FillGiridView(employeeBills, dgv);
         }
+        private void FillResultGiridView(List<EmployeeBillOutFace> employeeBillOutFaces, DataGridView dataGridView)
+        {
+            if (employeeBillOutFaces == null)
+            {
+                return;
+            }
+            AllSales = 0;
+            employeeBillOutFaces.ForEach(x =>
+            {
+                var row = newRow(dataGridView);
+                row.Cells[colId2.Name].Value = x.saleDetail.Id;
+                row.Cells[colTag2.Name].Value = x.saleDetail;
+                row.Cells[colPurchaseOrderNo2.Name].Value = x.PurchaseOrderNo;
+                row.Cells[colInvoiceNo2.Name].Value = x.InvoiceNo;
+                row.Cells[colToCompany2.Name].Value = x.ToCompany;
+                row.Cells[colToSite2.Name].Value = x.ToSite;
+                row.Cells[colSaleDate2.Name].Value = x.SaleDate.ToString("dd-MMM-yyyy hh:mm");
+                row.Cells[colProduct2.Name].Value = x.Product;
+                row.Cells[colCategory2.Name].Value = x.Category;
+                row.Cells[colImportPrice2.Name].Value = x.ImportPrice;
+                row.Cells[colQauntity2.Name].Value = x.Qauntity;
+                row.Cells[colTotal2.Name].Value = x.ImportTotalAmount;
+
+                if (Flag == GeneralProcess.Add)
+                {
+                    row.Cells[colMark_2.Name].Value = false;
+                }
+                else
+                {
+                    chkMarkAll_.Checked = true;
+                    row.Cells[colMark_2.Name].Value = true;
+                }
+                AllSales++;
+            });
+        }
         private void FillGiridView(List<EmployeeBillOutFace> employeeBillOutFaces, DataGridView dataGridView)
         {
             if (employeeBillOutFaces == null)
@@ -202,12 +248,11 @@ namespace QTech.Forms
         }
         private DataGridViewRow newRow(DataGridView dataGridView, bool isFocus = false)
         {
-            var row = dataGridView.Rows[dgv.Rows.Add()];
-            row.Cells[colId.Name].Value = 0;
-            row.Cells[colId.Name].Value = 0;
+            var row = dataGridView.Rows[dataGridView.Rows.Add()];
+            //row.Cells[colId.Name].Value = 0;
             if (isFocus)
             {
-                dgv.Focus();
+                dataGridView.Focus();
             }
             return row;
         }
@@ -308,14 +353,6 @@ namespace QTech.Forms
             {
                 return false;
             }
-            //var Rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
-            //foreach (DataGridViewRow row in Rows)
-            //{
-            //    if ((bool)row.Cells[colMark_.Name]?.Value)
-            //    {
-            //        return false;
-            //    }
-            //}
             return false;
         }
         private void btnAdvanceSearch_Click(object sender, EventArgs e)
@@ -350,12 +387,13 @@ namespace QTech.Forms
             if (Flag != GeneralProcess.Add)
             {
                 var employeeBills = await Search();
-                FillGiridView(employeeBills, dgvResult);
+                FillResultGiridView(employeeBills, dgvResult);
             }
         }
         public void Write()
         {
-            Model.SaleDetails.ForEach(s => {
+            Model.SaleDetails?.ForEach(s =>
+            {
                 s.PayStatus = PayStatus.NotYetPaid;
                 s.EmployeeBillId = 0;
             });
@@ -384,10 +422,10 @@ namespace QTech.Forms
                 Model.SaleDetails = new List<SaleDetail>();
             }
             dgv.EndEdit();
-            var Rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
+            var Rows = dgvResult.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
             foreach (DataGridViewRow row in Rows)
             {
-                var saleDetail = (row.Cells[colTag.Name].Value) as SaleDetail;
+                var saleDetail = (row.Cells[colTag2.Name].Value) as SaleDetail;
                 if (Model.PaidAmount == 0)
                 {
                     saleDetail.PayStatus = PayStatus.WaitPayment;
@@ -396,7 +434,7 @@ namespace QTech.Forms
                 {
                     saleDetail.PayStatus = PayStatus.Paid;
                 }
-                var oldRecord = Model.SaleDetails.FirstOrDefault(s=>s.Id == saleDetail.Id);
+                var oldRecord = Model.SaleDetails.FirstOrDefault(s => s.Id == saleDetail.Id);
                 if (oldRecord != null)
                 {
                     var index = Model.SaleDetails.IndexOf(oldRecord);
@@ -411,23 +449,7 @@ namespace QTech.Forms
         }
         public bool InValid()
         {
-            bool _isValid = true;
-            var employee = cboDriver.SelectedObject.ItemObject as Employee;
-            if (employee == null || employee.Id == 0)
-            {
-                _isValid = false;
-            }
-
-            var Rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
-            foreach (DataGridViewRow row in Rows)
-            {
-                if ((bool)row.Cells[colMark_.Name]?.Value)
-                {
-                    _isValid = false;
-                    break;
-                }
-            }
-            return _isValid;
+            return dgvResult.Rows.Count == 0;
         }
         public async void Save()
         {
@@ -476,12 +498,12 @@ namespace QTech.Forms
         {
             Total = 0;
             txtPaidAmount.Text = string.Empty;
-            var Rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
+            var Rows = dgvResult.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
             foreach (DataGridViewRow row in Rows)
             {
-                if ((bool)row.Cells[colMark_.Name].Value)
+                if ((bool)row.Cells[colMark_2.Name].Value)
                 {
-                    Total = Total + decimal.Parse(row.Cells[colTotal.Name].Value?.ToString() ?? "0");
+                    Total = Total + decimal.Parse(row.Cells[colTotal2.Name].Value?.ToString() ?? "0");
                 }
             }
             txtTotal.Text = Total.ToString();
@@ -525,7 +547,7 @@ namespace QTech.Forms
             }
             CheckingAmount = chkMarkAll_.Checked ? AllSales : 0;
 
-            CalculateTotal();
+            //CalculateTotal();
         }
 
     }

@@ -354,6 +354,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ការទូទាត់លើបុគ្គលិក.
+        /// </summary>
+        public static string EmployeeBill {
+            get {
+                return ResourceManager.GetString("EmployeeBill", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to អ្នកដឹក.
         /// </summary>
         public static string EmployeeId {

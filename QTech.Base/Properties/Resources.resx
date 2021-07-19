@@ -562,4 +562,7 @@
   <data name="All_" xml:space="preserve">
     <value>ទាំងអស់</value>
   </data>
+  <data name="EmployeeBill" xml:space="preserve">
+    <value>ការទូទាត់លើបុគ្គលិក</value>
+  </data>
 </root>
