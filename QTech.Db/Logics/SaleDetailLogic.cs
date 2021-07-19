@@ -79,6 +79,7 @@ namespace QTech.Db.Logics
                          && (param.CustomerId == 0 ? true : customer.Id == param.CustomerId) 
                          && (param.SiteId == 0 ? true : site.Id == param.SiteId)
                          && (saleDetail.PayStatus == Base.Enums.PayStatus.NotYetPaid))
+
                          select new EmployeeBillOutFace()
                          {
                              PurchaseOrderNo = sale.PurchaseOrderNo,

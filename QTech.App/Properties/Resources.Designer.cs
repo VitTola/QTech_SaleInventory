@@ -123,6 +123,26 @@ namespace QTech.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap leftArrow_img {
+            get {
+                object obj = ResourceManager.GetObject("leftArrow_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap leftArrow_img1 {
+            get {
+                object obj = ResourceManager.GetObject("leftArrow_img1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap lineDown {
             get {
                 object obj = ResourceManager.GetObject("lineDown", resourceCulture);
@@ -176,6 +196,16 @@ namespace QTech.Properties {
         internal static System.Drawing.Bitmap QTech__2_ {
             get {
                 object obj = ResourceManager.GetObject("QTech__2_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rightArrow_img {
+            get {
+                object obj = ResourceManager.GetObject("rightArrow_img", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
