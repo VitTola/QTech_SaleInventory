@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCreateInvoice));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.exLabel2 = new QTech.Component.ExLabel();
             this.exPanel1 = new QTech.Component.Components.ExPanel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
@@ -60,8 +60,6 @@
             this.dtpSearchDate = new QTech.Component.ExReportDatePicker();
             this.lblInvoicingDate = new QTech.Component.ExLabel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.dtpInvoicingDate = new QTech.Component.ExDateTimePicker();
             this.panel6 = new System.Windows.Forms.Panel();
             this.txtLeftAmount = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -74,6 +72,8 @@
             this.exLabel4 = new QTech.Component.ExLabel();
             this.exLabel5 = new QTech.Component.ExLabel();
             this.exLabel6 = new QTech.Component.ExLabel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.dtpInvoicingDate = new QTech.Component.ExDateTimePicker();
             this.container.SuspendLayout();
             this.exPanel1.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -82,10 +82,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.flowLayoutPanelTopGrid.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // container
@@ -276,19 +276,19 @@
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AllowUserToResizeColumns = false;
             this.dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Ivory;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colMark_,
@@ -301,14 +301,14 @@
             this.colTotal,
             this.colStatus,
             this.colIsPaid});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
@@ -454,31 +454,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1275, 113);
             this.panel3.TabIndex = 34;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.dtpInvoicingDate);
-            this.panel4.Controls.Add(this.cboCustomer);
-            this.panel4.Controls.Add(this.txtInvoiceNo);
-            this.panel4.Controls.Add(this.lblInvoicingDate);
-            this.panel4.Controls.Add(this.lblInvoiceNo);
-            this.panel4.Controls.Add(this.exLabel2);
-            this.panel4.Controls.Add(this.lblCustomer);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(1, 1);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1275, 85);
-            this.panel4.TabIndex = 35;
-            // 
-            // dtpInvoicingDate
-            // 
-            this.dtpInvoicingDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpInvoicingDate.Location = new System.Drawing.Point(1059, 23);
-            this.dtpInvoicingDate.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
-            this.dtpInvoicingDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.dtpInvoicingDate.Name = "dtpInvoicingDate";
-            this.dtpInvoicingDate.Size = new System.Drawing.Size(200, 27);
-            this.dtpInvoicingDate.TabIndex = 32;
             // 
             // panel6
             // 
@@ -633,6 +608,31 @@
             this.exLabel6.TabIndex = 36;
             this.exLabel6.Text = "បង់ប្រាក់";
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.dtpInvoicingDate);
+            this.panel4.Controls.Add(this.cboCustomer);
+            this.panel4.Controls.Add(this.txtInvoiceNo);
+            this.panel4.Controls.Add(this.lblInvoicingDate);
+            this.panel4.Controls.Add(this.lblInvoiceNo);
+            this.panel4.Controls.Add(this.exLabel2);
+            this.panel4.Controls.Add(this.lblCustomer);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(1, 1);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1275, 85);
+            this.panel4.TabIndex = 35;
+            // 
+            // dtpInvoicingDate
+            // 
+            this.dtpInvoicingDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpInvoicingDate.Location = new System.Drawing.Point(1059, 23);
+            this.dtpInvoicingDate.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
+            this.dtpInvoicingDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.dtpInvoicingDate.Name = "dtpInvoicingDate";
+            this.dtpInvoicingDate.Size = new System.Drawing.Size(200, 27);
+            this.dtpInvoicingDate.TabIndex = 32;
+            // 
             // frmCreateInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
@@ -653,14 +653,14 @@
             this.flowLayoutPanelTopGrid.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }

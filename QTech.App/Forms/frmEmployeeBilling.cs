@@ -120,8 +120,7 @@ namespace QTech.Forms
                     CheckingAmount--;
                 }
                 chkMarkAll_.Checked = CheckingAmount == AllSales ? true : false;
-
-                //CalculateTotal();
+                
             }
         }
         private void CboCompany_SelectedIndexChanged(object sender, EventArgs e)
@@ -142,18 +141,27 @@ namespace QTech.Forms
             {
                 return null;
             }
-            if (inValid() && Flag == GeneralProcess.Add)
+            if (Flag == GeneralProcess.Add)
             {
-                return null;
+                if (inValid())
+                {
+                    return null;
+                }
             }
+            
             var driver = cboDriver?.SelectedObject?.ItemObject as Employee;
-            var company = cboCompany?.SelectedObject?.ItemObject as Customer;
-            var site = cboSite?.SelectedObject?.ItemObject as Site;
-            SupplierGeneralPrepaids = SupplierGeneralPaidLogic.Instance.GetSupplierGeneralPaidByEmpId(driver?.Id ?? -1);
+            int driverId = Flag == GeneralProcess.Add ? driver?.Id ?? -1 : Model.EmployeeId;
+            SupplierGeneralPrepaids = SupplierGeneralPaidLogic.Instance.GetSupplierGeneralPaidByEmpId(driverId);
             SupplierGeneralPrepaids.ForEach(x => prePaid += x.Amount);
             txtPrePaid.Text = prePaid.ToString();
             lblDriver.Text = cboDriver.Text;
+            txtLeftAmount.Text = Model.LeftAmount.ToString() ?? string.Empty;
+            txtPaidAmount.Text = Model.LeftAmount.ToString() ??string.Empty;
+            txtTotal.Text = Model.Total.ToString() ?? string.Empty;
+            
 
+            var site = cboSite?.SelectedObject?.ItemObject as Site;
+            var company = cboCompany?.SelectedObject?.ItemObject as Customer;
             var searchParam = new EmployeeBillSearch()
             {
                 D1 = dtpPeroid.SelectedPeroid.FromDate.Date,
@@ -182,7 +190,6 @@ namespace QTech.Forms
             {
                 return;
             }
-            AllSales = 0;
             employeeBillOutFaces.ForEach(x =>
             {
                 var row = newRow(dataGridView);
@@ -205,10 +212,8 @@ namespace QTech.Forms
                 }
                 else
                 {
-                    chkMarkAll_.Checked = true;
                     row.Cells[colMark_2.Name].Value = true;
                 }
-                AllSales++;
             });
         }
         private void FillGiridView(List<EmployeeBillOutFace> employeeBillOutFaces, DataGridView dataGridView)
@@ -530,7 +535,7 @@ namespace QTech.Forms
         private void lblPrePaid_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
-        }
+        }    
         private void txtPaidAmount_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtPaidAmount.Text))
@@ -546,8 +551,6 @@ namespace QTech.Forms
                 row.Cells[colMark_.Name].Value = chkMarkAll_.Checked;
             }
             CheckingAmount = chkMarkAll_.Checked ? AllSales : 0;
-
-            //CalculateTotal();
         }
 
     }

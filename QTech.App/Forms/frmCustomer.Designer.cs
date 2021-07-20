@@ -59,12 +59,12 @@
             this.tabGeneral = new System.Windows.Forms.TabPage();
             this.tabSetPrice = new System.Windows.Forms.TabPage();
             this.dgvGoods = new QTech.Component.ExDataGridView();
-            this.lblGoodsAndPrice = new QTech.Component.ExLabel();
             this.colProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIdd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGoodName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCategory_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSalePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblGoodsAndPrice = new QTech.Component.ExLabel();
             this.container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.flowLayOutLabelRemoveAdd.SuspendLayout();
@@ -111,7 +111,7 @@
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS System", 8F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
@@ -363,7 +363,7 @@
             this.tabSetPrice.Location = new System.Drawing.Point(4, 28);
             this.tabSetPrice.Name = "tabSetPrice";
             this.tabSetPrice.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSetPrice.Size = new System.Drawing.Size(374, 352);
+            this.tabSetPrice.Size = new System.Drawing.Size(274, 159);
             this.tabSetPrice.TabIndex = 1;
             this.tabSetPrice.Text = "កំណត់តម្លៃទំនិញ";
             // 
@@ -417,14 +417,6 @@
             this.dgvGoods.Size = new System.Drawing.Size(323, 285);
             this.dgvGoods.TabIndex = 17;
             // 
-            // lblGoodsAndPrice
-            // 
-            this.lblGoodsAndPrice.Location = new System.Drawing.Point(0, 0);
-            this.lblGoodsAndPrice.Name = "lblGoodsAndPrice";
-            this.lblGoodsAndPrice.Required = false;
-            this.lblGoodsAndPrice.Size = new System.Drawing.Size(100, 23);
-            this.lblGoodsAndPrice.TabIndex = 18;
-            // 
             // colProductId
             // 
             this.colProductId.HeaderText = "colProductId";
@@ -458,6 +450,14 @@
             this.colSalePrice.HeaderText = "colSalePrice";
             this.colSalePrice.Name = "colSalePrice";
             this.colSalePrice.ReadOnly = true;
+            // 
+            // lblGoodsAndPrice
+            // 
+            this.lblGoodsAndPrice.Location = new System.Drawing.Point(0, 0);
+            this.lblGoodsAndPrice.Name = "lblGoodsAndPrice";
+            this.lblGoodsAndPrice.Required = false;
+            this.lblGoodsAndPrice.Size = new System.Drawing.Size(100, 23);
+            this.lblGoodsAndPrice.TabIndex = 18;
             // 
             // frmCustomer
             // 

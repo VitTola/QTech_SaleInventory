@@ -62,13 +62,13 @@
             this.flowLayOutLabelRemoveAdd = new System.Windows.Forms.FlowLayoutPanel();
             this.lblRemove = new System.Windows.Forms.LinkLabel();
             this.dgv = new QTech.Component.ExDataGridView();
-            this.exLabel3 = new QTech.Component.ExLabel();
-            this.txtPayNote = new System.Windows.Forms.TextBox();
-            this.exLabel2 = new QTech.Component.ExLabel();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDoDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.exLabel3 = new QTech.Component.ExLabel();
+            this.txtPayNote = new System.Windows.Forms.TextBox();
+            this.exLabel2 = new QTech.Component.ExLabel();
             this.container.SuspendLayout();
             this.exPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -409,7 +409,7 @@
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS System", 8F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
@@ -441,37 +441,6 @@
             this.dgv.Size = new System.Drawing.Size(315, 138);
             this.dgv.TabIndex = 40;
             // 
-            // exLabel3
-            // 
-            this.exLabel3.AutoSize = true;
-            this.exLabel3.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.exLabel3.Location = new System.Drawing.Point(25, 114);
-            this.exLabel3.Name = "exLabel3";
-            this.exLabel3.Required = false;
-            this.exLabel3.Size = new System.Drawing.Size(150, 19);
-            this.exLabel3.TabIndex = 41;
-            this.exLabel3.Text = "ទឹកប្រាក់មិនទាន់ទូទាត់ផ្តាច់";
-            // 
-            // txtPayNote
-            // 
-            this.txtPayNote.Location = new System.Drawing.Point(142, 79);
-            this.txtPayNote.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPayNote.Multiline = true;
-            this.txtPayNote.Name = "txtPayNote";
-            this.txtPayNote.Size = new System.Drawing.Size(200, 27);
-            this.txtPayNote.TabIndex = 37;
-            // 
-            // exLabel2
-            // 
-            this.exLabel2.AutoSize = true;
-            this.exLabel2.Location = new System.Drawing.Point(29, 83);
-            this.exLabel2.Name = "exLabel2";
-            this.exLabel2.Required = false;
-            this.exLabel2.Size = new System.Drawing.Size(41, 19);
-            this.exLabel2.TabIndex = 38;
-            this.exLabel2.Text = "ចំណាំ";
-            // 
             // colId
             // 
             this.colId.DataPropertyName = "Id";
@@ -502,6 +471,37 @@
             this.colNote.HeaderText = "ចំណាំ";
             this.colNote.Name = "colNote";
             this.colNote.ReadOnly = true;
+            // 
+            // exLabel3
+            // 
+            this.exLabel3.AutoSize = true;
+            this.exLabel3.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.exLabel3.Location = new System.Drawing.Point(25, 114);
+            this.exLabel3.Name = "exLabel3";
+            this.exLabel3.Required = false;
+            this.exLabel3.Size = new System.Drawing.Size(150, 19);
+            this.exLabel3.TabIndex = 41;
+            this.exLabel3.Text = "ទឹកប្រាក់មិនទាន់ទូទាត់ផ្តាច់";
+            // 
+            // txtPayNote
+            // 
+            this.txtPayNote.Location = new System.Drawing.Point(142, 79);
+            this.txtPayNote.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPayNote.Multiline = true;
+            this.txtPayNote.Name = "txtPayNote";
+            this.txtPayNote.Size = new System.Drawing.Size(200, 27);
+            this.txtPayNote.TabIndex = 37;
+            // 
+            // exLabel2
+            // 
+            this.exLabel2.AutoSize = true;
+            this.exLabel2.Location = new System.Drawing.Point(29, 83);
+            this.exLabel2.Name = "exLabel2";
+            this.exLabel2.Required = false;
+            this.exLabel2.Size = new System.Drawing.Size(41, 19);
+            this.exLabel2.TabIndex = 38;
+            this.exLabel2.Text = "ចំណាំ";
             // 
             // frmEmployee
             // 
