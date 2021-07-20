@@ -68,5 +68,11 @@ namespace QTech.Db.Logics
         {
             return _db.PurchaseOrders.FirstOrDefault(x=>x.Id == id);
         }
+        public List<PurchaseOrder> GetPurchaseOrder(ISearchModel model)
+        {
+            var param = model as PurchaseOrderSearch;
+            var result = _db.PurchaseOrders.Where(x => x.Active && x.CustomerId == param.CustomerId && !x.IsReachQty).ToList();
+            return result;
+        }
     }
 }

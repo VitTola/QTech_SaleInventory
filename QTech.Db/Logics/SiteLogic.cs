@@ -68,11 +68,17 @@ namespace QTech.Db.Logics
         }
         public List<Site> GetSiteByCustomerIds(int id)
         {
-            Task.Delay(100000000);
             var sites = _db.Sites
              .Where(site => site.Active && site.CustomerId == id);
             return sites.ToList();
         }
+        public List<Site> GetSites(ISearchModel model)
+        {
+            var param = model as SiteSearch;
+            var sites = _db.Sites .Where(site => site.Active && site.CustomerId == param.CustomerId);
+            return sites.ToList();
+        }
+
 
     }
 }

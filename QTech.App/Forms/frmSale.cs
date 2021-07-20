@@ -48,17 +48,13 @@ namespace QTech.Forms
         {
             cboCustomer.DataSourceFn = p => CustomerLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
             cboCustomer.SearchParamFn = () => new CustomerSearch();
-            cboSite.DataSourceFn = p => SiteLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
+            cboSite.DataSourceFn = p => SiteLogic.Instance.GetSites(p).ToDropDownItemModelList();
             cboSite.SearchParamFn = () => new SiteSearch() { };
             colProductId.DataSourceFn = p => ProductLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
             colProductId.SearchParamFn = () => new ProductSearch();
             colEmployeeId.DataSourceFn = p => EmployeeLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
             colEmployeeId.SearchParamFn = () => new EmployeeSearch();
-            cboPurchaseOrderNo.DataSourceFn = p =>
-            {
-                var result = PurchaseOrderLogic.Instance.SearchAsync(p).Where(x => !x.IsReachQty);
-                return result.ToDropDownItemModelList();
-            };
+            cboPurchaseOrderNo.DataSourceFn = p => PurchaseOrderLogic.Instance.GetPurchaseOrder(p).ToDropDownItemModelList();
             cboPurchaseOrderNo.SearchParamFn = () => new PurchaseOrderSearch();
 
         }
@@ -73,12 +69,12 @@ namespace QTech.Forms
             dgv.AllowUserToAddRows = dgv.AllowUserToDeleteRows = true;
             dgv.EditMode = DataGridViewEditMode.EditOnEnter;
             dgv.EditingControlShowing += dgv_EditingControlShowing;
-            cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
             dgv.EditingControlShowing += Dgv_EditingControlShowing;
             dgv.MouseClick += Dgv_MouseClick;
             dgv.EditColumnIcon(colProductId, colQauntity, colUnitPrice, colEmployeeId);
             txtTotal.ReadOnly = colLeftQty_.ReadOnly = true;
+            cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
 
             if (Flag != GeneralProcess.Add)
             {
@@ -110,6 +106,8 @@ namespace QTech.Forms
                 dgv.BeginEdit(true);
             }
         }
+
+        private bool firstLoad = true;
         private async void CboCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
             var customer = cboCustomer.SelectedObject.ItemObject as Customer;
@@ -126,6 +124,7 @@ namespace QTech.Forms
                 return result;
             });
 
+            if (firstLoad) { firstLoad = false; return; }
             cboSite.SetValue(null);
             cboPurchaseOrderNo.SetValue(null);
         }
@@ -153,7 +152,7 @@ namespace QTech.Forms
         }
         private void Txt_Leave(object sender, EventArgs e)
         {
-            txtQauntity_Leave(sender,e);
+            txtQauntity_Leave(sender, e);
         }
         private void CalculateTotal()
         {
@@ -325,8 +324,8 @@ namespace QTech.Forms
             foreach (DataGridViewRow row in rows)
             {
                 var cells = row.Cells.OfType<DataGridViewCell>().Where(x =>
-                x.ColumnIndex != row.Cells[colId.Name].ColumnIndex && x.ColumnIndex != row.Cells[colSaleId.Name].ColumnIndex
-                && x.ColumnIndex != row.Cells[colLeftQty_.Name].ColumnIndex).ToList();
+                x.ColumnIndex == row.Cells[colProductId.Name].ColumnIndex && x.ColumnIndex == row.Cells[colQauntity.Name].ColumnIndex
+                && x.ColumnIndex != row.Cells[colUnitPrice.Name].ColumnIndex && x.ColumnIndex == row.Cells[colEmployeeId.Name].ColumnIndex).ToList();
                 cells.ForEach(x =>
                 {
                     if (x.Value == null)
@@ -384,14 +383,15 @@ namespace QTech.Forms
                 txtInvoiceNo.Text = Model.InvoiceNo;
                 txtTotal.Text = Model.Total.ToString();
                 txtExpense.Text = Model.Expense.ToString();
-                if (purchaseOrder != null)
-                {
-                    cboPurchaseOrderNo.SetValue(purchaseOrder);
-                }
                 if (cus != null)
                 {
                     cboCustomer.SetValue(cus);
                 }
+                if (purchaseOrder != null)
+                {
+                    cboPurchaseOrderNo.SetValue(purchaseOrder);
+                }
+
                 if (site != null)
                 {
                     cboSite.SetValue(site);
@@ -452,6 +452,8 @@ namespace QTech.Forms
                         row.Cells[colEmployeeId.Name].Value = lsDriver;
                     }
 
+                    //Init this event after fill in data
+                    //cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
                 });
             }
         }
@@ -532,7 +534,7 @@ namespace QTech.Forms
             }
 
             Model.SaleDate = Flag == GeneralProcess.Add ? DateTime.Now : Model.SaleDate;
-            Model.Total = decimal.Parse(!string.IsNullOrEmpty(txtTotal.Text) ? txtTotal.Text : "0" );
+            Model.Total = decimal.Parse(!string.IsNullOrEmpty(txtTotal.Text) ? txtTotal.Text : "0");
             Model.Expense = decimal.Parse(!string.IsNullOrEmpty(txtExpense.Text) ? txtExpense.Text : "0");
 
             if (Model.SaleDetails == null)
@@ -561,7 +563,14 @@ namespace QTech.Forms
                 if (Flag == GeneralProcess.Update)
                 {
                     var _saleDetail = Model.SaleDetails?.FirstOrDefault(x => x.Id == saleDetail.Id);
-                    Model.SaleDetails[Model.SaleDetails.IndexOf(_saleDetail)] = saleDetail;
+                    if (_saleDetail != null)
+                    {
+                        Model.SaleDetails[Model.SaleDetails.IndexOf(_saleDetail)] = saleDetail;
+                    }
+                    else
+                    {
+                        Model.SaleDetails.Add(saleDetail);
+                    }
                 }
                 else
                 {

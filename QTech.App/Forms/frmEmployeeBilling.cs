@@ -68,7 +68,6 @@ namespace QTech.Forms
 
             colMark_.ReadOnly = txtPaidAmount.ReadOnly = false;
             txtPaidAmount.KeyPress += (s, e) => { txtPaidAmount.validCurrency(s, e); };
-            //dgv.BorderStyle = dgvResult.BorderStyle = BorderStyle.FixedSingle;
             btnLeft_.Click += BtnLeft_Click;
             btnRigt_.Click += BtnRigt_Click;
             btnPrint.Click += BtnPrint_Click;
@@ -193,11 +192,10 @@ namespace QTech.Forms
             {
                 return;
             }
-            colId2.Visible = colTag2.Visible = colSaleDate2.Visible = colProduct2.Visible = colCategory2.Visible = colImportPrice2.Visible = colQauntity2.Visible = colTotal2.Visible = false;
             dgvResult.Rows.Clear();
             employeeBillOutFaces.ForEach(x =>
             {
-                var row = newRow(dataGridView);
+                var row = newRow(dgvResult);
                 row.Cells[colId2.Name].Value = x.saleDetail.Id;
                 row.Cells[colTag2.Name].Value = x.saleDetail;
                 row.Cells[colPurchaseOrderNo2.Name].Value = x.PurchaseOrderNo;
@@ -220,6 +218,7 @@ namespace QTech.Forms
                     row.Cells[colMark_2.Name].Value = true;
                 }
             });
+      
         }
         private void FillGiridView(List<EmployeeBillOutFace> employeeBillOutFaces, DataGridView dataGridView)
         {
