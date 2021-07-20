@@ -20,6 +20,8 @@ using QTech.Component.Helpers;
 using QTech.Base.Models;
 using QTech.Base.OutFaceModels;
 using QTech.Base.Enums;
+using QTech.Reports;
+using QTech.Base.BaseReport;
 
 namespace QTech.Forms
 {
@@ -64,13 +66,14 @@ namespace QTech.Forms
             txtPaidAmount.TextChanged += txtPaidAmount_TextChanged;
             cboCompany.SelectedIndexChanged += CboCompany_SelectedIndexChanged1;
 
-            colMark_.ReadOnly = false;
-            txtPaidAmount.ReadOnly = false;
+            colMark_.ReadOnly = txtPaidAmount.ReadOnly = false;
             txtPaidAmount.KeyPress += (s, e) => { txtPaidAmount.validCurrency(s, e); };
-            dgv.BorderStyle = dgvResult.BorderStyle = BorderStyle.FixedSingle;
+            //dgv.BorderStyle = dgvResult.BorderStyle = BorderStyle.FixedSingle;
             btnLeft_.Click += BtnLeft_Click;
             btnRigt_.Click += BtnRigt_Click;
+            btnPrint.Click += BtnPrint_Click;
         }
+        
         private void BtnRigt_Click(object sender, EventArgs e)
         {
             if (dgv.SelectedRows.Count == 0) return;
@@ -134,7 +137,6 @@ namespace QTech.Forms
         }
         public async Task<List<EmployeeBillOutFace>> Search()
         {
-            dgv.Rows.Clear();
             txtPrePaid.Text = txtTotal.Text = txtPaidAmount.Text = txtLeftAmount.Text = "0";
             Total = 0; prePaid = 0;
             if (btnView.Executing)
@@ -156,7 +158,7 @@ namespace QTech.Forms
             txtPrePaid.Text = prePaid.ToString();
             lblDriver.Text = cboDriver.Text;
             txtLeftAmount.Text = Model.LeftAmount.ToString() ?? string.Empty;
-            txtPaidAmount.Text = Model.LeftAmount.ToString() ??string.Empty;
+            txtPaidAmount.Text = Model.PaidAmount.ToString() ??string.Empty;
             txtTotal.Text = Model.Total.ToString() ?? string.Empty;
             
 
@@ -177,6 +179,7 @@ namespace QTech.Forms
                 var result = SaleDetailLogic.Instance.GetEmployeeBillOutFaces(searchParam);
                 return result;
             });
+            Model.SaleDetails = employeeBills?.Select(s=>s.saleDetail)?.ToList();
             return employeeBills;
         }
         public async void View()
@@ -190,6 +193,8 @@ namespace QTech.Forms
             {
                 return;
             }
+            colId2.Visible = colTag2.Visible = colSaleDate2.Visible = colProduct2.Visible = colCategory2.Visible = colImportPrice2.Visible = colQauntity2.Visible = colTotal2.Visible = false;
+            dgvResult.Rows.Clear();
             employeeBillOutFaces.ForEach(x =>
             {
                 var row = newRow(dataGridView);
@@ -222,6 +227,7 @@ namespace QTech.Forms
             {
                 return;
             }
+            dgv.Rows.Clear();
             AllSales = 0;
             employeeBillOutFaces.ForEach(x =>
             {
@@ -406,8 +412,12 @@ namespace QTech.Forms
             Model.Total = decimal.Parse(!string.IsNullOrEmpty(txtTotal.Text) ? txtTotal.Text : "0");
             Model.PaidAmount = decimal.Parse(!string.IsNullOrEmpty(txtPaidAmount.Text) ? txtPaidAmount.Text : "0");
             Model.LeftAmount = decimal.Parse(!string.IsNullOrEmpty(txtLeftAmount.Text) ? txtLeftAmount.Text : "0");
-            var employee = cboDriver.SelectedObject.ItemObject as Employee;
-            Model.EmployeeId = employee.Id;
+
+            if (Flag == GeneralProcess.Add)
+            {
+                var employee = cboDriver.SelectedObject.ItemObject as Employee;
+                Model.EmployeeId = employee.Id;
+            }
 
             if (Model.PaidAmount == 0)
             {
@@ -502,7 +512,7 @@ namespace QTech.Forms
         private void CalculateTotal()
         {
             Total = 0;
-            txtPaidAmount.Text = string.Empty;
+            //txtPaidAmount.Text = string.Empty;
             var Rows = dgvResult.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
             foreach (DataGridViewRow row in Rows)
             {
@@ -535,7 +545,7 @@ namespace QTech.Forms
         private void lblPrePaid_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
-        }    
+        }
         private void txtPaidAmount_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtPaidAmount.Text))
@@ -552,6 +562,71 @@ namespace QTech.Forms
             }
             CheckingAmount = chkMarkAll_.Checked ? AllSales : 0;
         }
+        private async void BtnPrint_Click(object sender, EventArgs e)
+        {
+            var driverDeliveryDetails = GetReportModel();
+            if (driverDeliveryDetails == null)
+            {
+                return;
+            }
+            var reportHeader = new Dictionary<string, object>()
+            {
+                { "D1" , dtpPeroid.SelectedPeroid.FromDate.Date.ToString(FormatHelper.DateTime[FormatHelper.DateTimeType.ShortDate]) },
+                { "D2" , dtpPeroid.SelectedPeroid.ToDate.Date.ToString(FormatHelper.DateTime[FormatHelper.DateTimeType.ShortDate]) },
+                {"Driver",lblDriver.Text }
+            };
 
+
+            DataTable driverDeleryDetail = new DataTable("RportDriverDeliveryDetail");
+            using (var reader = ObjectReader.Create(driverDeliveryDetails))
+            {
+                driverDeleryDetail.Load(reader);
+            }
+            var _driverDeliveryDetails = new List<DataTable>();
+            _driverDeliveryDetails.Add(driverDeleryDetail);
+
+            var report = await btnPrint.RunAsync(() =>
+            {
+                var r = ReportHelper.Instance.Load(nameof(ReportEmployeeBilling), _driverDeliveryDetails, reportHeader);
+                r.SummaryInfo.ReportTitle = nameof(ReportEmployeeBilling);
+                return r;
+            });
+
+            if (report != null)
+            {
+                var dig = new DialogReportViewer(report);
+                dig.Text = QTech.Base.Properties.Resources.EmployeeBill;
+                dig.ShowDialog();
+            }
+        }
+        private List<ReportModels.DriverDeliveryDetail> GetReportModel()
+        {
+            var DriverDeliveryDetails = new List<ReportModels.DriverDeliveryDetail>();
+         
+            if (Flag == GeneralProcess.Add)
+            {
+                var employee = cboDriver.SelectedObject.ItemObject as Employee;
+                Model.EmployeeId = employee.Id;
+            }
+
+            dgvResult.EndEdit();
+            var Rows = dgvResult.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
+            foreach (DataGridViewRow row in Rows)
+            {
+                DriverDeliveryDetails.Add(new ReportModels.DriverDeliveryDetail() {
+                    PurchaseOrderNo = row.Cells[colPurchaseOrderNo2.Name].Value?.ToString() ?? string.Empty,
+                    InvoiceNo = row.Cells[colInvoiceNo2.Name].Value?.ToString() ?? string.Empty,
+                    Company = row.Cells[colToCompany2.Name].Value?.ToString() ?? string.Empty,
+                    Site = row.Cells[colToSite2.Name].Value?.ToString() ?? string.Empty,
+                    SaleDate = row.Cells[colSaleDate2.Name].Value?.ToString() ?? string.Empty,
+                    ImportPrice = decimal.Parse(row.Cells[colImportPrice2.Name].Value?.ToString() ?? "0"),
+                    Qauntity = int.Parse(row.Cells[colQauntity2.Name].Value?.ToString() ?? "0"),
+                    SubTotal = row.Cells[colTotal2.Name].Value?.ToString() ?? string.Empty,
+                    Product = $"{row.Cells[colProduct2.Name].Value?.ToString()} {row.Cells[colCategory2.Name].Value.ToString()}"
+                });
+            }
+
+            return DriverDeliveryDetails;
+        }
     }
 }

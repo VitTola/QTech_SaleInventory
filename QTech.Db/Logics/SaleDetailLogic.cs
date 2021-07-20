@@ -59,7 +59,6 @@ namespace QTech.Db.Logics
             }
             return q;
         }
-
         public List<EmployeeBillOutFace> GetEmployeeBillOutFaces(ISearchModel model)
         {
             var param = model as EmployeeBillSearch;

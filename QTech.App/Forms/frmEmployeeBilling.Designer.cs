@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle61 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle62 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle65 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle63 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle64 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle66 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle67 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle70 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle68 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle69 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmployeeBilling));
             this.graPanel1 = new QTech.Component.GRAPanel();
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();
@@ -281,6 +281,7 @@
             // 
             // panelGrid
             // 
+            this.panelGrid.BackColor = System.Drawing.Color.LightGray;
             this.panelGrid.Controls.Add(this.chkMarkAll_);
             this.panelGrid.Controls.Add(this.dgv);
             this.panelGrid.Controls.Add(this.panelCenterButton);
@@ -288,6 +289,7 @@
             this.panelGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelGrid.Location = new System.Drawing.Point(1, 36);
             this.panelGrid.Name = "panelGrid";
+            this.panelGrid.Padding = new System.Windows.Forms.Padding(1);
             this.panelGrid.Size = new System.Drawing.Size(1494, 539);
             this.panelGrid.TabIndex = 31;
             // 
@@ -297,7 +299,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chkMarkAll_.AutoSize = true;
-            this.chkMarkAll_.Location = new System.Drawing.Point(14, 11);
+            this.chkMarkAll_.Location = new System.Drawing.Point(15, 12);
             this.chkMarkAll_.Name = "chkMarkAll_";
             this.chkMarkAll_.Size = new System.Drawing.Size(15, 14);
             this.chkMarkAll_.TabIndex = 15;
@@ -313,19 +315,19 @@
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AllowUserToResizeColumns = false;
             this.dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle61.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle61;
             this.dgv.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle62.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle62.BackColor = System.Drawing.Color.Ivory;
+            dataGridViewCellStyle62.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            dataGridViewCellStyle62.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle62.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle62.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle62.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle62;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colMark_,
@@ -341,19 +343,19 @@
             this.colImportPrice,
             this.colQauntity_3,
             this.colTotal});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle65.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle65.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle65.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            dataGridViewCellStyle65.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle65.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle65.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle65.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle65;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
             this.dgv.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            this.dgv.Location = new System.Drawing.Point(0, 0);
+            this.dgv.Location = new System.Drawing.Point(1, 1);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
             this.dgv.Paging = null;
@@ -361,7 +363,7 @@
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1068, 539);
+            this.dgv.Size = new System.Drawing.Size(1066, 537);
             this.dgv.TabIndex = 2;
             // 
             // colMark_
@@ -430,8 +432,8 @@
             // colSaleDate
             // 
             this.colSaleDate.DataPropertyName = "SaleDate";
-            dataGridViewCellStyle3.NullValue = null;
-            this.colSaleDate.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle63.NullValue = null;
+            this.colSaleDate.DefaultCellStyle = dataGridViewCellStyle63;
             this.colSaleDate.HeaderText = "កាលបរិច្ឆេទលក់";
             this.colSaleDate.MinimumWidth = 100;
             this.colSaleDate.Name = "colSaleDate";
@@ -475,9 +477,9 @@
             // 
             // colTotal
             // 
-            dataGridViewCellStyle4.Format = "C2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.colTotal.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle64.Format = "C2";
+            dataGridViewCellStyle64.NullValue = null;
+            this.colTotal.DefaultCellStyle = dataGridViewCellStyle64;
             this.colTotal.HeaderText = "សរុបទឹកប្រាក់";
             this.colTotal.MinimumWidth = 150;
             this.colTotal.Name = "colTotal";
@@ -486,25 +488,27 @@
             // 
             // panelCenterButton
             // 
+            this.panelCenterButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panelCenterButton.Controls.Add(this.btnRigt_);
             this.panelCenterButton.Controls.Add(this.btnLeft_);
             this.panelCenterButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelCenterButton.Location = new System.Drawing.Point(1068, 0);
+            this.panelCenterButton.Location = new System.Drawing.Point(1067, 1);
             this.panelCenterButton.Name = "panelCenterButton";
-            this.panelCenterButton.Size = new System.Drawing.Size(44, 539);
+            this.panelCenterButton.Padding = new System.Windows.Forms.Padding(3);
+            this.panelCenterButton.Size = new System.Drawing.Size(44, 537);
             this.panelCenterButton.TabIndex = 17;
             // 
             // btnRigt_
             // 
             this.btnRigt_.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnRigt_.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.btnRigt_.BackColor = System.Drawing.Color.Transparent;
             this.btnRigt_.DefaultImage = null;
             this.btnRigt_.Executing = false;
             this.btnRigt_.FlatAppearance.BorderSize = 0;
             this.btnRigt_.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRigt_.Font = new System.Drawing.Font("Khmer OS System", 8F);
             this.btnRigt_.Image = global::QTech.Properties.Resources.rightArrow_img;
-            this.btnRigt_.Location = new System.Drawing.Point(2, 242);
+            this.btnRigt_.Location = new System.Drawing.Point(2, 241);
             this.btnRigt_.Margin = new System.Windows.Forms.Padding(0, 3, 4, 4);
             this.btnRigt_.Name = "btnRigt_";
             this.btnRigt_.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -516,11 +520,11 @@
             // btnLeft_
             // 
             this.btnLeft_.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnLeft_.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.btnLeft_.BackColor = System.Drawing.Color.Transparent;
             this.btnLeft_.FlatAppearance.BorderSize = 0;
             this.btnLeft_.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLeft_.Image = global::QTech.Properties.Resources.leftArrow_img1;
-            this.btnLeft_.Location = new System.Drawing.Point(2, 277);
+            this.btnLeft_.Location = new System.Drawing.Point(2, 276);
             this.btnLeft_.Name = "btnLeft_";
             this.btnLeft_.Size = new System.Drawing.Size(42, 29);
             this.btnLeft_.TabIndex = 0;
@@ -535,19 +539,19 @@
             this.dgvResult.AllowUserToDeleteRows = false;
             this.dgvResult.AllowUserToResizeColumns = false;
             this.dgvResult.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvResult.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle66.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvResult.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle66;
             this.dgvResult.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.dgvResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvResult.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Ivory;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvResult.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle67.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle67.BackColor = System.Drawing.Color.Ivory;
+            dataGridViewCellStyle67.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            dataGridViewCellStyle67.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle67.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle67.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle67.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvResult.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle67;
             this.dgvResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvResult.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colMark_2,
@@ -563,19 +567,19 @@
             this.colImportPrice2,
             this.colQauntity2,
             this.colTotal2});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvResult.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle70.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle70.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle70.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            dataGridViewCellStyle70.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle70.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle70.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle70.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvResult.DefaultCellStyle = dataGridViewCellStyle70;
             this.dgvResult.Dock = System.Windows.Forms.DockStyle.Right;
             this.dgvResult.EnableHeadersVisualStyles = false;
             this.dgvResult.Executing = false;
             this.dgvResult.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            this.dgvResult.Location = new System.Drawing.Point(1112, 0);
+            this.dgvResult.Location = new System.Drawing.Point(1111, 1);
             this.dgvResult.MultiSelect = false;
             this.dgvResult.Name = "dgvResult";
             this.dgvResult.Paging = null;
@@ -583,7 +587,7 @@
             this.dgvResult.RowHeadersVisible = false;
             this.dgvResult.RowTemplate.Height = 28;
             this.dgvResult.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvResult.Size = new System.Drawing.Size(382, 539);
+            this.dgvResult.Size = new System.Drawing.Size(382, 537);
             this.dgvResult.TabIndex = 18;
             // 
             // colMark_2
@@ -652,8 +656,8 @@
             // colSaleDate2
             // 
             this.colSaleDate2.DataPropertyName = "SaleDate";
-            dataGridViewCellStyle8.NullValue = null;
-            this.colSaleDate2.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle68.NullValue = null;
+            this.colSaleDate2.DefaultCellStyle = dataGridViewCellStyle68;
             this.colSaleDate2.HeaderText = "កាលបរិច្ឆេទលក់";
             this.colSaleDate2.MinimumWidth = 100;
             this.colSaleDate2.Name = "colSaleDate2";
@@ -702,9 +706,9 @@
             // 
             // colTotal2
             // 
-            dataGridViewCellStyle9.Format = "C2";
-            dataGridViewCellStyle9.NullValue = null;
-            this.colTotal2.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle69.Format = "C2";
+            dataGridViewCellStyle69.NullValue = null;
+            this.colTotal2.DefaultCellStyle = dataGridViewCellStyle69;
             this.colTotal2.HeaderText = "សរុបទឹកប្រាក់";
             this.colTotal2.MinimumWidth = 150;
             this.colTotal2.Name = "colTotal2";
@@ -714,7 +718,6 @@
             // 
             // panel3
             // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this._lblPrePaid);
             this.panel3.Controls.Add(this.lblDriver);
             this.panel3.Controls.Add(this.panel2);
@@ -728,6 +731,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(1, 575);
             this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.panel3.Size = new System.Drawing.Size(1494, 113);
             this.panel3.TabIndex = 35;
             // 
@@ -737,7 +741,7 @@
             this._lblPrePaid.AutoSize = true;
             this._lblPrePaid.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._lblPrePaid.LinkColor = System.Drawing.Color.Blue;
-            this._lblPrePaid.Location = new System.Drawing.Point(572, 42);
+            this._lblPrePaid.Location = new System.Drawing.Point(572, 43);
             this._lblPrePaid.Name = "_lblPrePaid";
             this._lblPrePaid.RightSpace = 10;
             this._lblPrePaid.ShortcutText = "";
@@ -753,7 +757,7 @@
             this.lblDriver.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDriver.AutoSize = true;
             this.lblDriver.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDriver.Location = new System.Drawing.Point(761, 13);
+            this.lblDriver.Location = new System.Drawing.Point(761, 14);
             this.lblDriver.Name = "lblDriver";
             this.lblDriver.Required = false;
             this.lblDriver.Size = new System.Drawing.Size(74, 27);
@@ -768,7 +772,7 @@
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel2.Controls.Add(this.txtPrePaid);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(740, 42);
+            this.panel2.Location = new System.Drawing.Point(740, 43);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -807,7 +811,7 @@
             this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel6.Controls.Add(this.txtLeftAmount);
             this.panel6.Controls.Add(this.label5);
-            this.panel6.Location = new System.Drawing.Point(1282, 72);
+            this.panel6.Location = new System.Drawing.Point(1282, 73);
             this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -846,7 +850,7 @@
             this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel5.Controls.Add(this.txtTotal);
             this.panel5.Controls.Add(this.label4);
-            this.panel5.Location = new System.Drawing.Point(1282, 10);
+            this.panel5.Location = new System.Drawing.Point(1282, 11);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -885,7 +889,7 @@
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.txtPaidAmount);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(1282, 41);
+            this.panel1.Location = new System.Drawing.Point(1282, 42);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -921,7 +925,7 @@
             this.exLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exLabel4.AutoSize = true;
             this.exLabel4.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exLabel4.Location = new System.Drawing.Point(572, 13);
+            this.exLabel4.Location = new System.Drawing.Point(572, 14);
             this.exLabel4.Name = "exLabel4";
             this.exLabel4.Required = false;
             this.exLabel4.Size = new System.Drawing.Size(74, 27);
@@ -933,7 +937,7 @@
             this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(1121, 10);
+            this.lblTotal.Location = new System.Drawing.Point(1121, 11);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Required = false;
             this.lblTotal.Size = new System.Drawing.Size(89, 27);
@@ -945,7 +949,7 @@
             this.exLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exLabel3.AutoSize = true;
             this.exLabel3.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exLabel3.Location = new System.Drawing.Point(1121, 72);
+            this.exLabel3.Location = new System.Drawing.Point(1121, 73);
             this.exLabel3.Name = "exLabel3";
             this.exLabel3.Required = false;
             this.exLabel3.Size = new System.Drawing.Size(66, 27);
@@ -957,7 +961,7 @@
             this.exLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exLabel1.AutoSize = true;
             this.exLabel1.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exLabel1.Location = new System.Drawing.Point(1121, 42);
+            this.exLabel1.Location = new System.Drawing.Point(1121, 43);
             this.exLabel1.Name = "exLabel1";
             this.exLabel1.Required = false;
             this.exLabel1.Size = new System.Drawing.Size(61, 27);

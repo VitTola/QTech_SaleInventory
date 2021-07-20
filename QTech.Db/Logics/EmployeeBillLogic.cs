@@ -28,6 +28,16 @@ namespace QTech.Db.Logics
                     SaleDetailLogic.Instance.UpdateAsync(x);
                 });
             }
+
+            //Update Prepaid
+            if (result.InvoiceStatus == InvoiceStatus.Paid)
+            {
+                var SupplierGeneralPrepaids = SupplierGeneralPaidLogic.Instance.GetSupplierGeneralPaidByEmpId(result.EmployeeId);
+                SupplierGeneralPrepaids.ForEach(x => {
+                    x.IsCalculated = true;
+                    SupplierGeneralPaidLogic.Instance.UpdateAsync(x);
+                });
+            }
             return result;
         }
         public override EmployeeBill UpdateAsync(EmployeeBill entity)
@@ -36,8 +46,18 @@ namespace QTech.Db.Logics
             if (entity.SaleDetails.Any())
             {
                 entity.SaleDetails.ForEach(x => {
-                    x.EmployeeBillId = result.Id;
+                   if(x.PayStatus == PayStatus.WaitPayment || x.PayStatus == PayStatus.Paid) x.EmployeeBillId = result.Id;
                     SaleDetailLogic.Instance.UpdateAsync(x);
+                });
+            }
+
+            //Update Prepaid
+            if (result.InvoiceStatus == InvoiceStatus.Paid)
+            {
+               var  SupplierGeneralPrepaids = SupplierGeneralPaidLogic.Instance.GetSupplierGeneralPaidByEmpId(result.EmployeeId);
+                SupplierGeneralPrepaids.ForEach(x => {
+                    x.IsCalculated = true;
+                    SupplierGeneralPaidLogic.Instance.UpdateAsync(x);
                 });
             }
             return result;
@@ -87,7 +107,14 @@ namespace QTech.Db.Logics
             {
                 q = q.GetPaged(param.Paging).Results.OrderBy(x => x.Id);
             }
-            return q;
+            if (!string.IsNullOrEmpty(param.Search))
+            {
+                q = from b in q
+                    join e in _db.Employees on b.EmployeeId equals e.Id
+                    where e.Name.ToLower().Contains(param.Search.ToLower())
+                    select b;
+            }
+            return q.GroupBy(x=>x.Id).Select(x=>x.FirstOrDefault());
         }
         public override List<EmployeeBill> SearchAsync(ISearchModel model)
         {

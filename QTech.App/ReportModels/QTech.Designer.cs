@@ -643,6 +643,14 @@ namespace QTech.ReportModels {
             
             private global::System.Data.DataColumn columnSubTotal;
             
+            private global::System.Data.DataColumn columnProduct;
+            
+            private global::System.Data.DataColumn columnCategory;
+            
+            private global::System.Data.DataColumn columnImportPrice;
+            
+            private global::System.Data.DataColumn columnQauntity;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public RportDriverDeliveryDetailDataTable() {
@@ -726,6 +734,38 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ProductColumn {
+                get {
+                    return this.columnProduct;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CategoryColumn {
+                get {
+                    return this.columnCategory;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ImportPriceColumn {
+                get {
+                    return this.columnImportPrice;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn QauntityColumn {
+                get {
+                    return this.columnQauntity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -761,7 +801,7 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public RportDriverDeliveryDetailRow AddRportDriverDeliveryDetailRow(System.DateTime SaleDate, string InvoiceNo, string PurchaseOrderNo, string Company, string Site, decimal SubTotal) {
+            public RportDriverDeliveryDetailRow AddRportDriverDeliveryDetailRow(System.DateTime SaleDate, string InvoiceNo, string PurchaseOrderNo, string Company, string Site, decimal SubTotal, string Product, string Category, decimal ImportPrice, long Qauntity) {
                 RportDriverDeliveryDetailRow rowRportDriverDeliveryDetailRow = ((RportDriverDeliveryDetailRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         SaleDate,
@@ -769,7 +809,11 @@ namespace QTech.ReportModels {
                         PurchaseOrderNo,
                         Company,
                         Site,
-                        SubTotal};
+                        SubTotal,
+                        Product,
+                        Category,
+                        ImportPrice,
+                        Qauntity};
                 rowRportDriverDeliveryDetailRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowRportDriverDeliveryDetailRow);
                 return rowRportDriverDeliveryDetailRow;
@@ -798,6 +842,10 @@ namespace QTech.ReportModels {
                 this.columnCompany = base.Columns["Company"];
                 this.columnSite = base.Columns["Site"];
                 this.columnSubTotal = base.Columns["SubTotal"];
+                this.columnProduct = base.Columns["Product"];
+                this.columnCategory = base.Columns["Category"];
+                this.columnImportPrice = base.Columns["ImportPrice"];
+                this.columnQauntity = base.Columns["Qauntity"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -815,6 +863,14 @@ namespace QTech.ReportModels {
                 base.Columns.Add(this.columnSite);
                 this.columnSubTotal = new global::System.Data.DataColumn("SubTotal", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSubTotal);
+                this.columnProduct = new global::System.Data.DataColumn("Product", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProduct);
+                this.columnCategory = new global::System.Data.DataColumn("Category", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCategory);
+                this.columnImportPrice = new global::System.Data.DataColumn("ImportPrice", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnImportPrice);
+                this.columnQauntity = new global::System.Data.DataColumn("Qauntity", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQauntity);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1237,6 +1293,71 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Product {
+                get {
+                    try {
+                        return ((string)(this[this.tableRportDriverDeliveryDetail.ProductColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Product\' in table \'RportDriverDeliveryDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRportDriverDeliveryDetail.ProductColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Category {
+                get {
+                    try {
+                        return ((string)(this[this.tableRportDriverDeliveryDetail.CategoryColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Category\' in table \'RportDriverDeliveryDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRportDriverDeliveryDetail.CategoryColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal ImportPrice {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableRportDriverDeliveryDetail.ImportPriceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ImportPrice\' in table \'RportDriverDeliveryDetail\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableRportDriverDeliveryDetail.ImportPriceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public long Qauntity {
+                get {
+                    try {
+                        return ((long)(this[this.tableRportDriverDeliveryDetail.QauntityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Qauntity\' in table \'RportDriverDeliveryDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRportDriverDeliveryDetail.QauntityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsSaleDateNull() {
                 return this.IsNull(this.tableRportDriverDeliveryDetail.SaleDateColumn);
             }
@@ -1305,6 +1426,54 @@ namespace QTech.ReportModels {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetSubTotalNull() {
                 this[this.tableRportDriverDeliveryDetail.SubTotalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsProductNull() {
+                return this.IsNull(this.tableRportDriverDeliveryDetail.ProductColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetProductNull() {
+                this[this.tableRportDriverDeliveryDetail.ProductColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsCategoryNull() {
+                return this.IsNull(this.tableRportDriverDeliveryDetail.CategoryColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetCategoryNull() {
+                this[this.tableRportDriverDeliveryDetail.CategoryColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsImportPriceNull() {
+                return this.IsNull(this.tableRportDriverDeliveryDetail.ImportPriceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetImportPriceNull() {
+                this[this.tableRportDriverDeliveryDetail.ImportPriceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsQauntityNull() {
+                return this.IsNull(this.tableRportDriverDeliveryDetail.QauntityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetQauntityNull() {
+                this[this.tableRportDriverDeliveryDetail.QauntityColumn] = global::System.Convert.DBNull;
             }
         }
         
