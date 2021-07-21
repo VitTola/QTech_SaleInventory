@@ -193,6 +193,7 @@
       <DependentUpon>ReportNotFound.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SearchModels\PermissionSearch.cs" />
     <Compile Include="SearchModels\EmployeeBillSearch.cs" />
     <Compile Include="SearchModels\PurchaseOrderSearch.cs" />
     <Compile Include="SearchModels\SupplierGeneralPaidSearch.cs" />
@@ -255,6 +256,9 @@
     <Content Include="Dll\esc-pos-usb-net.dll" />
     <Content Include="Dll\FastMember.dll" />
     <Content Include="Dll\QTech.Component.dll" />
+    <None Include="Resources\Customer_img32.png" />
+    <None Include="Resources\Setting_img.png" />
+    <None Include="Resources\user_img.png" />
     <None Include="Resources\PurchaseOrder_img.png" />
     <None Include="Resources\GeneralEmployee.png" />
     <None Include="Resources\RunningBill_img.png" />

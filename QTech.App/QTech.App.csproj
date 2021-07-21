@@ -108,6 +108,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\UserPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserPage.Designer.cs">
+      <DependentUpon>UserPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmPurchaseOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +167,12 @@
     </Compile>
     <Compile Include="Forms\ReportViewPage.Designer.cs">
       <DependentUpon>ReportViewPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmUser.designer.cs">
+      <DependentUpon>frmUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SalePage.cs">
       <SubType>Form</SubType>
@@ -243,7 +255,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportModels\DriverDeliveryDetail.cs" />
+    <Compile Include="ReportModels\Income.cs" />
     <Compile Include="ReportModels\MonthlyInvoice.cs" />
+    <Compile Include="ReportModels\Outcome.cs" />
     <Compile Include="ReportModels\QTech.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -281,6 +295,9 @@
       <DependentUpon>RportDriverDeliveryDetail.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="Forms\UserPage.resx">
+      <DependentUpon>UserPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPurchaseOrder.resx">
       <DependentUpon>frmPurchaseOrder.cs</DependentUpon>
     </EmbeddedResource>
@@ -307,6 +324,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReportViewPage.resx">
       <DependentUpon>ReportViewPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmUser.resx">
+      <DependentUpon>frmUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SalePage.resx">
       <DependentUpon>SalePage.cs</DependentUpon>

@@ -34,7 +34,7 @@ namespace QTech.Db
         public virtual DbSet<SupplierGeneralPaid> SupplierGeneralPaids { get; set; }
         public virtual DbSet<EmployeeBill> EmployeeBills { get; set; }
         public virtual DbSet<QTech.Base.Models.User> Users { get; set; }
-        public virtual DbSet<Base.Permission> Permissions { get; set; }
+        public virtual DbSet<Permission> Permissions { get; set; }
         public virtual DbSet<UserPermission> UserPermissions { get; set; }
         public virtual DbSet<POProductPrice> POProductPrices { get; set; }
         public virtual DbSet<PurchaseOrder> PurchaseOrders { get; set; }

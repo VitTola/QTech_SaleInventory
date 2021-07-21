@@ -75,6 +75,7 @@ namespace QTech.Base.BaseModels
             {
                 Index = 1,
                 Level = 2,
+                Key = AuthKey.Employee_Employee,
                 ParentKey = AuthKey.Employee,
                 DisplayName = BaseResource.Employees,
                 Icon = BaseResource.GeneralEmployee,
@@ -85,6 +86,7 @@ namespace QTech.Base.BaseModels
             {
                 Index = 2,
                 Level = 2,
+                Key = AuthKey.Employee_EmployeeBill,
                 ParentKey = AuthKey.Employee,
                 DisplayName = BaseResource.RuningBill,
                 Icon = BaseResource.RunningBill_img,
@@ -95,6 +97,7 @@ namespace QTech.Base.BaseModels
             {
                 Index = 1,
                 Level = 2,
+                Key = AuthKey.Report,
                 ParentKey = AuthKey.Report,
                 DisplayName = BaseResource.ReportDriverDeliveryDetail,
                 Icon = BaseResource.delivery,
@@ -106,6 +109,7 @@ namespace QTech.Base.BaseModels
             {
                 Index = 1,
                 Level = 2,
+                Key = AuthKey.Product_Product,
                 ParentKey = AuthKey.Product,
                 DisplayName = BaseResource.Products,
                 Icon = BaseResource.Product32x32,
@@ -116,6 +120,7 @@ namespace QTech.Base.BaseModels
             {
                 Index = 2,
                 Level = 2,
+                Key = AuthKey.Product_Category,
                 ParentKey = AuthKey.Product,
                 DisplayName = BaseResource.Categorys,
                 Icon = BaseResource.Type_img,
@@ -127,6 +132,7 @@ namespace QTech.Base.BaseModels
             {
                 Index = 2,
                 Level = 2,
+                Key = AuthKey.Sale_Sale,
                 ParentKey = AuthKey.Sale,
                 DisplayName = BaseResource.Sales,
                 Icon = BaseResource.sale_img32,
@@ -138,6 +144,7 @@ namespace QTech.Base.BaseModels
             {
                 Index = 3,
                 Level = 2,
+                Key = AuthKey.Sale_CreateInvoice,
                 ParentKey = AuthKey.Sale,
                 DisplayName = BaseResource.CreateInvoice,
                 Icon = BaseResource.Report_img32,
@@ -149,11 +156,36 @@ namespace QTech.Base.BaseModels
             {
                 Index = 1,
                 Level = 2,
+                Key = AuthKey.Sale_PurchaseOrder,
                 ParentKey = AuthKey.Sale,
                 DisplayName = BaseResource.PurchaseOrderNo,
                 Icon = BaseResource.PurchaseOrder_img,
                 Children = new List<MenuBar>(),
                 FormName = "QTech.Forms.PurchaseOrderPage"
+
+            },
+              new MenuBar()
+            {
+                Index = 1,
+                Level = 2,
+                Key = AuthKey.Setting_User,
+                ParentKey = AuthKey.Setting,
+                DisplayName = BaseResource.User_Text,
+                Icon = BaseResource.user_img,
+                Children = new List<MenuBar>(),
+                FormName = "QTech.Forms.UserPage"
+
+            },
+                 new MenuBar()
+            {
+                Index = 1,
+                Level = 2,
+                Key = AuthKey.Customer_Customer,
+                ParentKey = AuthKey.Customer,
+                DisplayName = BaseResource.Customer,
+                Icon = BaseResource.Customer_img32,
+                Children = new List<MenuBar>(),
+                FormName = "QTech.Forms.CustomerPage"
 
             },
         };
@@ -178,7 +210,7 @@ namespace QTech.Base.BaseModels
                 DisplayName = BaseResource.Customer,
                 Icon = BaseResource.customer2,
                 Children = new List<MenuBar>(),
-                FormName = "QTech.Forms.CustomerPage"
+                FormName = ""
 
             },
             new MenuBar()
@@ -210,6 +242,16 @@ namespace QTech.Base.BaseModels
                 Key = AuthKey.Report,
                 DisplayName = BaseResource.Report_,
                 Icon = BaseResource.CloseDateEntery_img,
+                Children = new List<MenuBar>(),
+                FormName = ""
+            },
+             new MenuBar()
+            {
+                Index = 6,
+                Level = 1,
+                Key = AuthKey.Setting,
+                DisplayName = BaseResource.Setting_Text,
+                Icon = BaseResource.Setting_img,
                 Children = new List<MenuBar>(),
                 FormName = ""
             },

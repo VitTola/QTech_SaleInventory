@@ -269,6 +269,16 @@ namespace QTech.Base.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Customer_img32 {
+            get {
+                object obj = ResourceManager.GetObject("Customer_img32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap customer1 {
             get {
                 object obj = ResourceManager.GetObject("customer1", resourceCulture);
@@ -864,6 +874,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to សិទ្ធិ.
+        /// </summary>
+        public static string Permission {
+            get {
+                return ResourceManager.GetString("Permission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to លេខទូស័ព្ទ.
         /// </summary>
         public static string Phone {
@@ -1272,6 +1291,25 @@ namespace QTech.Base.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Setting_img {
+            get {
+                object obj = ResourceManager.GetObject("Setting_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ការកំណត់ប្រព័ន្ធ.
+        /// </summary>
+        public static string Setting_Text {
+            get {
+                return ResourceManager.GetString("Setting_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap setting1 {
             get {
                 object obj = ResourceManager.GetObject("setting1", resourceCulture);
@@ -1434,6 +1472,25 @@ namespace QTech.Base.Properties {
         public static string Update {
             get {
                 return ResourceManager.GetString("Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap user_img {
+            get {
+                object obj = ResourceManager.GetObject("user_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to អ្នកប្រើប្រាស់.
+        /// </summary>
+        public static string User_Text {
+            get {
+                return ResourceManager.GetString("User_Text", resourceCulture);
             }
         }
         
