@@ -217,11 +217,10 @@ namespace QTech.Forms
                     pSecondMenue1.Show();
                     if (pSecondMenue2?.Controls[0] is ExTabItem2 btn)
                     {
-                        btn.PerformClick();
+                        SecodMenue_Click(btn, EventArgs.Empty);
                     }
                 }
-
-
+                
                 ClickedButton = menuBar;
             }
 

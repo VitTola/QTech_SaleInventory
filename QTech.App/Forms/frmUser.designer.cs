@@ -44,6 +44,8 @@
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.lblNote = new QTech.Component.ExLabel();
             this.txtNote = new System.Windows.Forms.TextBox();
+            this.exLabel1 = new QTech.Component.ExLabel();
+            this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.container.SuspendLayout();
             this.grbPermission.SuspendLayout();
             this.exPanel.SuspendLayout();
@@ -53,6 +55,8 @@
             // container
             // 
             this.container.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.container.Controls.Add(this.exLabel1);
+            this.container.Controls.Add(this.txtConfirmPassword);
             this.container.Controls.Add(this.lblNote);
             this.container.Controls.Add(this.txtNote);
             this.container.Controls.Add(this._lblUserName);
@@ -71,7 +75,7 @@
             // txtAccount
             // 
             this.txtAccount.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtAccount.Location = new System.Drawing.Point(121, 27);
+            this.txtAccount.Location = new System.Drawing.Point(129, 27);
             this.txtAccount.Margin = new System.Windows.Forms.Padding(2);
             this.txtAccount.MaxLength = 200;
             this.txtAccount.Name = "txtAccount";
@@ -96,7 +100,7 @@
             this._lblPassword.Location = new System.Drawing.Point(20, 61);
             this._lblPassword.Margin = new System.Windows.Forms.Padding(2);
             this._lblPassword.Name = "_lblPassword";
-            this._lblPassword.Required = false;
+            this._lblPassword.Required = true;
             this._lblPassword.Size = new System.Drawing.Size(68, 19);
             this._lblPassword.TabIndex = 40;
             this._lblPassword.Text = "លេខសំងាត់";
@@ -104,11 +108,12 @@
             // txtPassword
             // 
             this.txtPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtPassword.Location = new System.Drawing.Point(121, 58);
+            this.txtPassword.Location = new System.Drawing.Point(129, 58);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.MaxLength = 1000;
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(200, 27);
             this.txtPassword.TabIndex = 1;
             // 
@@ -118,10 +123,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grbPermission.Controls.Add(this.trvPermission);
-            this.grbPermission.Location = new System.Drawing.Point(21, 115);
+            this.grbPermission.Location = new System.Drawing.Point(21, 120);
             this.grbPermission.Margin = new System.Windows.Forms.Padding(2);
             this.grbPermission.Name = "grbPermission";
-            this.grbPermission.Size = new System.Drawing.Size(878, 432);
+            this.grbPermission.Size = new System.Drawing.Size(878, 427);
             this.grbPermission.TabIndex = 2;
             this.grbPermission.TabStop = false;
             this.grbPermission.Text = "សិទ្ធិប្រើប្រាស់";
@@ -136,7 +141,7 @@
             this.trvPermission.Margin = new System.Windows.Forms.Padding(2);
             this.trvPermission.Name = "trvPermission";
             this.trvPermission.PreventCheckEvent = false;
-            this.trvPermission.Size = new System.Drawing.Size(872, 406);
+            this.trvPermission.Size = new System.Drawing.Size(872, 401);
             this.trvPermission.TabIndex = 0;
             this.trvPermission.BeforeCheck += new System.Windows.Forms.TreeViewCancelEventHandler(this.trvPermission_BeforeCheck);
             // 
@@ -175,7 +180,7 @@
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnClose.ShortcutText = "Q";
             this.btnClose.Size = new System.Drawing.Size(75, 27);
-            this.btnClose.TabIndex = 5;
+            this.btnClose.TabIndex = 1;
             this.btnClose.Text = "បិទ";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -192,7 +197,7 @@
             this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnSave.ShortcutText = "S";
             this.btnSave.Size = new System.Drawing.Size(100, 27);
-            this.btnSave.TabIndex = 4;
+            this.btnSave.TabIndex = 0;
             this.btnSave.Text = "រក្សាទុក";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnOK_Click);
@@ -208,7 +213,7 @@
             // _lblUserName
             // 
             this._lblUserName.AutoSize = true;
-            this._lblUserName.Location = new System.Drawing.Point(590, 31);
+            this._lblUserName.Location = new System.Drawing.Point(584, 31);
             this._lblUserName.Margin = new System.Windows.Forms.Padding(2);
             this._lblUserName.Name = "_lblUserName";
             this._lblUserName.Required = true;
@@ -224,15 +229,15 @@
             this.txtUserName.MaxLength = 200;
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(200, 27);
-            this.txtUserName.TabIndex = 42;
+            this.txtUserName.TabIndex = 2;
             // 
             // lblNote
             // 
             this.lblNote.AutoSize = true;
-            this.lblNote.Location = new System.Drawing.Point(590, 61);
+            this.lblNote.Location = new System.Drawing.Point(584, 61);
             this.lblNote.Margin = new System.Windows.Forms.Padding(2);
             this.lblNote.Name = "lblNote";
-            this.lblNote.Required = true;
+            this.lblNote.Required = false;
             this.lblNote.Size = new System.Drawing.Size(41, 19);
             this.lblNote.TabIndex = 45;
             this.lblNote.Text = "ចំណាំ";
@@ -243,9 +248,34 @@
             this.txtNote.Location = new System.Drawing.Point(699, 57);
             this.txtNote.Margin = new System.Windows.Forms.Padding(2);
             this.txtNote.MaxLength = 200;
+            this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(200, 27);
-            this.txtNote.TabIndex = 44;
+            this.txtNote.Size = new System.Drawing.Size(200, 59);
+            this.txtNote.TabIndex = 3;
+            // 
+            // exLabel1
+            // 
+            this.exLabel1.AutoSize = true;
+            this.exLabel1.BackColor = System.Drawing.SystemColors.Control;
+            this.exLabel1.Location = new System.Drawing.Point(20, 92);
+            this.exLabel1.Margin = new System.Windows.Forms.Padding(2);
+            this.exLabel1.Name = "exLabel1";
+            this.exLabel1.Required = true;
+            this.exLabel1.Size = new System.Drawing.Size(101, 19);
+            this.exLabel1.TabIndex = 47;
+            this.exLabel1.Text = "បញ្ជាក់លេខសំងាត់";
+            // 
+            // txtConfirmPassword
+            // 
+            this.txtConfirmPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtConfirmPassword.Location = new System.Drawing.Point(129, 89);
+            this.txtConfirmPassword.Margin = new System.Windows.Forms.Padding(2);
+            this.txtConfirmPassword.MaxLength = 1000;
+            this.txtConfirmPassword.Multiline = true;
+            this.txtConfirmPassword.Name = "txtConfirmPassword";
+            this.txtConfirmPassword.PasswordChar = '*';
+            this.txtConfirmPassword.Size = new System.Drawing.Size(200, 27);
+            this.txtConfirmPassword.TabIndex = 46;
             // 
             // frmUser
             // 
@@ -281,5 +311,7 @@
         private System.Windows.Forms.TextBox txtUserName;
         private Component.ExLabel lblNote;
         private System.Windows.Forms.TextBox txtNote;
+        private Component.ExLabel exLabel1;
+        private System.Windows.Forms.TextBox txtConfirmPassword;
     }
 }

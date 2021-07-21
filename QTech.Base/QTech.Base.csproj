@@ -193,6 +193,8 @@
       <DependentUpon>ReportNotFound.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SearchModels\UserPermissionSearch.cs" />
+    <Compile Include="SearchModels\UserSearch.cs" />
     <Compile Include="SearchModels\PermissionSearch.cs" />
     <Compile Include="SearchModels\EmployeeBillSearch.cs" />
     <Compile Include="SearchModels\PurchaseOrderSearch.cs" />

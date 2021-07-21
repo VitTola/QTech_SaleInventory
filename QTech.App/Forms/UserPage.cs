@@ -97,11 +97,11 @@ namespace QTech.Forms
             }
 
             var id = (int)dgv.CurrentRow.Cells[colId.Name].Value;
-            var canRemove = await btnRemove.RunAsync(() => CategoryLogic.Instance.CanRemoveAsync(id));
+            var canRemove = await btnRemove.RunAsync(() => UserLogic.Instance.CanRemoveAsync(id));
             if (canRemove == false)
             {
                 MsgBox.ShowWarning(EasyServer.Domain.Resources.RowCannotBeRemoved,
-                    GeneralProcess.Remove.GetTextDialog(BaseResource.Categorys));
+                    GeneralProcess.Remove.GetTextDialog(BaseResource.User_Text));
                 return;
             }
 
@@ -120,12 +120,12 @@ namespace QTech.Forms
 
         public async Task Search()
         {
-            var search = new CustomerSearch()
+            var search = new UserSearch()
             {
                 Search = txtSearch.Text,
             };
 
-            var result = await dgv.RunAsync(() => CategoryLogic.Instance.SearchAsync(search));
+            var result = await dgv.RunAsync(() => UserLogic.Instance.SearchAsync(search));
             if (result != null)
             {
                 dgv.DataSource = result._ToDataTable();

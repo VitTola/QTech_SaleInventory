@@ -80,10 +80,10 @@ namespace QTech.Db
         {
             try
             {
-                //if (IsExistsAsync(entity))
-                //{
-                //    throw new UniqueException(model: entity);
-                //}
+                if (IsExistsAsync(entity))
+                {
+                    throw new UniqueException(model: entity);
+                }
 
                 _db.Entry(entity).State = EntityState.Modified;
                 entity.RowDate = DateTime.Now;

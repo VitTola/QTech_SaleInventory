@@ -105,6 +105,7 @@
     <Compile Include="Logics\SaleLogic.cs" />
     <Compile Include="Logics\SiteLogic.cs" />
     <Compile Include="Logics\UserLogic.cs" />
+    <Compile Include="Logics\UserPermissionLogic.cs" />
     <Compile Include="Migrations\202106090612371_v1.0.cs" />
     <Compile Include="Migrations\202106090612371_v1.0.designer.cs">
       <DependentUpon>202106090612371_v1.0.cs</DependentUpon>

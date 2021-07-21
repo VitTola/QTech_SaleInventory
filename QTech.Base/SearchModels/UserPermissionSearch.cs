@@ -7,7 +7,7 @@ using QTechSearch = QTech.Base.BaseModels;
 
 namespace QTech.Base.SearchModels
 {
-    public class PermissionSearch : QTechSearch.BasicSearchModel
+    public class UserPermissionSearch : QTechSearch.BasicSearchModel
     {
         public int UserId { get; set; }
         public string Name { get; set; }

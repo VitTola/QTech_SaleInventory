@@ -694,6 +694,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to បញ្ចាក់លេខសំងាត់មិនត្រឹមត្រូវ!.
+        /// </summary>
+        public static string MsgConfirmPasswordNotMatch {
+            get {
+                return ResourceManager.GetString("MsgConfirmPasswordNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to បានយកទៅប្រើប្រាស់ហើយ មិនអាចលុបបានទេ!.
         /// </summary>
         public static string MsgDataCurrentlyInUsed {
@@ -771,6 +780,15 @@ namespace QTech.Base.Properties {
         public static string MsgProductQtyReachLimit {
             get {
                 return ResourceManager.GetString("MsgProductQtyReachLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Must {
+            get {
+                return ResourceManager.GetString("Must", resourceCulture);
             }
         }
         

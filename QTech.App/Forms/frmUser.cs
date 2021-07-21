@@ -31,13 +31,14 @@ namespace QTech.Forms
         public User Model { get; set; }
         List<Permission> _permission;
         bool _isBinding = true;
-        int _userId;
+        string _defaultPassword = @"*cuMQ*?EmL9tKqWp";
+
 
         public async void Bind()
         {
             _permission = await this.RunAsync(() =>
             {
-                return PermissionLogic.Instance.SearchAsync(new PermissionSearch());
+                return PermissionLogic.Instance.SearchAsync(new UserPermissionSearch() { UserId = Model.Id});
             });
             TreeNode treeNode = AddNodes(new Permission()
             {
@@ -57,22 +58,37 @@ namespace QTech.Forms
 
         public void InitEvent()
         {
-            txtAccount.RegisterKeyEnterNextControlWith(txtPassword, trvPermission);
-            txtAccount.RegisterPrimaryInputWith(txtPassword);
+            txtAccount.RegisterKeyEnterNextControlWith(txtPassword, txtConfirmPassword,txtUserName,txtNote);
+            txtAccount.RegisterEnglishInputWith(txtPassword,txtConfirmPassword);
+            txtNote.RegisterPrimaryInput();
         }
 
         public bool InValid()
         {
-            if (!txtAccount.IsValidRequired(_lblAccount.Text))
+            if (!txtAccount.IsValidRequired(_lblAccount.Text)
+                | !txtPassword.IsValidRequired(_lblPassword.Text)
+                | !txtUserName.IsValidRequired(_lblUserName.Text))
             {
                 return true;
             }
+            if (txtPassword.Text != txtConfirmPassword.Text)
+            {
+                txtConfirmPassword.IsValidRequired(BaseResource.MsgConfirmPasswordNotMatch);
+                return true;
+            }
+            
             return false;
         }
 
         public void Read()
         {
             txtAccount.Text = Model.Name ?? string.Empty;
+            txtUserName.Text = Model.Name ?? string.Empty;
+            txtNote.Text = Model.Note ?? string.Empty;
+            if (Flag != GeneralProcess.Add)
+            {
+                txtPassword.Text = txtConfirmPassword.Text = _defaultPassword;
+            }
         }
 
         public async void Save()
@@ -104,8 +120,7 @@ namespace QTech.Forms
                 txtAccount.IsExists(txtAccount.Text);
                 return;
             }
-
-
+            
             await btnSave.RunAsync(() =>
             {
                 if (Flag == GeneralProcess.Add)
@@ -136,13 +151,13 @@ namespace QTech.Forms
         public void Write()
         {
             Model.FullName = txtAccount.Text;
-            Model.PasswordHash = txtPassword.Text;
+            Model.PasswordHash = txtPassword.Text == _defaultPassword ? string.Empty : txtPassword.Text;
             Model.Name = txtUserName.Text;
             Model.Note = txtNote.Text;
             
             trvPermission.CollapseAll();
-            var permission = GetNodeChecked(trvPermission.TopNode);
-           // Model.UserPermissions = permission;
+            var _userPermission = GetNodeChecked(trvPermission.TopNode);
+            Model.UserPermissions = _userPermission;
         }
 
         private TreeNode AddNodes(Permission permission)
@@ -161,32 +176,32 @@ namespace QTech.Forms
             return node;
         }
 
-        private List<Permission> GetNodeChecked(TreeNode node)
+        private List<UserPermission> GetNodeChecked(TreeNode node)
         {
-            var rolePermissions = new List<Permission>();
-            var _rolePermission = Model.UserPermissions?.FirstOrDefault(x => x.PermissionId == (int)node.Tag);
-            //if (_rolePermission != null)
-            //{
-            //    if(_rolePermission.Active != node.Checked)
-            //    {
-            //        _rolePermission.Active = node.Checked;
-            //        rolePermissions.Add(_rolePermission);
-            //    }
-            //}
-            //else if ((node.Checked) && (int)node.Tag != 0)
-            //{
-            //    _rolePermission = new Permission()
-            //    {
-            //        PermissionId = (int)node.Tag,
-            //        RoleId = Model.Id,
-            //    };
-            //    rolePermissions.Add(_rolePermission);
-            //}
-            //foreach (TreeNode nodes in node.Nodes)
-            //{
-            //    rolePermissions.AddRange(GetNodeChecked(nodes));
-            //}
-            return rolePermissions;
+            var userPermissions = new List<UserPermission>();
+            var _userPermission = Model.UserPermissions?.FirstOrDefault(x => x.PermissionId == (int)node.Tag);
+            if (_userPermission != null)
+            {
+                if (_userPermission.Active != node.Checked)
+                {
+                    _userPermission.Active = node.Checked;
+                    userPermissions.Add(_userPermission);
+                }
+            }
+            else if ((node.Checked) && (int)node.Tag != 0)
+            {
+                _userPermission = new UserPermission()
+                {
+                    PermissionId = (int)node.Tag,
+                    UserId = Model.Id,
+                };
+                userPermissions.Add(_userPermission);
+            }
+            foreach (TreeNode nodes in node.Nodes)
+            {
+                userPermissions.AddRange(GetNodeChecked(nodes));
+            }
+            return userPermissions;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
