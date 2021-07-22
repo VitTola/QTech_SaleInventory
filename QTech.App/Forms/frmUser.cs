@@ -61,6 +61,7 @@ namespace QTech.Forms
             txtAccount.RegisterKeyEnterNextControlWith(txtPassword, txtConfirmPassword,txtUserName,txtNote);
             txtAccount.RegisterEnglishInputWith(txtPassword,txtConfirmPassword);
             txtNote.RegisterPrimaryInput();
+            this.MaximizeBox = false;
         }
 
         public bool InValid()

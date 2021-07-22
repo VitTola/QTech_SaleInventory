@@ -134,7 +134,6 @@
             this.btnRemove.BackColor = System.Drawing.Color.Ivory;
             this.btnRemove.DefaultImage = null;
             this.btnRemove.Executing = false;
-            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemove.Location = new System.Drawing.Point(193, 4);
             this.btnRemove.Margin = new System.Windows.Forms.Padding(0, 4, 4, 2);
             this.btnRemove.Name = "btnRemove";
@@ -151,7 +150,6 @@
             this.btnUpdate.BackColor = System.Drawing.Color.Ivory;
             this.btnUpdate.DefaultImage = null;
             this.btnUpdate.Executing = false;
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Location = new System.Drawing.Point(101, 4);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(0, 4, 2, 2);
             this.btnUpdate.Name = "btnUpdate";
@@ -168,7 +166,6 @@
             this.btnAdd.BackColor = System.Drawing.Color.Ivory;
             this.btnAdd.DefaultImage = null;
             this.btnAdd.Executing = false;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Location = new System.Drawing.Point(9, 4);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(0, 4, 2, 2);
             this.btnAdd.Name = "btnAdd";

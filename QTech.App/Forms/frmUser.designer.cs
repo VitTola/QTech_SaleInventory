@@ -229,7 +229,7 @@
             this.txtUserName.MaxLength = 200;
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(200, 27);
-            this.txtUserName.TabIndex = 2;
+            this.txtUserName.TabIndex = 3;
             // 
             // lblNote
             // 
@@ -251,7 +251,7 @@
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(200, 59);
-            this.txtNote.TabIndex = 3;
+            this.txtNote.TabIndex = 4;
             // 
             // exLabel1
             // 
@@ -275,7 +275,7 @@
             this.txtConfirmPassword.Name = "txtConfirmPassword";
             this.txtConfirmPassword.PasswordChar = '*';
             this.txtConfirmPassword.Size = new System.Drawing.Size(200, 27);
-            this.txtConfirmPassword.TabIndex = 46;
+            this.txtConfirmPassword.TabIndex = 2;
             // 
             // frmUser
             // 

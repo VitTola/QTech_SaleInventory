@@ -55,10 +55,18 @@ namespace QTech.Base.Enums
         Setting_User_Add = 45,
         Setting_User_Update = 46,
         Setting_User_Remove = 47,
-        Customer_Customer = 49,
-        Customer_Customer_View = 50,
-        Customer_Customer_Add = 51,
-        Customer_Customer_Update = 52,
-        Customer_Customer_Remove = 53
+        Customer_Customer = 48,
+        Customer_Customer_View = 49,
+        Customer_Customer_Add = 50,
+        Customer_Customer_Update = 51,
+        Customer_Customer_Remove = 52,
+        General = 53,
+        General_IncomeOutcome = 54,
+        General_IncomeOutcome_View = 55,
+        General_IncomeOutcome_Add = 56,
+        General_IncomeOutcome_Update = 57,
+        General_IncomeOutcome_Remove = 58,
+
+
     }
 }

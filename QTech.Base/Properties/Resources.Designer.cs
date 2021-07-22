@@ -419,6 +419,25 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ទូទៅ.
+        /// </summary>
+        public static string General_ {
+            get {
+                return ResourceManager.GetString("General_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap General_img {
+            get {
+                object obj = ResourceManager.GetObject("General_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap GeneralEmployee {
@@ -521,6 +540,25 @@ namespace QTech.Base.Properties {
         public static string ImportPrice {
             get {
                 return ResourceManager.GetString("ImportPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ចំណូលចំណាយ.
+        /// </summary>
+        public static string IncomeOutcome {
+            get {
+                return ResourceManager.GetString("IncomeOutcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap IncomeOutcome_img {
+            get {
+                object obj = ResourceManager.GetObject("IncomeOutcome_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -915,16 +953,6 @@ namespace QTech.Base.Properties {
         public static string Permission {
             get {
                 return ResourceManager.GetString("Permission", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap Pheng_Ry {
-            get {
-                object obj = ResourceManager.GetObject("Pheng_Ry", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

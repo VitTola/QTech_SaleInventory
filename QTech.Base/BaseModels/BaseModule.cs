@@ -188,6 +188,18 @@ namespace QTech.Base.BaseModels
                 FormName = "QTech.Forms.CustomerPage"
 
             },
+                        new MenuBar()
+            {
+                Index = 1,
+                Level = 2,
+                Key = AuthKey.General_IncomeOutcome,
+                ParentKey = AuthKey.General,
+                DisplayName = BaseResource.IncomeOutcome,
+                Icon = BaseResource.IncomeOutcome_img,
+                Children = new List<MenuBar>(),
+                FormName = ""
+
+            },
         };
 
         public readonly List<MenuBar> _menuBars = new List<MenuBar>()
@@ -252,6 +264,16 @@ namespace QTech.Base.BaseModels
                 Key = AuthKey.Setting,
                 DisplayName = BaseResource.Setting_Text,
                 Icon = BaseResource.Setting_img,
+                Children = new List<MenuBar>(),
+                FormName = ""
+            },
+          new MenuBar()
+            {
+                Index = 7,
+                Level = 1,
+                Key = AuthKey.General,
+                DisplayName = BaseResource.General_,
+                Icon = BaseResource.General_img,
                 Children = new List<MenuBar>(),
                 FormName = ""
             },
