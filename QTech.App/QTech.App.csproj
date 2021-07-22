@@ -295,6 +295,7 @@
       <DependentUpon>RportDriverDeliveryDetail.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Settings.cs" />
     <EmbeddedResource Include="Forms\UserPage.resx">
       <DependentUpon>UserPage.cs</DependentUpon>
     </EmbeddedResource>

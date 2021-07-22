@@ -919,6 +919,16 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Pheng_Ry {
+            get {
+                object obj = ResourceManager.GetObject("Pheng_Ry", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to លេខទូស័ព្ទ.
         /// </summary>
         public static string Phone {

@@ -33,5 +33,17 @@ namespace QTech.Properties {
                 this["USER_LOGGED_IN"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int LAST_USER_LOGGED {
+            get {
+                return ((int)(this["LAST_USER_LOGGED"]));
+            }
+            set {
+                this["LAST_USER_LOGGED"] = value;
+            }
+        }
     }
 }

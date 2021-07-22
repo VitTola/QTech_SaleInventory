@@ -30,7 +30,7 @@ namespace QTech.Forms
 
         public MainForm()
         {
-           // ShareValue.permissions = PermissionLogic.Instance.SearchAsync(new PermissionSearch());
+            //ShareValue.permissions = PermissionLogic.Instance.SearchAsync(new PermissionSearch());
             InitializeComponent();
             InitEvent();
         }
@@ -71,8 +71,10 @@ namespace QTech.Forms
             ResourceHelper.ApplyResource(this);
             this.InitForm();
             this.OptimizeLoadUI();
-            pSecondMenue2.Hide();
-            pSecondMenue1.Hide();
+            //pSecondMenue2.Hide();
+            //pSecondMenue1.Hide();
+            
+            this.FormClosed += (s, e) => Application.Exit();
 
         }
         private void ApplySetting()
@@ -112,8 +114,8 @@ namespace QTech.Forms
                     {
                         pTopMenu.AddTabItem(topMenue);
                         topMenue.Click += TopMenue_Click;
+                        _lastExtabitem = topMenue;
                     }
-                    _lastExtabitem = topMenue;
                 });
             if (_lastExtabitem != null)
             {
@@ -222,22 +224,20 @@ namespace QTech.Forms
                             pSecondMenue2.Controls.Add(secodMenue);
                             secodMenue.Click += SecodMenue_Click;
                         }
-                        
                     });
                     if (pSecondMenue2.Controls.Count > 0)
                     {
-                        pSecondMenue2.Show();
                         pSecondMenue1.Show();
+                        pSecondMenue2.Show();
                         if (pSecondMenue2?.Controls[0] is ExTabItem2 btn)
                         {
                             SecodMenue_Click(btn, EventArgs.Empty);
                         }
                     }
                 }
-                
+
                 ClickedButton = menuBar;
             }
-
         }
         private void SecodMenue_Click(object sender, EventArgs e)
         {
@@ -246,7 +246,6 @@ namespace QTech.Forms
                 if (btn.Tag is MenuBar menuBar)
                 {
                     ShowPage(menuBar.FormName, menuBar.ModuleLocation);
-
                 }
                 btn.BackColor = Color.FromArgb(250, 193, 196);
                 pSecondMenue2.Controls.OfType<ExTabItem2>().Where(x => x != btn).ToList()
@@ -262,7 +261,7 @@ namespace QTech.Forms
             btn.TextAlign = ContentAlignment.BottomCenter;
             btn.Height = 70;
             btn.BackColor = Color.Transparent;
-            btn.Text = text;
+            btn.ExItem2Text = text;
             btn.Image = image;
             btn.Tag = obj;
 

@@ -128,7 +128,7 @@ namespace QTech.Component
 
         protected override void OnLoad(EventArgs e)
         {
-            //Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width+2, this.Height+5, 10, 10));
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width + 2, this.Height+5, 10, 10));
             //this.Font = new Font("Khmer OS System", this.Font.Size);
             this.ApplyResource();
             this.InitForm();
@@ -415,10 +415,15 @@ namespace QTech.Component
             if (WindowState == FormWindowState.Maximized)
             {
                 _bMaximize.Image = Properties.Resources.minimize;
+                var width = Screen.FromControl(this).Bounds.Width;
+                var heigth = Screen.FromControl(this).Bounds.Height;
+                Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, width, heigth+5, 10, 10));
             }
             else
             {
                 _bMaximize.Image = Properties.Resources.maximize;
+                Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width+2, this.Height+5, 10, 10));
+
             }
             Invalidate();
             Refresh();
@@ -588,6 +593,18 @@ namespace QTech.Component
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
+        private void ExDialog_MaximumSizeChanged(object sender, EventArgs e)
+        {
+            //var width = Screen.FromControl(this).Bounds.Width;
+            //var heigth = Screen.FromControl(this).Bounds.Height;
+            //Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, width, heigth + 5, 10, 10));
+
+        }
+
+        private void ExDialog_MinimumSizeChanged(object sender, EventArgs e)
+        {
+            //Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width + 2, this.Height + 5, 10, 10));
+        }
     }
 
     internal class CotrolDialogButton : Button

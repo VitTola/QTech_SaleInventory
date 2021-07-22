@@ -31,6 +31,7 @@ namespace QTech.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginDialog));
             this.txtUserName = new QTech.Component.ExInputTextBox();
             this.txtPassword = new QTech.Component.ExInputTextBox();
             this.picKeyLogin = new System.Windows.Forms.PictureBox();
@@ -198,6 +199,7 @@ namespace QTech.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(347, 164);
             this.Font = new System.Drawing.Font("Khmer OS System", 8.25F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(0, 0);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

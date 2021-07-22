@@ -17,20 +17,13 @@ namespace QTech.Forms
        
         private string[] _userLoggedIn = Properties.Settings.Default.USER_LOGGED_IN?
                                                  .Cast<string>().ToArray() ?? new string[0];
-        //public static Action<LoginDialog> ShowSettingFn;
-        //string socketId = string.Empty;
-        //public delegate void SafeCallDelegate(string text);
-        //private bool _isProcessing = false;
-
 
         public LoginDialog()
         {
             InitializeComponent();
             txtUserName.RegisterEnglishInputWith(txtPassword);
             txtUserName.RegisterKeyEnterNextControlWith(txtPassword);
-
-            //lblDemoVersion.Visible = true;
-
+            
             //Auto Complete with user logged in
             AutoCompleteStringCollection customAutoComplete = new AutoCompleteStringCollection();
             if (_userLoggedIn.Any())
@@ -59,6 +52,18 @@ namespace QTech.Forms
                 {
                     var permissionIds = userPermissions.Select(x => x.PermissionId).ToList();
                     ShareValue.permissions = PermissionLogic.Instance.GetPermissionByIds(permissionIds);
+
+                    // Start to get Setting and store in memory
+                    if (Properties.Settings.Default.USER_LOGGED_IN == null)
+                    {
+                        Properties.Settings.Default.USER_LOGGED_IN = new System.Collections.Specialized.StringCollection();
+                    }
+                    if (!_userLoggedIn.Any(x => x == user.FullName))
+                    {
+                        Properties.Settings.Default.USER_LOGGED_IN.Add(user.FullName);
+                    }
+                    Properties.Settings.Default.LAST_USER_LOGGED = user.Id;
+                    Properties.Settings.Default.Save();
                 }
                 return user;
             });
@@ -66,10 +71,9 @@ namespace QTech.Forms
             {
                 return;
             }
+            this.Hide();
             var dig = new MainForm();
             dig.Show();
-            //this.Close();
-
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -104,8 +108,7 @@ namespace QTech.Forms
             txtPassword.HideValidation();
         }
 
-
-      
+        
         private void DisableAuthorize()
         {
             this.txtPassword.KeyDown -= new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
