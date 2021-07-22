@@ -589,4 +589,10 @@
   <data name="Must" xml:space="preserve">
     <value />
   </data>
+  <data name="Login" xml:space="preserve">
+    <value>ចូលប្រើប្រាស់</value>
+  </data>
+  <data name="MsgNotCorrectNameOrPassword" xml:space="preserve">
+    <value>ឈ្មោះអ្នកប្រើប្រាស់ ឬលេខសំងាត់មិនត្រឹមត្រូវ!</value>
+  </data>
 </root>

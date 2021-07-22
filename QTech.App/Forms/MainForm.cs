@@ -14,6 +14,9 @@ using QTech.Forms;
 using BaseResource = QTech.Base.Properties.Resources;
 using QTech.Db;
 using Storm.CC.Report.Helpers;
+using QTech.Base.Helpers;
+using QTech.Db.Logics;
+using QTech.Base.SearchModels;
 
 namespace QTech.Forms
 {
@@ -27,6 +30,7 @@ namespace QTech.Forms
 
         public MainForm()
         {
+           // ShareValue.permissions = PermissionLogic.Instance.SearchAsync(new PermissionSearch());
             InitializeComponent();
             InitEvent();
         }
@@ -104,8 +108,11 @@ namespace QTech.Forms
                         BorderStyle = BorderStyle.None,
                         Padding = new Padding() { All = 0 },
                     };
-                    pTopMenu.AddTabItem(topMenue);
-                    topMenue.Click += TopMenue_Click;
+                    if (ShareValue.IsAuthorized(x.Key))
+                    {
+                        pTopMenu.AddTabItem(topMenue);
+                        topMenue.Click += TopMenue_Click;
+                    }
                     _lastExtabitem = topMenue;
                 });
             if (_lastExtabitem != null)
@@ -209,15 +216,22 @@ namespace QTech.Forms
                 {
                     childButtons.ForEach(x =>
                     {
-                        var secodMenue = MyTemplateButton(x.DisplayName, x.Icon, x);
-                        pSecondMenue2.Controls.Add(secodMenue);
-                        secodMenue.Click += SecodMenue_Click;
+                        if (ShareValue.IsAuthorized(x.Key))
+                        {
+                            var secodMenue = MyTemplateButton(x.DisplayName, x.Icon, x);
+                            pSecondMenue2.Controls.Add(secodMenue);
+                            secodMenue.Click += SecodMenue_Click;
+                        }
+                        
                     });
-                    pSecondMenue2.Show();
-                    pSecondMenue1.Show();
-                    if (pSecondMenue2?.Controls[0] is ExTabItem2 btn)
+                    if (pSecondMenue2.Controls.Count > 0)
                     {
-                        SecodMenue_Click(btn, EventArgs.Empty);
+                        pSecondMenue2.Show();
+                        pSecondMenue1.Show();
+                        if (pSecondMenue2?.Controls[0] is ExTabItem2 btn)
+                        {
+                            SecodMenue_Click(btn, EventArgs.Empty);
+                        }
                     }
                 }
                 

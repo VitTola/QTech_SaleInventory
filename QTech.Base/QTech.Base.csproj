@@ -152,6 +152,7 @@
     <Compile Include="Helpers\Enums.cs" />
     <Compile Include="Helpers\MimeType.cs" />
     <Compile Include="BaseReport\ReportHelper.cs" />
+    <Compile Include="Helpers\ShareValue.cs" />
     <Compile Include="Helpers\TempFile.cs" />
     <Compile Include="Helpers\UISetting.cs" />
     <Compile Include="Models\PurchaseOrder.cs" />

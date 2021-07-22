@@ -6,6 +6,9 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using QTech.Component;
 using QTech.Component.Helpers;
+using QTech.Base.Helpers;
+using QTech.Db.Logics;
+using BaseResource = QTech.Base.Properties.Resources;
 
 namespace QTech.Forms
 {
@@ -26,7 +29,7 @@ namespace QTech.Forms
             txtUserName.RegisterEnglishInputWith(txtPassword);
             txtUserName.RegisterKeyEnterNextControlWith(txtPassword);
 
-            lblDemoVersion.Visible = true;
+            //lblDemoVersion.Visible = true;
 
             //Auto Complete with user logged in
             AutoCompleteStringCollection customAutoComplete = new AutoCompleteStringCollection();
@@ -42,13 +45,32 @@ namespace QTech.Forms
                 txtUserName.AutoCompleteCustomSource = customAutoComplete;
             }
         }
-        private void btnLogin_Click(object sender, EventArgs e)
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
-            new MainForm().Show();
+            var _user = await btnLogin.RunAsync(() => {
+                var user = UserLogic.Instance.GetUserByNameAndPassword(txtUserName.Text, txtPassword.Text);
+                if (user == null)
+                {
+                    MsgBox.ShowWarning(BaseResource.Login, BaseResource.MsgNotCorrectNameOrPassword);
+                    return user;
+                }
+                var userPermissions = UserPermissionLogic.Instance.GetUserPermissionsByUserId(user.Id);
+                if (userPermissions != null)
+                {
+                    var permissionIds = userPermissions.Select(x => x.PermissionId).ToList();
+                    ShareValue.permissions = PermissionLogic.Instance.GetPermissionByIds(permissionIds);
+                }
+                return user;
+            });
+            if (_user == null)
+            {
+                return;
+            }
+            var dig = new MainForm();
+            dig.Show();
+            //this.Close();
+
         }
-      
-       
-        
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -99,6 +121,7 @@ namespace QTech.Forms
         private async void LoginDialog_Load(object sender, EventArgs e)
         {
             CenterToScreen();
+
         }
     }
 }

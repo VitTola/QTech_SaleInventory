@@ -10,13 +10,24 @@ using System.Linq;
 using System.Windows.Forms;
 using QTech.Base.Helpers;
 using EDomain = EasyServer.Domain;
-
+using System.Runtime.InteropServices;
 
 namespace QTech.Component
 {
     public partial class ExDialog : Form, IMessageFilter, IAsyncTask
     {
         private HashSet<Control> controlsToMove = new HashSet<Control>();
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // width of ellipse
+            int nHeightEllipse // height of ellipse
+        );
         public ExDialog()
         {
             InitializeComponent();
@@ -117,6 +128,7 @@ namespace QTech.Component
 
         protected override void OnLoad(EventArgs e)
         {
+            //Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width+2, this.Height+5, 10, 10));
             //this.Font = new Font("Khmer OS System", this.Font.Size);
             this.ApplyResource();
             this.InitForm();

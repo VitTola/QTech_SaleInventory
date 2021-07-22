@@ -471,6 +471,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pheng-Ry.ico" />
+    <None Include="Resources\login.png" />
     <None Include="Resources\rightArrow_img.png" />
     <None Include="Resources\leftArrow_img1.png" />
     <None Include="Resources\leftArrow_img.png" />

@@ -19,5 +19,9 @@ namespace QTech.Db.Logics
             var result = _db.Permissions.Where(x => x.Active).ToList();
             return result;
         }
+        public List<Permission> GetPermissionByIds(List<int> ids)
+        {
+            return _db.Permissions.Where(p=> ids.Any(i=>i == p.Id)).ToList();
+        }
     }
 }

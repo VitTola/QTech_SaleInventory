@@ -57,7 +57,7 @@ namespace QTech.Component
             this.container.Margin = new System.Windows.Forms.Padding(0);
             this.container.Name = "container";
             this.container.Padding = new System.Windows.Forms.Padding(1);
-            this.container.Size = new System.Drawing.Size(284, 229);
+            this.container.Size = new System.Drawing.Size(1290, 727);
             this.container.TabIndex = 0;
             this.container.Paint += new System.Windows.Forms.PaintEventHandler(this.container_Paint);
             this.container.Resize += new System.EventHandler(this.container_Resize);
@@ -75,7 +75,7 @@ namespace QTech.Component
             this.digheader.Controls.Add(this.bar);
             this.digheader.Controls.Add(this._lblTITLE);
             this.digheader.Controls.Add(this.imgICON);
-            this.digheader.CornerRadius = 5;
+            this.digheader.CornerRadius = 10;
             this.digheader.Corners = ((QTech.Component.Corners)((QTech.Component.Corners.TopLeft | QTech.Component.Corners.TopRight)));
             this.digheader.Dock = System.Windows.Forms.DockStyle.Top;
             this.digheader.Gradient = true;
@@ -93,7 +93,7 @@ namespace QTech.Component
             this.digheader.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.digheader.Name = "digheader";
             this.digheader.Rounded = true;
-            this.digheader.Size = new System.Drawing.Size(284, 20);
+            this.digheader.Size = new System.Drawing.Size(1290, 20);
             this.digheader.TabIndex = 1;
             // 
             // colorWithAlpha1
@@ -122,7 +122,7 @@ namespace QTech.Component
             this.flowLayoutPanel1.Controls.Add(this._bMinimize);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(216, 0);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(1222, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(68, 18);
@@ -185,7 +185,7 @@ namespace QTech.Component
             this.bar.Location = new System.Drawing.Point(0, 18);
             this.bar.Maximum = 10000;
             this.bar.Name = "bar";
-            this.bar.Size = new System.Drawing.Size(284, 2);
+            this.bar.Size = new System.Drawing.Size(1290, 2);
             this.bar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.bar.TabIndex = 0;
             this.bar.Value = 9999;
@@ -200,7 +200,7 @@ namespace QTech.Component
             this._lblTITLE.ForeColor = System.Drawing.Color.White;
             this._lblTITLE.Location = new System.Drawing.Point(24, 1);
             this._lblTITLE.Name = "_lblTITLE";
-            this._lblTITLE.Size = new System.Drawing.Size(236, 19);
+            this._lblTITLE.Size = new System.Drawing.Size(1242, 19);
             this._lblTITLE.TabIndex = 1;
             this._lblTITLE.Text = "ឃ្យូតិច";
             this._lblTITLE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -222,7 +222,7 @@ namespace QTech.Component
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.ClientSize = new System.Drawing.Size(284, 249);
+            this.ClientSize = new System.Drawing.Size(1290, 747);
             this.Controls.Add(this.container);
             this.Controls.Add(this.digheader);
             this.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

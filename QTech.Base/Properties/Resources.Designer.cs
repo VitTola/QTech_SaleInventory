@@ -617,6 +617,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ចូលប្រើប្រាស់.
+        /// </summary>
+        public static string Login {
+            get {
+                return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap logout1 {
@@ -726,6 +735,15 @@ namespace QTech.Base.Properties {
         public static string MsgInvoiceAlreadyPaidCannotEdit {
             get {
                 return ResourceManager.GetString("MsgInvoiceAlreadyPaidCannotEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ឈ្មោះអ្នកប្រើប្រាស់ ឬលេខសំងាត់មិនត្រឹមត្រូវ!.
+        /// </summary>
+        public static string MsgNotCorrectNameOrPassword {
+            get {
+                return ResourceManager.GetString("MsgNotCorrectNameOrPassword", resourceCulture);
             }
         }
         
