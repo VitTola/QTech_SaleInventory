@@ -197,7 +197,7 @@ namespace QTech.Base.BaseModels
                 DisplayName = BaseResource.IncomeOutcome,
                 Icon = BaseResource.IncomeOutcome_img,
                 Children = new List<MenuBar>(),
-                FormName = ""
+                FormName = "QTech.Forms.IncomeExpensePage"
 
             },
         };

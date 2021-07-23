@@ -89,6 +89,7 @@
   <ItemGroup>
     <Compile Include="Configs\QTechDbConfigs.cs" />
     <Compile Include="Logics\EmployeeBillLogic.cs" />
+    <Compile Include="Logics\IncomeExpenseLogic.cs" />
     <Compile Include="Logics\PermissionLogic.cs" />
     <Compile Include="Logics\POProductPriceLogic.cs" />
     <Compile Include="Logics\PurchaseOrderLogic.cs" />

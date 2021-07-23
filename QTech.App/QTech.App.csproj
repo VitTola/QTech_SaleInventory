@@ -108,6 +108,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\frmIncomeExpense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmIncomeExpense.Designer.cs">
+      <DependentUpon>frmIncomeExpense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\IncomeExpensePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\IncomeExpensePage.Designer.cs">
+      <DependentUpon>IncomeExpensePage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\UserPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -296,6 +308,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="Forms\frmIncomeExpense.resx">
+      <DependentUpon>frmIncomeExpense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\IncomeExpensePage.resx">
+      <DependentUpon>IncomeExpensePage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserPage.resx">
       <DependentUpon>UserPage.cs</DependentUpon>
     </EmbeddedResource>

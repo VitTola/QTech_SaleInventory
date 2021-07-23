@@ -91,7 +91,7 @@
             this.lblUnitPrice.AutoSize = true;
             this.lblUnitPrice.Location = new System.Drawing.Point(24, 123);
             this.lblUnitPrice.Name = "lblUnitPrice";
-            this.lblUnitPrice.Required = false;
+            this.lblUnitPrice.Required = true;
             this.lblUnitPrice.Size = new System.Drawing.Size(68, 19);
             this.lblUnitPrice.TabIndex = 22;
             this.lblUnitPrice.Text = "តម្លៃរាយ/m³";
@@ -277,7 +277,7 @@
             this.exLabel1.AutoSize = true;
             this.exLabel1.Location = new System.Drawing.Point(23, 90);
             this.exLabel1.Name = "exLabel1";
-            this.exLabel1.Required = false;
+            this.exLabel1.Required = true;
             this.exLabel1.Size = new System.Drawing.Size(80, 19);
             this.exLabel1.TabIndex = 30;
             this.exLabel1.Text = "តម្លៃនាំចូល/m³";

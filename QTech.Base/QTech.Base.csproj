@@ -141,6 +141,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Enums\AuthKey.cs" />
+    <Compile Include="Enums\MiscellaneousType.cs" />
     <Compile Include="Enums\PayStatus.cs" />
     <Compile Include="Enums\Currency.cs" />
     <Compile Include="Enums\PermissionType.cs" />
@@ -155,6 +156,7 @@
     <Compile Include="Helpers\ShareValue.cs" />
     <Compile Include="Helpers\TempFile.cs" />
     <Compile Include="Helpers\UISetting.cs" />
+    <Compile Include="Models\IncomeExpense.cs" />
     <Compile Include="Models\PurchaseOrder.cs" />
     <Compile Include="Models\EmployeeBill.cs" />
     <Compile Include="Models\SupplierGeneralPaid.cs" />
@@ -194,6 +196,7 @@
       <DependentUpon>ReportNotFound.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SearchModels\IncomExpenseSearch.cs" />
     <Compile Include="SearchModels\UserPermissionSearch.cs" />
     <Compile Include="SearchModels\UserSearch.cs" />
     <Compile Include="SearchModels\PermissionSearch.cs" />
