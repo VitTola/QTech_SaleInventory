@@ -85,8 +85,6 @@ namespace QTech.Db.Logics
         }
         public override List<Sale> SearchAsync(ISearchModel model)
         {
-            Task.Delay(2000000000);
-
             var result = Search(model).ToList();
             return result;
         }

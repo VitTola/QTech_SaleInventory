@@ -128,7 +128,7 @@ namespace QTech.Forms
             txtName.Text = Model.Name;
             txtPhone.Text = Model.Phone;
             txtNote.Text = Model.Note;
-            cboPosition.Text = Model.Position;
+            cboPosition.SelectedValue = Model.Position;
         }
         public async void Save()
         {

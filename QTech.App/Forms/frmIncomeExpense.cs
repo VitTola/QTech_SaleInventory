@@ -1,4 +1,5 @@
-﻿using QTech.Base.Helpers;
+﻿using QTech.Base.Enums;
+using QTech.Base.Helpers;
 using QTech.Base.Models;
 using QTech.Base.SearchModels;
 using QTech.Component;
@@ -13,6 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BaseResource = QTech.Base.Properties.Resources;
 
 namespace QTech.Forms
 {
@@ -35,18 +37,17 @@ namespace QTech.Forms
 
         public void Bind()
         {
-            //cboMiscType.DataSourceFn = p => CategoryLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
-            //cboMiscType.SearchParamFn = () => new CategorySearch();
-
+            cboMiscType.SetDataSource<MiscellaneousType>();
         }
         public void InitEvent()
         {
             this.MaximizeBox = false;
-            this.Text =Flag.GetTextDialog(Base.Properties.Resources.Products);
-            txtMiscNo.RegisterPrimaryInputWith(txtNote, txtMiscNo);
+            this.Text =Flag.GetTextDialog(Base.Properties.Resources.IncomeOutcome);
+            txtNote.RegisterPrimaryInput();
+            txtAmount.RegisterEnglishInput();
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
             txtAmount.KeyPress += (sender, e) => txtAmount.validCurrency(sender, e);
-
+            txtMiscNo.ReadOnly = true;
         }
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
@@ -54,27 +55,24 @@ namespace QTech.Forms
         }
         public bool InValid()
         {
-            if (!txtMiscNo.IsValidRequired(_lblMiscNo.Text)
-                |!cboMiscType.IsValidRequired(_lblMiscType.Text)
+            if (!cboMiscType.IsSelected()
                 |!txtAmount.IsValidNumberic())
             {
                 return true;
             }
             return false;
         }
-        public async void Read()
+        public void Read()
         {
+            if (Flag == GeneralProcess.Add)
+            {
+                txtMiscNo.Text = BaseResource.NewMisNo;
+                return;
+            }
             txtMiscNo.Text = Model.MiscNo;
             txtNote.Text = Model.Note;
             txtAmount.Text = Model.Amount.ToString();
-
-            var _result = await this.RunAsync(() =>
-            {
-                var result = IncomeExpenseLogic.Instance.FindAsync(Model.Id);
-                return result;
-            }
-            );
-            cboMiscType.SetValue(_result);
+            cboMiscType.SelectedValue = Model.MiscellaneousType;
 
         }
         public async void Save()
@@ -123,12 +121,11 @@ namespace QTech.Forms
         }
         public void Write()
         {
-            //Model.Name = txtMiscNo.Text;
-            //Model.Note = txtNote.Text;
-            //Model.UnitPrice = decimal.Parse(txtAmount.Text);
-            //Model.ImportPrice = decimal.Parse(txtImportPrice.Text);
-            //var selectedCat = cboMiscType.SelectedObject.ItemObject as Category;
-            //Model.CategoryId = selectedCat.Id;
+            Model.MiscNo = txtMiscNo.Text;
+            Model.Note = txtNote.Text;
+            Model.Amount = decimal.Parse(txtAmount.Text);
+            Model.MiscellaneousType = (MiscellaneousType)cboMiscType.SelectedValue;
+            Model.DoDate = DateTime.Now;
         }
         private void btnClose_Click(object sender, EventArgs e)
         {

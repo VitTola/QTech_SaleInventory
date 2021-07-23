@@ -461,7 +461,6 @@ namespace QTech.Forms
         {
             var row = dgv.Rows[dgv.Rows.Add()];
             row.Cells[colId.Name].Value = 0;
-            row.Cells[colId.Name].Value = 0;
             if (isFocus)
             {
                 dgv.Focus();

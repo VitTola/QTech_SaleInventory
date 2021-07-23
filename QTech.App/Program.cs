@@ -21,7 +21,7 @@ namespace QTech
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginDialog());
+            Application.Run(new MainForm());
 
         }
 

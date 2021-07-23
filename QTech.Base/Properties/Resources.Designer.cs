@@ -544,7 +544,7 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ចំណូលចំណាយ.
+        ///   Looks up a localized string similar to ចំណូលចំណាយទូទៅ.
         /// </summary>
         public static string IncomeOutcome {
             get {
@@ -704,6 +704,33 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ចំណាយ.
+        /// </summary>
+        public static string MiscellaneousType_Expense {
+            get {
+                return ResourceManager.GetString("MiscellaneousType_Expense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ចំណូល.
+        /// </summary>
+        public static string MiscellaneousType_Income {
+            get {
+                return ResourceManager.GetString("MiscellaneousType_Income", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to លេខសំគាល់.
+        /// </summary>
+        public static string MiscNo {
+            get {
+                return ResourceManager.GetString("MiscNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap Money {
@@ -854,6 +881,15 @@ namespace QTech.Base.Properties {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to លេខសំគាល់ថ្មី.
+        /// </summary>
+        public static string NewMisNo {
+            get {
+                return ResourceManager.GetString("NewMisNo", resourceCulture);
             }
         }
         
@@ -1518,6 +1554,15 @@ namespace QTech.Base.Properties {
         public static string TotalAmount {
             get {
                 return ResourceManager.GetString("TotalAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ប្រភេទេ.
+        /// </summary>
+        public static string Type {
+            get {
+                return ResourceManager.GetString("Type", resourceCulture);
             }
         }
         

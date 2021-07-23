@@ -12,6 +12,7 @@ using QTech.Base.SearchModels;
 using System.Collections.Generic;
 using System.Drawing;
 using QTech.Base.Models;
+using QTech.Base.Enums;
 
 namespace QTech.Forms
 {
@@ -57,6 +58,7 @@ namespace QTech.Forms
             if (dig.ShowDialog() == DialogResult.OK)
             {
                 await Search();
+                dgv.RowSelected(colId.Name, dig.Model.Id);
             }
         }
 
@@ -120,15 +122,25 @@ namespace QTech.Forms
 
         public async Task Search()
         {
-            var search = new CustomerSearch()
+            var search = new IncomExpenseSearch()
             {
                 Search = txtSearch.Text,
             };
 
-            var result = await dgv.RunAsync(() => CategoryLogic.Instance.SearchAsync(search));
+            dgv.Rows.Clear();
+            var result = await dgv.RunAsync(() => IncomeExpenseLogic.Instance.SearchAsync(search));
             if (result != null)
             {
-                dgv.DataSource = result._ToDataTable();
+                result.ForEach(x => {
+                    var row = newRow();
+                    row.Cells[colId.Name].Value = x.Id;
+                    row.Cells[colMiscNo.Name].Value = x.MiscNo;
+                    row.Cells[colDoDate.Name].Value = x.DoDate.ToString("dd-MMM-yyyy hh:mm");
+                    row.Cells[colAmount.Name].Value = x.Amount;
+                    row.Cells[colNote.Name].Value = x.Note;
+                    row.Cells[colType.Name].Value = x.MiscellaneousType == MiscellaneousType.Expense ?
+                    BaseResource.MiscellaneousType_Expense : BaseResource.MiscellaneousType_Income;
+                });
             }
         }
   
@@ -150,7 +162,16 @@ namespace QTech.Forms
             var dig = new frmIncomeExpense(Model, GeneralProcess.View);
             dig.ShowDialog();
         }
-
+        private DataGridViewRow newRow(bool isFocus = false)
+        {
+            var row = dgv.Rows[dgv.Rows.Add()];
+            row.Cells[colId.Name].Value = 0;
+            if (isFocus)
+            {
+                dgv.Focus();
+            }
+            return row;
+        }
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddNew();

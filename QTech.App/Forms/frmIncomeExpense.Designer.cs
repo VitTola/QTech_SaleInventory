@@ -35,7 +35,7 @@
             this.btnClose = new QTech.Component.ExButtonLoading();
             this.btnSave = new QTech.Component.ExButtonLoading();
             this._lblMiscType = new QTech.Component.ExLabel();
-            this.cboMiscType = new QTech.Component.ExSearchCombo();
+            this.cboMiscType = new System.Windows.Forms.ComboBox();
             this.lblNote = new QTech.Component.ExLabel();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -67,9 +67,9 @@
             this._lblMiscNo.Location = new System.Drawing.Point(24, 24);
             this._lblMiscNo.Name = "_lblMiscNo";
             this._lblMiscNo.Required = true;
-            this._lblMiscNo.Size = new System.Drawing.Size(43, 19);
+            this._lblMiscNo.Size = new System.Drawing.Size(72, 19);
             this._lblMiscNo.TabIndex = 15;
-            this._lblMiscNo.Text = "ឈ្មោះ";
+            this._lblMiscNo.Text = "លេខសំគាល់";
             // 
             // txtMiscNo
             // 
@@ -113,7 +113,7 @@
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnClose.ShortcutText = null;
             this.btnClose.Size = new System.Drawing.Size(75, 27);
-            this.btnClose.TabIndex = 6;
+            this.btnClose.TabIndex = 1;
             this.btnClose.Text = "បិទ";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -129,7 +129,7 @@
             this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnSave.ShortcutText = null;
             this.btnSave.Size = new System.Drawing.Size(75, 27);
-            this.btnSave.TabIndex = 5;
+            this.btnSave.TabIndex = 0;
             this.btnSave.Text = "រក្សាទុក";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -146,22 +146,12 @@
             // 
             // cboMiscType
             // 
-            this.cboMiscType.Choose = "";
-            this.cboMiscType.CustomSearchForm = null;
-            this.cboMiscType.DataSourceFn = null;
             this.cboMiscType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMiscType.FormattingEnabled = true;
-            this.cboMiscType.IsGirdViewColumn = false;
-            this.cboMiscType.LoadAll = true;
             this.cboMiscType.Location = new System.Drawing.Point(142, 53);
             this.cboMiscType.Name = "cboMiscType";
-            this.cboMiscType.SearchParamFn = null;
-            this.cboMiscType.SelectedItems = null;
-            this.cboMiscType.SelectedObject = null;
-            this.cboMiscType.ShowAll = false;
             this.cboMiscType.Size = new System.Drawing.Size(200, 27);
             this.cboMiscType.TabIndex = 1;
-            this.cboMiscType.TextAll = "";
             // 
             // lblNote
             // 
@@ -180,7 +170,7 @@
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(200, 84);
-            this.txtNote.TabIndex = 28;
+            this.txtNote.TabIndex = 4;
             // 
             // panel1
             // 
@@ -256,7 +246,7 @@
         private Component.ExButtonLoading btnClose;
         private Component.ExButtonLoading btnSave;
         private Component.ExLabel _lblMiscType;
-        private Component.ExSearchCombo cboMiscType;
+        private new System.Windows.Forms.ComboBox cboMiscType;
         private Component.ExLabel lblNote;
         private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.Panel panel1;

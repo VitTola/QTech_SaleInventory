@@ -602,11 +602,11 @@ namespace QTech.Forms
         {
             var DriverDeliveryDetails = new List<ReportModels.DriverDeliveryDetail>();
          
-            if (Flag == GeneralProcess.Add)
-            {
-                var employee = cboDriver.SelectedObject.ItemObject as Employee;
-                Model.EmployeeId = employee.Id;
-            }
+            //if (Flag == GeneralProcess.Add)
+            //{
+            //    var employee = cboDriver.SelectedObject?.ItemObject as Employee;
+            //    Model.EmployeeId = employee.Id;
+            //}
 
             dgvResult.EndEdit();
             var Rows = dgvResult.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);

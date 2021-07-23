@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QTech.ReportModels
 {
-    public class Outcome
+    public class Expense
     {
         public string BillNo { get; set; }
         public string PayTo { get; set; }
