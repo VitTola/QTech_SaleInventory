@@ -1,6 +1,6 @@
 ﻿namespace QTech.Reports
 {
-    partial class ReportIncomeExpensePage
+    partial class ReportImcomePage
     {
         /// <summary>
         /// Required designer variable.

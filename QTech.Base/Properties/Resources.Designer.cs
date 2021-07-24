@@ -401,6 +401,16 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap expenses_img {
+            get {
+                object obj = ResourceManager.GetObject("expenses_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ចាប់ពី.
         /// </summary>
         public static string FromDate {
@@ -544,6 +554,16 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Income_img {
+            get {
+                object obj = ResourceManager.GetObject("Income_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ចំណូលចំណាយទូទៅ.
         /// </summary>
         public static string IncomeOutcome {
@@ -558,6 +578,16 @@ namespace QTech.Base.Properties {
         public static System.Drawing.Bitmap IncomeOutcome_img {
             get {
                 object obj = ResourceManager.GetObject("IncomeOutcome_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap InOut {
+            get {
+                object obj = ResourceManager.GetObject("InOut", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -700,6 +730,15 @@ namespace QTech.Base.Properties {
             get {
                 object obj = ResourceManager.GetObject("minimize", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ប្រភេទទាំងអស់.
+        /// </summary>
+        public static string MiscellaneousType_All {
+            get {
+                return ResourceManager.GetString("MiscellaneousType_All", resourceCulture);
             }
         }
         
@@ -1253,6 +1292,33 @@ namespace QTech.Base.Properties {
         public static string ReportDriverDeliveryDetail {
             get {
                 return ResourceManager.GetString("ReportDriverDeliveryDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to របាយការណ៍ចំណាយថ្លៃដើម.
+        /// </summary>
+        public static string ReportExpense {
+            get {
+                return ResourceManager.GetString("ReportExpense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to របាយការណ៍ចំណូលពីការលក់.
+        /// </summary>
+        public static string ReportIncome {
+            get {
+                return ResourceManager.GetString("ReportIncome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to របាយការណ៍ចំណូលចំណាយទូទៅ.
+        /// </summary>
+        public static string ReportIncomeExpense {
+            get {
+                return ResourceManager.GetString("ReportIncomeExpense", resourceCulture);
             }
         }
         

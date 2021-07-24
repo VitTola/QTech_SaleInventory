@@ -622,4 +622,25 @@
   <data name="NewMisNo" xml:space="preserve">
     <value>លេខសំគាល់ថ្មី</value>
   </data>
+  <data name="MiscellaneousType_All" xml:space="preserve">
+    <value>ប្រភេទទាំងអស់</value>
+  </data>
+  <data name="expenses_img" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\expenses_img.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Income_img" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Income_img.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="InOut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\InOut.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ReportExpense" xml:space="preserve">
+    <value>របាយការណ៍ចំណាយថ្លៃដើម</value>
+  </data>
+  <data name="ReportIncome" xml:space="preserve">
+    <value>របាយការណ៍ចំណូលពីការលក់</value>
+  </data>
+  <data name="ReportIncomeExpense" xml:space="preserve">
+    <value>របាយការណ៍ចំណូលចំណាយទូទៅ</value>
+  </data>
 </root>

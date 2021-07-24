@@ -29,6 +29,7 @@ namespace QTech.Forms
 
         private void Bind()
         {
+            cboMiscellaneousType.SetDataSource<Base.Enums.MiscellaneousType>();
         }
         private void InitEvent()
         {
@@ -42,8 +43,14 @@ namespace QTech.Forms
             txtSearch.RegisterEnglishInput();
             txtSearch.RegisterKeyArrowDown(dgv);
             txtSearch.QuickSearch += txtSearch_QuickSearch;
+            dgv.AllowRowNotFound = true;
+            cboMiscellaneousType.SelectedIndexChanged += CboMiscellaneousType_SelectedIndexChanged;
         }
 
+        private async void CboMiscellaneousType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            await Search();
+        }
 
         private async void txtSearch_QuickSearch(object sender, EventArgs e)
         {
@@ -125,6 +132,8 @@ namespace QTech.Forms
             var search = new IncomExpenseSearch()
             {
                 Search = txtSearch.Text,
+                MiscellaneousType = (MiscellaneousType)cboMiscellaneousType.SelectedValue,
+                Paging = pagination.Paging
             };
 
             dgv.Rows.Clear();

@@ -66,7 +66,10 @@ namespace QTech.Base.Enums
         General_IncomeOutcome_Add = 56,
         General_IncomeOutcome_Update = 57,
         General_IncomeOutcome_Remove = 58,
-
+        Report_DriverDeliveryDetail = 59,
+        Report_IncomeExpense = 60,
+        Report_Income = 61,
+        Report_Expense = 62
 
     }
 }

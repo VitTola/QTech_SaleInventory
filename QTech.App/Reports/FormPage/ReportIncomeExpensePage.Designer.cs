@@ -32,7 +32,6 @@
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.dtpPeroid = new QTech.Component.ExReportDatePicker();
-            this.btnAdvanceSearch = new QTech.Component.ExButtonLoading();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnView = new QTech.Component.ExButtonLoading();
             this.colorWithAlpha2 = new QTech.Component.ColorWithAlpha();
@@ -43,6 +42,7 @@
             this.colPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.viewer = new QTech.Component.ExReportViewer();
+            this.cboMiscellaneousType = new System.Windows.Forms.ComboBox();
             this.graPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -89,12 +89,13 @@
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.dtpPeroid);
-            this.flowLayoutPanel2.Controls.Add(this.btnAdvanceSearch);
+            this.flowLayoutPanel2.Controls.Add(this.cboMiscellaneousType);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(936, 35);
             this.flowLayoutPanel2.TabIndex = 0;
+            this.flowLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel2_Paint);
             // 
             // dtpPeroid
             // 
@@ -104,21 +105,6 @@
             this.dtpPeroid.Name = "dtpPeroid";
             this.dtpPeroid.Size = new System.Drawing.Size(200, 27);
             this.dtpPeroid.TabIndex = 29;
-            // 
-            // btnAdvanceSearch
-            // 
-            this.btnAdvanceSearch.DefaultImage = null;
-            this.btnAdvanceSearch.Executing = false;
-            this.btnAdvanceSearch.Font = new System.Drawing.Font("Khmer OS System", 8F);
-            this.btnAdvanceSearch.Location = new System.Drawing.Point(206, 3);
-            this.btnAdvanceSearch.Margin = new System.Windows.Forms.Padding(0, 3, 4, 4);
-            this.btnAdvanceSearch.Name = "btnAdvanceSearch";
-            this.btnAdvanceSearch.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
-            this.btnAdvanceSearch.ShortcutText = "F3";
-            this.btnAdvanceSearch.Size = new System.Drawing.Size(94, 29);
-            this.btnAdvanceSearch.TabIndex = 19;
-            this.btnAdvanceSearch.Text = "ស្វែងរកបន្ថែម";
-            this.btnAdvanceSearch.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel1
             // 
@@ -191,7 +177,17 @@
             this.viewer.TabIndex = 1;
             this.viewer.Viewer = QTech.Component.ExReportViewer.ViewerType.Crystal;
             // 
-            // ReportDriverDeliveryPage
+            // cboMiscellaneousType
+            // 
+            this.cboMiscellaneousType.BackColor = System.Drawing.SystemColors.Window;
+            this.cboMiscellaneousType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMiscellaneousType.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboMiscellaneousType.Location = new System.Drawing.Point(209, 3);
+            this.cboMiscellaneousType.Name = "cboMiscellaneousType";
+            this.cboMiscellaneousType.Size = new System.Drawing.Size(200, 27);
+            this.cboMiscellaneousType.TabIndex = 30;
+            // 
+            // ReportIncomeExpensePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -200,7 +196,7 @@
             this.Controls.Add(this.graPanel1);
             this.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "ReportDriverDeliveryPage";
+            this.Name = "ReportIncomeExpensePage";
             this.Text = "ReportDriverDeliveryPage";
             this.graPanel1.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
@@ -224,7 +220,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colNote;
         private Component.ExReportViewer viewer;
         private Component.ExReportDatePicker dtpPeroid;
-        private Component.ExButtonLoading btnAdvanceSearch;
         private Component.ExButtonLoading btnView;
+        private System.Windows.Forms.ComboBox cboMiscellaneousType;
     }
 }

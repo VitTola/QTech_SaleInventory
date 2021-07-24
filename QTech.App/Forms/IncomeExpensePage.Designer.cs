@@ -33,10 +33,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            QTech.Base.BaseModels.Paging paging1 = new QTech.Base.BaseModels.Paging();
             this.graPanel1 = new QTech.Component.GRAPanel();
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtSearch = new QTech.Component.ExTextbox();
+            this.cboMiscellaneousType = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnRemove = new QTech.Component.ExButtonLoading();
             this.btnUpdate = new QTech.Component.ExButtonLoading();
@@ -52,10 +54,13 @@
             this.colType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDoDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pagination = new QTech.Component.ExPaging();
             this.graPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // graPanel1
@@ -99,6 +104,7 @@
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.txtSearch);
+            this.flowLayoutPanel2.Controls.Add(this.cboMiscellaneousType);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -116,8 +122,19 @@
             this.txtSearch.Padding = new System.Windows.Forms.Padding(2, 3, 1, 4);
             this.txtSearch.PlaceHolderText = "";
             this.txtSearch.SearchMode = QTech.Component.ExTextbox.SearchModes.OnKeyReturn;
-            this.txtSearch.Size = new System.Drawing.Size(154, 26);
+            this.txtSearch.Size = new System.Drawing.Size(200, 27);
             this.txtSearch.TabIndex = 1;
+            // 
+            // cboMiscellaneousType
+            // 
+            this.cboMiscellaneousType.BackColor = System.Drawing.SystemColors.Window;
+            this.cboMiscellaneousType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMiscellaneousType.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboMiscellaneousType.Location = new System.Drawing.Point(210, 4);
+            this.cboMiscellaneousType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cboMiscellaneousType.Name = "cboMiscellaneousType";
+            this.cboMiscellaneousType.Size = new System.Drawing.Size(200, 27);
+            this.cboMiscellaneousType.TabIndex = 2;
             // 
             // flowLayoutPanel1
             // 
@@ -321,11 +338,40 @@
             this.colAmount.Name = "colAmount";
             this.colAmount.ReadOnly = true;
             // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.pagination);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 579);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(1142, 33);
+            this.flowLayoutPanel3.TabIndex = 3;
+            // 
+            // pagination
+            // 
+            this.pagination.Action = null;
+            this.pagination.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pagination.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pagination.IsPaging = false;
+            this.pagination.ListModel = null;
+            this.pagination.Location = new System.Drawing.Point(3, 4);
+            this.pagination.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pagination.MinimumSize = new System.Drawing.Size(380, 33);
+            this.pagination.Name = "pagination";
+            paging1.CurrentPage = 1;
+            paging1.IsPaging = true;
+            paging1.PageSize = 25;
+            this.pagination.Paging = paging1;
+            this.pagination.ShowAllOption = false;
+            this.pagination.Size = new System.Drawing.Size(485, 33);
+            this.pagination.TabIndex = 0;
+            // 
             // IncomeExpensePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1142, 612);
+            this.Controls.Add(this.flowLayoutPanel3);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.graPanel1);
             this.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -336,6 +382,7 @@
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+            this.flowLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -361,5 +408,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colType;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDoDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAmount;
+        private new System.Windows.Forms.ComboBox cboMiscellaneousType;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private Component.ExPaging pagination;
     }
 }

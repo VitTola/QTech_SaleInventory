@@ -20,10 +20,10 @@ using QTech.Component.Helpers;
 
 namespace QTech.Reports
 {
-    public partial class ReportIncomeExpensePage : ExPage, IPage
+    public partial class ReportImcomePage : ExPage, IPage
     {
 
-        public ReportIncomeExpensePage()
+        public ReportImcomePage()
         {
             InitializeComponent();
             Bind();

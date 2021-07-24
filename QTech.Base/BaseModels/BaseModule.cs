@@ -93,18 +93,7 @@ namespace QTech.Base.BaseModels
                 Children = new List<MenuBar>(),
                 FormName = "QTech.Forms.EmployeeBillingPage"
             },
-            new MenuBar()
-            {
-                Index = 1,
-                Level = 2,
-                Key = AuthKey.Report,
-                ParentKey = AuthKey.Report,
-                DisplayName = BaseResource.ReportDriverDeliveryDetail,
-                Icon = BaseResource.delivery,
-                Children = new List<MenuBar>(),
-                FormName = "QTech.Reports.ReportDriverDeliveryPage"
-
-            },
+         
             new MenuBar()
             {
                 Index = 1,
@@ -200,6 +189,56 @@ namespace QTech.Base.BaseModels
                 FormName = "QTech.Forms.IncomeExpensePage"
 
             },
+                           new MenuBar()
+            {
+                Index = 1,
+                Level = 2,
+                Key = AuthKey.Report_DriverDeliveryDetail,
+                ParentKey = AuthKey.Report,
+                DisplayName = BaseResource.ReportDriverDeliveryDetail,
+                Icon = BaseResource.delivery,
+                Children = new List<MenuBar>(),
+                FormName = "QTech.Reports.ReportDriverDeliveryPage"
+
+            },
+                              new MenuBar()
+            {
+                Index = 2,
+                Level = 2,
+                Key = AuthKey.Report_IncomeExpense,
+                ParentKey = AuthKey.Report,
+                DisplayName = BaseResource.ReportIncomeExpense,
+                Icon = BaseResource.InOut,
+                Children = new List<MenuBar>(),
+                FormName = "QTech.Reports.ReportIncomeExpensePage"
+
+            },
+                                                     new MenuBar()
+            {
+                Index = 3,
+                Level = 2,
+                Key = AuthKey.Report_Income,
+                ParentKey = AuthKey.Report,
+                DisplayName = BaseResource.ReportIncome,
+                Icon = BaseResource.Income_img,
+                Children = new List<MenuBar>(),
+                FormName = "QTech.Reports.ReportImcomePage"
+
+            },
+                       new MenuBar()
+            {
+                Index = 4,
+                Level = 2,
+                Key = AuthKey.Report_Expense,
+                ParentKey = AuthKey.Report,
+                DisplayName = BaseResource.ReportExpense,
+                Icon = BaseResource.expenses_img,
+                Children = new List<MenuBar>(),
+                FormName = "QTech.Reports.ReportExpensePage"
+
+            },
+
+
         };
 
         public readonly List<MenuBar> _menuBars = new List<MenuBar>()

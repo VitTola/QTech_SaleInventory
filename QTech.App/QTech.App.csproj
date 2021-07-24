@@ -278,10 +278,10 @@
     </Compile>
     <Compile Include="ReportModels\RepoInvoice.cs" />
     <Compile Include="ReportModels\RepoInvoiceDetail.cs" />
-    <Compile Include="Reports\ReportImcomePage.cs">
+    <Compile Include="Reports\FormPage\ReportImcomePage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reports\ReportImcomePage.Designer.cs">
+    <Compile Include="Reports\FormPage\ReportImcomePage.Designer.cs">
       <DependentUpon>ReportImcomePage.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\ReportGeneralInOut.cs">
@@ -290,22 +290,22 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Reports\ReportExpensePage.cs">
+    <Compile Include="Reports\FormPage\ReportExpensePage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reports\ReportExpensePage.Designer.cs">
+    <Compile Include="Reports\FormPage\ReportExpensePage.Designer.cs">
       <DependentUpon>ReportExpensePage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\ReportIncomeExpensePage.cs">
+    <Compile Include="Reports\FormPage\ReportIncomeExpensePage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reports\ReportIncomeExpensePage.Designer.cs">
+    <Compile Include="Reports\FormPage\ReportIncomeExpensePage.Designer.cs">
       <DependentUpon>ReportIncomeExpensePage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\ReportDriverDeliveryPage.cs">
+    <Compile Include="Reports\FormPage\ReportDriverDeliveryPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reports\ReportDriverDeliveryPage.Designer.cs">
+    <Compile Include="Reports\FormPage\ReportDriverDeliveryPage.Designer.cs">
       <DependentUpon>ReportDriverDeliveryPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\ReportMonthlyInvoice.cs">
@@ -439,20 +439,20 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Reports\ReportImcomePage.resx">
+    <EmbeddedResource Include="Reports\FormPage\ReportImcomePage.resx">
       <DependentUpon>ReportImcomePage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ReportGeneralInOut.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReportGeneralInOut.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\ReportExpensePage.resx">
+    <EmbeddedResource Include="Reports\FormPage\ReportExpensePage.resx">
       <DependentUpon>ReportExpensePage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\ReportIncomeExpensePage.resx">
+    <EmbeddedResource Include="Reports\FormPage\ReportIncomeExpensePage.resx">
       <DependentUpon>ReportIncomeExpensePage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\ReportDriverDeliveryPage.resx">
+    <EmbeddedResource Include="Reports\FormPage\ReportDriverDeliveryPage.resx">
       <DependentUpon>ReportDriverDeliveryPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ReportMonthlyInvoice.rpt">

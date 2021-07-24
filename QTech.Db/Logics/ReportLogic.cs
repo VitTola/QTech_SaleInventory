@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace QTech.Db.Logics
 {
-    class ReportLogic : DbLogic<Sale, ReportLogic>
+    public class ReportLogic : DbLogic<Sale, ReportLogic>
     {
-        public List<IncomeExpense> GetIncomeExpensesData(ISearchModel model)
+        public List<IncomeExpense> GetIncomeExpensesData(ReportIncomeExpenseSearch model)
         {
-            var param = model as ReportIncomeExpenseSearch;
+            var param = model;
             var result = _db.IncomeExpenses.Where(x => x.Active && x.DoDate >= param.D1 && x.DoDate <= param.D2);
             if (param.MiscellaneousType == MiscellaneousType.Expense)
             {
