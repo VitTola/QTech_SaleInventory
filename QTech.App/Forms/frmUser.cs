@@ -68,7 +68,6 @@ namespace QTech.Forms
             txtNote.RegisterPrimaryInput();
             this.MaximizeBox = false;
         }
-
         public bool InValid()
         {
             if (!txtAccount.IsValidRequired(_lblAccount.Text)
@@ -85,7 +84,6 @@ namespace QTech.Forms
             
             return false;
         }
-
         public void Read()
         {
             txtAccount.Text = Model.Name ?? string.Empty;
@@ -96,7 +94,6 @@ namespace QTech.Forms
                 txtPassword.Text = txtConfirmPassword.Text = _defaultPassword;
             }
         }
-
         public async void Save()
         {
             if (Flag == GeneralProcess.View)
@@ -148,12 +145,10 @@ namespace QTech.Forms
                 DialogResult = DialogResult.OK;
             }
         }
-
         public void ViewChangeLog()
         {
             //AuditTrailDialog.ShowChangeLog(Model);
         }
-
         public void Write()
         {
             Model.FullName = txtAccount.Text;
@@ -165,7 +160,6 @@ namespace QTech.Forms
             var _userPermission = GetNodeChecked(trvPermission.TopNode);
             Model.UserPermissions = _userPermission;
         }
-
         private TreeNode AddNodes(Permission permission)
         {
             TreeNode node = new TreeNode(permission.Name);
@@ -180,7 +174,6 @@ namespace QTech.Forms
             }
             return node;
         }
-
         private List<UserPermission> GetNodeChecked(TreeNode node)
         {
             var userPermissions = new List<UserPermission>();
@@ -208,17 +201,14 @@ namespace QTech.Forms
             }
             return userPermissions;
         }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void btnOK_Click(object sender, EventArgs e)
         {
             Save();
         }
-
         private int CountNode(TreeNode treeNode)
         {
             int i = 0;
@@ -228,7 +218,6 @@ namespace QTech.Forms
             }
             return i + 1;
         }
-
         private void trvPermission_BeforeCheck(object sender, TreeViewCancelEventArgs e)
         {
             if (!_isBinding)
@@ -244,12 +233,10 @@ namespace QTech.Forms
                 }
             }
         }
-
         private void btnChangeLog_Click(object sender, EventArgs e)
         {
             ViewChangeLog();
         }
-
         private void CheckNodeAfterAddedNode(TreeNode node)
         {
             if (node.Nodes.Count == 0)

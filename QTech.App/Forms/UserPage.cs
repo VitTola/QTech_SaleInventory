@@ -115,6 +115,7 @@ namespace QTech.Forms
                 Search = txtSearch.Text,
             };
 
+            dgv.DataSource = null;
             var result = await dgv.RunAsync(() => UserLogic.Instance.SearchAsync(search));
             if (result != null)
             {

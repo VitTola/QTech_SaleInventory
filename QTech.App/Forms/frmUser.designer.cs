@@ -191,12 +191,12 @@
             this.btnSave.DefaultImage = null;
             this.btnSave.Executing = false;
             this.btnSave.Font = new System.Drawing.Font("Khmer OS System", 8F);
-            this.btnSave.Location = new System.Drawing.Point(597, 3);
+            this.btnSave.Location = new System.Drawing.Point(622, 3);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnSave.ShortcutText = "S";
-            this.btnSave.Size = new System.Drawing.Size(100, 27);
+            this.btnSave.Size = new System.Drawing.Size(75, 27);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "រក្សាទុក";
             this.btnSave.UseVisualStyleBackColor = true;

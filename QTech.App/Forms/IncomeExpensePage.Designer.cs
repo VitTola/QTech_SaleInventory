@@ -401,6 +401,9 @@
         private Component.ExTextbox txtSearch;
         private Component.TreeGridColumn colName;
         private Component.ExDataGridView dgv;
+        private new System.Windows.Forms.ComboBox cboMiscellaneousType;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private Component.ExPaging pagination;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRow_;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMiscNo;
@@ -408,8 +411,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colType;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDoDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAmount;
-        private new System.Windows.Forms.ComboBox cboMiscellaneousType;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private Component.ExPaging pagination;
     }
 }

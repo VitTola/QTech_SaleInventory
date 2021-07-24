@@ -28,6 +28,10 @@ namespace QTech.Db.Logics
             {
                 q = q.Where(x => x.MiscellaneousType == MiscellaneousType.Income);
             }
+            if (param?.Paging?.IsPaging == true)
+            {
+                q = q.GetPaged(param.Paging).Results.OrderBy(x => x.Id);
+            }
             return q;
         }
         public override List<IncomeExpense> SearchAsync(ISearchModel model)

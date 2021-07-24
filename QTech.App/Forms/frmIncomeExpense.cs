@@ -28,7 +28,6 @@ namespace QTech.Forms
 
             this.Model = model;
             this.Flag = flag;
-
             Read();
             Bind();
             InitEvent();
@@ -38,7 +37,6 @@ namespace QTech.Forms
         public void Bind()
         {
             cboMiscType.SetDataSource<MiscellaneousType>("",MiscellaneousType.All);
-            
         }
         public void InitEvent()
         {
@@ -49,6 +47,7 @@ namespace QTech.Forms
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
             txtAmount.KeyPress += (sender, e) => txtAmount.validCurrency(sender, e);
             txtMiscNo.ReadOnly = true;
+            txtMiscNo.RegisterKeyEnterNextControlWith(cboMiscType, txtAmount, txtNote);
         }
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {

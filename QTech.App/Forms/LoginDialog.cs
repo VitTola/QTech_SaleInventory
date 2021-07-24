@@ -44,7 +44,7 @@ namespace QTech.Forms
                 var user = UserLogic.Instance.GetUserByNameAndPassword(txtUserName.Text, txtPassword.Text);
                 if (user == null)
                 {
-                    MsgBox.ShowWarning(BaseResource.Login, BaseResource.MsgNotCorrectNameOrPassword);
+                    MsgBox.ShowWarning( BaseResource.MsgNotCorrectNameOrPassword, BaseResource.Login);
                     return user;
                 }
                 var userPermissions = UserPermissionLogic.Instance.GetUserPermissionsByUserId(user.Id);
@@ -75,7 +75,6 @@ namespace QTech.Forms
             var dig = new MainForm();
             dig.Show();
         }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -92,23 +91,18 @@ namespace QTech.Forms
         {
             txtUserName.SelectAll();
         }
-
         private void txtPassword_Enter(object sender, EventArgs e)
         {
             txtPassword.SelectAll();
         }
-
         private void txtUserName_TextChanged(object sender, EventArgs e)
         {
             txtUserName.HideValidation();
         }
-
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
             txtPassword.HideValidation();
         }
-
-        
         private void DisableAuthorize()
         {
             this.txtPassword.KeyDown -= new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
@@ -119,12 +113,9 @@ namespace QTech.Forms
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             btnLogin.Enabled = true;
         }
-
-       
         private async void LoginDialog_Load(object sender, EventArgs e)
         {
             CenterToScreen();
-
         }
     }
 }

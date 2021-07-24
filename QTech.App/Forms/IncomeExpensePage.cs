@@ -46,18 +46,14 @@ namespace QTech.Forms
             dgv.AllowRowNotFound = true;
             cboMiscellaneousType.SelectedIndexChanged += CboMiscellaneousType_SelectedIndexChanged;
         }
-
         private async void CboMiscellaneousType_SelectedIndexChanged(object sender, EventArgs e)
         {
             await Search();
         }
-
         private async void txtSearch_QuickSearch(object sender, EventArgs e)
         {
             await Search();
         }
-
-      
         public async void AddNew()
         {
             Model = new IncomeExpense();
@@ -68,7 +64,6 @@ namespace QTech.Forms
                 dgv.RowSelected(colId.Name, dig.Model.Id);
             }
         }
-
         public async void EditAsync()
         {
             if (dgv.SelectedRows.Count == 0)
@@ -92,12 +87,10 @@ namespace QTech.Forms
                 dgv.RowSelected(colId.Name, dig.Model.Id);
             }
         }
-
         public async void Reload()
         {
             await Search();
         }
-
         public async void Remove()
         {
             if (dgv.SelectedRows.Count == 0)
@@ -126,7 +119,6 @@ namespace QTech.Forms
                 await Search();
             }
         }
-
         public async Task Search()
         {
             var search = new IncomExpenseSearch()
@@ -137,10 +129,11 @@ namespace QTech.Forms
             };
 
             dgv.Rows.Clear();
-            var result = await dgv.RunAsync(() => IncomeExpenseLogic.Instance.SearchAsync(search));
-            if (result != null)
+            pagination.ListModel = await dgv.RunAsync(() => IncomeExpenseLogic.Instance.SearchAsync(search));
+            if (pagination.ListModel != null)
             {
-                result.ForEach(x => {
+                var _incomeExpenses = pagination.ListModel as List<IncomeExpense>;
+                _incomeExpenses.OrderByDescending(x=>x.DoDate).ToList().ForEach(x => {
                     var row = newRow();
                     row.Cells[colId.Name].Value = x.Id;
                     row.Cells[colMiscNo.Name].Value = x.MiscNo;
@@ -152,7 +145,6 @@ namespace QTech.Forms
                 });
             }
         }
-  
         public async void View()
         {
             if (dgv.SelectedRows.Count == 0)
@@ -185,22 +177,18 @@ namespace QTech.Forms
         {
             AddNew();
         }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             EditAsync();
         }
-
         private void btnRemove_Click(object sender, EventArgs e)
         {
             Remove();
         }
-
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             View();
         }
-
         private void dgv_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             dgv.Rows[e.RowIndex].Cells[colRow_.Name].Value = (e.RowIndex + 1).ToString();

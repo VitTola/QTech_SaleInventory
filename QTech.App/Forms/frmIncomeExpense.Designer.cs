@@ -170,7 +170,7 @@
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(200, 84);
-            this.txtNote.TabIndex = 4;
+            this.txtNote.TabIndex = 3;
             // 
             // panel1
             // 
@@ -183,7 +183,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.panel1.Size = new System.Drawing.Size(200, 27);
-            this.panel1.TabIndex = 31;
+            this.panel1.TabIndex = 3;
             // 
             // txtAmount
             // 
@@ -195,7 +195,7 @@
             this.txtAmount.Multiline = true;
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(154, 23);
-            this.txtAmount.TabIndex = 0;
+            this.txtAmount.TabIndex = 2;
             this.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label1
@@ -205,7 +205,7 @@
             this.label1.Location = new System.Drawing.Point(154, 2);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 23);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 0;
             this.label1.Text = "USD";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -250,8 +250,8 @@
         private Component.ExLabel lblNote;
         private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtAmount;
         private System.Windows.Forms.Label label1;
         private Component.ExLabel _lblAmount;
+        private System.Windows.Forms.TextBox txtAmount;
     }
 }
