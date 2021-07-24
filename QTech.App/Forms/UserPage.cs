@@ -17,7 +17,6 @@ namespace QTech.Forms
 {
     public partial class UserPage : ExPage, IPage
     {
-
         public UserPage()
         {
             InitializeComponent();
@@ -25,7 +24,6 @@ namespace QTech.Forms
             InitEvent();
         }
         public User Model { get; set; }
-
         private void Bind()
         {
         }
@@ -42,14 +40,10 @@ namespace QTech.Forms
             txtSearch.RegisterKeyArrowDown(dgv);
             txtSearch.QuickSearch += txtSearch_QuickSearch;
         }
-
-
         private async void txtSearch_QuickSearch(object sender, EventArgs e)
         {
             await Search();
         }
-
-      
         public async void AddNew()
         {
             Model = new User();
@@ -59,7 +53,6 @@ namespace QTech.Forms
                 await Search();
             }
         }
-
         public async void EditAsync()
         {
             if (dgv.SelectedRows.Count == 0)
@@ -83,12 +76,10 @@ namespace QTech.Forms
                 dgv.RowSelected(colId.Name, dig.Model.Id);
             }
         }
-
         public async void Reload()
         {
             await Search();
         }
-
         public async void Remove()
         {
             if (dgv.SelectedRows.Count == 0)
@@ -117,7 +108,6 @@ namespace QTech.Forms
                 await Search();
             }
         }
-
         public async Task Search()
         {
             var search = new UserSearch()
@@ -131,7 +121,6 @@ namespace QTech.Forms
                 dgv.DataSource = result._ToDataTable();
             }
         }
-  
         public async void View()
         {
             if (dgv.SelectedRows.Count == 0)
@@ -150,27 +139,22 @@ namespace QTech.Forms
             var dig = new frmUser(Model, GeneralProcess.View);
             dig.ShowDialog();
         }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddNew();
         }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             EditAsync();
         }
-
         private void btnRemove_Click(object sender, EventArgs e)
         {
             Remove();
         }
-
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             View();
         }
-
         private void dgv_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             dgv.Rows[e.RowIndex].Cells[colRow_.Name].Value = (e.RowIndex + 1).ToString();

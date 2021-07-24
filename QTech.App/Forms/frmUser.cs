@@ -38,6 +38,11 @@ namespace QTech.Forms
         {
             _permission = await this.RunAsync(() =>
             {
+                if (Model.UserPermissions == null)
+                {
+                    Model.UserPermissions = new List<UserPermission>();
+                }
+                Model.UserPermissions = UserPermissionLogic.Instance.GetUserPermissionsByUserId(Model.Id);
                 return PermissionLogic.Instance.SearchAsync(new UserPermissionSearch() { UserId = Model.Id});
             });
             TreeNode treeNode = AddNodes(new Permission()
@@ -173,7 +178,6 @@ namespace QTech.Forms
             {
                 node.Nodes.Add(AddNodes(p));
             }
-
             return node;
         }
 

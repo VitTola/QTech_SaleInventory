@@ -37,7 +37,8 @@ namespace QTech.Forms
 
         public void Bind()
         {
-            cboMiscType.SetDataSource<MiscellaneousType>();
+            cboMiscType.SetDataSource<MiscellaneousType>("",MiscellaneousType.All);
+            
         }
         public void InitEvent()
         {

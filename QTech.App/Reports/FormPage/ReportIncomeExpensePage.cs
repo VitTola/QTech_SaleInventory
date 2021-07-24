@@ -18,10 +18,11 @@ using QTech.ReportModels;
 using Storm.CC.Report.Helpers;
 using QTech.Component.Helpers;
 using QTech.Base.Enums;
+using QTech.Base.Models;
 
 namespace QTech.Reports
 {
-    public partial class ReportIncomeExpensePage : ExPage, IPage
+    public partial class ReportIncomeExpensePage : ExPage
     {
         public ReportIncomeExpensePage()
         {
@@ -29,7 +30,6 @@ namespace QTech.Reports
             Bind();
             InitEvent();
         }
-
         private void Bind()
         {
             var maxDate = DateTime.Now;
@@ -39,49 +39,36 @@ namespace QTech.Reports
             dtpPeroid.SetMaxDate(maxDate);
             dtpPeroid.Items.AddRange(peroids.ToArray());
             dtpPeroid.Items.Add(customPeroid);
-        }
+            dtpPeroid.SetSelectePeroid(DatePeroid.Today);
 
+            cboMiscellaneousType.SetDataSource<MiscellaneousType>();
+        }
         private void InitEvent()
         {
-            
         }
-
         private async void CboMiscellaneousType_SelectedIndexChanged(object sender, EventArgs e)
         {
             await Search();
         }
-
-        public void AddNew() { }
-
-
         public async void Reload()
         {
             await Search();
         }
-
-        public void Remove()
-        {
-
-        }
-
         public async Task Search()
         {
              View();
         }
-
         public async void View()
         {
             if (inValid() || btnView.Executing)
             {
                 return;
             }
-
             var searchParam = new ReportIncomeExpenseSearch()
             {
                 D1 = dtpPeroid.SelectedPeroid.FromDate.Date,
-                D2 = dtpPeroid.SelectedPeroid.ToDate.Date,
+                D2 = dtpPeroid.SelectedPeroid.ToDate,
                 MiscellaneousType = (MiscellaneousType)cboMiscellaneousType.SelectedValue
-             
             };
             
             var incomeExpenses = await btnView.RunAsync(() =>
@@ -95,8 +82,7 @@ namespace QTech.Reports
                 { "D1" , dtpPeroid.SelectedPeroid.FromDate.Date.ToString(FormatHelper.DateTime[FormatHelper.DateTimeType.ShortDate]) },
                 { "D2" , dtpPeroid.SelectedPeroid.ToDate.Date.ToString(FormatHelper.DateTime[FormatHelper.DateTimeType.ShortDate]) },
             };
-
-
+            
             DataTable _incomeExpense = new DataTable("IncomeExpense");
             using (var reader = ObjectReader.Create(incomeExpenses))
             {
@@ -107,8 +93,8 @@ namespace QTech.Reports
 
             var report = await btnView.RunAsync(() =>
             {
-                var r = ReportHelper.Instance.Load(nameof(RportDriverDeliveryDetail), incomeExpensesDts, reportHeader);
-                r.SummaryInfo.ReportTitle = nameof(BaseResource.IncomeOutcome);
+                var r = ReportHelper.Instance.Load(nameof(ReportGeneralInOut), incomeExpensesDts, reportHeader);
+                r.SummaryInfo.ReportTitle = BaseResource.IncomeOutcome;
                 return r;
             });
 
@@ -117,7 +103,6 @@ namespace QTech.Reports
                 viewer.View(report);
             }
         }
-
         private bool inValid()
         {
             if (!dtpPeroid.IsSelected())
@@ -126,7 +111,6 @@ namespace QTech.Reports
             }
             return false;
         }
-
         private void dig_FormClosed(object sender, FormClosedEventArgs e)
         {
         }
@@ -144,20 +128,9 @@ namespace QTech.Reports
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
-
-        public void EditAsync()
-        {
-            throw new NotImplementedException();
-        }
-
         private void btnView_Click(object sender, EventArgs e)
         {
             View();
-        }
-
-        private void flowLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

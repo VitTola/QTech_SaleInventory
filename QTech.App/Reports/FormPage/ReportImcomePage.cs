@@ -20,7 +20,7 @@ using QTech.Component.Helpers;
 
 namespace QTech.Reports
 {
-    public partial class ReportImcomePage : ExPage, IPage
+    public partial class ReportImcomePage : ExPage
     {
 
         public ReportImcomePage()
@@ -28,10 +28,7 @@ namespace QTech.Reports
             InitializeComponent();
             Bind();
             InitEvent();
-            InitAdvanceFilter();
         }
-        Dictionary<string, Control> _advanceFilters;
-        CustomAdvanceFilter dig;
 
 
         private void Bind()
@@ -44,64 +41,35 @@ namespace QTech.Reports
             dtpPeroid.Items.AddRange(peroids.ToArray());
             dtpPeroid.Items.Add(customPeroid);
             dtpPeroid.SetSelectePeroid(DatePeroid.Today);
+
+            cboCustomer.TextAll = BaseResource.Customer;
+            cboCustomer.DataSourceFn = p => CustomerLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
+            cboCustomer.SearchParamFn = () => new CustomerSearch();
+            cboCustomer.Choose = BaseResource.Customer;
         }
 
         private void InitEvent()
         {
-            btnAdvanceSearch.Click += btnAdvanceSearch_Click;
-            cboCompany.SelectedIndexChanged += CboCompany_SelectedIndexChanged;
         }
-
-        private void CboCompany_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var company = cboCompany.SelectedObject.ItemObject as Customer;
-            cboSite.SearchParamFn = () => new SiteSearch() { CustomerId = company == null ? 0 : company.Id };
-        }
-
-        public void AddNew() { }
-
-        public void Edit() { }
-
-        public async void Reload()
-        {
-            await Search();
-        }
-
-        public void Remove()
-        {
-
-        }
-
-        public async Task Search()
-        {
-            await Task.Delay(0);
-        }
-
+        
         public async void View()
         {
             if (inValid() || btnView.Executing)
             {
                 return;
             }
-            
 
-            var driver = cboDriver.SelectedObject.ItemObject as Employee;
-            var company = cboCompany.SelectedObject.ItemObject as Customer;
-            var site = cboSite.SelectedObject.ItemObject as Site;
-
-            var searchParam = new ReportDriverDeliverySearch()
+            var customer = cboCustomer.SelectedObject?.ItemObject as Customer;
+            var searchParam = new ReportIncomeSearch()
             {
                 D1 = dtpPeroid.SelectedPeroid.FromDate.Date,
                 D2 = dtpPeroid.SelectedPeroid.ToDate.Date,
-                DriverId = driver?.Id ?? 0,
-                CustomerId = company?.Id ?? 0,
-                SiteId = site?.Id ?? 0
+               CustomerId = customer==null? 0 : customer.Id,
             };
-
-
-            var driverDeliveryDetails = await btnView.RunAsync(() =>
+            
+            var incomes = await btnView.RunAsync(() =>
             {
-                var result = SaleLogic.Instance.GetDriverDeliveryDetails(searchParam);
+                var result = ReportLogic.Instance.GetImcomeData(searchParam);
                 return result;
             });
 
@@ -109,22 +77,21 @@ namespace QTech.Reports
             {
                 { "D1" , dtpPeroid.SelectedPeroid.FromDate.Date.ToString(FormatHelper.DateTime[FormatHelper.DateTimeType.ShortDate]) },
                 { "D2" , dtpPeroid.SelectedPeroid.ToDate.Date.ToString(FormatHelper.DateTime[FormatHelper.DateTimeType.ShortDate]) },
-                {"Driver",cboDriver.Text }
             };
 
 
-            DataTable driverDeleryDetail = new DataTable("RportDriverDeliveryDetail");
-            using (var reader = ObjectReader.Create(driverDeliveryDetails))
+            DataTable incomeDt = new DataTable("Income");
+            using (var reader = ObjectReader.Create(incomes))
             {
-                driverDeleryDetail.Load(reader);
+                incomeDt.Load(reader);
             }
-            var _driverDeliveryDetails = new List<DataTable>();
-            _driverDeliveryDetails.Add(driverDeleryDetail);
+            var incomeDts = new List<DataTable>();
+            incomeDts.Add(incomeDt);
 
             var report = await btnView.RunAsync(() =>
             {
-                var r = ReportHelper.Instance.Load(nameof(RportDriverDeliveryDetail), _driverDeliveryDetails, reportHeader);
-                r.SummaryInfo.ReportTitle = nameof(RportDriverDeliveryDetail);
+                var r = ReportHelper.Instance.Load(nameof(ReportProfitExpense), incomeDts, reportHeader);
+                r.SummaryInfo.ReportTitle =BaseResource.ReportIncome;
                 return r;
             });
 
@@ -133,118 +100,16 @@ namespace QTech.Reports
                 viewer.View(report);
             }
         }
-
-        ExSearchCombo cboDriver = new ExSearchCombo
-        {
-            Name = BaseResource.Driver,
-            TextAll = BaseResource.Driver,
-            DataSourceFn = p => EmployeeLogic.Instance.SearchAsync(p).ToDropDownItemModelList(),
-            SearchParamFn = () => new EmployeeSearch(),
-            Choose = BaseResource.Driver,
-        };
-
-        ExSearchCombo cboCompany = new ExSearchCombo
-        {
-            Name = BaseResource.Customer,
-            TextAll = BaseResource.Customer,
-            DataSourceFn = p => CustomerLogic.Instance.SearchAsync(p).ToDropDownItemModelList(),
-            SearchParamFn = () => new CustomerSearch(),
-            Choose = BaseResource.Customer,
-        };
-
-        ExSearchCombo cboSite = new ExSearchCombo
-        {
-            Name = BaseResource.Site,
-            TextAll = BaseResource.Site,
-            Choose = BaseResource.Site,
-            DataSourceFn = p => SiteLogic.Instance.SearchAsync(p).ToDropDownItemModelList(),
-            SearchParamFn = () => new SiteSearch() { }
-        };
-
-
-        private bool _isAdvanceInvalid = false;
-        public void Find()
-        {
-            if (btnView.Executing)
-            {
-                return;
-            }
-            btnAdvanceSearch.HideValidation();
-            if (dig.ShowDialog() == DialogResult.OK)
-            {
-                if (btnView.Enabled && btnView.Visible)
-                {
-                    View();
-                }
-            }
-            if (_isAdvanceInvalid)
-            {
-                btnAdvanceSearch.ShowValidation(BaseResource.MsgPleaseSelectValue);
-            }
-        }
-
-        private void InitAdvanceFilter()
-        {
-            _advanceFilters = new Dictionary<string, Control>()
-            {
-                {cboDriver.Name, cboDriver },
-                {cboCompany.Name, cboCompany },
-                {cboSite.Name, cboSite },
-            };
-
-
-            _advanceFilters.IniAdvanceFilter();
-            dig = new CustomAdvanceFilter(_advanceFilters, inValid);
-
-            foreach (var item in _advanceFilters.Values)
-            {
-                if (item is ExSearchListCombo cbo)
-                {
-                    if (!item.IsHandleCreated)
-                    {
-                        item.CreateControl();
-                    }
-                    if (cbo.SelectedItems.Any())
-                    {
-                        cbo.SelectedValue = cbo.SelectedItems[0].Id;
-                    }
-                }
-                else if (item is ComboBox comboBox)
-                {
-                    if (!item.IsHandleCreated)
-                    {
-                        comboBox.CreateControl();
-                    }
-                }
-            }
-        }
-
         private bool inValid()
         {
-            _isAdvanceInvalid = false;
             if (!dtpPeroid.IsSelected())
             {
                 return true;
             }
-
-            if (!cboDriver.IsSelected() | !cboCompany.IsSelected() | !cboSite.IsSelected())
-            {
-                _isAdvanceInvalid = true;
-                btnAdvanceSearch.ShowValidation(BaseResource.MsgPleaseSelectValue);
-                return true;
-            }
             return false;
         }
-
-        private void btnAdvanceSearch_Click(object sender, EventArgs e)
-        {
-            Find();
-        }
-
         private void dig_FormClosed(object sender, FormClosedEventArgs e)
         {
-            btnAdvanceSearch.HideValidation();
-            _isAdvanceInvalid = false;
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -256,17 +121,10 @@ namespace QTech.Reports
             }
             else if (keyData == Keys.F3)
             {
-                Find();
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
-
-        public void EditAsync()
-        {
-            throw new NotImplementedException();
-        }
-
         private void btnView_Click(object sender, EventArgs e)
         {
             View();

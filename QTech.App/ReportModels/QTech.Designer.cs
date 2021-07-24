@@ -549,7 +549,7 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public MonthlyInvoiceRow AddMonthlyInvoiceRow(string SaleDate, string InvoiceNo, string TotalInKh, string TotalInUSD, string PurchaseOrderNO, string Site) {
+            public MonthlyInvoiceRow AddMonthlyInvoiceRow(System.DateTime SaleDate, string InvoiceNo, string TotalInKh, string TotalInUSD, string PurchaseOrderNO, string Site) {
                 MonthlyInvoiceRow rowMonthlyInvoiceRow = ((MonthlyInvoiceRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         SaleDate,
@@ -591,7 +591,7 @@ namespace QTech.ReportModels {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnSaleDate = new global::System.Data.DataColumn("SaleDate", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnSaleDate = new global::System.Data.DataColumn("SaleDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSaleDate);
                 this.columnInvoiceNo = new global::System.Data.DataColumn("InvoiceNo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInvoiceNo);
@@ -1249,7 +1249,7 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public IncomeRow AddIncomeRow(string InvoiceNo, string PurchaseOrderNo, string Customer, string Site, string SaleDate, decimal Total, decimal Expense) {
+            public IncomeRow AddIncomeRow(string InvoiceNo, string PurchaseOrderNo, string Customer, string Site, System.DateTime SaleDate, decimal Total, decimal Expense) {
                 IncomeRow rowIncomeRow = ((IncomeRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         InvoiceNo,
@@ -1301,7 +1301,7 @@ namespace QTech.ReportModels {
                 base.Columns.Add(this.columnCustomer);
                 this.columnSite = new global::System.Data.DataColumn("Site", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSite);
-                this.columnSaleDate = new global::System.Data.DataColumn("SaleDate", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnSaleDate = new global::System.Data.DataColumn("SaleDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSaleDate);
                 this.columnTotal = new global::System.Data.DataColumn("Total", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotal);
@@ -1550,7 +1550,7 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ExpenseRow AddExpenseRow(string BillNo, string PayTo, string DoDate, decimal Amount) {
+            public ExpenseRow AddExpenseRow(string BillNo, string PayTo, System.DateTime DoDate, decimal Amount) {
                 ExpenseRow rowExpenseRow = ((ExpenseRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         BillNo,
@@ -1592,7 +1592,7 @@ namespace QTech.ReportModels {
                 base.Columns.Add(this.columnBillNo);
                 this.columnPayTo = new global::System.Data.DataColumn("PayTo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPayTo);
-                this.columnDoDate = new global::System.Data.DataColumn("DoDate", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnDoDate = new global::System.Data.DataColumn("DoDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDoDate);
                 this.columnAmount = new global::System.Data.DataColumn("Amount", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAmount);
@@ -1737,7 +1737,7 @@ namespace QTech.ReportModels {
             
             private global::System.Data.DataColumn columnAmount;
             
-            private global::System.Data.DataColumn columnMiscellaneousType;
+            private global::System.Data.DataColumn columnMiscType;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -1806,9 +1806,9 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn MiscellaneousTypeColumn {
+            public global::System.Data.DataColumn MiscTypeColumn {
                 get {
-                    return this.columnMiscellaneousType;
+                    return this.columnMiscType;
                 }
             }
             
@@ -1849,14 +1849,14 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public IncomeExpenseRow AddIncomeExpenseRow(string MiscNo, string DoDate, string Note, decimal Amount, string MiscellaneousType) {
+            public IncomeExpenseRow AddIncomeExpenseRow(string MiscNo, System.DateTime DoDate, string Note, decimal Amount, string MiscType) {
                 IncomeExpenseRow rowIncomeExpenseRow = ((IncomeExpenseRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         MiscNo,
                         DoDate,
                         Note,
                         Amount,
-                        MiscellaneousType};
+                        MiscType};
                 rowIncomeExpenseRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowIncomeExpenseRow);
                 return rowIncomeExpenseRow;
@@ -1883,7 +1883,7 @@ namespace QTech.ReportModels {
                 this.columnDoDate = base.Columns["DoDate"];
                 this.columnNote = base.Columns["Note"];
                 this.columnAmount = base.Columns["Amount"];
-                this.columnMiscellaneousType = base.Columns["MiscellaneousType"];
+                this.columnMiscType = base.Columns["MiscType"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1891,14 +1891,14 @@ namespace QTech.ReportModels {
             private void InitClass() {
                 this.columnMiscNo = new global::System.Data.DataColumn("MiscNo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMiscNo);
-                this.columnDoDate = new global::System.Data.DataColumn("DoDate", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnDoDate = new global::System.Data.DataColumn("DoDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDoDate);
                 this.columnNote = new global::System.Data.DataColumn("Note", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNote);
                 this.columnAmount = new global::System.Data.DataColumn("Amount", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAmount);
-                this.columnMiscellaneousType = new global::System.Data.DataColumn("MiscellaneousType", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMiscellaneousType);
+                this.columnMiscType = new global::System.Data.DataColumn("MiscType", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMiscType);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2041,10 +2041,10 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string SaleDate {
+            public System.DateTime SaleDate {
                 get {
                     try {
-                        return ((string)(this[this.tableMonthlyInvoice.SaleDateColumn]));
+                        return ((global::System.DateTime)(this[this.tableMonthlyInvoice.SaleDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'SaleDate\' in table \'MonthlyInvoice\' is DBNull.", e);
@@ -2585,10 +2585,10 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string SaleDate {
+            public System.DateTime SaleDate {
                 get {
                     try {
-                        return ((string)(this[this.tableIncome.SaleDateColumn]));
+                        return ((global::System.DateTime)(this[this.tableIncome.SaleDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'SaleDate\' in table \'Income\' is DBNull.", e);
@@ -2764,10 +2764,10 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string DoDate {
+            public System.DateTime DoDate {
                 get {
                     try {
-                        return ((string)(this[this.tableExpense.DoDateColumn]));
+                        return ((global::System.DateTime)(this[this.tableExpense.DoDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'DoDate\' in table \'Expense\' is DBNull.", e);
@@ -2875,10 +2875,10 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string DoDate {
+            public System.DateTime DoDate {
                 get {
                     try {
-                        return ((string)(this[this.tableIncomeExpense.DoDateColumn]));
+                        return ((global::System.DateTime)(this[this.tableIncomeExpense.DoDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'DoDate\' in table \'IncomeExpense\' is DBNull.", e);
@@ -2923,17 +2923,17 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string MiscellaneousType {
+            public string MiscType {
                 get {
                     try {
-                        return ((string)(this[this.tableIncomeExpense.MiscellaneousTypeColumn]));
+                        return ((string)(this[this.tableIncomeExpense.MiscTypeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'MiscellaneousType\' in table \'IncomeExpense\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'MiscType\' in table \'IncomeExpense\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableIncomeExpense.MiscellaneousTypeColumn] = value;
+                    this[this.tableIncomeExpense.MiscTypeColumn] = value;
                 }
             }
             
@@ -2987,14 +2987,14 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsMiscellaneousTypeNull() {
-                return this.IsNull(this.tableIncomeExpense.MiscellaneousTypeColumn);
+            public bool IsMiscTypeNull() {
+                return this.IsNull(this.tableIncomeExpense.MiscTypeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetMiscellaneousTypeNull() {
-                this[this.tableIncomeExpense.MiscellaneousTypeColumn] = global::System.Convert.DBNull;
+            public void SetMiscTypeNull() {
+                this[this.tableIncomeExpense.MiscTypeColumn] = global::System.Convert.DBNull;
             }
         }
         
