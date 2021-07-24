@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QTech.ReportModels
+namespace QTech.Base.OutFaceModels
 {
     public class Income
     {
+        public int SaleId { get; set; }
         public string InvoiceNo { get; set; }
         public string PurchaseOrderNo { get; set; }
         public string Customer { get; set; }

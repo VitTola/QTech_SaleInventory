@@ -172,6 +172,8 @@
     <Compile Include="Models\UserPermission.cs" />
     <Compile Include="OutFaceModels\DriverDeliveryDetail.cs" />
     <Compile Include="OutFaceModels\EmployeeBillOutFace.cs" />
+    <Compile Include="OutFaceModels\Expense.cs" />
+    <Compile Include="OutFaceModels\Income.cs" />
     <Compile Include="OutFaceModels\SaleInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -197,6 +199,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SearchModels\IncomExpenseSearch.cs" />
+    <Compile Include="SearchModels\ReportExpenseSearch.cs" />
+    <Compile Include="SearchModels\ReportIncomeSearch.cs" />
+    <Compile Include="SearchModels\ReportIncomeExpenseSearch.cs" />
     <Compile Include="SearchModels\UserPermissionSearch.cs" />
     <Compile Include="SearchModels\UserSearch.cs" />
     <Compile Include="SearchModels\PermissionSearch.cs" />

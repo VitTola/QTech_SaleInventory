@@ -93,6 +93,7 @@
     <Compile Include="Logics\PermissionLogic.cs" />
     <Compile Include="Logics\POProductPriceLogic.cs" />
     <Compile Include="Logics\PurchaseOrderLogic.cs" />
+    <Compile Include="Logics\ReportLogic.cs" />
     <Compile Include="Logics\SupplierGeneralPaidLogic.cs" />
     <Compile Include="Logics\CustomerPriceLogic.cs" />
     <Compile Include="Logics\CustomerLogic.cs" />
