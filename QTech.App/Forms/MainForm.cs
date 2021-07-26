@@ -30,7 +30,7 @@ namespace QTech.Forms
 
         public MainForm()
         {
-            ShareValue.permissions = PermissionLogic.Instance.SearchAsync(new PermissionSearch());
+            //ShareValue.permissions = PermissionLogic.Instance.SearchAsync(new PermissionSearch());
             InitializeComponent();
             InitEvent();
         }

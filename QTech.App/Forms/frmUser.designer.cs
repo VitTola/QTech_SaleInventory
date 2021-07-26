@@ -55,8 +55,8 @@
             // container
             // 
             this.container.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.container.Controls.Add(this.exLabel1);
             this.container.Controls.Add(this.txtConfirmPassword);
+            this.container.Controls.Add(this.exLabel1);
             this.container.Controls.Add(this.lblNote);
             this.container.Controls.Add(this.txtNote);
             this.container.Controls.Add(this._lblUserName);
@@ -127,7 +127,7 @@
             this.grbPermission.Margin = new System.Windows.Forms.Padding(2);
             this.grbPermission.Name = "grbPermission";
             this.grbPermission.Size = new System.Drawing.Size(878, 427);
-            this.grbPermission.TabIndex = 2;
+            this.grbPermission.TabIndex = 7;
             this.grbPermission.TabStop = false;
             this.grbPermission.Text = "សិទ្ធិប្រើប្រាស់";
             // 

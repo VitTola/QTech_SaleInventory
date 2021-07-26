@@ -109,8 +109,9 @@ namespace QTech.Forms
         }
         public bool InValid()
         {
-            if (!cboCustomer.IsSelected() |
+            if (
                 !txtPurchaseOrderNo.IsValidRequired(lblPurchaseOrderNo.Text)
+                |!cboCustomer.IsSelected() 
                 | !validPurchaseOrderDetail())
             {
                 return true;

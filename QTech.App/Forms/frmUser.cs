@@ -60,7 +60,6 @@ namespace QTech.Forms
 
             _isBinding = false;
         }
-
         public void InitEvent()
         {
             txtAccount.RegisterKeyEnterNextControlWith(txtPassword, txtConfirmPassword,txtUserName,txtNote);
@@ -86,7 +85,7 @@ namespace QTech.Forms
         }
         public void Read()
         {
-            txtAccount.Text = Model.Name ?? string.Empty;
+            txtAccount.Text = Model.FullName ?? string.Empty;
             txtUserName.Text = Model.Name ?? string.Empty;
             txtNote.Text = Model.Note ?? string.Empty;
             if (Flag != GeneralProcess.Add)

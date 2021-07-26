@@ -213,7 +213,7 @@
             this.exLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
             this.exLabel2.Location = new System.Drawing.Point(33, 85);
             this.exLabel2.Name = "exLabel2";
-            this.exLabel2.Required = false;
+            this.exLabel2.Required = true;
             this.exLabel2.Size = new System.Drawing.Size(92, 19);
             this.exLabel2.TabIndex = 11;
             this.exLabel2.Text = "មុខទំនិញលម្អិត";

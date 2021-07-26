@@ -43,6 +43,9 @@ namespace QTech.Forms
         {
             this.Text = BaseResource.Sales;
             cboPayStatus.SelectedIndexChanged += CboPayStatus_SelectedIndexChanged;
+            btnAdd.Visible = ShareValue.IsAuthorized(AuthKey.Sale_Sale_Add);
+            btnRemove.Visible = ShareValue.IsAuthorized(AuthKey.Sale_Sale_Remove);
+            btnUpdate.Visible = ShareValue.IsAuthorized(AuthKey.Sale_Sale_Update);
         }
         private async void CboPayStatus_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -75,6 +75,7 @@ namespace QTech.Forms
             dgv.EditColumnIcon(colProductId, colQauntity, colUnitPrice, colEmployeeId);
             txtTotal.ReadOnly = colLeftQty_.ReadOnly = true;
             cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
+            
 
             if (Flag != GeneralProcess.Add)
             {
@@ -106,7 +107,6 @@ namespace QTech.Forms
                 dgv.BeginEdit(true);
             }
         }
-
         private bool firstLoad = true;
         private async void CboCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -265,7 +265,7 @@ namespace QTech.Forms
                         var pOProductPrice = pOProductPrices.FirstOrDefault(x => x.ProductId == _productId);
                         if (pOProductPrice?.LeftQauntity == 0)
                         {
-                            Err = ((DataGridViewCell)(dgv.CurrentRow.Cells[colProductId.Name]));
+                            Err = ((DataGridViewCell)(dgv.CurrentRow.Cells[colQauntity.Name]));
                             Err.ErrorText = BaseReource.MsgProductQtyReachLimit;
                         }
                         else if (inputQty > pOProductPrice?.LeftQauntity)
@@ -290,8 +290,10 @@ namespace QTech.Forms
         {
             if (tabMain.SelectedTab.Equals(tabCompany_))
             {
-                if (!cboCustomer.IsSelected() | !cboPurchaseOrderNo.IsSelected()
-                    | !txtInvoiceNo.IsValidRequired(lblInvoiceNo.Text) | !cboSite.IsSelected())
+                if (!cboCustomer.IsSelected() 
+                    | !cboSite.IsSelected() 
+                    | !cboPurchaseOrderNo.IsSelected()
+                    | !txtInvoiceNo.IsValidRequired(lblInvoiceNo.Text) )
                 {
                     return true;
                 }

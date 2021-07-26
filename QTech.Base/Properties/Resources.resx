@@ -643,4 +643,7 @@
   <data name="ReportIncomeExpense" xml:space="preserve">
     <value>របាយការណ៍ចំណូលចំណាយទូទៅ</value>
   </data>
+  <data name="InvoiceStatus_All" xml:space="preserve">
+    <value>ស្ថានភាពទាំងអស់</value>
+  </data>
 </root>

@@ -18,7 +18,8 @@ namespace QTech.Base.Enums
     {
         WaitPayment = 0,
         PaySome = 1,
-        Paid =2
+        Paid =2,
+        All = 3
     }
 
 

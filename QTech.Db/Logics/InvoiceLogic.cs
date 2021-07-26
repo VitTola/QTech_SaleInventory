@@ -159,7 +159,6 @@ namespace QTech.Db.Logics
                 UpdateSales(invoiceDetails, invoice);
             }
         }
-
         private void UpdateSales(List<InvoiceDetail> invoiceDetails, Invoice invoice)
         {
             var saleIds = invoiceDetails.Select(x => x.SaleId).ToList();

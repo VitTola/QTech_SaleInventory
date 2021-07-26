@@ -60,11 +60,10 @@ namespace QTech.Forms
         private void InitEvent()
         {
             btnAdvanceSearch.Click += btnAdvanceSearch_Click;
-            cboCompany.SelectedIndexChanged += CboCompany_SelectedIndexChanged;
             dgv.CellContentClick += Dgv_CellContentClick;
             txtPaidAmount.Leave += txtPaidAmount_Leave;
             txtPaidAmount.TextChanged += txtPaidAmount_TextChanged;
-            cboCompany.SelectedIndexChanged += CboCompany_SelectedIndexChanged1;
+            cboCompany.SelectedIndexChanged += CboCompany_SelectedIndexChanged;
 
             colMark_.ReadOnly = txtPaidAmount.ReadOnly = false;
             txtPaidAmount.KeyPress += (s, e) => { txtPaidAmount.validCurrency(s, e); };
@@ -72,7 +71,6 @@ namespace QTech.Forms
             btnRigt_.Click += BtnRigt_Click;
             btnPrint.Click += BtnPrint_Click;
         }
-        
         private void BtnRigt_Click(object sender, EventArgs e)
         {
             if (dgv.SelectedRows.Count == 0) return;
@@ -102,10 +100,6 @@ namespace QTech.Forms
             dgvResult.Rows.Remove(dgvResult.CurrentRow);
             CalculateTotal();
         }
-        private void CboCompany_SelectedIndexChanged1(object sender, EventArgs e)
-        {
-            cboSite.SetValue(null);
-        }
         private void Dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == colMark_.Index)
@@ -129,6 +123,8 @@ namespace QTech.Forms
         {
             var company = cboCompany.SelectedObject.ItemObject as Customer;
             cboSite.SearchParamFn = () => new SiteSearch() { CustomerId = company == null ? 0 : company.Id };
+            cboSite.SetValue(null);
+
         }
         public async void Reload()
         {
@@ -136,33 +132,24 @@ namespace QTech.Forms
         }
         public async Task<List<EmployeeBillOutFace>> Search()
         {
-            txtPrePaid.Text = txtTotal.Text = txtPaidAmount.Text = txtLeftAmount.Text = "0";
-            Total = 0; prePaid = 0;
             if (btnView.Executing)
             {
                 return null;
             }
+
+            var site = cboSite.SelectedObject?.ItemObject as Site;
+            var company = cboCompany.SelectedObject?.ItemObject as Customer;
+            var driver = cboDriver.SelectedObject?.ItemObject as Employee;
+
+            //WHEN SEARCHING ADD NEW FLAG
             if (Flag == GeneralProcess.Add)
             {
-                if (inValid())
-                {
-                    return null;
-                }
+                int driverId = driver.Id;
+                SupplierGeneralPrepaids = SupplierGeneralPaidLogic.Instance.GetSupplierGeneralPaidByEmpId(driverId);
+                SupplierGeneralPrepaids.ForEach(x => prePaid += x.Amount);
+                txtPrePaid.Text = prePaid.ToString();
+                lblDriver.Text = driver.Name;
             }
-            
-            var driver = cboDriver?.SelectedObject?.ItemObject as Employee;
-            int driverId = Flag == GeneralProcess.Add ? driver?.Id ?? -1 : Model.EmployeeId;
-            SupplierGeneralPrepaids = SupplierGeneralPaidLogic.Instance.GetSupplierGeneralPaidByEmpId(driverId);
-            SupplierGeneralPrepaids.ForEach(x => prePaid += x.Amount);
-            txtPrePaid.Text = prePaid.ToString();
-            lblDriver.Text = cboDriver.Text;
-            txtLeftAmount.Text = Model.LeftAmount.ToString() ?? string.Empty;
-            txtPaidAmount.Text = Model.PaidAmount.ToString() ??string.Empty;
-            txtTotal.Text = Model.Total.ToString() ?? string.Empty;
-            
-
-            var site = cboSite?.SelectedObject?.ItemObject as Site;
-            var company = cboCompany?.SelectedObject?.ItemObject as Customer;
             var searchParam = new EmployeeBillSearch()
             {
                 D1 = dtpPeroid.SelectedPeroid.FromDate.Date,
@@ -175,14 +162,23 @@ namespace QTech.Forms
 
             var employeeBills = await btnView.RunAsync(() =>
             {
-                var result = SaleDetailLogic.Instance.GetEmployeeBillOutFaces(searchParam);
-                return result;
+                var _result = SaleDetailLogic.Instance.GetEmployeeBillOutFaces(searchParam);
+                return _result;
             });
-            Model.SaleDetails = employeeBills?.Select(s=>s.saleDetail)?.ToList();
             return employeeBills;
         }
         public async void View()
         {
+            if (!dtpPeroid.IsSelected())
+            {
+                return;
+            }
+            if (!cboDriver.IsSelected() | !cboCompany.IsSelected() | !cboSite.IsSelected())
+            {
+                btnAdvanceSearch.ShowValidation(BaseResource.MsgPleaseSelectValue);
+                return;
+            }
+
             var employeeBills = await Search();
             FillGiridView(employeeBills, dgv);
         }
@@ -255,6 +251,22 @@ namespace QTech.Forms
                 }
                 AllSales++;
             });
+        }
+        private void GridviewBalancer()
+        {
+            //if (dgv.Rows.Count <1 || dgvResult.Rows.Count < 1)
+            //{
+            //    return;
+            //}
+            //dgv.EndEdit();
+            //dgvResult.EndEdit();
+            //var dgvResultCellIds = dgv.Rows<
+            //var Rows = dgvResult.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
+            //foreach (DataGridViewRow row in Rows)
+            //{
+            //    row.DefaultCellStyle.ForeColor = Color.Red;
+            //    row.Cells[colMark_.Name].ReadOnly = true;
+            //}
         }
         private DataGridViewRow newRow(DataGridView dataGridView, bool isFocus = false)
         {
@@ -347,7 +359,6 @@ namespace QTech.Forms
         }
         private bool inValid()
         {
-            _isAdvanceInvalid = false;
             if (!dtpPeroid.IsSelected())
             {
                 return true;
@@ -355,14 +366,10 @@ namespace QTech.Forms
 
             if (!cboDriver.IsSelected() | !cboCompany.IsSelected() | !cboSite.IsSelected())
             {
-                _isAdvanceInvalid = true;
                 btnAdvanceSearch.ShowValidation(BaseResource.MsgPleaseSelectValue);
                 return true;
             }
-            if (dgvResult.Rows.Count > 0)
-            {
-                return false;
-            }
+            
             return false;
         }
         private void btnAdvanceSearch_Click(object sender, EventArgs e)
@@ -396,8 +403,26 @@ namespace QTech.Forms
         {
             if (Flag != GeneralProcess.Add)
             {
-                var employeeBills = await Search();
-                FillResultGiridView(employeeBills, dgvResult);
+                var driver = new Employee();
+                var employeeBillOutFaces = await dgv.RunAsync(() => {
+
+                    var _employeeBillOutFaces = SaleDetailLogic.Instance.GetEmployeeBillOutFaces(new EmployeeBillSearch { EmployeeBillId = Model.Id});
+                    driver = EmployeeLogic.Instance.FindAsync(Model.EmployeeId);
+                    return _employeeBillOutFaces;
+                });
+                if (driver != null)
+                {
+                    cboDriver.SetValue(driver);
+                    lblDriver.Text = driver.Name;
+                    //Not allow to choose another drive when update
+                    cboDriver.Enabled = false;
+                }
+                txtPrePaid.Text = Model.PaidAmount.ToString();
+                txtLeftAmount.Text = Model.LeftAmount.ToString();
+                txtPaidAmount.Text =  Model.PaidAmount.ToString();
+                txtTotal.Text = Model.Total.ToString();
+                FillResultGiridView(employeeBillOutFaces, dgvResult);
+                Model.SaleDetails = employeeBillOutFaces?.Select(s => s.saleDetail)?.ToList();
             }
         }
         public void Write()

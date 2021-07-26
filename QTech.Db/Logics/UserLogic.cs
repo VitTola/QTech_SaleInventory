@@ -28,22 +28,21 @@ namespace QTech.Db.Logics
             }
             return result;
         }
-
         public override User UpdateAsync(User entity)
         {
+            var result = new User();
             if (string.IsNullOrEmpty(entity.PasswordHash))
             {
                 _db.Entry(entity).State = EntityState.Modified;
                 _db.Entry(entity).Property(x => x.PasswordHash).IsModified = false;
                 entity.RowDate = DateTime.Now;
                 _db.SaveChanges();
+                result = entity;
             }
             else
             {
                 entity.PasswordHash = CalculateHash(entity.FullName, entity.PasswordHash);
-                _db.Entry(entity).State = EntityState.Modified;
-                entity.RowDate = DateTime.Now;
-                _db.SaveChanges();
+                result = base.UpdateAsync(entity);
             }
 
             if (entity.UserPermissions.Any())
@@ -60,7 +59,7 @@ namespace QTech.Db.Logics
                     }
                 });
             }
-            return entity;
+            return result;
         }
         public override User RemoveAsync(User entity)
         {

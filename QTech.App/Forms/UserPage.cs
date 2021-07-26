@@ -61,7 +61,6 @@ namespace QTech.Forms
             }
 
             var id = (int)dgv.SelectedRows[0].Cells[colId.Name].Value;
-
             Model = await btnUpdate.RunAsync(() => UserLogic.Instance.FindAsync(id));
             if (Model == null)
             {
@@ -69,7 +68,6 @@ namespace QTech.Forms
             }
 
             var dig = new frmUser(Model, GeneralProcess.Update);
-
             if (dig.ShowDialog() == DialogResult.OK)
             {
                 await Search();
