@@ -268,6 +268,7 @@
     <Content Include="Dll\esc-pos-usb-net.dll" />
     <Content Include="Dll\FastMember.dll" />
     <Content Include="Dll\QTech.Component.dll" />
+    <None Include="Resources\categorie_ing.png" />
     <None Include="Resources\expenses_img.png" />
     <None Include="Resources\InOut.png" />
     <None Include="Resources\Income_img.png" />

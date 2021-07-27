@@ -532,6 +532,7 @@ namespace QTech.Forms
                 Model.CustomerName = txtCustomer.Text;
                 Model.Phone = txtPhone.Text;
                 Model.SaleType = SaleType.General;
+                Model.InvoiceNo = txtInvoiceNo1.Text;
             }
 
             Model.SaleDate = Flag == GeneralProcess.Add ? DateTime.Now : Model.SaleDate;

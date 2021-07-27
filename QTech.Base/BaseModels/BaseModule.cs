@@ -112,7 +112,7 @@ namespace QTech.Base.BaseModels
                 Key = AuthKey.Product_Category,
                 ParentKey = AuthKey.Product,
                 DisplayName = BaseResource.Categorys,
-                Icon = BaseResource.Type_img,
+                Icon = BaseResource.categorie_ing,
                 Children = new List<MenuBar>(),
                 FormName = "QTech.Forms.CategoryPage"
 

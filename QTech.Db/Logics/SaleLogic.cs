@@ -169,6 +169,8 @@ namespace QTech.Db.Logics
             Model.PaidAmount = 0;
             Model.LeftAmount = sale.Total;
             Model.InvoiceStatus = InvoiceStatus.WaitPayment;
+            Model.SaleType = SaleType.General;
+            Model.CustomerName = sale.CustomerName;
             
             Model.InvoiceDetails.Add(
                 new InvoiceDetail()

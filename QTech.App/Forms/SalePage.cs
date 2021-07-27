@@ -168,7 +168,7 @@ namespace QTech.Forms
                 row.Cells[colId.Name].Value = x.Id;
                 row.Cells[colPurchaseOrderNo.Name].Value = x.PurchaseOrderNo;
                 row.Cells[colInvoiceNo.Name].Value = x.InvoiceNo;
-                row.Cells[colToCompany.Name].Value = _Customers?.FirstOrDefault(cus => cus.Id == x.CompanyId)?.Name;
+                row.Cells[colToCompany.Name].Value = _Customers?.FirstOrDefault(cus => cus.Id == x.CompanyId)?.Name ?? x.CustomerName;
                 row.Cells[colToSite.Name].Value = _Sites?.FirstOrDefault(s => s.Id == x.SiteId)?.Name;
                 row.Cells[colTotal.Name].Value = x.Total;
                 row.Cells[colSaleDate.Name].Value = x.SaleDate.ToString("dd-MMM-yyyy hh:mm");

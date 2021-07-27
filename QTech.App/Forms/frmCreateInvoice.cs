@@ -80,6 +80,12 @@ namespace QTech.Forms
             dtpInvoicingDate.Enabled = false;
             //txtPaidAmount.SetTextBoxValueWhenMouseInOut("0");
             dgv.Columns.OfType<DataGridViewColumn>().Where(x => x.Name != colMark_.Name).ToList().ForEach(x => x.ReadOnly = true);
+            txtPaidAmount.KeyUp += TxtPaidAmount_KeyUp;
+        }
+
+        private void TxtPaidAmount_KeyUp(object sender, KeyEventArgs e)
+        {
+            CalculateTotal();
         }
         private void Dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -136,9 +142,9 @@ namespace QTech.Forms
                 _sites = SiteLogic.Instance.GetSiteByIds(SitesIds);
                 return result;
             });
-            DataGridFillValue(sales,customer,_sites);
+            DataGridFillValue(sales, customer, _sites);
         }
-        private void DataGridFillValue(List<Sale> sales, Customer customer = null,List<Site> _sites = null)
+        private void DataGridFillValue(List<Sale> sales, Customer customer = null, List<Site> _sites = null)
         {
             if (sales.Any())
             {
@@ -153,7 +159,7 @@ namespace QTech.Forms
                     row.Cells[colTotal.Name].Value = x.Total;
                     row.Cells[colSaleDate.Name].Value = x.SaleDate.ToString("dd-MMM-yyyy hh:mm");
                     row.Cells[colIsPaid.Name].Value = x.PayStatus;
-                    if (Flag ==GeneralProcess.Add)
+                    if (Flag == GeneralProcess.Add)
                     {
                         row.Cells[colMark_.Name].Value = false;
                     }
@@ -192,7 +198,7 @@ namespace QTech.Forms
         private void CalculateTotal()
         {
             Total = 0;
-            txtPaidAmount.Text = string.Empty;
+            //txtPaidAmount.Text = string.Empty;
             var Rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
             foreach (DataGridViewRow row in Rows)
             {
@@ -201,7 +207,10 @@ namespace QTech.Forms
                     Total = Total + decimal.Parse(row.Cells[colTotal.Name].Value?.ToString() ?? "0");
                 }
             }
-            txtTotal.Text = txtLeftAmount.Text = Total.ToString();
+
+            var paidAmount = !string.IsNullOrEmpty(txtPaidAmount.Text) ? int.Parse(txtPaidAmount.Text) : 0;
+            txtLeftAmount.Text = (Total - paidAmount).ToString();
+            txtTotal.Text = Total.ToString();
         }
         public bool InValid()
         {
@@ -229,7 +238,7 @@ namespace QTech.Forms
                 return;
             }
             Customer customer = null;
-            List<InvoiceDetail> invoiceDetails = null ;
+            List<InvoiceDetail> invoiceDetails = null;
             List<Sale> sales = null;
             List<Site> sites = null;
             var result = await this.RunAsync(() =>
@@ -238,12 +247,17 @@ namespace QTech.Forms
                 invoiceDetails = InvoiceDetailLogic.Instance.GetInvoiceDetailByInvoiceId(Model.Id);
                 var saleIds = invoiceDetails?.Select(x => x.SaleId).ToList();
                 sales = SaleLogic.Instance.GetSaleByIds(saleIds);
-                sites = SiteLogic.Instance.GetSiteByIds(sales.Select(x=>x.SiteId).ToList());
+                sites = SiteLogic.Instance.GetSiteByIds(sales.Select(x => x.SiteId).ToList());
                 return customer;
             });
             if (customer != null)
             {
                 cboCustomer.SetValue(customer);
+            }
+            else
+            {
+                cboCustomer.SetValue(new Customer { Name = Model.CustomerName});
+                cboCustomer.Enabled = false;
             }
             txtInvoiceNo.Text = Model.InvoiceNo;
             dtpInvoicingDate.Value = Model.InvoicingDate;
@@ -313,8 +327,16 @@ namespace QTech.Forms
             {
                 Model.InvoiceDetails = new List<InvoiceDetail>();
             }
-            var customer = cboCustomer.SelectedObject.ItemObject as Customer;
-            Model.CustomerId = customer.Id;
+            
+            if (Model.SaleType == SaleType.Company)
+            {
+                var customer = cboCustomer.SelectedObject?.ItemObject as Customer;
+                Model.CustomerId = customer.Id;
+            }
+            else
+            {
+                Model.CustomerName = cboCustomer.Text;
+            }
             Model.InvoiceNo = txtInvoiceNo.Text;
             Model.InvoicingDate = dtpInvoicingDate.Value;
             Model.TotalAmount = decimal.Parse(txtTotal.Text);
@@ -376,7 +398,7 @@ namespace QTech.Forms
                 {
                     SaleDate = row.Cells[colSaleDate.Name].Value.ToString(),
                     InvoiceNo = row.Cells[colInvoiceNo.Name].Value?.ToString(),
-                    
+
                     TotalInUSD = String.Format("{0:C}", total),
                     PurchaseOrderNo = row.Cells[colPurchaseOrderNo.Name].Value?.ToString(),
                     Site = row.Cells[colToSite.Name].Value?.ToString()

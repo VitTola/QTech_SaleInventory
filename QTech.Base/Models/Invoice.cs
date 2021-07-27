@@ -20,6 +20,8 @@ namespace QTech.Base
         public decimal LeftAmount { get; set; }
         public InvoiceStatus InvoiceStatus { get; set; }
         public List<InvoiceDetail> InvoiceDetails{ get; set; }
+        public SaleType SaleType { get; set; }
+        public string CustomerName { get; set; }
     }
 
     public class InvoiceDetail : ActiveBaseModel
