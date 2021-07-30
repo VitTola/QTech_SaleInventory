@@ -55,7 +55,7 @@
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(4, 34);
+            this.panelLeft.Size = new System.Drawing.Size(8, 34);
             this.panelLeft.TabIndex = 5;
             // 
             // panelMiddle
@@ -75,7 +75,7 @@
             this.picBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.picBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picBox.Location = new System.Drawing.Point(7, 2);
+            this.picBox.Location = new System.Drawing.Point(12, 2);
             this.picBox.Name = "picBox";
             this.picBox.Size = new System.Drawing.Size(16, 31);
             this.picBox.TabIndex = 4;

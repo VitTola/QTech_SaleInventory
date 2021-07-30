@@ -78,9 +78,13 @@ namespace QTech.Forms
             txtTotal.ReadOnly = txtLeftAmount.ReadOnly = true;
             txtInvoiceNo.ReadOnly = true;
             dtpInvoicingDate.Enabled = false;
-            //if (Flag == GeneralProcess.Remove || Flag == GeneralProcess.View || Model.SaleType == SaleType.General) colMark_.ReadOnly = true;
-            dgv.Columns.OfType<DataGridViewColumn>().Where(x => x.Name == colMark_.Name).ToList().ForEach(x => x.ReadOnly = true);
             txtPaidAmount.KeyUp += TxtPaidAmount_KeyUp;
+            this.Load += FrmCreateInvoice_Load;
+        }
+
+        private void FrmCreateInvoice_Load(object sender, EventArgs e)
+        {
+            if (Flag == GeneralProcess.Remove || Flag == GeneralProcess.View || Model.SaleType == SaleType.General) dgv.Enabled = false;
         }
 
         private void TxtPaidAmount_KeyUp(object sender, KeyEventArgs e)
@@ -412,7 +416,7 @@ namespace QTech.Forms
             var Invoices = new List<DataTable>();
             Invoices.Add(Invoice);
 
-            var report = await dgv.RunAsync(() =>
+            var report = await btnPrint.RunAsync(() =>
             {
                 var r = ReportHelper.Instance.Load(nameof(ReportMonthlyInvoice), Invoices, reportHeader);
                 r.SummaryInfo.ReportTitle = nameof(ReportMonthlyInvoice);

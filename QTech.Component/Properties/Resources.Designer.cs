@@ -1474,6 +1474,16 @@ namespace QTech.Component.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap rightCornerF2 {
+            get {
+                object obj = ResourceManager.GetObject("rightCornerF2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap rightCornerW {
             get {
                 object obj = ResourceManager.GetObject("rightCornerW", resourceCulture);

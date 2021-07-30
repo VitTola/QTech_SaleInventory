@@ -135,7 +135,7 @@ namespace QTech.Db.Logics
 
             if (param.FromDate != null && param.ToDate !=null )
             {
-                var result = _db.Sales.Where(x => x.CompanyId == param.CustomerId &&
+                var result = _db.Sales.Where(x =>x.Active && x.CompanyId == param.CustomerId &&
                 x.SaleDate>= param.FromDate && x.SaleDate <= param.ToDate && x.PayStatus == PayStatus.NotYetPaid).ToList();
                 return result;
             }
