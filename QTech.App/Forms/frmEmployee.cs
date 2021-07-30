@@ -47,8 +47,8 @@ namespace QTech.Forms
         {
             this.MaximizeBox = false;
             this.Text = Flag.GetTextDialog(Base.Properties.Resources.Employees);
-            txtPhone.RegisterEnglishInput();
-            txtName.RegisterPrimaryInputWith(cboPosition,txtNote,txtName);
+            txtPhone.RegisterEnglishInputWith(txtPayAmount);
+            txtName.RegisterPrimaryInputWith(cboPosition,txtNote,txtName, txtPayNote);
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
             dgv.ReadOnly = true;
             if (Flag == GeneralProcess.Add)
@@ -57,6 +57,7 @@ namespace QTech.Forms
             }
             tabMain.SelectedIndexChanged += TabMain_SelectedIndexChanged;
             dgv.Columns[colDoDate.Name].DefaultCellStyle.Format = "dd-MMM-yyyy hh:mm";
+            txtPayAmount.KeyPress += (s, e) => { txtPayAmount.validCurrency(s, e); };
         }
 
         private void Dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -78,6 +79,7 @@ namespace QTech.Forms
         {
             if (tabMain.SelectedTab.Equals(tabGeneralTotal))
             {
+                dgv.Rows.Clear();
                 var search = new SupplierGeneralPaidSearch() { EmployeeId = Model.Id };
                 var SupplierGeneralPaids = await dgv.RunAsync(() =>
                 {
@@ -128,7 +130,7 @@ namespace QTech.Forms
             txtName.Text = Model.Name;
             txtPhone.Text = Model.Phone;
             txtNote.Text = Model.Note;
-            cboPosition.SelectedValue = Model.Position;
+            cboPosition.SelectedIndex = cboPosition.FindString(Model.Position);
         }
         public async void Save()
         {

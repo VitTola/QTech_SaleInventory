@@ -72,7 +72,7 @@ namespace QTech.Forms
             {
                 if (dgv.CurrentCell.ColumnIndex == colQauntity.Index)
                 {
-                    txt.Leave += Txt_Leave;
+                    txt.KeyUp += Txt_KeyUp;
                 }
                 if (dgv.CurrentCell.ColumnIndex == colQauntity.Index || dgv.CurrentCell.ColumnIndex == colUnitPrice_.Index)
                 {
@@ -86,7 +86,7 @@ namespace QTech.Forms
             _sender.validCurrency(_sender, e);
             _sender.KeyPress -= Txt_KeyPress;
         }
-        private void Txt_Leave(object sender, EventArgs e)
+        private void Txt_KeyUp(object sender, EventArgs e)
         {
             if (Flag == GeneralProcess.Update)
             {
@@ -104,7 +104,7 @@ namespace QTech.Forms
             }
             if (sender is TextBox txt)
             {
-                txt.Leave -= Txt_Leave;
+                txt.Leave -= Txt_KeyUp;
             }
         }
         public bool InValid()

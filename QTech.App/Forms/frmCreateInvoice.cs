@@ -74,12 +74,12 @@ namespace QTech.Forms
                 dgv.CellContentClick += Dgv_CellContentClick;
                 txtPaidAmount.KeyPress += (s, e) => { txtPaidAmount.validCurrency(s, e); };
             }
-            this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
+            this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View && Model.SaleType != SaleType.General);
             txtTotal.ReadOnly = txtLeftAmount.ReadOnly = true;
             txtInvoiceNo.ReadOnly = true;
             dtpInvoicingDate.Enabled = false;
-            //txtPaidAmount.SetTextBoxValueWhenMouseInOut("0");
-            dgv.Columns.OfType<DataGridViewColumn>().Where(x => x.Name != colMark_.Name).ToList().ForEach(x => x.ReadOnly = true);
+            //if (Flag == GeneralProcess.Remove || Flag == GeneralProcess.View || Model.SaleType == SaleType.General) colMark_.ReadOnly = true;
+            dgv.Columns.OfType<DataGridViewColumn>().Where(x => x.Name == colMark_.Name).ToList().ForEach(x => x.ReadOnly = true);
             txtPaidAmount.KeyUp += TxtPaidAmount_KeyUp;
         }
 
@@ -208,7 +208,7 @@ namespace QTech.Forms
                 }
             }
 
-            var paidAmount = !string.IsNullOrEmpty(txtPaidAmount.Text) ? int.Parse(txtPaidAmount.Text) : 0;
+            var paidAmount = !string.IsNullOrEmpty(txtPaidAmount.Text) ? decimal.Parse(txtPaidAmount.Text) : 0;
             txtLeftAmount.Text = (Total - paidAmount).ToString();
             txtTotal.Text = Total.ToString();
         }

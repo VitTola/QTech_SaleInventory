@@ -1,0 +1,39 @@
+
+DELETE FROM [dbo].[Categories]
+DELETE FROM [dbo].[CustomerPrices]
+DELETE FROM [dbo].[Customers]
+DELETE FROM [dbo].[EmployeeBills]
+DELETE FROM [dbo].[Employees]
+DELETE FROM [dbo].[IncomeExpenses]
+DELETE FROM [dbo].[InvoiceDetails]
+DELETE FROM [dbo].[Invoices]
+DELETE FROM [dbo].[Permissions]
+DELETE FROM [dbo].[POProductPrices]
+DELETE FROM [dbo].[Products]
+DELETE FROM [dbo].[PurchaseOrders]
+DELETE FROM [dbo].[SaleDetails]
+DELETE FROM [dbo].[Sales]
+DELETE FROM [dbo].[Sites]
+DELETE FROM [dbo].[SupplierGeneralPaids]
+DELETE FROM [dbo].[UserPermissions]
+DELETE FROM [dbo].[Users]
+
+DBCC CHECKIDENT('Categories', RESEED,0)                                                                      
+DBCC CHECKIDENT('CustomerPrices', RESEED,0)                                                                          
+DBCC CHECKIDENT('Customers', RESEED,0)                                                                     
+DBCC CHECKIDENT('EmployeeBills', RESEED,0)                                                                         
+DBCC CHECKIDENT('Employees', RESEED,0)                                                                     
+DBCC CHECKIDENT('IncomeExpenses', RESEED,0)                                                                          
+DBCC CHECKIDENT('InvoiceDetails', RESEED,0)                                                                          
+DBCC CHECKIDENT('Invoices', RESEED,0)                                                                    
+DBCC CHECKIDENT('Permissions', RESEED,0)                                                                       
+DBCC CHECKIDENT('POProductPrices', RESEED,0)                                                                           
+DBCC CHECKIDENT('Products', RESEED,0)                                                                    
+DBCC CHECKIDENT('PurchaseOrders', RESEED,0)                                                                          
+DBCC CHECKIDENT('SaleDetails', RESEED,0)                                                                       
+DBCC CHECKIDENT('Sales', RESEED,0)                                                                 
+DBCC CHECKIDENT('Sites', RESEED,0)                                                                 
+DBCC CHECKIDENT('SupplierGeneralPaids', RESEED,0)                                                                                
+DBCC CHECKIDENT('UserPermissions', RESEED,0)                                                                           
+DBCC CHECKIDENT('Users', RESEED,0)  
+

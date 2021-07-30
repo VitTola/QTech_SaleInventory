@@ -46,6 +46,7 @@ namespace QTech.Forms
             this.Text = Flag.GetTextDialog(Base.Properties.Resources.Customer);
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             txtPhone.RegisterEnglishInput();
+            txtNote.RegisterPrimaryInput();
 
             dgv.ReadOnly = false;
             dgv.AllowRowNotFound = false;
@@ -96,18 +97,21 @@ namespace QTech.Forms
                     categorys = CategoryLogic.Instance.SearchAsync(new CategorySearch());
                     return prods;
                 });
-                foreach (var product in Products)
+                if (Products.Any())
                 {
-                    var row = _newRow(false);
-                    row.Cells[colProductId.Name].Value = product.Id;
-                    row.Cells[colIdd.Name].Value = _customerPrices?.FirstOrDefault(x => x.ProductId == product.Id)?.Id;
-                    row.Cells[colGoodName.Name].Value = product.Name;
-                    row.Cells[colSalePrice.Name].Value = _customerPrices.FirstOrDefault(x => x.ProductId == product.Id)?.SalePrice;
-                    row.Cells[colCategory_.Name].Value = categorys.FirstOrDefault(x=>x.Id == product.CategoryId);
+                    foreach (var product in Products)
+                    {
+                        var row = _newRow(false);
+                        row.Cells[colProductId.Name].Value = product.Id;
+                        row.Cells[colIdd.Name].Value = _customerPrices?.FirstOrDefault(x => x.ProductId == product.Id)?.Id;
+                        row.Cells[colGoodName.Name].Value = product.Name;
+                        row.Cells[colSalePrice.Name].Value = _customerPrices.FirstOrDefault(x => x.ProductId == product.Id)?.SalePrice;
+                        row.Cells[colCategory_.Name].Value = categorys.FirstOrDefault(x => x.Id == product.CategoryId);
 
+                    }
+                    dgvGoods.CurrentCell = dgvGoods.Rows[0].Cells[colSalePrice.Name];
+                    dgvGoods.BeginEdit(true);
                 }
-                dgvGoods.CurrentCell = dgvGoods.Rows[0].Cells[colSalePrice.Name];
-                dgvGoods.BeginEdit(true);
             }
         }
         private DataGridViewRow _newRow(bool isFocus = false)
@@ -200,7 +204,7 @@ namespace QTech.Forms
                 var site = Model.Sites?.FirstOrDefault(x => x.Id == Id);
                 var _phone = row.Cells[colPhone.Name].Value?.ToString();
                 var _name = row.Cells[colName.Name].Value?.ToString();
-                if (site != null)
+                if (site != null && site.Id != 0)
                 {
                     var id = (int)(row?.Cells[colId.Name]?.Value ?? 0);
                     var s = new Site()
@@ -225,26 +229,26 @@ namespace QTech.Forms
                 }
             }
 
-            if (Flag != GeneralProcess.Update)
+            if (Flag == GeneralProcess.Update)
             {
-                return;
-            }
-            if (Model.CustomerPrices == null)
-            {
-                Model.CustomerPrices = new List<Base.Models.CustomerPrice>();
-            }
-            foreach (DataGridViewRow row in dgvGoods.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
-            {
-                var c = new CustomerPrice()
+                if (Model.CustomerPrices == null)
                 {
-                    Id = int.Parse(row.Cells[colIdd.Name].Value?.ToString() ?? "0"),
-                    Active = true,
-                    CustomerId = Model.Id,
-                    ProductId = int.Parse(row.Cells[colProductId.Name].Value?.ToString()),
-                    SalePrice = decimal.Parse(row.Cells[colSalePrice.Name]?.Value?.ToString() ?? "0")
-                };
-                Model.CustomerPrices.Add(c);
+                    Model.CustomerPrices = new List<Base.Models.CustomerPrice>();
+                }
+                foreach (DataGridViewRow row in dgvGoods.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
+                {
+                    var c = new CustomerPrice()
+                    {
+                        Id = int.Parse(row.Cells[colIdd.Name].Value?.ToString() ?? "0"),
+                        Active = true,
+                        CustomerId = Model.Id,
+                        ProductId = int.Parse(row.Cells[colProductId.Name].Value?.ToString()),
+                        SalePrice = decimal.Parse(row.Cells[colSalePrice.Name]?.Value?.ToString() ?? "0")
+                    };
+                    Model.CustomerPrices.Add(c);
+                }
             }
+           
         }
         private void btnClose_Click(object sender, EventArgs e)
         {

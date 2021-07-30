@@ -961,6 +961,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ទេ.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ចំណាំ.
         /// </summary>
         public static string Note {
@@ -1713,6 +1722,15 @@ namespace QTech.Base.Properties {
         public static string ViewDetail {
             get {
                 return ResourceManager.GetString("ViewDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to យល់ព្រម.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

@@ -216,5 +216,11 @@ namespace QTech.Forms
         {
             // dgv.Rows[e.RowIndex].Cells[colRow_.Name].Value = (e.RowIndex + 1).ToString();
         }
+
+        private void dgv_RowPostPaint_1(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+                dgv.Rows[e.RowIndex].Cells[colRow_.Name].Value = (e.RowIndex + 1).ToString();
+            
+        }
     }
 }

@@ -26,7 +26,7 @@ namespace QTech.Db.Logics
         public override Employee UpdateAsync(Employee entity)
         {
             var employee = base.UpdateAsync(entity);
-            if (entity.SupplierGeneralPaids.Any())
+            if (entity.SupplierGeneralPaids?.Any() ?? false)
             {
                 employee.SupplierGeneralPaids.ForEach(x=>
                 {
@@ -47,7 +47,7 @@ namespace QTech.Db.Logics
         public override Employee RemoveAsync(Employee entity)
         {
             var employee = base.RemoveAsync(entity);
-            if (entity.SupplierGeneralPaids.Any())
+            if (entity.SupplierGeneralPaids?.Any() ?? false)
             {
                 entity.SupplierGeneralPaids.ForEach(x => SupplierGeneralPaidLogic.Instance.RemoveAsync(x));
             }
