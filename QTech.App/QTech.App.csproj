@@ -108,6 +108,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomeForms\SelectProductDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomeForms\SelectProductDialog.Designer.cs">
+      <DependentUpon>SelectProductDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmIncomeExpense.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -345,6 +351,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="CustomeForms\SelectProductDialog.resx">
+      <DependentUpon>SelectProductDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmIncomeExpense.resx">
       <DependentUpon>frmIncomeExpense.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,7 +1,7 @@
 ﻿using EDomain = EasyServer.Domain;
 namespace QTech.Component
 {
-    partial class SelectItemsDialog
+    partial class SelectProductDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -39,10 +39,6 @@ namespace QTech.Component
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtSearch = new QTech.Component.ExTextbox();
             this.dgv = new QTech.Component.ExDataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DisplayText = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +46,10 @@ namespace QTech.Component
             this.panel1 = new QTech.Component.Components.ExPanel();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnClose = new QTech.Component.ExButtonLoading();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCategory_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colObject = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.container.SuspendLayout();
             this.graPanel1.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -64,9 +64,8 @@ namespace QTech.Component
             this.container.Controls.Add(this.dgv);
             this.container.Controls.Add(this.panel1);
             this.container.Controls.Add(this.graPanel1);
-            this.container.Location = new System.Drawing.Point(0, 17);
             this.container.Padding = new System.Windows.Forms.Padding(1, 0, 1, 1);
-            this.container.Size = new System.Drawing.Size(636, 490);
+            this.container.Size = new System.Drawing.Size(498, 453);
             this.container.Text = "container";
             // 
             // colorWithAlpha1
@@ -102,7 +101,7 @@ namespace QTech.Component
             this.graPanel1.Location = new System.Drawing.Point(1, 0);
             this.graPanel1.Name = "graPanel1";
             this.graPanel1.Rounded = true;
-            this.graPanel1.Size = new System.Drawing.Size(634, 35);
+            this.graPanel1.Size = new System.Drawing.Size(496, 35);
             this.graPanel1.TabIndex = 0;
             // 
             // colorWithAlpha2
@@ -116,7 +115,7 @@ namespace QTech.Component
             this.flowLayoutPanel3.Controls.Add(this.btnSelect);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(434, 0);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(296, 0);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Padding = new System.Windows.Forms.Padding(0, 4, 4, 0);
             this.flowLayoutPanel3.Size = new System.Drawing.Size(200, 35);
@@ -144,8 +143,8 @@ namespace QTech.Component
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(634, 35);
+            this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(4);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(496, 35);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // txtSearch
@@ -156,7 +155,7 @@ namespace QTech.Component
             this.txtSearch.Location = new System.Drawing.Point(4, 4);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(0, 0, 4, 0);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSearch.Padding = new System.Windows.Forms.Padding(4);
             this.txtSearch.PlaceHolderText = "";
             this.txtSearch.SearchMode = QTech.Component.ExTextbox.SearchModes.OnKeyReturn;
             this.txtSearch.Size = new System.Drawing.Size(160, 27);
@@ -178,10 +177,10 @@ namespace QTech.Component
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
+            this.colId,
             this.colName,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
+            this.colCategory_,
+            this.colObject});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS System", 8F);
@@ -202,43 +201,10 @@ namespace QTech.Component
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(634, 418);
+            this.dgv.Size = new System.Drawing.Size(496, 381);
             this.dgv.TabIndex = 1;
             this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
             this.dgv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgv_KeyDown);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // colName
-            // 
-            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colName.DataPropertyName = "Name";
-            this.colName.HeaderText = "ឈ្មោះ";
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "DisplayText";
-            this.dataGridViewTextBoxColumn3.FillWeight = 20F;
-            this.dataGridViewTextBoxColumn3.HeaderText = "";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "ItemObject";
-            this.dataGridViewTextBoxColumn4.HeaderText = "ItemObject";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Visible = false;
             // 
             // Id
             // 
@@ -277,10 +243,10 @@ namespace QTech.Component
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.flowLayoutPanel4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(1, 453);
+            this.panel1.Location = new System.Drawing.Point(1, 416);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(2, 0, 2, 2);
-            this.panel1.Size = new System.Drawing.Size(634, 36);
+            this.panel1.Size = new System.Drawing.Size(496, 36);
             this.panel1.TabIndex = 4;
             // 
             // flowLayoutPanel4
@@ -290,7 +256,7 @@ namespace QTech.Component
             this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel4.Location = new System.Drawing.Point(2, 0);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(630, 34);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(492, 34);
             this.flowLayoutPanel4.TabIndex = 1;
             // 
             // btnClose
@@ -300,7 +266,7 @@ namespace QTech.Component
             this.btnClose.DefaultImage = null;
             this.btnClose.Executing = false;
             this.btnClose.Font = new System.Drawing.Font("Khmer OS System", 8F);
-            this.btnClose.Location = new System.Drawing.Point(553, 5);
+            this.btnClose.Location = new System.Drawing.Point(415, 5);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2, 5, 2, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -311,14 +277,48 @@ namespace QTech.Component
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
-            // SelectItemsDialog
+            // colId
+            // 
+            this.colId.DataPropertyName = "Id";
+            this.colId.HeaderText = "Id";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            this.colId.Visible = false;
+            // 
+            // colName
+            // 
+            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colName.DataPropertyName = "Name";
+            this.colName.FillWeight = 28.62944F;
+            this.colName.HeaderText = "ឈ្មោះ";
+            this.colName.Name = "colName";
+            this.colName.ReadOnly = true;
+            // 
+            // colCategory_
+            // 
+            this.colCategory_.DataPropertyName = "DisplayText";
+            this.colCategory_.FillWeight = 91.37056F;
+            this.colCategory_.HeaderText = "ប្រភេទ";
+            this.colCategory_.Name = "colCategory_";
+            this.colCategory_.ReadOnly = true;
+            this.colCategory_.Width = 150;
+            // 
+            // colObject
+            // 
+            this.colObject.DataPropertyName = "ItemObject";
+            this.colObject.HeaderText = "ItemObject";
+            this.colObject.Name = "colObject";
+            this.colObject.ReadOnly = true;
+            this.colObject.Visible = false;
+            // 
+            // SelectProductDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
-            this.ClientSize = new System.Drawing.Size(636, 507);
+            this.ClientSize = new System.Drawing.Size(498, 473);
             this.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KeyPreview = true;
             this.Location = new System.Drawing.Point(0, 0);
-            this.Name = "SelectItemsDialog";
+            this.Name = "SelectProductDialog";
             this.Text = "ស្វែងរកទិន្នន័យ";
             this.Load += new System.EventHandler(this.SelectItemsDialog_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SelectItemsDialog_KeyPress);
@@ -347,11 +347,11 @@ namespace QTech.Component
         private GRAPanel graPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private ExButtonLoading btnClose;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCategory_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colObject;
     }
 }

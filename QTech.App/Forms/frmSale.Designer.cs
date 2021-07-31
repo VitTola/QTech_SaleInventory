@@ -42,6 +42,7 @@
             this.colImportPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSaleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colProductId = new QTech.Component.ExSearchComboColumn();
+            this.colCategory_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colQauntity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLeftQty_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -177,6 +178,7 @@
             this.colImportPrice,
             this.colSaleId,
             this.colProductId,
+            this.colCategory_,
             this.colQauntity,
             this.colLeftQty_,
             this.colUnitPrice,
@@ -203,6 +205,7 @@
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(849, 392);
             this.dgv.TabIndex = 4;
+            this.dgv.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellLeave);
             // 
             // colId
             // 
@@ -240,7 +243,14 @@
             this.colProductId.ShowAll = false;
             this.colProductId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.colProductId.TextAll = null;
-            this.colProductId.Width = 200;
+            this.colProductId.Width = 170;
+            // 
+            // colCategory_
+            // 
+            this.colCategory_.HeaderText = "ប្រភេទ";
+            this.colCategory_.Name = "colCategory_";
+            this.colCategory_.ReadOnly = true;
+            this.colCategory_.Width = 80;
             // 
             // colQauntity
             // 
@@ -249,6 +259,7 @@
             this.colQauntity.Name = "colQauntity";
             this.colQauntity.ReadOnly = true;
             this.colQauntity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colQauntity.Width = 70;
             // 
             // colLeftQty_
             // 
@@ -745,6 +756,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colImportPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSaleId;
         private Component.ExSearchComboColumn colProductId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCategory_;
         private System.Windows.Forms.DataGridViewTextBoxColumn colQauntity;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLeftQty_;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUnitPrice;

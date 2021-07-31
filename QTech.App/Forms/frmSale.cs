@@ -32,6 +32,8 @@ namespace QTech.Forms
         private List<RepoInvoice> invoices;
         private List<RepoInvoiceDetail> invoiceDetails;
         private List<CustomerPrice> customerPrices;
+        private List<Category> categories;
+        private List<Product> products;
         public GeneralProcess Flag { get; set; }
         public frmSale(Sale model, GeneralProcess flag)
         {
@@ -52,6 +54,7 @@ namespace QTech.Forms
             cboSite.SearchParamFn = () => new SiteSearch() { };
             colProductId.DataSourceFn = p => ProductLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
             colProductId.SearchParamFn = () => new ProductSearch();
+            colProductId.CustomSearchForm = () => new SelectProductDialog(new ProductSearch());
             colEmployeeId.DataSourceFn = p => EmployeeLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
             colEmployeeId.SearchParamFn = () => new EmployeeSearch();
             cboPurchaseOrderNo.DataSourceFn = p => PurchaseOrderLogic.Instance.GetPurchaseOrder(p).ToDropDownItemModelList();
@@ -75,13 +78,24 @@ namespace QTech.Forms
             dgv.EditColumnIcon(colProductId, colQauntity, colUnitPrice, colEmployeeId);
             txtTotal.ReadOnly = colLeftQty_.ReadOnly = true;
             cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
+            this.Load += FrmSale_Load;
             
-
             if (Flag != GeneralProcess.Add)
             {
                 tabMain.Controls.Remove(Model.SaleType == SaleType.Company ? tabGeneral_ : tabCompany_);
             }
         }
+
+        private async void FrmSale_Load(object sender, EventArgs e)
+        {
+            var dummy = await this.RunAsync(() =>
+            {
+                categories = CategoryLogic.Instance.SearchAsync(new CategorySearch());
+                products = ProductLogic.Instance.SearchAsync(new ProductSearch());
+                return products;
+            });
+        }
+
         private void Dgv_MouseClick(object sender, MouseEventArgs e)
         {
             if (!string.IsNullOrEmpty(cboPurchaseOrderNo.Text) && Flag != GeneralProcess.View)
@@ -196,6 +210,11 @@ namespace QTech.Forms
             decimal unitPrice = 0;
             bool IsNotPriceByPO = true;
             var _productId = int.Parse(dgv.CurrentCell.Value.ToString());
+
+            //set category
+            var product = products?.FirstOrDefault(x => x.Id == _productId);
+            dgv.CurrentRow.Cells[colCategory_.Name].Value = categories.FirstOrDefault(x=>x.Id == product?.CategoryId)?.Name ?? string.Empty;
+
 
             if (!string.IsNullOrEmpty(cboPurchaseOrderNo.Text) && tabMain.SelectedTab.Equals(tabCompany_))
             {
@@ -326,8 +345,8 @@ namespace QTech.Forms
             foreach (DataGridViewRow row in rows)
             {
                 var cells = row.Cells.OfType<DataGridViewCell>().Where(x =>
-                x.ColumnIndex == row.Cells[colProductId.Name].ColumnIndex && x.ColumnIndex == row.Cells[colQauntity.Name].ColumnIndex
-                && x.ColumnIndex != row.Cells[colUnitPrice.Name].ColumnIndex && x.ColumnIndex == row.Cells[colEmployeeId.Name].ColumnIndex).ToList();
+                x.ColumnIndex == row.Cells[colProductId.Name].ColumnIndex || x.ColumnIndex == row.Cells[colQauntity.Name].ColumnIndex
+                || x.ColumnIndex == row.Cells[colUnitPrice.Name].ColumnIndex || x.ColumnIndex == row.Cells[colEmployeeId.Name].ColumnIndex).ToList();
                 cells.ForEach(x =>
                 {
                     if (x.Value == null)
@@ -370,6 +389,8 @@ namespace QTech.Forms
                 var driverIds = details.Select(x => x.EmployeeId).Distinct().ToList();
                 products = ProductLogic.Instance.All().Where(x => x.Active && productIds.Contains(x.Id)).ToList();
                 drivers = EmployeeLogic.Instance.All().Where(x => x.Active && driverIds.Contains(x.Id)).ToList();
+                categories = CategoryLogic.Instance.SearchAsync(new CategorySearch());
+                products = ProductLogic.Instance.SearchAsync(new ProductSearch());
 
                 if (Model.PurchaseOrderId != 0)
                 {
@@ -713,6 +734,14 @@ namespace QTech.Forms
                 var dig = new DialogReportViewer(report);
                 dig.Text = QTech.Base.Properties.Resources.Invoice;
                 dig.ShowDialog();
+            }
+        }
+        private void dgv_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            var cell = dgv.CurrentCell;
+            if (cell.Value != null)
+            {
+                cell.ErrorText = string.Empty;
             }
         }
     }
