@@ -31,8 +31,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             QTech.Base.BaseModels.Paging paging1 = new QTech.Base.BaseModels.Paging();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.graPanel1 = new QTech.Component.GRAPanel();
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -46,14 +46,14 @@
             this.colName = new QTech.Component.TreeGridColumn();
             this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv = new QTech.Component.ExDataGridView();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pagination = new QTech.Component.ExPaging();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colRowDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRow_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNote_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.pagination = new QTech.Component.ExPaging();
             this.graPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -229,7 +229,7 @@
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colId,
             this.colRowDate,
-            this.colRow_,
+            this.colRow,
             this.colName_,
             this.colCustomer,
             this.colNote_});
@@ -258,56 +258,6 @@
             this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
             this.dgv.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_RowPostPaint);
             // 
-            // colId
-            // 
-            this.colId.DataPropertyName = "Id";
-            this.colId.HeaderText = "Id";
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            this.colId.Visible = false;
-            // 
-            // colRowDate
-            // 
-            this.colRowDate.HeaderText = "RowDate";
-            this.colRowDate.Name = "colRowDate";
-            this.colRowDate.ReadOnly = true;
-            this.colRowDate.Visible = false;
-            // 
-            // colRow_
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colRow_.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colRow_.HeaderText = "";
-            this.colRow_.Name = "colRow_";
-            this.colRow_.ReadOnly = true;
-            this.colRow_.Width = 30;
-            // 
-            // colName_
-            // 
-            this.colName_.DataPropertyName = "Name";
-            this.colName_.FillWeight = 40F;
-            this.colName_.HeaderText = "ឈ្មោះ";
-            this.colName_.MinimumWidth = 300;
-            this.colName_.Name = "colName_";
-            this.colName_.ReadOnly = true;
-            this.colName_.Width = 300;
-            // 
-            // colCustomer
-            // 
-            this.colCustomer.HeaderText = "អតិថិជន";
-            this.colCustomer.Name = "colCustomer";
-            this.colCustomer.ReadOnly = true;
-            this.colCustomer.Width = 200;
-            // 
-            // colNote_
-            // 
-            this.colNote_.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colNote_.DataPropertyName = "Note";
-            this.colNote_.FillWeight = 60F;
-            this.colNote_.HeaderText = "កំណត់ចំណាំ";
-            this.colNote_.Name = "colNote_";
-            this.colNote_.ReadOnly = true;
-            // 
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.Controls.Add(this.pagination);
@@ -335,6 +285,56 @@
             this.pagination.ShowAllOption = false;
             this.pagination.Size = new System.Drawing.Size(504, 33);
             this.pagination.TabIndex = 0;
+            // 
+            // colId
+            // 
+            this.colId.DataPropertyName = "Id";
+            this.colId.HeaderText = "Id";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            this.colId.Visible = false;
+            // 
+            // colRowDate
+            // 
+            this.colRowDate.HeaderText = "RowDate";
+            this.colRowDate.Name = "colRowDate";
+            this.colRowDate.ReadOnly = true;
+            this.colRowDate.Visible = false;
+            // 
+            // colRow
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colRow.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colRow.HeaderText = "ល.រ";
+            this.colRow.Name = "colRow";
+            this.colRow.ReadOnly = true;
+            this.colRow.Width = 30;
+            // 
+            // colName_
+            // 
+            this.colName_.DataPropertyName = "Name";
+            this.colName_.FillWeight = 40F;
+            this.colName_.HeaderText = "ឈ្មោះ";
+            this.colName_.MinimumWidth = 300;
+            this.colName_.Name = "colName_";
+            this.colName_.ReadOnly = true;
+            this.colName_.Width = 300;
+            // 
+            // colCustomer
+            // 
+            this.colCustomer.HeaderText = "អតិថិជន";
+            this.colCustomer.Name = "colCustomer";
+            this.colCustomer.ReadOnly = true;
+            this.colCustomer.Width = 200;
+            // 
+            // colNote_
+            // 
+            this.colNote_.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colNote_.DataPropertyName = "Note";
+            this.colNote_.FillWeight = 60F;
+            this.colNote_.HeaderText = "កំណត់ចំណាំ";
+            this.colNote_.Name = "colNote_";
+            this.colNote_.ReadOnly = true;
             // 
             // PurchaseOrderPage
             // 
@@ -376,7 +376,7 @@
         private Component.ExPaging pagination;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRowDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colRow_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRow;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName_;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCustomer;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNote_;

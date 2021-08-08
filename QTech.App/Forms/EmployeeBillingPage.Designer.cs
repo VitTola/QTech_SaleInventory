@@ -49,7 +49,7 @@
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.pagination = new QTech.Component.ExPaging();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRow_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colBillNo_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDoDate_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustomer_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -89,7 +89,7 @@
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colId,
-            this.colRow_,
+            this.colRow,
             this.colBillNo_,
             this.colDoDate_,
             this.colCustomer_,
@@ -291,12 +291,12 @@
             this.colId.ReadOnly = true;
             this.colId.Visible = false;
             // 
-            // colRow_
+            // colRow
             // 
-            this.colRow_.HeaderText = "";
-            this.colRow_.Name = "colRow_";
-            this.colRow_.ReadOnly = true;
-            this.colRow_.Width = 30;
+            this.colRow.HeaderText = "ល.រ";
+            this.colRow.Name = "colRow";
+            this.colRow.ReadOnly = true;
+            this.colRow.Width = 30;
             // 
             // colBillNo_
             // 
@@ -408,7 +408,7 @@
         private Component.ExPaging pagination;
         private Component.ExTextbox txtSearch;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colRow_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRow;
         private System.Windows.Forms.DataGridViewTextBoxColumn colBillNo_;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDoDate_;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCustomer_;

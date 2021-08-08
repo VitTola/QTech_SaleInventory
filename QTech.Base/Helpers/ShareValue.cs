@@ -11,6 +11,7 @@ namespace QTech.Base.Helpers
     public class ShareValue
     {
         public static List<Permission> permissions{ get; set; }
+        public static User User { get; set; }
 
         public static bool IsAuthorized(AuthKey authKey)
         {

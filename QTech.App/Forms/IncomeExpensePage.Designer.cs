@@ -31,9 +31,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            QTech.Base.BaseModels.Paging paging1 = new QTech.Base.BaseModels.Paging();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            QTech.Base.BaseModels.Paging paging1 = new QTech.Base.BaseModels.Paging();
             this.graPanel1 = new QTech.Component.GRAPanel();
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -47,15 +47,15 @@
             this.colorWithAlpha3 = new QTech.Component.ColorWithAlpha();
             this.colName = new QTech.Component.TreeGridColumn();
             this.dgv = new QTech.Component.ExDataGridView();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pagination = new QTech.Component.ExPaging();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRow_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMiscNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDoDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.pagination = new QTech.Component.ExPaging();
             this.graPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -243,7 +243,7 @@
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colId,
-            this.colRow_,
+            this.colRow,
             this.colMiscNo,
             this.colNote,
             this.colType,
@@ -273,6 +273,34 @@
             this.dgv.TabIndex = 2;
             this.dgv.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_RowPostPaint);
             // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.pagination);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 579);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(1142, 33);
+            this.flowLayoutPanel3.TabIndex = 3;
+            // 
+            // pagination
+            // 
+            this.pagination.Action = null;
+            this.pagination.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pagination.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pagination.IsPaging = false;
+            this.pagination.ListModel = null;
+            this.pagination.Location = new System.Drawing.Point(3, 4);
+            this.pagination.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pagination.MinimumSize = new System.Drawing.Size(380, 33);
+            this.pagination.Name = "pagination";
+            paging1.CurrentPage = 1;
+            paging1.IsPaging = true;
+            paging1.PageSize = 25;
+            this.pagination.Paging = paging1;
+            this.pagination.ShowAllOption = false;
+            this.pagination.Size = new System.Drawing.Size(485, 33);
+            this.pagination.TabIndex = 0;
+            // 
             // colId
             // 
             this.colId.DataPropertyName = "Id";
@@ -281,14 +309,14 @@
             this.colId.ReadOnly = true;
             this.colId.Visible = false;
             // 
-            // colRow_
+            // colRow
             // 
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colRow_.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colRow_.HeaderText = "";
-            this.colRow_.Name = "colRow_";
-            this.colRow_.ReadOnly = true;
-            this.colRow_.Width = 30;
+            this.colRow.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colRow.HeaderText = "ល.រ";
+            this.colRow.Name = "colRow";
+            this.colRow.ReadOnly = true;
+            this.colRow.Width = 30;
             // 
             // colMiscNo
             // 
@@ -338,34 +366,6 @@
             this.colAmount.Name = "colAmount";
             this.colAmount.ReadOnly = true;
             // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.Controls.Add(this.pagination);
-            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 579);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(1142, 33);
-            this.flowLayoutPanel3.TabIndex = 3;
-            // 
-            // pagination
-            // 
-            this.pagination.Action = null;
-            this.pagination.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pagination.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pagination.IsPaging = false;
-            this.pagination.ListModel = null;
-            this.pagination.Location = new System.Drawing.Point(3, 4);
-            this.pagination.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pagination.MinimumSize = new System.Drawing.Size(380, 33);
-            this.pagination.Name = "pagination";
-            paging1.CurrentPage = 1;
-            paging1.IsPaging = true;
-            paging1.PageSize = 25;
-            this.pagination.Paging = paging1;
-            this.pagination.ShowAllOption = false;
-            this.pagination.Size = new System.Drawing.Size(485, 33);
-            this.pagination.TabIndex = 0;
-            // 
             // IncomeExpensePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
@@ -405,7 +405,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private Component.ExPaging pagination;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colRow_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRow;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMiscNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNote;
         private System.Windows.Forms.DataGridViewTextBoxColumn colType;

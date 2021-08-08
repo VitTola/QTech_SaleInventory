@@ -73,7 +73,6 @@
             this.tsmMenuTestTeam = new System.Windows.Forms.ToolStripMenuItem();
             this.tmsMenuDevTeam = new System.Windows.Forms.ToolStripMenuItem();
             this.cnmStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnChangePassword = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLogOut = new System.Windows.Forms.ToolStripMenuItem();
             this.container.SuspendLayout();
             this.topPanel.SuspendLayout();
@@ -311,6 +310,7 @@
             this.lblUserDropDown_.Size = new System.Drawing.Size(19, 19);
             this.lblUserDropDown_.TabIndex = 7;
             this.lblUserDropDown_.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblUserDropDown_.Click += new System.EventHandler(this.lblUserDropDown__Click);
             // 
             // lblBranchIcon_
             // 
@@ -667,23 +667,17 @@
             this.cnmStrip.Font = new System.Drawing.Font("Khmer OS System", 8.25F);
             this.cnmStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.cnmStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnChangePassword,
             this.btnLogOut});
             this.cnmStrip.Name = "cnmStrip";
             this.cnmStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.cnmStrip.Size = new System.Drawing.Size(147, 52);
-            // 
-            // btnChangePassword
-            // 
-            this.btnChangePassword.Name = "btnChangePassword";
-            this.btnChangePassword.Size = new System.Drawing.Size(146, 24);
-            this.btnChangePassword.Text = "ប្តូរលេខសំងាត់";
+            this.cnmStrip.Size = new System.Drawing.Size(181, 50);
             // 
             // btnLogOut
             // 
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(146, 24);
+            this.btnLogOut.Size = new System.Drawing.Size(180, 24);
             this.btnLogOut.Text = "ចាកចេញ";
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // MainForm
             // 
@@ -747,7 +741,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmMenuUITeam;
         private System.Windows.Forms.ToolStripMenuItem tsmMenuTestTeam;
         private System.Windows.Forms.ContextMenuStrip cnmStrip;
-        private System.Windows.Forms.ToolStripMenuItem btnChangePassword;
         private System.Windows.Forms.ToolStripMenuItem btnLogOut;
         private System.Windows.Forms.ToolStripMenuItem tmsMenuDevTeam;
         private QTech.Component.ExLabel _lbSocketStatus;

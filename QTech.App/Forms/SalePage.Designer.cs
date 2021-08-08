@@ -50,7 +50,7 @@ namespace QTech.Forms
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.pagination = new QTech.Component.ExPaging();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRow_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colRowDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPurchaseOrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colInvoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -91,7 +91,7 @@ namespace QTech.Forms
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colId,
-            this.colRow_,
+            this.colRow,
             this.colRowDate,
             this.colPurchaseOrderNo,
             this.colInvoiceNo,
@@ -305,14 +305,14 @@ namespace QTech.Forms
             this.colId.ReadOnly = true;
             this.colId.Visible = false;
             // 
-            // colRow_
+            // colRow
             // 
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colRow_.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colRow_.HeaderText = "";
-            this.colRow_.Name = "colRow_";
-            this.colRow_.ReadOnly = true;
-            this.colRow_.Width = 30;
+            this.colRow.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colRow.HeaderText = "ល.រ";
+            this.colRow.Name = "colRow";
+            this.colRow.ReadOnly = true;
+            this.colRow.Width = 30;
             // 
             // colRowDate
             // 
@@ -426,7 +426,7 @@ namespace QTech.Forms
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private Component.ExPaging pagination;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colRow_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRow;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRowDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPurchaseOrderNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colInvoiceNo;

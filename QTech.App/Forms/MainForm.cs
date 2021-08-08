@@ -79,7 +79,7 @@ namespace QTech.Forms
         }
         private void ApplySetting()
         {
-            txtUserName.Text = BaseResource.Company;
+            txtUserName.Text = ShareValue.User?.Name ?? string.Empty;
             txtLogin.Text = DateTime.Now.ToLongDateString();
             DataBaseSetting.ReadSetting();
             this.FormClosing += (e, o) => DataBaseSetting.WriteSetting();
@@ -283,6 +283,18 @@ namespace QTech.Forms
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             InputLanguage.CurrentInputLanguage = UI.English;
+        }
+
+        private void lblUserDropDown__Click(object sender, EventArgs e)
+        {
+            var p = Point.Add(lblUserProfile_.PointToScreen(new Point(0, -50)), new Size(0, lblUserProfile_.Height));
+            //Point p = new Point(lblUserProfile_.Left, pContainBottom.Top - cnmStrip.Height + 22);
+            cnmStrip.Show(p);
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
