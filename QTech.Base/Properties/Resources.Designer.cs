@@ -1351,6 +1351,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ល.រ.
+        /// </summary>
+        public static string Row {
+            get {
+                return ResourceManager.GetString("Row", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ការទូទាត់.
         /// </summary>
         public static string RuningBill {

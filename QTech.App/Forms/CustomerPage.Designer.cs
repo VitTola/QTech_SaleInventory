@@ -45,7 +45,7 @@
             this.dgv = new QTech.Component.TreeGridView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.colName = new QTech.Component.TreeGridColumn();
-            this.colRow_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colParentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -198,6 +198,7 @@
             this.dgv.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Ivory;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -206,11 +207,10 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv.ColumnHeadersHeight = 25;
-            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgv.ColumnHeadersHeight = 28;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colName,
-            this.colRow_,
+            this.colRow,
             this.colId,
             this.colParentId,
             this.colPhone,
@@ -227,15 +227,14 @@
             this.dgv.ReadOnly = true;
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgv.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(865, 437);
-            this.dgv.TabIndex = 1;
+            this.dgv.TabIndex = 0;
             this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
             this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
+            this.dgv.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_RowPostPaint);
             // 
             // imageList1
             // 
@@ -253,15 +252,15 @@
             this.colName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colName.Width = 300;
             // 
-            // colRow_
+            // colRow
             // 
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colRow_.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colRow_.HeaderText = "";
-            this.colRow_.Name = "colRow_";
-            this.colRow_.ReadOnly = true;
-            this.colRow_.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colRow_.Width = 30;
+            this.colRow.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colRow.HeaderText = "";
+            this.colRow.Name = "colRow";
+            this.colRow.ReadOnly = true;
+            this.colRow.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colRow.Width = 30;
             // 
             // colId
             // 
@@ -336,7 +335,7 @@
         private Component.ExTextbox txtSearch;
         private System.Windows.Forms.ImageList imageList1;
         private Component.TreeGridColumn colName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colRow_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRow;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colParentId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPhone;

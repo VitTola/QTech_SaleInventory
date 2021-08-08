@@ -40,13 +40,12 @@ namespace QTech.Forms
         {
             dgv.RowsDefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(173, 205, 239);
             dgv.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
-            dgv.RowTemplate.Height = 28;
+            dgv.RowTemplate.Height = 25;
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgv.ColumnHeadersHeight = 28;
+            dgv.ColumnHeadersHeight = 25;
             dgv.BackgroundColor = System.Drawing.Color.White;
             dgv.ShowLines = false;
-            dgv.ShowLines = true;
-
+            dgv.AllowUserToResizeColumns = false;
 
             dgv.KeyDown += dgv_KeyDown;
             dgv.NodeExpanded += Dgv_NodeExpanded;
@@ -54,9 +53,7 @@ namespace QTech.Forms
             txtSearch.RegisterEnglishInput();
             txtSearch.RegisterKeyArrowDown(dgv);
             txtSearch.QuickSearch += txtSearch_QuickSearch;
-
         }
-
 
         private async void txtSearch_QuickSearch(object sender, EventArgs e)
         {
@@ -253,9 +250,9 @@ namespace QTech.Forms
 
         private TreeGridNode AddParentNode(dynamic parentNode, Customer customer)
         {
-            dgv.Columns[colName.Name].DisplayIndex = 0;
+            //dgv.Columns[colName.Name].DisplayIndex = 0;
             var node = parentNode.Nodes.Add();
-            dgv.Columns[colName.Name].DisplayIndex = 1;
+            //dgv.Columns[colName.Name].DisplayIndex = 1;
             node.Height = dgv.RowTemplate.Height;
             node.Tag = customer;
 
@@ -265,7 +262,7 @@ namespace QTech.Forms
             node.Cells[dgv.Columns[colNote.Name].Index].Value = customer.Note;
             node.Cells[dgv.Columns[colId.Name].Index].Value = customer.Id;
             node.Cells[dgv.Columns[colParentId.Name].Index].Value = customer.Id;
-            node.Cells[dgv.Columns[colRow_.Name].Index].Value = row++;
+            //node.Cells[dgv.Columns[colRow_.Name].Index].Value = row++;
             var dummy = node.Nodes.Add();
             dummy.Visible = false;
             return node;
@@ -314,5 +311,11 @@ namespace QTech.Forms
         {
 
         }
+        
+        private void dgv_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            dgv.Rows[e.RowIndex].Cells[colRow.Name].Value = (e.RowIndex + 1).ToString();
+        }
+        
     }
 }

@@ -226,7 +226,7 @@ namespace QTech.Component
             this.Controls.Add(this.container);
             this.Controls.Add(this.digheader);
             this.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ExDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -47,14 +47,13 @@ namespace QTech.Forms
         {
             dgv.RowsDefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(173, 205, 239);
             dgv.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
-            dgv.RowTemplate.Height = 28;
+            dgv.RowTemplate.Height = 25;
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgv.ColumnHeadersHeight = 28;
+            dgv.ColumnHeadersHeight = 25;
             dgv.BackgroundColor = System.Drawing.Color.White;
             dgv.ShowLines = false;
-            dgv.ShowLines = true;
-
-
+            dgv.AllowUserToResizeColumns = false;
+            
             dgv.KeyDown += dgv_KeyDown;
             dgv.NodeExpanded += Dgv_NodeExpanded;
             dgv.NodeCollapsed += Dgv_NodeCollapsed;
@@ -65,6 +64,7 @@ namespace QTech.Forms
             cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
 
         }
+
         private async void CboCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
             await Search();
@@ -314,9 +314,9 @@ namespace QTech.Forms
 
         private TreeGridNode AddParentNode(dynamic parentNode, Invoice invoice)
         {
-            dgv.Columns[colInvoiceNo.Name].DisplayIndex = 0;
+            //dgv.Columns[colInvoiceNo.Name].DisplayIndex = 0;
             var node = parentNode.Nodes.Add();
-            dgv.Columns[colInvoiceNo.Name].DisplayIndex = 1;
+            //dgv.Columns[colInvoiceNo.Name].DisplayIndex = 1;
             node.Height = dgv.RowTemplate.Height;
             node.Tag = invoice;
 
