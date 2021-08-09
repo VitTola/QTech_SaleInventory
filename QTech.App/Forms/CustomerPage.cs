@@ -262,7 +262,7 @@ namespace QTech.Forms
             node.Cells[dgv.Columns[colNote.Name].Index].Value = customer.Note;
             node.Cells[dgv.Columns[colId.Name].Index].Value = customer.Id;
             node.Cells[dgv.Columns[colParentId.Name].Index].Value = customer.Id;
-            //node.Cells[dgv.Columns[colRow_.Name].Index].Value = row++;
+            node.Cells[dgv.Columns[colRow.Name].Index].Value = row++;
             var dummy = node.Nodes.Add();
             dummy.Visible = false;
             return node;
@@ -306,16 +306,5 @@ namespace QTech.Forms
         {
             View();
         }
-
-        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-        
-        private void dgv_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            dgv.Rows[e.RowIndex].Cells[colRow.Name].Value = (e.RowIndex + 1).ToString();
-        }
-        
     }
 }

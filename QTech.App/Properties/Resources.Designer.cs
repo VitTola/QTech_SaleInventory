@@ -173,6 +173,16 @@ namespace QTech.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pback {
+            get {
+                object obj = ResourceManager.GetObject("pback", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Pheng_Ry {
             get {
                 object obj = ResourceManager.GetObject("Pheng Ry", resourceCulture);
