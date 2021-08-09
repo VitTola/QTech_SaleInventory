@@ -1107,6 +1107,16 @@ namespace QTech.Component.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Left {
+            get {
+                object obj = ResourceManager.GetObject("Left", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap leftcornerW {
             get {
                 object obj = ResourceManager.GetObject("leftcornerW", resourceCulture);
@@ -1424,6 +1434,16 @@ namespace QTech.Component.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Right {
+            get {
+                object obj = ResourceManager.GetObject("Right", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap right_arrow_in_circular_button {
             get {
                 object obj = ResourceManager.GetObject("right_arrow_in_circular_button", resourceCulture);
@@ -1635,6 +1655,26 @@ namespace QTech.Component.Properties {
         public static System.Drawing.Bitmap waste_bin {
             get {
                 object obj = ResourceManager.GetObject("waste_bin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WLeft {
+            get {
+                object obj = ResourceManager.GetObject("WLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WRight {
+            get {
+                object obj = ResourceManager.GetObject("WRight", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

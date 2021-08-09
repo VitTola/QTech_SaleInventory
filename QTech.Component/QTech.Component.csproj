@@ -652,6 +652,9 @@
     <None Include="Resources\down-arrow-in-small-circle.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\WLeft.png" />
+    <None Include="Resources\WRight.png" />
+    <None Include="Resources\Right.png" />
     <None Include="Resources\rightCornerF.png" />
     <None Include="Resources\rightCornerW.png" />
     <None Include="Resources\rightCornerF4.png" />
@@ -779,6 +782,7 @@
     <None Include="Resources\hide.png" />
     <None Include="Resources\leftcornerW.png" />
     <None Include="Resources\lefcornerF.png" />
+    <None Include="Resources\Left.png" />
     <Content Include="Resources\map-point.png" />
     <None Include="Resources\maximize.png" />
     <Content Include="Resources\menu.png" />

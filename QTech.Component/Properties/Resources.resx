@@ -130,6 +130,9 @@
   <data name="img_loggedOut" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\img_loggedOut.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="leftcornerW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\leftcornerW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="avi" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\avi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -138,6 +141,9 @@
   </data>
   <data name="waiting" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\waiting.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dgvloading" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dgvloading.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="img_show_all" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\img_show_all.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -171,9 +177,6 @@
   </data>
   <data name="MsgServerVersionNotEqualClientVersion" xml:space="preserve">
     <value>ជំនាន់ប្រព័ន្ធបច្ចុប្បន្ន {0}  ខ្ពស់ជាងជំនាន់ប្រព័ន្ធនៅលើម៉ាស៊ីនមេ {1} ! សូមធ្វើអតីតភាពប្រព័ន្ធ ដើម្បីបន្តរការប្រើប្រាស់។</value>
-  </data>
-  <data name="infinity" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\infinity.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="img_meter_unavailable" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\img_meter_unavailable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -244,11 +247,14 @@
   <data name="running" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\running.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="img_meter__broken" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\img_meter__broken.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="infinity" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\infinity.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\folder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rightCornerF" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rightCornerF.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tab_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tab_left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -259,14 +265,11 @@
   <data name="point_loading1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\point_loading1.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="chkEnable" xml:space="preserve">
-    <value>ដំណើរការ</value>
+  <data name="centerW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\centerW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="img_export" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\img_export.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CornerLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CornerLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="img_placeholder" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\img_placeholder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -283,14 +286,17 @@
   <data name="SelectedName" xml:space="preserve">
     <value>បានជ្រើសរើស</value>
   </data>
-  <data name="oone_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\oone_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="rightCornerW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rightCornerW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="crossremove" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\crossremove.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="mp4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mp4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rightCornerF2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rightCornerF4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="report_processing" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\report_processing.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -328,14 +334,17 @@
   <data name="All" xml:space="preserve">
     <value>ទាំងអស់</value>
   </data>
-  <data name="editing" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\editing.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="oone_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\oone_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="img_idle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\img_idle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="img_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\img_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="check" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\check.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon_close" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cancel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -415,6 +424,12 @@
   <data name="process" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\20.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="editing" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\editing.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="chkEnable" xml:space="preserve">
+    <value>ដំណើរការ</value>
+  </data>
   <data name="unknown_file" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\unknown_file.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -445,9 +460,6 @@
   <data name="img_logout" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\img_logout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="img_refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\img_refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="down_arrow_in_small_circle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\down-arrow-in-small-circle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -462,6 +474,9 @@
   </data>
   <data name="retry" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\retry.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="picture" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\picture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -502,6 +517,9 @@
   <data name="Backward" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Backward.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="inputted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\inputted.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="img_question1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\img_question1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -538,8 +556,8 @@
   <data name="channel_connected" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\channel_connected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="inputted" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\inputted.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CornerLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CornerLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="lefcorner" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lefcorner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -550,8 +568,8 @@
   <data name="img_print" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\img_print.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="check" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\check.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="img_refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\img_refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tab_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tab_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -564,6 +582,9 @@
   </data>
   <data name="img_broken" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\img_broken.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="img_meter__broken" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\img_meter__broken.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="img_pencil" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\img_pencil.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -580,22 +601,13 @@
   <data name="img_social_disconnect" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\img_social_disconnect.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="rightCornerF2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\rightCornerF4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="centerW" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\centerW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="WLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="leftcornerW" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\leftcornerW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="rightCornerW" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\rightCornerW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="dgvloading" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dgvloading.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="rightCornerF" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\rightCornerF.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="WRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

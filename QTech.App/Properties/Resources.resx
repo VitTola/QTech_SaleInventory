@@ -136,8 +136,8 @@
   <data name="Site_img" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Site.img.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="login" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pback" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pback.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="down_arrow_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\down_arrow_12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,11 +148,11 @@
   <data name="Type1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Type.img1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="lineDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lineDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="imgCollapse" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgCollapse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="expand.img" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\expand.img.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Pheng Ry" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Pheng Ry.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,11 +163,14 @@
   <data name="Customer_img" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Customer.img.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="lineDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lineDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="expand.img" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\expand.img.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="lineDown1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lineDown1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="leftArrow_img" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\leftArrow_img.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="customer2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\customer2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -175,10 +178,10 @@
   <data name="calendar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\calendar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="leftArrow_img" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\leftArrow_img.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="login" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pback" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pback.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Pcenter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pcenter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
