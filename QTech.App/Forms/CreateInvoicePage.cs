@@ -257,7 +257,10 @@ namespace QTech.Forms
                 List<Invoice> invoices = pagination.ListModel;
                 TreeGridFillData(invoices);
             }
-            //dgv.Sort(dgv.Columns[colRowDate.Name], ListSortDirection.Descending);
+            
+
+            if (dgv.RowCount > 0) dgv.Rows[0].Selected = true;
+
         }
 
         int row = 1;

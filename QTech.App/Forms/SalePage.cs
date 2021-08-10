@@ -46,6 +46,7 @@ namespace QTech.Forms
             btnAdd.Visible = ShareValue.IsAuthorized(AuthKey.Sale_Sale_Add);
             btnRemove.Visible = ShareValue.IsAuthorized(AuthKey.Sale_Sale_Remove);
             btnUpdate.Visible = ShareValue.IsAuthorized(AuthKey.Sale_Sale_Update);
+
         }
         private async void CboPayStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -193,6 +194,8 @@ namespace QTech.Forms
                 }
             });
             dgv.Sort(dgv.Columns[colRowDate.Name], ListSortDirection.Descending);
+            if (dgv.RowCount > 0) dgv.Rows[0].Selected = true;
+
         }
         private DataGridViewRow newRow(bool isFocus = false)
         {

@@ -88,6 +88,7 @@ namespace QTech.Forms
         }
         private void Txt_KeyUp(object sender, EventArgs e)
         {
+            dgv.EndEdit();
             if (Flag == GeneralProcess.Update)
             {
                 var rowId = int.Parse(dgv.CurrentRow.Cells[colId.Name].Value?.ToString() ?? "0");
@@ -95,7 +96,6 @@ namespace QTech.Forms
 
                 var currentValue = int.Parse(dgv.CurrentRow.Cells[colQauntity.Name].Value?.ToString() ?? "0");
                 var firstLeftQty = POProductPrices.FirstOrDefault(x => x.Id == rowId)?.LeftQauntity;
-                dgv.CurrentRow.Cells[colLeftQauntity_.Name].Value = firstLeftQty;
                 dgv.CurrentRow.Cells[colLeftQauntity_.Name].Value = firstLeftQty + (currentValue - firstQty);
             }
             else if (Flag == GeneralProcess.Add)
@@ -106,6 +106,7 @@ namespace QTech.Forms
             {
                 txt.Leave -= Txt_KeyUp;
             }
+            dgv.BeginEdit(true);
         }
         public bool InValid()
         {
@@ -121,6 +122,7 @@ namespace QTech.Forms
         }
         private bool validPurchaseOrderDetail()
         {
+            dgv.EndEdit();
             var invalidCell = false;
             var rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => x.Index != dgv.RowCount - 1);
             if (rows?.Any() != true)
@@ -150,7 +152,7 @@ namespace QTech.Forms
             {
                 return false;
             }
-
+            dgv.BeginEdit(true);
             return true;
         }
         public async void Read()

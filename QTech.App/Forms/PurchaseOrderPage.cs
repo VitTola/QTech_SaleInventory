@@ -149,6 +149,8 @@ namespace QTech.Forms
                 });
             }
             dgv.Sort(dgv.Columns[colRowDate.Name], ListSortDirection.Descending);
+            if (dgv.RowCount > 0) dgv.Rows[0].Selected = true;
+
         }
         private DataGridViewRow _newRow(bool isFocus = false)
         {
