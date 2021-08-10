@@ -30,9 +30,13 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv = new QTech.Component.ExDataGridView();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.graPanel1 = new QTech.Component.GRAPanel();
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -43,12 +47,6 @@
             this.btnAdd = new QTech.Component.ExButtonLoading();
             this.colorWithAlpha2 = new QTech.Component.ColorWithAlpha();
             this.colorWithAlpha3 = new QTech.Component.ColorWithAlpha();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.graPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -76,22 +74,22 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv.ColumnHeadersHeight = 28;
+            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colId,
-            this.colRow,
             this.colName,
             this.colPosition,
             this.colPhone,
             this.colNote});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Khmer OS System", 8F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
@@ -106,8 +104,52 @@
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(943, 522);
             this.dgv.TabIndex = 1;
-            this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
-            this.dgv.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_RowPostPaint);
+            // 
+            // colId
+            // 
+            this.colId.DataPropertyName = "Id";
+            this.colId.HeaderText = "Id";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            this.colId.Visible = false;
+            // 
+            // colName
+            // 
+            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colName.DataPropertyName = "Name";
+            this.colName.FillWeight = 40F;
+            this.colName.HeaderText = "ឈ្មោះ";
+            this.colName.MinimumWidth = 300;
+            this.colName.Name = "colName";
+            this.colName.ReadOnly = true;
+            this.colName.Width = 300;
+            // 
+            // colPosition
+            // 
+            this.colPosition.DataPropertyName = "Position";
+            this.colPosition.HeaderText = "តួនាទី";
+            this.colPosition.Name = "colPosition";
+            this.colPosition.ReadOnly = true;
+            this.colPosition.Width = 200;
+            // 
+            // colPhone
+            // 
+            this.colPhone.DataPropertyName = "Phone";
+            this.colPhone.FillWeight = 40F;
+            this.colPhone.HeaderText = "លេខទូរស័ព្ទ";
+            this.colPhone.MinimumWidth = 100;
+            this.colPhone.Name = "colPhone";
+            this.colPhone.ReadOnly = true;
+            this.colPhone.Width = 200;
+            // 
+            // colNote
+            // 
+            this.colNote.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colNote.DataPropertyName = "Note";
+            this.colNote.FillWeight = 60F;
+            this.colNote.HeaderText = "កំណត់ចំណាំ";
+            this.colNote.Name = "colNote";
+            this.colNote.ReadOnly = true;
             // 
             // graPanel1
             // 
@@ -244,61 +286,6 @@
             this.colorWithAlpha3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colorWithAlpha3.Parent = null;
             // 
-            // colId
-            // 
-            this.colId.DataPropertyName = "Id";
-            this.colId.HeaderText = "Id";
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            this.colId.Visible = false;
-            // 
-            // colRow
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colRow.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colRow.HeaderText = "ល.រ";
-            this.colRow.Name = "colRow";
-            this.colRow.ReadOnly = true;
-            this.colRow.Width = 30;
-            // 
-            // colName
-            // 
-            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colName.DataPropertyName = "Name";
-            this.colName.FillWeight = 40F;
-            this.colName.HeaderText = "ឈ្មោះ";
-            this.colName.MinimumWidth = 300;
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
-            this.colName.Width = 300;
-            // 
-            // colPosition
-            // 
-            this.colPosition.DataPropertyName = "Position";
-            this.colPosition.HeaderText = "តួនាទី";
-            this.colPosition.Name = "colPosition";
-            this.colPosition.ReadOnly = true;
-            this.colPosition.Width = 200;
-            // 
-            // colPhone
-            // 
-            this.colPhone.DataPropertyName = "Phone";
-            this.colPhone.FillWeight = 40F;
-            this.colPhone.HeaderText = "លេខទូរស័ព្ទ";
-            this.colPhone.MinimumWidth = 100;
-            this.colPhone.Name = "colPhone";
-            this.colPhone.ReadOnly = true;
-            this.colPhone.Width = 200;
-            // 
-            // colNote
-            // 
-            this.colNote.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colNote.DataPropertyName = "Note";
-            this.colNote.FillWeight = 60F;
-            this.colNote.HeaderText = "កំណត់ចំណាំ";
-            this.colNote.Name = "colNote";
-            this.colNote.ReadOnly = true;
-            // 
             // EmployeePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
@@ -332,7 +319,6 @@
         private Component.ColorWithAlpha colorWithAlpha3;
         private Component.ExTextbox txtSearch;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colRow;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPosition;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPhone;

@@ -54,9 +54,9 @@
             this.panelMiddle.Controls.Add(this.picBox);
             this.panelMiddle.Controls.Add(this.lblCaption);
             this.panelMiddle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMiddle.Location = new System.Drawing.Point(0, 0);
+            this.panelMiddle.Location = new System.Drawing.Point(8, 0);
             this.panelMiddle.Name = "panelMiddle";
-            this.panelMiddle.Size = new System.Drawing.Size(206, 34);
+            this.panelMiddle.Size = new System.Drawing.Size(190, 34);
             this.panelMiddle.TabIndex = 7;
             // 
             // picBox
@@ -81,7 +81,7 @@
             this.lblCaption.ForeColor = System.Drawing.Color.White;
             this.lblCaption.Location = new System.Drawing.Point(25, 1);
             this.lblCaption.Name = "lblCaption";
-            this.lblCaption.Size = new System.Drawing.Size(170, 32);
+            this.lblCaption.Size = new System.Drawing.Size(154, 32);
             this.lblCaption.TabIndex = 3;
             this.lblCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblCaption.Click += new System.EventHandler(this.lblCaption_Click);
@@ -96,6 +96,7 @@
             this.panelRight.BackgroundImage = global::QTech.Component.Properties.Resources.Right;
             this.panelRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelRight.Location = new System.Drawing.Point(198, 0);
+            this.panelRight.Margin = new System.Windows.Forms.Padding(0);
             this.panelRight.Name = "panelRight";
             this.panelRight.Size = new System.Drawing.Size(8, 34);
             this.panelRight.TabIndex = 6;
@@ -106,9 +107,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.panelMiddle);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panelRight);
-            this.Controls.Add(this.panelMiddle);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "ExTabItem";
             this.Size = new System.Drawing.Size(206, 34);

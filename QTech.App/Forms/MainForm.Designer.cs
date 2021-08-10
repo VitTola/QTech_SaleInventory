@@ -93,6 +93,7 @@
             // 
             // container
             // 
+            this.container.BackColor = System.Drawing.Color.White;
             this.container.Controls.Add(this.mainPanel);
             this.container.Controls.Add(this.pContainBottom);
             this.container.Controls.Add(this.topPanel);
@@ -670,12 +671,12 @@
             this.btnLogOut});
             this.cnmStrip.Name = "cnmStrip";
             this.cnmStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.cnmStrip.Size = new System.Drawing.Size(181, 50);
+            this.cnmStrip.Size = new System.Drawing.Size(123, 28);
             // 
             // btnLogOut
             // 
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(180, 24);
+            this.btnLogOut.Size = new System.Drawing.Size(122, 24);
             this.btnLogOut.Text = "ចាកចេញ";
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 

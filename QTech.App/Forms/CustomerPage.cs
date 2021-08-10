@@ -158,6 +158,8 @@ namespace QTech.Forms
 
         public async void Reload()
         {
+            dgv.ColumnHeadersHeight = 28;
+
             await Search();
         }
 

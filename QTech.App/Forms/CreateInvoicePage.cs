@@ -49,7 +49,6 @@ namespace QTech.Forms
             dgv.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             dgv.RowTemplate.Height = 25;
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgv.ColumnHeadersHeight = 25;
             dgv.BackgroundColor = System.Drawing.Color.White;
             dgv.ShowLines = false;
             dgv.AllowUserToResizeColumns = false;

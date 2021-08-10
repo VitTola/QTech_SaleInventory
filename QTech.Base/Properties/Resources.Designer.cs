@@ -1351,7 +1351,7 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ល.រ.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string Row {
             get {

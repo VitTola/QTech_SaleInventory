@@ -76,6 +76,10 @@ namespace QTech.Forms
         }
         public async void Reload()
         {
+            dgv.AllowRowNotFound = true;
+            dgv.AllowRowNumber = true;
+            dgv.ColumnHeadersHeight = 28;
+
             await Search();
         }
         public async void Remove()
@@ -153,10 +157,6 @@ namespace QTech.Forms
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             View();
-        }
-        private void dgv_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            dgv.Rows[e.RowIndex].Cells[colRow.Name].Value = (e.RowIndex + 1).ToString();
         }
     }
 }
