@@ -268,6 +268,12 @@ namespace QTech.Forms
                 _pOProductPrice.Note = row.Cells[colNote.Name].Value?.ToString();
                 _pOProductPrice.ProductId = int.Parse(row.Cells[colProductId_.Name].Value?.ToString());
                 Model.POProductPrices.Add(_pOProductPrice);
+
+                //Incase LeftQty not zero
+                if (_pOProductPrice.LeftQauntity > 0)
+                {
+                    Model.IsReachQty = false;
+                }
             }
         }
         private void btnSave_Click(object sender, EventArgs e)

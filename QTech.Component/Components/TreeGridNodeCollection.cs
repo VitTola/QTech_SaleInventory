@@ -59,7 +59,7 @@ namespace QTech.Component
 
            
 
-            if (values.Length > node.Cells.Count )
+            if (values.Length > node.Cells?.Count )
                 throw new ArgumentOutOfRangeException("values");
              
             for(var i=0;i<values.Length && i<this._owner.Cells.Count;i++)

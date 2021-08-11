@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCreateInvoice));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.exLabel2 = new QTech.Component.ExLabel();
             this.exPanel1 = new QTech.Component.Components.ExPanel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
@@ -45,17 +45,8 @@
             this.cboCustomer = new QTech.Component.ExSearchCombo();
             this.panelGrid = new System.Windows.Forms.Panel();
             this.chkMarkAll_ = new System.Windows.Forms.CheckBox();
+            this.pnlGrid = new System.Windows.Forms.Panel();
             this.dgv = new QTech.Component.ExDataGridView();
-            this.colMark_ = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPurchaseOrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colInvoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colToCompany = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colToSite = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSaleDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIsPaid = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.flowLayoutPanelTopGrid = new System.Windows.Forms.FlowLayoutPanel();
             this.dtpSearchDate = new QTech.Component.ExReportDatePicker();
             this.lblInvoicingDate = new QTech.Component.ExLabel();
@@ -74,12 +65,23 @@
             this.exLabel6 = new QTech.Component.ExLabel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dtpInvoicingDate = new QTech.Component.ExDateTimePicker();
-            this.pnlGrid = new System.Windows.Forms.Panel();
+            this.colMark_ = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colSaleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPurchaseOrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colInvoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colToCompany = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colToSite = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSaleDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIsPaid = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.container.SuspendLayout();
             this.exPanel1.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.panelGrid.SuspendLayout();
+            this.pnlGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.flowLayoutPanelTopGrid.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -87,7 +89,6 @@
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.pnlGrid.SuspendLayout();
             this.SuspendLayout();
             // 
             // container
@@ -119,6 +120,7 @@
             this.exPanel1.Location = new System.Drawing.Point(1, 631);
             this.exPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.exPanel1.Name = "exPanel1";
+            this.exPanel1.Padding = new System.Windows.Forms.Padding(2);
             this.exPanel1.Size = new System.Drawing.Size(1275, 36);
             this.exPanel1.TabIndex = 17;
             // 
@@ -127,10 +129,10 @@
             this.flowLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.flowLayoutPanel3.Controls.Add(this.btnPrint);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(2, 2);
             this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(279, 36);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(279, 32);
             this.flowLayoutPanel3.TabIndex = 2;
             // 
             // btnPrint
@@ -159,10 +161,10 @@
             this.flowLayoutPanel2.Controls.Add(this.btnSave);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(2, 2);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1275, 36);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1271, 32);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // btnClose
@@ -170,7 +172,7 @@
             this.btnClose.BackColor = System.Drawing.Color.Ivory;
             this.btnClose.DefaultImage = null;
             this.btnClose.Executing = false;
-            this.btnClose.Location = new System.Drawing.Point(1198, 3);
+            this.btnClose.Location = new System.Drawing.Point(1194, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -186,7 +188,7 @@
             this.btnSave.BackColor = System.Drawing.Color.Ivory;
             this.btnSave.DefaultImage = null;
             this.btnSave.Executing = false;
-            this.btnSave.Location = new System.Drawing.Point(1119, 3);
+            this.btnSave.Location = new System.Drawing.Point(1115, 3);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -275,6 +277,17 @@
             this.chkMarkAll_.UseVisualStyleBackColor = false;
             this.chkMarkAll_.Click += new System.EventHandler(this.chkMarkAll__Click);
             // 
+            // pnlGrid
+            // 
+            this.pnlGrid.BackColor = System.Drawing.Color.Gray;
+            this.pnlGrid.Controls.Add(this.dgv);
+            this.pnlGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlGrid.Location = new System.Drawing.Point(0, 39);
+            this.pnlGrid.Name = "pnlGrid";
+            this.pnlGrid.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
+            this.pnlGrid.Size = new System.Drawing.Size(1275, 393);
+            this.pnlGrid.TabIndex = 16;
+            // 
             // dgv
             // 
             this.dgv.AllowEnterToNextCell = false;
@@ -284,22 +297,23 @@
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AllowUserToResizeColumns = false;
             this.dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Ivory;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colMark_,
+            this.colSaleId,
             this.colId,
             this.colPurchaseOrderNo,
             this.colInvoiceNo,
@@ -309,14 +323,14 @@
             this.colTotal,
             this.colStatus,
             this.colIsPaid});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
@@ -331,90 +345,6 @@
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(1275, 392);
             this.dgv.TabIndex = 2;
-            // 
-            // colMark_
-            // 
-            this.colMark_.DataPropertyName = "Mark_";
-            this.colMark_.HeaderText = "";
-            this.colMark_.Name = "colMark_";
-            this.colMark_.ReadOnly = true;
-            this.colMark_.Width = 40;
-            // 
-            // colId
-            // 
-            this.colId.DataPropertyName = "Id";
-            this.colId.HeaderText = "Id";
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            this.colId.Visible = false;
-            this.colId.Width = 45;
-            // 
-            // colPurchaseOrderNo
-            // 
-            this.colPurchaseOrderNo.DataPropertyName = "PurchaseOrderNo";
-            this.colPurchaseOrderNo.FillWeight = 40F;
-            this.colPurchaseOrderNo.HeaderText = "លេខបញ្ជាទិញ";
-            this.colPurchaseOrderNo.MinimumWidth = 200;
-            this.colPurchaseOrderNo.Name = "colPurchaseOrderNo";
-            this.colPurchaseOrderNo.ReadOnly = true;
-            this.colPurchaseOrderNo.Width = 250;
-            // 
-            // colInvoiceNo
-            // 
-            this.colInvoiceNo.DataPropertyName = "InvoiceNo";
-            this.colInvoiceNo.FillWeight = 40F;
-            this.colInvoiceNo.HeaderText = "លេខវិក្កយបត្រ";
-            this.colInvoiceNo.MinimumWidth = 100;
-            this.colInvoiceNo.Name = "colInvoiceNo";
-            this.colInvoiceNo.ReadOnly = true;
-            this.colInvoiceNo.Width = 200;
-            // 
-            // colToCompany
-            // 
-            this.colToCompany.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colToCompany.DataPropertyName = "ToCompany";
-            this.colToCompany.FillWeight = 60F;
-            this.colToCompany.HeaderText = "ទៅកាន់ក្រុមហ៊ុន";
-            this.colToCompany.Name = "colToCompany";
-            this.colToCompany.ReadOnly = true;
-            // 
-            // colToSite
-            // 
-            this.colToSite.DataPropertyName = "Site";
-            this.colToSite.HeaderText = "ទៅកាន់គំរោង";
-            this.colToSite.Name = "colToSite";
-            this.colToSite.ReadOnly = true;
-            this.colToSite.Width = 200;
-            // 
-            // colSaleDate
-            // 
-            this.colSaleDate.DataPropertyName = "SaleDate";
-            this.colSaleDate.HeaderText = "កាលបរិច្ឆេទលក់";
-            this.colSaleDate.Name = "colSaleDate";
-            this.colSaleDate.ReadOnly = true;
-            this.colSaleDate.Width = 150;
-            // 
-            // colTotal
-            // 
-            this.colTotal.HeaderText = "សរុបទឹកប្រាក់";
-            this.colTotal.Name = "colTotal";
-            this.colTotal.ReadOnly = true;
-            this.colTotal.Width = 200;
-            // 
-            // colStatus
-            // 
-            this.colStatus.DataPropertyName = "Status";
-            this.colStatus.HeaderText = "ស្ថានភាព";
-            this.colStatus.Name = "colStatus";
-            this.colStatus.ReadOnly = true;
-            this.colStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // colIsPaid
-            // 
-            this.colIsPaid.HeaderText = "IsPaid";
-            this.colIsPaid.Name = "colIsPaid";
-            this.colIsPaid.ReadOnly = true;
-            this.colIsPaid.Visible = false;
             // 
             // flowLayoutPanelTopGrid
             // 
@@ -644,16 +574,96 @@
             this.dtpInvoicingDate.Size = new System.Drawing.Size(200, 27);
             this.dtpInvoicingDate.TabIndex = 32;
             // 
-            // pnlGrid
+            // colMark_
             // 
-            this.pnlGrid.BackColor = System.Drawing.Color.Gray;
-            this.pnlGrid.Controls.Add(this.dgv);
-            this.pnlGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlGrid.Location = new System.Drawing.Point(0, 39);
-            this.pnlGrid.Name = "pnlGrid";
-            this.pnlGrid.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
-            this.pnlGrid.Size = new System.Drawing.Size(1275, 393);
-            this.pnlGrid.TabIndex = 16;
+            this.colMark_.DataPropertyName = "Mark_";
+            this.colMark_.HeaderText = "";
+            this.colMark_.Name = "colMark_";
+            this.colMark_.ReadOnly = true;
+            this.colMark_.Width = 40;
+            // 
+            // colSaleId
+            // 
+            this.colSaleId.HeaderText = "SaleId";
+            this.colSaleId.Name = "colSaleId";
+            this.colSaleId.ReadOnly = true;
+            this.colSaleId.Visible = false;
+            // 
+            // colId
+            // 
+            this.colId.DataPropertyName = "Id";
+            this.colId.HeaderText = "Id";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            this.colId.Visible = false;
+            this.colId.Width = 45;
+            // 
+            // colPurchaseOrderNo
+            // 
+            this.colPurchaseOrderNo.DataPropertyName = "PurchaseOrderNo";
+            this.colPurchaseOrderNo.FillWeight = 40F;
+            this.colPurchaseOrderNo.HeaderText = "លេខបញ្ជាទិញ";
+            this.colPurchaseOrderNo.MinimumWidth = 200;
+            this.colPurchaseOrderNo.Name = "colPurchaseOrderNo";
+            this.colPurchaseOrderNo.ReadOnly = true;
+            this.colPurchaseOrderNo.Width = 250;
+            // 
+            // colInvoiceNo
+            // 
+            this.colInvoiceNo.DataPropertyName = "InvoiceNo";
+            this.colInvoiceNo.FillWeight = 40F;
+            this.colInvoiceNo.HeaderText = "លេខវិក្កយបត្រ";
+            this.colInvoiceNo.MinimumWidth = 100;
+            this.colInvoiceNo.Name = "colInvoiceNo";
+            this.colInvoiceNo.ReadOnly = true;
+            this.colInvoiceNo.Width = 200;
+            // 
+            // colToCompany
+            // 
+            this.colToCompany.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colToCompany.DataPropertyName = "ToCompany";
+            this.colToCompany.FillWeight = 60F;
+            this.colToCompany.HeaderText = "ទៅកាន់ក្រុមហ៊ុន";
+            this.colToCompany.Name = "colToCompany";
+            this.colToCompany.ReadOnly = true;
+            // 
+            // colToSite
+            // 
+            this.colToSite.DataPropertyName = "Site";
+            this.colToSite.HeaderText = "ទៅកាន់គំរោង";
+            this.colToSite.Name = "colToSite";
+            this.colToSite.ReadOnly = true;
+            this.colToSite.Width = 200;
+            // 
+            // colSaleDate
+            // 
+            this.colSaleDate.DataPropertyName = "SaleDate";
+            this.colSaleDate.HeaderText = "កាលបរិច្ឆេទលក់";
+            this.colSaleDate.Name = "colSaleDate";
+            this.colSaleDate.ReadOnly = true;
+            this.colSaleDate.Width = 150;
+            // 
+            // colTotal
+            // 
+            this.colTotal.HeaderText = "សរុបទឹកប្រាក់";
+            this.colTotal.Name = "colTotal";
+            this.colTotal.ReadOnly = true;
+            this.colTotal.Width = 200;
+            // 
+            // colStatus
+            // 
+            this.colStatus.DataPropertyName = "Status";
+            this.colStatus.HeaderText = "ស្ថានភាព";
+            this.colStatus.Name = "colStatus";
+            this.colStatus.ReadOnly = true;
+            this.colStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // colIsPaid
+            // 
+            this.colIsPaid.HeaderText = "IsPaid";
+            this.colIsPaid.Name = "colIsPaid";
+            this.colIsPaid.ReadOnly = true;
+            this.colIsPaid.Visible = false;
             // 
             // frmCreateInvoice
             // 
@@ -671,6 +681,7 @@
             this.flowLayoutPanel2.ResumeLayout(false);
             this.panelGrid.ResumeLayout(false);
             this.panelGrid.PerformLayout();
+            this.pnlGrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.flowLayoutPanelTopGrid.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -683,7 +694,6 @@
             this.panel7.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.pnlGrid.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -723,7 +733,9 @@
         private Component.ExLabel exLabel4;
         private Component.ExLabel exLabel5;
         private Component.ExLabel exLabel6;
+        private System.Windows.Forms.Panel pnlGrid;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colMark_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSaleId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPurchaseOrderNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colInvoiceNo;
@@ -733,6 +745,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colIsPaid;
-        private System.Windows.Forms.Panel pnlGrid;
     }
 }

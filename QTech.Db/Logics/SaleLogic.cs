@@ -40,7 +40,7 @@ namespace QTech.Db.Logics
         public override Sale UpdateAsync(Sale entity)
         {
             var result = base.UpdateAsync(entity);
-            if (entity.SaleDetails.Any() && result.PurchaseOrderId != 0)
+            if (entity.SaleDetails?.Any() ?? false && result.PurchaseOrderId != 0)
             {
                 UpdatePOProductPriceQty(result.PurchaseOrderId, entity.SaleDetails, GeneralProcess.Update);
             }
@@ -49,7 +49,7 @@ namespace QTech.Db.Logics
         }
         private void UpdateSaleDetail(List<SaleDetail> saleDetails, Sale sale)
         {
-            if (saleDetails.Any())
+            if (saleDetails?.Any() ?? false)
             {
                 foreach (var s in saleDetails)
                 {

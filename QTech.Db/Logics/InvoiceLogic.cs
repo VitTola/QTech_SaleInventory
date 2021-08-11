@@ -141,7 +141,7 @@ namespace QTech.Db.Logics
         }
         private void UpdateInvoiceDetail(List<InvoiceDetail> invoiceDetails, Invoice invoice)
         {
-            if (invoiceDetails.Any())
+            if (invoiceDetails?.Any() ?? false)
             {
                 foreach (var s in invoiceDetails)
                 {
@@ -161,20 +161,43 @@ namespace QTech.Db.Logics
         }
         private void UpdateSales(List<InvoiceDetail> invoiceDetails, Invoice invoice)
         {
-            var saleIds = invoiceDetails.Select(x => x.SaleId).ToList();
-            _db.Sales.Where(x => x.Active && saleIds.Any(y => y == x.Id)).ToList()
-                .ForEach(x =>
+            invoiceDetails.ForEach(s=> {
+
+                var sale = SaleLogic.Instance.FindAsync(s.SaleId);
+                if (sale != null)
                 {
-                    if (invoice.TotalAmount - invoice.PaidAmount == 0)
+                    if (!s.Active)
                     {
-                        x.PayStatus = PayStatus.Paid;
+                        if (sale != null)
+                        {
+                            sale.PayStatus = PayStatus.NotYetPaid;
+                        }
+                    }
+                    else if (invoice.TotalAmount - invoice.PaidAmount == 0 && s.Active)
+                    {
+                        sale.PayStatus = PayStatus.Paid;
                     }
                     else
                     {
-                        x.PayStatus = PayStatus.WaitPayment;
+                        sale.PayStatus = PayStatus.WaitPayment;
                     }
-                });
-            _db.SaveChanges();
+                }
+                SaleLogic.Instance.UpdateAsync(sale);
+            });
+            //var saleIds = invoiceDetails.Select(x => x.SaleId).ToList();
+            //_db.Sales.Where(x => x.Active && saleIds.Any(y => y == x.Id)).ToList()
+            //    .ForEach(x =>
+            //    {
+            //        if (invoice.TotalAmount - invoice.PaidAmount == 0)
+            //        {
+            //            x.PayStatus = PayStatus.Paid;
+            //        }
+            //        else
+            //        {
+            //            x.PayStatus = PayStatus.WaitPayment;
+            //        }
+            //    });
+            //_db.SaveChanges();
         }
         public override bool CanRemoveAsync(int id)
         {

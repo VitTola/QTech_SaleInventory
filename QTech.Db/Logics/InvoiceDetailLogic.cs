@@ -35,7 +35,7 @@ namespace QTech.Db.Logics
         }
         public override bool IsExistsAsync(InvoiceDetail entity)
         {
-            var result = _db.SaleDetails.Any(x => x.Id == entity.Id);
+            var result = _db.InvoiceDetails.Any(x => x.Id == entity.Id);
             return result;
         }
   

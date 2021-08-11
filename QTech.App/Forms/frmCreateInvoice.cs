@@ -74,7 +74,8 @@ namespace QTech.Forms
                 dgv.CellContentClick += Dgv_CellContentClick;
                 txtPaidAmount.KeyPress += (s, e) => { txtPaidAmount.validCurrency(s, e); };
             }
-            this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View /*&& Model.SaleType != SaleType.General*/);
+            this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View && Model.SaleType != SaleType.General);
+            txtPaidAmount.ReadOnly = Flag == GeneralProcess.Remove && Flag == GeneralProcess.View;
             txtTotal.ReadOnly = txtLeftAmount.ReadOnly = true;
             txtInvoiceNo.ReadOnly = true;
             dtpInvoicingDate.Enabled = false;
@@ -148,15 +149,17 @@ namespace QTech.Forms
                 return result;
             });
             DataGridFillValue(sales, customer, _sites);
+           
         }
         private void DataGridFillValue(List<Sale> sales, Customer customer = null, List<Site> _sites = null)
         {
-            if (sales.Any())
+            if (sales?.Any() ?? false)
             {
                 sales.ForEach(x =>
                 {
                     var row = newRow(false);
-                    row.Cells[colId.Name].Value = x.Id;
+                    row.Cells[colId.Name].Value = Model.InvoiceDetails?.FirstOrDefault(s => s.SaleId == x.Id)?.Id ?? 0;
+                    row.Cells[colSaleId.Name].Value = x.Id;
                     row.Cells[colPurchaseOrderNo.Name].Value = x.PurchaseOrderNo;
                     row.Cells[colInvoiceNo.Name].Value = x.InvoiceNo;
                     row.Cells[colToCompany.Name].Value = customer?.Name;
@@ -195,6 +198,7 @@ namespace QTech.Forms
                 });
                 dgv.Sort(dgv.Columns[colSaleDate.Name], ListSortDirection.Descending);
             }
+            CalculateTotal();
         }
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
@@ -243,14 +247,13 @@ namespace QTech.Forms
                 return;
             }
             Customer customer = null;
-            List<InvoiceDetail> invoiceDetails = null;
             List<Sale> sales = null;
             List<Site> sites = null;
             var result = await this.RunAsync(() =>
             {
                 customer = CustomerLogic.Instance.FindAsync(Model.CustomerId);
-                invoiceDetails = InvoiceDetailLogic.Instance.GetInvoiceDetailByInvoiceId(Model.Id);
-                var saleIds = invoiceDetails?.Select(x => x.SaleId).ToList();
+                Model.InvoiceDetails = InvoiceDetailLogic.Instance.GetInvoiceDetailByInvoiceId(Model.Id);
+                var saleIds = Model.InvoiceDetails?.Select(x => x.SaleId).ToList();
                 sales = SaleLogic.Instance.GetSaleByIds(saleIds);
                 sites = SiteLogic.Instance.GetSiteByIds(sales.Select(x => x.SiteId).ToList());
                 return customer;
@@ -270,6 +273,7 @@ namespace QTech.Forms
             txtPaidAmount.Text = Model.PaidAmount.ToString();
             txtLeftAmount.Text = Model.LeftAmount.ToString();
             DataGridFillValue(sales, customer, sites);
+            CalculateTotal();
         }
         private DataGridViewRow newRow(bool isFocus = false)
         {
@@ -344,9 +348,9 @@ namespace QTech.Forms
             }
             Model.InvoiceNo = txtInvoiceNo.Text;
             Model.InvoicingDate = dtpInvoicingDate.Value;
-            Model.TotalAmount = decimal.Parse(txtTotal.Text);
+            Model.TotalAmount = decimal.Parse(string.IsNullOrEmpty(txtTotal.Text) ? "0" : txtTotal.Text);
             Model.PaidAmount = decimal.Parse(string.IsNullOrEmpty(txtPaidAmount.Text) ? "0" : txtPaidAmount.Text);
-            Model.LeftAmount = decimal.Parse(txtLeftAmount.Text);
+            Model.LeftAmount = decimal.Parse(string.IsNullOrEmpty(txtLeftAmount.Text) ? "0" : txtLeftAmount.Text);
             if (Model.PaidAmount == 0)
             {
                 Model.InvoiceStatus = InvoiceStatus.WaitPayment;
@@ -361,6 +365,10 @@ namespace QTech.Forms
             }
 
             dgv.EndEdit();
+
+            //Set Existing active to false and if still chect in grid set it again to true
+            Model.InvoiceDetails.ForEach(x=>x.Active=false);
+
             var Rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
             foreach (DataGridViewRow row in Rows)
             {
@@ -368,9 +376,25 @@ namespace QTech.Forms
                 var _isChecked = (bool)(row.Cells[colMark_.Name].Value ?? false);
                 if (_isChecked)
                 {
-                    invoiceDt.SaleId = int.Parse(row.Cells[colId.Name].Value?.ToString());
-                    invoiceDt.InvoiceId = Model.Id;
-                    Model.InvoiceDetails.Add(invoiceDt);
+                    invoiceDt.SaleId = int.Parse(row.Cells[colSaleId.Name].Value?.ToString() ?? "0");
+                    invoiceDt.Id = int.Parse(row.Cells[colId.Name].Value?.ToString() ?? "0");
+
+                    if (!Model.InvoiceDetails.Any(x=>x.Id == invoiceDt.Id))
+                    {
+                        invoiceDt.InvoiceId = Model.Id;
+                        Model.InvoiceDetails.Add(invoiceDt);
+                    }
+                    else
+                    {
+                        Model.InvoiceDetails.ForEach(x => {
+                            if (x.SaleId == invoiceDt.SaleId)
+                            {
+                                Model.InvoiceDetails[Model.InvoiceDetails.IndexOf(x)].Active = true;
+                            }
+                        });
+                        
+                    }
+                    
                 }
             }
         }
@@ -390,14 +414,15 @@ namespace QTech.Forms
             reportHeader.Add("Supplier", BaseResource.Company);
             reportHeader.Add("SupplierSource", "ឡានដឹក");
             reportHeader.Add("DoDate", DateTime.Now.ToString("dd/MM/yyyy"));
-            var AllTotal = decimal.Parse(txtTotal.Text);
+            var AllTotal = decimal.Parse(string.IsNullOrEmpty(txtTotal.Text) ? "0" : txtTotal.Text);
             reportHeader.Add("Total", String.Format("{0:C}", AllTotal));
 
             var MonthlyInvoices = new List<MonthlyInvoice>();
             var Rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
             foreach (DataGridViewRow row in Rows)
             {
-                var total = decimal.Parse(row.Cells[colTotal.Name].Value?.ToString());
+                var _total = row.Cells[colTotal.Name].Value?.ToString();
+                var total = decimal.Parse(string.IsNullOrEmpty(_total) ? "0" : _total);
                 MonthlyInvoices.Add(
                 new MonthlyInvoice()
                 {
@@ -438,7 +463,7 @@ namespace QTech.Forms
                 return;
             }
             var pay = decimal.Parse(txtPaidAmount.Text);
-            var total = decimal.Parse(txtTotal.Text ?? "0");
+            var total = decimal.Parse(string.IsNullOrEmpty(txtTotal.Text) ? "0" : txtTotal.Text);
             txtLeftAmount.Text = (total - pay).ToString();
         }
         private void txtPaidAmount_Leave(object sender, EventArgs e)

@@ -258,7 +258,7 @@ namespace QTech.Forms
                         var result = ProductLogic.Instance.FindAsync(_productId);
                         return result;
                     });
-                    unitPrice = pro.UnitPrice;
+                    unitPrice = pro?.UnitPrice ?? 0;
                 }
             }
             dgv.CurrentRow.Cells[colUnitPrice.Name].Value = unitPrice.ToString();
@@ -274,7 +274,7 @@ namespace QTech.Forms
                     var result = POProductPriceLogic.Instance.GetPOProductPriceByPO(purchaseOrderNo.Id);
                     return result;
                 });
-                if (pOProductPrices.Any())
+                if (pOProductPrices?.Any() ?? false)
                 {
                     var inputQty = int.Parse(dgv.CurrentRow.Cells[colQauntity.Name].Value?.ToString() ?? "0");
 
@@ -428,7 +428,7 @@ namespace QTech.Forms
             }
 
             //Read SaleDetail
-            if (saleDetails.Any())
+            if (saleDetails?.Any() ?? false)
             {
                 Model.SaleDetails = saleDetails;
                 saleDetails.ForEach(x =>
@@ -442,7 +442,7 @@ namespace QTech.Forms
                     row.Cells[colImportPrice.Name].Value = products?.FirstOrDefault(y => y.Id == x.ProductId)?.ImportPrice;
                     row.Cells[colLeftQty_.Name].Value = pOProductPrices?.FirstOrDefault(r => r.ProductId == x.ProductId)?.LeftQauntity;
 
-                    if (products != null)
+                    if (products?.Any() ?? false)
                     {
                         var pro = products?.FirstOrDefault(f => f.Id == x.ProductId);
                         var lsProdut = new List<DropDownItemModel>()
@@ -458,7 +458,7 @@ namespace QTech.Forms
                     };
                         row.Cells[colProductId.Name].Value = lsProdut;
                     }
-                    if (drivers != null)
+                    if (drivers?.Any() ?? false)
                     {
                         var driver = drivers?.FirstOrDefault(f => f.Id == x.EmployeeId);
                         var lsDriver = new List<DropDownItemModel>()
@@ -608,6 +608,7 @@ namespace QTech.Forms
             var invoice = new RepoInvoice();
 
             if (tabMain.SelectedTab.Equals(tabCompany_))
+
             {
                 invoice.PurchaseOrderNo = cboPurchaseOrderNo.Text;
                 invoice.InvoiceNo = Model.InvoiceNo = txtInvoiceNo.Text;
