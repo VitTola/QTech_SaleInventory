@@ -28,7 +28,7 @@ namespace QTech.Db.Logics
         {
             var purchaseOrder = base.UpdateAsync(entity);
 
-            if (purchaseOrder.POProductPrices.Any())
+            if (purchaseOrder.POProductPrices?.Any() ?? false)
             {
                 purchaseOrder.POProductPrices.ForEach(x => {
                     if (x.Id == 0)

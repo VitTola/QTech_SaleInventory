@@ -670,7 +670,7 @@ namespace QTech.Forms
         }
         private void lblRemove_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (dgv.SelectedRows.Count == 0 || dgv.SelectedRows[0] == null)
+            if (dgv.SelectedRows.Count == 0 || dgv.SelectedRows[0] == null || dgv.CurrentRow.Cells[colProductId.Name].Value == null)
             {
                 return;
             }

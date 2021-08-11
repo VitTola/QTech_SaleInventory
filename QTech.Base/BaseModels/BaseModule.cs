@@ -119,7 +119,7 @@ namespace QTech.Base.BaseModels
             },
             new MenuBar()
             {
-                Index = 2,
+                Index = 1,
                 Level = 2,
                 Key = AuthKey.Sale_Sale,
                 ParentKey = AuthKey.Sale,
@@ -131,7 +131,7 @@ namespace QTech.Base.BaseModels
             },
             new MenuBar()
             {
-                Index = 3,
+                Index = 2,
                 Level = 2,
                 Key = AuthKey.Sale_CreateInvoice,
                 ParentKey = AuthKey.Sale,
@@ -143,7 +143,7 @@ namespace QTech.Base.BaseModels
             },
             new MenuBar()
             {
-                Index = 1,
+                Index = 3,
                 Level = 2,
                 Key = AuthKey.Sale_PurchaseOrder,
                 ParentKey = AuthKey.Sale,
@@ -255,7 +255,7 @@ namespace QTech.Base.BaseModels
             },
             new MenuBar()
             {
-                Index = 1,
+                Index = 5,
                 Level = 1,
                 Key = AuthKey.Customer,
                 DisplayName = BaseResource.Customer,
@@ -277,7 +277,7 @@ namespace QTech.Base.BaseModels
             },
             new MenuBar()
             {
-                Index = 4,
+                Index = 1,
                 Level = 1,
                 Key = AuthKey.Sale,
                 DisplayName = BaseResource.Sales,
@@ -288,17 +288,18 @@ namespace QTech.Base.BaseModels
             },
             new MenuBar()
             {
-                Index = 5,
+                Index = 6,
                 Level = 1,
                 Key = AuthKey.Report,
-                DisplayName = BaseResource.Report_,
+                //DisplayName = BaseResource.Report_,
+                DisplayName = "របាយការណ៍   ",
                 Icon = BaseResource.CloseDateEntery_img,
                 Children = new List<MenuBar>(),
                 FormName = ""
             },
              new MenuBar()
             {
-                Index = 6,
+                Index = 4,
                 Level = 1,
                 Key = AuthKey.Setting,
                 DisplayName = BaseResource.Setting_Text,

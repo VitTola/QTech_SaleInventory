@@ -74,19 +74,20 @@ namespace QTech.Forms
                 dgv.CellContentClick += Dgv_CellContentClick;
                 txtPaidAmount.KeyPress += (s, e) => { txtPaidAmount.validCurrency(s, e); };
             }
-            this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View && Model.SaleType != SaleType.General);
+            this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View /*&& Model.SaleType != SaleType.General*/);
             txtTotal.ReadOnly = txtLeftAmount.ReadOnly = true;
             txtInvoiceNo.ReadOnly = true;
             dtpInvoicingDate.Enabled = false;
             txtPaidAmount.KeyUp += TxtPaidAmount_KeyUp;
             this.Load += FrmCreateInvoice_Load;
+            dgv.ReadOnly = true;
+            colMark_.ReadOnly = false;
         }
 
         private void FrmCreateInvoice_Load(object sender, EventArgs e)
         {
             if (Flag == GeneralProcess.Remove || Flag == GeneralProcess.View || Model.SaleType == SaleType.General) dgv.Enabled = false;
         }
-
         private void TxtPaidAmount_KeyUp(object sender, KeyEventArgs e)
         {
             CalculateTotal();
