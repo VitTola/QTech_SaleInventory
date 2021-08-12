@@ -29,9 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCreateInvoice));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.exLabel2 = new QTech.Component.ExLabel();
             this.exPanel1 = new QTech.Component.Components.ExPanel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
@@ -46,8 +49,13 @@
             this.panelGrid = new System.Windows.Forms.Panel();
             this.chkMarkAll_ = new System.Windows.Forms.CheckBox();
             this.pnlGrid = new System.Windows.Forms.Panel();
+            this.dgvView = new QTech.Component.ExDataGridView();
+            this.panelCenterButton = new System.Windows.Forms.Panel();
+            this.btnRigt_ = new QTech.Component.ExButtonLoading();
+            this.btnLeft_ = new System.Windows.Forms.Button();
             this.dgv = new QTech.Component.ExDataGridView();
-            this.flowLayoutPanelTopGrid = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.exLabel1 = new QTech.Component.ExLabel();
             this.dtpSearchDate = new QTech.Component.ExReportDatePicker();
             this.lblInvoicingDate = new QTech.Component.ExLabel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -65,6 +73,17 @@
             this.exLabel6 = new QTech.Component.ExLabel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dtpInvoicingDate = new QTech.Component.ExDateTimePicker();
+            this.colMark2_ = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colSaleId2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colId2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPurchaseOrderNo2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colInvoiceNo2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colToCompany2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colToSite2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSaleDate2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotal2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStatus2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIsPaid2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colMark_ = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colSaleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,8 +101,10 @@
             this.flowLayoutPanel2.SuspendLayout();
             this.panelGrid.SuspendLayout();
             this.pnlGrid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvView)).BeginInit();
+            this.panelCenterButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
-            this.flowLayoutPanelTopGrid.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -97,7 +118,7 @@
             this.container.Controls.Add(this.panel4);
             this.container.Controls.Add(this.panel3);
             this.container.Controls.Add(this.exPanel1);
-            this.container.Size = new System.Drawing.Size(1277, 668);
+            this.container.Size = new System.Drawing.Size(1496, 725);
             // 
             // exLabel2
             // 
@@ -107,9 +128,9 @@
             this.exLabel2.Location = new System.Drawing.Point(12, 57);
             this.exLabel2.Name = "exLabel2";
             this.exLabel2.Required = false;
-            this.exLabel2.Size = new System.Drawing.Size(114, 27);
+            this.exLabel2.Size = new System.Drawing.Size(146, 27);
             this.exLabel2.TabIndex = 11;
-            this.exLabel2.Text = "ជ្រើសរើសការលក់";
+            this.exLabel2.Text = "តារាងជ្រើសរើសការលក់";
             // 
             // exPanel1
             // 
@@ -117,11 +138,11 @@
             this.exPanel1.Controls.Add(this.flowLayoutPanel3);
             this.exPanel1.Controls.Add(this.flowLayoutPanel2);
             this.exPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.exPanel1.Location = new System.Drawing.Point(1, 631);
+            this.exPanel1.Location = new System.Drawing.Point(1, 688);
             this.exPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.exPanel1.Name = "exPanel1";
             this.exPanel1.Padding = new System.Windows.Forms.Padding(2);
-            this.exPanel1.Size = new System.Drawing.Size(1275, 36);
+            this.exPanel1.Size = new System.Drawing.Size(1494, 36);
             this.exPanel1.TabIndex = 17;
             // 
             // flowLayoutPanel3
@@ -164,7 +185,7 @@
             this.flowLayoutPanel2.Location = new System.Drawing.Point(2, 2);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1271, 32);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1490, 32);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // btnClose
@@ -172,7 +193,7 @@
             this.btnClose.BackColor = System.Drawing.Color.Ivory;
             this.btnClose.DefaultImage = null;
             this.btnClose.Executing = false;
-            this.btnClose.Location = new System.Drawing.Point(1194, 3);
+            this.btnClose.Location = new System.Drawing.Point(1413, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -188,7 +209,7 @@
             this.btnSave.BackColor = System.Drawing.Color.Ivory;
             this.btnSave.DefaultImage = null;
             this.btnSave.Executing = false;
-            this.btnSave.Location = new System.Drawing.Point(1115, 3);
+            this.btnSave.Location = new System.Drawing.Point(1334, 3);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -204,7 +225,7 @@
             this.lblInvoiceNo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblInvoiceNo.AutoSize = true;
             this.lblInvoiceNo.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvoiceNo.Location = new System.Drawing.Point(503, 23);
+            this.lblInvoiceNo.Location = new System.Drawing.Point(613, 23);
             this.lblInvoiceNo.Name = "lblInvoiceNo";
             this.lblInvoiceNo.Required = true;
             this.lblInvoiceNo.Size = new System.Drawing.Size(86, 27);
@@ -215,7 +236,7 @@
             // 
             this.txtInvoiceNo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtInvoiceNo.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInvoiceNo.Location = new System.Drawing.Point(622, 19);
+            this.txtInvoiceNo.Location = new System.Drawing.Point(732, 19);
             this.txtInvoiceNo.Margin = new System.Windows.Forms.Padding(2);
             this.txtInvoiceNo.Name = "txtInvoiceNo";
             this.txtInvoiceNo.ReadOnly = true;
@@ -259,18 +280,18 @@
             this.panelGrid.BackColor = System.Drawing.Color.Gray;
             this.panelGrid.Controls.Add(this.chkMarkAll_);
             this.panelGrid.Controls.Add(this.pnlGrid);
-            this.panelGrid.Controls.Add(this.flowLayoutPanelTopGrid);
+            this.panelGrid.Controls.Add(this.panel1);
             this.panelGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelGrid.Location = new System.Drawing.Point(1, 86);
             this.panelGrid.Name = "panelGrid";
-            this.panelGrid.Size = new System.Drawing.Size(1275, 432);
+            this.panelGrid.Size = new System.Drawing.Size(1494, 489);
             this.panelGrid.TabIndex = 30;
             // 
             // chkMarkAll_
             // 
             this.chkMarkAll_.AutoSize = true;
             this.chkMarkAll_.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.chkMarkAll_.Location = new System.Drawing.Point(14, 49);
+            this.chkMarkAll_.Location = new System.Drawing.Point(14, 44);
             this.chkMarkAll_.Name = "chkMarkAll_";
             this.chkMarkAll_.Size = new System.Drawing.Size(15, 14);
             this.chkMarkAll_.TabIndex = 15;
@@ -280,13 +301,117 @@
             // pnlGrid
             // 
             this.pnlGrid.BackColor = System.Drawing.Color.Gray;
+            this.pnlGrid.Controls.Add(this.dgvView);
+            this.pnlGrid.Controls.Add(this.panelCenterButton);
             this.pnlGrid.Controls.Add(this.dgv);
             this.pnlGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlGrid.Location = new System.Drawing.Point(0, 39);
+            this.pnlGrid.Location = new System.Drawing.Point(0, 34);
             this.pnlGrid.Name = "pnlGrid";
-            this.pnlGrid.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
-            this.pnlGrid.Size = new System.Drawing.Size(1275, 393);
+            this.pnlGrid.Padding = new System.Windows.Forms.Padding(0, 1, 0, 1);
+            this.pnlGrid.Size = new System.Drawing.Size(1494, 455);
             this.pnlGrid.TabIndex = 16;
+            // 
+            // dgvView
+            // 
+            this.dgvView.AllowEnterToNextCell = false;
+            this.dgvView.AllowRowNotFound = true;
+            this.dgvView.AllowRowNumber = false;
+            this.dgvView.AllowUserToAddRows = false;
+            this.dgvView.AllowUserToDeleteRows = false;
+            this.dgvView.AllowUserToResizeColumns = false;
+            this.dgvView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.dgvView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Ivory;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colMark2_,
+            this.colSaleId2,
+            this.colId2,
+            this.colPurchaseOrderNo2,
+            this.colInvoiceNo2,
+            this.colToCompany2,
+            this.colToSite2,
+            this.colSaleDate2,
+            this.colTotal2,
+            this.colStatus2,
+            this.colIsPaid2});
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvView.DefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvView.EnableHeadersVisualStyles = false;
+            this.dgvView.Executing = false;
+            this.dgvView.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            this.dgvView.Location = new System.Drawing.Point(0, 1);
+            this.dgvView.MultiSelect = false;
+            this.dgvView.Name = "dgvView";
+            this.dgvView.Paging = null;
+            this.dgvView.ReadOnly = true;
+            this.dgvView.RowHeadersVisible = false;
+            this.dgvView.RowTemplate.Height = 28;
+            this.dgvView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvView.Size = new System.Drawing.Size(790, 453);
+            this.dgvView.TabIndex = 3;
+            // 
+            // panelCenterButton
+            // 
+            this.panelCenterButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panelCenterButton.Controls.Add(this.btnRigt_);
+            this.panelCenterButton.Controls.Add(this.btnLeft_);
+            this.panelCenterButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelCenterButton.Location = new System.Drawing.Point(790, 1);
+            this.panelCenterButton.Name = "panelCenterButton";
+            this.panelCenterButton.Padding = new System.Windows.Forms.Padding(3);
+            this.panelCenterButton.Size = new System.Drawing.Size(44, 453);
+            this.panelCenterButton.TabIndex = 18;
+            // 
+            // btnRigt_
+            // 
+            this.btnRigt_.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRigt_.BackColor = System.Drawing.Color.Transparent;
+            this.btnRigt_.DefaultImage = null;
+            this.btnRigt_.Executing = false;
+            this.btnRigt_.FlatAppearance.BorderSize = 0;
+            this.btnRigt_.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRigt_.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            this.btnRigt_.Image = global::QTech.Properties.Resources.rightArrow_img;
+            this.btnRigt_.Location = new System.Drawing.Point(2, 199);
+            this.btnRigt_.Margin = new System.Windows.Forms.Padding(0, 3, 4, 4);
+            this.btnRigt_.Name = "btnRigt_";
+            this.btnRigt_.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
+            this.btnRigt_.ShortcutText = "";
+            this.btnRigt_.Size = new System.Drawing.Size(42, 29);
+            this.btnRigt_.TabIndex = 33;
+            this.btnRigt_.UseVisualStyleBackColor = false;
+            // 
+            // btnLeft_
+            // 
+            this.btnLeft_.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnLeft_.BackColor = System.Drawing.Color.Transparent;
+            this.btnLeft_.FlatAppearance.BorderSize = 0;
+            this.btnLeft_.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLeft_.Image = global::QTech.Properties.Resources.leftArrow_img1;
+            this.btnLeft_.Location = new System.Drawing.Point(2, 234);
+            this.btnLeft_.Name = "btnLeft_";
+            this.btnLeft_.Size = new System.Drawing.Size(42, 29);
+            this.btnLeft_.TabIndex = 0;
+            this.btnLeft_.UseVisualStyleBackColor = false;
             // 
             // dgv
             // 
@@ -297,19 +422,19 @@
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AllowUserToResizeColumns = false;
             this.dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dgv.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Ivory;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colMark_,
@@ -323,19 +448,19 @@
             this.colTotal,
             this.colStatus,
             this.colIsPaid});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle12;
+            this.dgv.Dock = System.Windows.Forms.DockStyle.Right;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
             this.dgv.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            this.dgv.Location = new System.Drawing.Point(0, 0);
+            this.dgv.Location = new System.Drawing.Point(834, 1);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
             this.dgv.Paging = null;
@@ -343,25 +468,38 @@
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1275, 392);
+            this.dgv.Size = new System.Drawing.Size(660, 453);
             this.dgv.TabIndex = 2;
             // 
-            // flowLayoutPanelTopGrid
+            // panel1
             // 
-            this.flowLayoutPanelTopGrid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.flowLayoutPanelTopGrid.Controls.Add(this.dtpSearchDate);
-            this.flowLayoutPanelTopGrid.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanelTopGrid.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanelTopGrid.Name = "flowLayoutPanelTopGrid";
-            this.flowLayoutPanelTopGrid.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.flowLayoutPanelTopGrid.Size = new System.Drawing.Size(1275, 39);
-            this.flowLayoutPanelTopGrid.TabIndex = 0;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.panel1.Controls.Add(this.exLabel1);
+            this.panel1.Controls.Add(this.dtpSearchDate);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1494, 34);
+            this.panel1.TabIndex = 17;
+            // 
+            // exLabel1
+            // 
+            this.exLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.exLabel1.AutoSize = true;
+            this.exLabel1.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.exLabel1.Location = new System.Drawing.Point(834, 8);
+            this.exLabel1.Name = "exLabel1";
+            this.exLabel1.Required = false;
+            this.exLabel1.Size = new System.Drawing.Size(126, 27);
+            this.exLabel1.TabIndex = 33;
+            this.exLabel1.Text = "តារាងបានជ្រើសរើស";
             // 
             // dtpSearchDate
             // 
             this.dtpSearchDate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.dtpSearchDate.FormattingEnabled = true;
-            this.dtpSearchDate.Location = new System.Drawing.Point(10, 6);
+            this.dtpSearchDate.Location = new System.Drawing.Point(18, 3);
             this.dtpSearchDate.Margin = new System.Windows.Forms.Padding(6, 6, 2, 4);
             this.dtpSearchDate.Name = "dtpSearchDate";
             this.dtpSearchDate.Size = new System.Drawing.Size(200, 27);
@@ -372,7 +510,7 @@
             this.lblInvoicingDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblInvoicingDate.AutoSize = true;
             this.lblInvoicingDate.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvoicingDate.Location = new System.Drawing.Point(946, 23);
+            this.lblInvoicingDate.Location = new System.Drawing.Point(1165, 23);
             this.lblInvoicingDate.Name = "lblInvoicingDate";
             this.lblInvoicingDate.Required = true;
             this.lblInvoicingDate.Size = new System.Drawing.Size(86, 27);
@@ -389,10 +527,10 @@
             this.panel3.Controls.Add(this.exLabel5);
             this.panel3.Controls.Add(this.exLabel6);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(1, 518);
+            this.panel3.Location = new System.Drawing.Point(1, 575);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1275, 113);
+            this.panel3.Size = new System.Drawing.Size(1494, 113);
             this.panel3.TabIndex = 34;
             // 
             // panel6
@@ -403,7 +541,7 @@
             this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel6.Controls.Add(this.txtLeftAmount);
             this.panel6.Controls.Add(this.label5);
-            this.panel6.Location = new System.Drawing.Point(1059, 74);
+            this.panel6.Location = new System.Drawing.Point(1278, 74);
             this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -442,7 +580,7 @@
             this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel5.Controls.Add(this.txtTotal);
             this.panel5.Controls.Add(this.label4);
-            this.panel5.Location = new System.Drawing.Point(1059, 12);
+            this.panel5.Location = new System.Drawing.Point(1278, 12);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -481,7 +619,7 @@
             this.panel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel7.Controls.Add(this.txtPaidAmount);
             this.panel7.Controls.Add(this.label3);
-            this.panel7.Location = new System.Drawing.Point(1059, 43);
+            this.panel7.Location = new System.Drawing.Point(1278, 43);
             this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -517,7 +655,7 @@
             this.exLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exLabel4.AutoSize = true;
             this.exLabel4.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exLabel4.Location = new System.Drawing.Point(898, 12);
+            this.exLabel4.Location = new System.Drawing.Point(1117, 12);
             this.exLabel4.Name = "exLabel4";
             this.exLabel4.Required = false;
             this.exLabel4.Size = new System.Drawing.Size(89, 27);
@@ -529,7 +667,7 @@
             this.exLabel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exLabel5.AutoSize = true;
             this.exLabel5.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exLabel5.Location = new System.Drawing.Point(898, 74);
+            this.exLabel5.Location = new System.Drawing.Point(1117, 74);
             this.exLabel5.Name = "exLabel5";
             this.exLabel5.Required = false;
             this.exLabel5.Size = new System.Drawing.Size(66, 27);
@@ -541,7 +679,7 @@
             this.exLabel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exLabel6.AutoSize = true;
             this.exLabel6.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exLabel6.Location = new System.Drawing.Point(898, 44);
+            this.exLabel6.Location = new System.Drawing.Point(1117, 44);
             this.exLabel6.Name = "exLabel6";
             this.exLabel6.Required = false;
             this.exLabel6.Size = new System.Drawing.Size(61, 27);
@@ -561,18 +699,113 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(1, 1);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1275, 85);
+            this.panel4.Size = new System.Drawing.Size(1494, 85);
             this.panel4.TabIndex = 35;
             // 
             // dtpInvoicingDate
             // 
             this.dtpInvoicingDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpInvoicingDate.Location = new System.Drawing.Point(1059, 23);
+            this.dtpInvoicingDate.Location = new System.Drawing.Point(1278, 23);
             this.dtpInvoicingDate.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
             this.dtpInvoicingDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.dtpInvoicingDate.Name = "dtpInvoicingDate";
             this.dtpInvoicingDate.Size = new System.Drawing.Size(200, 27);
             this.dtpInvoicingDate.TabIndex = 32;
+            // 
+            // colMark2_
+            // 
+            this.colMark2_.DataPropertyName = "Mark_";
+            this.colMark2_.Frozen = true;
+            this.colMark2_.HeaderText = "";
+            this.colMark2_.Name = "colMark2_";
+            this.colMark2_.ReadOnly = true;
+            this.colMark2_.Width = 40;
+            // 
+            // colSaleId2
+            // 
+            this.colSaleId2.HeaderText = "SaleId";
+            this.colSaleId2.Name = "colSaleId2";
+            this.colSaleId2.ReadOnly = true;
+            this.colSaleId2.Visible = false;
+            // 
+            // colId2
+            // 
+            this.colId2.DataPropertyName = "Id";
+            this.colId2.HeaderText = "Id";
+            this.colId2.Name = "colId2";
+            this.colId2.ReadOnly = true;
+            this.colId2.Visible = false;
+            this.colId2.Width = 45;
+            // 
+            // colPurchaseOrderNo2
+            // 
+            this.colPurchaseOrderNo2.DataPropertyName = "PurchaseOrderNo";
+            this.colPurchaseOrderNo2.FillWeight = 40F;
+            this.colPurchaseOrderNo2.HeaderText = "លេខបញ្ជាទិញ";
+            this.colPurchaseOrderNo2.MinimumWidth = 100;
+            this.colPurchaseOrderNo2.Name = "colPurchaseOrderNo2";
+            this.colPurchaseOrderNo2.ReadOnly = true;
+            this.colPurchaseOrderNo2.Width = 150;
+            // 
+            // colInvoiceNo2
+            // 
+            this.colInvoiceNo2.DataPropertyName = "InvoiceNo";
+            this.colInvoiceNo2.FillWeight = 40F;
+            this.colInvoiceNo2.HeaderText = "លេខវិក្កយបត្រ";
+            this.colInvoiceNo2.MinimumWidth = 100;
+            this.colInvoiceNo2.Name = "colInvoiceNo2";
+            this.colInvoiceNo2.ReadOnly = true;
+            // 
+            // colToCompany2
+            // 
+            this.colToCompany2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colToCompany2.DataPropertyName = "ToCompany";
+            this.colToCompany2.FillWeight = 60F;
+            this.colToCompany2.HeaderText = "ទៅកាន់ក្រុមហ៊ុន";
+            this.colToCompany2.MinimumWidth = 150;
+            this.colToCompany2.Name = "colToCompany2";
+            this.colToCompany2.ReadOnly = true;
+            // 
+            // colToSite2
+            // 
+            this.colToSite2.DataPropertyName = "Site";
+            this.colToSite2.HeaderText = "ទៅកាន់គំរោង";
+            this.colToSite2.MinimumWidth = 150;
+            this.colToSite2.Name = "colToSite2";
+            this.colToSite2.ReadOnly = true;
+            this.colToSite2.Width = 150;
+            // 
+            // colSaleDate2
+            // 
+            this.colSaleDate2.DataPropertyName = "SaleDate";
+            this.colSaleDate2.HeaderText = "កាលបរិច្ឆេទលក់";
+            this.colSaleDate2.MinimumWidth = 100;
+            this.colSaleDate2.Name = "colSaleDate2";
+            this.colSaleDate2.ReadOnly = true;
+            this.colSaleDate2.Width = 150;
+            // 
+            // colTotal2
+            // 
+            this.colTotal2.HeaderText = "សរុបទឹកប្រាក់";
+            this.colTotal2.MinimumWidth = 60;
+            this.colTotal2.Name = "colTotal2";
+            this.colTotal2.ReadOnly = true;
+            // 
+            // colStatus2
+            // 
+            this.colStatus2.DataPropertyName = "Status";
+            this.colStatus2.HeaderText = "ស្ថានភាព";
+            this.colStatus2.MinimumWidth = 100;
+            this.colStatus2.Name = "colStatus2";
+            this.colStatus2.ReadOnly = true;
+            this.colStatus2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // colIsPaid2
+            // 
+            this.colIsPaid2.HeaderText = "IsPaid";
+            this.colIsPaid2.Name = "colIsPaid2";
+            this.colIsPaid2.ReadOnly = true;
+            this.colIsPaid2.Visible = false;
             // 
             // colMark_
             // 
@@ -580,6 +813,7 @@
             this.colMark_.HeaderText = "";
             this.colMark_.Name = "colMark_";
             this.colMark_.ReadOnly = true;
+            this.colMark_.Visible = false;
             this.colMark_.Width = 40;
             // 
             // colSaleId
@@ -603,10 +837,10 @@
             this.colPurchaseOrderNo.DataPropertyName = "PurchaseOrderNo";
             this.colPurchaseOrderNo.FillWeight = 40F;
             this.colPurchaseOrderNo.HeaderText = "លេខបញ្ជាទិញ";
-            this.colPurchaseOrderNo.MinimumWidth = 200;
+            this.colPurchaseOrderNo.MinimumWidth = 150;
             this.colPurchaseOrderNo.Name = "colPurchaseOrderNo";
             this.colPurchaseOrderNo.ReadOnly = true;
-            this.colPurchaseOrderNo.Width = 250;
+            this.colPurchaseOrderNo.Width = 150;
             // 
             // colInvoiceNo
             // 
@@ -616,14 +850,15 @@
             this.colInvoiceNo.MinimumWidth = 100;
             this.colInvoiceNo.Name = "colInvoiceNo";
             this.colInvoiceNo.ReadOnly = true;
-            this.colInvoiceNo.Width = 200;
+            this.colInvoiceNo.Width = 150;
             // 
             // colToCompany
             // 
             this.colToCompany.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colToCompany.DataPropertyName = "ToCompany";
+            this.colToCompany.DataPropertyName = "Company";
             this.colToCompany.FillWeight = 60F;
             this.colToCompany.HeaderText = "ទៅកាន់ក្រុមហ៊ុន";
+            this.colToCompany.MinimumWidth = 150;
             this.colToCompany.Name = "colToCompany";
             this.colToCompany.ReadOnly = true;
             // 
@@ -631,6 +866,7 @@
             // 
             this.colToSite.DataPropertyName = "Site";
             this.colToSite.HeaderText = "ទៅកាន់គំរោង";
+            this.colToSite.MinimumWidth = 150;
             this.colToSite.Name = "colToSite";
             this.colToSite.ReadOnly = true;
             this.colToSite.Width = 200;
@@ -639,6 +875,7 @@
             // 
             this.colSaleDate.DataPropertyName = "SaleDate";
             this.colSaleDate.HeaderText = "កាលបរិច្ឆេទលក់";
+            this.colSaleDate.MinimumWidth = 100;
             this.colSaleDate.Name = "colSaleDate";
             this.colSaleDate.ReadOnly = true;
             this.colSaleDate.Width = 150;
@@ -646,14 +883,16 @@
             // colTotal
             // 
             this.colTotal.HeaderText = "សរុបទឹកប្រាក់";
+            this.colTotal.MinimumWidth = 60;
             this.colTotal.Name = "colTotal";
             this.colTotal.ReadOnly = true;
-            this.colTotal.Width = 200;
+            this.colTotal.Width = 150;
             // 
             // colStatus
             // 
             this.colStatus.DataPropertyName = "Status";
             this.colStatus.HeaderText = "ស្ថានភាព";
+            this.colStatus.MinimumWidth = 100;
             this.colStatus.Name = "colStatus";
             this.colStatus.ReadOnly = true;
             this.colStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -669,7 +908,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1277, 688);
+            this.ClientSize = new System.Drawing.Size(1496, 745);
             this.Font = new System.Drawing.Font("Khmer OS System", 8.25F);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "frmCreateInvoice";
@@ -682,8 +921,11 @@
             this.panelGrid.ResumeLayout(false);
             this.panelGrid.PerformLayout();
             this.pnlGrid.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvView)).EndInit();
+            this.panelCenterButton.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
-            this.flowLayoutPanelTopGrid.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel6.ResumeLayout(false);
@@ -711,7 +953,6 @@
         private Component.ExSearchCombo cboCustomer;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.Panel panelGrid;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelTopGrid;
         private Component.ExDataGridView dgv;
         private System.Windows.Forms.CheckBox chkMarkAll_;
         private Component.ExLabel lblInvoicingDate;
@@ -734,6 +975,23 @@
         private Component.ExLabel exLabel5;
         private Component.ExLabel exLabel6;
         private System.Windows.Forms.Panel pnlGrid;
+        private Component.ExDataGridView dgvView;
+        private System.Windows.Forms.Panel panelCenterButton;
+        private Component.ExButtonLoading btnRigt_;
+        private System.Windows.Forms.Button btnLeft_;
+        private System.Windows.Forms.Panel panel1;
+        private Component.ExLabel exLabel1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colMark2_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSaleId2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colId2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPurchaseOrderNo2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colInvoiceNo2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colToCompany2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colToSite2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSaleDate2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTotal2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colStatus2;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colIsPaid2;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colMark_;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSaleId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;

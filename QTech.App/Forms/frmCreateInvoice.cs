@@ -73,6 +73,8 @@ namespace QTech.Forms
                 dtpSearchDate.SelectedIndexChanged += dtpSearchDate_SelectedIndexChanged;
                 dgv.CellContentClick += Dgv_CellContentClick;
                 txtPaidAmount.KeyPress += (s, e) => { txtPaidAmount.validCurrency(s, e); };
+                btnLeft_.Click += BtnLeft_Click;
+                btnRigt_.Click += BtnRigt_Click;
             }
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View && Model.SaleType != SaleType.General);
             txtPaidAmount.ReadOnly = Flag == GeneralProcess.Remove && Flag == GeneralProcess.View;
@@ -83,8 +85,37 @@ namespace QTech.Forms
             this.Load += FrmCreateInvoice_Load;
             dgv.ReadOnly = true;
             colMark_.ReadOnly = false;
+            cboCustomer.Enabled = Flag == GeneralProcess.Add;
         }
-
+        private void BtnRigt_Click(object sender, EventArgs e)
+        {
+            if (dgvView.RowCount == 0) return;
+            dgvView.EndEdit();
+            var Rows = dgvView.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow && (bool)(x.Cells[colMark2_.Name].Value))?.ToList();
+            foreach (DataGridViewRow row in Rows)
+            {
+                var r = newRow(dgv);
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    r.Cells[cell.ColumnIndex].Value = cell.Value;
+                }
+            }
+            Rows.ForEach(r => dgvView.Rows.Remove(r));
+            CalculateTotal();
+        }
+        private void BtnLeft_Click(object sender, EventArgs e)
+        {
+            if (dgv.SelectedRows.Count == 0) return;
+            dgv.EndEdit();
+            var row = dgv.CurrentRow;
+            int index = dgvView.Rows.Add(row.Clone() as DataGridViewRow);
+            foreach (DataGridViewCell o in row.Cells)
+            {
+                dgvView.Rows[index].Cells[o.ColumnIndex].Value = o.Value;
+            }
+            dgv.Rows.Remove(dgv.CurrentRow);
+            CalculateTotal();
+        }
         private void FrmCreateInvoice_Load(object sender, EventArgs e)
         {
             if (Flag == GeneralProcess.Remove || Flag == GeneralProcess.View || Model.SaleType == SaleType.General) dgv.Enabled = false;
@@ -148,16 +179,66 @@ namespace QTech.Forms
                 _sites = SiteLogic.Instance.GetSiteByIds(SitesIds);
                 return result;
             });
-            DataGridFillValue(sales, customer, _sites);
-           
+            FillDgvView(sales, customer, _sites);
+
         }
-        private void DataGridFillValue(List<Sale> sales, Customer customer = null, List<Site> _sites = null)
+        private void FillDgvView(List<Sale> sales, Customer customer = null, List<Site> _sites = null)
+        {
+            if (sales?.Any() ?? false)
+            {
+                dgvView.Rows.Clear();
+                sales.ForEach(x =>
+                {
+                    var row = newRow(dgvView);
+                    row.Cells[colId2.Name].Value = Model.InvoiceDetails?.FirstOrDefault(s => s.SaleId == x.Id)?.Id ?? 0;
+                    row.Cells[colSaleId2.Name].Value = x.Id;
+                    row.Cells[colPurchaseOrderNo2.Name].Value = x.PurchaseOrderNo;
+                    row.Cells[colInvoiceNo2.Name].Value = x.InvoiceNo;
+                    row.Cells[colToCompany2.Name].Value = customer?.Name;
+                    row.Cells[colToSite2.Name].Value = _sites?.FirstOrDefault(s => s.Id == x.SiteId)?.Name;
+                    row.Cells[colTotal2.Name].Value = x.Total;
+                    row.Cells[colSaleDate2.Name].Value = x.SaleDate.ToString("dd-MMM-yyyy hh:mm");
+                    row.Cells[colIsPaid2.Name].Value = x.PayStatus;
+                    if (Flag == GeneralProcess.Add)
+                    {
+                        row.Cells[colMark2_.Name].Value = false;
+                    }
+                    else
+                    {
+                        chkMarkAll_.Checked = true;
+                        row.Cells[colMark2_.Name].Value = true;
+                    }
+
+                    var cell = row.Cells[colStatus2.Name];
+                    if (x.PayStatus == PayStatus.Paid)
+                    {
+                        row.Cells[colStatus2.Name].Value = BaseResource.IsPaid;
+                        cell.Style.ForeColor = Color.Red;
+                    }
+                    else if (x.PayStatus == PayStatus.WaitPayment)
+                    {
+                        row.Cells[colStatus2.Name].Value = BaseResource.PayStatus_WaitPayment;
+                        cell.Style.ForeColor = Color.Orange;
+                    }
+                    else
+                    {
+                        row.Cells[colStatus2.Name].Value = BaseResource.NotYetPaid;
+                        cell.Style.ForeColor = Color.Green;
+                    }
+
+                    AllSales++;
+                });
+                dgvView.Sort(dgvView.Columns[colSaleDate2.Name], ListSortDirection.Descending);
+            }
+            //CalculateTotal();
+        }
+        private void FillDgv(List<Sale> sales, Customer customer = null, List<Site> _sites = null)
         {
             if (sales?.Any() ?? false)
             {
                 sales.ForEach(x =>
                 {
-                    var row = newRow(false);
+                    var row = newRow(dgv);
                     row.Cells[colId.Name].Value = Model.InvoiceDetails?.FirstOrDefault(s => s.SaleId == x.Id)?.Id ?? 0;
                     row.Cells[colSaleId.Name].Value = x.Id;
                     row.Cells[colPurchaseOrderNo.Name].Value = x.PurchaseOrderNo;
@@ -198,7 +279,7 @@ namespace QTech.Forms
                 });
                 dgv.Sort(dgv.Columns[colSaleDate.Name], ListSortDirection.Descending);
             }
-            CalculateTotal();
+            //CalculateTotal();
         }
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
@@ -211,10 +292,7 @@ namespace QTech.Forms
             var Rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
             foreach (DataGridViewRow row in Rows)
             {
-                if ((bool)row.Cells[colMark_.Name].Value)
-                {
-                    Total = Total + decimal.Parse(row.Cells[colTotal.Name].Value?.ToString() ?? "0");
-                }
+                Total = Total + decimal.Parse(row.Cells[colTotal.Name].Value?.ToString() ?? "0");
             }
 
             var paidAmount = !string.IsNullOrEmpty(txtPaidAmount.Text) ? decimal.Parse(txtPaidAmount.Text) : 0;
@@ -229,14 +307,9 @@ namespace QTech.Forms
                 _isValid = false;
             }
 
-            var Rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
-            foreach (DataGridViewRow row in Rows)
+            if (dgv.RowCount > 0)
             {
-                if ((bool)row.Cells[colMark_.Name]?.Value)
-                {
-                    _isValid = false;
-                    break;
-                }
+                _isValid = false;
             }
             return _isValid;
         }
@@ -264,7 +337,7 @@ namespace QTech.Forms
             }
             else
             {
-                cboCustomer.SetValue(new Customer { Name = Model.CustomerName});
+                cboCustomer.SetValue(new Customer { Name = Model.CustomerName });
                 cboCustomer.Enabled = false;
             }
             txtInvoiceNo.Text = Model.InvoiceNo;
@@ -272,17 +345,16 @@ namespace QTech.Forms
             txtTotal.Text = Model.TotalAmount.ToString();
             txtPaidAmount.Text = Model.PaidAmount.ToString();
             txtLeftAmount.Text = Model.LeftAmount.ToString();
-            DataGridFillValue(sales, customer, sites);
+            FillDgv(sales, customer, sites);
             CalculateTotal();
         }
-        private DataGridViewRow newRow(bool isFocus = false)
+        private DataGridViewRow newRow(ExDataGridView grid, bool isFocus = false)
         {
-            var row = dgv.Rows[dgv.Rows.Add()];
-            row.Cells[colId.Name].Value = 0;
-            row.Cells[colId.Name].Value = 0;
+            var row = grid.Rows[grid.Rows.Add()];
+            //row.Cells[colId.Name].Value = 0;
             if (isFocus)
             {
-                dgv.Focus();
+                grid.Focus();
             }
             return row;
         }
@@ -336,7 +408,7 @@ namespace QTech.Forms
             {
                 Model.InvoiceDetails = new List<InvoiceDetail>();
             }
-            
+
             if (Model.SaleType == SaleType.Company)
             {
                 var customer = cboCustomer.SelectedObject?.ItemObject as Customer;
@@ -367,34 +439,30 @@ namespace QTech.Forms
             dgv.EndEdit();
 
             //Set Existing active to false and if still chect in grid set it again to true
-            Model.InvoiceDetails.ForEach(x=>x.Active=false);
+            Model.InvoiceDetails.ForEach(x => x.Active = false);
 
             var Rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
             foreach (DataGridViewRow row in Rows)
             {
                 InvoiceDetail invoiceDt = new InvoiceDetail();
-                var _isChecked = (bool)(row.Cells[colMark_.Name].Value ?? false);
-                if (_isChecked)
-                {
-                    invoiceDt.SaleId = int.Parse(row.Cells[colSaleId.Name].Value?.ToString() ?? "0");
-                    invoiceDt.Id = int.Parse(row.Cells[colId.Name].Value?.ToString() ?? "0");
+                invoiceDt.SaleId = int.Parse(row.Cells[colSaleId.Name].Value?.ToString() ?? "0");
+                invoiceDt.Id = int.Parse(row.Cells[colId.Name].Value?.ToString() ?? "0");
 
-                    if (!Model.InvoiceDetails.Any(x=>x.Id == invoiceDt.Id))
+                if (!Model.InvoiceDetails.Any(x => x.Id == invoiceDt.Id))
+                {
+                    invoiceDt.InvoiceId = Model.Id;
+                    Model.InvoiceDetails.Add(invoiceDt);
+                }
+                else
+                {
+                    Model.InvoiceDetails.ForEach(x =>
                     {
-                        invoiceDt.InvoiceId = Model.Id;
-                        Model.InvoiceDetails.Add(invoiceDt);
-                    }
-                    else
-                    {
-                        Model.InvoiceDetails.ForEach(x => {
-                            if (x.SaleId == invoiceDt.SaleId)
-                            {
-                                Model.InvoiceDetails[Model.InvoiceDetails.IndexOf(x)].Active = true;
-                            }
-                        });
-                        
-                    }
-                    
+                        if (x.SaleId == invoiceDt.SaleId)
+                        {
+                            Model.InvoiceDetails[Model.InvoiceDetails.IndexOf(x)].Active = true;
+                        }
+                    });
+
                 }
             }
         }
@@ -475,14 +543,13 @@ namespace QTech.Forms
         }
         private void chkMarkAll__Click(object sender, EventArgs e)
         {
-            var Rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
+            var Rows = dgvView.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
             foreach (DataGridViewRow row in Rows)
             {
-                row.Cells[colMark_.Name].Value = chkMarkAll_.Checked;
+                row.Cells[colMark2_.Name].Value = chkMarkAll_.Checked;
             }
             CheckingAmount = chkMarkAll_.Checked ? AllSales : 0;
-
-            CalculateTotal();
+            
         }
     }
 }
