@@ -1,4 +1,5 @@
-﻿using FastMember;
+﻿using EasyServer.Domain.Helpers;
+using FastMember;
 using QTech.Base;
 using QTech.Base.BaseReport;
 using QTech.Base.Enums;
@@ -159,7 +160,6 @@ namespace QTech.Forms
                 return;
             }
             AllSales = 0;
-            dgv.Rows.Clear();
             var customer = cboCustomer.SelectedObject.ItemObject as Customer;
             if (customer != null)
             {
@@ -179,8 +179,8 @@ namespace QTech.Forms
                 _sites = SiteLogic.Instance.GetSiteByIds(SitesIds);
                 return result;
             });
-            FillDgvView(sales, customer, _sites);
 
+            FillDgvView(sales, customer, _sites);
         }
         private void FillDgvView(List<Sale> sales, Customer customer = null, List<Site> _sites = null)
         {
@@ -292,7 +292,7 @@ namespace QTech.Forms
             var Rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
             foreach (DataGridViewRow row in Rows)
             {
-                Total = Total + decimal.Parse(row.Cells[colTotal.Name].Value?.ToString() ?? "0");
+                Total = Total + Parse.ToDecimal(row.Cells[colTotal.Name].Value?.ToString() ?? "0");
             }
 
             var paidAmount = !string.IsNullOrEmpty(txtPaidAmount.Text) ? decimal.Parse(txtPaidAmount.Text) : 0;

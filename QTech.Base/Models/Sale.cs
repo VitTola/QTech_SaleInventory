@@ -28,6 +28,7 @@ namespace QTech.Base
         public string CustomerName { get; set; }
         public string Phone { get; set; }
         public decimal Profit { get; set; }
+        public bool IsInvoiced { get; set; } = false;
 
     }
 
@@ -43,6 +44,7 @@ namespace QTech.Base
         public decimal Expense { get; set; }
         public decimal ImportTotalAmount { get; set; }
         public decimal Profit { get; set; }
+        public bool IsBilled { get; set; } = false;
 
     }
 }

@@ -229,6 +229,10 @@
     <Compile Include="Migrations\202107270654227_v4.1.designer.cs">
       <DependentUpon>202107270654227_v4.1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108130632374_v4.2.cs" />
+    <Compile Include="Migrations\202108130632374_v4.2.designer.cs">
+      <DependentUpon>202108130632374_v4.2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QTechDbContext.cs" />
@@ -335,6 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107270654227_v4.1.resx">
       <DependentUpon>202107270654227_v4.1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108130632374_v4.2.resx">
+      <DependentUpon>202108130632374_v4.2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

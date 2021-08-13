@@ -252,22 +252,6 @@ namespace QTech.Forms
                 AllSales++;
             });
         }
-        private void GridviewBalancer()
-        {
-            //if (dgv.Rows.Count <1 || dgvResult.Rows.Count < 1)
-            //{
-            //    return;
-            //}
-            //dgv.EndEdit();
-            //dgvResult.EndEdit();
-            //var dgvResultCellIds = dgv.Rows<
-            //var Rows = dgvResult.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
-            //foreach (DataGridViewRow row in Rows)
-            //{
-            //    row.DefaultCellStyle.ForeColor = Color.Red;
-            //    row.Cells[colMark_.Name].ReadOnly = true;
-            //}
-        }
         private DataGridViewRow newRow(DataGridView dataGridView, bool isFocus = false)
         {
             var row = dataGridView.Rows[dataGridView.Rows.Add()];
