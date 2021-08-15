@@ -36,7 +36,8 @@ namespace QTech.Forms
             dgv.RowTemplate.Height = 28;
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgv.BackgroundColor = System.Drawing.Color.White;
-            
+            dgv.SetColumnHeaderDefaultStyle();
+
             txtSearch.RegisterEnglishInput();
             txtSearch.RegisterKeyArrowDown(dgv);
             txtSearch.QuickSearch += txtSearch_QuickSearch;

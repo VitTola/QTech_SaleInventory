@@ -2197,6 +2197,15 @@ namespace QTech.Component
             txt.MouseLeave += (sender, e) => { txt.Text = leftValue; };
         }
 
+        //Set DataGridView ColumnHeaderStyle
+        public static void SetColumnHeaderDefaultStyle(this DataGridView dgv)
+        {
+            dgv.ColumnHeadersDefaultCellStyle = new DataGridViewCellStyle
+            {
+                BackColor = Color.Ivory,
+                SelectionBackColor = Color.Ivory
+            };
+        }
 
     }
 

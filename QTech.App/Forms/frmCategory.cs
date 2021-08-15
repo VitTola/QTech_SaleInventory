@@ -45,6 +45,7 @@ namespace QTech.Forms
             this.MaximizeBox = false;
             this.Text = Flag.GetTextDialog(Base.Properties.Resources.Categorys);
             txtNote.RegisterPrimaryInput();
+
         }
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {

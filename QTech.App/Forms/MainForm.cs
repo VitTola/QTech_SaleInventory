@@ -30,9 +30,10 @@ namespace QTech.Forms
 
         public MainForm()
         {
-            //ShareValue.permissions = PermissionLogic.Instance.SearchAsync(new PermissionSearch());
+            ShareValue.permissions = PermissionLogic.Instance.SearchAsync(new PermissionSearch());
             InitializeComponent();
             InitEvent();
+
         }
         private void InitEvent()
         {
@@ -41,19 +42,31 @@ namespace QTech.Forms
 
             this.Text = QTech.Base.Properties.Resources.Company;
 
-            container.SuspendLayout();
-            topPanel.SuspendLayout();
-            pBottom.SuspendLayout();
-            pBranch.SuspendLayout();
-            mainPanel.SuspendLayout();
-            graPanel2.SuspendLayout();
-            graPanel3.SuspendLayout();
-            pContainBottom.SuspendLayout();
-            SuspendLayout();
-            pSecondMenue1.SuspendLayout();
-            pSecondMenue2.SuspendLayout();
+            //container.SuspendLayout();
+            //topPanel.SuspendLayout();
+            //pBottom.SuspendLayout();
+            //pBranch.SuspendLayout();
+            //mainPanel.SuspendLayout();
+            //graPanel2.SuspendLayout();
+            //graPanel3.SuspendLayout();
+            //pContainBottom.SuspendLayout();
+            ////SuspendLayout();
+            //pSecondMenue1.SuspendLayout();
+            //pSecondMenue2.SuspendLayout();
 
             ApplySetting();
+           
+
+            ResourceHelper.ApplyResource(this);
+            this.InitForm();
+            this.OptimizeLoadUI();
+            
+            this.FormClosed += (s, e) => Application.Exit();
+           // this.Shown += MainForm_Shown;
+        }
+
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
             pSecondMenue1.ResumeLayout(false);
             pSecondMenue2.ResumeLayout(false);
             container.ResumeLayout(false);
@@ -66,17 +79,9 @@ namespace QTech.Forms
             graPanel2.ResumeLayout(false);
             graPanel3.ResumeLayout(false);
             pContainBottom.ResumeLayout(false);
-            ResumeLayout(false);
-
-            ResourceHelper.ApplyResource(this);
-            this.InitForm();
-            this.OptimizeLoadUI();
-            //pSecondMenue2.Hide();
-            //pSecondMenue1.Hide();
-            
-            this.FormClosed += (s, e) => Application.Exit();
-
+           // ResumeLayout(false);
         }
+
         private void ApplySetting()
         {
             txtUserName.Text = ShareValue.User?.Name ?? string.Empty;
@@ -296,5 +301,14 @@ namespace QTech.Forms
         {
             Application.Exit();
         }
+        //protected override CreateParams CreateParams
+        //{
+        //    get
+        //    {
+        //        CreateParams cp = base.CreateParams;
+        //        cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+        //        return cp;
+        //    }
+        //}
     }
 }

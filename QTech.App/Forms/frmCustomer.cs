@@ -55,7 +55,8 @@ namespace QTech.Forms
             dgv.RegisterEnglishInputColumns(colPhone);
             dgv.RegisterEnglishInputColumns(colPhone);
             dgv.RegisterPrimaryInputColumns(colName);
-            
+            dgv.SetColumnHeaderDefaultStyle();
+
             tabMain.SelectedIndexChanged += TabMain_SelectedIndexChanged;
             dgvGoods.EditingControlShowing += DgvGoods_EditingControlShowing;
             dgvGoods.RegisterEnglishInputColumns(colSalePrice);

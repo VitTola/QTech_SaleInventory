@@ -18,7 +18,7 @@ namespace QTech.Forms
         public ProductPage()
         {
             InitializeComponent();
-
+            dgv.SetColumnHeaderDefaultStyle();
         }
 
         public async void AddNew()

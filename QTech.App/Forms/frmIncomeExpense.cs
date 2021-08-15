@@ -48,6 +48,7 @@ namespace QTech.Forms
             txtAmount.KeyPress += (sender, e) => txtAmount.validCurrency(sender, e);
             txtMiscNo.ReadOnly = true;
             txtMiscNo.RegisterKeyEnterNextControlWith(cboMiscType, txtAmount, txtNote);
+
         }
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {

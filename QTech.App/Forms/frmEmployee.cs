@@ -51,6 +51,8 @@ namespace QTech.Forms
             txtName.RegisterPrimaryInputWith(cboPosition,txtNote,txtName, txtPayNote);
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
             dgv.ReadOnly = true;
+            dgv.SetColumnHeaderDefaultStyle();
+
             if (Flag == GeneralProcess.Add)
             {
                 tabMain.Controls.Remove(tabGeneralTotal);

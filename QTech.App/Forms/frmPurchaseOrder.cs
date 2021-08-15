@@ -56,6 +56,7 @@ namespace QTech.Forms
             dgv.AllowRowNotFound = false;
             dgv.AllowUserToAddRows = dgv.AllowUserToDeleteRows = true;
             dgv.EditMode = DataGridViewEditMode.EditOnEnter;
+            dgv.SetColumnHeaderDefaultStyle();
 
             if (Flag == GeneralProcess.Add || Flag == GeneralProcess.Update)
             {

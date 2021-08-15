@@ -8,6 +8,15 @@ namespace QTech.Component
     [DefaultEvent("Click")]
     public partial class ExTabItem : UserControl
     {
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+                return cp;
+            }
+        }
         public ExTabItem()
         {
             InitializeComponent();

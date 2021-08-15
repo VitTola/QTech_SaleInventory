@@ -46,6 +46,7 @@ namespace QTech.Forms
             btnAdd.Visible = ShareValue.IsAuthorized(AuthKey.Sale_Sale_Add);
             btnRemove.Visible = ShareValue.IsAuthorized(AuthKey.Sale_Sale_Remove);
             btnUpdate.Visible = ShareValue.IsAuthorized(AuthKey.Sale_Sale_Update);
+            dgv.SetColumnHeaderDefaultStyle();
 
         }
         private async void CboPayStatus_SelectedIndexChanged(object sender, EventArgs e)

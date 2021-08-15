@@ -76,6 +76,8 @@ namespace QTech.Forms
             dgv.EditingControlShowing += Dgv_EditingControlShowing;
             dgv.MouseClick += Dgv_MouseClick;
             dgv.EditColumnIcon(colProductId, colQauntity, colUnitPrice, colEmployeeId);
+            dgv.SetColumnHeaderDefaultStyle();
+
             txtTotal.ReadOnly = colLeftQty_.ReadOnly = true;
             cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
             this.Load += FrmSale_Load;

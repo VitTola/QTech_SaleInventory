@@ -4,16 +4,16 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.ComponentModel;
 using System.Drawing.Drawing2D;
-//using EasyServer.Domain.SearchModels;
 using EasyServer.Domain.Helpers;
 using QTech.Component.Properties;
 using EDomain = EasyServer.Domain;
 using QTech.Base.BaseModels;
+using BaseResource = EasyServer.Domain.Resources;
 
 namespace QTech.Component
 {
-    public class ExDataGridView: DataGridView,IAsyncTask
-   {
+    public class ExDataGridView : DataGridView, IAsyncTask
+    {
         public bool Executing { get; set; }
         public bool AllowEnterToNextCell { get; set; } = false;
 
@@ -33,7 +33,8 @@ namespace QTech.Component
         }
         private bool _allowRowNotFound = true;
         [Browsable(true)]
-        public bool AllowRowNotFound {
+        public bool AllowRowNotFound
+        {
             get { return _allowRowNotFound; }
             set
             {
@@ -47,6 +48,12 @@ namespace QTech.Component
 
         public ExDataGridView()
         {
+            this.ColumnHeadersDefaultCellStyle = new DataGridViewCellStyle
+            {
+                BackColor = Color.Ivory,
+                SelectionBackColor = Color.Ivory
+            };
+            
             this.ApplyDefaultStyle();
             ReadOnly = true;
             EnableHeadersVisualStyles = false;
@@ -63,17 +70,14 @@ namespace QTech.Component
             CellFormatting += exDataGridView_CellFormatting;
             //LostFocus += ExDataGridView_LostFocus;
             //Leave += ExDataGridView_LostFocus;
-
-            EnableHeadersVisualStyles = false;
         }
 
         private void exDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             var cell = this[e.ColumnIndex, e.RowIndex];
-            
-            if (cell.Value!=null)
+
+            if (cell.Value != null)
             {
-                
                 if (cell.OwningColumn.CellType == typeof(DataGridViewImageCell))
                 {
                     if (string.IsNullOrEmpty(cell.ToolTipText))
@@ -84,19 +88,19 @@ namespace QTech.Component
                     return;
                 }
                 var hederText = cell.OwningColumn.HeaderText;
-                var conten =  string.Format($"{{0:{e.CellStyle.Format}}}", e.Value);
+                var conten = string.Format($"{{0:{e.CellStyle.Format}}}", e.Value);
                 if (e.DesiredType == typeof(DateTime))
                 {
                     conten = string.Format("{0:D}", e.Value);
-                } 
+                }
                 cell.ToolTipText = string.IsNullOrEmpty(hederText) ? conten : $"{hederText}: {conten}";
             }
+
         }
 
         private void Panel_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-
             //DrawBackground(e.Graphics, picThin.ClientSize);
 
             // Make the smiley path.
@@ -106,8 +110,6 @@ namespace QTech.Component
                 e.Graphics.TranslateTransform(2, 2);
                 //Color color = Color.FromArgb(64, 0, 0, 0);
                 var color = Color.FromArgb(234, 234, 234);
-                BackgroundColor = Color.FromArgb(245, 245, 237);
-                ColumnHeadersDefaultCellStyle.BackColor = Color.Ivory;
                 using (Pen thick_pen = new Pen(color, 4))
                 {
                     e.Graphics.DrawPath(thick_pen, path);
@@ -148,7 +150,7 @@ namespace QTech.Component
 
             path.CloseFigure();
             return path;
-        } 
+        }
 
         private void ExDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
@@ -174,7 +176,6 @@ namespace QTech.Component
 
         //    return base.ProcessCmdKey(ref msg, keyData);
         //}
-       
 
         void ExDataGridView_DataSourceChanged(object sender, EventArgs e)
         {
@@ -202,21 +203,13 @@ namespace QTech.Component
 
         void ExDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex != -1 && e.RowIndex != -1 && SelectedRows.Count>0)
+            if (e.ColumnIndex != -1 && e.RowIndex != -1 && SelectedRows.Count > 0)
             {
                 if (Parent is IPage parent)
                 {
                     parent.View();
                 }
             }
-        }
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-          //  this.Font = new Font("Khmer OS System", 8);
-
-
         }
 
         void ExDataGridView_KeyDown(object sender, KeyEventArgs e)
@@ -226,7 +219,7 @@ namespace QTech.Component
                 if (e.KeyCode == Keys.A)
                 {
                     var btnAdd = this.FindForm()?.GetAllControls().OfType<ExButtonLoading>()
-                    .FirstOrDefault(x => x.Name == $"btn{nameof(EDomain.Resources.Add)}");
+                    .FirstOrDefault(x => x.Name == $"btn{nameof(BaseResource.Add)}");
                     if (btnAdd?.Visible == true
                         && btnAdd?.Enabled == true
                         && btnAdd?.Executing == false)
@@ -237,7 +230,7 @@ namespace QTech.Component
                 else if (e.KeyCode == Keys.Delete)
                 {
                     var btnRemove = this.FindForm()?.GetAllControls().OfType<ExButtonLoading>()
-                     .FirstOrDefault(x => x.Name == $"btn{nameof(EDomain.Resources.Remove)}");
+                     .FirstOrDefault(x => x.Name == $"btn{nameof(BaseResource.Remove)}");
                     if (btnRemove?.Visible == true
                         && btnRemove?.Enabled == true
                         && btnRemove?.Executing == false)
@@ -248,7 +241,7 @@ namespace QTech.Component
                 else if (e.KeyCode == Keys.Space)
                 {
                     var btnUpdate = this.FindForm()?.GetAllControls().OfType<ExButtonLoading>()
-                      .FirstOrDefault(x => x.Name == $"btn{nameof(EDomain.Resources.Update)}");
+                      .FirstOrDefault(x => x.Name == $"btn{nameof(BaseResource.Update)}");
                     if (btnUpdate?.Visible == true
                         && btnUpdate?.Enabled == true
                         && btnUpdate?.Executing == false)
@@ -272,31 +265,27 @@ namespace QTech.Component
                 }
             }
         }
-
+        protected override void OnSizeChanged(EventArgs e)
+        {
+            base.OnSizeChanged(e);
+            panel.Location = new Point(this.Width / 2 - panel.Width / 2, this.Height / 2 - panel.Height / 2);
+        }
         Panel panel = new Panel()
         {
-            BorderStyle = BorderStyle.None,
+            BackColor = Color.Transparent,
             Size = new Size(110, 110),
-            BackColor = Color.FromArgb(245, 245, 237),
-            Visible = false
+            Padding = new Padding(5),
+            Visible = false,
         };
+
         PictureBox picLoading = new PictureBox()
         {
             Enabled = true,
             Image = Properties.Resources.dgvloading,
             SizeMode = PictureBoxSizeMode.StretchImage,
             Visible = true,
-            Dock = DockStyle.Fill,
-            BorderStyle = BorderStyle.None,
-            BackColor = Color.FromArgb(245, 245, 237),
+            Dock = DockStyle.Fill
         };
-
-        protected override void OnSizeChanged(EventArgs e)
-        {
-            base.OnSizeChanged(e);
-            panel.Location = new Point(this.Width / 2 - panel.Width / 2, this.Height / 2 - panel.Height / 2);
-        }
-
         public void PreExecute(bool block = false)
         {
             if (block)
@@ -308,7 +297,7 @@ namespace QTech.Component
             }
             var x = Width / 2 - panel.Width / 2;
             var y = Height / 2 - panel.Height / 2;
-            panel.Location = new Point(x,y);
+            panel.Location = new Point(x, y);
             panel.Enabled = true;
             panel.Visible = true;
         }
@@ -326,7 +315,7 @@ namespace QTech.Component
             var y = Height / 2 - panel.Height / 2;
             panel.Location = new Point(x, y);
             panel.Enabled = false;
-            panel.Visible = false; 
+            panel.Visible = false;
         }
     }
 }

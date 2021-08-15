@@ -62,30 +62,30 @@ namespace QTech.Forms
         public void InitEvent()
         {
             this.Text = Flag.GetTextDialog(Base.Properties.Resources.CreateInvoice);
+            this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View && Model.SaleType != SaleType.General);
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgv.ReadOnly = false;
-            dgv.AllowRowNotFound = false;
-            dgv.EditMode = DataGridViewEditMode.EditOnEnter;
+            dgv.AllowRowNotFound(false);
+            dgv.ReadOnly = dgvView.ReadOnly = true;
+            dgv.SetColumnHeaderDefaultStyle();
 
+            colMark_.ReadOnly = false;
+            dgv.SetColumnHeaderDefaultStyle();
+            dgvView.SetColumnHeaderDefaultStyle();
+            
             if (Flag == GeneralProcess.Add || Flag == GeneralProcess.Update)
             {
-                dgv.EditingControlShowing += dgv_EditingControlShowing;
                 cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
                 dtpSearchDate.SelectedIndexChanged += dtpSearchDate_SelectedIndexChanged;
-                dgv.CellContentClick += Dgv_CellContentClick;
+                dgvView.CellContentClick += dgvView_CellContentClick;
                 txtPaidAmount.KeyPress += (s, e) => { txtPaidAmount.validCurrency(s, e); };
                 btnLeft_.Click += BtnLeft_Click;
                 btnRigt_.Click += BtnRigt_Click;
             }
-            this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View && Model.SaleType != SaleType.General);
             txtPaidAmount.ReadOnly = Flag == GeneralProcess.Remove && Flag == GeneralProcess.View;
-            txtTotal.ReadOnly = txtLeftAmount.ReadOnly = true;
-            txtInvoiceNo.ReadOnly = true;
+            txtTotal.ReadOnly = txtLeftAmount.ReadOnly = txtInvoiceNo.ReadOnly = true;
             dtpInvoicingDate.Enabled = false;
             txtPaidAmount.KeyUp += TxtPaidAmount_KeyUp;
             this.Load += FrmCreateInvoice_Load;
-            dgv.ReadOnly = true;
-            colMark_.ReadOnly = false;
             cboCustomer.Enabled = Flag == GeneralProcess.Add;
         }
         private void BtnRigt_Click(object sender, EventArgs e)
@@ -125,12 +125,12 @@ namespace QTech.Forms
         {
             CalculateTotal();
         }
-        private void Dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == colMark_.Index)
+            if (e.ColumnIndex == colMark2_.Index)
             {
-                var _isCheck = (bool)(dgv.CurrentRow.Cells[colMark_.Name]?.Value);
-                dgv.CurrentRow.Cells[colMark_.Name].Value = !_isCheck;
+                var _isCheck = (bool)(dgvView.CurrentRow.Cells[colMark2_.Name]?.Value);
+                dgvView.CurrentRow.Cells[colMark2_.Name].Value = !_isCheck;
 
                 if (!_isCheck && CheckingAmount < AllSales)
                 {
@@ -141,8 +141,6 @@ namespace QTech.Forms
                     CheckingAmount--;
                 }
                 chkMarkAll_.Checked = CheckingAmount == AllSales ? true : false;
-
-                CalculateTotal();
             }
         }
         private void dtpSearchDate_SelectedIndexChanged(object sender, EventArgs e)
@@ -238,7 +236,8 @@ namespace QTech.Forms
             {
                 sales.ForEach(x =>
                 {
-                    var row = newRow(dgv);
+                    var row = dgv.Rows[dgv.Rows.Add()];
+                    //var row = newRow(dgv);
                     row.Cells[colId.Name].Value = Model.InvoiceDetails?.FirstOrDefault(s => s.SaleId == x.Id)?.Id ?? 0;
                     row.Cells[colSaleId.Name].Value = x.Id;
                     row.Cells[colPurchaseOrderNo.Name].Value = x.PurchaseOrderNo;
@@ -280,10 +279,6 @@ namespace QTech.Forms
                 dgv.Sort(dgv.Columns[colSaleDate.Name], ListSortDirection.Descending);
             }
             //CalculateTotal();
-        }
-        private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-
         }
         private void CalculateTotal()
         {

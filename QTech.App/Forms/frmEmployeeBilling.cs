@@ -61,6 +61,8 @@ namespace QTech.Forms
         {
             btnAdvanceSearch.Click += btnAdvanceSearch_Click;
             dgv.CellContentClick += Dgv_CellContentClick;
+            dgv.SetColumnHeaderDefaultStyle();
+            dgvResult.SetColumnHeaderDefaultStyle();
             txtPaidAmount.Leave += txtPaidAmount_Leave;
             txtPaidAmount.TextChanged += txtPaidAmount_TextChanged;
             cboCompany.SelectedIndexChanged += CboCompany_SelectedIndexChanged;

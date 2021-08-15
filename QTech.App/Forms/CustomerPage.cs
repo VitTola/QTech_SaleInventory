@@ -46,6 +46,7 @@ namespace QTech.Forms
             dgv.BackgroundColor = System.Drawing.Color.White;
             dgv.ShowLines = false;
             dgv.AllowUserToResizeColumns = false;
+            dgv.SetColumnHeaderDefaultStyle();
 
             dgv.KeyDown += dgv_KeyDown;
             dgv.NodeExpanded += Dgv_NodeExpanded;

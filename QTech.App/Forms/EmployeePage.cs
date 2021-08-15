@@ -21,6 +21,8 @@ namespace QTech.Forms
         {
             InitializeComponent();
             txtSearch.RegisterPrimaryInput();
+            dgv.SetColumnHeaderDefaultStyle();
+
         }
 
         public async void AddNew()
