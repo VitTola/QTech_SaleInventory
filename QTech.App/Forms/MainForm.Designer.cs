@@ -36,7 +36,7 @@
             this.colorWithAlpha4 = new QTech.Component.ColorWithAlpha();
             this.colorWithAlpha5 = new QTech.Component.ColorWithAlpha();
             this.colorWithAlpha6 = new QTech.Component.ColorWithAlpha();
-            this.label3 = new System.Windows.Forms.Label();
+            this._lblComanyName = new System.Windows.Forms.Label();
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.pTopMenu = new QTech.Component.ExTabBar();
             this.pBottom = new QTech.Component.GRAPanel();
@@ -129,7 +129,7 @@
             this.topPanel.Colors.Add(this.colorWithAlpha5);
             this.topPanel.Colors.Add(this.colorWithAlpha6);
             this.topPanel.ContentPadding = new System.Windows.Forms.Padding(0);
-            this.topPanel.Controls.Add(this.label3);
+            this.topPanel.Controls.Add(this._lblComanyName);
             this.topPanel.Controls.Add(this.picLogo);
             this.topPanel.Controls.Add(this.pTopMenu);
             this.topPanel.CornerRadius = 1;
@@ -171,18 +171,18 @@
             this.colorWithAlpha6.Color = System.Drawing.Color.White;
             this.colorWithAlpha6.Parent = this.topPanel;
             // 
-            // label3
+            // _lblComanyName
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(180)))), ((int)(((byte)(183)))));
-            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label3.Font = new System.Drawing.Font("Khmer Muol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Blue;
-            this.label3.Location = new System.Drawing.Point(87, 6);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(170, 24);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "សម្រាប់ប្រើបណ្ដោះអាសន្ន";
+            this._lblComanyName.AutoSize = true;
+            this._lblComanyName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(180)))), ((int)(((byte)(183)))));
+            this._lblComanyName.Cursor = System.Windows.Forms.Cursors.Hand;
+            this._lblComanyName.Font = new System.Drawing.Font("Khmer Muol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._lblComanyName.ForeColor = System.Drawing.Color.Black;
+            this._lblComanyName.Location = new System.Drawing.Point(87, 6);
+            this._lblComanyName.Name = "_lblComanyName";
+            this._lblComanyName.Size = new System.Drawing.Size(170, 24);
+            this._lblComanyName.TabIndex = 8;
+            this._lblComanyName.Text = "សម្រាប់ប្រើបណ្ដោះអាសន្ន";
             // 
             // picLogo
             // 
@@ -751,7 +751,7 @@
         private System.Windows.Forms.Label txtUserName;
         private System.Windows.Forms.Label lblUserDropDown_;
         private System.Windows.Forms.Label lblBranchIcon_;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label _lblComanyName;
         private System.Windows.Forms.FlowLayoutPanel pSecondMenue2;
         private System.Windows.Forms.PictureBox _btnUpDown;
         private System.Windows.Forms.Panel pSecondMenue1;

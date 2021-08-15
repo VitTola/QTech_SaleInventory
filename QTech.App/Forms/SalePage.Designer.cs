@@ -122,7 +122,7 @@ namespace QTech.Forms
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1096, 446);
+            this.dgv.Size = new System.Drawing.Size(1096, 413);
             this.dgv.TabIndex = 1;
             this.dgv.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_RowPostPaint);
             // 
@@ -363,6 +363,7 @@ namespace QTech.Forms
             // 
             // flowLayoutPanel3
             // 
+            this.flowLayoutPanel3.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel3.Controls.Add(this.pagination);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 448);
@@ -394,8 +395,8 @@ namespace QTech.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1096, 481);
-            this.Controls.Add(this.flowLayoutPanel3);
             this.Controls.Add(this.dgv);
+            this.Controls.Add(this.flowLayoutPanel3);
             this.Controls.Add(this.graPanel1);
             this.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

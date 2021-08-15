@@ -90,7 +90,7 @@
             this.graPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.graPanel1.Name = "graPanel1";
             this.graPanel1.Rounded = true;
-            this.graPanel1.Size = new System.Drawing.Size(1142, 35);
+            this.graPanel1.Size = new System.Drawing.Size(1051, 35);
             this.graPanel1.TabIndex = 0;
             // 
             // colorWithAlpha1
@@ -141,7 +141,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btnAdd);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(855, 0);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(764, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(287, 35);
@@ -267,7 +267,7 @@
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1142, 577);
+            this.dgv.Size = new System.Drawing.Size(1051, 544);
             this.dgv.TabIndex = 2;
             // 
             // colId
@@ -332,7 +332,7 @@
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 579);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(1142, 33);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(1051, 33);
             this.flowLayoutPanel3.TabIndex = 3;
             // 
             // pagination
@@ -358,9 +358,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1142, 612);
-            this.Controls.Add(this.flowLayoutPanel3);
+            this.ClientSize = new System.Drawing.Size(1051, 612);
             this.Controls.Add(this.dgv);
+            this.Controls.Add(this.flowLayoutPanel3);
             this.Controls.Add(this.graPanel1);
             this.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

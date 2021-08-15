@@ -97,7 +97,6 @@ namespace QTech.Forms
                 return products;
             });
         }
-
         private void Dgv_MouseClick(object sender, MouseEventArgs e)
         {
             if (!string.IsNullOrEmpty(cboPurchaseOrderNo.Text) && Flag != GeneralProcess.View)
@@ -199,113 +198,130 @@ namespace QTech.Forms
         }
         private async void Cbo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(dgv.CurrentCell.Value?.ToString() ?? "") || dgv.CurrentCell.ColumnIndex != colProductId.Index)
+            try
             {
-                return;
-            }
-            if (!cboCustomer.IsSelected() && tabMain.SelectedTab.Equals(tabCompany_))
-            {
-                return;
-            }
-            CheckValidProductByPO();
-
-            decimal unitPrice = 0;
-            bool IsNotPriceByPO = true;
-            var _productId = int.Parse(dgv.CurrentCell.Value.ToString());
-
-            //set category
-            var product = products?.FirstOrDefault(x => x.Id == _productId);
-            dgv.CurrentRow.Cells[colCategory_.Name].Value = categories.FirstOrDefault(x=>x.Id == product?.CategoryId)?.Name ?? string.Empty;
-
-
-            if (!string.IsNullOrEmpty(cboPurchaseOrderNo.Text) && tabMain.SelectedTab.Equals(tabCompany_))
-            {
-                var purchaseOrderNo = cboPurchaseOrderNo.SelectedObject?.ItemObject as PurchaseOrder;
-                if (purchaseOrderNo != null)
+                if (string.IsNullOrEmpty(dgv.CurrentCell.Value?.ToString() ?? "") || dgv.CurrentCell.ColumnIndex != colProductId.Index)
                 {
-                    var pOProductPrice = await dgv.RunAsync(() =>
+                    return;
+                }
+                if (!cboCustomer.IsSelected() && tabMain.SelectedTab.Equals(tabCompany_))
+                {
+                    return;
+                }
+                CheckValidProductByPO();
+
+                decimal unitPrice = 0;
+                bool IsNotPriceByPO = true;
+                var _productId = int.Parse(dgv.CurrentCell.Value.ToString());
+
+                //set category
+                var product = products?.FirstOrDefault(x => x.Id == _productId);
+                dgv.CurrentRow.Cells[colCategory_.Name].Value = categories.FirstOrDefault(x => x.Id == product?.CategoryId)?.Name ?? string.Empty;
+                dgv.CurrentRow.Cells[colImportPrice.Name].Value = products?.FirstOrDefault(y => y.Id == product.Id)?.ImportPrice;
+
+
+                if (!string.IsNullOrEmpty(cboPurchaseOrderNo.Text) && tabMain.SelectedTab.Equals(tabCompany_))
+                {
+                    var purchaseOrderNo = cboPurchaseOrderNo.SelectedObject?.ItemObject as PurchaseOrder;
+                    if (purchaseOrderNo != null)
                     {
-                        var result = POProductPriceLogic.Instance.GetPOProductPriceByPO(purchaseOrderNo.Id);
-                        return result;
-                    });
-                    if (pOProductPrice?.Any() ?? false)
-                    {
-                        var _poPrice = pOProductPrice.FirstOrDefault(x => x.ProductId == _productId);
-                        if (_poPrice != null)
+                        var pOProductPrice = await dgv.RunAsync(() =>
                         {
-                            unitPrice = _poPrice.SalePrice;
-                            IsNotPriceByPO = false;
+                            var result = POProductPriceLogic.Instance.GetPOProductPriceByPO(purchaseOrderNo.Id);
+                            return result;
+                        });
+                        if (pOProductPrice?.Any() ?? false)
+                        {
+                            var _poPrice = pOProductPrice.FirstOrDefault(x => x.ProductId == _productId);
+                            if (_poPrice != null)
+                            {
+                                unitPrice = _poPrice.SalePrice;
+                                IsNotPriceByPO = false;
+                            }
+                        }
+                        dgv.CurrentRow.Cells[colLeftQty_.Name].Value = pOProductPrice.FirstOrDefault(x => x.ProductId == _productId).LeftQauntity;
+
+                    }
+                }
+                if (IsNotPriceByPO)
+                {
+                    bool IsNotPriceByCustomer = true;
+                    if (customerPrices?.Any() ?? false)
+                    {
+                        var _cusPrice = customerPrices.FirstOrDefault(x => x.ProductId == _productId);
+                        if (_cusPrice != null)
+                        {
+                            unitPrice = _cusPrice.SalePrice;
+                            IsNotPriceByCustomer = false;
                         }
                     }
-                    dgv.CurrentRow.Cells[colLeftQty_.Name].Value = pOProductPrice.FirstOrDefault(x => x.ProductId == _productId).LeftQauntity;
-
-                }
-            }
-            if (IsNotPriceByPO)
-            {
-                bool IsNotPriceByCustomer = true;
-                if (customerPrices?.Any() ?? false)
-                {
-                    var _cusPrice = customerPrices.FirstOrDefault(x => x.ProductId == _productId);
-                    if (_cusPrice != null)
+                    if (IsNotPriceByCustomer)
                     {
-                        unitPrice = _cusPrice.SalePrice;
-                        IsNotPriceByCustomer = false;
+                        var pro = await dgv.RunAsync(() =>
+                        {
+                            var result = ProductLogic.Instance.FindAsync(_productId);
+                            return result;
+                        });
+                        unitPrice = pro?.UnitPrice ?? 0;
                     }
                 }
-                if (IsNotPriceByCustomer)
-                {
-                    var pro = await dgv.RunAsync(() =>
-                    {
-                        var result = ProductLogic.Instance.FindAsync(_productId);
-                        return result;
-                    });
-                    unitPrice = pro?.UnitPrice ?? 0;
-                }
+                dgv.CurrentRow.Cells[colUnitPrice.Name].Value = unitPrice.ToString();
             }
-            dgv.CurrentRow.Cells[colUnitPrice.Name].Value = unitPrice.ToString();
+            catch (Exception ex)
+            {
+                MsgBox.ShowError(ex.Message,BaseReource.Sales);
+            }
+           
         }
         DataGridViewCell Err = null;
         private async void CheckValidProductByPO()
         {
-            var purchaseOrderNo = cboPurchaseOrderNo.SelectedObject?.ItemObject as PurchaseOrder;
-            if (purchaseOrderNo != null)
+            try
             {
-                var pOProductPrices = await dgv.RunAsync(() =>
+                var purchaseOrderNo = cboPurchaseOrderNo.SelectedObject?.ItemObject as PurchaseOrder;
+                if (purchaseOrderNo != null)
                 {
-                    var result = POProductPriceLogic.Instance.GetPOProductPriceByPO(purchaseOrderNo.Id);
-                    return result;
-                });
-                if (pOProductPrices?.Any() ?? false)
-                {
-                    var inputQty = int.Parse(dgv.CurrentRow.Cells[colQauntity.Name].Value?.ToString() ?? "0");
-
-                    var _productId = int.Parse(dgv.CurrentRow.Cells[colProductId.Name].Value.ToString());
-                    if (_productId != 0)
+                    var pOProductPrices = await dgv.RunAsync(() =>
                     {
-                        var pOProductPrice = pOProductPrices.FirstOrDefault(x => x.ProductId == _productId);
-                        if (pOProductPrice?.LeftQauntity == 0)
+                        var result = POProductPriceLogic.Instance.GetPOProductPriceByPO(purchaseOrderNo.Id);
+                        return result;
+                    });
+                    if (pOProductPrices?.Any() ?? false)
+                    {
+                        var inputQty = int.Parse(dgv.CurrentRow.Cells[colQauntity.Name].Value?.ToString() ?? "0");
+
+                        var _productId = int.Parse(dgv.CurrentRow.Cells[colProductId.Name].Value.ToString());
+                        if (_productId != 0)
                         {
-                            Err = ((DataGridViewCell)(dgv.CurrentRow.Cells[colQauntity.Name]));
-                            Err.ErrorText = BaseReource.MsgProductQtyReachLimit;
-                        }
-                        else if (inputQty > pOProductPrice?.LeftQauntity)
-                        {
-                            Err = ((DataGridViewCell)dgv.CurrentRow.Cells[colQauntity.Name]);
-                            Err.ErrorText = BaseReource.MsgProductOverQty + $" (ចំនួននៅសល់ {pOProductPrice.LeftQauntity})";
-                        }
-                        else
-                        {
-                            if (Err != null)
+                            var pOProductPrice = pOProductPrices.FirstOrDefault(x => x.ProductId == _productId);
+                            if (pOProductPrice?.LeftQauntity == 0)
                             {
-                                Err.ErrorText = string.Empty;
+                                Err = ((DataGridViewCell)(dgv.CurrentRow.Cells[colQauntity.Name]));
+                                Err.ErrorText = BaseReource.MsgProductQtyReachLimit;
                             }
+                            else if (inputQty > pOProductPrice?.LeftQauntity)
+                            {
+                                Err = ((DataGridViewCell)dgv.CurrentRow.Cells[colQauntity.Name]);
+                                Err.ErrorText = BaseReource.MsgProductOverQty + $" (ចំនួននៅសល់ {pOProductPrice.LeftQauntity})";
+                            }
+                            else
+                            {
+                                if (Err != null)
+                                {
+                                    Err.ErrorText = string.Empty;
+                                }
+                            }
+
                         }
 
                     }
-
                 }
             }
+            catch (Exception ex)
+            {
+                MsgBox.ShowError(ex.Message,BaseReource.Sales);
+            }
+           
         }
         public bool InValid()
         {
@@ -440,9 +456,11 @@ namespace QTech.Forms
                     row.Cells[colSaleId.Name].Value = Model.Id;
                     row.Cells[colQauntity.Name].Value = x.Qauntity;
                     row.Cells[colTotal.Name].Value = x.Total;
-                    row.Cells[colUnitPrice.Name].Value = products?.FirstOrDefault(y => y.Id == x.ProductId)?.UnitPrice;
-                    row.Cells[colImportPrice.Name].Value = products?.FirstOrDefault(y => y.Id == x.ProductId)?.ImportPrice;
+                    var product = products?.FirstOrDefault(y => y.Id == x.ProductId) ?? new Product();
+                    row.Cells[colUnitPrice.Name].Value = product.UnitPrice;
+                    row.Cells[colImportPrice.Name].Value = product.ImportPrice;
                     row.Cells[colLeftQty_.Name].Value = pOProductPrices?.FirstOrDefault(r => r.ProductId == x.ProductId)?.LeftQauntity;
+                    row.Cells[colCategory_.Name].Value = categories?.FirstOrDefault(r => r.Id == product.CategoryId)?.Name;
 
                     if (products?.Any() ?? false)
                     {

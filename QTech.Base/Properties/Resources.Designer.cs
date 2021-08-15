@@ -203,7 +203,7 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ផេង ​​​​រី ផ្គត់ផ្គង់ខ្សាច់ និងថ្មគ្រប់ប្រភេទ.
+        ///   Looks up a localized string similar to ផេងរី ផ្គត់ផ្គង់ខ្សាច់ និងថ្មគ្រប់ប្រភេទ.
         /// </summary>
         public static string Company {
             get {
@@ -921,6 +921,15 @@ namespace QTech.Base.Properties {
         public static string MsgProductQtyReachLimit {
             get {
                 return ResourceManager.GetString("MsgProductQtyReachLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ការលក់នេះបានបញ្ចូលក្នុងវិក័យប័ត្ររួចរាល់មិនអាចកែបានទេ!.
+        /// </summary>
+        public static string MsgSaleCanEdit {
+            get {
+                return ResourceManager.GetString("MsgSaleCanEdit", resourceCulture);
             }
         }
         

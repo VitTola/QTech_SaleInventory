@@ -239,7 +239,7 @@
     <value>អ្នកផ្គត់ផ្គង់</value>
   </data>
   <data name="Company" xml:space="preserve">
-    <value>ផេង ​​​​រី ផ្គត់ផ្គង់ខ្សាច់ និងថ្មគ្រប់ប្រភេទ</value>
+    <value>ផេងរី ផ្គត់ផ្គង់ខ្សាច់ និងថ្មគ្រប់ប្រភេទ</value>
   </data>
   <data name="Note" xml:space="preserve">
     <value>ចំណាំ</value>
@@ -657,5 +657,8 @@
   </data>
   <data name="Row" xml:space="preserve">
     <value />
+  </data>
+  <data name="MsgSaleCanEdit" xml:space="preserve">
+    <value>ការលក់នេះបានបញ្ចូលក្នុងវិក័យប័ត្ររួចរាល់មិនអាចកែបានទេ!</value>
   </data>
 </root>

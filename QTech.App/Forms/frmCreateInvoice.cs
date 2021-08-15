@@ -170,7 +170,7 @@ namespace QTech.Forms
             };
 
             List<Site> _sites = null;
-            var sales = await dgv.RunAsync(() =>
+            var sales = await dgvView.RunAsync(() =>
             {
                 var result = SaleLogic.Instance.GetSaleByCustomerId(search);
                 var SitesIds = result?.Select(x => x.SiteId).ToList();
@@ -443,7 +443,7 @@ namespace QTech.Forms
                 invoiceDt.SaleId = int.Parse(row.Cells[colSaleId.Name].Value?.ToString() ?? "0");
                 invoiceDt.Id = int.Parse(row.Cells[colId.Name].Value?.ToString() ?? "0");
 
-                if (!Model.InvoiceDetails.Any(x => x.Id == invoiceDt.Id))
+                if (!Model.InvoiceDetails.Any(x => x.Id == invoiceDt.Id) || invoiceDt.Id == 0)
                 {
                     invoiceDt.InvoiceId = Model.Id;
                     Model.InvoiceDetails.Add(invoiceDt);

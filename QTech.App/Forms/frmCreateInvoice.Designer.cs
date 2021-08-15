@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCreateInvoice));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.exLabel2 = new QTech.Component.ExLabel();
             this.exPanel1 = new QTech.Component.Components.ExPanel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
@@ -54,6 +54,17 @@
             this.btnRigt_ = new QTech.Component.ExButtonLoading();
             this.btnLeft_ = new System.Windows.Forms.Button();
             this.dgv = new QTech.Component.ExDataGridView();
+            this.colMark_ = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colSaleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPurchaseOrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colInvoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colToCompany = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colToSite = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSaleDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIsPaid = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.exLabel1 = new QTech.Component.ExLabel();
             this.dtpSearchDate = new QTech.Component.ExReportDatePicker();
@@ -73,6 +84,7 @@
             this.exLabel6 = new QTech.Component.ExLabel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dtpInvoicingDate = new QTech.Component.ExDateTimePicker();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.colMark2_ = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colSaleId2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colId2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,17 +96,6 @@
             this.colTotal2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStatus2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIsPaid2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colMark_ = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colSaleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPurchaseOrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colInvoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colToCompany = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colToSite = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSaleDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIsPaid = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.container.SuspendLayout();
             this.exPanel1.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -110,6 +111,7 @@
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // container
@@ -307,7 +309,7 @@
             this.pnlGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlGrid.Location = new System.Drawing.Point(0, 34);
             this.pnlGrid.Name = "pnlGrid";
-            this.pnlGrid.Padding = new System.Windows.Forms.Padding(0, 1, 0, 1);
+            this.pnlGrid.Padding = new System.Windows.Forms.Padding(1, 0, 1, 1);
             this.pnlGrid.Size = new System.Drawing.Size(1494, 455);
             this.pnlGrid.TabIndex = 16;
             // 
@@ -320,19 +322,19 @@
             this.dgvView.AllowUserToDeleteRows = false;
             this.dgvView.AllowUserToResizeColumns = false;
             this.dgvView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.dgvView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Ivory;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colMark2_,
@@ -346,19 +348,19 @@
             this.colTotal2,
             this.colStatus2,
             this.colIsPaid2});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvView.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvView.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvView.EnableHeadersVisualStyles = false;
             this.dgvView.Executing = false;
             this.dgvView.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            this.dgvView.Location = new System.Drawing.Point(0, 1);
+            this.dgvView.Location = new System.Drawing.Point(1, 0);
             this.dgvView.MultiSelect = false;
             this.dgvView.Name = "dgvView";
             this.dgvView.Paging = null;
@@ -366,19 +368,18 @@
             this.dgvView.RowHeadersVisible = false;
             this.dgvView.RowTemplate.Height = 28;
             this.dgvView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvView.Size = new System.Drawing.Size(790, 453);
+            this.dgvView.Size = new System.Drawing.Size(788, 454);
             this.dgvView.TabIndex = 3;
             // 
             // panelCenterButton
             // 
             this.panelCenterButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panelCenterButton.Controls.Add(this.btnRigt_);
-            this.panelCenterButton.Controls.Add(this.btnLeft_);
+            this.panelCenterButton.Controls.Add(this.panel2);
             this.panelCenterButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelCenterButton.Location = new System.Drawing.Point(790, 1);
+            this.panelCenterButton.Location = new System.Drawing.Point(789, 0);
             this.panelCenterButton.Name = "panelCenterButton";
-            this.panelCenterButton.Padding = new System.Windows.Forms.Padding(3);
-            this.panelCenterButton.Size = new System.Drawing.Size(44, 453);
+            this.panelCenterButton.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.panelCenterButton.Size = new System.Drawing.Size(44, 454);
             this.panelCenterButton.TabIndex = 18;
             // 
             // btnRigt_
@@ -391,7 +392,7 @@
             this.btnRigt_.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRigt_.Font = new System.Drawing.Font("Khmer OS System", 8F);
             this.btnRigt_.Image = global::QTech.Properties.Resources.rightArrow_img;
-            this.btnRigt_.Location = new System.Drawing.Point(2, 199);
+            this.btnRigt_.Location = new System.Drawing.Point(1, 195);
             this.btnRigt_.Margin = new System.Windows.Forms.Padding(0, 3, 4, 4);
             this.btnRigt_.Name = "btnRigt_";
             this.btnRigt_.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -407,7 +408,7 @@
             this.btnLeft_.FlatAppearance.BorderSize = 0;
             this.btnLeft_.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLeft_.Image = global::QTech.Properties.Resources.leftArrow_img1;
-            this.btnLeft_.Location = new System.Drawing.Point(2, 234);
+            this.btnLeft_.Location = new System.Drawing.Point(1, 230);
             this.btnLeft_.Name = "btnLeft_";
             this.btnLeft_.Size = new System.Drawing.Size(42, 29);
             this.btnLeft_.TabIndex = 0;
@@ -422,19 +423,19 @@
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AllowUserToResizeColumns = false;
             this.dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Ivory;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Ivory;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colMark_,
@@ -448,19 +449,19 @@
             this.colTotal,
             this.colStatus,
             this.colIsPaid});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Right;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
             this.dgv.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            this.dgv.Location = new System.Drawing.Point(834, 1);
+            this.dgv.Location = new System.Drawing.Point(833, 0);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
             this.dgv.Paging = null;
@@ -468,8 +469,105 @@
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(660, 453);
+            this.dgv.Size = new System.Drawing.Size(660, 454);
             this.dgv.TabIndex = 2;
+            // 
+            // colMark_
+            // 
+            this.colMark_.DataPropertyName = "Mark_";
+            this.colMark_.HeaderText = "";
+            this.colMark_.Name = "colMark_";
+            this.colMark_.ReadOnly = true;
+            this.colMark_.Visible = false;
+            this.colMark_.Width = 40;
+            // 
+            // colSaleId
+            // 
+            this.colSaleId.HeaderText = "SaleId";
+            this.colSaleId.Name = "colSaleId";
+            this.colSaleId.ReadOnly = true;
+            this.colSaleId.Visible = false;
+            // 
+            // colId
+            // 
+            this.colId.DataPropertyName = "Id";
+            this.colId.HeaderText = "Id";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            this.colId.Visible = false;
+            this.colId.Width = 45;
+            // 
+            // colPurchaseOrderNo
+            // 
+            this.colPurchaseOrderNo.DataPropertyName = "PurchaseOrderNo";
+            this.colPurchaseOrderNo.FillWeight = 40F;
+            this.colPurchaseOrderNo.HeaderText = "លេខបញ្ជាទិញ";
+            this.colPurchaseOrderNo.MinimumWidth = 150;
+            this.colPurchaseOrderNo.Name = "colPurchaseOrderNo";
+            this.colPurchaseOrderNo.ReadOnly = true;
+            this.colPurchaseOrderNo.Width = 150;
+            // 
+            // colInvoiceNo
+            // 
+            this.colInvoiceNo.DataPropertyName = "InvoiceNo";
+            this.colInvoiceNo.FillWeight = 40F;
+            this.colInvoiceNo.HeaderText = "លេខវិក្កយបត្រ";
+            this.colInvoiceNo.MinimumWidth = 100;
+            this.colInvoiceNo.Name = "colInvoiceNo";
+            this.colInvoiceNo.ReadOnly = true;
+            this.colInvoiceNo.Width = 150;
+            // 
+            // colToCompany
+            // 
+            this.colToCompany.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colToCompany.DataPropertyName = "Company";
+            this.colToCompany.FillWeight = 60F;
+            this.colToCompany.HeaderText = "ទៅកាន់ក្រុមហ៊ុន";
+            this.colToCompany.MinimumWidth = 150;
+            this.colToCompany.Name = "colToCompany";
+            this.colToCompany.ReadOnly = true;
+            // 
+            // colToSite
+            // 
+            this.colToSite.DataPropertyName = "Site";
+            this.colToSite.HeaderText = "ទៅកាន់គំរោង";
+            this.colToSite.MinimumWidth = 150;
+            this.colToSite.Name = "colToSite";
+            this.colToSite.ReadOnly = true;
+            this.colToSite.Width = 200;
+            // 
+            // colSaleDate
+            // 
+            this.colSaleDate.DataPropertyName = "SaleDate";
+            this.colSaleDate.HeaderText = "កាលបរិច្ឆេទលក់";
+            this.colSaleDate.MinimumWidth = 100;
+            this.colSaleDate.Name = "colSaleDate";
+            this.colSaleDate.ReadOnly = true;
+            this.colSaleDate.Width = 150;
+            // 
+            // colTotal
+            // 
+            this.colTotal.HeaderText = "សរុបទឹកប្រាក់";
+            this.colTotal.MinimumWidth = 60;
+            this.colTotal.Name = "colTotal";
+            this.colTotal.ReadOnly = true;
+            this.colTotal.Width = 150;
+            // 
+            // colStatus
+            // 
+            this.colStatus.DataPropertyName = "Status";
+            this.colStatus.HeaderText = "ស្ថានភាព";
+            this.colStatus.MinimumWidth = 100;
+            this.colStatus.Name = "colStatus";
+            this.colStatus.ReadOnly = true;
+            this.colStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // colIsPaid
+            // 
+            this.colIsPaid.HeaderText = "IsPaid";
+            this.colIsPaid.Name = "colIsPaid";
+            this.colIsPaid.ReadOnly = true;
+            this.colIsPaid.Visible = false;
             // 
             // panel1
             // 
@@ -712,6 +810,17 @@
             this.dtpInvoicingDate.Size = new System.Drawing.Size(200, 27);
             this.dtpInvoicingDate.TabIndex = 32;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.panel2.Controls.Add(this.btnRigt_);
+            this.panel2.Controls.Add(this.btnLeft_);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(1, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(42, 454);
+            this.panel2.TabIndex = 0;
+            // 
             // colMark2_
             // 
             this.colMark2_.DataPropertyName = "Mark_";
@@ -768,12 +877,12 @@
             // 
             // colToSite2
             // 
+            this.colToSite2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colToSite2.DataPropertyName = "Site";
             this.colToSite2.HeaderText = "ទៅកាន់គំរោង";
             this.colToSite2.MinimumWidth = 150;
             this.colToSite2.Name = "colToSite2";
             this.colToSite2.ReadOnly = true;
-            this.colToSite2.Width = 150;
             // 
             // colSaleDate2
             // 
@@ -807,103 +916,6 @@
             this.colIsPaid2.ReadOnly = true;
             this.colIsPaid2.Visible = false;
             // 
-            // colMark_
-            // 
-            this.colMark_.DataPropertyName = "Mark_";
-            this.colMark_.HeaderText = "";
-            this.colMark_.Name = "colMark_";
-            this.colMark_.ReadOnly = true;
-            this.colMark_.Visible = false;
-            this.colMark_.Width = 40;
-            // 
-            // colSaleId
-            // 
-            this.colSaleId.HeaderText = "SaleId";
-            this.colSaleId.Name = "colSaleId";
-            this.colSaleId.ReadOnly = true;
-            this.colSaleId.Visible = false;
-            // 
-            // colId
-            // 
-            this.colId.DataPropertyName = "Id";
-            this.colId.HeaderText = "Id";
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            this.colId.Visible = false;
-            this.colId.Width = 45;
-            // 
-            // colPurchaseOrderNo
-            // 
-            this.colPurchaseOrderNo.DataPropertyName = "PurchaseOrderNo";
-            this.colPurchaseOrderNo.FillWeight = 40F;
-            this.colPurchaseOrderNo.HeaderText = "លេខបញ្ជាទិញ";
-            this.colPurchaseOrderNo.MinimumWidth = 150;
-            this.colPurchaseOrderNo.Name = "colPurchaseOrderNo";
-            this.colPurchaseOrderNo.ReadOnly = true;
-            this.colPurchaseOrderNo.Width = 150;
-            // 
-            // colInvoiceNo
-            // 
-            this.colInvoiceNo.DataPropertyName = "InvoiceNo";
-            this.colInvoiceNo.FillWeight = 40F;
-            this.colInvoiceNo.HeaderText = "លេខវិក្កយបត្រ";
-            this.colInvoiceNo.MinimumWidth = 100;
-            this.colInvoiceNo.Name = "colInvoiceNo";
-            this.colInvoiceNo.ReadOnly = true;
-            this.colInvoiceNo.Width = 150;
-            // 
-            // colToCompany
-            // 
-            this.colToCompany.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colToCompany.DataPropertyName = "Company";
-            this.colToCompany.FillWeight = 60F;
-            this.colToCompany.HeaderText = "ទៅកាន់ក្រុមហ៊ុន";
-            this.colToCompany.MinimumWidth = 150;
-            this.colToCompany.Name = "colToCompany";
-            this.colToCompany.ReadOnly = true;
-            // 
-            // colToSite
-            // 
-            this.colToSite.DataPropertyName = "Site";
-            this.colToSite.HeaderText = "ទៅកាន់គំរោង";
-            this.colToSite.MinimumWidth = 150;
-            this.colToSite.Name = "colToSite";
-            this.colToSite.ReadOnly = true;
-            this.colToSite.Width = 200;
-            // 
-            // colSaleDate
-            // 
-            this.colSaleDate.DataPropertyName = "SaleDate";
-            this.colSaleDate.HeaderText = "កាលបរិច្ឆេទលក់";
-            this.colSaleDate.MinimumWidth = 100;
-            this.colSaleDate.Name = "colSaleDate";
-            this.colSaleDate.ReadOnly = true;
-            this.colSaleDate.Width = 150;
-            // 
-            // colTotal
-            // 
-            this.colTotal.HeaderText = "សរុបទឹកប្រាក់";
-            this.colTotal.MinimumWidth = 60;
-            this.colTotal.Name = "colTotal";
-            this.colTotal.ReadOnly = true;
-            this.colTotal.Width = 150;
-            // 
-            // colStatus
-            // 
-            this.colStatus.DataPropertyName = "Status";
-            this.colStatus.HeaderText = "ស្ថានភាព";
-            this.colStatus.MinimumWidth = 100;
-            this.colStatus.Name = "colStatus";
-            this.colStatus.ReadOnly = true;
-            this.colStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // colIsPaid
-            // 
-            this.colIsPaid.HeaderText = "IsPaid";
-            this.colIsPaid.Name = "colIsPaid";
-            this.colIsPaid.ReadOnly = true;
-            this.colIsPaid.Visible = false;
-            // 
             // frmCreateInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
@@ -936,6 +948,7 @@
             this.panel7.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -981,17 +994,6 @@
         private System.Windows.Forms.Button btnLeft_;
         private System.Windows.Forms.Panel panel1;
         private Component.ExLabel exLabel1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn colMark2_;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSaleId2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colId2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colPurchaseOrderNo2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colInvoiceNo2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colToCompany2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colToSite2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSaleDate2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTotal2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colStatus2;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn colIsPaid2;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colMark_;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSaleId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
@@ -1003,5 +1005,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colIsPaid;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colMark2_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSaleId2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colId2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPurchaseOrderNo2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colInvoiceNo2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colToCompany2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colToSite2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSaleDate2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTotal2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colStatus2;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colIsPaid2;
     }
 }

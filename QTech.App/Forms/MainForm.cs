@@ -38,9 +38,8 @@ namespace QTech.Forms
         private void InitEvent()
         {
             ReportHelper.Instance.RegisterPath(@"QTech\QTech.App\Reports");
-
-
-            this.Text = QTech.Base.Properties.Resources.Company;
+            _lblComanyName.Text = QTech.Base.Properties.Resources.Company;
+            this.Text = string.Empty;
 
             //container.SuspendLayout();
             //topPanel.SuspendLayout();
@@ -56,7 +55,6 @@ namespace QTech.Forms
 
             ApplySetting();
            
-
             ResourceHelper.ApplyResource(this);
             this.InitForm();
             this.OptimizeLoadUI();

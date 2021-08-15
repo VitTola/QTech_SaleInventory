@@ -84,8 +84,8 @@ namespace QTech.Forms
             Model = await btnUpdate.RunAsync(() => SaleLogic.Instance.FindAsync(id));
             if (Model.PayStatus != PayStatus.NotYetPaid)
             {
-                MsgBox.ShowWarning(BaseResource.MsgInvoiceAlreadyPaidCannotEdit,
-                    GeneralProcess.Remove.GetTextDialog(BaseResource.Invoice));
+                MsgBox.ShowWarning(BaseResource.MsgSaleCanEdit,
+                    GeneralProcess.Remove.GetTextDialog(BaseResource.Sales));
                 return;
             }
 
@@ -323,7 +323,6 @@ namespace QTech.Forms
         {
             Remove();
         }
-
         private void dgv_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             dgv.Rows[e.RowIndex].Cells[colRow.Name].Value = (e.RowIndex + 1).ToString();
