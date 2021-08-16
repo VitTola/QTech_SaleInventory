@@ -118,7 +118,7 @@ namespace QTech.Forms
                     CheckingAmount--;
                 }
                 chkMarkAll_.Checked = CheckingAmount == AllSales ? true : false;
-                
+
             }
         }
         private void CboCompany_SelectedIndexChanged(object sender, EventArgs e)
@@ -147,6 +147,7 @@ namespace QTech.Forms
             if (Flag == GeneralProcess.Add)
             {
                 int driverId = driver.Id;
+                prePaid = 0;
                 SupplierGeneralPrepaids = SupplierGeneralPaidLogic.Instance.GetSupplierGeneralPaidByEmpId(driverId);
                 SupplierGeneralPrepaids.ForEach(x => prePaid += x.Amount);
                 txtPrePaid.Text = prePaid.ToString();
@@ -216,7 +217,7 @@ namespace QTech.Forms
                     row.Cells[colMark_2.Name].Value = true;
                 }
             });
-      
+
         }
         private void FillGiridView(List<EmployeeBillOutFace> employeeBillOutFaces, DataGridView dataGridView)
         {
@@ -355,7 +356,7 @@ namespace QTech.Forms
                 btnAdvanceSearch.ShowValidation(BaseResource.MsgPleaseSelectValue);
                 return true;
             }
-            
+
             return false;
         }
         private void btnAdvanceSearch_Click(object sender, EventArgs e)
@@ -390,9 +391,10 @@ namespace QTech.Forms
             if (Flag != GeneralProcess.Add)
             {
                 var driver = new Employee();
-                var employeeBillOutFaces = await dgv.RunAsync(() => {
+                var employeeBillOutFaces = await dgv.RunAsync(() =>
+                {
 
-                    var _employeeBillOutFaces = SaleDetailLogic.Instance.GetEmployeeBillOutFaces(new EmployeeBillSearch { EmployeeBillId = Model.Id});
+                    var _employeeBillOutFaces = SaleDetailLogic.Instance.GetEmployeeBillOutFaces(new EmployeeBillSearch { EmployeeBillId = Model.Id });
                     driver = EmployeeLogic.Instance.FindAsync(Model.EmployeeId);
                     return _employeeBillOutFaces;
                 });
@@ -405,7 +407,7 @@ namespace QTech.Forms
                 }
                 txtPrePaid.Text = Model.PaidAmount.ToString();
                 txtLeftAmount.Text = Model.LeftAmount.ToString();
-                txtPaidAmount.Text =  Model.PaidAmount.ToString();
+                txtPaidAmount.Text = Model.PaidAmount.ToString();
                 txtTotal.Text = Model.Total.ToString();
                 FillResultGiridView(employeeBillOutFaces, dgvResult);
                 Model.SaleDetails = employeeBillOutFaces?.Select(s => s.saleDetail)?.ToList();
@@ -554,7 +556,11 @@ namespace QTech.Forms
         }
         private void lblPrePaid_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            var driver = cboDriver.SelectedObject?.ItemObject as Employee;
+            if (driver != null)
+            {
+                btnPrint.ReportEmployeePrepaid(driver.Id);
+            }
         }
         private void txtPaidAmount_Leave(object sender, EventArgs e)
         {
@@ -612,7 +618,7 @@ namespace QTech.Forms
         private List<ReportModels.DriverDeliveryDetail> GetReportModel()
         {
             var DriverDeliveryDetails = new List<ReportModels.DriverDeliveryDetail>();
-         
+
             //if (Flag == GeneralProcess.Add)
             //{
             //    var employee = cboDriver.SelectedObject?.ItemObject as Employee;
@@ -623,7 +629,8 @@ namespace QTech.Forms
             var Rows = dgvResult.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
             foreach (DataGridViewRow row in Rows)
             {
-                DriverDeliveryDetails.Add(new ReportModels.DriverDeliveryDetail() {
+                DriverDeliveryDetails.Add(new ReportModels.DriverDeliveryDetail()
+                {
                     PurchaseOrderNo = row.Cells[colPurchaseOrderNo2.Name].Value?.ToString() ?? string.Empty,
                     InvoiceNo = row.Cells[colInvoiceNo2.Name].Value?.ToString() ?? string.Empty,
                     Company = row.Cells[colToCompany2.Name].Value?.ToString() ?? string.Empty,

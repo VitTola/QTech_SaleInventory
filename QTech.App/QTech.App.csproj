@@ -273,6 +273,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportModels\DriverDeliveryDetail.cs" />
+    <Compile Include="ReportModels\EmployeePrepaid.cs" />
     <Compile Include="ReportModels\MonthlyInvoice.cs" />
     <Compile Include="ReportModels\QTech.cs">
       <DependentUpon>QTech.xsd</DependentUpon>
@@ -284,6 +285,7 @@
     </Compile>
     <Compile Include="ReportModels\RepoInvoice.cs" />
     <Compile Include="ReportModels\RepoInvoiceDetail.cs" />
+    <Compile Include="ReportModels\ReportExtensions.cs" />
     <Compile Include="Reports\FormPage\ReportImcomePage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -313,6 +315,12 @@
     </Compile>
     <Compile Include="Reports\FormPage\ReportDriverDeliveryPage.Designer.cs">
       <DependentUpon>ReportDriverDeliveryPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportEmployeePrepaid.cs">
+      <DependentUpon>ReportEmployeePrepaid.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Reports\ReportMonthlyInvoice.cs">
       <DependentUpon>ReportMonthlyInvoice.rpt</DependentUpon>
@@ -463,6 +471,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\FormPage\ReportDriverDeliveryPage.resx">
       <DependentUpon>ReportDriverDeliveryPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportEmployeePrepaid.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportEmployeePrepaid.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ReportMonthlyInvoice.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
