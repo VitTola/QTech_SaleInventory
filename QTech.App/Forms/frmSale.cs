@@ -77,6 +77,7 @@ namespace QTech.Forms
             dgv.MouseClick += Dgv_MouseClick;
             dgv.EditColumnIcon(colProductId, colQauntity, colUnitPrice, colEmployeeId);
             dgv.SetColumnHeaderDefaultStyle();
+            //dgv.CellValueChanged += Dgv_CellValueChanged;
 
             txtTotal.ReadOnly = colLeftQty_.ReadOnly = true;
             cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
@@ -86,6 +87,26 @@ namespace QTech.Forms
             {
                 tabMain.Controls.Remove(Model.SaleType == SaleType.Company ? tabGeneral_ : tabCompany_);
             }
+        }
+
+        private void Dgv_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgv.RowCount == 0)
+            {
+                return;
+            }
+            dgv.EndEdit();
+            var unitPrice = decimal.Parse(dgv.CurrentRow?.Cells[colUnitPrice.Name]?.Value?.ToString() ?? "0");
+            var qty = int.Parse(dgv.CurrentRow?.Cells[colQauntity.Name]?.Value?.ToString() ?? "0");
+            if (unitPrice == 0 || qty == 0)
+            {
+                return;
+            }
+
+            dgv.CurrentRow.Cells[colTotal.Name].Value = (unitPrice * qty).ToString();
+            CheckValidProductByPO();
+            CalculateTotal();
+            dgv.BeginEdit(true);
         }
 
         private async void FrmSale_Load(object sender, EventArgs e)
@@ -157,17 +178,18 @@ namespace QTech.Forms
                 txt.KeyPress += (o, ee) => { txt.validCurrency(sender, ee); };
                 if (dgv.CurrentCell.ColumnIndex == colQauntity.Index)
                 {
-                    txt.Leave += txtQauntity_Leave;
+                    txt.KeyUp += txtQauntity_KeyUp;
                 }
                 else if (dgv.CurrentCell.ColumnIndex == colUnitPrice.Index)
                 {
-                    txt.Leave += Txt_Leave;
+                    txt.KeyUp += Txt_KeyUp;
                 }
+
             }
         }
-        private void Txt_Leave(object sender, EventArgs e)
+        private void Txt_KeyUp(object sender, EventArgs e)
         {
-            txtQauntity_Leave(sender, e);
+            txtQauntity_KeyUp(sender, e);
         }
         private void CalculateTotal()
         {
@@ -180,21 +202,20 @@ namespace QTech.Forms
 
             txtTotal.Text = Total.ToString();
         }
-        private void txtQauntity_Leave(object sender, EventArgs e)
+        private void txtQauntity_KeyUp(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(dgv.CurrentCell.Value?.ToString() ?? ""))
+            dgv.EndEdit();
+            var unitPrice = decimal.Parse(dgv.CurrentRow.Cells[colUnitPrice.Name].Value?.ToString() ?? "0");
+            var qty = int.Parse(dgv.CurrentRow.Cells[colQauntity.Name].Value?.ToString() ?? "0");
+            if (unitPrice == 0 || qty == 0)
             {
                 return;
             }
-            var unitPrice = decimal.Parse(dgv.CurrentRow?.Cells[colUnitPrice.Name].Value?.ToString() ?? "0");
-            var qty = int.Parse(dgv.CurrentRow?.Cells[colQauntity.Name]?.Value?.ToString() ?? "0");
+
             dgv.CurrentRow.Cells[colTotal.Name].Value = (unitPrice * qty).ToString();
             CheckValidProductByPO();
             CalculateTotal();
-            if (sender is TextBox txt)
-            {
-                txt.Leave -= txtQauntity_Leave;
-            }
+            dgv.BeginEdit(true);
         }
         private async void Cbo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -296,12 +317,12 @@ namespace QTech.Forms
                             var pOProductPrice = pOProductPrices.FirstOrDefault(x => x.ProductId == _productId);
                             if (pOProductPrice?.LeftQauntity == 0)
                             {
-                                Err = ((DataGridViewCell)(dgv.CurrentRow.Cells[colQauntity.Name]));
+                                Err = ((DataGridViewCell)(dgv.CurrentRow.Cells[colProductId.Name]));
                                 Err.ErrorText = BaseReource.MsgProductQtyReachLimit;
                             }
                             else if (inputQty > pOProductPrice?.LeftQauntity)
                             {
-                                Err = ((DataGridViewCell)dgv.CurrentRow.Cells[colQauntity.Name]);
+                                Err = ((DataGridViewCell)dgv.CurrentRow.Cells[colProductId.Name]);
                                 Err.ErrorText = BaseReource.MsgProductOverQty + $" (ចំនួននៅសល់ {pOProductPrice.LeftQauntity})";
                             }
                             else
@@ -372,13 +393,13 @@ namespace QTech.Forms
                         x.ErrorText = BaseReource.MsgPleaseInputValue;
                         invalidCell = true;
                     }
-                    else
-                    {
-                        x.ErrorText = string.Empty;
-                    }
                 });
             }
             if (invalidCell)
+            {
+                return false;
+            }
+            if (!string.IsNullOrEmpty(Err.ErrorText))
             {
                 return false;
             }
@@ -759,11 +780,11 @@ namespace QTech.Forms
         }
         private void dgv_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
-            var cell = dgv.CurrentCell;
-            if (cell.Value != null)
-            {
-                cell.ErrorText = string.Empty;
-            }
+            //var cell = dgv.CurrentCell;
+            //if (cell.Value != null)
+            //{
+            //    cell.ErrorText = string.Empty;
+            //}
         }
     }
 }
