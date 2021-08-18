@@ -63,6 +63,9 @@ namespace QTech.Forms
             cboStatus.SelectedIndexChanged += CboStatus_SelectedIndexChanged;
             cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
 
+            btnAdd.Visible = ShareValue.IsAuthorized(AuthKey.Sale_CreateInvoice_Add);
+            btnRemove.Visible = ShareValue.IsAuthorized(AuthKey.Sale_CreateInvoice_Remove);
+            btnUpdate.Visible = ShareValue.IsAuthorized(AuthKey.Sale_CreateInvoice_Update);
         }
 
         private async void CboCustomer_SelectedIndexChanged(object sender, EventArgs e)

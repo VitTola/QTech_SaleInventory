@@ -32,8 +32,7 @@ namespace QTech.Forms
         List<Permission> _permission;
         bool _isBinding = true;
         string _defaultPassword = @"*cuMQ*?EmL9tKqWp";
-
-
+        
         public async void Bind()
         {
             _permission = await this.RunAsync(() =>

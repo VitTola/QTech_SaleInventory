@@ -11,6 +11,7 @@ using QTech.Db.Logics;
 using QTech.Db;
 using BaseResource = QTech.Base.Properties.Resources;
 using QTech.Base.BaseModels;
+using QTech.Base.Enums;
 
 namespace QTech.Forms
 {
@@ -22,7 +23,10 @@ namespace QTech.Forms
             InitializeComponent();
             txtSearch.RegisterPrimaryInput();
             dgv.SetColumnHeaderDefaultStyle();
-
+            
+            btnAdd.Visible = ShareValue.IsAuthorized(AuthKey.Employee_Employee_Add);
+            btnRemove.Visible = ShareValue.IsAuthorized(AuthKey.Employee_Employee_Remove);
+            btnUpdate.Visible = ShareValue.IsAuthorized(AuthKey.Employee_Employee_Update);
         }
 
         public async void AddNew()

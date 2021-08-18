@@ -1,4 +1,5 @@
-﻿using QTech.Base.Helpers;
+﻿using QTech.Base.Enums;
+using QTech.Base.Helpers;
 using QTech.Base.Models;
 using QTech.Base.SearchModels;
 using QTech.Component;
@@ -19,6 +20,10 @@ namespace QTech.Forms
         {
             InitializeComponent();
             dgv.SetColumnHeaderDefaultStyle();
+
+            btnAdd.Visible = ShareValue.IsAuthorized(AuthKey.Product_Product_Add);
+            btnRemove.Visible = ShareValue.IsAuthorized(AuthKey.Product_Product_Remove);
+            btnUpdate.Visible = ShareValue.IsAuthorized(AuthKey.Product_Product_Update);
         }
 
         public async void AddNew()

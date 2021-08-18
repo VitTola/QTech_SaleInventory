@@ -12,6 +12,7 @@ using QTech.Base.SearchModels;
 using System.Collections.Generic;
 using System.Drawing;
 using QTech.Base.Models;
+using QTech.Base.Enums;
 
 namespace QTech.Forms
 {
@@ -36,6 +37,9 @@ namespace QTech.Forms
             dgv.RowTemplate.Height = 28;
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgv.SetColumnHeaderDefaultStyle();
+            btnAdd.Visible = ShareValue.IsAuthorized(AuthKey.Product_Category_Add);
+            btnRemove.Visible = ShareValue.IsAuthorized(AuthKey.Product_Category_Remove);
+            btnUpdate.Visible = ShareValue.IsAuthorized(AuthKey.Product_Category_Update);
 
             txtSearch.RegisterEnglishInput();
             txtSearch.RegisterKeyArrowDown(dgv);

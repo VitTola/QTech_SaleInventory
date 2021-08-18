@@ -19,7 +19,7 @@ namespace QTech.Db.Logics
         {
             entity.PasswordHash = CalculateHash(entity.FullName, entity.PasswordHash);
             var result = base.AddAsync(entity);
-            if (entity.UserPermissions.Any())
+            if (entity.UserPermissions?.Any() ?? false)
             {
                 entity.UserPermissions.ForEach(x => {
                     x.UserId = result.Id;
@@ -45,7 +45,7 @@ namespace QTech.Db.Logics
                 result = base.UpdateAsync(entity);
             }
 
-            if (entity.UserPermissions.Any())
+            if (entity.UserPermissions?.Any() ?? false)
             {
                 entity.UserPermissions.ForEach(x => {
                     if (x.Id == 0)
@@ -64,7 +64,7 @@ namespace QTech.Db.Logics
         public override User RemoveAsync(User entity)
         {
             var result =  base.RemoveAsync(entity);
-            if (entity.UserPermissions.Any())
+            if (entity.UserPermissions?.Any() ?? false)
             {
                 entity.UserPermissions.ForEach(x => {
                     UserPermissionLogic.Instance.RemoveAsync(x);

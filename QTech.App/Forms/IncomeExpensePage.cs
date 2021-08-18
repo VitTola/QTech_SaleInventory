@@ -37,15 +37,17 @@ namespace QTech.Forms
             dgv.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             dgv.RowTemplate.Height = 28;
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgv.ColumnHeadersHeight = 28;
             dgv.BackgroundColor = System.Drawing.Color.White;
             dgv.SetColumnHeaderDefaultStyle();
 
             txtSearch.RegisterEnglishInput();
             txtSearch.RegisterKeyArrowDown(dgv);
             txtSearch.QuickSearch += txtSearch_QuickSearch;
-            dgv.AllowRowNotFound = true;
             cboMiscellaneousType.SelectedIndexChanged += CboMiscellaneousType_SelectedIndexChanged;
+
+            btnAdd.Visible = ShareValue.IsAuthorized(AuthKey.General_IncomeOutcome_Add);
+            btnRemove.Visible = ShareValue.IsAuthorized(AuthKey.General_IncomeOutcome_Remove);
+            btnUpdate.Visible = ShareValue.IsAuthorized(AuthKey.General_IncomeOutcome_Update);
         }
         private async void CboMiscellaneousType_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -91,7 +93,7 @@ namespace QTech.Forms
         public async void Reload()
         {
             dgv.AllowRowNotFound = true;
-            dgv.AllowRowNumber = true;
+            //dgv.AllowRowNumber = true;
             dgv.ColumnHeadersHeight = 28;
 
             await Search();
@@ -193,6 +195,12 @@ namespace QTech.Forms
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             View();
+        }
+
+        private void dgv_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            dgv.Rows[e.RowIndex].Cells[colRow.Name].Value = (e.RowIndex + 1).ToString();
+
         }
     }
 }

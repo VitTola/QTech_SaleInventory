@@ -42,6 +42,10 @@ namespace QTech.Forms
             txtSearch.RegisterEnglishInput();
             txtSearch.RegisterKeyArrowDown(dgv);
             txtSearch.QuickSearch += txtSearch_QuickSearch;
+
+            btnAdd.Visible = ShareValue.IsAuthorized(AuthKey.Employee_EmployeeBill_Add);
+            btnRemove.Visible = ShareValue.IsAuthorized(AuthKey.Employee_EmployeeBill_Remove);
+            btnUpdate.Visible = ShareValue.IsAuthorized(AuthKey.Employee_EmployeeBill_Update);
         }
         private async void txtSearch_QuickSearch(object sender, EventArgs e)
         {

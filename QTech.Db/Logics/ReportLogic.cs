@@ -68,14 +68,15 @@ namespace QTech.Db.Logics
                 var result = from s in _db.Sales.Where(s => s.Active && s.PayStatus == PayStatus.Paid && s.SaleDate >= param.D1 && s.SaleDate <= param.D2)
                              join c in _db.Customers.Where(c => c.Active) on s.CompanyId equals c.Id into cs
                              from scResult in cs.DefaultIfEmpty()
-                             join ss in _db.Sites.Where(ss => ss.Active) on s.SiteId equals ss.Id 
+                             join ss in _db.Sites.Where(ss => ss.Active) on s.SiteId equals ss.Id into sss
+                             from ssResult in sss.DefaultIfEmpty()
                              select new Income
                              {
-                                 SaleId = scResult.Id,
+                                 SaleId = s.Id,
                                  InvoiceNo = s.InvoiceNo,
                                  PurchaseOrderNo = s.PurchaseOrderNo,
                                  Customer = scResult == null ? s.CustomerName : scResult.Name,
-                                 Site = ss.Name,
+                                 Site = ssResult.Name,
                                  SaleDate = s.SaleDate,
                                  Total = s.Total,
                                  Expense = s.Expense

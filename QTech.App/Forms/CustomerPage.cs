@@ -11,6 +11,7 @@ using QTech.Base.Helpers;
 using QTech.Base.SearchModels;
 using System.Collections.Generic;
 using System.Drawing;
+using QTech.Base.Enums;
 
 namespace QTech.Forms
 {
@@ -54,6 +55,10 @@ namespace QTech.Forms
             txtSearch.RegisterEnglishInput();
             txtSearch.RegisterKeyArrowDown(dgv);
             txtSearch.QuickSearch += txtSearch_QuickSearch;
+
+            btnAdd.Visible = ShareValue.IsAuthorized(AuthKey.Customer_Customer_Add);
+            btnRemove.Visible = ShareValue.IsAuthorized(AuthKey.Customer_Customer_Remove);
+            btnUpdate.Visible = ShareValue.IsAuthorized(AuthKey.Customer_Customer_Update);
         }
 
         private async void txtSearch_QuickSearch(object sender, EventArgs e)

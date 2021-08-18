@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using QTech.Base.Models;
 using System.ComponentModel;
+using QTech.Base.Enums;
 
 namespace QTech.Forms
 {
@@ -42,15 +43,17 @@ namespace QTech.Forms
             txtSearch.RegisterEnglishInput();
             txtSearch.RegisterKeyArrowDown(dgv);
             txtSearch.QuickSearch += txtSearch_QuickSearch;
+
+            btnAdd.Visible = ShareValue.IsAuthorized(AuthKey.Sale_PurchaseOrder_Add);
+            btnRemove.Visible = ShareValue.IsAuthorized(AuthKey.Sale_PurchaseOrder_Remove);
+            btnUpdate.Visible = ShareValue.IsAuthorized(AuthKey.Sale_PurchaseOrder_Update);
         }
-
-
+        
         private async void txtSearch_QuickSearch(object sender, EventArgs e)
         {
             await Search();
         }
-
-
+        
         public async void AddNew()
         {
             Model = new PurchaseOrder();

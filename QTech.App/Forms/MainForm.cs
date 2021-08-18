@@ -30,7 +30,7 @@ namespace QTech.Forms
 
         public MainForm()
         {
-            ShareValue.permissions = PermissionLogic.Instance.SearchAsync(new PermissionSearch());
+            //ShareValue.permissions = PermissionLogic.Instance.SearchAsync(new PermissionSearch());
             InitializeComponent();
             InitEvent();
 
@@ -297,7 +297,8 @@ namespace QTech.Forms
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
+            new LoginDialog().Show();
         }
         //protected override CreateParams CreateParams
         //{
