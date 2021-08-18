@@ -65,20 +65,20 @@ namespace QTech.Db.Logics
             }
             else if (param.CustomerId == 0)
             {
-                var result = from c in _db.Customers.Where(c => c.Active)
-                             join s in _db.Sales.Where(s => s.Active && s.PayStatus == PayStatus.Paid && s.SaleDate >= param.D1 && s.SaleDate <= param.D2) on c.Id equals s.CompanyId into cs
+                var result = from s in _db.Sales.Where(s => s.Active && s.PayStatus == PayStatus.Paid && s.SaleDate >= param.D1 && s.SaleDate <= param.D2)
+                             join c in _db.Customers.Where(c => c.Active) on s.CompanyId equals c.Id into cs
                              from scResult in cs.DefaultIfEmpty()
-                             join ss in _db.Sites.Where(ss => ss.Active) on scResult.SiteId equals ss.Id 
+                             join ss in _db.Sites.Where(ss => ss.Active) on s.SiteId equals ss.Id 
                              select new Income
                              {
                                  SaleId = scResult.Id,
-                                 InvoiceNo = scResult.InvoiceNo,
-                                 PurchaseOrderNo = scResult.PurchaseOrderNo,
-                                 Customer = param.CustomerId == 0 ? scResult.CustomerName : c.Name,
+                                 InvoiceNo = s.InvoiceNo,
+                                 PurchaseOrderNo = s.PurchaseOrderNo,
+                                 Customer = scResult == null ? s.CustomerName : scResult.Name,
                                  Site = ss.Name,
-                                 SaleDate = scResult.SaleDate,
-                                 Total = scResult.Total,
-                                 Expense = scResult.Expense
+                                 SaleDate = s.SaleDate,
+                                 Total = s.Total,
+                                 Expense = s.Expense
                              };
                  var res = result.GroupBy(x => x.SaleId).Select(x => x.FirstOrDefault()).ToList();
                 return res;
