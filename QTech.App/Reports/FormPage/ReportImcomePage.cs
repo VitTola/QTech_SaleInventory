@@ -43,7 +43,10 @@ namespace QTech.Reports
             dtpPeroid.SetSelectePeroid(DatePeroid.Today);
 
             cboCustomer.TextAll = BaseResource.Customer;
-            cboCustomer.DataSourceFn = p => CustomerLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
+            var customers = CustomerLogic.Instance.SearchAsync(new CustomerSearch())?.ToList() ?? new List<Customer>();
+            var customer = new Customer() {Id = -1, Name = BaseResource.GeneralCustomer };
+            customers.Add(customer);
+            cboCustomer.DataSourceFn = p =>customers.ToDropDownItemModelList();
             cboCustomer.SearchParamFn = () => new CustomerSearch();
             cboCustomer.Choose = BaseResource.Customer;
         }
@@ -63,7 +66,7 @@ namespace QTech.Reports
             var searchParam = new ReportIncomeSearch()
             {
                 D1 = dtpPeroid.SelectedPeroid.FromDate.Date,
-                D2 = dtpPeroid.SelectedPeroid.ToDate.Date,
+                D2 = dtpPeroid.SelectedPeroid.ToDate,
                CustomerId = customer==null? 0 : customer.Id,
             };
             

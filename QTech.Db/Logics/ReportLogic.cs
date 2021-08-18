@@ -34,7 +34,7 @@ namespace QTech.Db.Logics
                                      DoDate = e.DoDate,
                                      Note = e.Note,
                                      Amount = e.Amount,
-                                     MiscType = e.MiscellaneousType == MiscellaneousType.Income  ? BaseResource.MiscellaneousType_Income
+                                     MiscType = e.MiscellaneousType == MiscellaneousType.Income ? BaseResource.MiscellaneousType_Income
                                      : BaseResource.MiscellaneousType_Expense,
                                  };
 
@@ -45,40 +45,80 @@ namespace QTech.Db.Logics
         public List<Income> GetImcomeData(ReportIncomeSearch model)
         {
             var param = model;
-            var result = from s in _db.Sales
-                         join c in _db.Customers on s.CompanyId equals c.Id
-                         join ss in _db.Sites on s.SiteId equals ss.Id
-                         where s.Active && s.SaleDate >= param.D1 && s.SaleDate <= param.D2
-                         && s.Active
-                         && s.PayStatus == PayStatus.Paid
-                         && param.CustomerId == 0 ? true
-                         :
-                         s.CompanyId == param.CustomerId
-                         select new Income
-                         {
-                             SaleId = s.Id,
-                             InvoiceNo = s.InvoiceNo,
-                             PurchaseOrderNo = s.PurchaseOrderNo,
-                             Customer = c.Name,
-                             Site = ss.Name,
-                             SaleDate = s.SaleDate,
-                             Total = s.Total,
-                             Expense = s.Expense
-                         };
-            return result.GroupBy(x=>x.SaleId).Select(x=>x.FirstOrDefault()).ToList();
+            if (param.CustomerId == -1)
+            {
+                var result = from s in _db.Sales.Where(s => s.Active && s.PayStatus == PayStatus.Paid && s.SaleType == SaleType.General &&
+                s.SaleDate >= param.D1 && s.SaleDate <= param.D2)
+                             select new Income
+                             {
+                                 SaleId = s.Id,
+                                 InvoiceNo = s.InvoiceNo,
+                                 PurchaseOrderNo = string.Empty,
+                                 Customer = s.CustomerName,
+                                 Site = string.Empty,
+                                 SaleDate = s.SaleDate,
+                                 Total = s.Total,
+                                 Expense = s.Expense
+                             };
+                var _result = result.GroupBy(x => x.SaleId).Select(x => x.FirstOrDefault()).ToList();
+                return _result;
+            }
+            else if (param.CustomerId == 0)
+            {
+                var result = from c in _db.Customers.Where(c => c.Active)
+                             join s in _db.Sales.Where(s => s.Active && s.PayStatus == PayStatus.Paid && s.SaleDate >= param.D1 && s.SaleDate <= param.D2) on c.Id equals s.CompanyId into cs
+                             from scResult in cs.DefaultIfEmpty()
+                             join ss in _db.Sites.Where(ss => ss.Active) on scResult.SiteId equals ss.Id 
+                             select new Income
+                             {
+                                 SaleId = scResult.Id,
+                                 InvoiceNo = scResult.InvoiceNo,
+                                 PurchaseOrderNo = scResult.PurchaseOrderNo,
+                                 Customer = param.CustomerId == 0 ? scResult.CustomerName : c.Name,
+                                 Site = ss.Name,
+                                 SaleDate = scResult.SaleDate,
+                                 Total = scResult.Total,
+                                 Expense = scResult.Expense
+                             };
+                 var res = result.GroupBy(x => x.SaleId).Select(x => x.FirstOrDefault()).ToList();
+                return res;
+                
+            }
+            else
+            {
+                var result = from s in _db.Sales.Where(s => s.Active && s.PayStatus == PayStatus.Paid)
+                             join c in _db.Customers.Where(c => c.Active) on s.CompanyId equals c.Id
+                             join ss in _db.Sites.Where(ss => ss.Active) on s.SiteId equals ss.Id
+                             where
+                             s.SaleDate >= param.D1 && s.SaleDate <= param.D2
+                             && param.CustomerId == 0 ? true
+                             :
+                             s.CompanyId == param.CustomerId
+                             select new Income
+                             {
+                                 SaleId = s.Id,
+                                 InvoiceNo = s.InvoiceNo,
+                                 PurchaseOrderNo = s.PurchaseOrderNo,
+                                 Customer = c.Name,
+                                 Site = ss.Name,
+                                 SaleDate = s.SaleDate,
+                                 Total = s.Total,
+                                 Expense = s.Expense
+                             };
+                return result.GroupBy(x => x.SaleId).Select(x => x.FirstOrDefault()).ToList();
+            }
+
         }
 
         public List<Expense> GetExpenseData(ReportExpenseSearch model)
         {
             var param = model;
-            var result = from b in _db.EmployeeBills
+            var result = from b in _db.EmployeeBills.Where(b => b.InvoiceStatus == InvoiceStatus.Paid)
                          join e in _db.Employees on b.EmployeeId equals e.Id
-                         where b.Active && b.DoDate >= param.D1 && b.DoDate <= param.D2
-                         && b.Active 
-                         && b.InvoiceStatus == InvoiceStatus.Paid
-                         && param.DiriverId == 0 ? true
-                         :
-                         b.EmployeeId == param.DiriverId
+                         where b.Active
+                         && e.Active
+                         && b.DoDate >= param.D1 && b.DoDate <= param.D2
+                         && param.DiriverId == 0 ? true : b.EmployeeId == param.DiriverId
                          select new Expense
                          {
                              BillId = b.Id,
@@ -87,7 +127,8 @@ namespace QTech.Db.Logics
                              DoDate = b.DoDate,
                              Amount = b.Total
                          };
-            return result.GroupBy(x => x.BillId).Select(x => x.FirstOrDefault()).ToList();
+            var _result = result.GroupBy(x => x.BillId).Select(x => x.FirstOrDefault()).ToList();
+            return _result;
         }
     }
 }

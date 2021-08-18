@@ -92,7 +92,7 @@ namespace QTech.Reports
             var searchParam = new ReportDriverDeliverySearch()
             {
                 D1 = dtpPeroid.SelectedPeroid.FromDate.Date,
-                D2 = dtpPeroid.SelectedPeroid.ToDate.Date,
+                D2 = dtpPeroid.SelectedPeroid.ToDate,
                 DriverId = driver?.Id ?? 0,
                 CustomerId = company?.Id ?? 0,
                 SiteId = site?.Id ?? 0

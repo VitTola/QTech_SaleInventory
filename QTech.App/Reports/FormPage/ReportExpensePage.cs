@@ -57,7 +57,7 @@ namespace QTech.Reports
             var searchParam = new ReportExpenseSearch()
             {
                 D1 = dtpPeroid.SelectedPeroid.FromDate.Date,
-                D2 = dtpPeroid.SelectedPeroid.ToDate.Date,
+                D2 = dtpPeroid.SelectedPeroid.ToDate,
                 DiriverId = employee == null ? 0 : employee.Id
             };
             

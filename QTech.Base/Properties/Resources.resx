@@ -661,4 +661,7 @@
   <data name="MsgSaleCanEdit" xml:space="preserve">
     <value>ការលក់នេះបានបញ្ចូលក្នុងវិក័យប័ត្ររួចរាល់មិនអាចកែបានទេ!</value>
   </data>
+  <data name="GeneralCustomer" xml:space="preserve">
+    <value>អតិថិជនទូទៅ</value>
+  </data>
 </root>

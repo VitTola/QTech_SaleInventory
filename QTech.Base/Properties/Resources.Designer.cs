@@ -458,6 +458,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to អតិថិជនទូទៅ.
+        /// </summary>
+        public static string GeneralCustomer {
+            get {
+                return ResourceManager.GetString("GeneralCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap GeneralEmployee {
