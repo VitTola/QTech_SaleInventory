@@ -50,7 +50,8 @@ namespace QTech.Db.Logics
                 entity.UserPermissions.ForEach(x => {
                     if (x.Id == 0)
                     {
-                        x.UserId = entity.Id;
+                        x.Active = true;
+                        x.UserId = result.Id;
                         UserPermissionLogic.Instance.AddAsync(x);
                     }
                     else

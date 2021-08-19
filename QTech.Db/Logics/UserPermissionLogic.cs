@@ -39,7 +39,7 @@ namespace QTech.Db.Logics
         }
         private  bool IsExisted(UserPermission entity)
         {
-            var result =  _db.UserPermissions.AsNoTracking().Any(x => x.UserId == entity.UserId && x.PermissionId == entity.PermissionId);
+            var result =  _db.UserPermissions.AsNoTracking().Any(x =>x.Active && x.UserId == entity.UserId && x.PermissionId == entity.PermissionId);
             return result;
         }
     }
