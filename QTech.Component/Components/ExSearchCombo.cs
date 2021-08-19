@@ -354,15 +354,15 @@ namespace QTech.Component
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (keyData == Keys.Enter)
-            { 
-                if (DataSourceFn == null)
-                {
-                    return base.ProcessCmdKey(ref msg,keyData);
-                }
-                ShowDropDown();
-                return true;
-            }
+            //if (keyData == Keys.Enter)
+            //{ 
+            //    if (DataSourceFn == null)
+            //    {
+            //        return base.ProcessCmdKey(ref msg,keyData);
+            //    }
+            //    ShowDropDown();
+            //    return true;
+            //}
             if (keyData == Keys.Tab)
             {
                 DropDownStyle = ComboBoxStyle.DropDownList;

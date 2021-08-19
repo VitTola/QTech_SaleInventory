@@ -68,6 +68,7 @@ namespace QTech.Component
 
         void selectedItem()
         {
+            dgv.EndEdit();
             if (dgv.SelectedRows.Count > 0)
             {
                 SelectedItems = dgv.SelectedRows.OfType<DataGridViewRow>().Select(x => (DropDownItemModel)x.DataBoundItem).ToList();
@@ -154,7 +155,18 @@ namespace QTech.Component
                 }
 
                 dgv.DataSource = source;
-                dgv.RowSelected(colName.Name, txtSearch.Text);
+                if (dgv.RowCount > 0)
+                {
+                    if (!string.IsNullOrEmpty(txtSearch.Text))
+                    {
+                        dgv.RowSelected(colName.Name, txtSearch.Text);
+                    }
+                    else
+                    {
+                        dgv.RowSelected(0);
+                    }
+
+                }
             }
         }
 

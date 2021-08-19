@@ -177,7 +177,7 @@
             this._lblComanyName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(180)))), ((int)(((byte)(183)))));
             this._lblComanyName.Cursor = System.Windows.Forms.Cursors.Hand;
             this._lblComanyName.Font = new System.Drawing.Font("Khmer Muol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._lblComanyName.ForeColor = System.Drawing.Color.Black;
+            this._lblComanyName.ForeColor = System.Drawing.Color.Blue;
             this._lblComanyName.Location = new System.Drawing.Point(87, 6);
             this._lblComanyName.Name = "_lblComanyName";
             this._lblComanyName.Size = new System.Drawing.Size(170, 24);

@@ -204,7 +204,7 @@
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(849, 392);
-            this.dgv.TabIndex = 4;
+            this.dgv.TabIndex = 0;
             this.dgv.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellLeave);
             // 
             // colId
@@ -348,7 +348,7 @@
             this.btnPrint.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnPrint.ShortcutText = "P";
             this.btnPrint.Size = new System.Drawing.Size(89, 27);
-            this.btnPrint.TabIndex = 2;
+            this.btnPrint.TabIndex = 0;
             this.btnPrint.Text = "បោះពុម្ភ";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
@@ -592,7 +592,7 @@
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
             this.tabMain.Size = new System.Drawing.Size(908, 124);
-            this.tabMain.TabIndex = 32;
+            this.tabMain.TabIndex = 0;
             // 
             // tabCompany_
             // 
