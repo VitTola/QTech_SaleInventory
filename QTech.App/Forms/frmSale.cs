@@ -77,6 +77,7 @@ namespace QTech.Forms
             dgv.MouseClick += Dgv_MouseClick;
             dgv.EditColumnIcon(colProductId, colQauntity, colUnitPrice, colEmployeeId);
             dgv.SetColumnHeaderDefaultStyle();
+            dgv.Enter += (s, e) => { dgv.Rows.Add();dgv.BeginEdit(true); };
             //dgv.CellValueChanged += Dgv_CellValueChanged;
 
             txtTotal.ReadOnly = colLeftQty_.ReadOnly = true;
@@ -786,5 +787,34 @@ namespace QTech.Forms
             //    cell.ErrorText = string.Empty;
             //}
         }
+        protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
+        {
+            try
+            {
+                int icolumn = dgv.CurrentCell.ColumnIndex;
+                int irow = dgv.CurrentCell.RowIndex;
+
+                if (keyData == Keys.Enter)
+                {
+                    if (icolumn == dgv.Columns.Count - 1)
+                    {
+                        dgv.CurrentCell = dgv[0, irow + 1];
+                    }
+                    else
+                    {
+                        dgv.CurrentCell = dgv[icolumn + 1, irow];
+                    }
+                    return true;
+                }
+                else
+                    return base.ProcessCmdKey(ref msg, keyData);
+            }
+            catch (Exception)
+            {
+                return base.ProcessCmdKey(ref msg, keyData);
+            }
+          
+        }
     }
 }
+

@@ -119,6 +119,7 @@ namespace QTech.Component
 
         public async Task Search()
         {
+            dgv.Rows.Clear();
             SearchParameter.Search = txtSearch.Text;
             var search = SearchParameter as ProductSearch;
             var products = await dgv.RunAsync(() =>
@@ -138,6 +139,17 @@ namespace QTech.Component
                     row.Cells[colObject.Name].Value = x;
                     row.Cells[colCategory_.Name].Value = category;
                 });
+            }
+            if (dgv.RowCount > 0)
+            {
+                if (!string.IsNullOrEmpty(txtSearch.Text))
+                {
+                    dgv.RowSelected(colName.Name, txtSearch.Text);
+                }
+                else
+                {
+                    dgv.RowSelected(0);
+                }
             }
         }
         private DataGridViewRow newRow(bool isFocus = false)

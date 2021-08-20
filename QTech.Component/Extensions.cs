@@ -2206,7 +2206,6 @@ namespace QTech.Component
                 SelectionBackColor = Color.Ivory
             };
         }
-
     }
 
 
