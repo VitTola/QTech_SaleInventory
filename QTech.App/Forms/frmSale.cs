@@ -73,12 +73,12 @@ namespace QTech.Forms
             dgv.EditMode = DataGridViewEditMode.EditOnEnter;
             dgv.EditingControlShowing += dgv_EditingControlShowing;
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
-            dgv.EditingControlShowing += Dgv_EditingControlShowing;
+            //dgv.EditingControlShowing += Dgv_EditingControlShowing;
             dgv.MouseClick += Dgv_MouseClick;
             dgv.EditColumnIcon(colProductId, colQauntity, colUnitPrice, colEmployeeId);
             dgv.SetColumnHeaderDefaultStyle();
-            dgv.Enter += (s, e) => { dgv.Rows.Add();dgv.BeginEdit(true); };
-            //dgv.CellValueChanged += Dgv_CellValueChanged;
+            dgv.CellValueChanged += Dgv_CellValueChanged;
+            dgv.Enter += (s, e) => AddDgvRow();
 
             txtTotal.ReadOnly = colLeftQty_.ReadOnly = true;
             cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
@@ -130,22 +130,23 @@ namespace QTech.Forms
                 dgv.ReadOnly = false;
             }
         }
-        private void Dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            if (string.IsNullOrEmpty(cboPurchaseOrderNo.Text) && tabMain.SelectedTab.Equals(tabCompany_))
-            {
-                dgv.EndEdit();
-                dgv.ReadOnly = true;
-                cboPurchaseOrderNo.IsSelected();
-            }
-            else
-            {
-                dgv.ReadOnly = false;
-                dgv.BeginEdit(true);
-            }
-        }
+        //private void Dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        //{
+        //    if (string.IsNullOrEmpty(cboPurchaseOrderNo.Text) && tabMain.SelectedTab.Equals(tabCompany_))
+        //    {
+        //        dgv.EndEdit();
+        //        dgv.ReadOnly = true;
+        //        cboPurchaseOrderNo.IsSelected();
+        //    }
+        //    else
+        //    {
+        //        dgv.ReadOnly = false;
+        //        dgv.BeginEdit(true);
+        //    }
+        //}
         private bool firstLoad = true;
         private async void CboCustomer_SelectedIndexChanged(object sender, EventArgs e)
+
         {
             var customer = cboCustomer.SelectedObject.ItemObject as Customer;
             if (customer != null)
@@ -689,6 +690,10 @@ namespace QTech.Forms
         }
         private void lblAdd_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            AddDgvRow();
+        }
+        private void AddDgvRow()
+        {
             if (tabMain.SelectedTab.Equals(tabGeneral_) && Flag != GeneralProcess.View)
             {
                 dgv.ReadOnly = false;
@@ -813,7 +818,7 @@ namespace QTech.Forms
             {
                 return base.ProcessCmdKey(ref msg, keyData);
             }
-          
+
         }
     }
 }

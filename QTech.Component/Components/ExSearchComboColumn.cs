@@ -79,7 +79,6 @@ namespace QTech.Component
                 editor.Choose = col.Choose;
             }
             editor.ShowAll = col.ShowAll;
-
             if (Value is QTech.Base.BaseModel baseModel)
             {
                 SelectedObject = baseModel.ToDropDownItemModel();

@@ -74,5 +74,18 @@ namespace QTech.Db.Logics
             var result = _db.PurchaseOrders.Where(x => x.Active && x.CustomerId == param.CustomerId && !x.IsReachQty).ToList();
             return result;
         }
+        public override bool CanRemoveAsync(int id)
+        {
+            var entity = base.FindAsync(id);
+            if (entity == null)
+            {
+                return false;
+            }
+            else
+            {
+                var isExistInSale = _db.Sales.Any(x=>x.Active && x.PurchaseOrderId == id);
+                return !isExistInSale;
+            }
+        }
     }
 }
