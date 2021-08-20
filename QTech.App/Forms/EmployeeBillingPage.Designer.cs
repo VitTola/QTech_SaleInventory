@@ -31,20 +31,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            QTech.Base.BaseModels.Paging paging1 = new QTech.Base.BaseModels.Paging();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            QTech.Base.BaseModels.Paging paging1 = new QTech.Base.BaseModels.Paging();
             this.dgv = new QTech.Component.ExDataGridView();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colBillNo_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDoDate_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustomer_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSite = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPaidAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLeftAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.graPanel1 = new QTech.Component.GRAPanel();
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -57,6 +48,16 @@
             this.colorWithAlpha3 = new QTech.Component.ColorWithAlpha();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.pagination = new QTech.Component.ExPaging();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colBillNo_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDoDate_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCustomer_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSite = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPaidAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLeftAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.graPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -89,6 +90,7 @@
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colId,
+            this.colRow,
             this.colBillNo_,
             this.colDoDate_,
             this.colCustomer_,
@@ -118,87 +120,7 @@
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(1272, 463);
             this.dgv.TabIndex = 1;
-            // 
-            // colId
-            // 
-            this.colId.DataPropertyName = "Id";
-            this.colId.HeaderText = "Id";
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            this.colId.Visible = false;
-            // 
-            // colBillNo_
-            // 
-            this.colBillNo_.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colBillNo_.DataPropertyName = "BillNo";
-            this.colBillNo_.FillWeight = 40F;
-            this.colBillNo_.HeaderText = "លេខវិក័យប័ត្រ";
-            this.colBillNo_.MinimumWidth = 150;
-            this.colBillNo_.Name = "colBillNo_";
-            this.colBillNo_.ReadOnly = true;
-            this.colBillNo_.Width = 150;
-            // 
-            // colDoDate_
-            // 
-            this.colDoDate_.DataPropertyName = "DoDate";
-            this.colDoDate_.FillWeight = 40F;
-            this.colDoDate_.HeaderText = "ថ្ងៃចេញ";
-            this.colDoDate_.MinimumWidth = 100;
-            this.colDoDate_.Name = "colDoDate_";
-            this.colDoDate_.ReadOnly = true;
-            this.colDoDate_.Width = 120;
-            // 
-            // colCustomer_
-            // 
-            this.colCustomer_.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCustomer_.DataPropertyName = "Customer";
-            this.colCustomer_.FillWeight = 60F;
-            this.colCustomer_.HeaderText = "អតិថិជន";
-            this.colCustomer_.MinimumWidth = 200;
-            this.colCustomer_.Name = "colCustomer_";
-            this.colCustomer_.ReadOnly = true;
-            // 
-            // colSite
-            // 
-            this.colSite.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colSite.HeaderText = "គំរោង";
-            this.colSite.MinimumWidth = 200;
-            this.colSite.Name = "colSite";
-            this.colSite.ReadOnly = true;
-            // 
-            // colTotal
-            // 
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.colTotal.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colTotal.HeaderText = "សរុប";
-            this.colTotal.Name = "colTotal";
-            this.colTotal.ReadOnly = true;
-            // 
-            // colPaidAmount
-            // 
-            this.colPaidAmount.DataPropertyName = "PaidAmount";
-            dataGridViewCellStyle4.Format = "C2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.colPaidAmount.DefaultCellStyle = dataGridViewCellStyle4;
-            this.colPaidAmount.HeaderText = "បានបង់";
-            this.colPaidAmount.Name = "colPaidAmount";
-            this.colPaidAmount.ReadOnly = true;
-            // 
-            // colLeftAmount
-            // 
-            dataGridViewCellStyle5.Format = "C2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.colLeftAmount.DefaultCellStyle = dataGridViewCellStyle5;
-            this.colLeftAmount.HeaderText = "នៅសល់";
-            this.colLeftAmount.Name = "colLeftAmount";
-            this.colLeftAmount.ReadOnly = true;
-            // 
-            // colStatus
-            // 
-            this.colStatus.HeaderText = "ស្ថានភាព";
-            this.colStatus.Name = "colStatus";
-            this.colStatus.ReadOnly = true;
+            this.dgv.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_RowPostPaint);
             // 
             // graPanel1
             // 
@@ -362,6 +284,94 @@
             this.pagination.Size = new System.Drawing.Size(504, 33);
             this.pagination.TabIndex = 0;
             // 
+            // colId
+            // 
+            this.colId.DataPropertyName = "Id";
+            this.colId.HeaderText = "Id";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            this.colId.Visible = false;
+            // 
+            // colRow
+            // 
+            this.colRow.HeaderText = "";
+            this.colRow.Name = "colRow";
+            this.colRow.ReadOnly = true;
+            this.colRow.Width = 30;
+            // 
+            // colBillNo_
+            // 
+            this.colBillNo_.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colBillNo_.DataPropertyName = "BillNo";
+            this.colBillNo_.FillWeight = 40F;
+            this.colBillNo_.HeaderText = "លេខវិក័យប័ត្រ";
+            this.colBillNo_.MinimumWidth = 150;
+            this.colBillNo_.Name = "colBillNo_";
+            this.colBillNo_.ReadOnly = true;
+            this.colBillNo_.Width = 150;
+            // 
+            // colDoDate_
+            // 
+            this.colDoDate_.DataPropertyName = "DoDate";
+            this.colDoDate_.FillWeight = 40F;
+            this.colDoDate_.HeaderText = "ថ្ងៃចេញ";
+            this.colDoDate_.MinimumWidth = 100;
+            this.colDoDate_.Name = "colDoDate_";
+            this.colDoDate_.ReadOnly = true;
+            this.colDoDate_.Width = 120;
+            // 
+            // colCustomer_
+            // 
+            this.colCustomer_.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colCustomer_.DataPropertyName = "Customer";
+            this.colCustomer_.FillWeight = 60F;
+            this.colCustomer_.HeaderText = "អតិថិជន";
+            this.colCustomer_.MinimumWidth = 200;
+            this.colCustomer_.Name = "colCustomer_";
+            this.colCustomer_.ReadOnly = true;
+            // 
+            // colSite
+            // 
+            this.colSite.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colSite.HeaderText = "គំរោង";
+            this.colSite.MinimumWidth = 200;
+            this.colSite.Name = "colSite";
+            this.colSite.ReadOnly = true;
+            // 
+            // colTotal
+            // 
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.colTotal.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colTotal.HeaderText = "សរុប";
+            this.colTotal.Name = "colTotal";
+            this.colTotal.ReadOnly = true;
+            // 
+            // colPaidAmount
+            // 
+            this.colPaidAmount.DataPropertyName = "PaidAmount";
+            dataGridViewCellStyle4.Format = "C2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.colPaidAmount.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colPaidAmount.HeaderText = "បានបង់";
+            this.colPaidAmount.Name = "colPaidAmount";
+            this.colPaidAmount.ReadOnly = true;
+            // 
+            // colLeftAmount
+            // 
+            dataGridViewCellStyle5.Format = "C2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.colLeftAmount.DefaultCellStyle = dataGridViewCellStyle5;
+            this.colLeftAmount.HeaderText = "នៅសល់";
+            this.colLeftAmount.Name = "colLeftAmount";
+            this.colLeftAmount.ReadOnly = true;
+            // 
+            // colStatus
+            // 
+            this.colStatus.HeaderText = "ស្ថានភាព";
+            this.colStatus.Name = "colStatus";
+            this.colStatus.ReadOnly = true;
+            // 
             // EmployeeBillingPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
@@ -399,6 +409,7 @@
         private Component.ExPaging pagination;
         private Component.ExTextbox txtSearch;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRow;
         private System.Windows.Forms.DataGridViewTextBoxColumn colBillNo_;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDoDate_;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCustomer_;

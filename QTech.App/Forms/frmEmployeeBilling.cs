@@ -23,6 +23,7 @@ using QTech.Base.Enums;
 using QTech.Reports;
 using QTech.Base.BaseReport;
 
+
 namespace QTech.Forms
 {
     public partial class frmEmployeeBilling : ExDialog
@@ -156,13 +157,13 @@ namespace QTech.Forms
             var searchParam = new EmployeeBillSearch()
             {
                 D1 = dtpPeroid.SelectedPeroid.FromDate.Date,
-                D2 = dtpPeroid.SelectedPeroid.ToDate.Date,
+                D2 = dtpPeroid.SelectedPeroid.ToDate,
                 DriverId = driver?.Id ?? 0,
                 CustomerId = company?.Id ?? 0,
                 SiteId = site?.Id ?? 0,
                 EmployeeBillId = Model.Id
             };
-
+           
             var employeeBills = await btnView.RunAsync(() =>
             {
                 var _result = SaleDetailLogic.Instance.GetEmployeeBillOutFaces(searchParam);

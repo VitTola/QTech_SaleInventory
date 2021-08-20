@@ -664,4 +664,7 @@
   <data name="GeneralCustomer" xml:space="preserve">
     <value>អតិថិជនទូទៅ</value>
   </data>
+  <data name="MsgBillCannotEdit" xml:space="preserve">
+    <value>វិក្ក័យប័ត្របានទូទាត់រួចរាល់ មិនអាចកែប្រែបានទេ!</value>
+  </data>
 </root>

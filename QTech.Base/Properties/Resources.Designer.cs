@@ -808,6 +808,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to វិក្ក័យប័ត្របានទូទាត់រួចរាល់ មិនអាចកែប្រែបានទេ!.
+        /// </summary>
+        public static string MsgBillCannotEdit {
+            get {
+                return ResourceManager.GetString("MsgBillCannotEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to អតិថិជន និងលេខ PO មិនអាចកែបានទេ!​ អ្នកអាចធ្វើការលុបការលក់នេះហើយបង្កើតថ្មី​ ។.
         /// </summary>
         public static string MsgCannotChangeCustomerAndPO {

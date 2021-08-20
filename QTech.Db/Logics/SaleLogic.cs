@@ -294,6 +294,7 @@ namespace QTech.Db.Logics
                              SubTotal = s.Total
                          };
             return result.GroupBy(x => x.SaleId).Select(y => y.FirstOrDefault()).ToList();
+            //return result.ToList();
         }
     }
 }

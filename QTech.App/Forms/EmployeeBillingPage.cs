@@ -65,10 +65,18 @@ namespace QTech.Forms
                 return;
             }
 
-            var id = (int)dgv.SelectedRows[0].Cells[colId.Name].Value;
+            var id = (int)dgv.CurrentRow.Cells[colId.Name].Value;
+            var bill = await btnRemove.RunAsync(() => EmployeeLogic.Instance.FindAsync(id));
+           
             Model = await btnUpdate.RunAsync(() => EmployeeBillLogic.Instance.FindAsync(id));
             if (Model == null)
             {
+                return;
+            }
+            else if (Model.InvoiceStatus == InvoiceStatus.Paid)
+            {
+                MsgBox.ShowWarning(BaseResource.MsgBillCannotEdit,
+                   GeneralProcess.Update.GetTextDialog(BaseResource.Categorys));
                 return;
             }
 
@@ -83,7 +91,6 @@ namespace QTech.Forms
         public async void Reload()
         {
             dgv.AllowRowNotFound = true;
-            dgv.AllowRowNumber = true;
             dgv.ColumnHeadersHeight = 28;
 
             await Search();
@@ -96,7 +103,7 @@ namespace QTech.Forms
             }
 
             var id = (int)dgv.CurrentRow.Cells[colId.Name].Value;
-            var canRemove = await btnRemove.RunAsync(() => EmployeeLogic.Instance.CanRemoveAsync(id));
+            var canRemove = await btnRemove.RunAsync(() => EmployeeBillLogic.Instance.CanRemoveAsync(id));
             if (canRemove == false)
             {
                 MsgBox.ShowWarning(EasyServer.Domain.Resources.RowCannotBeRemoved,
@@ -218,6 +225,10 @@ namespace QTech.Forms
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             View();
+        }
+        private void dgv_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            dgv.Rows[e.RowIndex].Cells[colRow.Name].Value = (e.RowIndex + 1).ToString();
         }
     }
 }

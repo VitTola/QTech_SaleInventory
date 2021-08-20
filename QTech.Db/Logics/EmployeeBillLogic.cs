@@ -120,5 +120,21 @@ namespace QTech.Db.Logics
         {
             return Search(model).ToList();
         }
+        public override bool CanRemoveAsync(int id)
+        {
+            var entity = base.FindAsync(id);
+            if (entity == null)
+            {
+                return false;
+            }
+            else
+            {
+                if (entity.InvoiceStatus != InvoiceStatus.WaitPayment)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }
