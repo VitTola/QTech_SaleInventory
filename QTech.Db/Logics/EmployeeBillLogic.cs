@@ -103,16 +103,29 @@ namespace QTech.Db.Logics
         {
             var q = All();
             var param = model as EmployeeBillSearch;
-            if (param?.Paging?.IsPaging == true)
-            {
-                q = q.GetPaged(param.Paging).Results.OrderBy(x => x.Id);
-            }
+            
             if (!string.IsNullOrEmpty(param.Search))
             {
                 q = from b in q
                     join e in _db.Employees on b.EmployeeId equals e.Id
                     where e.Name.ToLower().Contains(param.Search.ToLower())
                     select b;
+            }
+            if (param.PayStatus == InvoiceStatus.Paid)
+            {
+                q = q.Where(x=>x.InvoiceStatus == InvoiceStatus.Paid);
+            }
+            else if (param.PayStatus == InvoiceStatus.PaySome)
+            {
+                q = q.Where(x => x.InvoiceStatus == InvoiceStatus.PaySome);
+            }
+            else if (param.PayStatus == InvoiceStatus.WaitPayment)
+            {
+                q = q.Where(x => x.InvoiceStatus == InvoiceStatus.WaitPayment);
+            }
+            if (param?.Paging?.IsPaging == true)
+            {
+                q = q.GetPaged(param.Paging).Results.OrderBy(x => x.Id);
             }
             return q.GroupBy(x=>x.Id).Select(x=>x.FirstOrDefault());
         }

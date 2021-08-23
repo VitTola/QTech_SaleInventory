@@ -8,6 +8,7 @@ using QTech.Db.Logics;
 using QTech.Reports;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Security.AccessControl;
@@ -28,7 +29,7 @@ namespace QTech.Forms
         }
         private void Bind()
         {
-        }
+        }            
         private void InitEvent()
         {
             dgv.RowsDefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(173, 205, 239);
@@ -36,10 +37,12 @@ namespace QTech.Forms
             dgv.RowTemplate.Height = 28;
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgv.SetColumnHeaderDefaultStyle();
-
+            cboPayStatus.SetDataSource<InvoiceStatus>();
+            cboPayStatus.SelectedValue = InvoiceStatus.WaitPayment;
             txtSearch.RegisterEnglishInput();
             txtSearch.RegisterKeyArrowDown(dgv);
             txtSearch.QuickSearch += txtSearch_QuickSearch;
+            cboPayStatus.SelectedIndexChanged += CboPayStatus_SelectedIndexChanged;
 
             btnAdd.Visible = ShareValue.IsAuthorized(AuthKey.Employee_EmployeeBill_Add);
             btnRemove.Visible = ShareValue.IsAuthorized(AuthKey.Employee_EmployeeBill_Remove);
@@ -125,24 +128,30 @@ namespace QTech.Forms
         }
         public async Task Search()
         {
+            var invStatus = (InvoiceStatus)cboPayStatus.SelectedValue;
             var search = new EmployeeBillSearch()
             {
                 Search = txtSearch.Text,
-                Paging = pagination.Paging
+                Paging = pagination.Paging,
+                PayStatus = invStatus
             };
 
             List<Customer> customers = null;
             List<Site> sites = null;
+            List<Employee> employees = null;
             dgv.Rows.Clear();
             pagination.ListModel = await dgv.RunAsync(() =>
             {
                 var employeeBills = EmployeeBillLogic.Instance.SearchAsync(search);
+                var empIds = employeeBills.Select(x => x.EmployeeId)?.ToList();
+                employees = EmployeeLogic.Instance.GetEmployeesByIds(empIds);
                 var customerIds = employeeBills?.Select(x => x.CustomerId).ToList();
                 var siteIds = employeeBills?.Select(x => x.SiteId).ToList();
                 customers = CustomerLogic.Instance.GetCustomersById(customerIds);
                 sites = SiteLogic.Instance.GetSiteByIds(customerIds);
                 return employeeBills;
             });
+
             if (pagination.ListModel == null)
             {
                 return;
@@ -154,6 +163,7 @@ namespace QTech.Forms
                 var row = newRow(false);
                 row.Cells[colId.Name].Value = x.Id;
                 row.Cells[colBillNo_.Name].Value = x.BillNo;
+                row.Cells[colDriver.Name].Value = employees?.FirstOrDefault(e => e.Id == x.EmployeeId);
                 row.Cells[colDoDate_.Name].Value = x.DoDate.ToString("dd-MMM-yyyy hh:mm");
                 var customer = customers?.FirstOrDefault(cus => cus.Id == x.CustomerId);
                 row.Cells[colCustomer_.Name].Value = customer?.Id == null ? BaseResource.AllCustomer : customer?.Name;
@@ -176,10 +186,16 @@ namespace QTech.Forms
                 }
                 else
                 {
-                    row.Cells[colStatus.Name].Value = BaseResource.NotYetPaid;
+                    row.Cells[colStatus.Name].Value = BaseResource.InvoiceStatus_PaySome;
                     cell.Style.ForeColor = Color.Green;
                 }
             });
+            dgv.Sort(dgv.Columns[colDoDate_.Name], ListSortDirection.Descending);
+
+        }
+        private async void CboPayStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            await Search();
         }
         private DataGridViewRow newRow(bool isFocus = false)
         {

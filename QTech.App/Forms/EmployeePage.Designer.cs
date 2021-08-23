@@ -209,7 +209,7 @@
             this.txtSearch.Padding = new System.Windows.Forms.Padding(2, 3, 1, 4);
             this.txtSearch.PlaceHolderText = "";
             this.txtSearch.SearchMode = QTech.Component.ExTextbox.SearchModes.OnKeyReturn;
-            this.txtSearch.Size = new System.Drawing.Size(154, 26);
+            this.txtSearch.Size = new System.Drawing.Size(200, 26);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.QuickSearch += new System.EventHandler(this.txtSearch_QuickSearch);
             // 

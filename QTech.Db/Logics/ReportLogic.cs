@@ -131,5 +131,30 @@ namespace QTech.Db.Logics
             var _result = result.GroupBy(x => x.BillId).Select(x => x.FirstOrDefault()).ToList();
             return _result;
         }
+
+        //GET REPORTS
+        public List<DriverDeliveryDetail> GetDriverDeliveryDetails(ReportDriverDeliverySearch param)
+        {
+            var result = from sd in _db.SaleDetails.Where(x => x.Active)
+                          join s in _db.Sales.Where(x=>x.Active && x.SaleDate >= param.D1 && x.SaleDate <= param.D2) on sd.SaleId equals s.Id
+                         join e in _db.Employees.Where(x => x.Active) on s.EmployeeId equals e.Id
+                         // join c in _db.Customers.Where(x=>x.Active) on s.CompanyId equals c.Id
+                         // join si in _db.Sites.Where(x=>x.Active) on s.SiteId equals si.Id
+                         //where param.DriverId == 0 ? true : e.Id == param.DriverId
+                         //&& param.CustomerId == 0 ? true : s.CompanyId == param.CustomerId
+                         //&& param.SiteId == 0 ? true : si.Id == param.SiteId
+                         select new DriverDeliveryDetail()
+                         {
+                             saleDetailId = sd.Id,
+                             SaleDate = s.SaleDate,
+                             InvoiceNo = s.InvoiceNo.ToString(),
+                             PurchaseOrderNo = s.PurchaseOrderNo.ToString(),
+                             //Company = c.Name,
+                             //Site = si.Name,
+                             SubTotal = sd.Total
+                         };
+            var sss = result.GroupBy(x => x.saleDetailId).Select(y => y.FirstOrDefault()).ToList();
+            return sss;
+        }
     }
 }

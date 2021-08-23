@@ -1329,9 +1329,6 @@ namespace QTech.Forms
                     };
                         row.Cells[colEmployeeId.Name].Value = lsDriver;
                     }
-
-                    //Init this event after fill in data
-                    //cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
                 });
             }
         }

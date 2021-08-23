@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QTech.Base.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,5 +16,6 @@ namespace QTech.Base.SearchModels
         public int DriverId { get; set; }
         public int SiteId { get; set; }
         public int EmployeeBillId { get; set; }
+        public InvoiceStatus PayStatus { get; set; }
     }
 }

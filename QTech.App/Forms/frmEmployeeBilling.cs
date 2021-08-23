@@ -22,7 +22,7 @@ using QTech.Base.OutFaceModels;
 using QTech.Base.Enums;
 using QTech.Reports;
 using QTech.Base.BaseReport;
-
+using EasyServer.Domain.Helpers;
 
 namespace QTech.Forms
 {
@@ -65,7 +65,7 @@ namespace QTech.Forms
             dgv.SetColumnHeaderDefaultStyle();
             dgvResult.SetColumnHeaderDefaultStyle();
             txtPaidAmount.Leave += txtPaidAmount_Leave;
-            txtPaidAmount.TextChanged += txtPaidAmount_TextChanged;
+            txtPaidAmount.TextChanged += TxtPaidAmount_TextChanged;
             cboCompany.SelectedIndexChanged += CboCompany_SelectedIndexChanged;
 
             colMark_.ReadOnly = txtPaidAmount.ReadOnly = false;
@@ -394,7 +394,8 @@ namespace QTech.Forms
                 var driver = new Employee();
                 var employeeBillOutFaces = await dgv.RunAsync(() =>
                 {
-
+                    SupplierGeneralPrepaids = SupplierGeneralPaidLogic.Instance.GetSupplierGeneralPaidByEmpId(Model.EmployeeId);
+                    SupplierGeneralPrepaids.ForEach(x => prePaid += x.Amount);
                     var _employeeBillOutFaces = SaleDetailLogic.Instance.GetEmployeeBillOutFaces(new EmployeeBillSearch { EmployeeBillId = Model.Id });
                     driver = EmployeeLogic.Instance.FindAsync(Model.EmployeeId);
                     return _employeeBillOutFaces;
@@ -406,14 +407,26 @@ namespace QTech.Forms
                     //Not allow to choose another drive when update
                     cboDriver.Enabled = false;
                 }
-                txtPrePaid.Text = Model.PaidAmount.ToString();
+                txtTotal.Text = Model.Total.ToString();
+                txtPrePaid.Text = prePaid.ToString();
                 txtLeftAmount.Text = Model.LeftAmount.ToString();
                 txtPaidAmount.Text = Model.PaidAmount.ToString();
-                txtTotal.Text = Model.Total.ToString();
                 FillResultGiridView(employeeBillOutFaces, dgvResult);
                 Model.SaleDetails = employeeBillOutFaces?.Select(s => s.saleDetail)?.ToList();
             }
         }
+
+        private void TxtPaidAmount_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPaidAmount.Text))
+            {
+                return;
+            }
+            var pay = Parse.ToDecimal(txtPaidAmount.Text);
+            var total = Parse.ToDecimal(txtTotal.Text ?? "0");
+            txtLeftAmount.Text = (total - (pay + prePaid)).ToString();
+        }
+
         public void Write()
         {
             Model.SaleDetails?.ForEach(s =>
@@ -422,9 +435,9 @@ namespace QTech.Forms
                 s.EmployeeBillId = 0;
             });
             Model.DoDate = DateTime.Now;
-            Model.Total = decimal.Parse(!string.IsNullOrEmpty(txtTotal.Text) ? txtTotal.Text : "0");
-            Model.PaidAmount = decimal.Parse(!string.IsNullOrEmpty(txtPaidAmount.Text) ? txtPaidAmount.Text : "0");
-            Model.LeftAmount = decimal.Parse(!string.IsNullOrEmpty(txtLeftAmount.Text) ? txtLeftAmount.Text : "0");
+            Model.Total = Parse.ToDecimal(!string.IsNullOrEmpty(txtTotal.Text) ? txtTotal.Text : "0");
+            Model.PaidAmount = Parse.ToDecimal(!string.IsNullOrEmpty(txtPaidAmount.Text) ? txtPaidAmount.Text : "0");
+            Model.LeftAmount = Parse.ToDecimal(!string.IsNullOrEmpty(txtLeftAmount.Text) ? txtLeftAmount.Text : "0");
 
             if (Flag == GeneralProcess.Add)
             {
@@ -536,16 +549,6 @@ namespace QTech.Forms
             }
             txtTotal.Text = Total.ToString();
             txtLeftAmount.Text = (Total - prePaid).ToString();
-        }
-        private void txtPaidAmount_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtPaidAmount.Text))
-            {
-                return;
-            }
-            var pay = decimal.Parse(txtPaidAmount.Text);
-            var total = decimal.Parse(txtTotal.Text ?? "0");
-            txtLeftAmount.Text = (total - (pay + prePaid)).ToString();
         }
         private void btnSave_Click(object sender, EventArgs e)
         {

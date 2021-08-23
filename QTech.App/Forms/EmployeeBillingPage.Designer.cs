@@ -40,6 +40,7 @@
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtSearch = new QTech.Component.ExTextbox();
+            this.cboPayStatus = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnRemove = new QTech.Component.ExButtonLoading();
             this.btnUpdate = new QTech.Component.ExButtonLoading();
@@ -51,6 +52,7 @@
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colBillNo_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDriver = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDoDate_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustomer_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSite = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,6 +94,7 @@
             this.colId,
             this.colRow,
             this.colBillNo_,
+            this.colDriver,
             this.colDoDate_,
             this.colCustomer_,
             this.colSite,
@@ -163,10 +166,12 @@
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.txtSearch);
+            this.flowLayoutPanel2.Controls.Add(this.cboPayStatus);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(498, 35);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(985, 35);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // txtSearch
@@ -180,8 +185,18 @@
             this.txtSearch.Padding = new System.Windows.Forms.Padding(2, 3, 1, 4);
             this.txtSearch.PlaceHolderText = "";
             this.txtSearch.SearchMode = QTech.Component.ExTextbox.SearchModes.OnKeyReturn;
-            this.txtSearch.Size = new System.Drawing.Size(154, 26);
+            this.txtSearch.Size = new System.Drawing.Size(200, 26);
             this.txtSearch.TabIndex = 2;
+            // 
+            // cboPayStatus
+            // 
+            this.cboPayStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPayStatus.FormattingEnabled = true;
+            this.cboPayStatus.Location = new System.Drawing.Point(209, 3);
+            this.cboPayStatus.Margin = new System.Windows.Forms.Padding(2, 3, 1, 4);
+            this.cboPayStatus.Name = "cboPayStatus";
+            this.cboPayStatus.Size = new System.Drawing.Size(200, 27);
+            this.cboPayStatus.TabIndex = 3;
             // 
             // flowLayoutPanel1
             // 
@@ -288,6 +303,7 @@
             // 
             this.colId.DataPropertyName = "Id";
             this.colId.HeaderText = "Id";
+            this.colId.MinimumWidth = 100;
             this.colId.Name = "colId";
             this.colId.ReadOnly = true;
             this.colId.Visible = false;
@@ -310,6 +326,14 @@
             this.colBillNo_.ReadOnly = true;
             this.colBillNo_.Width = 150;
             // 
+            // colDriver
+            // 
+            this.colDriver.HeaderText = "អ្នកដឹក";
+            this.colDriver.MinimumWidth = 100;
+            this.colDriver.Name = "colDriver";
+            this.colDriver.ReadOnly = true;
+            this.colDriver.Width = 150;
+            // 
             // colDoDate_
             // 
             this.colDoDate_.DataPropertyName = "DoDate";
@@ -326,7 +350,7 @@
             this.colCustomer_.DataPropertyName = "Customer";
             this.colCustomer_.FillWeight = 60F;
             this.colCustomer_.HeaderText = "អតិថិជន";
-            this.colCustomer_.MinimumWidth = 200;
+            this.colCustomer_.MinimumWidth = 100;
             this.colCustomer_.Name = "colCustomer_";
             this.colCustomer_.ReadOnly = true;
             // 
@@ -334,7 +358,7 @@
             // 
             this.colSite.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colSite.HeaderText = "គំរោង";
-            this.colSite.MinimumWidth = 200;
+            this.colSite.MinimumWidth = 100;
             this.colSite.Name = "colSite";
             this.colSite.ReadOnly = true;
             // 
@@ -408,9 +432,11 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private Component.ExPaging pagination;
         private Component.ExTextbox txtSearch;
+        private System.Windows.Forms.ComboBox cboPayStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRow;
         private System.Windows.Forms.DataGridViewTextBoxColumn colBillNo_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDriver;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDoDate_;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCustomer_;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSite;

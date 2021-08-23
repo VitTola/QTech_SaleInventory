@@ -415,9 +415,9 @@ namespace QTech.Forms
             }
             Model.InvoiceNo = txtInvoiceNo.Text;
             Model.InvoicingDate = dtpInvoicingDate.Value;
-            Model.TotalAmount = decimal.Parse(string.IsNullOrEmpty(txtTotal.Text) ? "0" : txtTotal.Text);
-            Model.PaidAmount = decimal.Parse(string.IsNullOrEmpty(txtPaidAmount.Text) ? "0" : txtPaidAmount.Text);
-            Model.LeftAmount = decimal.Parse(string.IsNullOrEmpty(txtLeftAmount.Text) ? "0" : txtLeftAmount.Text);
+            Model.TotalAmount = Parse.ToDecimal(txtTotal.Text);
+            Model.PaidAmount = Parse.ToDecimal(txtPaidAmount.Text);
+            Model.LeftAmount = Parse.ToDecimal(txtLeftAmount.Text);
             if (Model.PaidAmount == 0)
             {
                 Model.InvoiceStatus = InvoiceStatus.WaitPayment;

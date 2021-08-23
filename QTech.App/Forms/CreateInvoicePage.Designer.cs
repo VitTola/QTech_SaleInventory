@@ -128,7 +128,7 @@ namespace QTech.Forms
             this.txtSearch.ReadOnly = false;
             this.txtSearch.SearchMode = QTech.Component.ExTextboxIconPattern.SearchModes.OnKeyReturn;
             this.txtSearch.SelectedMenuPattern = null;
-            this.txtSearch.Size = new System.Drawing.Size(222, 26);
+            this.txtSearch.Size = new System.Drawing.Size(200, 26);
             this.txtSearch.SizeIcon = new System.Drawing.Size(16, 16);
             this.txtSearch.TabIndex = 1;
             // 
@@ -141,13 +141,13 @@ namespace QTech.Forms
             this.cboCustomer.FormattingEnabled = true;
             this.cboCustomer.IsGirdViewColumn = false;
             this.cboCustomer.LoadAll = true;
-            this.cboCustomer.Location = new System.Drawing.Point(230, 3);
+            this.cboCustomer.Location = new System.Drawing.Point(208, 3);
             this.cboCustomer.Name = "cboCustomer";
             this.cboCustomer.SearchParamFn = null;
             this.cboCustomer.SelectedItems = null;
             this.cboCustomer.SelectedObject = null;
             this.cboCustomer.ShowAll = false;
-            this.cboCustomer.Size = new System.Drawing.Size(233, 27);
+            this.cboCustomer.Size = new System.Drawing.Size(200, 27);
             this.cboCustomer.TabIndex = 26;
             this.cboCustomer.TextAll = "";
             // 
@@ -155,9 +155,9 @@ namespace QTech.Forms
             // 
             this.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboStatus.FormattingEnabled = true;
-            this.cboStatus.Location = new System.Drawing.Point(469, 3);
+            this.cboStatus.Location = new System.Drawing.Point(414, 3);
             this.cboStatus.Name = "cboStatus";
-            this.cboStatus.Size = new System.Drawing.Size(222, 27);
+            this.cboStatus.Size = new System.Drawing.Size(200, 27);
             this.cboStatus.TabIndex = 2;
             // 
             // flowLayoutPanel1

@@ -84,5 +84,9 @@ namespace QTech.Db.Logics
         {
             return _db.EmployeeBills.Any(x=>x.Id == id && x.InvoiceStatus == InvoiceStatus.WaitPayment);
         }
+        public List<Employee> GetEmployeesByIds(List<int>ids)
+        {
+            return _db.Employees.Where(x => x.Active && ids.Any(i => i == x.Id)).ToList();
+        }
     }
 }

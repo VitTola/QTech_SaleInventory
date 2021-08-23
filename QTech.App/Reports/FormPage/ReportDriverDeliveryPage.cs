@@ -101,7 +101,7 @@ namespace QTech.Reports
 
             var driverDeliveryDetails = await btnView.RunAsync(() =>
             {
-                var result = SaleLogic.Instance.GetDriverDeliveryDetails(searchParam);
+                var result = ReportLogic.Instance.GetDriverDeliveryDetails(searchParam);
                 return result;
             });
 
