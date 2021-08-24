@@ -81,9 +81,9 @@ namespace QTech.Db.Logics
                                  Total = s.Total,
                                  Expense = s.Expense
                              };
-                 var res = result.GroupBy(x => x.SaleId).Select(x => x.FirstOrDefault()).ToList();
+                var res = result.GroupBy(x => x.SaleId).Select(x => x.FirstOrDefault()).ToList();
                 return res;
-                
+
             }
             else
             {
@@ -135,26 +135,75 @@ namespace QTech.Db.Logics
         //GET REPORTS
         public List<DriverDeliveryDetail> GetDriverDeliveryDetails(ReportDriverDeliverySearch param)
         {
-            var result = from sd in _db.SaleDetails.Where(x => x.Active)
-                          join s in _db.Sales.Where(x=>x.Active && x.SaleDate >= param.D1 && x.SaleDate <= param.D2) on sd.SaleId equals s.Id
-                         join e in _db.Employees.Where(x => x.Active) on s.EmployeeId equals e.Id
-                         // join c in _db.Customers.Where(x=>x.Active) on s.CompanyId equals c.Id
-                         // join si in _db.Sites.Where(x=>x.Active) on s.SiteId equals si.Id
-                         //where param.DriverId == 0 ? true : e.Id == param.DriverId
-                         //&& param.CustomerId == 0 ? true : s.CompanyId == param.CustomerId
-                         //&& param.SiteId == 0 ? true : si.Id == param.SiteId
-                         select new DriverDeliveryDetail()
-                         {
-                             saleDetailId = sd.Id,
-                             SaleDate = s.SaleDate,
-                             InvoiceNo = s.InvoiceNo.ToString(),
-                             PurchaseOrderNo = s.PurchaseOrderNo.ToString(),
-                             //Company = c.Name,
-                             //Site = si.Name,
-                             SubTotal = sd.Total
-                         };
-            var sss = result.GroupBy(x => x.saleDetailId).Select(y => y.FirstOrDefault()).ToList();
-            return sss;
+            if (param.CustomerId == -1)
+            {
+                var q = from sal in _db.Sales.Where(x => x.Active)
+                        join sad in _db.SaleDetails.Where(x => x.Active) on sal.Id equals sad.SaleId
+                        where sal.SaleDate >= param.D1 && sal.SaleDate <= param.D2
+                        && (param.DriverId == 0 ? true : sad.EmployeeId == param.DriverId)
+                        && (sal.SaleType == SaleType.General)
+                        select new DriverDeliveryDetail()
+                        {
+                            saleDetailId = sad.Id,
+                            SaleDate = sal.SaleDate,
+                            InvoiceNo = sal.InvoiceNo.ToString(),
+                            PurchaseOrderNo = string.Empty,
+                            Company = sal.CustomerName,
+                            Site = string.Empty,
+                            SubTotal = sad.Total
+                        };
+                return q.ToList();
+            }
+            else if(param.CustomerId == 0)
+            {
+                var q = from sal in _db.Sales.Where(x => x.Active)
+                        join sad in _db.SaleDetails.Where(x => x.Active) on sal.Id equals sad.SaleId
+                        join emp in _db.Employees.Where(x => x.Active) on sad.EmployeeId equals emp.Id
+                        join cus in _db.Customers.Where(x => x.Active) on sal.CompanyId equals cus.Id into customers
+                        from cusResult in customers.DefaultIfEmpty()
+                        join sit in _db.Sites.Where(x => x.Active) on sal.SiteId equals sit.Id into sites
+                        from sitResult in sites.DefaultIfEmpty()
+                        where sal.SaleDate >= param.D1 && sal.SaleDate <= param.D2
+                        && (param.DriverId == 0 ? true : sad.EmployeeId == param.DriverId)
+                        && (param.SiteId == 0 ? true : sitResult.Id == param.SiteId)
+                        && (param.CustomerId == 0 ? true : sal.CompanyId == param.CustomerId)
+                        select new DriverDeliveryDetail()
+                        {
+                            saleDetailId = sad.Id,
+                            SaleDate = sal.SaleDate,
+                            InvoiceNo = sal.InvoiceNo.ToString(),
+                            PurchaseOrderNo = sal.PurchaseOrderNo.ToString(),
+                            Company = cusResult == null ? sal.CustomerName : cusResult.Name,
+                            Site = sitResult == null ? string.Empty : sitResult.Name,
+                            SubTotal = sad.Total
+                        };
+                return q.ToList();
+            }
+            else
+            {
+
+                var q = from sal in _db.Sales.Where(x => x.Active)
+                        join sad in _db.SaleDetails.Where(x => x.Active) on sal.Id equals sad.SaleId
+                        join emp in _db.Employees.Where(x => x.Active) on sad.EmployeeId equals emp.Id
+                        join cus in _db.Customers.Where(x => x.Active) on sal.CompanyId equals cus.Id
+                        join sit in _db.Sites.Where(x => x.Active) on sal.SiteId equals sit.Id
+                        where sal.SaleDate >= param.D1 && sal.SaleDate <= param.D2
+                        && (param.DriverId == 0 ? true : sad.EmployeeId == param.DriverId)
+                        && (sal.CompanyId == param.CustomerId)
+                        && (param.SiteId == 0 ? true : sit.Id == param.SiteId)
+                        select new DriverDeliveryDetail()
+                        {
+                            saleDetailId = sad.Id,
+                            SaleDate = sal.SaleDate,
+                            InvoiceNo = sal.InvoiceNo.ToString(),
+                            PurchaseOrderNo = sal.PurchaseOrderNo.ToString(),
+                            Company = cus.Name,
+                            Site = sit.Name,
+                            SubTotal = sad.Total
+                        };
+                return q.ToList();
+            }
+           
         }
     }
 }

@@ -44,6 +44,14 @@ namespace QTech.Reports
             dtpPeroid.Items.AddRange(peroids.ToArray());
             dtpPeroid.Items.Add(customPeroid);
             dtpPeroid.SetSelectePeroid(DatePeroid.Today);
+
+            cboCompany.TextAll = BaseResource.Customer;
+            var customers = CustomerLogic.Instance.SearchAsync(new CustomerSearch())?.ToList() ?? new List<Customer>();
+            var customer = new Customer() { Id = -1, Name = BaseResource.GeneralCustomer };
+            customers.Add(customer);
+            cboCompany.DataSourceFn = p => customers.ToDropDownItemModelList();
+            cboCompany.SearchParamFn = () => new CustomerSearch();
+            cboCompany.Choose = BaseResource.Customer;
         }
 
         private void InitEvent()
@@ -143,14 +151,7 @@ namespace QTech.Reports
             Choose = BaseResource.Driver,
         };
 
-        ExSearchCombo cboCompany = new ExSearchCombo
-        {
-            Name = BaseResource.Customer,
-            TextAll = BaseResource.Customer,
-            DataSourceFn = p => CustomerLogic.Instance.SearchAsync(p).ToDropDownItemModelList(),
-            SearchParamFn = () => new CustomerSearch(),
-            Choose = BaseResource.Customer,
-        };
+        ExSearchCombo cboCompany = new ExSearchCombo();
 
         ExSearchCombo cboSite = new ExSearchCombo
         {
