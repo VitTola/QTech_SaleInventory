@@ -10,7 +10,7 @@
     <Shape ID="DesignTable:RportDriverDeliveryDetail" ZOrder="5" X="350" Y="608" Height="258" Width="216" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:Income" ZOrder="4" X="571" Y="224" Height="162" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="158" />
     <Shape ID="DesignTable:Expense" ZOrder="3" X="766" Y="226" Height="239" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="235" />
-    <Shape ID="DesignTable:IncomeExpense" ZOrder="2" X="839" Y="500" Height="201" Width="156" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="197" />
+    <Shape ID="DesignTable:IncomeExpense" ZOrder="2" X="839" Y="500" Height="125" Width="156" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
     <Shape ID="DesignTable:EmployeePrepaid" ZOrder="1" X="1191" Y="314" Height="125" Width="167" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
   </Shapes>
   <Connectors />

@@ -13,6 +13,7 @@ namespace QTech.Base.Models
         public decimal Amount { get; set; }
         public string Note { get; set; }
         public bool IsCalculated { get; set; } = false;
+        public int EmployeeBillId { get; set; }
 
     }
 }

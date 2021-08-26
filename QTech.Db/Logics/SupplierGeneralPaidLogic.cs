@@ -28,10 +28,22 @@ namespace QTech.Db.Logics
             }
             return q;
         }
-
+        public List<SupplierGeneralPaid> GetSupplierGeneralPaid(int employeeId, int billId, bool loadAll = false)
+        {
+            var q = All().Where(x => x.EmployeeId == employeeId);
+            if (billId != 0)
+            {
+                q = q.Where(x => x.EmployeeBillId == billId);
+            }
+            return q.ToList();
+        }
         public List<SupplierGeneralPaid> GetSupplierGeneralPaidByEmpId(int employeeId)
         {
-            return _db.SupplierGeneralPaids.Where(x => !x.IsCalculated && x.EmployeeId == employeeId).ToList();
+            return _db.SupplierGeneralPaids.Where(x => !x.IsCalculated && x.EmployeeBillId == 0 && x.EmployeeId == employeeId).ToList();
+        }
+        public List<SupplierGeneralPaid> GetSupplierGeneralPaidByBillId(int BillId)
+        {
+            return _db.SupplierGeneralPaids.Where(x => !x.IsCalculated && x.EmployeeBillId == BillId).ToList();
         }
     }
 }

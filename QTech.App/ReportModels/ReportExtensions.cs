@@ -14,11 +14,11 @@ namespace QTech.ReportModels
 {
     public static class ReportExtensions
     {
-        public async static void ReportEmployeePrepaid(this IAsyncTask task, int employeeId)
+        public async static void PrintReportEmployeePrepaid(this IAsyncTask task, int employeeId, int billId = 0, bool loadAll = false)
         {
             var emp = EmployeeLogic.Instance.FindAsync(employeeId);
             if (emp == null) return;
-            var prepaids = SupplierGeneralPaidLogic.Instance.GetSupplierGeneralPaidByEmpId(emp.Id);
+            var prepaids = SupplierGeneralPaidLogic.Instance.GetSupplierGeneralPaid(emp.Id, billId, loadAll);
             if (prepaids?.Any() ?? false)
             {
                 DataTable prepaid = new DataTable("EmployeePrepaid");
@@ -36,8 +36,8 @@ namespace QTech.ReportModels
             };
                 var report = await task.RunAsync(() =>
                 {
-                    var r = ReportHelper.Instance.Load(nameof(ReportEmployeePrepaid), Prepaids, reportHeader);
-                    r.SummaryInfo.ReportTitle = nameof(ReportEmployeePrepaid);
+                    var r = ReportHelper.Instance.Load(nameof(PrintReportEmployeePrepaid), Prepaids, reportHeader);
+                    r.SummaryInfo.ReportTitle = nameof(PrintReportEmployeePrepaid);
                     return r;
                 });
 

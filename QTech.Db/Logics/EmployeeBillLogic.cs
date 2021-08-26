@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace QTech.Db.Logics
 {
-    public class EmployeeBillLogic : DbLogic<EmployeeBill,EmployeeBillLogic>
+    public class EmployeeBillLogic : DbLogic<EmployeeBill, EmployeeBillLogic>
     {
         public override EmployeeBill FindAsync(int id)
         {
-            return _db.EmployeeBills.FirstOrDefault(x=>x.Id == id);
+            return _db.EmployeeBills.FirstOrDefault(x => x.Id == id);
         }
         public override EmployeeBill AddAsync(EmployeeBill entity)
         {
@@ -23,21 +23,22 @@ namespace QTech.Db.Logics
             var result = base.AddAsync(entity);
             if (entity.SaleDetails.Any())
             {
-                entity.SaleDetails.ForEach(x=> {
+                entity.SaleDetails.ForEach(x =>
+                {
                     x.EmployeeBillId = result.Id;
                     SaleDetailLogic.Instance.UpdateAsync(x);
                 });
             }
 
             //Update Prepaid
-            if (result.InvoiceStatus == InvoiceStatus.Paid)
+            var SupplierGeneralPrepaids = SupplierGeneralPaidLogic.Instance.GetSupplierGeneralPaidByEmpId(result.EmployeeId);
+            SupplierGeneralPrepaids.ForEach(x =>
             {
-                var SupplierGeneralPrepaids = SupplierGeneralPaidLogic.Instance.GetSupplierGeneralPaidByEmpId(result.EmployeeId);
-                SupplierGeneralPrepaids.ForEach(x => {
-                    x.IsCalculated = true;
-                    SupplierGeneralPaidLogic.Instance.UpdateAsync(x);
-                });
-            }
+                x.IsCalculated = result.InvoiceStatus == InvoiceStatus.Paid ? true : false;
+                x.EmployeeBillId = result.Id;
+                SupplierGeneralPaidLogic.Instance.UpdateAsync(x);
+            });
+
             return result;
         }
         public override EmployeeBill UpdateAsync(EmployeeBill entity)
@@ -45,8 +46,9 @@ namespace QTech.Db.Logics
             var result = base.UpdateAsync(entity);
             if (entity.SaleDetails.Any())
             {
-                entity.SaleDetails.ForEach(x => {
-                   if(x.PayStatus == PayStatus.WaitPayment || x.PayStatus == PayStatus.Paid) x.EmployeeBillId = result.Id;
+                entity.SaleDetails.ForEach(x =>
+                {
+                    if (x.PayStatus == PayStatus.WaitPayment || x.PayStatus == PayStatus.Paid) x.EmployeeBillId = result.Id;
                     SaleDetailLogic.Instance.UpdateAsync(x);
                 });
             }
@@ -54,8 +56,9 @@ namespace QTech.Db.Logics
             //Update Prepaid
             if (result.InvoiceStatus == InvoiceStatus.Paid)
             {
-               var  SupplierGeneralPrepaids = SupplierGeneralPaidLogic.Instance.GetSupplierGeneralPaidByEmpId(result.EmployeeId);
-                SupplierGeneralPrepaids.ForEach(x => {
+                var SupplierGeneralPrepaids = SupplierGeneralPaidLogic.Instance.GetSupplierGeneralPaidByBillId(result.Id);
+                SupplierGeneralPrepaids.ForEach(x =>
+                {
                     x.IsCalculated = true;
                     SupplierGeneralPaidLogic.Instance.UpdateAsync(x);
                 });
@@ -65,14 +68,25 @@ namespace QTech.Db.Logics
         public override EmployeeBill RemoveAsync(EmployeeBill entity)
         {
             var result = base.RemoveAsync(entity);
-            if (entity.SaleDetails.Any())
+            if (entity?.SaleDetails.Any() ?? false)
             {
-                entity.SaleDetails.ForEach(x => {
+                entity.SaleDetails.ForEach(x =>
+                {
                     x.EmployeeBillId = 0;
                     x.PayStatus = PayStatus.NotYetPaid;
                     SaleDetailLogic.Instance.UpdateAsync(x);
                 });
             }
+
+            //Supplier Prepaid
+            var SupplierGeneralPrepaids = SupplierGeneralPaidLogic.Instance.GetSupplierGeneralPaidByBillId(result.Id);
+            SupplierGeneralPrepaids.ForEach(x =>
+            {
+                x.IsCalculated = false;
+                x.EmployeeBillId = 0;
+                SupplierGeneralPaidLogic.Instance.UpdateAsync(x);
+            });
+
             return result;
         }
         private string NewInvoiceNumber()
@@ -103,7 +117,7 @@ namespace QTech.Db.Logics
         {
             var q = All();
             var param = model as EmployeeBillSearch;
-            
+
             if (!string.IsNullOrEmpty(param.Search))
             {
                 q = from b in q
@@ -113,7 +127,7 @@ namespace QTech.Db.Logics
             }
             if (param.PayStatus == InvoiceStatus.Paid)
             {
-                q = q.Where(x=>x.InvoiceStatus == InvoiceStatus.Paid);
+                q = q.Where(x => x.InvoiceStatus == InvoiceStatus.Paid);
             }
             else if (param.PayStatus == InvoiceStatus.PaySome)
             {
@@ -127,7 +141,7 @@ namespace QTech.Db.Logics
             {
                 q = q.GetPaged(param.Paging).Results.OrderBy(x => x.Id);
             }
-            return q.GroupBy(x=>x.Id).Select(x=>x.FirstOrDefault());
+            return q.GroupBy(x => x.Id).Select(x => x.FirstOrDefault());
         }
         public override List<EmployeeBill> SearchAsync(ISearchModel model)
         {

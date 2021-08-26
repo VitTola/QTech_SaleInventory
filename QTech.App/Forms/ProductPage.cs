@@ -5,6 +5,7 @@ using QTech.Base.SearchModels;
 using QTech.Component;
 using QTech.Db.Logics;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Threading.Tasks;
@@ -102,15 +103,40 @@ namespace QTech.Forms
             {
                 Search = txtSearch.Text,
             };
-
-            var result = await dgv.RunAsync(() => ProductLogic.Instance.SearchAsync(search));
+            dgv.Rows.Clear();
+            List<Category> categories = null;
+            var result = await dgv.RunAsync(() => {
+                var products = ProductLogic.Instance.SearchAsync(search);
+                categories = CategoryLogic.Instance.SearchAsync(new CategorySearch());
+                return products;
+            });
             if (result == null)
             {
                 return;
             }
-            dgv.DataSource = result._ToDataTable();
+            if (result?.Any() ?? false)
+            {
+                result.ForEach(x => {
+                    var row = newRow();
+                    row.Cells[colId.Name].Value = x.Id;
+                    row.Cells[colName.Name].Value = x.Name;
+                    row.Cells[colCategory_.Name].Value = categories?.FirstOrDefault(c=>c.Id == x.CategoryId)?.Name ??string.Empty;
+                    row.Cells[colImportPrice.Name].Value = x.ImportPrice;
+                    row.Cells[colUnitPrice.Name].Value = x.UnitPrice;
+                    row.Cells[colNote.Name].Value = x.Note;
+                });
+            }
         }
-
+        private DataGridViewRow newRow(bool isFocus = false)
+        {
+            var row = dgv.Rows[dgv.Rows.Add()];
+            row.Cells[colId.Name].Value = 0;
+            if (isFocus)
+            {
+                dgv.Focus();
+            }
+            return row;
+        }
         public async void View()
         {
             if (dgv.SelectedRows.Count == 0)

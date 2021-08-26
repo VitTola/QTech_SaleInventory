@@ -685,6 +685,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to បានកាត់កង.
+        /// </summary>
+        public static string IsCalculated {
+            get {
+                return ResourceManager.GetString("IsCalculated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to បានទួទាត់.
         /// </summary>
         public static string IsPaid {
@@ -1002,6 +1011,15 @@ namespace QTech.Base.Properties {
         public static string Note {
             get {
                 return ResourceManager.GetString("Note", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to មិនទាន់កាត់កង.
+        /// </summary>
+        public static string NotYetCalculated {
+            get {
+                return ResourceManager.GetString("NotYetCalculated", resourceCulture);
             }
         }
         

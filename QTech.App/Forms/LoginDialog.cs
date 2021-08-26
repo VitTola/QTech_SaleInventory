@@ -9,6 +9,7 @@ using QTech.Component.Helpers;
 using QTech.Base.Helpers;
 using QTech.Db.Logics;
 using BaseResource = QTech.Base.Properties.Resources;
+using QTech.Db;
 
 namespace QTech.Forms
 {
@@ -21,6 +22,8 @@ namespace QTech.Forms
         public LoginDialog()
         {
             InitializeComponent();
+            DataBaseSetting.ReadSetting();
+
             txtUserName.RegisterEnglishInputWith(txtPassword);
             txtUserName.RegisterKeyEnterNextControlWith(txtPassword);
             

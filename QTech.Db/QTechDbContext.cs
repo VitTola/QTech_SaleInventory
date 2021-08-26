@@ -52,7 +52,7 @@ namespace QTech.Db
     public static class DataBaseSetting
     {
         public static DbConfig config = new DbConfig() {
-            DataSource = "TOLA",
+            DataSource = "Pheng Ry",
             DataBase = "QTech_SaleDb",
             
         };

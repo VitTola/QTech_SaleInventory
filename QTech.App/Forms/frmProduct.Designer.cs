@@ -30,7 +30,7 @@
         {
             this.lblName = new QTech.Component.ExLabel();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.lblUnitPrice = new QTech.Component.ExLabel();
+            this.lblUnitPrice_ = new QTech.Component.ExLabel();
             this.lblNote = new QTech.Component.ExLabel();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.exPanel1 = new QTech.Component.Components.ExPanel();
@@ -63,7 +63,7 @@
             this.container.Controls.Add(this.exPanel1);
             this.container.Controls.Add(this.lblNote);
             this.container.Controls.Add(this.txtNote);
-            this.container.Controls.Add(this.lblUnitPrice);
+            this.container.Controls.Add(this.lblUnitPrice_);
             this.container.Controls.Add(this.lblName);
             this.container.Controls.Add(this.txtName);
             this.container.Size = new System.Drawing.Size(378, 272);
@@ -86,15 +86,15 @@
             this.txtName.Size = new System.Drawing.Size(200, 27);
             this.txtName.TabIndex = 0;
             // 
-            // lblUnitPrice
+            // lblUnitPrice_
             // 
-            this.lblUnitPrice.AutoSize = true;
-            this.lblUnitPrice.Location = new System.Drawing.Point(24, 123);
-            this.lblUnitPrice.Name = "lblUnitPrice";
-            this.lblUnitPrice.Required = true;
-            this.lblUnitPrice.Size = new System.Drawing.Size(68, 19);
-            this.lblUnitPrice.TabIndex = 22;
-            this.lblUnitPrice.Text = "តម្លៃរាយ/m³";
+            this.lblUnitPrice_.AutoSize = true;
+            this.lblUnitPrice_.Location = new System.Drawing.Point(24, 123);
+            this.lblUnitPrice_.Name = "lblUnitPrice_";
+            this.lblUnitPrice_.Required = true;
+            this.lblUnitPrice_.Size = new System.Drawing.Size(68, 19);
+            this.lblUnitPrice_.TabIndex = 22;
+            this.lblUnitPrice_.Text = "តម្លៃរាយ/m³";
             // 
             // lblNote
             // 
@@ -306,7 +306,7 @@
         #endregion
         private Component.ExLabel lblName;
         private System.Windows.Forms.TextBox txtName;
-        private Component.ExLabel lblUnitPrice;
+        private Component.ExLabel lblUnitPrice_;
         private Component.ExLabel lblNote;
         private System.Windows.Forms.TextBox txtNote;
         private Component.Components.ExPanel exPanel1;

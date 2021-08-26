@@ -11,5 +11,6 @@ namespace QTech.ReportModels
         public DateTime DoDate { get; set; }
         public decimal Amount { get; set; }
         public string Note { get; set; }
+        public string IsCaculated { get; set; }
     }
 }

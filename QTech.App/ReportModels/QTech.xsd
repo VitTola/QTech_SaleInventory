@@ -80,6 +80,7 @@
               <xs:element name="DoDate" msprop:Generator_ColumnVarNameInTable="columnDoDate" msprop:Generator_ColumnPropNameInRow="DoDate" msprop:Generator_ColumnPropNameInTable="DoDateColumn" msprop:Generator_UserColumnName="DoDate" type="xs:dateTime" minOccurs="0" />
               <xs:element name="Amount" msprop:Generator_ColumnVarNameInTable="columnAmount" msprop:Generator_ColumnPropNameInRow="Amount" msprop:Generator_ColumnPropNameInTable="AmountColumn" msprop:Generator_UserColumnName="Amount" type="xs:decimal" minOccurs="0" />
               <xs:element name="Note" msprop:Generator_ColumnVarNameInTable="columnNote" msprop:Generator_ColumnPropNameInRow="Note" msprop:Generator_ColumnPropNameInTable="NoteColumn" msprop:Generator_UserColumnName="Note" type="xs:string" minOccurs="0" />
+              <xs:element name="IsCalculated" msprop:Generator_ColumnVarNameInTable="columnIsCalculated" msprop:Generator_ColumnPropNameInRow="IsCalculated" msprop:Generator_ColumnPropNameInTable="IsCalculatedColumn" msprop:Generator_UserColumnName="IsCalculated" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmployee));
             this.colUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCreatedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,6 +70,8 @@
             this.exLabel3 = new QTech.Component.ExLabel();
             this.txtPayNote = new System.Windows.Forms.TextBox();
             this.exLabel2 = new QTech.Component.ExLabel();
+            this.btnPrint = new QTech.Component.ExButtonLoading();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.container.SuspendLayout();
             this.exPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -78,6 +81,7 @@
             this.panel2.SuspendLayout();
             this.flowLayOutLabelRemoveAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // container
@@ -181,6 +185,7 @@
             // 
             this.exPanel1.BackColor = System.Drawing.Color.Transparent;
             this.exPanel1.Controls.Add(this.flowLayoutPanel2);
+            this.exPanel1.Controls.Add(this.flowLayoutPanel3);
             this.exPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.exPanel1.Location = new System.Drawing.Point(1, 333);
             this.exPanel1.Name = "exPanel1";
@@ -192,11 +197,11 @@
             // 
             this.flowLayoutPanel2.Controls.Add(this.btnClose);
             this.flowLayoutPanel2.Controls.Add(this.btnSave);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(2, 2);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(147, 2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(376, 32);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(231, 32);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // btnClose
@@ -204,7 +209,7 @@
             this.btnClose.BackColor = System.Drawing.Color.Ivory;
             this.btnClose.DefaultImage = null;
             this.btnClose.Executing = false;
-            this.btnClose.Location = new System.Drawing.Point(299, 3);
+            this.btnClose.Location = new System.Drawing.Point(154, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -220,7 +225,7 @@
             this.btnSave.BackColor = System.Drawing.Color.Ivory;
             this.btnSave.DefaultImage = null;
             this.btnSave.Executing = false;
-            this.btnSave.Location = new System.Drawing.Point(220, 3);
+            this.btnSave.Location = new System.Drawing.Point(75, 3);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -400,33 +405,33 @@
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Ivory;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Khmer OS System", 8F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colId,
             this.colDoDate,
             this.colAmount,
             this.colNote});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Khmer OS System", 8F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
             this.dgv.Font = new System.Drawing.Font("Khmer OS System", 8F);
@@ -503,6 +508,34 @@
             this.exLabel2.TabIndex = 38;
             this.exLabel2.Text = "ចំណាំ";
             // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.Ivory;
+            this.btnPrint.DefaultImage = null;
+            this.btnPrint.Executing = false;
+            this.btnPrint.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
+            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrint.Location = new System.Drawing.Point(2, 3);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
+            this.btnPrint.ShortcutText = "P";
+            this.btnPrint.Size = new System.Drawing.Size(89, 27);
+            this.btnPrint.TabIndex = 3;
+            this.btnPrint.Text = "បោះពុម្ភ";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.btnPrint);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(2, 2);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(139, 32);
+            this.flowLayoutPanel3.TabIndex = 4;
+            // 
             // frmEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
@@ -526,6 +559,7 @@
             this.flowLayOutLabelRemoveAdd.ResumeLayout(false);
             this.flowLayOutLabelRemoveAdd.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+            this.flowLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -569,5 +603,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colDoDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNote;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private Component.ExButtonLoading btnPrint;
     }
 }

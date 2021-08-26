@@ -16,14 +16,14 @@ namespace QTech.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ReportEmployeePrepaid : ReportClass {
+    public class PrintReportEmployeePrepaid : ReportClass {
         
-        public ReportEmployeePrepaid() {
+        public PrintReportEmployeePrepaid() {
         }
         
         public override string ResourceName {
             get {
-                return "ReportEmployeePrepaid.rpt";
+                return "PrintReportEmployeePrepaid.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace QTech.Reports {
         
         public override string FullResourceName {
             get {
-                return "QTech.Reports.ReportEmployeePrepaid.rpt";
+                return "QTech.Reports.PrintReportEmployeePrepaid.rpt";
             }
             set {
                 // Do nothing
@@ -122,9 +122,9 @@ namespace QTech.Reports {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedReportEmployeePrepaid : Component, ICachedReport {
+    public class CachedPrintReportEmployeePrepaid : Component, ICachedReport {
         
-        public CachedReportEmployeePrepaid() {
+        public CachedPrintReportEmployeePrepaid() {
         }
         
         [Browsable(false)]
@@ -161,7 +161,7 @@ namespace QTech.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ReportEmployeePrepaid rpt = new ReportEmployeePrepaid();
+            PrintReportEmployeePrepaid rpt = new PrintReportEmployeePrepaid();
             rpt.Site = this.Site;
             return rpt;
         }

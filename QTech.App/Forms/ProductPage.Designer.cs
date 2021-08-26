@@ -33,12 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv = new QTech.Component.ExDataGridView();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colImportPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.graPanel1 = new QTech.Component.GRAPanel();
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -49,6 +43,13 @@
             this.btnAdd = new QTech.Component.ExButtonLoading();
             this.colorWithAlpha2 = new QTech.Component.ColorWithAlpha();
             this.colorWithAlpha3 = new QTech.Component.ColorWithAlpha();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCategory_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colImportPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.graPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -82,6 +83,7 @@
             this.colId,
             this.colRow,
             this.colName,
+            this.colCategory_,
             this.colImportPrice,
             this.colUnitPrice,
             this.colNote});
@@ -108,57 +110,6 @@
             this.dgv.Size = new System.Drawing.Size(785, 340);
             this.dgv.TabIndex = 1;
             this.dgv.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_RowPostPaint);
-            // 
-            // colId
-            // 
-            this.colId.DataPropertyName = "Id";
-            this.colId.HeaderText = "Id";
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            this.colId.Visible = false;
-            // 
-            // colRow
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colRow.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colRow.HeaderText = "ល.រ";
-            this.colRow.Name = "colRow";
-            this.colRow.ReadOnly = true;
-            this.colRow.Width = 30;
-            // 
-            // colName
-            // 
-            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colName.DataPropertyName = "Name";
-            this.colName.FillWeight = 40F;
-            this.colName.HeaderText = "ឈ្មោះ";
-            this.colName.MinimumWidth = 300;
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
-            this.colName.Width = 300;
-            // 
-            // colImportPrice
-            // 
-            this.colImportPrice.DataPropertyName = "ImportPrice";
-            this.colImportPrice.HeaderText = "តម្លៃនាំចូល";
-            this.colImportPrice.Name = "colImportPrice";
-            this.colImportPrice.ReadOnly = true;
-            // 
-            // colUnitPrice
-            // 
-            this.colUnitPrice.DataPropertyName = "UnitPrice";
-            this.colUnitPrice.HeaderText = "តម្លៃរាយ";
-            this.colUnitPrice.Name = "colUnitPrice";
-            this.colUnitPrice.ReadOnly = true;
-            // 
-            // colNote
-            // 
-            this.colNote.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colNote.DataPropertyName = "Note";
-            this.colNote.FillWeight = 60F;
-            this.colNote.HeaderText = "កំណត់ចំណាំ";
-            this.colNote.Name = "colNote";
-            this.colNote.ReadOnly = true;
             // 
             // graPanel1
             // 
@@ -294,6 +245,63 @@
             this.colorWithAlpha3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colorWithAlpha3.Parent = null;
             // 
+            // colId
+            // 
+            this.colId.DataPropertyName = "Id";
+            this.colId.HeaderText = "Id";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            this.colId.Visible = false;
+            // 
+            // colRow
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colRow.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colRow.HeaderText = "ល.រ";
+            this.colRow.Name = "colRow";
+            this.colRow.ReadOnly = true;
+            this.colRow.Width = 30;
+            // 
+            // colName
+            // 
+            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colName.DataPropertyName = "Name";
+            this.colName.FillWeight = 40F;
+            this.colName.HeaderText = "ឈ្មោះ";
+            this.colName.MinimumWidth = 300;
+            this.colName.Name = "colName";
+            this.colName.ReadOnly = true;
+            this.colName.Width = 300;
+            // 
+            // colCategory_
+            // 
+            this.colCategory_.HeaderText = "ប្រភេទ";
+            this.colCategory_.Name = "colCategory_";
+            this.colCategory_.ReadOnly = true;
+            // 
+            // colImportPrice
+            // 
+            this.colImportPrice.DataPropertyName = "ImportPrice";
+            this.colImportPrice.HeaderText = "តម្លៃនាំចូល";
+            this.colImportPrice.Name = "colImportPrice";
+            this.colImportPrice.ReadOnly = true;
+            // 
+            // colUnitPrice
+            // 
+            this.colUnitPrice.DataPropertyName = "UnitPrice";
+            this.colUnitPrice.HeaderText = "តម្លៃរាយ";
+            this.colUnitPrice.Name = "colUnitPrice";
+            this.colUnitPrice.ReadOnly = true;
+            // 
+            // colNote
+            // 
+            this.colNote.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colNote.DataPropertyName = "Note";
+            this.colNote.FillWeight = 60F;
+            this.colNote.HeaderText = "កំណត់ចំណាំ";
+            this.colNote.Name = "colNote";
+            this.colNote.ReadOnly = true;
+            // 
             // ProductPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
@@ -329,6 +337,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRow;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCategory_;
         private System.Windows.Forms.DataGridViewTextBoxColumn colImportPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNote;

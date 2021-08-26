@@ -19,5 +19,6 @@ namespace QTech.Base.Models
         public decimal LeftAmount { get; set; }
         public InvoiceStatus InvoiceStatus { get; set; }
         public List<SaleDetail> SaleDetails{ get; set; }
+        public decimal PrePaidAmount { get; set; }
     }
 }

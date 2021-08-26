@@ -30,37 +30,22 @@ namespace QTech.Forms
 
         public MainForm()
         {
-            ShareValue.permissions = PermissionLogic.Instance.SearchAsync(new PermissionSearch());
             InitializeComponent();
             InitEvent();
-
         }
         private void InitEvent()
         {
+            this.FormClosing += (e, o) => DataBaseSetting.WriteSetting();
+            //ShareValue.permissions = PermissionLogic.Instance.SearchAsync(new PermissionSearch());
+
             ReportHelper.Instance.RegisterPath(@"QTech\QTech.App\Reports");
             _lblComanyName.Text = QTech.Base.Properties.Resources.Company;
             this.Text = string.Empty;
-
-            //container.SuspendLayout();
-            //topPanel.SuspendLayout();
-            //pBottom.SuspendLayout();
-            //pBranch.SuspendLayout();
-            //mainPanel.SuspendLayout();
-            //graPanel2.SuspendLayout();
-            //graPanel3.SuspendLayout();
-            //pContainBottom.SuspendLayout();
-            ////SuspendLayout();
-            //pSecondMenue1.SuspendLayout();
-            //pSecondMenue2.SuspendLayout();
-
             ApplySetting();
-           
             ResourceHelper.ApplyResource(this);
             this.InitForm();
             this.OptimizeLoadUI();
-            
             this.FormClosed += (s, e) => Application.Exit();
-           // this.Shown += MainForm_Shown;
         }
 
         private void MainForm_Shown(object sender, EventArgs e)
@@ -84,9 +69,6 @@ namespace QTech.Forms
         {
             txtUserName.Text = ShareValue.User?.Name ?? string.Empty;
             txtLogin.Text = DateTime.Now.ToLongDateString();
-            DataBaseSetting.ReadSetting();
-            this.FormClosing += (e, o) => DataBaseSetting.WriteSetting();
-
             var moduleManager = ModuleManager.Instance;
             _menuBars = moduleManager.GetMenubars();
             InitMenu();

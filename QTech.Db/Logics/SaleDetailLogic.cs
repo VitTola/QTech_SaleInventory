@@ -66,8 +66,10 @@ namespace QTech.Db.Logics
             var result = from saleDetail in q
                          join employee in _db.Employees on saleDetail.EmployeeId equals employee.Id
                          join sale in _db.Sales on saleDetail.SaleId equals sale.Id
-                         join customer in _db.Customers on sale.CompanyId equals customer.Id
-                         join site in _db.Sites on sale.SiteId equals site.Id
+                         join customer in _db.Customers on sale.CompanyId equals customer.Id into cusotmers
+                         from cusResult in cusotmers.DefaultIfEmpty()
+                         join site in _db.Sites on sale.SiteId equals site.Id into sites
+                         from sitResult in sites.DefaultIfEmpty()
                          join product in _db.Products on saleDetail.ProductId equals product.Id
                          join category in _db.Categories on product.CategoryId equals category.Id
                          where param.EmployeeBillId != 0 ?
@@ -75,8 +77,8 @@ namespace QTech.Db.Logics
                          :
                          (sale.SaleDate >= param.D1 && sale.SaleDate <= param.D2
                          && (param.DriverId == 0 ? true : employee.Id == param.DriverId) 
-                         && (param.CustomerId == 0 ? true : customer.Id == param.CustomerId) 
-                         && (param.SiteId == 0 ? true : site.Id == param.SiteId)
+                         && (param.CustomerId == 0 ? true : cusResult.Id == param.CustomerId) 
+                         && (param.SiteId == 0 ? true : sitResult.Id == param.SiteId)
                          && (saleDetail.PayStatus == Base.Enums.PayStatus.NotYetPaid)
                          && saleDetail.Active)
 
@@ -84,20 +86,66 @@ namespace QTech.Db.Logics
                          {
                              PurchaseOrderNo = sale.PurchaseOrderNo,
                              InvoiceNo = sale.InvoiceNo,
-                             ToCompany = customer.Name,
-                             ToSite = site.Name,
+                             ToCompany = cusResult.Name,
+                             ToSite = sitResult.Name,
                              SaleDate = sale.SaleDate,
                              Product = product.Name,
                              Category = category.Name,
                              ImportPrice = product.ImportPrice,
                              Qauntity = saleDetail.Qauntity,
                              ImportTotalAmount = saleDetail.ImportTotalAmount,
-                             
                              saleDetail = saleDetail
                          };
 
             var res =result.GroupBy(x => x.saleDetail).Select(y => y.FirstOrDefault()).ToList();
             return res;
         }
+
+        //public List<EmployeeBillOutFace> GetEmployeeBillOutFaces(ISearchModel model)
+        //{
+        //    var param = model as EmployeeBillSearch;
+        //    var q = All();
+        //    var result = from saleDetail in q
+        //                 join employee in _db.Employees on saleDetail.EmployeeId equals employee.Id into employees
+        //                 from empResult in employees.DefaultIfEmpty()
+        //                 join sale in _db.Sales on saleDetail.SaleId equals sale.Id into sales
+        //                 from salResult in sales.DefaultIfEmpty()
+        //                 join customer in _db.Customers on salResult.CompanyId equals customer.Id into customers
+        //                 from cusResult in customers
+        //                 join site in _db.Sites on salResult.SiteId equals site.Id into sites
+        //                 from sitResult in sites.DefaultIfEmpty()
+        //                 join product in _db.Products on saleDetail.ProductId equals product.Id into products
+        //                 from proResult in products.DefaultIfEmpty()
+        //                 join category in _db.Categories on proResult.CategoryId equals category.Id into categories
+        //                 from catResult in categories.DefaultIfEmpty()
+        //                 where param.EmployeeBillId != 0 ?
+        //                 (saleDetail.EmployeeBillId == param.EmployeeBillId && saleDetail.Active)
+        //                 :
+        //                 (salResult.SaleDate >= param.D1 && salResult.SaleDate <= param.D2
+        //                 && (param.DriverId == 0 ? true : empResult.Id == param.DriverId)
+        //                 && (param.CustomerId == 0 ? true : cusResult.Id == param.CustomerId)
+        //                 && (param.SiteId == 0 ? true : sitResult.Id == param.SiteId)
+        //                 && (saleDetail.PayStatus == Base.Enums.PayStatus.NotYetPaid)
+        //                 && saleDetail.Active)
+
+        //                 select new EmployeeBillOutFace()
+        //                 {
+        //                     PurchaseOrderNo = salResult.PurchaseOrderNo,
+        //                     InvoiceNo = salResult.InvoiceNo,
+        //                     ToCompany = cusResult.Name,
+        //                     ToSite = sitResult.Name,
+        //                     SaleDate = salResult.SaleDate,
+        //                     Product = proResult.Name,
+        //                     Category = catResult.Name,
+        //                     ImportPrice = proResult.ImportPrice,
+        //                     Qauntity = saleDetail.Qauntity,
+        //                     ImportTotalAmount = saleDetail.ImportTotalAmount,
+        //                     saleDetail = saleDetail
+        //                 };
+
+        //    var res = result.GroupBy(x => x.saleDetail).Select(y => y.FirstOrDefault()).ToList();
+        //    return res;
+        //}
+
     }
 }

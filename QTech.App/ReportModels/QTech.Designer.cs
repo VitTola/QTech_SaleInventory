@@ -2073,6 +2073,8 @@ namespace QTech.ReportModels {
             
             private global::System.Data.DataColumn columnNote;
             
+            private global::System.Data.DataColumn columnIsCalculated;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public EmployeePrepaidDataTable() {
@@ -2132,6 +2134,14 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn IsCalculatedColumn {
+                get {
+                    return this.columnIsCalculated;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2167,12 +2177,13 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public EmployeePrepaidRow AddEmployeePrepaidRow(System.DateTime DoDate, decimal Amount, string Note) {
+            public EmployeePrepaidRow AddEmployeePrepaidRow(System.DateTime DoDate, decimal Amount, string Note, bool IsCalculated) {
                 EmployeePrepaidRow rowEmployeePrepaidRow = ((EmployeePrepaidRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         DoDate,
                         Amount,
-                        Note};
+                        Note,
+                        IsCalculated};
                 rowEmployeePrepaidRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEmployeePrepaidRow);
                 return rowEmployeePrepaidRow;
@@ -2198,6 +2209,7 @@ namespace QTech.ReportModels {
                 this.columnDoDate = base.Columns["DoDate"];
                 this.columnAmount = base.Columns["Amount"];
                 this.columnNote = base.Columns["Note"];
+                this.columnIsCalculated = base.Columns["IsCalculated"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2209,6 +2221,8 @@ namespace QTech.ReportModels {
                 base.Columns.Add(this.columnAmount);
                 this.columnNote = new global::System.Data.DataColumn("Note", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNote);
+                this.columnIsCalculated = new global::System.Data.DataColumn("IsCalculated", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsCalculated);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3372,6 +3386,22 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsCalculated {
+                get {
+                    try {
+                        return ((bool)(this[this.tableEmployeePrepaid.IsCalculatedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'IsCalculated\' in table \'EmployeePrepaid\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEmployeePrepaid.IsCalculatedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsDoDateNull() {
                 return this.IsNull(this.tableEmployeePrepaid.DoDateColumn);
             }
@@ -3404,6 +3434,18 @@ namespace QTech.ReportModels {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetNoteNull() {
                 this[this.tableEmployeePrepaid.NoteColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsIsCalculatedNull() {
+                return this.IsNull(this.tableEmployeePrepaid.IsCalculatedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetIsCalculatedNull() {
+                this[this.tableEmployeePrepaid.IsCalculatedColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -667,4 +667,10 @@
   <data name="MsgBillCannotEdit" xml:space="preserve">
     <value>វិក្ក័យប័ត្របានទូទាត់រួចរាល់ មិនអាចកែប្រែបានទេ!</value>
   </data>
+  <data name="IsCalculated" xml:space="preserve">
+    <value>បានកាត់កង</value>
+  </data>
+  <data name="NotYetCalculated" xml:space="preserve">
+    <value>មិនទាន់កាត់កង</value>
+  </data>
 </root>

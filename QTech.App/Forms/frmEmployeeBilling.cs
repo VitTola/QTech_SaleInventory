@@ -60,6 +60,12 @@ namespace QTech.Forms
         }
         private void InitEvent()
         {
+            this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
+            if (Flag == GeneralProcess.Remove || Flag == GeneralProcess.View)
+            {
+               btnLeft_.Enabled = btnRigt_.Enabled = btnView.Enabled = btnAdvanceSearch.Enabled = false;
+            }
+            _lblPrePaid.Enabled = true;
             btnAdvanceSearch.Click += btnAdvanceSearch_Click;
             dgv.CellContentClick += Dgv_CellContentClick;
             dgv.SetColumnHeaderDefaultStyle();
@@ -73,6 +79,7 @@ namespace QTech.Forms
             btnLeft_.Click += BtnLeft_Click;
             btnRigt_.Click += BtnRigt_Click;
             btnPrint.Click += BtnPrint_Click;
+            _lblPrePaid.Enabled = true;
         }
         private void BtnRigt_Click(object sender, EventArgs e)
         {
@@ -394,8 +401,6 @@ namespace QTech.Forms
                 var driver = new Employee();
                 var employeeBillOutFaces = await dgv.RunAsync(() =>
                 {
-                    SupplierGeneralPrepaids = SupplierGeneralPaidLogic.Instance.GetSupplierGeneralPaidByEmpId(Model.EmployeeId);
-                    SupplierGeneralPrepaids.ForEach(x => prePaid += x.Amount);
                     var _employeeBillOutFaces = SaleDetailLogic.Instance.GetEmployeeBillOutFaces(new EmployeeBillSearch { EmployeeBillId = Model.Id });
                     driver = EmployeeLogic.Instance.FindAsync(Model.EmployeeId);
                     return _employeeBillOutFaces;
@@ -408,14 +413,13 @@ namespace QTech.Forms
                     cboDriver.Enabled = false;
                 }
                 txtTotal.Text = Model.Total.ToString();
-                txtPrePaid.Text = prePaid.ToString();
+                txtPrePaid.Text = Model.PrePaidAmount.ToString(); 
                 txtLeftAmount.Text = Model.LeftAmount.ToString();
                 txtPaidAmount.Text = Model.PaidAmount.ToString();
                 FillResultGiridView(employeeBillOutFaces, dgvResult);
                 Model.SaleDetails = employeeBillOutFaces?.Select(s => s.saleDetail)?.ToList();
             }
         }
-
         private void TxtPaidAmount_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtPaidAmount.Text))
@@ -424,9 +428,9 @@ namespace QTech.Forms
             }
             var pay = Parse.ToDecimal(txtPaidAmount.Text);
             var total = Parse.ToDecimal(txtTotal.Text ?? "0");
+            prePaid = Parse.ToDecimal(txtPrePaid.Text);
             txtLeftAmount.Text = (total - (pay + prePaid)).ToString();
         }
-
         public void Write()
         {
             Model.SaleDetails?.ForEach(s =>
@@ -438,6 +442,7 @@ namespace QTech.Forms
             Model.Total = Parse.ToDecimal(!string.IsNullOrEmpty(txtTotal.Text) ? txtTotal.Text : "0");
             Model.PaidAmount = Parse.ToDecimal(!string.IsNullOrEmpty(txtPaidAmount.Text) ? txtPaidAmount.Text : "0");
             Model.LeftAmount = Parse.ToDecimal(!string.IsNullOrEmpty(txtLeftAmount.Text) ? txtLeftAmount.Text : "0");
+            Model.PrePaidAmount = Parse.ToDecimal(txtPrePaid.Text);
 
             if (Flag == GeneralProcess.Add)
             {
@@ -563,7 +568,14 @@ namespace QTech.Forms
             var driver = cboDriver.SelectedObject?.ItemObject as Employee;
             if (driver != null)
             {
-                btnPrint.ReportEmployeePrepaid(driver.Id);
+                if (Flag == GeneralProcess.Add)
+                {
+                    btnPrint.PrintReportEmployeePrepaid(driver.Id);
+                }
+                else
+                {
+                    btnPrint.PrintReportEmployeePrepaid(driver.Id, Model.Id);
+                }
             }
         }
         private void txtPaidAmount_Leave(object sender, EventArgs e)

@@ -5,6 +5,7 @@ using QTech.Base.SearchModels;
 using QTech.Component;
 using QTech.Component.Helpers;
 using QTech.Db.Logics;
+using QTech.ReportModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -238,6 +239,26 @@ namespace QTech.Forms
                     return;
                 }
             }
+        }
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (Flag != GeneralProcess.Add)
+            {
+                var empyeeId = Model.Id;
+                if (empyeeId != 0)
+                {
+                    btnPrint.PrintReportEmployeePrepaid(empyeeId, 0, true);
+                }
+            }
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.P))
+            {
+                btnPrint.PerformClick();
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }
