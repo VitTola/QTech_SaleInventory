@@ -94,20 +94,19 @@ namespace QTech.Forms
             }
 
             var id = (int)dgv.CurrentRow.Cells[colId.Name].Value;
-            var canRemove = await btnRemove.RunAsync(() => UserLogic.Instance.CanRemoveAsync(id));
-            if (canRemove == false)
-            {
-                MsgBox.ShowWarning(EasyServer.Domain.Resources.RowCannotBeRemoved,
-                    GeneralProcess.Remove.GetTextDialog(BaseResource.User_Text));
-                return;
-            }
-
             Model = await btnRemove.RunAsync(() => UserLogic.Instance.FindAsync(id));
             if (Model == null)
             {
                 return;
             }
-
+            var canRemove = await btnRemove.RunAsync(() => UserLogic.Instance.CanRemoveAsync(id));
+            if (canRemove == false || Model.Id == 0)
+            {
+                MsgBox.ShowWarning(EasyServer.Domain.Resources.RowCannotBeRemoved,
+                    GeneralProcess.Remove.GetTextDialog(BaseResource.User_Text));
+                return;
+            }
+            
             var dig = new frmUser(Model, GeneralProcess.Remove);
             if (dig.ShowDialog() == DialogResult.OK)
             {

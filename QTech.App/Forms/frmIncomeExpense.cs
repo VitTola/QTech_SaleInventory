@@ -28,8 +28,8 @@ namespace QTech.Forms
 
             this.Model = model;
             this.Flag = flag;
-            Read();
             Bind();
+            Read();
             InitEvent();
         }
         public GeneralProcess Flag { get; set; }
@@ -73,7 +73,9 @@ namespace QTech.Forms
             txtMiscNo.Text = Model.MiscNo;
             txtNote.Text = Model.Note;
             txtAmount.Text = Model.Amount.ToString();
-            cboMiscType.SelectedValue = Model.MiscellaneousType;
+            var translate = Model.MiscellaneousType == MiscellaneousType.Expense ? 
+                BaseResource.MiscellaneousType_Expense : BaseResource.MiscellaneousType_Income;
+            cboMiscType.SelectedIndex = cboMiscType.FindString(translate);
 
         }
         public async void Save()

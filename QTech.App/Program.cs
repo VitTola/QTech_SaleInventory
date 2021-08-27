@@ -24,11 +24,9 @@ namespace QTech
             Application.SetCompatibleTextRenderingDefault(false);
             DataBaseSetting.ReadSetting();
 
-            Application.Run(new MainForm());
-            //Application.Run(new LoginDialog());
+            //Application.Run(new MainForm());
+            Application.Run(new LoginDialog());
 
         }
-
-
     }
 }

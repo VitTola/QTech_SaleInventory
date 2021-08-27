@@ -36,7 +36,7 @@ namespace QTech.Forms
         private void InitEvent()
         {
             this.FormClosing += (e, o) => DataBaseSetting.WriteSetting();
-            ShareValue.permissions = PermissionLogic.Instance.SearchAsync(new PermissionSearch());
+            //ShareValue.permissions = PermissionLogic.Instance.SearchAsync(new PermissionSearch());
 
             ReportHelper.Instance.RegisterPath(@"QTech\QTech.App\Reports");
             _lblComanyName.Text = QTech.Base.Properties.Resources.Company;
@@ -47,7 +47,6 @@ namespace QTech.Forms
             this.OptimizeLoadUI();
             this.FormClosed += (s, e) => Application.Exit();
         }
-
         private void MainForm_Shown(object sender, EventArgs e)
         {
             pSecondMenue1.ResumeLayout(false);
@@ -64,7 +63,6 @@ namespace QTech.Forms
             pContainBottom.ResumeLayout(false);
            // ResumeLayout(false);
         }
-
         private void ApplySetting()
         {
             txtUserName.Text = ShareValue.User?.Name ?? string.Empty;
@@ -269,14 +267,12 @@ namespace QTech.Forms
         {
             InputLanguage.CurrentInputLanguage = UI.English;
         }
-
         private void lblUserDropDown__Click(object sender, EventArgs e)
         {
             var p = Point.Add(lblUserProfile_.PointToScreen(new Point(0, -50)), new Size(0, lblUserProfile_.Height));
             //Point p = new Point(lblUserProfile_.Left, pContainBottom.Top - cnmStrip.Height + 22);
             cnmStrip.Show(p);
         }
-
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             this.Close();
