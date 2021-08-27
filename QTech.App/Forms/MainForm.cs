@@ -36,7 +36,7 @@ namespace QTech.Forms
         private void InitEvent()
         {
             this.FormClosing += (e, o) => DataBaseSetting.WriteSetting();
-            //ShareValue.permissions = PermissionLogic.Instance.SearchAsync(new PermissionSearch());
+            ShareValue.permissions = PermissionLogic.Instance.SearchAsync(new PermissionSearch());
 
             ReportHelper.Instance.RegisterPath(@"QTech\QTech.App\Reports");
             _lblComanyName.Text = QTech.Base.Properties.Resources.Company;

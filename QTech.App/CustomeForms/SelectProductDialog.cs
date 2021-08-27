@@ -119,7 +119,6 @@ namespace QTech.Component
 
         public async Task Search()
         {
-            dgv.Rows.Clear();
             SearchParameter.Search = txtSearch.Text;
             var search = SearchParameter as ProductSearch;
             var products = await dgv.RunAsync(() =>
@@ -131,6 +130,7 @@ namespace QTech.Component
 
             if (products != null)
             {
+                dgv.Rows.Clear();
                 products.ForEach(x=> {
                     var row = newRow(false);
                     row.Cells[colId.Name].Value = x.Id;
@@ -148,6 +148,7 @@ namespace QTech.Component
                 }
                 else
                 {
+                    dgv.Focus();
                     dgv.RowSelected(0);
                 }
             }
@@ -155,7 +156,6 @@ namespace QTech.Component
         private DataGridViewRow newRow(bool isFocus = false)
         {
             var row = dgv.Rows[dgv.Rows.Add()];
-            row.Cells[colId.Name].Value = 0;
             row.Cells[colId.Name].Value = 0;
             if (isFocus)
             {

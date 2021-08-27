@@ -1,4 +1,6 @@
-﻿//using FastMember;
+﻿#region comment
+
+//using FastMember;
 //using QTech.Base;
 //using QTech.Base.BaseReport;
 //using QTech.Base.Enums;
@@ -823,10 +825,7 @@
 //    }
 //}
 
-
-
-
-
+#endregion
 
 
 using FastMember;
@@ -908,8 +907,7 @@ namespace QTech.Forms
             dgv.EditingControlShowing += Dgv_EditingControlShowing;
             dgv.MouseClick += Dgv_MouseClick;
             dgv.EditColumnIcon(colProductId, colQauntity, colUnitPrice, colEmployeeId);
-            dgv.CellValueChanged += Dgv_CellValueChanged;
-
+            
             txtTotal.ReadOnly = colLeftQty_.ReadOnly = true;
             cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
             this.Load += FrmSale_Load;
@@ -938,7 +936,6 @@ namespace QTech.Forms
             CalculateTotal();
             dgv.BeginEdit(true);
         }
-
         private async void FrmSale_Load(object sender, EventArgs e)
         {
             var dummy = await this.RunAsync(() =>
@@ -947,8 +944,9 @@ namespace QTech.Forms
                 products = ProductLogic.Instance.SearchAsync(new ProductSearch());
                 return products;
             });
-        }
+            dgv.CellValueChanged += Dgv_CellValueChanged;
 
+        }
         private void Dgv_MouseClick(object sender, MouseEventArgs e)
         {
             if (!string.IsNullOrEmpty(cboPurchaseOrderNo.Text) && Flag != GeneralProcess.View)
@@ -1596,7 +1594,6 @@ namespace QTech.Forms
                 cell.ErrorText = string.Empty;
             }
         }
-
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
         {
             try

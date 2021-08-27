@@ -22,8 +22,6 @@ namespace QTech.Forms
         public LoginDialog()
         {
             InitializeComponent();
-            DataBaseSetting.ReadSetting();
-
             txtUserName.RegisterEnglishInputWith(txtPassword);
             txtUserName.RegisterKeyEnterNextControlWith(txtPassword);
             

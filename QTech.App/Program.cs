@@ -1,5 +1,6 @@
 ﻿
 using QTech.Component;
+using QTech.Db;
 using QTech.Forms;
 using SaleInventory;
 using System;
@@ -21,8 +22,10 @@ namespace QTech
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new MainForm());
-            Application.Run(new LoginDialog());
+            DataBaseSetting.ReadSetting();
+
+            Application.Run(new MainForm());
+            //Application.Run(new LoginDialog());
 
         }
 

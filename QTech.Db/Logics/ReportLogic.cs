@@ -114,11 +114,10 @@ namespace QTech.Db.Logics
         public List<Expense> GetExpenseData(ReportExpenseSearch model)
         {
             var param = model;
-            var result = from b in _db.EmployeeBills.Where(b => b.InvoiceStatus == InvoiceStatus.Paid)
+            var result = from b in _db.EmployeeBills.Where(b => b.InvoiceStatus == InvoiceStatus.Paid && b.DoDate >= param.D1 && b.DoDate <= param.D2)
                          join e in _db.Employees on b.EmployeeId equals e.Id
                          where b.Active
                          && e.Active
-                         && b.DoDate >= param.D1 && b.DoDate <= param.D2
                          && param.DiriverId == 0 ? true : b.EmployeeId == param.DiriverId
                          select new Expense
                          {

@@ -378,10 +378,17 @@ namespace QTech.Forms
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (keyData == (Keys.Control | Keys.O))
+            if (keyData == (Keys.Control | Keys.S))
             {
-                View();
-                return true;
+                btnSave.PerformClick();
+            }
+            else if (keyData == (Keys.Control | Keys.Q))
+            {
+                btnClose.PerformClick();
+            }
+            else if (keyData == (Keys.Control | Keys.O))
+            {
+                btnView.PerformClick();
             }
             else if (keyData == Keys.F3)
             {
@@ -661,5 +668,6 @@ namespace QTech.Forms
 
             return DriverDeliveryDetails;
         }
+
     }
 }

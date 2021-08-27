@@ -50,7 +50,19 @@
             this.chkMarkAll_ = new System.Windows.Forms.CheckBox();
             this.pnlGrid = new System.Windows.Forms.Panel();
             this.dgvView = new QTech.Component.ExDataGridView();
+            this.colMark2_ = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colSaleId2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colId2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPurchaseOrderNo2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colInvoiceNo2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colToCompany2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colToSite2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSaleDate2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotal2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStatus2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIsPaid2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panelCenterButton = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.btnRigt_ = new QTech.Component.ExButtonLoading();
             this.btnLeft_ = new System.Windows.Forms.Button();
             this.dgv = new QTech.Component.ExDataGridView();
@@ -84,18 +96,6 @@
             this.exLabel6 = new QTech.Component.ExLabel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dtpInvoicingDate = new QTech.Component.ExDateTimePicker();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.colMark2_ = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colSaleId2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colId2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPurchaseOrderNo2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colInvoiceNo2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colToCompany2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colToSite2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSaleDate2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTotal2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStatus2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIsPaid2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.container.SuspendLayout();
             this.exPanel1.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -104,6 +104,7 @@
             this.pnlGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvView)).BeginInit();
             this.panelCenterButton.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -111,7 +112,6 @@
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // container
@@ -195,11 +195,12 @@
             this.btnClose.BackColor = System.Drawing.Color.Ivory;
             this.btnClose.DefaultImage = null;
             this.btnClose.Executing = false;
+            this.btnClose.Font = new System.Drawing.Font("Khmer OS System", 8F);
             this.btnClose.Location = new System.Drawing.Point(1413, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
-            this.btnClose.ShortcutText = null;
+            this.btnClose.ShortcutText = "Q";
             this.btnClose.Size = new System.Drawing.Size(75, 27);
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "បិទ";
@@ -211,11 +212,12 @@
             this.btnSave.BackColor = System.Drawing.Color.Ivory;
             this.btnSave.DefaultImage = null;
             this.btnSave.Executing = false;
+            this.btnSave.Font = new System.Drawing.Font("Khmer OS System", 8F);
             this.btnSave.Location = new System.Drawing.Point(1334, 3);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
-            this.btnSave.ShortcutText = null;
+            this.btnSave.ShortcutText = "S";
             this.btnSave.Size = new System.Drawing.Size(75, 27);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "រក្សាទុក";
@@ -371,6 +373,101 @@
             this.dgvView.Size = new System.Drawing.Size(788, 454);
             this.dgvView.TabIndex = 3;
             // 
+            // colMark2_
+            // 
+            this.colMark2_.DataPropertyName = "Mark_";
+            this.colMark2_.Frozen = true;
+            this.colMark2_.HeaderText = "";
+            this.colMark2_.Name = "colMark2_";
+            this.colMark2_.ReadOnly = true;
+            this.colMark2_.Width = 40;
+            // 
+            // colSaleId2
+            // 
+            this.colSaleId2.HeaderText = "SaleId";
+            this.colSaleId2.Name = "colSaleId2";
+            this.colSaleId2.ReadOnly = true;
+            this.colSaleId2.Visible = false;
+            // 
+            // colId2
+            // 
+            this.colId2.DataPropertyName = "Id";
+            this.colId2.HeaderText = "Id";
+            this.colId2.Name = "colId2";
+            this.colId2.ReadOnly = true;
+            this.colId2.Visible = false;
+            this.colId2.Width = 45;
+            // 
+            // colPurchaseOrderNo2
+            // 
+            this.colPurchaseOrderNo2.DataPropertyName = "PurchaseOrderNo";
+            this.colPurchaseOrderNo2.FillWeight = 40F;
+            this.colPurchaseOrderNo2.HeaderText = "លេខបញ្ជាទិញ";
+            this.colPurchaseOrderNo2.MinimumWidth = 100;
+            this.colPurchaseOrderNo2.Name = "colPurchaseOrderNo2";
+            this.colPurchaseOrderNo2.ReadOnly = true;
+            this.colPurchaseOrderNo2.Width = 150;
+            // 
+            // colInvoiceNo2
+            // 
+            this.colInvoiceNo2.DataPropertyName = "InvoiceNo";
+            this.colInvoiceNo2.FillWeight = 40F;
+            this.colInvoiceNo2.HeaderText = "លេខវិក្កយបត្រ";
+            this.colInvoiceNo2.MinimumWidth = 100;
+            this.colInvoiceNo2.Name = "colInvoiceNo2";
+            this.colInvoiceNo2.ReadOnly = true;
+            // 
+            // colToCompany2
+            // 
+            this.colToCompany2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colToCompany2.DataPropertyName = "ToCompany";
+            this.colToCompany2.FillWeight = 60F;
+            this.colToCompany2.HeaderText = "ទៅកាន់ក្រុមហ៊ុន";
+            this.colToCompany2.MinimumWidth = 150;
+            this.colToCompany2.Name = "colToCompany2";
+            this.colToCompany2.ReadOnly = true;
+            // 
+            // colToSite2
+            // 
+            this.colToSite2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colToSite2.DataPropertyName = "Site";
+            this.colToSite2.HeaderText = "ទៅកាន់គំរោង";
+            this.colToSite2.MinimumWidth = 150;
+            this.colToSite2.Name = "colToSite2";
+            this.colToSite2.ReadOnly = true;
+            // 
+            // colSaleDate2
+            // 
+            this.colSaleDate2.DataPropertyName = "SaleDate";
+            this.colSaleDate2.HeaderText = "កាលបរិច្ឆេទលក់";
+            this.colSaleDate2.MinimumWidth = 100;
+            this.colSaleDate2.Name = "colSaleDate2";
+            this.colSaleDate2.ReadOnly = true;
+            this.colSaleDate2.Width = 150;
+            // 
+            // colTotal2
+            // 
+            this.colTotal2.HeaderText = "សរុបទឹកប្រាក់";
+            this.colTotal2.MinimumWidth = 60;
+            this.colTotal2.Name = "colTotal2";
+            this.colTotal2.ReadOnly = true;
+            // 
+            // colStatus2
+            // 
+            this.colStatus2.DataPropertyName = "Status";
+            this.colStatus2.HeaderText = "ស្ថានភាព";
+            this.colStatus2.MinimumWidth = 100;
+            this.colStatus2.Name = "colStatus2";
+            this.colStatus2.ReadOnly = true;
+            this.colStatus2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // colIsPaid2
+            // 
+            this.colIsPaid2.HeaderText = "IsPaid";
+            this.colIsPaid2.Name = "colIsPaid2";
+            this.colIsPaid2.ReadOnly = true;
+            this.colIsPaid2.Visible = false;
+            // 
             // panelCenterButton
             // 
             this.panelCenterButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -381,6 +478,17 @@
             this.panelCenterButton.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.panelCenterButton.Size = new System.Drawing.Size(44, 454);
             this.panelCenterButton.TabIndex = 18;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.panel2.Controls.Add(this.btnRigt_);
+            this.panel2.Controls.Add(this.btnLeft_);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(1, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(42, 454);
+            this.panel2.TabIndex = 0;
             // 
             // btnRigt_
             // 
@@ -810,112 +918,6 @@
             this.dtpInvoicingDate.Size = new System.Drawing.Size(200, 27);
             this.dtpInvoicingDate.TabIndex = 32;
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
-            this.panel2.Controls.Add(this.btnRigt_);
-            this.panel2.Controls.Add(this.btnLeft_);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(1, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(42, 454);
-            this.panel2.TabIndex = 0;
-            // 
-            // colMark2_
-            // 
-            this.colMark2_.DataPropertyName = "Mark_";
-            this.colMark2_.Frozen = true;
-            this.colMark2_.HeaderText = "";
-            this.colMark2_.Name = "colMark2_";
-            this.colMark2_.ReadOnly = true;
-            this.colMark2_.Width = 40;
-            // 
-            // colSaleId2
-            // 
-            this.colSaleId2.HeaderText = "SaleId";
-            this.colSaleId2.Name = "colSaleId2";
-            this.colSaleId2.ReadOnly = true;
-            this.colSaleId2.Visible = false;
-            // 
-            // colId2
-            // 
-            this.colId2.DataPropertyName = "Id";
-            this.colId2.HeaderText = "Id";
-            this.colId2.Name = "colId2";
-            this.colId2.ReadOnly = true;
-            this.colId2.Visible = false;
-            this.colId2.Width = 45;
-            // 
-            // colPurchaseOrderNo2
-            // 
-            this.colPurchaseOrderNo2.DataPropertyName = "PurchaseOrderNo";
-            this.colPurchaseOrderNo2.FillWeight = 40F;
-            this.colPurchaseOrderNo2.HeaderText = "លេខបញ្ជាទិញ";
-            this.colPurchaseOrderNo2.MinimumWidth = 100;
-            this.colPurchaseOrderNo2.Name = "colPurchaseOrderNo2";
-            this.colPurchaseOrderNo2.ReadOnly = true;
-            this.colPurchaseOrderNo2.Width = 150;
-            // 
-            // colInvoiceNo2
-            // 
-            this.colInvoiceNo2.DataPropertyName = "InvoiceNo";
-            this.colInvoiceNo2.FillWeight = 40F;
-            this.colInvoiceNo2.HeaderText = "លេខវិក្កយបត្រ";
-            this.colInvoiceNo2.MinimumWidth = 100;
-            this.colInvoiceNo2.Name = "colInvoiceNo2";
-            this.colInvoiceNo2.ReadOnly = true;
-            // 
-            // colToCompany2
-            // 
-            this.colToCompany2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colToCompany2.DataPropertyName = "ToCompany";
-            this.colToCompany2.FillWeight = 60F;
-            this.colToCompany2.HeaderText = "ទៅកាន់ក្រុមហ៊ុន";
-            this.colToCompany2.MinimumWidth = 150;
-            this.colToCompany2.Name = "colToCompany2";
-            this.colToCompany2.ReadOnly = true;
-            // 
-            // colToSite2
-            // 
-            this.colToSite2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colToSite2.DataPropertyName = "Site";
-            this.colToSite2.HeaderText = "ទៅកាន់គំរោង";
-            this.colToSite2.MinimumWidth = 150;
-            this.colToSite2.Name = "colToSite2";
-            this.colToSite2.ReadOnly = true;
-            // 
-            // colSaleDate2
-            // 
-            this.colSaleDate2.DataPropertyName = "SaleDate";
-            this.colSaleDate2.HeaderText = "កាលបរិច្ឆេទលក់";
-            this.colSaleDate2.MinimumWidth = 100;
-            this.colSaleDate2.Name = "colSaleDate2";
-            this.colSaleDate2.ReadOnly = true;
-            this.colSaleDate2.Width = 150;
-            // 
-            // colTotal2
-            // 
-            this.colTotal2.HeaderText = "សរុបទឹកប្រាក់";
-            this.colTotal2.MinimumWidth = 60;
-            this.colTotal2.Name = "colTotal2";
-            this.colTotal2.ReadOnly = true;
-            // 
-            // colStatus2
-            // 
-            this.colStatus2.DataPropertyName = "Status";
-            this.colStatus2.HeaderText = "ស្ថានភាព";
-            this.colStatus2.MinimumWidth = 100;
-            this.colStatus2.Name = "colStatus2";
-            this.colStatus2.ReadOnly = true;
-            this.colStatus2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // colIsPaid2
-            // 
-            this.colIsPaid2.HeaderText = "IsPaid";
-            this.colIsPaid2.Name = "colIsPaid2";
-            this.colIsPaid2.ReadOnly = true;
-            this.colIsPaid2.Visible = false;
-            // 
             // frmCreateInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
@@ -935,6 +937,7 @@
             this.pnlGrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvView)).EndInit();
             this.panelCenterButton.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -948,7 +951,6 @@
             this.panel7.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

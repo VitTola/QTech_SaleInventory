@@ -546,5 +546,18 @@ namespace QTech.Forms
             CheckingAmount = chkMarkAll_.Checked ? AllSales : 0;
             
         }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.S))
+            {
+                btnSave.PerformClick();
+            }
+            else if (keyData == (Keys.Control | Keys.Q))
+            {
+                btnClose.PerformClick();
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
     }
+
 }
