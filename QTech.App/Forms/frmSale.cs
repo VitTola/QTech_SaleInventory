@@ -924,8 +924,8 @@ namespace QTech.Forms
                 return;
             }
             dgv.EndEdit();
-            var unitPrice = decimal.Parse(dgv.CurrentRow?.Cells[colUnitPrice.Name]?.Value?.ToString() ?? "0");
-            var qty = int.Parse(dgv.CurrentRow?.Cells[colQauntity.Name]?.Value?.ToString() ?? "0");
+            var unitPrice = Parse.ToDecimal(dgv.CurrentRow?.Cells[colUnitPrice.Name]?.Value?.ToString() ?? "0");
+            var qty = Parse.ToInt(dgv.CurrentRow?.Cells[colQauntity.Name]?.Value?.ToString() ?? "0");
             if (unitPrice == 0 || qty == 0)
             {
                 return;
@@ -944,8 +944,6 @@ namespace QTech.Forms
                 products = ProductLogic.Instance.SearchAsync(new ProductSearch());
                 return products;
             });
-            dgv.CellValueChanged += Dgv_CellValueChanged;
-
         }
         private void Dgv_MouseClick(object sender, MouseEventArgs e)
         {
@@ -1014,6 +1012,8 @@ namespace QTech.Forms
                     txt.Leave += Txt_Leave;
                 }
             }
+            dgv.CellValueChanged += Dgv_CellValueChanged;
+
         }
         private void Txt_Leave(object sender, EventArgs e)
         {
@@ -1572,7 +1572,7 @@ namespace QTech.Forms
             Invoices.Add(Invoice);
             Invoices.Add(InvoiceDetail);
 
-            var report = await dgv.RunAsync(() =>
+            var report = await btnPrint.RunAsync(() =>
             {
                 var r = ReportHelper.Instance.Load(nameof(ReportInvoice), Invoices);
                 r.SummaryInfo.ReportTitle = nameof(ReportInvoice);

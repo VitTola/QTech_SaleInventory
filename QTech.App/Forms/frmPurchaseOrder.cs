@@ -188,7 +188,7 @@ namespace QTech.Forms
                 row.Cells[colNote.Name].Value = POProductPrices?.FirstOrDefault(x => x.ProductId == product.Id && x.PurchaseOrderId == Model.Id)?.Note;
             }
             //dgv.CurrentCell = dgv.Rows[0].Cells[colQauntity.Name];
-            dgv.BeginEdit(true);
+            //dgv.BeginEdit(true);
         }
         private DataGridViewRow _newRow(bool isFocus = false)
         {

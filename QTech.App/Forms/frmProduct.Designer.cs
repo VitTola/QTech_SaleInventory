@@ -67,6 +67,7 @@
             this.container.Controls.Add(this.lblName);
             this.container.Controls.Add(this.txtName);
             this.container.Size = new System.Drawing.Size(378, 272);
+            this.container.TabIndex = 1;
             // 
             // lblName
             // 
@@ -113,7 +114,7 @@
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(200, 58);
-            this.txtNote.TabIndex = 4;
+            this.txtNote.TabIndex = 2;
             // 
             // exPanel1
             // 
@@ -148,7 +149,7 @@
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnClose.ShortcutText = null;
             this.btnClose.Size = new System.Drawing.Size(75, 27);
-            this.btnClose.TabIndex = 6;
+            this.btnClose.TabIndex = 1;
             this.btnClose.Text = "បិទ";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -164,7 +165,7 @@
             this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
             this.btnSave.ShortcutText = null;
             this.btnSave.Size = new System.Drawing.Size(75, 27);
-            this.btnSave.TabIndex = 5;
+            this.btnSave.TabIndex = 0;
             this.btnSave.Text = "រក្សាទុក";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);

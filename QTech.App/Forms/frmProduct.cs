@@ -49,7 +49,6 @@ namespace QTech.Forms
             txtUnitPrice.KeyPress += (sender, e) => txtUnitPrice.validCurrency(sender, e);
             txtImportPrice.KeyPress += (sender, e) => txtImportPrice.validCurrency(sender,e);
             txtName.RegisterKeyEnterNextControlWith(cboCategory, txtImportPrice, txtUnitPrice, txtNote);
-
         }
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {

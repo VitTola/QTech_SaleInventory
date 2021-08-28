@@ -66,9 +66,22 @@ INSERT INTO Permissions (Name,Level,ParentId,PermissionType,UiActivator,Ordering
 INSERT INTO Permissions (Name,Level,ParentId,PermissionType,UiActivator,Ordering,Note,RowDate,CreatedBy,Active,AuthKey) VALUES(N'របាយការណ៍ចំណាយ','2','6','3','Report_Expense','4','InitData',GetDate(),'Init','1','62')
 
 --INSERT ADMIN USER
-
 SET IDENTITY_INSERT Users ON
 GO
 INSERT INTO Users(Id, Name, FullName, PasswordHash, Active, RowDate, CreatedBy, Note) VALUES(0, 'Administrator','admin','915a695714ea2f7b7a869d42a91c94c191b3270076be77ab2a2874133b69b6d5',1,GETDATE(),'INIT',N'អ្នកប្រើប្រាស់មិនអាចលុបបាន')
 SET IDENTITY_INSERT Users OFF
 GO
+
+
+DROP TABLE IF EXISTS #TempUserPermissions 
+SELECT 
+UserId = 0,
+PermissionId = p.Id,
+Active = 1,
+RowDate = GETDATE(), 
+CreatedBy = 'INIT DATA'
+INTO #TempUserPermissions
+FROM Permissions P
+
+INSERT INTO UserPermissions
+SELECT * FROM #TempUserPermissions
