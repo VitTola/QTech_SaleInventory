@@ -641,13 +641,7 @@ namespace QTech.Forms
         private List<ReportModels.DriverDeliveryDetail> GetReportModel()
         {
             var DriverDeliveryDetails = new List<ReportModels.DriverDeliveryDetail>();
-
-            //if (Flag == GeneralProcess.Add)
-            //{
-            //    var employee = cboDriver.SelectedObject?.ItemObject as Employee;
-            //    Model.EmployeeId = employee.Id;
-            //}
-
+            
             dgvResult.EndEdit();
             var Rows = dgvResult.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
             foreach (DataGridViewRow row in Rows)

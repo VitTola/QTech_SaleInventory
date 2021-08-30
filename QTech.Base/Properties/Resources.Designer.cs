@@ -1706,6 +1706,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to តម្លៃនាំចូលសរុប.
+        /// </summary>
+        public static string TotalImportPrice {
+            get {
+                return ResourceManager.GetString("TotalImportPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ប្រភេទេ.
         /// </summary>
         public static string Type {

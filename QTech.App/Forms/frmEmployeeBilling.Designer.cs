@@ -183,7 +183,7 @@
             this.exLabel2.AutoSize = true;
             this.exLabel2.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.exLabel2.Location = new System.Drawing.Point(511, 11);
+            this.exLabel2.Location = new System.Drawing.Point(634, 11);
             this.exLabel2.Name = "exLabel2";
             this.exLabel2.Required = false;
             this.exLabel2.Size = new System.Drawing.Size(120, 19);
@@ -197,7 +197,7 @@
             this.btnView.DefaultImage = null;
             this.btnView.Executing = false;
             this.btnView.Font = new System.Drawing.Font("Khmer OS System", 8F);
-            this.btnView.Location = new System.Drawing.Point(390, 3);
+            this.btnView.Location = new System.Drawing.Point(517, 3);
             this.btnView.Margin = new System.Windows.Forms.Padding(0, 3, 4, 4);
             this.btnView.Name = "btnView";
             this.btnView.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -365,7 +365,7 @@
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(468, 454);
+            this.dgv.Size = new System.Drawing.Size(595, 454);
             this.dgv.TabIndex = 2;
             // 
             // colMark_
@@ -493,7 +493,7 @@
             this.panelCenterButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panelCenterButton.Controls.Add(this.panel4);
             this.panelCenterButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelCenterButton.Location = new System.Drawing.Point(469, 0);
+            this.panelCenterButton.Location = new System.Drawing.Point(596, 0);
             this.panelCenterButton.Name = "panelCenterButton";
             this.panelCenterButton.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.panelCenterButton.Size = new System.Drawing.Size(44, 454);
@@ -591,7 +591,7 @@
             this.dgvResult.EnableHeadersVisualStyles = false;
             this.dgvResult.Executing = false;
             this.dgvResult.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            this.dgvResult.Location = new System.Drawing.Point(513, 0);
+            this.dgvResult.Location = new System.Drawing.Point(640, 0);
             this.dgvResult.MultiSelect = false;
             this.dgvResult.Name = "dgvResult";
             this.dgvResult.Paging = null;
@@ -599,7 +599,7 @@
             this.dgvResult.RowHeadersVisible = false;
             this.dgvResult.RowTemplate.Height = 28;
             this.dgvResult.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvResult.Size = new System.Drawing.Size(724, 454);
+            this.dgvResult.Size = new System.Drawing.Size(597, 454);
             this.dgvResult.TabIndex = 18;
             // 
             // colMark_2

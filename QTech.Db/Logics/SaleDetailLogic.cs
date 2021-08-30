@@ -91,7 +91,7 @@ namespace QTech.Db.Logics
                              SaleDate = sale.SaleDate,
                              Product = product.Name,
                              Category = category.Name,
-                             ImportPrice = product.ImportPrice,
+                             ImportPrice = saleDetail.ImportPrice,
                              Qauntity = saleDetail.Qauntity,
                              ImportTotalAmount = saleDetail.ImportTotalAmount,
                              saleDetail = saleDetail

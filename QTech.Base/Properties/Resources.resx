@@ -673,4 +673,7 @@
   <data name="NotYetCalculated" xml:space="preserve">
     <value>មិនទាន់កាត់កង</value>
   </data>
+  <data name="TotalImportPrice" xml:space="preserve">
+    <value>តម្លៃនាំចូលសរុប</value>
+  </data>
 </root>

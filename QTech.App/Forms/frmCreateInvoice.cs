@@ -496,7 +496,9 @@ namespace QTech.Forms
 
                     TotalInUSD = String.Format("{0:C}", total),
                     PurchaseOrderNo = row.Cells[colPurchaseOrderNo.Name].Value?.ToString(),
-                    Site = row.Cells[colToSite.Name].Value?.ToString()
+                    Site = row.Cells[colToSite.Name].Value?.ToString(),
+
+                    
                 });
             }
             DataTable Invoice = new DataTable("MonthlyInvoice");

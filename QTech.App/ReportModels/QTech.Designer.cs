@@ -466,6 +466,12 @@ namespace QTech.ReportModels {
             
             private global::System.Data.DataColumn columnSite;
             
+            private global::System.Data.DataColumn columnQauntity;
+            
+            private global::System.Data.DataColumn columnUnitPrice;
+            
+            private global::System.Data.DataColumn columnProduct;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public MonthlyInvoiceDataTable() {
@@ -549,6 +555,30 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn QauntityColumn {
+                get {
+                    return this.columnQauntity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn UnitPriceColumn {
+                get {
+                    return this.columnUnitPrice;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ProductColumn {
+                get {
+                    return this.columnProduct;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -584,7 +614,7 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public MonthlyInvoiceRow AddMonthlyInvoiceRow(System.DateTime SaleDate, string InvoiceNo, string TotalInKh, string TotalInUSD, string PurchaseOrderNO, string Site) {
+            public MonthlyInvoiceRow AddMonthlyInvoiceRow(string SaleDate, string InvoiceNo, string TotalInKh, string TotalInUSD, string PurchaseOrderNO, string Site, short Qauntity, decimal UnitPrice, string Product) {
                 MonthlyInvoiceRow rowMonthlyInvoiceRow = ((MonthlyInvoiceRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         SaleDate,
@@ -592,7 +622,10 @@ namespace QTech.ReportModels {
                         TotalInKh,
                         TotalInUSD,
                         PurchaseOrderNO,
-                        Site};
+                        Site,
+                        Qauntity,
+                        UnitPrice,
+                        Product};
                 rowMonthlyInvoiceRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMonthlyInvoiceRow);
                 return rowMonthlyInvoiceRow;
@@ -621,12 +654,15 @@ namespace QTech.ReportModels {
                 this.columnTotalInUSD = base.Columns["TotalInUSD"];
                 this.columnPurchaseOrderNO = base.Columns["PurchaseOrderNO"];
                 this.columnSite = base.Columns["Site"];
+                this.columnQauntity = base.Columns["Qauntity"];
+                this.columnUnitPrice = base.Columns["UnitPrice"];
+                this.columnProduct = base.Columns["Product"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnSaleDate = new global::System.Data.DataColumn("SaleDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                this.columnSaleDate = new global::System.Data.DataColumn("SaleDate", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSaleDate);
                 this.columnInvoiceNo = new global::System.Data.DataColumn("InvoiceNo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInvoiceNo);
@@ -638,6 +674,12 @@ namespace QTech.ReportModels {
                 base.Columns.Add(this.columnPurchaseOrderNO);
                 this.columnSite = new global::System.Data.DataColumn("Site", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSite);
+                this.columnQauntity = new global::System.Data.DataColumn("Qauntity", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQauntity);
+                this.columnUnitPrice = new global::System.Data.DataColumn("UnitPrice", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUnitPrice);
+                this.columnProduct = new global::System.Data.DataColumn("Product", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProduct);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2365,10 +2407,10 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime SaleDate {
+            public string SaleDate {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableMonthlyInvoice.SaleDateColumn]));
+                        return ((string)(this[this.tableMonthlyInvoice.SaleDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'SaleDate\' in table \'MonthlyInvoice\' is DBNull.", e);
@@ -2461,6 +2503,54 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public short Qauntity {
+                get {
+                    try {
+                        return ((short)(this[this.tableMonthlyInvoice.QauntityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Qauntity\' in table \'MonthlyInvoice\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMonthlyInvoice.QauntityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal UnitPrice {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableMonthlyInvoice.UnitPriceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'UnitPrice\' in table \'MonthlyInvoice\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMonthlyInvoice.UnitPriceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Product {
+                get {
+                    try {
+                        return ((string)(this[this.tableMonthlyInvoice.ProductColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Product\' in table \'MonthlyInvoice\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMonthlyInvoice.ProductColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsSaleDateNull() {
                 return this.IsNull(this.tableMonthlyInvoice.SaleDateColumn);
             }
@@ -2529,6 +2619,42 @@ namespace QTech.ReportModels {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetSiteNull() {
                 this[this.tableMonthlyInvoice.SiteColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsQauntityNull() {
+                return this.IsNull(this.tableMonthlyInvoice.QauntityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetQauntityNull() {
+                this[this.tableMonthlyInvoice.QauntityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsUnitPriceNull() {
+                return this.IsNull(this.tableMonthlyInvoice.UnitPriceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetUnitPriceNull() {
+                this[this.tableMonthlyInvoice.UnitPriceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsProductNull() {
+                return this.IsNull(this.tableMonthlyInvoice.ProductColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetProductNull() {
+                this[this.tableMonthlyInvoice.ProductColumn] = global::System.Convert.DBNull;
             }
         }
         

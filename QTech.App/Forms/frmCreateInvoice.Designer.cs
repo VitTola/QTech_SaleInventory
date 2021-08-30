@@ -370,7 +370,7 @@
             this.dgvView.RowHeadersVisible = false;
             this.dgvView.RowTemplate.Height = 28;
             this.dgvView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvView.Size = new System.Drawing.Size(532, 370);
+            this.dgvView.Size = new System.Drawing.Size(604, 370);
             this.dgvView.TabIndex = 3;
             // 
             // colMark2_
@@ -473,7 +473,7 @@
             this.panelCenterButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panelCenterButton.Controls.Add(this.panel2);
             this.panelCenterButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelCenterButton.Location = new System.Drawing.Point(533, 0);
+            this.panelCenterButton.Location = new System.Drawing.Point(605, 0);
             this.panelCenterButton.Name = "panelCenterButton";
             this.panelCenterButton.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.panelCenterButton.Size = new System.Drawing.Size(44, 370);
@@ -569,7 +569,7 @@
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
             this.dgv.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            this.dgv.Location = new System.Drawing.Point(577, 0);
+            this.dgv.Location = new System.Drawing.Point(649, 0);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
             this.dgv.Paging = null;
@@ -577,7 +577,7 @@
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(660, 370);
+            this.dgv.Size = new System.Drawing.Size(588, 370);
             this.dgv.TabIndex = 2;
             // 
             // colMark_
@@ -694,7 +694,7 @@
             this.exLabel1.AutoSize = true;
             this.exLabel1.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.exLabel1.Location = new System.Drawing.Point(578, 8);
+            this.exLabel1.Location = new System.Drawing.Point(648, 8);
             this.exLabel1.Name = "exLabel1";
             this.exLabel1.Required = false;
             this.exLabel1.Size = new System.Drawing.Size(126, 27);

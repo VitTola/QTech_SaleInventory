@@ -14,6 +14,9 @@ namespace QTech.ReportModels
         public string TotalInUSD { get; set; }
         public string PurchaseOrderNo { get; set; }
         public string Site { get; set; }
+        public decimal UnitPrice { get; set; }
+        public string Product { get; set; }
+        public int Qauntity { get; set; }
 
     }
 }

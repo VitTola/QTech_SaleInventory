@@ -906,7 +906,7 @@ namespace QTech.Forms
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
             dgv.EditingControlShowing += Dgv_EditingControlShowing;
             dgv.MouseClick += Dgv_MouseClick;
-            dgv.EditColumnIcon(colProductId, colQauntity, colUnitPrice, colEmployeeId);
+            dgv.EditColumnIcon(colProductId, colQauntity, colUnitPrice, colEmployeeId,colImportPrice);
             
             txtTotal.ReadOnly = colLeftQty_.ReadOnly = true;
             cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
@@ -926,12 +926,14 @@ namespace QTech.Forms
             dgv.EndEdit();
             var unitPrice = Parse.ToDecimal(dgv.CurrentRow?.Cells[colUnitPrice.Name]?.Value?.ToString() ?? "0");
             var qty = Parse.ToInt(dgv.CurrentRow?.Cells[colQauntity.Name]?.Value?.ToString() ?? "0");
+            var impPrice = Parse.ToDecimal(dgv.CurrentRow?.Cells[colImportPrice.Name]?.Value?.ToString() ?? "0");
             if (unitPrice == 0 || qty == 0)
             {
                 return;
             }
 
             dgv.CurrentRow.Cells[colTotal.Name].Value = (unitPrice * qty).ToString();
+            dgv.CurrentRow.Cells[colTotalImportPrice.Name].Value = (impPrice * qty).ToString();
             CheckValidProductByPO();
             CalculateTotal();
             dgv.BeginEdit(true);
@@ -971,7 +973,7 @@ namespace QTech.Forms
             }
         }
         private bool firstLoad = true;
-        private async void CboCustomer_SelectedIndexChanged(object sender, EventArgs e)
+        private async void CboCustomer_SelectedIndexChanged(object sender, EventArgs e)    
         {
             var customer = cboCustomer.SelectedObject.ItemObject as Customer;
             if (customer != null)
@@ -1257,6 +1259,7 @@ namespace QTech.Forms
                 txtInvoiceNo.Text = Model.InvoiceNo;
                 txtTotal.Text = Model.Total.ToString();
                 txtExpense.Text = Model.Expense.ToString();
+                dtpSaleDate.Value = Model.SaleDate;
                 if (cus != null)
                 {
                     cboCustomer.SetValue(cus);
@@ -1273,9 +1276,12 @@ namespace QTech.Forms
             }
             else
             {
+                txtTotal.Text = Model.Total.ToString();
+                txtExpense.Text = Model.Expense.ToString();
                 txtCustomer.Text = Model.CustomerName;
                 txtInvoiceNo1.Text = Model.InvoiceNo;
                 txtPhone.Text = Model.Phone;
+                dtpSaleDate_.Value = Model.SaleDate;
             }
 
             //Read SaleDetail
@@ -1290,10 +1296,13 @@ namespace QTech.Forms
                     row.Cells[colQauntity.Name].Value = x.Qauntity;
                     row.Cells[colTotal.Name].Value = x.Total;
                     var product = products?.FirstOrDefault(y => y.Id == x.ProductId) ?? new Product();
-                    row.Cells[colUnitPrice.Name].Value = product.UnitPrice;
-                    row.Cells[colImportPrice.Name].Value = product.ImportPrice;
+                    row.Cells[colUnitPrice.Name].Value = x.SalePrice;
+                    row.Cells[colImportPrice.Name].Value = x.ImportPrice;
                     row.Cells[colLeftQty_.Name].Value = pOProductPrices?.FirstOrDefault(r => r.ProductId == x.ProductId)?.LeftQauntity;
                     row.Cells[colCategory_.Name].Value = categories?.FirstOrDefault(r => r.Id == product.CategoryId)?.Name;
+                    row.Cells[colTotal.Name].Value = x.Total;
+                    row.Cells[colImportPrice.Name].Value = x.ImportPrice;
+                    row.Cells[colTotalImportPrice.Name].Value = x.ImportTotalAmount;
 
                     if (products?.Any() ?? false)
                     {
@@ -1397,6 +1406,7 @@ namespace QTech.Forms
                 var purchaseOrder = cboPurchaseOrderNo.SelectedObject?.ItemObject as PurchaseOrder;
                 Model.PurchaseOrderId = purchaseOrder == null ? 0 : purchaseOrder.Id;
                 Model.SaleType = SaleType.Company;
+                Model.SaleDate = dtpSaleDate.Value;
             }
             else
             {
@@ -1404,11 +1414,11 @@ namespace QTech.Forms
                 Model.Phone = txtPhone.Text;
                 Model.SaleType = SaleType.General;
                 Model.InvoiceNo = txtInvoiceNo1.Text;
+                Model.SaleDate = dtpSaleDate_.Value;
             }
-
-            Model.SaleDate = Flag == GeneralProcess.Add ? DateTime.Now : Model.SaleDate;
-            Model.Total = decimal.Parse(!string.IsNullOrEmpty(txtTotal.Text) ? txtTotal.Text : "0");
-            Model.Expense = decimal.Parse(!string.IsNullOrEmpty(txtExpense.Text) ? txtExpense.Text : "0");
+            
+            Model.Total = Parse.ToDecimal(!string.IsNullOrEmpty(txtTotal.Text) ? txtTotal.Text : "0");
+            Model.Expense = Parse.ToDecimal(!string.IsNullOrEmpty(txtExpense.Text) ? txtExpense.Text : "0");
 
             if (Model.SaleDetails == null)
             {
@@ -1429,9 +1439,12 @@ namespace QTech.Forms
                 saleDetail.Total = decimal.Parse(row.Cells[colTotal.Name].Value?.ToString() ?? "0");
 
                 //ImportTotal & Profit
-                var importPrice = decimal.Parse(row.Cells[colImportPrice.Name].Value?.ToString() ?? "0");
+                var importPrice = Parse.ToDecimal(row.Cells[colImportPrice.Name].Value?.ToString() ?? "0");
+                var otherPay = Parse.ToDecimal(txtExpense.Text);
                 saleDetail.ImportTotalAmount = importPrice * saleDetail.Qauntity;
-                saleDetail.Profit = saleDetail.Total - saleDetail.ImportTotalAmount;
+                saleDetail.Profit = saleDetail.Total - saleDetail.ImportTotalAmount - otherPay;
+                saleDetail.ImportPrice = Parse.ToDecimal(row.Cells[colImportPrice.Name].Value?.ToString() ?? "0");
+                saleDetail.SalePrice = Parse.ToDecimal(row.Cells[colUnitPrice.Name].Value?.ToString() ?? "0");
 
                 if (Flag == GeneralProcess.Update)
                 {
