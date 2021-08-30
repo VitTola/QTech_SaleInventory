@@ -13,7 +13,7 @@ namespace QTech.ReportModels
         public string PurchaseOrderNo { get; set; }
         public string Company { get; set; }
         public string Site { get; set; }
-        public string SubTotal { get; set; }
+        public decimal SubTotal { get; set; }
         public string Product { get; set; }
         public string Category { get; set; }
         public decimal ImportPrice { get; set; }

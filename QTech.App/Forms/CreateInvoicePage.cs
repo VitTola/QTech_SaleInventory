@@ -312,7 +312,8 @@ namespace QTech.Forms
                 node.Cells[dgv.Columns[colParentId.Name].Index].Value = parent.Id;
                 node.Cells[dgv.Columns[colInvoiceNo.Name].Index].Value = sale.InvoiceNo;
                 node.Cells[dgv.Columns[colInvoicingDate.Name].Index].Value = sale.SaleDate.ToString("dd-MMM-yyyy hh:mm");
-                node.Cells[dgv.Columns[colCustomer.Name].Index].Value = Customers.FirstOrDefault(x => x.Id == parent.CustomerId)?.Name;
+                var customerName = parent.SaleType == SaleType.General ? parent.CustomerName : Customers.FirstOrDefault(x => x.Id == parent.CustomerId)?.Name;
+                node.Cells[dgv.Columns[colCustomer.Name].Index].Value = customerName;
                 node.Cells[dgv.Columns[colTotalAmount.Name].Index].Value = sale.Total;
             }
             TreeGridNode.Collapse();

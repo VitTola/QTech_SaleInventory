@@ -31,23 +31,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSale));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblPurchaseOrderNo = new QTech.Component.ExLabel();
             this.flowLayOutLabelRemoveAdd = new System.Windows.Forms.FlowLayoutPanel();
             this.lblRemove = new System.Windows.Forms.LinkLabel();
             this.lblAdd = new System.Windows.Forms.LinkLabel();
             this.dgv = new QTech.Component.ExDataGridView();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colImportPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSaleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colProductId = new QTech.Component.ExSearchComboColumn();
-            this.colCategory_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colQauntity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLeftQty_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEmployeeId = new QTech.Component.ExSearchComboColumn();
             this.exLabel2 = new QTech.Component.ExLabel();
             this.exPanel1 = new QTech.Component.Components.ExPanel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
@@ -79,6 +69,16 @@
             this.lblInvoiceNo1 = new QTech.Component.ExLabel();
             this.txtCustomer = new System.Windows.Forms.TextBox();
             this.lblCustomer1 = new QTech.Component.ExLabel();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colImportPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSaleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colProductId = new QTech.Component.ExSearchComboColumn();
+            this.colCategory_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colQauntity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLeftQty_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEmployeeId = new QTech.Component.ExSearchComboColumn();
             this.container.SuspendLayout();
             this.flowLayOutLabelRemoveAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -206,100 +206,6 @@
             this.dgv.Size = new System.Drawing.Size(849, 392);
             this.dgv.TabIndex = 0;
             this.dgv.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellLeave);
-            // 
-            // colId
-            // 
-            this.colId.DataPropertyName = "Id";
-            this.colId.HeaderText = "Id";
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            this.colId.Visible = false;
-            // 
-            // colImportPrice
-            // 
-            this.colImportPrice.HeaderText = "ImportPrice";
-            this.colImportPrice.Name = "colImportPrice";
-            this.colImportPrice.ReadOnly = true;
-            this.colImportPrice.Visible = false;
-            // 
-            // colSaleId
-            // 
-            this.colSaleId.HeaderText = "SaleId";
-            this.colSaleId.Name = "colSaleId";
-            this.colSaleId.ReadOnly = true;
-            this.colSaleId.Visible = false;
-            // 
-            // colProductId
-            // 
-            this.colProductId.Choose = null;
-            this.colProductId.CustomSearchForm = null;
-            this.colProductId.DataPropertyName = "ProductId";
-            this.colProductId.DataSourceFn = null;
-            this.colProductId.HeaderText = "ឈ្មោះទំនិញ";
-            this.colProductId.Name = "colProductId";
-            this.colProductId.ReadOnly = true;
-            this.colProductId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colProductId.SearchParamFn = null;
-            this.colProductId.ShowAll = false;
-            this.colProductId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.colProductId.TextAll = null;
-            this.colProductId.Width = 170;
-            // 
-            // colCategory_
-            // 
-            this.colCategory_.HeaderText = "ប្រភេទ";
-            this.colCategory_.Name = "colCategory_";
-            this.colCategory_.ReadOnly = true;
-            this.colCategory_.Width = 80;
-            // 
-            // colQauntity
-            // 
-            this.colQauntity.DataPropertyName = "Qauntity";
-            this.colQauntity.HeaderText = "បរិមាណ";
-            this.colQauntity.Name = "colQauntity";
-            this.colQauntity.ReadOnly = true;
-            this.colQauntity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colQauntity.Width = 70;
-            // 
-            // colLeftQty_
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Green;
-            this.colLeftQty_.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colLeftQty_.HeaderText = "បរិមាននៅសល់ក្នុង PO";
-            this.colLeftQty_.Name = "colLeftQty_";
-            this.colLeftQty_.ReadOnly = true;
-            this.colLeftQty_.Width = 150;
-            // 
-            // colUnitPrice
-            // 
-            this.colUnitPrice.DataPropertyName = "UnitPrice";
-            this.colUnitPrice.HeaderText = "តម្ថៃឯកតា";
-            this.colUnitPrice.Name = "colUnitPrice";
-            this.colUnitPrice.ReadOnly = true;
-            // 
-            // colTotal
-            // 
-            this.colTotal.DataPropertyName = "Total";
-            this.colTotal.HeaderText = "សរុប";
-            this.colTotal.Name = "colTotal";
-            this.colTotal.ReadOnly = true;
-            // 
-            // colEmployeeId
-            // 
-            this.colEmployeeId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colEmployeeId.Choose = null;
-            this.colEmployeeId.CustomSearchForm = null;
-            this.colEmployeeId.DataPropertyName = "EmployeeId";
-            this.colEmployeeId.DataSourceFn = null;
-            this.colEmployeeId.HeaderText = "អ្នកដឹក";
-            this.colEmployeeId.Name = "colEmployeeId";
-            this.colEmployeeId.ReadOnly = true;
-            this.colEmployeeId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colEmployeeId.SearchParamFn = null;
-            this.colEmployeeId.ShowAll = false;
-            this.colEmployeeId.TextAll = null;
             // 
             // exLabel2
             // 
@@ -681,6 +587,100 @@
             this.lblCustomer1.Size = new System.Drawing.Size(83, 19);
             this.lblCustomer1.TabIndex = 21;
             this.lblCustomer1.Text = "ឈ្មោះអតិថិជន";
+            // 
+            // colId
+            // 
+            this.colId.DataPropertyName = "Id";
+            this.colId.HeaderText = "Id";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            this.colId.Visible = false;
+            // 
+            // colImportPrice
+            // 
+            this.colImportPrice.HeaderText = "ImportPrice";
+            this.colImportPrice.Name = "colImportPrice";
+            this.colImportPrice.ReadOnly = true;
+            this.colImportPrice.Visible = false;
+            // 
+            // colSaleId
+            // 
+            this.colSaleId.HeaderText = "SaleId";
+            this.colSaleId.Name = "colSaleId";
+            this.colSaleId.ReadOnly = true;
+            this.colSaleId.Visible = false;
+            // 
+            // colProductId
+            // 
+            this.colProductId.Choose = null;
+            this.colProductId.CustomSearchForm = null;
+            this.colProductId.DataPropertyName = "ProductId";
+            this.colProductId.DataSourceFn = null;
+            this.colProductId.HeaderText = "ឈ្មោះទំនិញ";
+            this.colProductId.Name = "colProductId";
+            this.colProductId.ReadOnly = true;
+            this.colProductId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colProductId.SearchParamFn = null;
+            this.colProductId.ShowAll = false;
+            this.colProductId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colProductId.TextAll = null;
+            this.colProductId.Width = 170;
+            // 
+            // colCategory_
+            // 
+            this.colCategory_.HeaderText = "ប្រភេទ";
+            this.colCategory_.Name = "colCategory_";
+            this.colCategory_.ReadOnly = true;
+            this.colCategory_.Width = 80;
+            // 
+            // colQauntity
+            // 
+            this.colQauntity.DataPropertyName = "Qauntity";
+            this.colQauntity.HeaderText = "បរិមាណ";
+            this.colQauntity.Name = "colQauntity";
+            this.colQauntity.ReadOnly = true;
+            this.colQauntity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colQauntity.Width = 70;
+            // 
+            // colLeftQty_
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Green;
+            this.colLeftQty_.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colLeftQty_.HeaderText = "បរិមាណនៅសល់ក្នុង PO";
+            this.colLeftQty_.Name = "colLeftQty_";
+            this.colLeftQty_.ReadOnly = true;
+            this.colLeftQty_.Width = 150;
+            // 
+            // colUnitPrice
+            // 
+            this.colUnitPrice.DataPropertyName = "UnitPrice";
+            this.colUnitPrice.HeaderText = "តម្ថៃឯកតា";
+            this.colUnitPrice.Name = "colUnitPrice";
+            this.colUnitPrice.ReadOnly = true;
+            // 
+            // colTotal
+            // 
+            this.colTotal.DataPropertyName = "Total";
+            this.colTotal.HeaderText = "សរុប";
+            this.colTotal.Name = "colTotal";
+            this.colTotal.ReadOnly = true;
+            // 
+            // colEmployeeId
+            // 
+            this.colEmployeeId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colEmployeeId.Choose = null;
+            this.colEmployeeId.CustomSearchForm = null;
+            this.colEmployeeId.DataPropertyName = "EmployeeId";
+            this.colEmployeeId.DataSourceFn = null;
+            this.colEmployeeId.HeaderText = "អ្នកដឹក";
+            this.colEmployeeId.Name = "colEmployeeId";
+            this.colEmployeeId.ReadOnly = true;
+            this.colEmployeeId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colEmployeeId.SearchParamFn = null;
+            this.colEmployeeId.ShowAll = false;
+            this.colEmployeeId.TextAll = null;
             // 
             // frmSale
             // 

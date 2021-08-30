@@ -661,7 +661,7 @@ namespace QTech.Forms
                     SaleDate = row.Cells[colSaleDate2.Name].Value?.ToString() ?? string.Empty,
                     ImportPrice = decimal.Parse(row.Cells[colImportPrice2.Name].Value?.ToString() ?? "0"),
                     Qauntity = int.Parse(row.Cells[colQauntity2.Name].Value?.ToString() ?? "0"),
-                    SubTotal = row.Cells[colTotal2.Name].Value?.ToString() ?? string.Empty,
+                    SubTotal = Parse.ToDecimal(row.Cells[colTotal2.Name].Value?.ToString() ?? "0"),
                     Product = $"{row.Cells[colProduct2.Name].Value?.ToString()} {row.Cells[colCategory2.Name].Value.ToString()}"
                 });
             }

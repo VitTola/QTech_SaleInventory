@@ -136,7 +136,7 @@
             this.container.Controls.Add(this.panel3);
             this.container.Controls.Add(this.exPanel1);
             this.container.Controls.Add(this.graPanel1);
-            this.container.Size = new System.Drawing.Size(1496, 725);
+            this.container.Size = new System.Drawing.Size(1240, 641);
             // 
             // graPanel1
             // 
@@ -168,7 +168,7 @@
             this.graPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.graPanel1.Name = "graPanel1";
             this.graPanel1.Rounded = true;
-            this.graPanel1.Size = new System.Drawing.Size(1494, 35);
+            this.graPanel1.Size = new System.Drawing.Size(1238, 35);
             this.graPanel1.TabIndex = 0;
             // 
             // colorWithAlpha1
@@ -183,7 +183,7 @@
             this.exLabel2.AutoSize = true;
             this.exLabel2.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.exLabel2.Location = new System.Drawing.Point(767, 11);
+            this.exLabel2.Location = new System.Drawing.Point(511, 11);
             this.exLabel2.Name = "exLabel2";
             this.exLabel2.Required = false;
             this.exLabel2.Size = new System.Drawing.Size(120, 19);
@@ -197,7 +197,7 @@
             this.btnView.DefaultImage = null;
             this.btnView.Executing = false;
             this.btnView.Font = new System.Drawing.Font("Khmer OS System", 8F);
-            this.btnView.Location = new System.Drawing.Point(646, 3);
+            this.btnView.Location = new System.Drawing.Point(390, 3);
             this.btnView.Margin = new System.Windows.Forms.Padding(0, 3, 4, 4);
             this.btnView.Name = "btnView";
             this.btnView.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -292,7 +292,7 @@
             this.panelGrid.Location = new System.Drawing.Point(1, 36);
             this.panelGrid.Name = "panelGrid";
             this.panelGrid.Padding = new System.Windows.Forms.Padding(1, 0, 1, 1);
-            this.panelGrid.Size = new System.Drawing.Size(1494, 539);
+            this.panelGrid.Size = new System.Drawing.Size(1238, 455);
             this.panelGrid.TabIndex = 31;
             // 
             // chkMarkAll_
@@ -365,7 +365,7 @@
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(724, 538);
+            this.dgv.Size = new System.Drawing.Size(468, 454);
             this.dgv.TabIndex = 2;
             // 
             // colMark_
@@ -493,10 +493,10 @@
             this.panelCenterButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panelCenterButton.Controls.Add(this.panel4);
             this.panelCenterButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelCenterButton.Location = new System.Drawing.Point(725, 0);
+            this.panelCenterButton.Location = new System.Drawing.Point(469, 0);
             this.panelCenterButton.Name = "panelCenterButton";
             this.panelCenterButton.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.panelCenterButton.Size = new System.Drawing.Size(44, 538);
+            this.panelCenterButton.Size = new System.Drawing.Size(44, 454);
             this.panelCenterButton.TabIndex = 17;
             // 
             // panel4
@@ -507,7 +507,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(1, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(42, 538);
+            this.panel4.Size = new System.Drawing.Size(42, 454);
             this.panel4.TabIndex = 0;
             // 
             // btnLeft_
@@ -517,7 +517,7 @@
             this.btnLeft_.FlatAppearance.BorderSize = 0;
             this.btnLeft_.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLeft_.Image = global::QTech.Properties.Resources.leftArrow_img1;
-            this.btnLeft_.Location = new System.Drawing.Point(0, 284);
+            this.btnLeft_.Location = new System.Drawing.Point(0, 242);
             this.btnLeft_.Name = "btnLeft_";
             this.btnLeft_.Size = new System.Drawing.Size(42, 29);
             this.btnLeft_.TabIndex = 0;
@@ -533,7 +533,7 @@
             this.btnRigt_.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRigt_.Font = new System.Drawing.Font("Khmer OS System", 8F);
             this.btnRigt_.Image = global::QTech.Properties.Resources.rightArrow_img;
-            this.btnRigt_.Location = new System.Drawing.Point(0, 248);
+            this.btnRigt_.Location = new System.Drawing.Point(0, 206);
             this.btnRigt_.Margin = new System.Windows.Forms.Padding(0, 3, 4, 4);
             this.btnRigt_.Name = "btnRigt_";
             this.btnRigt_.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -591,7 +591,7 @@
             this.dgvResult.EnableHeadersVisualStyles = false;
             this.dgvResult.Executing = false;
             this.dgvResult.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            this.dgvResult.Location = new System.Drawing.Point(769, 0);
+            this.dgvResult.Location = new System.Drawing.Point(513, 0);
             this.dgvResult.MultiSelect = false;
             this.dgvResult.Name = "dgvResult";
             this.dgvResult.Paging = null;
@@ -599,7 +599,7 @@
             this.dgvResult.RowHeadersVisible = false;
             this.dgvResult.RowTemplate.Height = 28;
             this.dgvResult.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvResult.Size = new System.Drawing.Size(724, 538);
+            this.dgvResult.Size = new System.Drawing.Size(724, 454);
             this.dgvResult.TabIndex = 18;
             // 
             // colMark_2
@@ -733,10 +733,10 @@
             this.panel3.Controls.Add(this.exLabel3);
             this.panel3.Controls.Add(this.exLabel1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(1, 575);
+            this.panel3.Location = new System.Drawing.Point(1, 491);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.panel3.Size = new System.Drawing.Size(1494, 113);
+            this.panel3.Size = new System.Drawing.Size(1238, 113);
             this.panel3.TabIndex = 35;
             // 
             // _lblPrePaid
@@ -745,7 +745,7 @@
             this._lblPrePaid.AutoSize = true;
             this._lblPrePaid.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._lblPrePaid.LinkColor = System.Drawing.Color.Blue;
-            this._lblPrePaid.Location = new System.Drawing.Point(572, 43);
+            this._lblPrePaid.Location = new System.Drawing.Point(316, 43);
             this._lblPrePaid.Name = "_lblPrePaid";
             this._lblPrePaid.RightSpace = 10;
             this._lblPrePaid.ShortcutText = "";
@@ -761,7 +761,7 @@
             this.lblDriver.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDriver.AutoSize = true;
             this.lblDriver.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDriver.Location = new System.Drawing.Point(761, 14);
+            this.lblDriver.Location = new System.Drawing.Point(505, 14);
             this.lblDriver.Name = "lblDriver";
             this.lblDriver.Required = false;
             this.lblDriver.Size = new System.Drawing.Size(74, 27);
@@ -776,7 +776,7 @@
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel2.Controls.Add(this.txtPrePaid);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(740, 43);
+            this.panel2.Location = new System.Drawing.Point(484, 43);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -815,7 +815,7 @@
             this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel6.Controls.Add(this.txtLeftAmount);
             this.panel6.Controls.Add(this.label5);
-            this.panel6.Location = new System.Drawing.Point(1282, 73);
+            this.panel6.Location = new System.Drawing.Point(1026, 73);
             this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -854,7 +854,7 @@
             this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel5.Controls.Add(this.txtTotal);
             this.panel5.Controls.Add(this.label4);
-            this.panel5.Location = new System.Drawing.Point(1282, 11);
+            this.panel5.Location = new System.Drawing.Point(1026, 11);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -893,7 +893,7 @@
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.txtPaidAmount);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(1282, 42);
+            this.panel1.Location = new System.Drawing.Point(1026, 42);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -929,7 +929,7 @@
             this.exLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exLabel4.AutoSize = true;
             this.exLabel4.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exLabel4.Location = new System.Drawing.Point(572, 14);
+            this.exLabel4.Location = new System.Drawing.Point(316, 14);
             this.exLabel4.Name = "exLabel4";
             this.exLabel4.Required = false;
             this.exLabel4.Size = new System.Drawing.Size(74, 27);
@@ -941,7 +941,7 @@
             this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(1121, 11);
+            this.lblTotal.Location = new System.Drawing.Point(865, 11);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Required = false;
             this.lblTotal.Size = new System.Drawing.Size(89, 27);
@@ -953,7 +953,7 @@
             this.exLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exLabel3.AutoSize = true;
             this.exLabel3.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exLabel3.Location = new System.Drawing.Point(1121, 73);
+            this.exLabel3.Location = new System.Drawing.Point(865, 73);
             this.exLabel3.Name = "exLabel3";
             this.exLabel3.Required = false;
             this.exLabel3.Size = new System.Drawing.Size(66, 27);
@@ -965,7 +965,7 @@
             this.exLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exLabel1.AutoSize = true;
             this.exLabel1.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exLabel1.Location = new System.Drawing.Point(1121, 43);
+            this.exLabel1.Location = new System.Drawing.Point(865, 43);
             this.exLabel1.Name = "exLabel1";
             this.exLabel1.Required = false;
             this.exLabel1.Size = new System.Drawing.Size(61, 27);
@@ -978,10 +978,10 @@
             this.exPanel1.Controls.Add(this.flowLayoutPanel3);
             this.exPanel1.Controls.Add(this.flowLayoutPanel4);
             this.exPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.exPanel1.Location = new System.Drawing.Point(1, 688);
+            this.exPanel1.Location = new System.Drawing.Point(1, 604);
             this.exPanel1.Name = "exPanel1";
             this.exPanel1.Padding = new System.Windows.Forms.Padding(2);
-            this.exPanel1.Size = new System.Drawing.Size(1494, 36);
+            this.exPanel1.Size = new System.Drawing.Size(1238, 36);
             this.exPanel1.TabIndex = 36;
             // 
             // flowLayoutPanel3
@@ -1019,7 +1019,7 @@
             this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel4.Location = new System.Drawing.Point(2, 2);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(1490, 32);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(1234, 32);
             this.flowLayoutPanel4.TabIndex = 0;
             // 
             // btnClose
@@ -1028,7 +1028,7 @@
             this.btnClose.DefaultImage = null;
             this.btnClose.Executing = false;
             this.btnClose.Font = new System.Drawing.Font("Khmer OS System", 8F);
-            this.btnClose.Location = new System.Drawing.Point(1413, 3);
+            this.btnClose.Location = new System.Drawing.Point(1157, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -1045,7 +1045,7 @@
             this.btnSave.DefaultImage = null;
             this.btnSave.Executing = false;
             this.btnSave.Font = new System.Drawing.Font("Khmer OS System", 8F);
-            this.btnSave.Location = new System.Drawing.Point(1334, 3);
+            this.btnSave.Location = new System.Drawing.Point(1078, 3);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -1060,7 +1060,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1496, 745);
+            this.ClientSize = new System.Drawing.Size(1240, 661);
             this.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "frmEmployeeBilling";

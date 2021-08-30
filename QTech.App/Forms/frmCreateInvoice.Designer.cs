@@ -120,7 +120,7 @@
             this.container.Controls.Add(this.panel4);
             this.container.Controls.Add(this.panel3);
             this.container.Controls.Add(this.exPanel1);
-            this.container.Size = new System.Drawing.Size(1496, 725);
+            this.container.Size = new System.Drawing.Size(1240, 641);
             // 
             // exLabel2
             // 
@@ -140,11 +140,11 @@
             this.exPanel1.Controls.Add(this.flowLayoutPanel3);
             this.exPanel1.Controls.Add(this.flowLayoutPanel2);
             this.exPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.exPanel1.Location = new System.Drawing.Point(1, 688);
+            this.exPanel1.Location = new System.Drawing.Point(1, 604);
             this.exPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.exPanel1.Name = "exPanel1";
             this.exPanel1.Padding = new System.Windows.Forms.Padding(2);
-            this.exPanel1.Size = new System.Drawing.Size(1494, 36);
+            this.exPanel1.Size = new System.Drawing.Size(1238, 36);
             this.exPanel1.TabIndex = 17;
             // 
             // flowLayoutPanel3
@@ -187,7 +187,7 @@
             this.flowLayoutPanel2.Location = new System.Drawing.Point(2, 2);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1490, 32);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1234, 32);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // btnClose
@@ -196,7 +196,7 @@
             this.btnClose.DefaultImage = null;
             this.btnClose.Executing = false;
             this.btnClose.Font = new System.Drawing.Font("Khmer OS System", 8F);
-            this.btnClose.Location = new System.Drawing.Point(1413, 3);
+            this.btnClose.Location = new System.Drawing.Point(1157, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -213,7 +213,7 @@
             this.btnSave.DefaultImage = null;
             this.btnSave.Executing = false;
             this.btnSave.Font = new System.Drawing.Font("Khmer OS System", 8F);
-            this.btnSave.Location = new System.Drawing.Point(1334, 3);
+            this.btnSave.Location = new System.Drawing.Point(1078, 3);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -229,7 +229,7 @@
             this.lblInvoiceNo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblInvoiceNo.AutoSize = true;
             this.lblInvoiceNo.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvoiceNo.Location = new System.Drawing.Point(613, 23);
+            this.lblInvoiceNo.Location = new System.Drawing.Point(485, 23);
             this.lblInvoiceNo.Name = "lblInvoiceNo";
             this.lblInvoiceNo.Required = true;
             this.lblInvoiceNo.Size = new System.Drawing.Size(86, 27);
@@ -240,7 +240,7 @@
             // 
             this.txtInvoiceNo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtInvoiceNo.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInvoiceNo.Location = new System.Drawing.Point(732, 19);
+            this.txtInvoiceNo.Location = new System.Drawing.Point(604, 19);
             this.txtInvoiceNo.Margin = new System.Windows.Forms.Padding(2);
             this.txtInvoiceNo.Name = "txtInvoiceNo";
             this.txtInvoiceNo.ReadOnly = true;
@@ -288,7 +288,7 @@
             this.panelGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelGrid.Location = new System.Drawing.Point(1, 86);
             this.panelGrid.Name = "panelGrid";
-            this.panelGrid.Size = new System.Drawing.Size(1494, 489);
+            this.panelGrid.Size = new System.Drawing.Size(1238, 405);
             this.panelGrid.TabIndex = 30;
             // 
             // chkMarkAll_
@@ -312,7 +312,7 @@
             this.pnlGrid.Location = new System.Drawing.Point(0, 34);
             this.pnlGrid.Name = "pnlGrid";
             this.pnlGrid.Padding = new System.Windows.Forms.Padding(1, 0, 1, 1);
-            this.pnlGrid.Size = new System.Drawing.Size(1494, 455);
+            this.pnlGrid.Size = new System.Drawing.Size(1238, 371);
             this.pnlGrid.TabIndex = 16;
             // 
             // dgvView
@@ -370,7 +370,7 @@
             this.dgvView.RowHeadersVisible = false;
             this.dgvView.RowTemplate.Height = 28;
             this.dgvView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvView.Size = new System.Drawing.Size(788, 454);
+            this.dgvView.Size = new System.Drawing.Size(532, 370);
             this.dgvView.TabIndex = 3;
             // 
             // colMark2_
@@ -473,10 +473,10 @@
             this.panelCenterButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panelCenterButton.Controls.Add(this.panel2);
             this.panelCenterButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelCenterButton.Location = new System.Drawing.Point(789, 0);
+            this.panelCenterButton.Location = new System.Drawing.Point(533, 0);
             this.panelCenterButton.Name = "panelCenterButton";
             this.panelCenterButton.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.panelCenterButton.Size = new System.Drawing.Size(44, 454);
+            this.panelCenterButton.Size = new System.Drawing.Size(44, 370);
             this.panelCenterButton.TabIndex = 18;
             // 
             // panel2
@@ -487,7 +487,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(1, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(42, 454);
+            this.panel2.Size = new System.Drawing.Size(42, 370);
             this.panel2.TabIndex = 0;
             // 
             // btnRigt_
@@ -500,7 +500,7 @@
             this.btnRigt_.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRigt_.Font = new System.Drawing.Font("Khmer OS System", 8F);
             this.btnRigt_.Image = global::QTech.Properties.Resources.rightArrow_img;
-            this.btnRigt_.Location = new System.Drawing.Point(1, 195);
+            this.btnRigt_.Location = new System.Drawing.Point(1, 153);
             this.btnRigt_.Margin = new System.Windows.Forms.Padding(0, 3, 4, 4);
             this.btnRigt_.Name = "btnRigt_";
             this.btnRigt_.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -516,7 +516,7 @@
             this.btnLeft_.FlatAppearance.BorderSize = 0;
             this.btnLeft_.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLeft_.Image = global::QTech.Properties.Resources.leftArrow_img1;
-            this.btnLeft_.Location = new System.Drawing.Point(1, 230);
+            this.btnLeft_.Location = new System.Drawing.Point(1, 188);
             this.btnLeft_.Name = "btnLeft_";
             this.btnLeft_.Size = new System.Drawing.Size(42, 29);
             this.btnLeft_.TabIndex = 0;
@@ -569,7 +569,7 @@
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
             this.dgv.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
-            this.dgv.Location = new System.Drawing.Point(833, 0);
+            this.dgv.Location = new System.Drawing.Point(577, 0);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
             this.dgv.Paging = null;
@@ -577,7 +577,7 @@
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(660, 454);
+            this.dgv.Size = new System.Drawing.Size(660, 370);
             this.dgv.TabIndex = 2;
             // 
             // colMark_
@@ -685,7 +685,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1494, 34);
+            this.panel1.Size = new System.Drawing.Size(1238, 34);
             this.panel1.TabIndex = 17;
             // 
             // exLabel1
@@ -694,7 +694,7 @@
             this.exLabel1.AutoSize = true;
             this.exLabel1.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.exLabel1.Location = new System.Drawing.Point(834, 8);
+            this.exLabel1.Location = new System.Drawing.Point(578, 8);
             this.exLabel1.Name = "exLabel1";
             this.exLabel1.Required = false;
             this.exLabel1.Size = new System.Drawing.Size(126, 27);
@@ -716,7 +716,7 @@
             this.lblInvoicingDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblInvoicingDate.AutoSize = true;
             this.lblInvoicingDate.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvoicingDate.Location = new System.Drawing.Point(1165, 23);
+            this.lblInvoicingDate.Location = new System.Drawing.Point(909, 23);
             this.lblInvoicingDate.Name = "lblInvoicingDate";
             this.lblInvoicingDate.Required = true;
             this.lblInvoicingDate.Size = new System.Drawing.Size(86, 27);
@@ -733,10 +733,10 @@
             this.panel3.Controls.Add(this.exLabel5);
             this.panel3.Controls.Add(this.exLabel6);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(1, 575);
+            this.panel3.Location = new System.Drawing.Point(1, 491);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1494, 113);
+            this.panel3.Size = new System.Drawing.Size(1238, 113);
             this.panel3.TabIndex = 34;
             // 
             // panel6
@@ -747,7 +747,7 @@
             this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel6.Controls.Add(this.txtLeftAmount);
             this.panel6.Controls.Add(this.label5);
-            this.panel6.Location = new System.Drawing.Point(1278, 74);
+            this.panel6.Location = new System.Drawing.Point(1022, 74);
             this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -786,7 +786,7 @@
             this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel5.Controls.Add(this.txtTotal);
             this.panel5.Controls.Add(this.label4);
-            this.panel5.Location = new System.Drawing.Point(1278, 12);
+            this.panel5.Location = new System.Drawing.Point(1022, 12);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -825,7 +825,7 @@
             this.panel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel7.Controls.Add(this.txtPaidAmount);
             this.panel7.Controls.Add(this.label3);
-            this.panel7.Location = new System.Drawing.Point(1278, 43);
+            this.panel7.Location = new System.Drawing.Point(1022, 43);
             this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -861,7 +861,7 @@
             this.exLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exLabel4.AutoSize = true;
             this.exLabel4.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exLabel4.Location = new System.Drawing.Point(1117, 12);
+            this.exLabel4.Location = new System.Drawing.Point(861, 12);
             this.exLabel4.Name = "exLabel4";
             this.exLabel4.Required = false;
             this.exLabel4.Size = new System.Drawing.Size(89, 27);
@@ -873,7 +873,7 @@
             this.exLabel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exLabel5.AutoSize = true;
             this.exLabel5.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exLabel5.Location = new System.Drawing.Point(1117, 74);
+            this.exLabel5.Location = new System.Drawing.Point(861, 74);
             this.exLabel5.Name = "exLabel5";
             this.exLabel5.Required = false;
             this.exLabel5.Size = new System.Drawing.Size(66, 27);
@@ -885,7 +885,7 @@
             this.exLabel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exLabel6.AutoSize = true;
             this.exLabel6.Font = new System.Drawing.Font("Khmer Kep", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exLabel6.Location = new System.Drawing.Point(1117, 44);
+            this.exLabel6.Location = new System.Drawing.Point(861, 44);
             this.exLabel6.Name = "exLabel6";
             this.exLabel6.Required = false;
             this.exLabel6.Size = new System.Drawing.Size(61, 27);
@@ -905,13 +905,13 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(1, 1);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1494, 85);
+            this.panel4.Size = new System.Drawing.Size(1238, 85);
             this.panel4.TabIndex = 35;
             // 
             // dtpInvoicingDate
             // 
             this.dtpInvoicingDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpInvoicingDate.Location = new System.Drawing.Point(1278, 23);
+            this.dtpInvoicingDate.Location = new System.Drawing.Point(1022, 23);
             this.dtpInvoicingDate.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
             this.dtpInvoicingDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.dtpInvoicingDate.Name = "dtpInvoicingDate";
@@ -922,7 +922,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1496, 745);
+            this.ClientSize = new System.Drawing.Size(1240, 661);
             this.Font = new System.Drawing.Font("Khmer OS System", 8.25F);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "frmCreateInvoice";
