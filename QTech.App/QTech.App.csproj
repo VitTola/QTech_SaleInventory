@@ -528,7 +528,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="QTech.App_TemporaryKey.pfx" />
     <None Include="ReportModels\QTech.xsc">
       <DependentUpon>QTech.xsd</DependentUpon>
     </None>
