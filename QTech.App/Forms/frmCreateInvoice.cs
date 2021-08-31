@@ -71,7 +71,7 @@ namespace QTech.Forms
             colMark_.ReadOnly = false;
             dgv.SetColumnHeaderDefaultStyle();
             dgvView.SetColumnHeaderDefaultStyle();
-            
+
             if (Flag == GeneralProcess.Add || Flag == GeneralProcess.Update)
             {
                 cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
@@ -473,7 +473,7 @@ namespace QTech.Forms
         }
         private async void btnPrint_Click(object sender, EventArgs e)
         {
-            if (InValid()) return;
+            if (InValid() || dgv.RowCount == 0) return;
 
             var reportHeader = new Dictionary<string, object>();
             reportHeader.Add("Supplier", BaseResource.Company);
@@ -482,25 +482,11 @@ namespace QTech.Forms
             var AllTotal = decimal.Parse(string.IsNullOrEmpty(txtTotal.Text) ? "0" : txtTotal.Text);
             reportHeader.Add("Total", String.Format("{0:C}", AllTotal));
 
-            var MonthlyInvoices = new List<MonthlyInvoice>();
+            var saleIds = new List<int>();
             var Rows = dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow);
-            foreach (DataGridViewRow row in Rows)
-            {
-                var _total = row.Cells[colTotal.Name].Value?.ToString();
-                var total = decimal.Parse(string.IsNullOrEmpty(_total) ? "0" : _total);
-                MonthlyInvoices.Add(
-                new MonthlyInvoice()
-                {
-                    SaleDate = row.Cells[colSaleDate.Name].Value.ToString(),
-                    InvoiceNo = row.Cells[colInvoiceNo.Name].Value?.ToString(),
+            Rows.OfType<DataGridViewRow>().ToList().ForEach(row => saleIds.Add(Parse.ToInt(row.Cells[colSaleId.Name].Value?.ToString())));
+            var MonthlyInvoices = SaleDetailLogic.Instance.GetMonthlyInvoiceBySaleIds(saleIds);
 
-                    TotalInUSD = String.Format("{0:C}", total),
-                    PurchaseOrderNo = row.Cells[colPurchaseOrderNo.Name].Value?.ToString(),
-                    Site = row.Cells[colToSite.Name].Value?.ToString(),
-
-                    
-                });
-            }
             DataTable Invoice = new DataTable("MonthlyInvoice");
             using (var reader = ObjectReader.Create(MonthlyInvoices))
             {
@@ -522,6 +508,7 @@ namespace QTech.Forms
                 dig.Text = QTech.Base.Properties.Resources.Invoice;
                 dig.ShowDialog();
             }
+
         }
         private void txtPaidAmount_TextChanged(object sender, EventArgs e)
         {
@@ -548,7 +535,7 @@ namespace QTech.Forms
                 row.Cells[colMark2_.Name].Value = chkMarkAll_.Checked;
             }
             CheckingAmount = chkMarkAll_.Checked ? AllSales : 0;
-            
+
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {

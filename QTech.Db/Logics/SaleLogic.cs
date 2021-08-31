@@ -249,5 +249,9 @@ namespace QTech.Db.Logics
             }
         }
 
+        public bool IsExistedInvoiceNo(string invoiceNo)
+        {
+            return _db.Sales.Any(x => x.Active && x.InvoiceNo == invoiceNo);
+        }
     }
 }

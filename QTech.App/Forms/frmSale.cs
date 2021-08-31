@@ -853,6 +853,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BaseReource = QTech.Base.Properties.Resources;
 using EasyServer.Domain.Helpers;
+using EDomain = EasyServer.Domain;
 
 namespace QTech.Forms
 {
@@ -907,7 +908,7 @@ namespace QTech.Forms
             dgv.EditingControlShowing += Dgv_EditingControlShowing;
             dgv.MouseClick += Dgv_MouseClick;
             dgv.EditColumnIcon(colProductId, colQauntity, colUnitPrice, colEmployeeId,colImportPrice);
-            
+
             txtTotal.ReadOnly = colLeftQty_.ReadOnly = true;
             cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
             this.Load += FrmSale_Load;
@@ -960,16 +961,29 @@ namespace QTech.Forms
         }
         private void Dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            if (string.IsNullOrEmpty(cboPurchaseOrderNo.Text) && tabMain.SelectedTab.Equals(tabCompany_))
+            if (tabMain.SelectedTab.Equals(tabCompany_))
             {
-                dgv.EndEdit();
-                dgv.ReadOnly = true;
-                cboPurchaseOrderNo.IsSelected();
-            }
-            else
-            {
-                dgv.ReadOnly = false;
-                dgv.BeginEdit(true);
+                if (string.IsNullOrEmpty(cboCustomer.Text))
+                {
+                    cboCustomer.ShowDropDown();
+                }
+                else if (string.IsNullOrEmpty(cboSite.Text))
+                {
+                    cboSite.ShowDropDown();
+                }
+                else if(string.IsNullOrEmpty(cboPurchaseOrderNo.Text))
+                {
+                    cboPurchaseOrderNo.ShowDropDown();
+                }
+
+                if (dgv.CurrentRow.Index > 0)
+                {
+                    dgv.ReadOnly = true;
+                }
+                else
+                {
+                    dgv.ReadOnly = false;
+                }
             }
         }
         private bool firstLoad = true;
@@ -995,7 +1009,7 @@ namespace QTech.Forms
         }
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            colTotal.ReadOnly = colLeftQty_.ReadOnly = true;
+            colTotal.ReadOnly = colLeftQty_.ReadOnly = colCategory_.ReadOnly = colTotalImportPrice.ReadOnly = true;
             e.Control.RegisterEnglishInput();
             if (e.Control is ExSearchCombo cbo)
             {
@@ -1015,7 +1029,6 @@ namespace QTech.Forms
                 }
             }
             dgv.CellValueChanged += Dgv_CellValueChanged;
-
         }
         private void Txt_Leave(object sender, EventArgs e)
         {
@@ -1355,6 +1368,27 @@ namespace QTech.Forms
             {
                 Close();
             }
+
+            //check existing invoiceno
+            if (tabMain.SelectedTab.Equals(tabCompany_))
+            {
+                var existedInvoiceNo = SaleLogic.Instance.IsExistedInvoiceNo(txtInvoiceNo.Text);
+                if (existedInvoiceNo)
+                {
+                    txtInvoiceNo.ShowValidation(string.Format(EDomain.Resources.MsgFieldExists, lblInvoiceNo.Text), TabAlignment.Left);
+                    return;
+                }
+            }
+            else
+            {
+                var existedInvoiceNo = SaleLogic.Instance.IsExistedInvoiceNo(txtInvoiceNo1.Text);
+                if (existedInvoiceNo)
+                {
+                    txtInvoiceNo1.ShowValidation(string.Format(EDomain.Resources.MsgFieldExists, lblInvoiceNo.Text), TabAlignment.Right);
+                    return;
+                }
+            }
+            
 
             if (InValid()) { return; }
             Write();

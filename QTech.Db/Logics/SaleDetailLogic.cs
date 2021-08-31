@@ -3,6 +3,7 @@ using QTech.Base.BaseModels;
 using QTech.Base.Models;
 using QTech.Base.OutFaceModels;
 using QTech.Base.SearchModels;
+using QTech.ReportModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -100,52 +101,33 @@ namespace QTech.Db.Logics
             var res =result.GroupBy(x => x.saleDetail).Select(y => y.FirstOrDefault()).ToList();
             return res;
         }
-
-        //public List<EmployeeBillOutFace> GetEmployeeBillOutFaces(ISearchModel model)
-        //{
-        //    var param = model as EmployeeBillSearch;
-        //    var q = All();
-        //    var result = from saleDetail in q
-        //                 join employee in _db.Employees on saleDetail.EmployeeId equals employee.Id into employees
-        //                 from empResult in employees.DefaultIfEmpty()
-        //                 join sale in _db.Sales on saleDetail.SaleId equals sale.Id into sales
-        //                 from salResult in sales.DefaultIfEmpty()
-        //                 join customer in _db.Customers on salResult.CompanyId equals customer.Id into customers
-        //                 from cusResult in customers
-        //                 join site in _db.Sites on salResult.SiteId equals site.Id into sites
-        //                 from sitResult in sites.DefaultIfEmpty()
-        //                 join product in _db.Products on saleDetail.ProductId equals product.Id into products
-        //                 from proResult in products.DefaultIfEmpty()
-        //                 join category in _db.Categories on proResult.CategoryId equals category.Id into categories
-        //                 from catResult in categories.DefaultIfEmpty()
-        //                 where param.EmployeeBillId != 0 ?
-        //                 (saleDetail.EmployeeBillId == param.EmployeeBillId && saleDetail.Active)
-        //                 :
-        //                 (salResult.SaleDate >= param.D1 && salResult.SaleDate <= param.D2
-        //                 && (param.DriverId == 0 ? true : empResult.Id == param.DriverId)
-        //                 && (param.CustomerId == 0 ? true : cusResult.Id == param.CustomerId)
-        //                 && (param.SiteId == 0 ? true : sitResult.Id == param.SiteId)
-        //                 && (saleDetail.PayStatus == Base.Enums.PayStatus.NotYetPaid)
-        //                 && saleDetail.Active)
-
-        //                 select new EmployeeBillOutFace()
-        //                 {
-        //                     PurchaseOrderNo = salResult.PurchaseOrderNo,
-        //                     InvoiceNo = salResult.InvoiceNo,
-        //                     ToCompany = cusResult.Name,
-        //                     ToSite = sitResult.Name,
-        //                     SaleDate = salResult.SaleDate,
-        //                     Product = proResult.Name,
-        //                     Category = catResult.Name,
-        //                     ImportPrice = proResult.ImportPrice,
-        //                     Qauntity = saleDetail.Qauntity,
-        //                     ImportTotalAmount = saleDetail.ImportTotalAmount,
-        //                     saleDetail = saleDetail
-        //                 };
-
-        //    var res = result.GroupBy(x => x.saleDetail).Select(y => y.FirstOrDefault()).ToList();
-        //    return res;
-        //}
+        
+        public List<MonthlyInvoice> GetMonthlyInvoiceBySaleIds(List<int> saleIds)
+        {
+            if (saleIds.Count==0)
+            {
+                return new List<MonthlyInvoice>(); 
+            }
+            var result = from sale in _db.Sales.Where(s => s.Active && saleIds.Any(r => r == s.Id))
+                         join site in _db.Sites.Where(x=>x.Active) on sale.SiteId equals site.Id into sites
+                         from siteResult in sites.DefaultIfEmpty()
+                         join sd in _db.SaleDetails.Where(x => x.Active) on sale.Id equals sd.SaleId
+                         join pro in _db.Products.Where(x => x.Active) on sd.ProductId equals pro.Id
+                         join cat in _db.Categories.Where(x => x.Active) on pro.CategoryId equals cat.Id
+                         select new MonthlyInvoice()
+                         {
+                             SaleDate = sale.SaleDate,
+                             InvoiceNo = sale.InvoiceNo,
+                             Qauntity = sd.Qauntity,
+                             UnitPrice = sd.SalePrice,
+                             TotalInUSD = sd.Total,
+                             PurchaseOrderNo = sale.PurchaseOrderNo,
+                             Site =string.IsNullOrEmpty(siteResult.Name) ? sale.CustomerName : siteResult.Name,
+                             Product = pro.Name+cat.Name
+                         };
+            return result.ToList();
+        }
+       
 
     }
 }

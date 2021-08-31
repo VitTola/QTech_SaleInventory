@@ -274,7 +274,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportModels\DriverDeliveryDetail.cs" />
     <Compile Include="ReportModels\EmployeePrepaid.cs" />
-    <Compile Include="ReportModels\MonthlyInvoice.cs" />
     <Compile Include="ReportModels\QTech.cs">
       <DependentUpon>QTech.xsd</DependentUpon>
     </Compile>

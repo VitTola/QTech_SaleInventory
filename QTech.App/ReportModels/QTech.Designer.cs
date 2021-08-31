@@ -614,7 +614,7 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public MonthlyInvoiceRow AddMonthlyInvoiceRow(string SaleDate, string InvoiceNo, string TotalInKh, string TotalInUSD, string PurchaseOrderNO, string Site, short Qauntity, decimal UnitPrice, string Product) {
+            public MonthlyInvoiceRow AddMonthlyInvoiceRow(System.DateTime SaleDate, string InvoiceNo, string TotalInKh, decimal TotalInUSD, string PurchaseOrderNO, string Site, short Qauntity, decimal UnitPrice, string Product) {
                 MonthlyInvoiceRow rowMonthlyInvoiceRow = ((MonthlyInvoiceRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         SaleDate,
@@ -662,13 +662,13 @@ namespace QTech.ReportModels {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnSaleDate = new global::System.Data.DataColumn("SaleDate", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnSaleDate = new global::System.Data.DataColumn("SaleDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSaleDate);
                 this.columnInvoiceNo = new global::System.Data.DataColumn("InvoiceNo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInvoiceNo);
                 this.columnTotalInKh = new global::System.Data.DataColumn("TotalInKh", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotalInKh);
-                this.columnTotalInUSD = new global::System.Data.DataColumn("TotalInUSD", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnTotalInUSD = new global::System.Data.DataColumn("TotalInUSD", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotalInUSD);
                 this.columnPurchaseOrderNO = new global::System.Data.DataColumn("PurchaseOrderNO", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPurchaseOrderNO);
@@ -2407,10 +2407,10 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string SaleDate {
+            public System.DateTime SaleDate {
                 get {
                     try {
-                        return ((string)(this[this.tableMonthlyInvoice.SaleDateColumn]));
+                        return ((global::System.DateTime)(this[this.tableMonthlyInvoice.SaleDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'SaleDate\' in table \'MonthlyInvoice\' is DBNull.", e);
@@ -2455,10 +2455,10 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string TotalInUSD {
+            public decimal TotalInUSD {
                 get {
                     try {
-                        return ((string)(this[this.tableMonthlyInvoice.TotalInUSDColumn]));
+                        return ((decimal)(this[this.tableMonthlyInvoice.TotalInUSDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'TotalInUSD\' in table \'MonthlyInvoice\' is DBNull.", e);
