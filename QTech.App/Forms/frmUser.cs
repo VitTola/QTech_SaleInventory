@@ -32,18 +32,20 @@ namespace QTech.Forms
         List<Permission> _permission;
         bool _isBinding = true;
         string _defaultPassword = @"*cuMQ*?EmL9tKqWp";
-        
+
         public async void Bind()
         {
-            _permission = await this.RunAsync(() =>
+            if (Model.UserPermissions == null)
             {
-                if (Model.UserPermissions == null)
-                {
-                    Model.UserPermissions = new List<UserPermission>();
-                }
-                Model.UserPermissions = UserPermissionLogic.Instance.GetUserPermissionsByUserId(Model.Id);
-                return PermissionLogic.Instance.SearchAsync(new UserPermissionSearch() { UserId = Model.Id});
-            });
+                Model.UserPermissions = new List<UserPermission>();
+            }
+            _permission = await this.RunAsync(() =>
+             {
+                 var userId = Flag == GeneralProcess.Add ? -1 : Model.Id;
+                 Model.UserPermissions = UserPermissionLogic.Instance.GetUserPermissionsByUserId(userId);
+                 return PermissionLogic.Instance.SearchAsync(new UserPermissionSearch() { UserId = Model.Id });
+             });
+            
             TreeNode treeNode = AddNodes(new Permission()
             {
                 Id = 0,
@@ -61,8 +63,8 @@ namespace QTech.Forms
         }
         public void InitEvent()
         {
-            txtAccount.RegisterKeyEnterNextControlWith(txtPassword, txtConfirmPassword,txtUserName,txtNote);
-            txtAccount.RegisterEnglishInputWith(txtPassword,txtConfirmPassword);
+            txtAccount.RegisterKeyEnterNextControlWith(txtPassword, txtConfirmPassword, txtUserName, txtNote);
+            txtAccount.RegisterEnglishInputWith(txtPassword, txtConfirmPassword);
             txtNote.RegisterPrimaryInput();
             this.MaximizeBox = false;
         }
@@ -79,7 +81,7 @@ namespace QTech.Forms
                 txtConfirmPassword.IsValidRequired(BaseResource.MsgConfirmPasswordNotMatch);
                 return true;
             }
-            
+
             return false;
         }
         public void Read()
@@ -121,7 +123,7 @@ namespace QTech.Forms
                 txtAccount.IsExists(txtAccount.Text);
                 return;
             }
-            
+
             await btnSave.RunAsync(() =>
             {
                 if (Flag == GeneralProcess.Add)
@@ -153,7 +155,7 @@ namespace QTech.Forms
             Model.PasswordHash = txtPassword.Text == _defaultPassword ? string.Empty : txtPassword.Text;
             Model.Name = txtUserName.Text;
             Model.Note = txtNote.Text;
-            
+
             trvPermission.CollapseAll();
             var _userPermission = GetNodeChecked(trvPermission.TopNode);
             Model.UserPermissions = _userPermission;

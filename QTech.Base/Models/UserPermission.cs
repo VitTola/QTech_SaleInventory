@@ -9,7 +9,7 @@ namespace QTech.Base.Models
 {
     public class UserPermission : ActiveBaseModel
     {
-        public int UserId { get; set; }
+        public int UserId { get; set; } 
         public int PermissionId { get; set; }
     }
 
