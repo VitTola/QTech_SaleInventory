@@ -138,9 +138,12 @@ namespace QTech.Db.Logics
             {
                 var q = from sal in _db.Sales.Where(x => x.Active)
                         join sad in _db.SaleDetails.Where(x => x.Active) on sal.Id equals sad.SaleId
+                        join pro in _db.Products.Where(p=>p.Active) on sad.ProductId equals pro.Id 
+                        join cat in _db.Categories.Where(c=>c.Active) on pro.CategoryId equals cat.Id
                         where sal.SaleDate >= param.D1 && sal.SaleDate <= param.D2
                         && (param.DriverId == 0 ? true : sad.EmployeeId == param.DriverId)
                         && (sal.SaleType == SaleType.General)
+                        && (param.ProductId == 0 ? true : sad.ProductId == param.ProductId)
                         select new DriverDeliveryDetail()
                         {
                             saleDetailId = sad.Id,
@@ -149,6 +152,8 @@ namespace QTech.Db.Logics
                             PurchaseOrderNo = string.Empty,
                             Company = sal.CustomerName,
                             Site = string.Empty,
+                            Qauntity = sad.Qauntity,
+                            Product = pro.Name+cat.Name,
                             SubTotal = sad.Total
                         };
                 return q.ToList();
@@ -162,10 +167,13 @@ namespace QTech.Db.Logics
                         from cusResult in customers.DefaultIfEmpty()
                         join sit in _db.Sites.Where(x => x.Active) on sal.SiteId equals sit.Id into sites
                         from sitResult in sites.DefaultIfEmpty()
+                        join pro in _db.Products.Where(p => p.Active) on sad.ProductId equals pro.Id
+                        join cat in _db.Categories.Where(c => c.Active) on pro.CategoryId equals cat.Id
                         where sal.SaleDate >= param.D1 && sal.SaleDate <= param.D2
                         && (param.DriverId == 0 ? true : sad.EmployeeId == param.DriverId)
                         && (param.SiteId == 0 ? true : sitResult.Id == param.SiteId)
                         && (param.CustomerId == 0 ? true : sal.CompanyId == param.CustomerId)
+                        && (param.ProductId == 0 ? true : sad.ProductId == param.ProductId)
                         select new DriverDeliveryDetail()
                         {
                             saleDetailId = sad.Id,
@@ -174,6 +182,8 @@ namespace QTech.Db.Logics
                             PurchaseOrderNo = sal.PurchaseOrderNo.ToString(),
                             Company = cusResult == null ? sal.CustomerName : cusResult.Name,
                             Site = sitResult == null ? string.Empty : sitResult.Name,
+                            Qauntity = sad.Qauntity,
+                            Product = pro.Name + cat.Name,
                             SubTotal = sad.Total
                         };
                 return q.ToList();
@@ -186,10 +196,13 @@ namespace QTech.Db.Logics
                         join emp in _db.Employees.Where(x => x.Active) on sad.EmployeeId equals emp.Id
                         join cus in _db.Customers.Where(x => x.Active) on sal.CompanyId equals cus.Id
                         join sit in _db.Sites.Where(x => x.Active) on sal.SiteId equals sit.Id
+                        join pro in _db.Products.Where(p => p.Active) on sad.ProductId equals pro.Id
+                        join cat in _db.Categories.Where(c => c.Active) on pro.CategoryId equals cat.Id
                         where sal.SaleDate >= param.D1 && sal.SaleDate <= param.D2
                         && (param.DriverId == 0 ? true : sad.EmployeeId == param.DriverId)
                         && (sal.CompanyId == param.CustomerId)
                         && (param.SiteId == 0 ? true : sit.Id == param.SiteId)
+                        && (param.ProductId == 0 ? true : sad.ProductId == param.ProductId)
                         select new DriverDeliveryDetail()
                         {
                             saleDetailId = sad.Id,
@@ -198,6 +211,8 @@ namespace QTech.Db.Logics
                             PurchaseOrderNo = sal.PurchaseOrderNo.ToString(),
                             Company = cus.Name,
                             Site = sit.Name,
+                            Qauntity = sad.Qauntity,
+                            Product = pro.Name + cat.Name,
                             SubTotal = sad.Total
                         };
                 return q.ToList();

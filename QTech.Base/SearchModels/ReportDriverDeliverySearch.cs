@@ -14,5 +14,6 @@ namespace QTech.Base.SearchModels
         public int CustomerId { get; set; }
         public int DriverId { get; set; }
         public int SiteId { get; set; }
+        public int ProductId { get; set; }
     }
 }

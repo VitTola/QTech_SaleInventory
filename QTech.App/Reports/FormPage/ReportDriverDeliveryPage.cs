@@ -17,6 +17,7 @@ using FastMember;
 using QTech.ReportModels;
 using Storm.CC.Report.Helpers;
 using QTech.Component.Helpers;
+using QTech.Base.Models;
 
 namespace QTech.Reports
 {
@@ -52,6 +53,7 @@ namespace QTech.Reports
             cboCompany.DataSourceFn = p => customers.ToDropDownItemModelList();
             cboCompany.SearchParamFn = () => new CustomerSearch();
             cboCompany.Choose = BaseResource.Customer;
+            cboCompany.Name = BaseResource.Customer;
         }
 
         private void InitEvent()
@@ -91,11 +93,12 @@ namespace QTech.Reports
             {
                 return;
             }
-            
+
 
             var driver = cboDriver.SelectedObject.ItemObject as Employee;
             var company = cboCompany.SelectedObject.ItemObject as Customer;
             var site = cboSite.SelectedObject.ItemObject as Site;
+            var product = cboProduct.SelectedObject.ItemObject as Product;
 
             var searchParam = new ReportDriverDeliverySearch()
             {
@@ -103,7 +106,8 @@ namespace QTech.Reports
                 D2 = dtpPeroid.SelectedPeroid.ToDate,
                 DriverId = driver?.Id ?? 0,
                 CustomerId = company?.Id ?? 0,
-                SiteId = site?.Id ?? 0
+                SiteId = site?.Id ?? 0,
+                ProductId = product?.Id ?? 0
             };
 
 
@@ -162,6 +166,15 @@ namespace QTech.Reports
             SearchParamFn = () => new SiteSearch() { }
         };
 
+        ExSearchCombo cboProduct = new ExSearchCombo
+        {
+            Name = BaseResource.Products,
+            TextAll = BaseResource.Products,
+            Choose = BaseResource.Products,
+            DataSourceFn = p => ProductLogic.Instance.SearchAsync(p).ToDropDownItemModelList(),
+            SearchParamFn = () => new ProductSearch(),
+            CustomSearchForm = () => new SelectProductDialog(new ProductSearch(),true),
+        };
 
         private bool _isAdvanceInvalid = false;
         public void Find()
@@ -191,6 +204,7 @@ namespace QTech.Reports
                 {cboDriver.Name, cboDriver },
                 {cboCompany.Name, cboCompany },
                 {cboSite.Name, cboSite },
+                {cboProduct.Name, cboProduct },
             };
 
 

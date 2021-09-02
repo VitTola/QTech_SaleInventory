@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BaseResource = QTech.Base.Properties.Resources;
 
 namespace QTech.Component
 {
@@ -25,11 +26,10 @@ namespace QTech.Component
         public List<DropDownItemModel> SelectedItems { get; private set; }
         public dynamic SelectedObject { get; set; }
         List<Category> categories = new List<Category>();
+        private bool AllProduct;
 
         bool _loadAll;
-        public SelectProductDialog(
-            QTech.Base.BaseModels.ISearchModel searchParameter
-        )
+        public SelectProductDialog(QTech.Base.BaseModels.ISearchModel searchParameter, bool _allProduct = false)
         {
             InitializeComponent();
             dgv.DataBindingComplete += dgv_DataBindingComplete;
@@ -38,6 +38,7 @@ namespace QTech.Component
             txtSearch.TextBox.SelectAll();
             txtSearch.RegisterKeyArrowDown(dgv);
             txtSearch.QuickSearch += TxtSearch_QuickSearch;
+            AllProduct = _allProduct;
 
         }
 
@@ -127,10 +128,20 @@ namespace QTech.Component
                 var result = ProductLogic.Instance.SearchAsync(search);
                 return result;
             });
-
+            
             if (products != null)
             {
                 dgv.Rows.Clear();
+                if (AllProduct)
+                {
+                    products.Insert(0,new Product
+                    {
+                        Id = 0,
+                        CategoryId = 0,
+                        Name = $"{BaseResource.Products} {BaseResource.All_}"
+                    }
+                        );
+                }
                 products.ForEach(x=> {
                     var row = newRow(false);
                     row.Cells[colId.Name].Value = x.Id;
@@ -191,6 +202,7 @@ namespace QTech.Component
             {
                 await Search();
             }
+
         }
         private async void Selected()
         {
