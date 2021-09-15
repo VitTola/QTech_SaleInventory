@@ -157,6 +157,7 @@
     <Compile Include="Helpers\ShareValue.cs" />
     <Compile Include="Helpers\TempFile.cs" />
     <Compile Include="Helpers\UISetting.cs" />
+    <Compile Include="Models\AuditTrail.cs" />
     <Compile Include="Models\IncomeExpense.cs" />
     <Compile Include="Models\PurchaseOrder.cs" />
     <Compile Include="Models\EmployeeBill.cs" />
@@ -201,6 +202,7 @@
       <DependentUpon>ReportNotFound.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SearchModels\AuditTrailHistorySearch.cs" />
     <Compile Include="SearchModels\IncomExpenseSearch.cs" />
     <Compile Include="SearchModels\ReportExpenseSearch.cs" />
     <Compile Include="SearchModels\ReportIncomeSearch.cs" />

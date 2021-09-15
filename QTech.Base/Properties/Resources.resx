@@ -676,4 +676,13 @@
   <data name="TotalImportPrice" xml:space="preserve">
     <value>តម្លៃនាំចូលសរុប</value>
   </data>
+  <data name="AuditTrail" xml:space="preserve">
+    <value>ប្រវត្តិប្រើប្រាស់</value>
+  </data>
+  <data name="Dated" xml:space="preserve">
+    <value>កាលបរិច្ឆេទ</value>
+  </data>
+  <data name="UpdateHistory__" xml:space="preserve">
+    <value>ប្រវត្តិការកែប្រែ{0} {1}</value>
+  </data>
 </root>

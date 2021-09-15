@@ -106,6 +106,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ប្រវត្តិប្រើប្រាស់.
+        /// </summary>
+        public static string AuditTrail {
+            get {
+                return ResourceManager.GetString("AuditTrail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap billing {
@@ -312,6 +321,15 @@ namespace QTech.Base.Properties {
         public static string CustomerType {
             get {
                 return ResourceManager.GetString("CustomerType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to កាលបរិច្ឆេទ.
+        /// </summary>
+        public static string Dated {
+            get {
+                return ResourceManager.GetString("Dated", resourceCulture);
             }
         }
         
@@ -1748,6 +1766,15 @@ namespace QTech.Base.Properties {
         public static string Update {
             get {
                 return ResourceManager.GetString("Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ប្រវត្តិការកែប្រែ{0} {1}.
+        /// </summary>
+        public static string UpdateHistory__ {
+            get {
+                return ResourceManager.GetString("UpdateHistory__", resourceCulture);
             }
         }
         
