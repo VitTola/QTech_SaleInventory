@@ -337,7 +337,7 @@ namespace QTech.Forms
             // 
             this.colInvoiceNo.DataPropertyName = "InvoiceNo";
             this.colInvoiceNo.FillWeight = 40F;
-            this.colInvoiceNo.HeaderText = "លេខវិក្កយបត្រ";
+            this.colInvoiceNo.HeaderText = "លេខវិក័យប័ត្រ";
             this.colInvoiceNo.MinimumWidth = 100;
             this.colInvoiceNo.Name = "colInvoiceNo";
             this.colInvoiceNo.ReadOnly = true;

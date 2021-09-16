@@ -109,7 +109,7 @@ namespace QTech.Forms
         }
         public void ViewChangeLog()
         {
-            throw new NotImplementedException();
+            new AuditTrailDialog().ShowDialog();
         }
         public void Write()
         {
@@ -124,6 +124,11 @@ namespace QTech.Forms
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnChangeLog_Click(object sender, EventArgs e)
+        {
+            ViewChangeLog();
         }
     }
 }

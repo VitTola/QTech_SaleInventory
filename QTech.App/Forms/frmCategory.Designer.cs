@@ -44,9 +44,12 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnClose = new QTech.Component.ExButtonLoading();
             this.btnSave = new QTech.Component.ExButtonLoading();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnChangeLog = new QTech.Component.ExButtonLoading();
             this.container.SuspendLayout();
             this.exPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // container
@@ -56,7 +59,7 @@
             this.container.Controls.Add(this.txtNote);
             this.container.Controls.Add(this.lblName);
             this.container.Controls.Add(this.txtName);
-            this.container.Size = new System.Drawing.Size(440, 219);
+            this.container.Size = new System.Drawing.Size(440, 220);
             // 
             // colId
             // 
@@ -127,7 +130,7 @@
             this.txtName.Location = new System.Drawing.Point(167, 25);
             this.txtName.Margin = new System.Windows.Forms.Padding(2);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(233, 28);
+            this.txtName.Size = new System.Drawing.Size(233, 27);
             this.txtName.TabIndex = 0;
             // 
             // lblName
@@ -136,7 +139,7 @@
             this.lblName.Location = new System.Drawing.Point(28, 28);
             this.lblName.Name = "lblName";
             this.lblName.Required = true;
-            this.lblName.Size = new System.Drawing.Size(40, 19);
+            this.lblName.Size = new System.Drawing.Size(43, 19);
             this.lblName.TabIndex = 5;
             this.lblName.Text = "ឈ្មោះ";
             // 
@@ -146,7 +149,7 @@
             this.lblNote.Location = new System.Drawing.Point(28, 60);
             this.lblNote.Name = "lblNote";
             this.lblNote.Required = false;
-            this.lblNote.Size = new System.Drawing.Size(39, 19);
+            this.lblNote.Size = new System.Drawing.Size(41, 19);
             this.lblNote.TabIndex = 13;
             this.lblNote.Text = "ចំណាំ";
             // 
@@ -162,9 +165,10 @@
             // exPanel1
             // 
             this.exPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.exPanel1.Controls.Add(this.flowLayoutPanel3);
             this.exPanel1.Controls.Add(this.flowLayoutPanel2);
             this.exPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.exPanel1.Location = new System.Drawing.Point(1, 182);
+            this.exPanel1.Location = new System.Drawing.Point(1, 183);
             this.exPanel1.Name = "exPanel1";
             this.exPanel1.Padding = new System.Windows.Forms.Padding(2);
             this.exPanel1.Size = new System.Drawing.Size(438, 36);
@@ -174,11 +178,11 @@
             // 
             this.flowLayoutPanel2.Controls.Add(this.btnClose);
             this.flowLayoutPanel2.Controls.Add(this.btnSave);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(2, 2);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(166, 2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(434, 32);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(270, 32);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // btnClose
@@ -186,11 +190,12 @@
             this.btnClose.BackColor = System.Drawing.Color.Ivory;
             this.btnClose.DefaultImage = null;
             this.btnClose.Executing = false;
-            this.btnClose.Location = new System.Drawing.Point(1359, 3);
+            this.btnClose.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            this.btnClose.Location = new System.Drawing.Point(193, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
-            this.btnClose.ShortcutText = null;
+            this.btnClose.ShortcutText = "Q";
             this.btnClose.Size = new System.Drawing.Size(75, 27);
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "បិទ";
@@ -202,20 +207,47 @@
             this.btnSave.BackColor = System.Drawing.Color.Ivory;
             this.btnSave.DefaultImage = null;
             this.btnSave.Executing = false;
-            this.btnSave.Location = new System.Drawing.Point(1280, 3);
+            this.btnSave.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            this.btnSave.Location = new System.Drawing.Point(114, 3);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
-            this.btnSave.ShortcutText = null;
+            this.btnSave.ShortcutText = "S";
             this.btnSave.Size = new System.Drawing.Size(75, 27);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "រក្សាទុក";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.btnChangeLog);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(2, 2);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(200, 32);
+            this.flowLayoutPanel3.TabIndex = 1;
+            // 
+            // btnChangeLog
+            // 
+            this.btnChangeLog.BackColor = System.Drawing.Color.Ivory;
+            this.btnChangeLog.DefaultImage = null;
+            this.btnChangeLog.Executing = false;
+            this.btnChangeLog.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            this.btnChangeLog.Location = new System.Drawing.Point(2, 3);
+            this.btnChangeLog.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
+            this.btnChangeLog.Name = "btnChangeLog";
+            this.btnChangeLog.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
+            this.btnChangeLog.ShortcutText = "E";
+            this.btnChangeLog.Size = new System.Drawing.Size(75, 27);
+            this.btnChangeLog.TabIndex = 1;
+            this.btnChangeLog.Text = "ប្រវត្តិកែប្រែ";
+            this.btnChangeLog.UseVisualStyleBackColor = true;
+            this.btnChangeLog.Click += new System.EventHandler(this.btnChangeLog_Click);
+            // 
             // frmCategory
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(440, 240);
             this.Font = new System.Drawing.Font("Khmer OS System", 8.25F);
@@ -227,6 +259,7 @@
             this.container.PerformLayout();
             this.exPanel1.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -248,5 +281,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private Component.ExButtonLoading btnClose;
         private Component.ExButtonLoading btnSave;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private Component.ExButtonLoading btnChangeLog;
     }
 }

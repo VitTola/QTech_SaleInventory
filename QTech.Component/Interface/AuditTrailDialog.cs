@@ -381,5 +381,10 @@ namespace QTech.Component
         {
             throw new NotImplementedException();
         }
+
+        public void Reload()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

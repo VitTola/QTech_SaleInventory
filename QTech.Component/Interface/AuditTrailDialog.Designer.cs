@@ -53,7 +53,7 @@ namespace QTech.Component
             this.btnExportAsExcel_ = new QTech.Component.ExButtonLoading();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnExpand_ = new QTech.Component.ExButtonLoading();
-            this.container.SuspendLayout();
+            //this.container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.exPanel.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -105,6 +105,8 @@ namespace QTech.Component
             this.dgv.Size = new System.Drawing.Size(918, 527);
             this.dgv.TabIndex = 1;
             this.dgv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgv_KeyDown);
+            this.dgv.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
             // 
             // colEditor
             // 

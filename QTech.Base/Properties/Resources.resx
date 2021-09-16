@@ -353,7 +353,7 @@
     <value>សរុប</value>
   </data>
   <data name="InvoiceNo" xml:space="preserve">
-    <value>លេខវិក្កយបត្រ</value>
+    <value>លេខវិក័យបត្រ</value>
   </data>
   <data name="PurchaseOrderNo" xml:space="preserve">
     <value>លេខបញ្ជាទិញ</value>
@@ -684,5 +684,26 @@
   </data>
   <data name="UpdateHistory__" xml:space="preserve">
     <value>ប្រវត្តិការកែប្រែ{0} {1}</value>
+  </data>
+  <data name="ChangeLog" xml:space="preserve">
+    <value>ប្រវត្តិកែប្រែ</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>កាលបរិច្ឆេទ</value>
+  </data>
+  <data name="Editor" xml:space="preserve">
+    <value>អ្នកកែប្រែ</value>
+  </data>
+  <data name="HostName" xml:space="preserve">
+    <value>ឈ្មោះឧបករណ៍</value>
+  </data>
+  <data name="NewValue" xml:space="preserve">
+    <value>តម្លៃថ្មី</value>
+  </data>
+  <data name="OldValue" xml:space="preserve">
+    <value>តម្លៃចាស់</value>
+  </data>
+  <data name="Transaction" xml:space="preserve">
+    <value>ប្រតិបត្តិការ</value>
   </data>
 </root>

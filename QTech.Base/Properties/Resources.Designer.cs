@@ -174,6 +174,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ប្រវត្តិកែប្រែ.
+        /// </summary>
+        public static string ChangeLog {
+            get {
+                return ResourceManager.GetString("ChangeLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap Christmas_Big_Sale_icon {
@@ -327,6 +336,15 @@ namespace QTech.Base.Properties {
         /// <summary>
         ///   Looks up a localized string similar to កាលបរិច្ឆេទ.
         /// </summary>
+        public static string Date {
+            get {
+                return ResourceManager.GetString("Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to កាលបរិច្ឆេទ.
+        /// </summary>
         public static string Dated {
             get {
                 return ResourceManager.GetString("Dated", resourceCulture);
@@ -368,6 +386,15 @@ namespace QTech.Base.Properties {
             get {
                 object obj = ResourceManager.GetObject("Driver_img", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to អ្នកកែប្រែ.
+        /// </summary>
+        public static string Editor {
+            get {
+                return ResourceManager.GetString("Editor", resourceCulture);
             }
         }
         
@@ -542,6 +569,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ឈ្មោះឧបករណ៍.
+        /// </summary>
+        public static string HostName {
+            get {
+                return ResourceManager.GetString("HostName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap imgCollapse {
@@ -639,7 +675,7 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to លេខវិក្កយបត្រ.
+        ///   Looks up a localized string similar to លេខវិក័យបត្រ.
         /// </summary>
         public static string InvoiceNo {
             get {
@@ -1006,6 +1042,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to តម្លៃថ្មី.
+        /// </summary>
+        public static string NewValue {
+            get {
+                return ResourceManager.GetString("NewValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to មើលបន្ទាប់.
         /// </summary>
         public static string NextPaging {
@@ -1056,6 +1101,15 @@ namespace QTech.Base.Properties {
         public static string OK {
             get {
                 return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to តម្លៃចាស់.
+        /// </summary>
+        public static string OldValue {
+            get {
+                return ResourceManager.GetString("OldValue", resourceCulture);
             }
         }
         
@@ -1729,6 +1783,15 @@ namespace QTech.Base.Properties {
         public static string TotalImportPrice {
             get {
                 return ResourceManager.GetString("TotalImportPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ប្រតិបត្តិការ.
+        /// </summary>
+        public static string Transaction {
+            get {
+                return ResourceManager.GetString("Transaction", resourceCulture);
             }
         }
         
