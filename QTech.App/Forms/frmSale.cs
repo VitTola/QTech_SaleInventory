@@ -907,7 +907,7 @@ namespace QTech.Forms
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
             dgv.EditingControlShowing += Dgv_EditingControlShowing;
             dgv.MouseClick += Dgv_MouseClick;
-            dgv.EditColumnIcon(colProductId, colQauntity, colUnitPrice, colEmployeeId,colImportPrice);
+            dgv.EditColumnIcon(colProductId, colQauntity, colUnitPrice, colEmployeeId, colImportPrice);
 
             txtTotal.ReadOnly = colLeftQty_.ReadOnly = true;
             cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
@@ -971,7 +971,7 @@ namespace QTech.Forms
                 {
                     cboSite.ShowDropDown();
                 }
-                else if(string.IsNullOrEmpty(cboPurchaseOrderNo.Text))
+                else if (string.IsNullOrEmpty(cboPurchaseOrderNo.Text))
                 {
                     cboPurchaseOrderNo.ShowDropDown();
                 }
@@ -987,7 +987,7 @@ namespace QTech.Forms
             }
         }
         private bool firstLoad = true;
-        private async void CboCustomer_SelectedIndexChanged(object sender, EventArgs e)    
+        private async void CboCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
             var customer = cboCustomer.SelectedObject.ItemObject as Customer;
             if (customer != null)
@@ -1369,10 +1369,13 @@ namespace QTech.Forms
                 Close();
             }
 
+            if (InValid()) { return; }
+            Write();
+
             //check existing invoiceno
             if (tabMain.SelectedTab.Equals(tabCompany_))
             {
-                var existedInvoiceNo = SaleLogic.Instance.IsExistedInvoiceNo(txtInvoiceNo.Text);
+                var existedInvoiceNo = SaleLogic.Instance.IsExistedInvoiceNo(Model);
                 if (existedInvoiceNo)
                 {
                     txtInvoiceNo.ShowValidation(string.Format(EDomain.Resources.MsgFieldExists, lblInvoiceNo.Text), TabAlignment.Left);
@@ -1381,23 +1384,12 @@ namespace QTech.Forms
             }
             else
             {
-                var existedInvoiceNo = SaleLogic.Instance.IsExistedInvoiceNo(txtInvoiceNo1.Text);
+                var existedInvoiceNo = SaleLogic.Instance.IsExistedInvoiceNo(Model);
                 if (existedInvoiceNo)
                 {
                     txtInvoiceNo1.ShowValidation(string.Format(EDomain.Resources.MsgFieldExists, lblInvoiceNo.Text), TabAlignment.Right);
                     return;
                 }
-            }
-            
-
-            if (InValid()) { return; }
-            Write();
-
-            var isExist = await btnSave.RunAsync(() => SaleLogic.Instance.IsExistsAsync(Model));
-            if (isExist == true)
-            {
-                txtInvoiceNo.IsExists(lblInvoiceNo.Text);
-                return;
             }
 
             var result = await btnSave.RunAsync(() =>
@@ -1450,7 +1442,7 @@ namespace QTech.Forms
                 Model.InvoiceNo = txtInvoiceNo1.Text;
                 Model.SaleDate = dtpSaleDate_.Value;
             }
-            
+
             Model.Total = Parse.ToDecimal(!string.IsNullOrEmpty(txtTotal.Text) ? txtTotal.Text : "0");
             Model.Expense = Parse.ToDecimal(!string.IsNullOrEmpty(txtExpense.Text) ? txtExpense.Text : "0");
 
