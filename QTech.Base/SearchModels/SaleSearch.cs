@@ -16,5 +16,6 @@ namespace QTech.Base.SearchModels
         public int CustomerId { get; set; }
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
+        public ImportPrice ImportPrice { get; set; }
     }
 }

@@ -38,15 +38,18 @@ namespace QTech.Forms
             txtSearch.PatternChanged += txtSearch_PatternChanged;
             registerSearchMenu();
             cboPayStatus.SetDataSource<PayStatus>();
+            cboImport.SetDataSource<ImportPrice>();
         }
         private void InitEvent()
         {
             this.Text = BaseResource.Sales;
             cboPayStatus.SelectedIndexChanged += CboPayStatus_SelectedIndexChanged;
+            cboImport.SelectedIndexChanged += CboPayStatus_SelectedIndexChanged;
             btnAdd.Visible = ShareValue.IsAuthorized(AuthKey.Sale_Sale_Add);
             btnRemove.Visible = ShareValue.IsAuthorized(AuthKey.Sale_Sale_Remove);
             btnUpdate.Visible = ShareValue.IsAuthorized(AuthKey.Sale_Sale_Update);
             dgv.SetColumnHeaderDefaultStyle();
+            cboImport.SelectedIndex = cboImport.FindStringExact(BaseResource.ImportPrice_All);
 
         }
         private async void CboPayStatus_SelectedIndexChanged(object sender, EventArgs e)
@@ -142,11 +145,13 @@ namespace QTech.Forms
             List<Customer> _Customers = null;
             List<Site> _Sites = null;
             var _payStatus = (PayStatus)cboPayStatus.SelectedValue;
+            var _importPrice = (ImportPrice)cboImport.SelectedValue;
             var search = new SaleSearch()
             {
                 saleSearchKey = this.saleSearchKey,
                 Search = txtSearch.Text,
                 payStatus = _payStatus,
+                ImportPrice = _importPrice,
                 Paging = pagination.Paging
             };
             pagination.ListModel = await dgv.RunAsync(() =>

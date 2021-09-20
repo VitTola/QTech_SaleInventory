@@ -84,6 +84,7 @@
             this.lblInvoiceNo1 = new QTech.Component.ExLabel();
             this.txtCustomer = new System.Windows.Forms.TextBox();
             this.lblCustomer1 = new QTech.Component.ExLabel();
+            this.chkInsertImport = new System.Windows.Forms.CheckBox();
             this.container.SuspendLayout();
             this.flowLayOutLabelRemoveAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -611,6 +612,7 @@
             // tabCompany_
             // 
             this.tabCompany_.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.tabCompany_.Controls.Add(this.chkInsertImport);
             this.tabCompany_.Controls.Add(this.dtpSaleDate);
             this.tabCompany_.Controls.Add(this.lblSaleDate_);
             this.tabCompany_.Controls.Add(this.cboCustomer);
@@ -734,6 +736,16 @@
             this.lblCustomer1.TabIndex = 21;
             this.lblCustomer1.Text = "ឈ្មោះអតិថិជន";
             // 
+            // chkInsertImport
+            // 
+            this.chkInsertImport.AutoSize = true;
+            this.chkInsertImport.Location = new System.Drawing.Point(746, 88);
+            this.chkInsertImport.Name = "chkInsertImport";
+            this.chkInsertImport.Size = new System.Drawing.Size(112, 23);
+            this.chkInsertImport.TabIndex = 47;
+            this.chkInsertImport.Text = "បញ្ចូលតម្លៃនាំចូល";
+            this.chkInsertImport.UseVisualStyleBackColor = true;
+            // 
             // frmSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
@@ -819,5 +831,6 @@
         private Component.ExSearchComboColumn colEmployeeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colImportPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotalImportPrice;
+        private System.Windows.Forms.CheckBox chkInsertImport;
     }
 }

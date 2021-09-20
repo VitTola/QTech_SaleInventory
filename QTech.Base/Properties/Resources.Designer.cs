@@ -627,6 +627,33 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to បាននិងមិនបានបញ្ចូលតម្លៃនាំចូល.
+        /// </summary>
+        public static string ImportPrice_All {
+            get {
+                return ResourceManager.GetString("ImportPrice_All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to បានបញ្ចូលតម្លៃនាំចូល.
+        /// </summary>
+        public static string ImportPrice_Inserted {
+            get {
+                return ResourceManager.GetString("ImportPrice_Inserted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to មិនទាន់បញ្ចូលតម្លៃនាំចូល.
+        /// </summary>
+        public static string ImportPrice_NotInserted {
+            get {
+                return ResourceManager.GetString("ImportPrice_NotInserted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap Income_img {
@@ -666,6 +693,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to បញ្ចូលតម្លៃនាំចូល.
+        /// </summary>
+        public static string InsertImport {
+            get {
+                return ResourceManager.GetString("InsertImport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to វិក័យប័ត្រ.
         /// </summary>
         public static string Invoice {
@@ -675,7 +711,7 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to លេខវិក័យបត្រ.
+        ///   Looks up a localized string similar to លេខវិក័យប័ត្រ.
         /// </summary>
         public static string InvoiceNo {
             get {
@@ -1177,7 +1213,7 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to លេខទូស័ព្ទ.
+        ///   Looks up a localized string similar to លេខទូរស័ព្ទ.
         /// </summary>
         public static string Phone {
             get {

@@ -1273,6 +1273,7 @@ namespace QTech.Forms
                 txtTotal.Text = Model.Total.ToString();
                 txtExpense.Text = Model.Expense.ToString();
                 dtpSaleDate.Value = Model.SaleDate;
+                chkInsertImport.Checked = Model.ImportPrice == ImportPrice.Inserted;
                 if (cus != null)
                 {
                     cboCustomer.SetValue(cus);
@@ -1433,6 +1434,7 @@ namespace QTech.Forms
                 Model.PurchaseOrderId = purchaseOrder == null ? 0 : purchaseOrder.Id;
                 Model.SaleType = SaleType.Company;
                 Model.SaleDate = dtpSaleDate.Value;
+                Model.ImportPrice = chkInsertImport.Checked ? ImportPrice.Inserted : ImportPrice.NotInserted;
             }
             else
             {
@@ -1535,6 +1537,10 @@ namespace QTech.Forms
         }
         private void lblAdd_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            //if (dgv.RowCount > 0)
+            //{
+            //    return;
+            //}
             if (tabMain.SelectedTab.Equals(tabGeneral_) && Flag != GeneralProcess.View)
             {
                 dgv.ReadOnly = false;

@@ -263,7 +263,7 @@
     <value>រក្សាទុក</value>
   </data>
   <data name="Phone" xml:space="preserve">
-    <value>លេខទូស័ព្ទ</value>
+    <value>លេខទូរស័ព្ទ</value>
   </data>
   <data name="Position" xml:space="preserve">
     <value>តួនាទី</value>
@@ -353,7 +353,7 @@
     <value>សរុប</value>
   </data>
   <data name="InvoiceNo" xml:space="preserve">
-    <value>លេខវិក័យបត្រ</value>
+    <value>លេខវិក័យប័ត្រ</value>
   </data>
   <data name="PurchaseOrderNo" xml:space="preserve">
     <value>លេខបញ្ជាទិញ</value>
@@ -705,5 +705,17 @@
   </data>
   <data name="Transaction" xml:space="preserve">
     <value>ប្រតិបត្តិការ</value>
+  </data>
+  <data name="ImportPrice_All" xml:space="preserve">
+    <value>បាននិងមិនបានបញ្ចូលតម្លៃនាំចូល</value>
+  </data>
+  <data name="ImportPrice_Inserted" xml:space="preserve">
+    <value>បានបញ្ចូលតម្លៃនាំចូល</value>
+  </data>
+  <data name="ImportPrice_NotInserted" xml:space="preserve">
+    <value>មិនទាន់បញ្ចូលតម្លៃនាំចូល</value>
+  </data>
+  <data name="InsertImport" xml:space="preserve">
+    <value>បញ្ចូលតម្លៃនាំចូល</value>
   </data>
 </root>

@@ -115,13 +115,21 @@ namespace QTech.Db.Logics
             {
                 q = q.Where(x => x.PayStatus == PayStatus.Paid);
             }
-            if (param.payStatus == PayStatus.NotYetPaid)
+            else if (param.payStatus == PayStatus.NotYetPaid)
             {
                 q = q.Where(x => x.PayStatus == PayStatus.NotYetPaid);
             }
-            if (param.payStatus == PayStatus.WaitPayment)
+            else if (param.payStatus == PayStatus.WaitPayment)
             {
                 q = q.Where(x => x.PayStatus == PayStatus.WaitPayment);
+            }
+            if (param.ImportPrice == ImportPrice.Inserted)
+            {
+                q = q.Where(x => x.ImportPrice == ImportPrice.Inserted);
+            }
+            else if (param.ImportPrice == ImportPrice.NotInserted)
+            {
+                q = q.Where(x => x.ImportPrice == ImportPrice.NotInserted);
             }
             if (param?.Paging?.IsPaging == true)
             {

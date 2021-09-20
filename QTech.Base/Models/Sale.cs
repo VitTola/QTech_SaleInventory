@@ -30,6 +30,7 @@ namespace QTech.Base
         public decimal Profit { get; set; }
         public bool IsInvoiced { get; set; } = false;
         public decimal TotalImportPrice { get; set; }
+        public ImportPrice ImportPrice { get; set; }
 
     }
 
