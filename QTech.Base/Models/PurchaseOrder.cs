@@ -20,8 +20,8 @@ namespace QTech.Base.Models
     {
         public int PurchaseOrderId { get; set; }
         public int ProductId { get; set; }
-        public int StartQauntity { get; set; }
-        public int LeftQauntity { get; set; }
+        public decimal StartQauntity { get; set; }
+        public decimal LeftQauntity { get; set; }
         public decimal SalePrice { get; set; }
         public string Note { get; set; }
     }

@@ -17,6 +17,6 @@ namespace QTech.Base.OutFaceModels
         public string Site { get; set; }
         public decimal SubTotal { get; set; }
         public string Product { get; set; }
-        public int Qauntity { get; set; }
+        public decimal Qauntity { get; set; }
     }
 }

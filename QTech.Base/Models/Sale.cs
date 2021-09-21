@@ -20,7 +20,6 @@ namespace QTech.Base
         public List<SaleDetail> SaleDetails{ get; set; }
         public decimal PaymentRecieve { get; set; }
         public decimal PaymentLeft { get; set; }
-       // public bool IsPaid { get; set; } = false;
         public PayStatus PayStatus { get; set; }
         public  decimal Expense { get; set; }
         public int PurchaseOrderId { get; set; }
@@ -39,7 +38,7 @@ namespace QTech.Base
         public int EmployeeId { get; set; }
         public int SaleId { get; set; }
         public int ProductId { get; set; }
-        public int Qauntity { get; set; }
+        public decimal Qauntity { get; set; }
         public decimal Total{ get; set; }
         public PayStatus PayStatus { get; set; }
         public int EmployeeBillId { get; set; }

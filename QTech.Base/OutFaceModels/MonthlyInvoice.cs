@@ -16,7 +16,7 @@ namespace QTech.ReportModels
         public string Site { get; set; }
         public decimal UnitPrice { get; set; }
         public string Product { get; set; }
-        public int Qauntity { get; set; }
+        public decimal Qauntity { get; set; }
 
     }
 }

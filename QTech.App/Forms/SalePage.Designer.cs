@@ -52,6 +52,7 @@ namespace QTech.Forms
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtSearch = new QTech.Component.ExTextboxIconPattern();
             this.cboPayStatus = new System.Windows.Forms.ComboBox();
+            this.cboImport = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnRemove = new QTech.Component.ExButtonLoading();
             this.btnUpdate = new QTech.Component.ExButtonLoading();
@@ -60,7 +61,6 @@ namespace QTech.Forms
             this.colorWithAlpha3 = new QTech.Component.ColorWithAlpha();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.pagination = new QTech.Component.ExPaging();
-            this.cboImport = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.graPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -123,7 +123,7 @@ namespace QTech.Forms
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1091, 413);
+            this.dgv.Size = new System.Drawing.Size(1091, 505);
             this.dgv.TabIndex = 1;
             this.dgv.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_RowPostPaint);
             // 
@@ -291,6 +291,15 @@ namespace QTech.Forms
             this.cboPayStatus.Size = new System.Drawing.Size(237, 27);
             this.cboPayStatus.TabIndex = 2;
             // 
+            // cboImport
+            // 
+            this.cboImport.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboImport.FormattingEnabled = true;
+            this.cboImport.Location = new System.Drawing.Point(473, 3);
+            this.cboImport.Name = "cboImport";
+            this.cboImport.Size = new System.Drawing.Size(237, 27);
+            this.cboImport.TabIndex = 3;
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.btnRemove);
@@ -369,7 +378,7 @@ namespace QTech.Forms
             this.flowLayoutPanel3.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel3.Controls.Add(this.pagination);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 448);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 540);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(1091, 33);
             this.flowLayoutPanel3.TabIndex = 2;
@@ -393,20 +402,11 @@ namespace QTech.Forms
             this.pagination.Size = new System.Drawing.Size(485, 33);
             this.pagination.TabIndex = 0;
             // 
-            // cboImport
-            // 
-            this.cboImport.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboImport.FormattingEnabled = true;
-            this.cboImport.Location = new System.Drawing.Point(473, 3);
-            this.cboImport.Name = "cboImport";
-            this.cboImport.Size = new System.Drawing.Size(237, 27);
-            this.cboImport.TabIndex = 3;
-            // 
             // SalePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1091, 481);
+            this.ClientSize = new System.Drawing.Size(1091, 573);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.flowLayoutPanel3);
             this.Controls.Add(this.graPanel1);

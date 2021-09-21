@@ -73,6 +73,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabCompany_ = new System.Windows.Forms.TabPage();
+            this.chkInsertImport = new System.Windows.Forms.CheckBox();
             this.dtpSaleDate = new QTech.Component.ExDateTimePicker();
             this.lblSaleDate_ = new QTech.Component.ExLabel();
             this.tabGeneral_ = new System.Windows.Forms.TabPage();
@@ -84,7 +85,6 @@
             this.lblInvoiceNo1 = new QTech.Component.ExLabel();
             this.txtCustomer = new System.Windows.Forms.TextBox();
             this.lblCustomer1 = new QTech.Component.ExLabel();
-            this.chkInsertImport = new System.Windows.Forms.CheckBox();
             this.container.SuspendLayout();
             this.flowLayOutLabelRemoveAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -630,6 +630,16 @@
             this.tabCompany_.TabIndex = 0;
             this.tabCompany_.Text = "លក់សម្រាប់ក្រុមហ៊ុន";
             // 
+            // chkInsertImport
+            // 
+            this.chkInsertImport.AutoSize = true;
+            this.chkInsertImport.Location = new System.Drawing.Point(746, 88);
+            this.chkInsertImport.Name = "chkInsertImport";
+            this.chkInsertImport.Size = new System.Drawing.Size(112, 23);
+            this.chkInsertImport.TabIndex = 47;
+            this.chkInsertImport.Text = "បញ្ចូលតម្លៃនាំចូល";
+            this.chkInsertImport.UseVisualStyleBackColor = true;
+            // 
             // dtpSaleDate
             // 
             this.dtpSaleDate.Location = new System.Drawing.Point(146, 85);
@@ -735,16 +745,6 @@
             this.lblCustomer1.Size = new System.Drawing.Size(83, 19);
             this.lblCustomer1.TabIndex = 21;
             this.lblCustomer1.Text = "ឈ្មោះអតិថិជន";
-            // 
-            // chkInsertImport
-            // 
-            this.chkInsertImport.AutoSize = true;
-            this.chkInsertImport.Location = new System.Drawing.Point(746, 88);
-            this.chkInsertImport.Name = "chkInsertImport";
-            this.chkInsertImport.Size = new System.Drawing.Size(112, 23);
-            this.chkInsertImport.TabIndex = 47;
-            this.chkInsertImport.Text = "បញ្ចូលតម្លៃនាំចូល";
-            this.chkInsertImport.UseVisualStyleBackColor = true;
             // 
             // frmSale
             // 
