@@ -48,4 +48,7 @@ namespace QTech.Base
             }
         }
     }
+    public class LongBaseModel : TBaseModel<long>
+    {
+    }
 }

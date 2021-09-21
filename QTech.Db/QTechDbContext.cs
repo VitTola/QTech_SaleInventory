@@ -39,6 +39,7 @@ namespace QTech.Db
         public virtual DbSet<POProductPrice> POProductPrices { get; set; }
         public virtual DbSet<PurchaseOrder> PurchaseOrders { get; set; }
         public virtual DbSet<IncomeExpense> IncomeExpenses { get; set; }
+        public virtual DbSet<AuditTrail> AuditTrails { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

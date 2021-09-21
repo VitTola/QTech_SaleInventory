@@ -23,6 +23,13 @@ namespace QTech.Db.Configs
             modelBuilder.Entity<QTech.Base.Models.User>().Ignore(x => x.UserPermissions);
             modelBuilder.Entity<QTech.Base.Models.PurchaseOrder>().Ignore(x => x.POProductPrices);
 
+            //AuditTail's config
+            modelBuilder.Entity<AuditTrail>().Property(x => x.ClientAddress).HasMaxLength(200).IsRequired();
+            modelBuilder.Entity<AuditTrail>().Property(x => x.OperatorGroup).HasMaxLength(200).IsRequired();
+            modelBuilder.Entity<AuditTrail>().Property(x => x.TablePK).HasMaxLength(100).IsRequired();
+            modelBuilder.Entity<AuditTrail>().Property(x => x.TableValue).HasMaxLength(1000).IsRequired();
+            modelBuilder.Entity<AuditTrail>().Property(x => x.ChangeJson).HasColumnType("NTEXT").IsRequired();
+            
         }
     }
 }

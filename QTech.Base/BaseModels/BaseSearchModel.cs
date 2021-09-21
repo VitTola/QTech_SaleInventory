@@ -61,7 +61,7 @@ namespace QTech.Base.BaseModels
                 result.PageCount = (int)Math.Ceiling(pageCount);
             }
             var skip = (result.CurrentPage - 1) * result.PageSize;
-            result.Results = query.OrderBy(x => x.RowDate).Skip(skip).Take(result.PageSize);
+            result.Results = query.OrderByDescending(x => x.RowDate).Skip(skip).Take(result.PageSize);
             return result;
         }
         public static PagedResult<T> GetPaged<T>(this IQueryable<T> query, Paging paging) where T : ActiveBaseModel

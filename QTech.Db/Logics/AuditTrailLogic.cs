@@ -8,8 +8,4 @@ using System.Threading.Tasks;
 
 namespace QTech.Db.Logics
 {
-    public class AuditTrailLogic : DbLogic<AuditTrail, AuditTrailLogic>
-    {
-
-    }
 }

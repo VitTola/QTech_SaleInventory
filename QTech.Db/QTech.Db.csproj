@@ -258,6 +258,14 @@
     <Compile Include="Migrations\202109210601354_v4.8.designer.cs">
       <DependentUpon>202109210601354_v4.8.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109211349556_v4.9_createIndex.cs" />
+    <Compile Include="Migrations\202109211349556_v4.9_createIndex.designer.cs">
+      <DependentUpon>202109211349556_v4.9_createIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109211724584_v5.0.cs" />
+    <Compile Include="Migrations\202109211724584_v5.0.designer.cs">
+      <DependentUpon>202109211724584_v5.0.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QTechDbContext.cs" />
@@ -385,6 +393,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109210601354_v4.8.resx">
       <DependentUpon>202109210601354_v4.8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109211349556_v4.9_createIndex.resx">
+      <DependentUpon>202109211349556_v4.9_createIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109211724584_v5.0.resx">
+      <DependentUpon>202109211724584_v5.0.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
