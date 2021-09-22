@@ -35,6 +35,9 @@ namespace QTech.Db.Logics
             {
                 AddInvoice(result, GeneralProcess.Add);
             }
+
+            AuditTrailLogic.Instance.AddManualAuditTrail(entity);
+
             return result;
         }
         public override Sale UpdateAsync(Sale entity)

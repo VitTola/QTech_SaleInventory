@@ -152,4 +152,11 @@ namespace QTech.Db
             return _db.Set<T>().AsNoTracking().Where(x => x.Active);
         }
     }
+
+    public class LongDbLogic<T, TSelf> : TDbLogic<T, long, TSelf> 
+        where T : QTech.Base.TBaseModel<long> 
+        where TSelf : LongDbLogic<T,TSelf>, new()
+    {
+       
+    }
 }
