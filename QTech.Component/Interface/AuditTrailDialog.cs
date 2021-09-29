@@ -12,7 +12,7 @@ using QTech.Base.Helpers;
 using QTech.Base;
 using QTech.Base.Models;
 using QTech.Base.SearchModels;
-
+using QTech.Db.Logics;
 
 namespace QTech.Component
 {
@@ -125,7 +125,6 @@ namespace QTech.Component
                 rowBy.Style.Font.FontSize = dgv.Font.Size;
                 rowBy.Style.Font.Bold = false;
                 rowBy.Style.Font.Underline = XLFontUnderlineValues.Single;
-                // rowBy.Value = $"{EDomain.Resources.CreateBy}៖ {ShareAPI.Instance.FormalUserName}";
                 rowBy.Merge(false);
 
                 var renderIndex = 5;
@@ -321,59 +320,52 @@ namespace QTech.Component
 
         public async Task Search()
         {
-            //this.Text = string.Format(QTech.Base.Properties.Resources.UpdateHistory__, ResourceHelper.Translate(Model.GetType().Name), ((string.IsNullOrEmpty(ItemName)) ? Model.ToString() : ItemName));
-            //var TableName = Model.GetType().Namespace + "." + Model.GetType().Name;
-            //var search = new AuditTrailHistorySearch()
-            //{
-            //    Paging = pagination.Paging,
-            //    FromDate = dtpDate.FromDate,
-            //    ToDate = dtpDate.ToDate,
-            //    Pk = Model.Id.ToString(),
-            //    TableName = TableName
-            //};
+            this.Text = string.Format(QTech.Base.Properties.Resources.UpdateHistory__, ResourceHelper.Translate(Model.GetType().Name), ((string.IsNullOrEmpty(ItemName)) ? Model.ToString() : ItemName));
+            var TableName = Model.GetType().Namespace + "." + Model.GetType().Name;
+            var search = new AuditTrailHistorySearch()
+            {
+                Paging = pagination.Paging,
+                FromDate = dtpDate.FromDate,
+                ToDate = dtpDate.ToDate,
+                Pk = Model.Id.ToString(),
+                TableName = TableName
+            };
 
-            //var auditTrail = await dgv.RunAsync(() => AuditTrailAPI.Instance.GetAuditTrailByDate(search));
-            //pagination.ListModel = auditTrail;
-            ////var imageList = new ImageList();
-            ////imageList.ColorDepth = ColorDepth.Depth32Bit;
-            ////imageList.Images.Add(nameof(Properties.Resources.img_history), Properties.Resources.img_history); 
-            //dgv.Nodes.Clear();
-            //foreach (var audit in auditTrail)
-            //{
-            //    var font = dgv.DefaultCellStyle.Font;
-            //    var node = dgv.Nodes.Add();
-            //    node.Height = dgv.RowTemplate.Height;
-            //    //node.Image = imageList.Images[nameof(Properties.Resources.img_history)];
-            //    var backColor = _alternative[(node.Index % 2)];
-            //    node.Tag = audit;
-            //    node.Cells[colTransaction.Name].Style.Font = new Font(font, FontStyle.Bold);
-            //    node.DefaultCellStyle.BackColor = backColor;
-            //    node.Cells[colId.Name].Value = audit.Id;
-            //    node.Cells[colDate.Name].Value = audit.TransactionDate;
-            //    node.Cells[colEditor.Name].Value = audit.UserName;
-            //    node.Cells[colHostName.Name].Value = audit.ClientName;
-            //    //node.Cells[colTransaction.Name].Value = audit.TableName == new Customer().GetType().FullName
-            //    //    ? audit.TableValue : ResourceHelper.Translate(audit.OperatorName)
-            //    //+ ResourceHelper.Translate(audit.TableShortName) + " " + audit.TableValue;
+            var auditTrail = await dgv.RunAsync(() => AuditTrailLogic.Instance.SearchAsync(search));
+            pagination.ListModel = auditTrail;
+            dgv.Nodes.Clear();
+            foreach (var audit in auditTrail)
+            {
+                var font = dgv.DefaultCellStyle.Font;
+                var node = dgv.Nodes.Add();
+                node.Height = dgv.RowTemplate.Height;
+                var backColor = _alternative[(node.Index % 2)];
+                node.Tag = audit;
+                node.Cells[colTransaction.Name].Style.Font = new Font(font, FontStyle.Bold);
+                node.DefaultCellStyle.BackColor = backColor;
+                node.Cells[colId.Name].Value = audit.Id;
+                node.Cells[colDate.Name].Value = audit.TransactionDate;
+                node.Cells[colEditor.Name].Value = audit.UserName;
+                node.Cells[colHostName.Name].Value = audit.ClientName;
 
-            //    var json = AuditTrailLogic.Instance.Serializer.DeserializeObject<List<ChangeLog>>(audit.ChangeJson);
-            //    if (json == null)
-            //    {
-            //        continue;
-            //    }
-            //    foreach (var changeLog in json)
-            //    {
-            //        AddDataGridViewRow(node, changeLog);
-            //    }
-            //}
+                var json = JsonConvert.DeserializeObject<List<ChangeLog>>(audit.ChangeJson);
+                if (json == null)
+                {
+                    continue;
+                }
+                foreach (var changeLog in json)
+                {
+                    AddDataGridViewRow(node, changeLog);
+                }
+            }
 
-            ///*
-            // * Auto Expend first node.
-            // */
-            //if (dgv.Nodes.Count > 0)
-            //{
-            //    dgv.Nodes[0].Expand();
-            //}
+            /*
+             * Auto Expend first node.
+             */
+            if (dgv.Nodes.Count > 0)
+            {
+                dgv.Nodes[0].Expand();
+            }
 
         }
 

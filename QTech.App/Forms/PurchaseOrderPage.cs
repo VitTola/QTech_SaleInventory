@@ -30,6 +30,9 @@ namespace QTech.Forms
 
         private void Bind()
         {
+            cboCustomer.DataSourceFn = p => CustomerLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
+            cboCustomer.SearchParamFn = () => new CustomerSearch();
+            cboCustomer.TextAll = BaseResource.Customer;
         }
         private void InitEvent()
         {
@@ -43,12 +46,18 @@ namespace QTech.Forms
             txtSearch.RegisterEnglishInput();
             txtSearch.RegisterKeyArrowDown(dgv);
             txtSearch.QuickSearch += txtSearch_QuickSearch;
+            cboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
 
             btnAdd.Visible = ShareValue.IsAuthorized(AuthKey.Sale_PurchaseOrder_Add);
             btnRemove.Visible = ShareValue.IsAuthorized(AuthKey.Sale_PurchaseOrder_Remove);
             btnUpdate.Visible = ShareValue.IsAuthorized(AuthKey.Sale_PurchaseOrder_Update);
         }
-        
+
+        private async void CboCustomer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            await Search();
+        }
+
         private async void txtSearch_QuickSearch(object sender, EventArgs e)
         {
             await Search();
@@ -121,14 +130,15 @@ namespace QTech.Forms
                 await Search();
             }
         }
-
         public async Task Search()
         {
             dgv.Rows.Clear();
+            var customer = cboCustomer.SelectedObject.ItemObject as Customer;
             var search = new PurchaseOrderSearch()
             {
                 Search = txtSearch.Text,
-                Paging = pagination.Paging
+                Paging = pagination.Paging,
+                CustomerId = customer?.Id ?? 0
             };
             var Customers = new List<Customer>();
             pagination.ListModel = await dgv.RunAsync(() =>

@@ -34,8 +34,8 @@ namespace QTech.Forms
         {
             cboCustomer.DataSourceFn = p => CustomerLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
             cboCustomer.SearchParamFn = () => new CustomerSearch();
-            cboStatus.SetDataSource<InvoiceStatus>();
             cboCustomer.TextAll = BaseResource.Customer;
+            cboStatus.SetDataSource<InvoiceStatus>();
 
             imageList1.ColorDepth = ColorDepth.Depth32Bit;
             imageList1.ImageSize = new Size(14, 14);

@@ -698,7 +698,7 @@ namespace QTech.Forms
                 var proId = int.Parse(row.Cells[colProductId.Name].Value.ToString());
                 var _pro = ProductLogic.Instance.FindAsync(proId);
                 invoiceDt.Product = _pro.Name;
-                invoiceDt.Qauntity = int.Parse(row.Cells[colQauntity.Name].Value.ToString());
+                invoiceDt.Qauntity = Parse.ToDecimal(row.Cells[colQauntity.Name].Value.ToString());
                 var unitP = decimal.Parse(row.Cells[colUnitPrice.Name].Value.ToString());
                 var totalP = decimal.Parse(row.Cells[colTotal.Name].Value.ToString());
                 invoiceDt.UnitPrice = String.Format("{0:C}", unitP);

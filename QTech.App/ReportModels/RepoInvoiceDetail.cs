@@ -12,7 +12,7 @@ namespace QTech.ReportModels
         public string Employee { get; set; }
         public string Product { get; set; }
         public string UnitPrice { get; set; }
-        public int Qauntity { get; set; }
+        public decimal Qauntity { get; set; }
         public string Total { get; set; }
 
     }

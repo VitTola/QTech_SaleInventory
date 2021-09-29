@@ -2,27 +2,32 @@
 using QTech.Base.BaseModels;
 using QTech.Base.Enums;
 using QTech.Base.Helpers;
+using QTech.Base.Models;
 using QTech.Base.OutFaceModels;
 using QTech.Base.SearchModels;
+using QTech.Component;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using static QTech.Db.MasterLogic;
 
 namespace QTech.Db.Logics
 {
-    public class SaleLogic : DbLogic<Sale,SaleLogic>
+    public class SaleLogic : DbLogic<Sale, SaleLogic>
     {
         public SaleLogic()
         {
         }
+
+        private Sale oldEntity = null;
         public override Sale AddAsync(Sale entity)
         {
-           var result =  base.AddAsync(entity);
-            if (entity.SaleDetails.Any() && result.PurchaseOrderId !=0)
+            var result = base.AddAsync(entity);
+            if (entity.SaleDetails.Any() && result.PurchaseOrderId != 0)
             {
                 UpdatePOProductPriceQty(result.PurchaseOrderId, entity.SaleDetails, GeneralProcess.Add);
             }
@@ -36,18 +41,22 @@ namespace QTech.Db.Logics
                 AddInvoice(result, GeneralProcess.Add);
             }
 
-            AuditTrailLogic.Instance.AddManualAuditTrail(entity);
+            AuditTrailLogic.Instance.AddManualAuditTrail(GetChangeLogs(entity, GeneralProcess.Add), entity, GeneralProcess.Add);
 
             return result;
         }
         public override Sale UpdateAsync(Sale entity)
         {
+            oldEntity = FindAsync(entity.Id);
             var result = base.UpdateAsync(entity);
             if (entity.SaleDetails?.Any() ?? false && result.PurchaseOrderId != 0)
             {
                 UpdatePOProductPriceQty(result.PurchaseOrderId, entity.SaleDetails, GeneralProcess.Update);
             }
             UpdateSaleDetail(result.SaleDetails, result);
+
+            AuditTrailLogic.Instance.AddManualAuditTrail(GetChangeLogs(entity, GeneralProcess.Update), entity, GeneralProcess.Update);
+
             return result;
         }
         private void UpdateSaleDetail(List<SaleDetail> saleDetails, Sale sale)
@@ -80,7 +89,7 @@ namespace QTech.Db.Logics
             {
                 return false;
             }
-            else if (_db.InvoiceDetails.Any(x=>x.Active && x.SaleId ==entity.Id))
+            else if (_db.InvoiceDetails.Any(x => x.Active && x.SaleId == entity.Id))
             {
                 return false;
             }
@@ -95,7 +104,7 @@ namespace QTech.Db.Logics
         {
             var param = model as SaleSearch;
             var _saleSearchKey = param.saleSearchKey;
-            var q = All().Where(x=>x.Active);
+            var q = All().Where(x => x.Active);
             if (_saleSearchKey == SaleSearchKey.PurchaseOrderNo && !string.IsNullOrEmpty(param.Search))
             {
                 q = q.Where(x => x.PurchaseOrderNo == param.Search);
@@ -107,7 +116,7 @@ namespace QTech.Db.Logics
             if (_saleSearchKey == SaleSearchKey.CompanyName && !string.IsNullOrEmpty(param.Search))
             {
                 var cusIds = _db.Customers.Where(c => c.Name.ToLower().Contains(param.Search.ToLower())).Select(y => y.Id).ToList();
-                q = q.Where(x => cusIds.Any(y=>x.CompanyId == y));
+                q = q.Where(x => cusIds.Any(y => x.CompanyId == y));
             }
             if (_saleSearchKey == SaleSearchKey.SiteName && !string.IsNullOrEmpty(param.Search))
             {
@@ -136,7 +145,7 @@ namespace QTech.Db.Logics
             }
             if (param?.Paging?.IsPaging == true)
             {
-                q = q.GetPaged(param.Paging).Results.OrderBy(x=>x.Id);
+                q = q.GetPaged(param.Paging).Results.OrderBy(x => x.Id);
             }
             return q;
         }
@@ -144,10 +153,10 @@ namespace QTech.Db.Logics
         {
             var param = model as SaleSearch;
 
-            if (param.FromDate != null && param.ToDate !=null )
+            if (param.FromDate != null && param.ToDate != null)
             {
-                var result = _db.Sales.Where(x =>x.Active && x.CompanyId == param.CustomerId &&
-                x.SaleDate>= param.FromDate && x.SaleDate <= param.ToDate && x.PayStatus == PayStatus.NotYetPaid).ToList();
+                var result = _db.Sales.Where(x => x.Active && x.CompanyId == param.CustomerId &&
+                x.SaleDate >= param.FromDate && x.SaleDate <= param.ToDate && x.PayStatus == PayStatus.NotYetPaid).ToList();
                 return result;
             }
             return null;
@@ -155,7 +164,7 @@ namespace QTech.Db.Logics
         public List<Sale> GetSaleByIds(List<int> saleIds)
         {
             var q = All().Where(x => x.Active);
-            q = q.Where(s=> saleIds.Any(i=> i == s.Id));
+            q = q.Where(s => saleIds.Any(i => i == s.Id));
             return q.ToList();
         }
         public override Sale RemoveAsync(Sale entity)
@@ -175,14 +184,14 @@ namespace QTech.Db.Logics
                 Model.InvoiceDetails = new List<InvoiceDetail>();
             }
             Model.CustomerId = sale.CompanyId;
-            Model.InvoicingDate = sale.SaleDate ;
+            Model.InvoicingDate = sale.SaleDate;
             Model.TotalAmount = sale.Total;
             Model.PaidAmount = 0;
             Model.LeftAmount = sale.Total;
             Model.InvoiceStatus = InvoiceStatus.WaitPayment;
             Model.SaleType = SaleType.General;
             Model.CustomerName = sale.CustomerName;
-            
+
             Model.InvoiceDetails.Add(
                 new InvoiceDetail()
                 {
@@ -217,17 +226,18 @@ namespace QTech.Db.Logics
             }
             if (pOProductPrices.Any())
             {
-                pOProductPrices.ForEach(x=> {
-                    var saleDetail = saleDetails?.FirstOrDefault(r=>r.ProductId == x.ProductId);
+                pOProductPrices.ForEach(x =>
+                {
+                    var saleDetail = saleDetails?.FirstOrDefault(r => r.ProductId == x.ProductId);
                     if (saleDetail == null) return;
                     if (flag == GeneralProcess.Add)
                     {
                         x.LeftQauntity = x.LeftQauntity - saleDetail.Qauntity;
                     }
-                    else if(flag == GeneralProcess.Update)
+                    else if (flag == GeneralProcess.Update)
                     {
-                        int currentSaleDetail = (int)currentSaleDetails?.FirstOrDefault(r=>r.ProductId == x.ProductId)?.Qauntity;
-                        int newSaleDetail =(int) saleDetails?.FirstOrDefault(r=>r.ProductId == x.ProductId)?.Qauntity;
+                        int currentSaleDetail = (int)currentSaleDetails?.FirstOrDefault(r => r.ProductId == x.ProductId)?.Qauntity;
+                        int newSaleDetail = (int)saleDetails?.FirstOrDefault(r => r.ProductId == x.ProductId)?.Qauntity;
                         if (currentSaleDetail > newSaleDetail)
                         {
                             x.LeftQauntity = x.LeftQauntity + (currentSaleDetail - newSaleDetail);
@@ -241,14 +251,14 @@ namespace QTech.Db.Logics
                     {
                         x.LeftQauntity = x.LeftQauntity + saleDetail.Qauntity;
                     }
-                    
+
                     POProductPriceLogic.Instance.UpdateAsync(x);
                 });
             }
 
             //After doing all stuff check wether PurchaseOrder is ReachLimitQty
             var finalPOProductPrices = POProductPriceLogic.Instance.GetPOProductPriceByPO(POId);
-            var isReachLimitQty = !finalPOProductPrices.Any(x=>x.LeftQauntity > 0);
+            var isReachLimitQty = !finalPOProductPrices.Any(x => x.LeftQauntity > 0);
             if (isReachLimitQty)
             {
                 var po = PurchaseOrderLogic.Instance.FindAsync(POId);
@@ -259,10 +269,35 @@ namespace QTech.Db.Logics
                 }
             }
         }
-
         public bool IsExistedInvoiceNo(Sale sale)
         {
             return _db.Sales.Any(x => x.Active && x.InvoiceNo == sale.InvoiceNo && x.Id != sale.Id);
+        }
+        private List<ChangeLog> GetChangeLogs(Sale sale, GeneralProcess flag)
+        {
+            int index = 1;
+            var changeLogs = new List<ChangeLog>();
+            var ignoreProperties = new List<string>() {
+                nameof(sale.Active),nameof(sale.CreatedBy), nameof(sale.SaleDetails), nameof(sale.PayStatus),
+                nameof(sale.SaleType),nameof(sale.Profit),nameof(sale.IsInvoiced),nameof(sale.TotalImportPrice)
+            };
+
+            PropertyInfo[] properties = typeof(Sale).GetProperties();
+
+            foreach (PropertyInfo property in properties.Where(x => !ignoreProperties.Contains(x.Name)))
+            {
+                changeLogs.Add(
+                new ChangeLog
+                {
+                    Index = index++,
+                    DisplayName = ResourceHelper.Translate(property.Name),
+                    OldValue = flag == GeneralProcess.Add ? string.Empty : property.GetValue(oldEntity, null),
+                    NewValue = property.GetValue(sale, null),
+                }
+                    );
+            }
+
+            return changeLogs;
         }
     }
 }

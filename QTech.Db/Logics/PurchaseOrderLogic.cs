@@ -50,7 +50,11 @@ namespace QTech.Db.Logics
         {
             var  q = All();
             var param = model as PurchaseOrderSearch;
-            if (param?.CustomerId != 0)
+            if (!string.IsNullOrEmpty(param.Search))
+            {
+                q = q.Where(x => x.Name.ToLower().Contains(param.Search.ToLower()));
+            }
+            if (param.CustomerId != 0)
             {
                 q = q.Where(x => x.CustomerId == param.CustomerId);
             }
@@ -86,6 +90,10 @@ namespace QTech.Db.Logics
                 var isExistInSale = _db.Sales.Any(x=>x.Active && x.PurchaseOrderId == id);
                 return !isExistInSale;
             }
+        }
+        public override bool IsExistsAsync(PurchaseOrder entity)
+        {
+            return _db.PurchaseOrders.Any(x=>x.Active && x.Name == entity.Name && entity.Id != x.Id);
         }
     }
 }

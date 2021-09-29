@@ -1,4 +1,5 @@
-﻿using FastMember;
+﻿using EasyServer.Domain.Helpers;
+using FastMember;
 using QTech.Base;
 using QTech.Base.BaseReport;
 using QTech.Base.Helpers;
@@ -21,6 +22,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BaseReource = QTech.Base.Properties.Resources;
+using EDomain = EasyServer.Domain;
 
 namespace QTech.Forms
 {
@@ -64,7 +66,7 @@ namespace QTech.Forms
             }
             this.SetEnabled(Flag != GeneralProcess.Remove && Flag != GeneralProcess.View);
             colProductId.ReadOnly = colLeftQauntity_.ReadOnly = colCategory_.ReadOnly = true;
-            dgv.EditColumnIcon(colQauntity,colUnitPrice_,colNote);
+            dgv.EditColumnIcon(colQauntity, colUnitPrice_, colNote);
 
         }
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -113,7 +115,7 @@ namespace QTech.Forms
         {
             if (
                 !txtPurchaseOrderNo.IsValidRequired(lblPurchaseOrderNo.Text)
-                |!cboCustomer.IsSelected() 
+                | !cboCustomer.IsSelected()
                 | !validPurchaseOrderDetail())
             {
                 return true;
@@ -214,6 +216,7 @@ namespace QTech.Forms
             var isExist = await btnSave.RunAsync(() => PurchaseOrderLogic.Instance.IsExistsAsync(Model));
             if (isExist == true)
             {
+                txtPurchaseOrderNo.ShowValidation(string.Format(EDomain.Resources.MsgFieldExists, lblPurchaseOrderNo.Text), TabAlignment.Right);
                 return;
             }
 
@@ -263,8 +266,8 @@ namespace QTech.Forms
                 _pOProductPrice.Active = true;
                 _pOProductPrice.Id = int.Parse(row.Cells[colId.Name].Value?.ToString() ?? "0");
                 _pOProductPrice.PurchaseOrderId = Model.Id;
-                _pOProductPrice.StartQauntity = int.Parse(row.Cells[colQauntity.Name].Value?.ToString() ?? "0");
-                _pOProductPrice.LeftQauntity = int.Parse(row.Cells[colLeftQauntity_.Name].Value?.ToString() ?? "0");
+                _pOProductPrice.StartQauntity = Parse.ToDecimal(row.Cells[colQauntity.Name].Value?.ToString() ?? "0");
+                _pOProductPrice.LeftQauntity = Parse.ToDecimal(row.Cells[colLeftQauntity_.Name].Value?.ToString() ?? "0");
                 _pOProductPrice.SalePrice = decimal.Parse(row.Cells[colUnitPrice_.Name].Value?.ToString() ?? "0");
                 _pOProductPrice.Note = row.Cells[colNote.Name].Value?.ToString();
                 _pOProductPrice.ProductId = int.Parse(row.Cells[colProductId_.Name].Value?.ToString());

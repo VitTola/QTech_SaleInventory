@@ -204,6 +204,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SearchModels\AuditTrailHistorySearch.cs" />
+    <Compile Include="SearchModels\AuditTrailSearch.cs" />
     <Compile Include="SearchModels\IncomExpenseSearch.cs" />
     <Compile Include="SearchModels\ReportExpenseSearch.cs" />
     <Compile Include="SearchModels\ReportIncomeSearch.cs" />
