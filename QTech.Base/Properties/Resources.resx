@@ -718,4 +718,10 @@
   <data name="InsertImport" xml:space="preserve">
     <value>បញ្ចូលតម្លៃនាំចូល</value>
   </data>
+  <data name="Sale_op" xml:space="preserve">
+    <value>ការលក់</value>
+  </data>
+  <data name="SaleDetail_op" xml:space="preserve">
+    <value>ការលក់លម្អិត</value>
+  </data>
 </root>

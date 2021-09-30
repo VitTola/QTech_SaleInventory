@@ -1572,6 +1572,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ការលក់.
+        /// </summary>
+        public static string Sale_op {
+            get {
+                return ResourceManager.GetString("Sale_op", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to កាលបរិច្ឆេទលក់.
         /// </summary>
         public static string SaleDate {
@@ -1586,6 +1595,15 @@ namespace QTech.Base.Properties {
         public static string SaleDetail {
             get {
                 return ResourceManager.GetString("SaleDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ការលក់លម្អិត.
+        /// </summary>
+        public static string SaleDetail_op {
+            get {
+                return ResourceManager.GetString("SaleDetail_op", resourceCulture);
             }
         }
         

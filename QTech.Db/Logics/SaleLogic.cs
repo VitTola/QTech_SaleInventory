@@ -19,11 +19,20 @@ namespace QTech.Db.Logics
 {
     public class SaleLogic : DbLogic<Sale, SaleLogic>
     {
+        List<string>ignoreProperties=null;
         public SaleLogic()
         {
+            Sale sale = new Sale();
+            ignoreProperties = new List<string>() {
+                nameof(sale.Active),nameof(sale.CreatedBy), nameof(sale.PayStatus),
+                nameof(sale.SaleType),nameof(sale.Profit),nameof(sale.IsInvoiced),nameof(sale.TotalImportPrice)
+               ,nameof(sale.Id),nameof(sale.RowDate)
+
+            };
         }
 
         private Sale oldEntity = null;
+       
         public override Sale AddAsync(Sale entity)
         {
             var result = base.AddAsync(entity);
@@ -41,7 +50,7 @@ namespace QTech.Db.Logics
                 AddInvoice(result, GeneralProcess.Add);
             }
 
-            AuditTrailLogic.Instance.AddManualAuditTrail(GetChangeLogs(entity, GeneralProcess.Add), entity, GeneralProcess.Add);
+            AuditTrailLogic.Instance.AddManualAuditTrail(result, GetChangeLogs(result,null,GeneralProcess.Add), GeneralProcess.Add);
 
             return result;
         }
@@ -55,7 +64,7 @@ namespace QTech.Db.Logics
             }
             UpdateSaleDetail(result.SaleDetails, result);
 
-            AuditTrailLogic.Instance.AddManualAuditTrail(GetChangeLogs(entity, GeneralProcess.Update), entity, GeneralProcess.Update);
+            AuditTrailLogic.Instance.AddManualAuditTrail(entity, GetChangeLogs(result,oldEntity,GeneralProcess.Update), GeneralProcess.Update);
 
             return result;
         }
@@ -209,7 +218,6 @@ namespace QTech.Db.Logics
             }
             return true;
         }
-
         //UPDATE QAUNTITY IN POProductPrice
         private void UpdatePOProductPriceQty(int POId, List<SaleDetail> saleDetails, GeneralProcess flag)
         {
@@ -273,18 +281,25 @@ namespace QTech.Db.Logics
         {
             return _db.Sales.Any(x => x.Active && x.InvoiceNo == sale.InvoiceNo && x.Id != sale.Id);
         }
-        private List<ChangeLog> GetChangeLogs(Sale sale, GeneralProcess flag)
+        private List<ChangeLog> GetChangeLogs(Sale newEntity,Sale oldEntity, GeneralProcess flag)
         {
             int index = 1;
             var changeLogs = new List<ChangeLog>();
+            var saleDetails = new List<ChangeLog>();
             var ignoreProperties = new List<string>() {
-                nameof(sale.Active),nameof(sale.CreatedBy), nameof(sale.SaleDetails), nameof(sale.PayStatus),
-                nameof(sale.SaleType),nameof(sale.Profit),nameof(sale.IsInvoiced),nameof(sale.TotalImportPrice)
+               nameof(newEntity.Active),nameof(newEntity.CreatedBy), nameof(newEntity.PayStatus),
+                nameof(newEntity.SaleType),nameof(newEntity.Profit),nameof(newEntity.IsInvoiced),nameof(newEntity.TotalImportPrice)
+               ,nameof(newEntity.Id),nameof(newEntity.RowDate)
             };
 
-            PropertyInfo[] properties = typeof(Sale).GetProperties();
+            PropertyInfo[] properties = typeof(Sale).GetProperties().Where(x => !ignoreProperties.Contains(x.Name)).ToArray();
+            PropertyInfo[] _properties = typeof(SaleDetail).GetProperties().Where(x => !ignoreProperties.Contains(x.Name)).ToArray();
 
-            foreach (PropertyInfo property in properties.Where(x => !ignoreProperties.Contains(x.Name)))
+            if (flag == GeneralProcess.Update)
+            {
+                properties = properties.Where(o => o.GetValue(oldEntity, null)?.ToString() != o.GetValue(newEntity, null)?.ToString()).ToArray();
+            }
+            foreach (PropertyInfo property in properties.Where(x => !ignoreProperties.Contains(nameof(newEntity.SaleDetails))).ToArray())
             {
                 changeLogs.Add(
                 new ChangeLog
@@ -292,9 +307,38 @@ namespace QTech.Db.Logics
                     Index = index++,
                     DisplayName = ResourceHelper.Translate(property.Name),
                     OldValue = flag == GeneralProcess.Add ? string.Empty : property.GetValue(oldEntity, null),
-                    NewValue = property.GetValue(sale, null),
+                    NewValue = property.GetValue(newEntity, null),
                 }
-                    );
+                               );
+            }
+            foreach (var saleDetail in newEntity.SaleDetails)
+            {
+                foreach (PropertyInfo _property in _properties)
+                {
+                    int _index = 1;
+                    saleDetails.Add(
+                    new ChangeLog
+                    {
+                        Index = _index++,
+                        DisplayName = ResourceHelper.Translate(_property.Name),
+                        OldValue = flag == GeneralProcess.Add ? string.Empty : _property.GetValue(oldEntity.SaleDetails[oldEntity.SaleDetails.IndexOf(saleDetail)], null) ?? string.Empty,
+                        NewValue = _property.GetValue(saleDetail, null),
+                    }
+                   );
+                }
+            }
+            if (saleDetails?.Any() ?? false)
+            {
+                changeLogs.Add(
+                          new ChangeLog
+                          {
+                              Index = index++,
+                              DisplayName = Base.Properties.Resources.SaleDetail_op,
+                              OldValue = string.Empty,
+                              NewValue = string.Empty,
+                              Details = saleDetails
+                          }
+                              );
             }
 
             return changeLogs;

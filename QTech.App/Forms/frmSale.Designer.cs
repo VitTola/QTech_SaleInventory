@@ -52,6 +52,7 @@
             this.exLabel2 = new QTech.Component.ExLabel();
             this.exPanel1 = new QTech.Component.Components.ExPanel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnChangeLog = new QTech.Component.ExButtonLoading();
             this.btnPrint = new QTech.Component.ExButtonLoading();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnClose = new QTech.Component.ExButtonLoading();
@@ -342,12 +343,30 @@
             // 
             // flowLayoutPanel3
             // 
+            this.flowLayoutPanel3.Controls.Add(this.btnChangeLog);
             this.flowLayoutPanel3.Controls.Add(this.btnPrint);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(2, 2);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(526, 32);
             this.flowLayoutPanel3.TabIndex = 3;
+            // 
+            // btnChangeLog
+            // 
+            this.btnChangeLog.BackColor = System.Drawing.Color.Ivory;
+            this.btnChangeLog.DefaultImage = null;
+            this.btnChangeLog.Executing = false;
+            this.btnChangeLog.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            this.btnChangeLog.Location = new System.Drawing.Point(2, 3);
+            this.btnChangeLog.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
+            this.btnChangeLog.Name = "btnChangeLog";
+            this.btnChangeLog.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
+            this.btnChangeLog.ShortcutText = "E";
+            this.btnChangeLog.Size = new System.Drawing.Size(75, 27);
+            this.btnChangeLog.TabIndex = 2;
+            this.btnChangeLog.Text = "ប្រវត្តិកែប្រែ";
+            this.btnChangeLog.UseVisualStyleBackColor = true;
+            this.btnChangeLog.Click += new System.EventHandler(this.btnChangeLog_Click);
             // 
             // btnPrint
             // 
@@ -357,7 +376,7 @@
             this.btnPrint.Font = new System.Drawing.Font("Khmer OS System", 8F);
             this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrint.Location = new System.Drawing.Point(2, 3);
+            this.btnPrint.Location = new System.Drawing.Point(81, 3);
             this.btnPrint.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -832,5 +851,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colImportPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotalImportPrice;
         private System.Windows.Forms.CheckBox chkInsertImport;
+        private Component.ExButtonLoading btnChangeLog;
     }
 }

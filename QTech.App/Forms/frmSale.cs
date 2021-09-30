@@ -589,7 +589,7 @@ namespace QTech.Forms
         }
         public void ViewChangeLog()
         {
-
+            AuditTrailDialog.ShowChangeLog(Model);
         }
         public void Write()
         {
@@ -842,6 +842,9 @@ namespace QTech.Forms
 
         }
 
-
+        private void btnChangeLog_Click(object sender, EventArgs e)
+        {
+            ViewChangeLog();
+        }
     }
 }

@@ -35,12 +35,18 @@ namespace QTech.Component
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgv.ColumnHeadersHeight = 28;
             dgv.BackgroundColor = Color.White;
-            dtpDate.Value = ReportDatePicker.DateRanges.ThisMonth;
             dtpDate.ValueChanged += dtpDate_ValueChanged;
+            dtpDate.Value = ReportDatePicker.DateRanges.ThisMonth;
 
             // export list to excel
             btnExpand_.Click += btnExpand__Click;
             btnExportAsExcel_.Click += btnExportAsExcel__Click;
+
+            dgv.ColumnHeadersDefaultCellStyle = new DataGridViewCellStyle
+            {
+                BackColor = Color.Ivory,
+                SelectionBackColor = Color.Ivory
+            };
         }
 
         private void btnExpand__Click(object sender, EventArgs e)
@@ -321,7 +327,7 @@ namespace QTech.Component
         public async Task Search()
         {
             this.Text = string.Format(QTech.Base.Properties.Resources.UpdateHistory__, ResourceHelper.Translate(Model.GetType().Name), ((string.IsNullOrEmpty(ItemName)) ? Model.ToString() : ItemName));
-            var TableName = Model.GetType().Namespace + "." + Model.GetType().Name;
+            var TableName = Model.GetType().Namespace + "." + Model.GetType().Name+"s";
             var search = new AuditTrailHistorySearch()
             {
                 Paging = pagination.Paging,
@@ -341,13 +347,14 @@ namespace QTech.Component
                 node.Height = dgv.RowTemplate.Height;
                 var backColor = _alternative[(node.Index % 2)];
                 node.Tag = audit;
-                node.Cells[colTransaction.Name].Style.Font = new Font(font, FontStyle.Bold);
                 node.DefaultCellStyle.BackColor = backColor;
+                node.Cells[colTransaction.Name].Style.Font = new Font(font, FontStyle.Bold);
+                node.Cells[colTransaction.Name].Value = $"{audit.OperatorName}";
                 node.Cells[colId.Name].Value = audit.Id;
                 node.Cells[colDate.Name].Value = audit.TransactionDate;
                 node.Cells[colEditor.Name].Value = audit.UserName;
                 node.Cells[colHostName.Name].Value = audit.ClientName;
-
+                
                 var json = JsonConvert.DeserializeObject<List<ChangeLog>>(audit.ChangeJson);
                 if (json == null)
                 {
@@ -378,5 +385,6 @@ namespace QTech.Component
         {
             throw new NotImplementedException();
         }
+       
     }
 }
