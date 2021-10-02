@@ -4,6 +4,7 @@ using QTech.Base.Enums;
 using QTech.Base.Models;
 using QTech.Base.OutFaceModels;
 using QTech.Base.SearchModels;
+using QTech.ReportModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -217,7 +218,92 @@ namespace QTech.Db.Logics
                         };
                 return q.ToList();
             }
-           
+        }
+
+        public List<Profit> GetProfitData(ProfitSearch param)
+        {
+            // Get all incomes
+            var saleIncomes = from s in _db.Sales.Where(s => s.Active && s.PayStatus == PayStatus.Paid && s.SaleType == SaleType.General &&
+               s.SaleDate >= param.D1 && s.SaleDate <= param.D2)
+                              select s;
+                              //select new Profit
+                              //{
+                              //    Customer = $"{QTech.Base.Properties.Resources.GeneralCustomer}",
+                              //    CustomerAmount = s.Total,
+                              //    Expense = s.Expense
+                              //};
+          
+            var _saleIncomes = from s in _db.Sales.Where(s => s.Active && s.PayStatus == PayStatus.Paid && s.SaleType == SaleType.Company &&
+                s.SaleDate >= param.D1 && s.SaleDate <= param.D2)
+                              select new Profit
+                              {
+                                  Customer = s.CustomerName,
+                                  CustomerAmount = s.Total,
+                                  Expense = s.Expense
+                              };
+            _saleIncomes = _saleIncomes.GroupBy(x => x.Customer).Select(n => new Profit
+            {
+                Customer = n.FirstOrDefault().Customer,
+                CustomerAmount = n.Sum(c => c.CustomerAmount) - n.Sum(c => c.Expense)
+            }).Union
+            (
+                saleIncomes.GroupBy(x => x.CustomerName).Select(s => new Profit
+                {
+                    Customer = s.FirstOrDefault().CustomerName,
+                    CustomerAmount = s.Sum(c => c.Cust) - s.Sum(d => d.Expense),
+                })
+            );
+
+            var generalIncomes = from e in _db.IncomeExpenses.Where(x => x.Active && x.DoDate >= param.D1 && x.DoDate <= param.D2 &&
+                                 x.MiscellaneousType == MiscellaneousType.Income)
+                                 select new Profit
+                                 {
+                                     Customer = "temp",
+                                     GeneralIncome = e.Amount
+                                 };
+              
+            generalIncomes = generalIncomes.GroupBy(x => x.Customer).Select(x=> new Profit {GeneralIncome = x.Sum(y=>y.GeneralIncome) });
+
+            //Get all expense
+            var driverExpenses = from b in _db.EmployeeBills.Where(b => b.InvoiceStatus == InvoiceStatus.Paid && b.DoDate >= param.D1 && b.DoDate <= param.D2)
+                         join e in _db.Employees on b.EmployeeId equals e.Id
+                         where b.Active
+                         && e.Active
+                         select new Profit
+                         {
+                            Driver = e.Name,
+                            DriverAmount = b.PaidAmount
+                         };
+            driverExpenses = driverExpenses.GroupBy(x => x.Driver).Select(x=> new Profit {
+                Driver = x.FirstOrDefault().Driver,
+                DriverAmount = x.Sum(y=>y.DriverAmount),
+            });
+            var generalExpenses = from e in _db.IncomeExpenses.Where(x => x.Active && x.DoDate >= param.D1 && x.DoDate <= param.D2 &&
+                                 x.MiscellaneousType == MiscellaneousType.Expense)
+                                  select new Profit
+                                  {
+                                     Customer = "temp",
+                                     GeneralExpense = e.Amount
+                                 };
+            generalExpenses = generalExpenses.GroupBy(x => x.Customer).Select(x => new Profit {GeneralExpense = x.Sum(y=>y.GeneralExpense)});
+
+            var result = from si in _saleIncomes 
+                         join gi in generalIncomes on si.Key equals gi.Key
+                         join de in driverExpenses on gi.Key equals de.Key
+                         join ge in generalExpenses on de.Key equals ge.Key
+                         select new Profit
+                         {
+                             Customer =  si.Customer,
+                             CustomerAmount = si.CustomerAmount,
+                             GeneralIncome = gi.GeneralIncome,
+                             Driver = de.Driver,
+                             DriverAmount = de.DriverAmount,
+                             GeneralExpense = ge.GeneralExpense
+                         };
+
+            var r = _saleIncomes.ToList();
+            var sss =  result.ToList();
+            return sss;
         }
     }
 }

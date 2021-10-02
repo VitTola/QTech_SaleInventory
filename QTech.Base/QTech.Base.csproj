@@ -179,6 +179,7 @@
     <Compile Include="OutFaceModels\Income.cs" />
     <Compile Include="OutFaceModels\IncomeExpenseOutface.cs" />
     <Compile Include="OutFaceModels\MonthlyInvoice.cs" />
+    <Compile Include="OutFaceModels\Profit.cs" />
     <Compile Include="OutFaceModels\SaleInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -205,6 +206,7 @@
     </Compile>
     <Compile Include="SearchModels\AuditTrailHistorySearch.cs" />
     <Compile Include="SearchModels\AuditTrailSearch.cs" />
+    <Compile Include="SearchModels\ProfitSearch.cs" />
     <Compile Include="SearchModels\IncomExpenseSearch.cs" />
     <Compile Include="SearchModels\ReportExpenseSearch.cs" />
     <Compile Include="SearchModels\ReportIncomeSearch.cs" />
@@ -274,6 +276,7 @@
     <Content Include="Dll\esc-pos-usb-net.dll" />
     <Content Include="Dll\FastMember.dll" />
     <Content Include="Dll\QTech.Component.dll" />
+    <None Include="Resources\ProfitImg.png" />
     <None Include="Resources\categorie_ing.png" />
     <None Include="Resources\expenses_img.png" />
     <None Include="Resources\InOut.png" />

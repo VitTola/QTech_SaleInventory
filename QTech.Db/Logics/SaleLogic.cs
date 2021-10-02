@@ -5,7 +5,7 @@ using QTech.Base.Helpers;
 using QTech.Base.Models;
 using QTech.Base.OutFaceModels;
 using QTech.Base.SearchModels;
-using QTech.Component;
+
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -49,8 +49,8 @@ namespace QTech.Db.Logics
             {
                 AddInvoice(result, GeneralProcess.Add);
             }
-
-            AuditTrailLogic.Instance.AddManualAuditTrail(result, GetChangeLogs(result,null,GeneralProcess.Add), GeneralProcess.Add);
+            //var changelogs = AuditTrailLogic.Instance.GetChangeLogs<ActiveBaseModel, int>(result,null,GeneralProcess.Add,ignoreProperties);
+            //AuditTrailLogic.Instance.AddManualAuditTrail(result, changelogs, GeneralProcess.Add);
 
             return result;
         }
@@ -64,7 +64,8 @@ namespace QTech.Db.Logics
             }
             UpdateSaleDetail(result.SaleDetails, result);
 
-            AuditTrailLogic.Instance.AddManualAuditTrail(entity, GetChangeLogs(result,oldEntity,GeneralProcess.Update), GeneralProcess.Update);
+            var changelogs = AuditTrailLogic.Instance.GetChangeLogs<ActiveBaseModel, int>(result, null, GeneralProcess.Add, ignoreProperties);
+            AuditTrailLogic.Instance.AddManualAuditTrail(entity, changelogs, GeneralProcess.Update);
 
             return result;
         }
@@ -281,67 +282,70 @@ namespace QTech.Db.Logics
         {
             return _db.Sales.Any(x => x.Active && x.InvoiceNo == sale.InvoiceNo && x.Id != sale.Id);
         }
-        private List<ChangeLog> GetChangeLogs(Sale newEntity,Sale oldEntity, GeneralProcess flag)
-        {
-            int index = 1;
-            var changeLogs = new List<ChangeLog>();
-            var saleDetails = new List<ChangeLog>();
-            var ignoreProperties = new List<string>() {
-               nameof(newEntity.Active),nameof(newEntity.CreatedBy), nameof(newEntity.PayStatus),
-                nameof(newEntity.SaleType),nameof(newEntity.Profit),nameof(newEntity.IsInvoiced),nameof(newEntity.TotalImportPrice)
-               ,nameof(newEntity.Id),nameof(newEntity.RowDate)
-            };
+        //private List<ChangeLog> GetChangeLogs(Sale newEntity,Sale oldEntity, GeneralProcess flag)
+        //{
+        //    int index = 1;
+        //    var changeLogs = new List<ChangeLog>();
+        //    var saleDetails = new List<ChangeLog>();
+        //    var ignoreProperties = new List<string>() {
+        //       nameof(newEntity.Active),nameof(newEntity.CreatedBy), nameof(newEntity.PayStatus),
+        //        nameof(newEntity.SaleType),nameof(newEntity.Profit),nameof(newEntity.IsInvoiced),nameof(newEntity.TotalImportPrice)
+        //       ,nameof(newEntity.Id),nameof(newEntity.RowDate)
+        //    };
 
-            PropertyInfo[] properties = typeof(Sale).GetProperties().Where(x => !ignoreProperties.Contains(x.Name)).ToArray();
-            PropertyInfo[] _properties = typeof(SaleDetail).GetProperties().Where(x => !ignoreProperties.Contains(x.Name)).ToArray();
+        //    PropertyInfo[] properties = typeof(Sale).GetProperties().Where(x => !ignoreProperties.Contains(x.Name)).ToArray();
+        //    PropertyInfo[] _properties = typeof(SaleDetail).GetProperties().Where(x => !ignoreProperties.Contains(x.Name)).ToArray();
 
-            if (flag == GeneralProcess.Update)
-            {
-                properties = properties.Where(o => o.GetValue(oldEntity, null)?.ToString() != o.GetValue(newEntity, null)?.ToString()).ToArray();
-            }
-            foreach (PropertyInfo property in properties.Where(x => !ignoreProperties.Contains(nameof(newEntity.SaleDetails))).ToArray())
-            {
-                changeLogs.Add(
-                new ChangeLog
-                {
-                    Index = index++,
-                    DisplayName = ResourceHelper.Translate(property.Name),
-                    OldValue = flag == GeneralProcess.Add ? string.Empty : property.GetValue(oldEntity, null),
-                    NewValue = property.GetValue(newEntity, null),
-                }
-                               );
-            }
-            foreach (var saleDetail in newEntity.SaleDetails)
-            {
-                foreach (PropertyInfo _property in _properties)
-                {
-                    int _index = 1;
-                    saleDetails.Add(
-                    new ChangeLog
-                    {
-                        Index = _index++,
-                        DisplayName = ResourceHelper.Translate(_property.Name),
-                        OldValue = flag == GeneralProcess.Add ? string.Empty : _property.GetValue(oldEntity.SaleDetails[oldEntity.SaleDetails.IndexOf(saleDetail)], null) ?? string.Empty,
-                        NewValue = _property.GetValue(saleDetail, null),
-                    }
-                   );
-                }
-            }
-            if (saleDetails?.Any() ?? false)
-            {
-                changeLogs.Add(
-                          new ChangeLog
-                          {
-                              Index = index++,
-                              DisplayName = Base.Properties.Resources.SaleDetail_op,
-                              OldValue = string.Empty,
-                              NewValue = string.Empty,
-                              Details = saleDetails
-                          }
-                              );
-            }
+        //    if (flag == GeneralProcess.Update)
+        //    {
+        //        properties = properties.Where(o => o.GetValue(oldEntity, null)?.ToString() != o.GetValue(newEntity, null)?.ToString()).ToArray();
+        //    }
+        //    foreach (PropertyInfo property in properties.Where(x => !x.Name.Contains(nameof(newEntity.SaleDetails))).ToArray())
+        //    {
+        //        changeLogs.Add(
+        //        new ChangeLog
+        //        {
+        //            Index = index++,
+        //            DisplayName = ResourceHelper.Translate(property.Name),
+        //            OldValue = flag == GeneralProcess.Add ? string.Empty : property.GetValue(oldEntity, null),
+        //            NewValue = property.GetValue(newEntity, null),
+        //        }
+        //                     ); 
+        //    }
+        //    foreach (var saleDetail in newEntity.SaleDetails)
+        //    {
+        //        foreach (PropertyInfo _property in _properties)
+        //        {
+        //            if (_property.GetValue(oldEntity.SaleDetails[oldEntity.SaleDetails.IndexOf(saleDetail)], null) != _property.GetValue(saleDetail, null))
+        //            {
+        //                int _index = 1;
+        //                saleDetails.Add(
+        //                new ChangeLog
+        //                {
+        //                    Index = _index++,
+        //                    DisplayName = ResourceHelper.Translate(_property.Name),
+        //                    OldValue = flag == GeneralProcess.Add ? string.Empty : _property.GetValue(oldEntity.SaleDetails[oldEntity.SaleDetails.IndexOf(saleDetail)], null) ?? string.Empty,
+        //                    NewValue = _property.GetValue(saleDetail, null),
+        //                }
+        //               );
+        //            }
+        //        }
+        //    }
+        //    if (saleDetails?.Any() ?? false)
+        //    {
+        //        changeLogs.Add(
+        //                  new ChangeLog
+        //                  {
+        //                      Index = index++,
+        //                      DisplayName = Base.Properties.Resources.SaleDetail_op,
+        //                      OldValue = string.Empty,
+        //                      NewValue = string.Empty,
+        //                      Details = saleDetails
+        //                  }
+        //                      );
+        //    }
 
-            return changeLogs;
-        }
+        //    return changeLogs;
+        //}
     }
 }

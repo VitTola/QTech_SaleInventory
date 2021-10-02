@@ -13,8 +13,11 @@ using Newtonsoft.Json;
 using QTech.Base.BaseModels;
 using QTech.Base.SearchModels;
 using System.Reflection;
-using QTech.Component;
+
 using System.Collections;
+using EasyServer.Domain.Helpers;
+using EDomain = EasyServer.Domain;
+using Easy.Domain.Helpers;
 
 namespace QTech.Db.Logics
 {
@@ -35,7 +38,7 @@ namespace QTech.Db.Logics
             var name = type.ToString().Split('.').LastOrDefault();
             if (!string.IsNullOrEmpty(name))
             {
-                name = ResourceHelper.Translate($"{name}_op");
+                //name = ResourceHelper.Translate($"{name}_op");
             }
             
             var auditTrail = new AuditTrail();
@@ -57,38 +60,7 @@ namespace QTech.Db.Logics
 
             this.AddAsync(auditTrail);
         }
-        public void AddAuditTrail<T>(T newEntity, T oldEntity, GeneralProcess flag, List<string> ignoreProperties)
-        {
-            var type = newEntity.GetType() as Type;
-            var name = type.ToString().Split('.').LastOrDefault();
-            if (!string.IsNullOrEmpty(name))
-            {
-                name = ResourceHelper.Translate($"{name}_op");
-            }
-
-
-            var changeLogs = GetChangeLogs<T>(newEntity, oldEntity, flag, ignoreProperties);
-            dynamic entity = newEntity;
-            var auditTrail = new AuditTrail();
-            auditTrail.ClientAddress = GetMacAddress();
-            auditTrail.ClientName = Environment.MachineName;
-            auditTrail.CreatedBy = ShareValue.User.Name;
-            auditTrail.UserId = ShareValue.User.Id;
-            auditTrail.UserName = ShareValue.User.Name;
-            auditTrail.TransactionDate = DateTime.Now;
-            auditTrail.TablePK = entity.Id.ToString();
-            auditTrail.TableName = $"{type.FullName}s";
-            auditTrail.TableShortName = $"{type.Name}s";
-            var opName = flag == GeneralProcess.Add ? BaseResource.Add :
-               flag == GeneralProcess.Update ? BaseResource.Update : BaseResource.Remove;
-            auditTrail.OperatorName = $"{opName} {name}";
-
-            var changes = JsonConvert.SerializeObject(changeLogs);
-            auditTrail.ChangeJson = changes;
-
-            this.AddAsync(auditTrail);
-        }
-
+        
         public override IQueryable<AuditTrail> Search(ISearchModel model)
         {
             var param = model as AuditTrailHistorySearch;
@@ -107,19 +79,6 @@ namespace QTech.Db.Logics
         public override List<AuditTrail> SearchAsync(ISearchModel model)
         {
             return Search(model).OrderByDescending(x => x.TransactionDate).ToList();
-        }
-
-        private AuditTrail UpdateCommonValues(AuditTrail entity, GeneralProcess flage)
-        {
-            var auditTrail = new AuditTrail();
-            auditTrail.ClientAddress = GetMacAddress();
-            auditTrail.ClientName = Environment.MachineName;
-            auditTrail.CreatedBy = ShareValue.User.Name;
-            auditTrail.UserId = ShareValue.User.Id;
-            auditTrail.UserName = ShareValue.User.Name;
-            auditTrail.TransactionDate = DateTime.Now;
-
-            return auditTrail;
         }
 
         static string _macAddress = null;
@@ -144,78 +103,138 @@ namespace QTech.Db.Logics
             }
             return _macAddress;
         }
-
-        private List<ChangeLog> GetChangeLogs<T>(T newEntity, T oldEntity, GeneralProcess flag, List<string> ignoreProperties)
+      
+        public List<ChangeLog> GetChangeLogs<T, TKey>(T entity, T oldEntity, GeneralProcess flag, List<string> ignoredFields) where T : TBaseModel<TKey> where TKey : struct
         {
-            int index = 1;
             var changeLogs = new List<ChangeLog>();
-            PropertyInfo[] properties = typeof(T).GetProperties().Where(x => !ignoreProperties.Contains(x.Name)).ToArray();
-            if (flag == GeneralProcess.Update)
+            var properties = entity.GetType().GetProperties().OrderBy(x => ((AuditDataAttribute)x.GetCustomAttributes(typeof(AuditDataAttribute), true).Cast<AuditDataAttribute>().SingleOrDefault())?.Index ?? 0);
+            foreach (var propertyInfo in properties)
             {
-                properties = properties.Where(o => o.GetValue(oldEntity, null)?.ToString() != o.GetValue(newEntity, null)?.ToString()).ToArray();
-            }
-
-            foreach (PropertyInfo property in properties)
-            {
-                if (property.Name == "SaleDetails")
+                if (propertyInfo.Name.EndsWith("Id") || ignoredFields.Contains(propertyInfo.Name)) continue;
+                var changelog = GetChangeLog<T, TKey>(entity, oldEntity, propertyInfo, flag);
+                if (changelog != null)
                 {
-                    int _index = 1;
-                    var details = new List<ChangeLog>();
-                    Type myListElementType = property.GetType().GetGenericArguments().Single();
-                    PropertyInfo[] props = myListElementType.GetProperties().Where(x => !ignoreProperties.Contains(x.Name)).ToArray();
-
-                    foreach (PropertyInfo prop in props)
-                    {
-                        details.Add(
-                           new ChangeLog
-                           {
-                               Index = _index++,
-                               DisplayName = ResourceHelper.Translate(prop.Name),
-                               OldValue = flag == GeneralProcess.Add ? string.Empty : property.GetValue(oldEntity, null),
-                               NewValue = property.GetValue(newEntity, null),
-                           }
-                                 );
-                    }
-
-                    var opName = flag == GeneralProcess.Add ? BaseResource.Add : flag == GeneralProcess.Update ? BaseResource.Update : BaseResource.Remove;
-                    var name = myListElementType.ToString().Split('.').LastOrDefault();
-                    if (!string.IsNullOrEmpty(name))
-                    {
-                        name = ResourceHelper.Translate($"{name}_op");
-                    }
-                    changeLogs.Add(
-                           new ChangeLog
-                           {
-                               Index = index++,
-                               DisplayName = $"{opName} {name}",
-                               OldValue = string.Empty,
-                               NewValue = string.Empty,
-                               Details = details
-                           }
-                               );
-                }
-                else
-                {
-                    changeLogs.Add(
-                           new ChangeLog
-                           {
-                               Index = index++,
-                               DisplayName = ResourceHelper.Translate(property.Name),
-                               OldValue = flag == GeneralProcess.Add ? string.Empty : property.GetValue(oldEntity, null),
-                               NewValue = property.GetValue(newEntity, null),
-                           }
-                               );
+                    changeLogs.Add(changelog);
                 }
             }
-
             return changeLogs;
         }
-        public bool IsGenericList(object prop)
+
+        private ChangeLog GetChangeLog<T, TKey>(T entity, T oldObject, PropertyInfo propertyInfo, GeneralProcess flag) where T : TBaseModel<TKey> where TKey : struct
         {
-            var type = prop.GetType();
-            var result = (type.IsGenericType && (type.GetGenericTypeDefinition() == typeof(List<>)));
-            return result;
+            ChangeLog changeLog = null;
+            dynamic newValue = propertyInfo.GetValue(entity)?.ToString() ?? "";
+            dynamic oldValue = null;
+            var isNullValueAllField = (AuditTrailIsNullReturnValueAllField.IsNullReturnValueAllFields.Contains(propertyInfo.Name));
+
+            if (flag != GeneralProcess.Add)
+            {
+                if (oldObject != null)
+                {
+                    oldValue = propertyInfo.GetValue(oldObject)?.ToString() ?? "";
+                }
+                if (isNullValueAllField)
+                {
+                    oldValue = string.IsNullOrEmpty(oldValue) ? (string.Format(EDomain.Resources.All_, DomainResourceHelper.Translate(propertyInfo.Name))) : oldValue;
+                }
+            }
+
+            if (isNullValueAllField)
+            {
+                newValue = string.IsNullOrEmpty(newValue) ? (string.Format(EDomain.Resources.All_, DomainResourceHelper.Translate(propertyInfo.Name))) : newValue;
+            }
+
+            if (flag == GeneralProcess.Remove)
+            {
+                newValue = null;
+            }
+            var propertyType = (propertyInfo.GetValue(entity) == null)
+                ? typeof(object)
+                : propertyInfo.GetValue(entity).GetType();
+
+            if (propertyType.IsGenericType &&
+                    (propertyType.GetGenericTypeDefinition() == typeof(List<>) || propertyType.GetGenericTypeDefinition() == typeof(IQueryable<>))) { return null; }
+
+            if (typeof(decimal) == propertyType)
+            {
+                oldValue = Parse.ToDecimal(oldValue);
+                newValue = Parse.ToDecimal(newValue);
+            }
+            else if (typeof(DateTime) == propertyType)
+            {
+                oldValue = (oldValue == null) ? Consts.MIN_DATE : DateTime.Parse(oldValue);
+                newValue = (newValue == null) ? Consts.MIN_DATE : DateTime.Parse(newValue);
+
+                if (oldValue != newValue)
+                {
+                    if (oldValue <= Consts.MIN_DATE || oldValue <= Consts.MIN_DATE)
+                    {
+                        oldValue = "";
+                    }
+                    else if (oldValue == Consts.MAX_DATE)
+                    {
+                        oldValue = EDomain.Resources.MaxedDate;
+                    }
+                    else
+                    {
+                        oldValue = (oldValue.TimeOfDay.TotalSeconds == 0) ? oldValue.ToString("dd/MM/yyyy") : oldValue.ToString("dd/MM/yyyy hh:mm:ss tt");
+                    }
+
+                    if (newValue <= Consts.MIN_DATE || newValue <= Consts.MIN_DATE)
+                    {
+                        newValue = "";
+                    }
+                    else if (newValue == Consts.MAX_DATE)
+                    {
+                        newValue = EDomain.Resources.MaxedDate;
+                    }
+                    else
+                    {
+                        newValue = (newValue.TimeOfDay.TotalSeconds == 0) ? newValue.ToString("dd/MM/yyyy") : newValue.ToString("dd/MM/yyyy hh:mm:ss tt");
+                    }
+                }
+            }
+            else if (typeof(int) == propertyType)
+            {
+                oldValue = Parse.ToInt(oldValue);
+                newValue = Parse.ToInt(newValue);
+            }
+            if (oldValue != newValue)
+            {
+                AuditDataAttribute dp = propertyInfo.GetCustomAttributes(typeof(AuditDataAttribute), true).Cast<AuditDataAttribute>().SingleOrDefault();
+                
+                var displayname = (!string.IsNullOrEmpty(dp?.ResourceName ?? "")) ? dp.ResourceName : propertyInfo.Name;
+                if (propertyType.BaseType == typeof(Enum))
+                {
+                    // *** Translate ***
+                    oldValue = string.IsNullOrEmpty(oldValue) ? "" : DomainResourceHelper.Translate(propertyInfo.PropertyType.Name + "_" + oldValue);
+                    newValue = string.IsNullOrEmpty(newValue) ? "" : DomainResourceHelper.Translate(propertyInfo.PropertyType.Name + "_" + newValue);
+                    
+                }
+                else if (typeof(int) == propertyType)
+                {
+                    oldValue = (oldValue == 0) ? ((flag == GeneralProcess.Update) ? "0" : "") : oldValue.ToString();
+                    newValue = (newValue == 0) ? ((flag == GeneralProcess.Update) ? "0" : "") : newValue.ToString();
+                }
+                else if (typeof(decimal) == propertyType)
+                {
+                    oldValue = (oldValue == 0m) ? ((flag == GeneralProcess.Update) ? "0" : "") : oldValue.ToString(Formats.DecimalFormat);
+                    newValue = (newValue == 0m) ? ((flag == GeneralProcess.Update) ? "0" : "") : newValue.ToString(Formats.DecimalFormat);
+                }
+                changeLog = new ChangeLog() { DisplayName = $"{displayname}", NewValue = newValue, OldValue = oldValue };
+            }
+            return changeLog;
+        }
+        public class AuditTrailIsNullReturnValueAllField
+        {
+            /// <summary>
+            /// ZoroValueAllFields = if field type is object and value = null and flag not remove for newValue and flag not add for oldValue =>  return value ALl + Type.Name ; eg AllCompany,AllBranch.....
+            /// </summary>
+            public static List<string> IsNullReturnValueAllFields = new List<string>()
+            {
+              
+            };
         }
     }
-    
+
 }

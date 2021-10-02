@@ -1365,6 +1365,16 @@ namespace QTech.Base.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap ProfitImg {
+            get {
+                object obj = ResourceManager.GetObject("ProfitImg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap PurchaseOrder_img {
             get {
                 object obj = ResourceManager.GetObject("PurchaseOrder_img", resourceCulture);
@@ -1500,6 +1510,15 @@ namespace QTech.Base.Properties {
         public static string ReportIncomeExpense {
             get {
                 return ResourceManager.GetString("ReportIncomeExpense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to របាយការណ៍ប្រាក់ចំណេញ.
+        /// </summary>
+        public static string ReportProfit {
+            get {
+                return ResourceManager.GetString("ReportProfit", resourceCulture);
             }
         }
         

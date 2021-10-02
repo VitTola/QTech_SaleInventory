@@ -69,7 +69,9 @@ namespace QTech.Base.Enums
         Report_DriverDeliveryDetail = 59,
         Report_IncomeExpense = 60,
         Report_Income = 61,
-        Report_Expense = 62
+        Report_Expense = 62,
+        Report_Profit = 63,
+
 
     }
 }

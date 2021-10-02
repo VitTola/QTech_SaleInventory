@@ -87,6 +87,18 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="Profit" msprop:Generator_TableClassName="ProfitDataTable" msprop:Generator_TableVarName="tableProfit" msprop:Generator_RowChangedName="ProfitRowChanged" msprop:Generator_TablePropName="Profit" msprop:Generator_RowDeletingName="ProfitRowDeleting" msprop:Generator_RowChangingName="ProfitRowChanging" msprop:Generator_RowEvHandlerName="ProfitRowChangeEventHandler" msprop:Generator_RowDeletedName="ProfitRowDeleted" msprop:Generator_RowClassName="ProfitRow" msprop:Generator_UserTableName="Profit" msprop:Generator_RowEvArgName="ProfitRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Customer" msprop:Generator_ColumnVarNameInTable="columnCustomer" msprop:Generator_ColumnPropNameInRow="Customer" msprop:Generator_ColumnPropNameInTable="CustomerColumn" msprop:Generator_UserColumnName="Customer" type="xs:string" minOccurs="0" />
+              <xs:element name="CustomerAmount" msprop:Generator_ColumnVarNameInTable="columnCustomerAmount" msprop:Generator_ColumnPropNameInRow="CustomerAmount" msprop:Generator_ColumnPropNameInTable="CustomerAmountColumn" msprop:Generator_UserColumnName="CustomerAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GeneralIncome" msprop:Generator_ColumnVarNameInTable="columnGeneralIncome" msprop:Generator_ColumnPropNameInRow="GeneralIncome" msprop:Generator_ColumnPropNameInTable="GeneralIncomeColumn" msprop:Generator_UserColumnName="GeneralIncome" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Driver" msprop:Generator_ColumnVarNameInTable="columnDriver" msprop:Generator_ColumnPropNameInRow="Driver" msprop:Generator_ColumnPropNameInTable="DriverColumn" msprop:Generator_UserColumnName="Driver" type="xs:string" minOccurs="0" />
+              <xs:element name="DriverAmount" msprop:Generator_ColumnVarNameInTable="columnDriverAmount" msprop:Generator_ColumnPropNameInRow="DriverAmount" msprop:Generator_ColumnPropNameInTable="DriverAmountColumn" msprop:Generator_UserColumnName="DriverAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GeneralExpense" msprop:Generator_ColumnVarNameInTable="columnGeneralExpense" msprop:Generator_ColumnPropNameInRow="GeneralExpense" msprop:Generator_ColumnPropNameInTable="GeneralExpenseColumn" msprop:Generator_UserColumnName="GeneralExpense" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

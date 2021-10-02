@@ -237,6 +237,18 @@ namespace QTech.Base.BaseModels
                 FormName = "QTech.Reports.ReportExpensePage"
 
             },
+                                      new MenuBar()
+            {
+                Index = 5,
+                Level = 2,
+                Key = AuthKey.Report_Profit,
+                ParentKey = AuthKey.Report,
+                DisplayName = BaseResource.ReportProfit,
+                Icon = BaseResource.ProfitImg,
+                Children = new List<MenuBar>(),
+                FormName = "QTech.Reports.ReportProfitPage"
+
+            },
 
 
         };
