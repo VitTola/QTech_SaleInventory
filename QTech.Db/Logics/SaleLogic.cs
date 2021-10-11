@@ -49,8 +49,8 @@ namespace QTech.Db.Logics
             {
                 AddInvoice(result, GeneralProcess.Add);
             }
-            //var changelogs = AuditTrailLogic.Instance.GetChangeLogs<ActiveBaseModel, int>(result, null, GeneralProcess.Add, ignoreProperties);
-            //AuditTrailLogic.Instance.AddManualAuditTrail(result, changelogs, GeneralProcess.Add);
+            var changelogs = AuditTrailLogic.Instance.GetChangeLogs<ActiveBaseModel, int>(result, null, GeneralProcess.Add, ignoreProperties);
+            AuditTrailLogic.Instance.AddManualAuditTrail(result, changelogs, GeneralProcess.Add);
 
             return result;
         }
@@ -64,8 +64,8 @@ namespace QTech.Db.Logics
             }
             UpdateSaleDetail(result.SaleDetails, result);
 
-            //var changelogs = AuditTrailLogic.Instance.GetChangeLogs<ActiveBaseModel, int>(result, null, GeneralProcess.Add, ignoreProperties);
-            //AuditTrailLogic.Instance.AddManualAuditTrail(entity, changelogs, GeneralProcess.Update);
+            var changelogs = AuditTrailLogic.Instance.GetChangeLogs<ActiveBaseModel, int>(result, null, GeneralProcess.Add, ignoreProperties);
+            AuditTrailLogic.Instance.AddManualAuditTrail(entity, changelogs, GeneralProcess.Update);
 
             return result;
         }

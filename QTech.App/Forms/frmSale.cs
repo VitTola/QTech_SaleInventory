@@ -25,7 +25,6 @@ using System.Windows.Forms;
 using BaseReource = QTech.Base.Properties.Resources;
 using EasyServer.Domain.Helpers;
 using EDomain = EasyServer.Domain;
-using BaseResource = QTech.Base.Properties.Resources;
 
 namespace QTech.Forms
 {
@@ -405,8 +404,6 @@ namespace QTech.Forms
 
             return true;
         }
-
-        List<SaleDetail> saleDetails = null;
         public async void Read()
         {
             if (Flag == GeneralProcess.Add)
@@ -420,7 +417,7 @@ namespace QTech.Forms
             List<Employee> drivers = null;
             PurchaseOrder purchaseOrder = null;
             List<POProductPrice> pOProductPrices = null;
-            saleDetails = await this.RunAsync(() =>
+            var saleDetails = await this.RunAsync(() =>
             {
                 cus = CustomerLogic.Instance.FindAsync(Model.CompanyId);
                 site = SiteLogic.Instance.FindAsync(Model.SiteId);
@@ -594,66 +591,17 @@ namespace QTech.Forms
         {
             AuditTrailDialog.ShowChangeLog(Model);
         }
-
-        ChangeLog changeLog = null;
         public void Write()
         {
-            //ChangeLog
-            List<ChangeLog> changeLogs = new List<ChangeLog>();
-            List<ChangeLog> listLogs = null;
             if (tabMain.SelectedTab.Equals(tabCompany_))
             {
                 var customer = cboCustomer.SelectedObject.ItemObject as Customer;
                 var site = cboSite?.SelectedObject?.ItemObject as Site;
-                var purchaseOrder = cboPurchaseOrderNo.SelectedObject?.ItemObject as PurchaseOrder;
-
-                //ChangeLogs
-                listLogs = new List<ChangeLog>()
-                {
-                    new ChangeLog
-                {
-                    DisplayName = BaseReource.Customer,
-                    OldValue = Flag == GeneralProcess.Add ? string.Empty : CustomerLogic.Instance.FindAsync(Model.CompanyId)?.Name ?? string.Empty,
-                    NewValue = customer?.Name
-                },
-                    new ChangeLog
-                {
-                    DisplayName = BaseReource.Site,
-                    OldValue = Flag == GeneralProcess.Add ? string.Empty : CustomerLogic.Instance.FindAsync(Model.SiteId)?.Name ?? string.Empty,
-                    NewValue = site?.Name
-                },
-                    new ChangeLog
-                {
-                    DisplayName = BaseReource.InvoiceNo,
-                    OldValue = Flag == GeneralProcess.Add ? string.Empty : Model.InvoiceNo,
-                    NewValue = txtInvoiceNo.Text
-                },
-                    new ChangeLog
-                {
-                    DisplayName = BaseReource.PurchaseOrderNo,
-                    OldValue = Flag == GeneralProcess.Add ? string.Empty : PurchaseOrderLogic.Instance.FindAsync(Model.PurchaseOrderId)?.Name ?? string.Empty,
-                    NewValue = purchaseOrder?.Name
-                },
-                    new ChangeLog
-                {
-                    DisplayName = BaseReource.SaleDate,
-                    OldValue = Flag == GeneralProcess.Add ? string.Empty : Model.SaleDate.ToString(),
-                    NewValue = dtpSaleDate.Value.ToString()
-                },
-                    new ChangeLog
-                {
-                    DisplayName = BaseReource.ImportPrice,
-                    OldValue = chkInsertImport.Checked,
-                    NewValue = chkInsertImport.Checked,
-                }
-                };
-
-
-                //Sale
                 Model.CompanyId = customer.Id;
                 Model.SiteId = site?.Id ?? 0;
                 Model.PurchaseOrderNo = cboPurchaseOrderNo.Text;
                 Model.InvoiceNo = txtInvoiceNo.Text;
+                var purchaseOrder = cboPurchaseOrderNo.SelectedObject?.ItemObject as PurchaseOrder;
                 Model.PurchaseOrderId = purchaseOrder == null ? 0 : purchaseOrder.Id;
                 Model.SaleType = SaleType.Company;
                 Model.SaleDate = dtpSaleDate.Value;
@@ -661,36 +609,6 @@ namespace QTech.Forms
             }
             else
             {
-                //ChangeLog
-                listLogs = new List<ChangeLog>()
-
-                {
-                    new ChangeLog
-                {
-                    DisplayName = BaseReource.Customer,
-                    OldValue = Flag == GeneralProcess.Add ? string.Empty : Model.CustomerName,
-                    NewValue = txtCustomer.Text,
-                },
-                    new ChangeLog
-                {
-                    DisplayName = BaseReource.Phone,
-                    OldValue = Flag == GeneralProcess.Add ? string.Empty : Model.Phone,
-                    NewValue = txtPhone.Text,
-                },
-                    new ChangeLog
-                {
-                    DisplayName = BaseReource.InvoiceNo,
-                    OldValue = Flag == GeneralProcess.Add ? string.Empty : Model.InvoiceNo,
-                    NewValue = txtInvoiceNo1.Text,
-                },
-                    new ChangeLog
-                {
-                    DisplayName = BaseReource.SaleDate,
-                    OldValue = Flag == GeneralProcess.Add ? string.Empty : Model.Total.ToString(),
-                    NewValue = dtpSaleDate_.Value.ToString(),
-                },
-                };
-
                 Model.CustomerName = txtCustomer.Text;
                 Model.Phone = txtPhone.Text;
                 Model.SaleType = SaleType.General;
@@ -701,25 +619,6 @@ namespace QTech.Forms
             Model.Total = Parse.ToDecimal(!string.IsNullOrEmpty(txtTotal.Text) ? txtTotal.Text : "0");
             Model.Expense = Parse.ToDecimal(!string.IsNullOrEmpty(txtExpense.Text) ? txtExpense.Text : "0");
 
-            //ChangeLog
-            listLogs.Add(new ChangeLog
-            {
-                DisplayName = BaseReource.Total,
-                OldValue = Flag == GeneralProcess.Add ? string.Empty : Model.Total.ToString(),
-                NewValue = txtTotal.Text.ToString(),
-            });
-            listLogs.Add(
-                new ChangeLog
-                {
-                    DisplayName = BaseReource.MiscellaneousType_Expense,
-                    OldValue = Flag == GeneralProcess.Add ? string.Empty : Model.Expense.ToString(),
-                    NewValue = txtExpense.Text.ToString(),
-                });
-            changeLogs.AddRange(listLogs.Where(x => x.OldValue != x.NewValue));
-
-            var _changeLogs = new List<ChangeLog>();
-
-            Model.SaleDetails = saleDetails;
             if (Model.SaleDetails == null)
             {
                 Model.SaleDetails = new List<SaleDetail>();
@@ -728,68 +627,15 @@ namespace QTech.Forms
             dgv.EndEdit();
             foreach (DataGridViewRow row in dgv.Rows.OfType<DataGridViewRow>().Where(x => !x.IsNewRow))
             {
-                //ChangeLog
-                //If Flag == Update
-                SaleDetail currentSaleDetail=null;
-                if (Flag == GeneralProcess.Update && Model.SaleDetails.Any())
-                {
-                    var currentSaleDetailId = Parse.ToInt(row?.Cells[colId.Name]?.Value?.ToString() ?? "0");
-                    currentSaleDetail = Model.SaleDetails.FirstOrDefault(x => x.Id == currentSaleDetailId);
-                }
-
-                var logs = new List<ChangeLog>();
-                var _product = products.FirstOrDefault(x => x.Id == currentSaleDetail?.ProductId);
-                logs.Add(new ChangeLog
-                {
-                    DisplayName = BaseReource.Products,
-                    OldValue = Flag == GeneralProcess.Add ? string.Empty : $"{_product.Name} {categories.FirstOrDefault(x=>x.Id == _product.CategoryId)?.Name}",
-                    NewValue = $"{row.Cells[colProductId.Name].Value.ToString()} {row.Cells[colCategory_.Name].Value.ToString()}"
-                });
-                logs.Add(new ChangeLog
-                {
-                    DisplayName = BaseReource.Qauntity,
-                    OldValue = Flag == GeneralProcess.Add ? string.Empty : currentSaleDetail.Qauntity.ToString(),
-                    NewValue = row.Cells[colQauntity.Name].Value?.ToString()
-                });
-                logs.Add(new ChangeLog
-                {
-                    DisplayName = BaseReource.Driver,
-                    OldValue = Flag == GeneralProcess.Add ? string.Empty : EmployeeLogic.Instance.FindAsync(currentSaleDetail.EmployeeId)?.Name,
-                    NewValue = row.Cells[colEmployeeId.Name].Value?.ToString()
-                });
-                logs.Add(new ChangeLog
-                {
-                    DisplayName = BaseReource.ImportPrice,
-                    OldValue = Flag == GeneralProcess.Add ? string.Empty : currentSaleDetail.ImportPrice.ToString(),
-                    NewValue = row.Cells[colImportPrice.Name].Value?.ToString()
-                });
-                logs.Add(new ChangeLog
-                {
-                    DisplayName = BaseReource.TotalImportPrice,
-                    OldValue = Flag == GeneralProcess.Add ? string.Empty : currentSaleDetail.ImportTotalAmount.ToString(),
-                    NewValue = row.Cells[colTotalImportPrice.Name].Value?.ToString()
-                });
-                logs.Add(new ChangeLog
-                {
-                    DisplayName = BaseReource.SalePrice,
-                    OldValue = Flag == GeneralProcess.Add ? string.Empty : currentSaleDetail.SalePrice.ToString(),
-                    NewValue = row.Cells[colUnitPrice.Name].Value?.ToString()
-                });
-                logs.Add(new ChangeLog
-                {
-                    DisplayName = BaseReource.TotalAmount,
-                    OldValue = Flag == GeneralProcess.Add ? string.Empty : currentSaleDetail.Total.ToString(),
-                    NewValue = row.Cells[colTotal.Name].Value?.ToString()
-                });
-
                 var saleDetail = new SaleDetail();
+
                 saleDetail.Active = true;
                 saleDetail.Id = Parse.ToInt(row?.Cells[colId.Name]?.Value?.ToString() ?? "0");
                 saleDetail.SaleId = Model.Id;
                 saleDetail.ProductId = Parse.ToInt(row.Cells[colProductId.Name].Value?.ToString() ?? "0");
                 saleDetail.Qauntity = Parse.ToDecimal(row.Cells[colQauntity.Name].Value?.ToString() ?? "0");
                 saleDetail.EmployeeId = Parse.ToInt(row.Cells[colEmployeeId.Name].Value?.ToString() ?? "0");
-                saleDetail.Total = Parse.ToDecimal(row.Cells[colTotal.Name].Value?.ToString() ?? "0");
+                saleDetail.Total = decimal.Parse(row.Cells[colTotal.Name].Value?.ToString() ?? "0");
 
                 //ImportTotal & Profit
                 var importPrice = Parse.ToDecimal(row.Cells[colImportPrice.Name].Value?.ToString() ?? "0");
@@ -815,28 +661,6 @@ namespace QTech.Forms
                 {
                     Model.SaleDetails.Add(saleDetail);
                 }
-
-                //ChangeLog
-                _changeLogs.Add(new ChangeLog
-                {
-                    Details = logs.Where(x => x.OldValue != x.NewValue).ToList()
-                });
-                var _changeLog = new ChangeLog
-                {
-                    DisplayName = BaseReource.SaleDetail,
-                    Details = _changeLogs
-                };
-                changeLogs.Add(_changeLog);
-                var opName = Flag == GeneralProcess.Add ? BaseResource.Add : BaseReource.Update;
-                changeLog = new ChangeLog()
-                {
-                    DisplayName = $"{opName} {BaseReource.Sales}",
-                    Details = changeLogs,
-                };
-
-                AuditTrailLogic.Instance.AddManualAuditTrail(Model,changeLog,Flag);
-
-
             }
         }
         private void WriteInvoice()

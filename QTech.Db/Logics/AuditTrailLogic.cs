@@ -32,7 +32,7 @@ namespace QTech.Db.Logics
         {
             return base.AddAsync(entity);
         }
-        public void AddManualAuditTrail(dynamic entity, ChangeLog changeLogs, GeneralProcess flag)
+        public void AddManualAuditTrail(dynamic entity, List<ChangeLog> changeLogs, GeneralProcess flag)
         {
             var type = entity.GetType() as Type;
             var name = type.ToString().Split('.').LastOrDefault();

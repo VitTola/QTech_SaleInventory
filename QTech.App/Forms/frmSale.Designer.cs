@@ -774,7 +774,6 @@
             this.Location = new System.Drawing.Point(0, 0);
             this.MaximizeBox = false;
             this.Name = "frmSale";
-            this.Opacity = 0D;
             this.Text = "frmEmployeePay";
             this.container.ResumeLayout(false);
             this.container.PerformLayout();
