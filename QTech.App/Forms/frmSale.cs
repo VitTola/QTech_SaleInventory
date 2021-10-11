@@ -635,7 +635,7 @@ namespace QTech.Forms
                 saleDetail.ProductId = Parse.ToInt(row.Cells[colProductId.Name].Value?.ToString() ?? "0");
                 saleDetail.Qauntity = Parse.ToDecimal(row.Cells[colQauntity.Name].Value?.ToString() ?? "0");
                 saleDetail.EmployeeId = Parse.ToInt(row.Cells[colEmployeeId.Name].Value?.ToString() ?? "0");
-                saleDetail.Total = decimal.Parse(row.Cells[colTotal.Name].Value?.ToString() ?? "0");
+                saleDetail.Total = Parse.ToDecimal(row.Cells[colTotal.Name].Value?.ToString() ?? "0");
 
                 //ImportTotal & Profit
                 var importPrice = Parse.ToDecimal(row.Cells[colImportPrice.Name].Value?.ToString() ?? "0");
