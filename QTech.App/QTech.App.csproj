@@ -75,6 +75,10 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.94.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\QTech.Base\Dll\ClosedXML.dll</HintPath>
+    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -92,6 +96,10 @@
       <HintPath>..\..\..\Easy Order\Easy Order.C#\EasyOrder\EasyOrder.Base\Dll\FastMember.dll</HintPath>
     </Reference>
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="QTech.Component, Version=2.8.4.25, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\QTech.Base\Dll\QTech.Component.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -536,10 +544,6 @@
     <ProjectReference Include="..\QTech.Base\QTech.Base.csproj">
       <Project>{209a6926-2491-4480-9cce-5b6a0c65e5c1}</Project>
       <Name>QTech.Base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\QTech.Component\QTech.Component.csproj">
-      <Project>{13f682a8-c792-47b6-945a-222556d95398}</Project>
-      <Name>QTech.Component</Name>
     </ProjectReference>
     <ProjectReference Include="..\QTech.Db\QTech.Db.csproj">
       <Project>{789540cb-aeb1-4e6c-aba1-dac5b8d6d37a}</Project>
