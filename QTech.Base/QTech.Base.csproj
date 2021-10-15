@@ -158,6 +158,7 @@
     <Compile Include="Helpers\ShareValue.cs" />
     <Compile Include="Helpers\TempFile.cs" />
     <Compile Include="Helpers\UISetting.cs" />
+    <Compile Include="Models\ApplicationSetting.cs" />
     <Compile Include="Models\AuditTrail.cs" />
     <Compile Include="Models\IncomeExpense.cs" />
     <Compile Include="Models\PurchaseOrder.cs" />
@@ -181,6 +182,7 @@
     <Compile Include="OutFaceModels\MonthlyInvoice.cs" />
     <Compile Include="OutFaceModels\Profit.cs" />
     <Compile Include="OutFaceModels\SaleInfo.cs" />
+    <Compile Include="OutFaceModels\Version.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -276,6 +278,7 @@
     <Content Include="Dll\esc-pos-usb-net.dll" />
     <Content Include="Dll\FastMember.dll" />
     <Content Include="Dll\QTech.Component.dll" />
+    <None Include="Resources\UpdateIcon.png" />
     <None Include="Resources\ProfitImg.png" />
     <None Include="Resources\categorie_ing.png" />
     <None Include="Resources\expenses_img.png" />

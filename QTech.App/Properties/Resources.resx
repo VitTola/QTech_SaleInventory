@@ -136,17 +136,17 @@
   <data name="Site_img" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Site.img.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pback" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pback.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="down_arrow_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\down_arrow_12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Type.img" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Type.img.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Printer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Print.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Type1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Type.img1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Pcenter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pcenter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="lineDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lineDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,11 +154,14 @@
   <data name="imgCollapse" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgCollapse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Type1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Type.img1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Pheng Ry" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Pheng Ry.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Type.img" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Type.img.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pback" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pback.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Customer_img" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Customer.img.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,7 +184,7 @@
   <data name="login" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Pcenter" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Pcenter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="UpateIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UpateIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

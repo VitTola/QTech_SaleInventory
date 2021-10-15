@@ -730,4 +730,19 @@
   <data name="ReportProfit" xml:space="preserve">
     <value>របាយការណ៍ប្រាក់ចំណេញ</value>
   </data>
+  <data name="UpdateIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UpdateIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>ជំនាន់កម្មវិធី{0}</value>
+  </data>
+  <data name="CannotFindLinkToDownload" xml:space="preserve">
+    <value>រកមិនឃើញតំណរភ្ជាប់សំរាប់ទាញយកជំនាន់នៃកម្មវិធីថ្មី!</value>
+  </data>
+  <data name="FailedDownload" xml:space="preserve">
+    <value>ការទាញយកត្រូវបានបោះបង់ចោល</value>
+  </data>
+  <data name="Updater" xml:space="preserve">
+    <value>បច្ចុប្បន្នភាព</value>
+  </data>
 </root>

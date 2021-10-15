@@ -17,6 +17,7 @@ using Storm.CC.Report.Helpers;
 using QTech.Base.Helpers;
 using QTech.Db.Logics;
 using QTech.Base.SearchModels;
+using QTech.Updater;
 
 namespace QTech.Forms
 {
@@ -46,6 +47,7 @@ namespace QTech.Forms
             this.InitForm();
             this.OptimizeLoadUI();
             this.FormClosed += (s, e) => Application.Exit();
+            _lblVersion.Text = ShareValue.CurrentAppVersion;
         }
         private void MainForm_Shown(object sender, EventArgs e)
         {
@@ -70,6 +72,7 @@ namespace QTech.Forms
             var moduleManager = ModuleManager.Instance;
             _menuBars = moduleManager.GetMenubars();
             InitMenu();
+            
         }
         public void InitMenu()
         {
@@ -277,6 +280,21 @@ namespace QTech.Forms
         {
             this.Close();
             new LoginDialog().Show();
+        }
+
+        private void txtVersion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new AboutUsDialog().Show();
+        }
+
+        private void _lblComanyName_Click(object sender, EventArgs e)
+        {
+            new AboutUsDialog().Show();
+        }
+
+        private void picLogo_Click(object sender, EventArgs e)
+        {
+            new AboutUsDialog().Show();
         }
         //protected override CreateParams CreateParams
         //{

@@ -31,10 +31,13 @@
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.exPanel = new QTech.Component.Components.ExPanel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnClose = new QTech.Component.ExButtonLoading();
             this.panel1 = new System.Windows.Forms.Panel();
             this._lblComanyName = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblVersion = new System.Windows.Forms.LinkLabel();
             this.container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.exPanel.SuspendLayout();
@@ -44,22 +47,25 @@
             // 
             // container
             // 
+            this.container.Controls.Add(this.label3);
+            this.container.Controls.Add(this.label2);
+            this.container.Controls.Add(this.label1);
             this.container.Controls.Add(this._lblComanyName);
             this.container.Controls.Add(this.panel1);
             this.container.Controls.Add(this.exPanel);
-            this.container.Size = new System.Drawing.Size(452, 270);
+            this.container.Size = new System.Drawing.Size(365, 240);
             // 
             // picLogo
             // 
             this.picLogo.BackColor = System.Drawing.Color.Transparent;
             this.picLogo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picLogo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.picLogo.ErrorImage = global::QTech.Properties.Resources.QTech__2_;
             this.picLogo.Image = global::QTech.Properties.Resources.Pheng_Ry;
             this.picLogo.InitialImage = global::QTech.Properties.Resources.QTech__2_;
             this.picLogo.Location = new System.Drawing.Point(0, 0);
             this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(450, 71);
+            this.picLogo.Size = new System.Drawing.Size(363, 58);
             this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picLogo.TabIndex = 1;
             this.picLogo.TabStop = false;
@@ -68,38 +74,32 @@
             // exPanel
             // 
             this.exPanel.BackColor = System.Drawing.Color.Transparent;
+            this.exPanel.Controls.Add(this.lblVersion);
             this.exPanel.Controls.Add(this.flowLayoutPanel3);
-            this.exPanel.Controls.Add(this.flowLayoutPanel2);
             this.exPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.exPanel.Location = new System.Drawing.Point(1, 233);
+            this.exPanel.Location = new System.Drawing.Point(1, 203);
             this.exPanel.Name = "exPanel";
             this.exPanel.Padding = new System.Windows.Forms.Padding(2);
-            this.exPanel.Size = new System.Drawing.Size(450, 36);
+            this.exPanel.Size = new System.Drawing.Size(363, 36);
             this.exPanel.TabIndex = 23;
             // 
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.Controls.Add(this.btnClose);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(288, 2);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(270, 2);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(160, 32);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(91, 32);
             this.flowLayoutPanel3.TabIndex = 0;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(2, 2);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(106, 32);
-            this.flowLayoutPanel2.TabIndex = 0;
             // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.DefaultImage = null;
             this.btnClose.Executing = false;
-            this.btnClose.Location = new System.Drawing.Point(83, 3);
+            this.btnClose.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Location = new System.Drawing.Point(14, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
@@ -115,35 +115,99 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(450, 71);
+            this.panel1.Size = new System.Drawing.Size(363, 71);
             this.panel1.TabIndex = 25;
             // 
             // _lblComanyName
             // 
-            this._lblComanyName.AutoSize = true;
-            this._lblComanyName.BackColor = System.Drawing.Color.Transparent;
+            this._lblComanyName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
             this._lblComanyName.Cursor = System.Windows.Forms.Cursors.Hand;
+            this._lblComanyName.Dock = System.Windows.Forms.DockStyle.Top;
             this._lblComanyName.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this._lblComanyName.Font = new System.Drawing.Font("Khmer Muol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._lblComanyName.ForeColor = System.Drawing.Color.Blue;
-            this._lblComanyName.Location = new System.Drawing.Point(142, 75);
+            this._lblComanyName.Location = new System.Drawing.Point(1, 72);
+            this._lblComanyName.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this._lblComanyName.Name = "_lblComanyName";
-            this._lblComanyName.Size = new System.Drawing.Size(161, 24);
+            this._lblComanyName.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this._lblComanyName.Size = new System.Drawing.Size(363, 32);
             this._lblComanyName.TabIndex = 26;
             this._lblComanyName.Text = "ផេង រី ផ្គត់ផ្គង់ខ្សាច់និងថ្ម";
+            this._lblComanyName.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label1.Font = new System.Drawing.Font("Hanuman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Blue;
+            this.label1.Location = new System.Drawing.Point(1, 104);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(363, 23);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "លេខទំនាក់ទំនង\r\n";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label2.Font = new System.Drawing.Font("Hanuman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Blue;
+            this.label2.Location = new System.Drawing.Point(1, 127);
+            this.label2.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(363, 34);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "016 659 961";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(237)))));
+            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label3.Font = new System.Drawing.Font("Hanuman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Blue;
+            this.label3.Location = new System.Drawing.Point(1, 161);
+            this.label3.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(363, 41);
+            this.label3.TabIndex = 29;
+            this.label3.Text = "បើលោកអ្នកចង់បាន System ដើម្បីគ្រប់គ្រងអាជីវកម្ម  សូរទំនាក់ទំនង : \r\n 086 360 500  " +
+    " ,  email : vittola.tiger@gmail.com";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblVersion
+            // 
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Font = new System.Drawing.Font("Hanuman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersion.Location = new System.Drawing.Point(5, 9);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(65, 19);
+            this.lblVersion.TabIndex = 30;
+            this.lblVersion.TabStop = true;
+            this.lblVersion.Text = "ជំនាន់កម្មវិធី";
+            this.lblVersion.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblVersion_LinkClicked);
             // 
             // AboutUsDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(452, 290);
+            this.ClientSize = new System.Drawing.Size(365, 260);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "AboutUsDialog";
             this.Text = "AboutUsDialog";
             this.container.ResumeLayout(false);
-            this.container.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.exPanel.ResumeLayout(false);
+            this.exPanel.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -156,8 +220,11 @@
         private Component.Components.ExPanel exPanel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private Component.ExButtonLoading btnClose;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label _lblComanyName;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.LinkLabel lblVersion;
     }
 }

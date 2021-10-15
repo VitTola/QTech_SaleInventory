@@ -40,8 +40,8 @@ namespace QTech.Db
         public virtual DbSet<PurchaseOrder> PurchaseOrders { get; set; }
         public virtual DbSet<IncomeExpense> IncomeExpenses { get; set; }
         public virtual DbSet<AuditTrail> AuditTrails { get; set; }
-
-
+        public virtual DbSet<AppSetting> AppSettings { get; set; }
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -54,7 +54,7 @@ namespace QTech.Db
     {
         public static DbConfig config = new DbConfig() {
             DataSource = ".",
-            DataBase = "QTech_SaleDb",
+            DataBase = "QTech_SaleDbX",
             
         };
 

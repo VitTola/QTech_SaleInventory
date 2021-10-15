@@ -13,35 +13,20 @@ using QTech.Db;
 
 namespace QTech.Forms
 {
-    public partial class LoginDialog : ExDialog
+    public partial class AppSettingDialog : ExDialog
     {
        
         private string[] _userLoggedIn = Properties.Settings.Default.USER_LOGGED_IN?
                                                  .Cast<string>().ToArray() ?? new string[0];
 
-        public LoginDialog()
+        public AppSettingDialog()
         {
             InitializeComponent();
-            txtUserName.RegisterEnglishInputWith(txtPassword);
-            txtUserName.RegisterKeyEnterNextControlWith(txtPassword);
-            
-            //Auto Complete with user logged in
-            AutoCompleteStringCollection customAutoComplete = new AutoCompleteStringCollection();
-            if (_userLoggedIn.Any())
-            {
-                foreach (var userLoggedIn in _userLoggedIn)
-                {
-                    if (!string.IsNullOrEmpty(userLoggedIn))
-                    {
-                        customAutoComplete.Add(userLoggedIn);
-                    }
-                }
-                txtUserName.AutoCompleteCustomSource = customAutoComplete;
-            }
+           
         }
         private async void btnLogin_Click(object sender, EventArgs e)
         {
-            var _user = await btnLogin.RunAsync(() => {
+            var _user = await btnSave.RunAsync(() => {
                 var user = UserLogic.Instance.GetUserByNameAndPassword(txtUserName.Text, txtPassword.Text);
                 if (user == null)
                 {
@@ -49,7 +34,9 @@ namespace QTech.Forms
                     return user;
                 }
 
-                //ShareValue.CurrentAppVersion = AppSettingLogic.Instance.GetCurrentVersion();
+                //ShareValue.CurrentAppVersion = ApplicationVersionLogic.Instance.GetCurrentAppVersion();
+                //ShareValue.ServerVersion = ApplicationVersionLogic.Instance.GetCurrentServerVersion();
+                
                 ShareValue.User = user;
                 var userPermissions = UserPermissionLogic.Instance.GetUserPermissionsByUserId(user.Id);
                 if (userPermissions != null)
@@ -110,16 +97,21 @@ namespace QTech.Forms
         private void DisableAuthorize()
         {
             this.txtPassword.KeyDown -= new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
-            btnLogin.Enabled = false;
+            btnSave.Enabled = false;
         }
         private void EnableAuthorize()
         {
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
-            btnLogin.Enabled = true;
+            btnSave.Enabled = true;
         }
         private async void LoginDialog_Load(object sender, EventArgs e)
         {
             CenterToScreen();
+        }
+
+        private void container_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

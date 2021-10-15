@@ -204,6 +204,7 @@ namespace QTech.Component
             this._lblTITLE.TabIndex = 1;
             this._lblTITLE.Text = "ឃ្យូតិច";
             this._lblTITLE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this._lblTITLE.DoubleClick += new System.EventHandler(this._lblTITLE_DoubleClick);
             // 
             // imgICON
             // 
@@ -226,7 +227,7 @@ namespace QTech.Component
             this.Controls.Add(this.container);
             this.Controls.Add(this.digheader);
             this.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ExDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
