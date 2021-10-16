@@ -11,11 +11,12 @@ using static QTech.Db.MasterLogic;
 
 namespace QTech.Db.Logics
 {
-    public class AppSettingLogic : DbLogic<AppSetting, AppSettingLogic>
+    public class ApplicationSettingLogic : DbLogic<ApplicationSetting, ApplicationSettingLogic>
     {
         public string GetCurrentVersion()
         {
-            return All().LastOrDefault().CurrentAppVersion;
+            var version = _db.ApplicationSettings.Where(x => x.Active).OrderByDescending(x=>x.Id).FirstOrDefault();
+            return version?.CurrentAppVersion;
         }
     }
 }

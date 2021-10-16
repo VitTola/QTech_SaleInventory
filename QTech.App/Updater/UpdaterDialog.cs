@@ -16,64 +16,67 @@ using System.Runtime.InteropServices;
 using System.IO;
 using System.ComponentModel;
 using System.IO.Compression;
+using System.Windows.Threading;
+using System.Web.Services.Protocols;
 
 namespace QTech.Forms
 {
     public partial class UpdaterDialog : ExDialog
     {
-       
+
         private string[] _userLoggedIn = Properties.Settings.Default.USER_LOGGED_IN?
                                                  .Cast<string>().ToArray() ?? new string[0];
 
-        public UpdaterDialog(string version, string link)
+        public UpdaterDialog(string version, string link, long _fileSize)
         {
             InitializeComponent();
-            lblrootname.Name = "";
-            lblDownloaded.Text = "0.00MB(0.00%)";
-            lblFileSize.Text = "0.00MB";
-            lblTransferRate.Text = "0.00kb/s";
-            AppVersion = string.Concat("v", version);
+            _lblrootname.Name = "";
+            _lblDownloaded.Text = "0.00MB(0.00%)";
+            _lblFileSize.Text = "0.00MB";
+            _lblTransferRate.Text = "0.00kb/s";
+            AppVersion = version;
             LinkDownload = link;
-           // btnUpdate_Click();
+            this._fileSize = _fileSize;
+            btnUpdate_Click();
 
         }
 
-        private readonly WebClient _client = new WebClient();
+        private readonly MyWebClient _client = new MyWebClient();
         private readonly Stopwatch _sw = new Stopwatch();
         public const int WmNclbuttondown = 0xA1;
         public const int HtCaption = 0x2;
+        private long _fileSize;
+        int percentage = 0;
 
         public string LinkDownload { get; set; }
         public string AppVersion { get; set; }
-        public string ExtractPath => Application.StartupPath + string.Format("/FileUpdate/{0}", string.Concat(AppVersion, ".zip"));
+        public string ExtractPath => Application.StartupPath + string.Format("\\FileUpdate\\{0}", string.Concat(AppVersion, ".zip"));
 
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int msg, int wParam, int lParam);
         [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
-        
 
         private void btnUpdate_Click()
         {
             try
             {
-                _client.DownloadFileCompleted += Completed;
-                _client.DownloadProgressChanged += ProgressChanged;
+                _client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(ProgressChanged);
 
                 var downloadLink = new Uri(LinkDownload);
                 _sw.Start();
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                 if (!Directory.Exists(Application.StartupPath + "/FileUpdate"))
                 {
                     Directory.CreateDirectory(Application.StartupPath + "/FileUpdate");
                 }
+                _client.Credentials = new NetworkCredential("Tola", "T123@tiger");
                 _client.DownloadFileAsync(downloadLink, ExtractPath);
-                lblrootname.Text = Path.GetFileName(downloadLink.LocalPath);
+                _lblrootname.Text = Path.GetFileName(downloadLink.LocalPath);
                 _lblVersion.Text = string.Format(BaseResource.Version, AppVersion);
             }
             catch (Exception ex)
             {
-                if (MsgBox.ShowError(ex.Message,"") == DialogResult.OK)
+                if (MsgBox.ShowError(ex.Message, "") == DialogResult.OK)
                 {
                     Environment.ExitCode = 1;
                     Close();
@@ -85,8 +88,7 @@ namespace QTech.Forms
         {
             try
             {
-                KillProcess("Oone");
-                KillProcess("OfflineCashier");
+                //KillProcess("QTech");
                 var archive = ZipFile.OpenRead(ExtractPath);
                 // get the root directory
                 var root = AppVersion;
@@ -157,40 +159,29 @@ namespace QTech.Forms
 
         private void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            var fileSize = e.TotalBytesToReceive / 1024d / 1024d;
+            var fileSize = _fileSize / 1024d / 1024d;
             var downloadCompleted = e.BytesReceived / 1024d / 1024d;
             var transferRate = e.BytesReceived / 1024d / _sw.Elapsed.TotalSeconds;
-            var percentage = e.ProgressPercentage;
+            percentage = (int)((e.BytesReceived * 100) / _fileSize);
             progressBar.Value = percentage;
-            lblFileSize.Text = $"{ fileSize:N2}MB";
-            lblDownloaded.Text = $"{downloadCompleted:N2}MB ({percentage}%)";
-            lblTransferRate.Text = $"{transferRate:N2}kb/s";
+            _lblFileSize.Text = $"{ fileSize:N2}MB";
+            _lblDownloaded.Text = $"{downloadCompleted:N2}MB ({percentage}%)";
+            _lblTransferRate.Text = $"{transferRate:N2}kb/s";
+            if (e.TotalBytesToReceive == _fileSize)
+            {
+                Completed();
+            }
+
         }
 
-        private void Completed(object sender, AsyncCompletedEventArgs e)
+        private void Completed()
         {
             _sw.Reset();
-            var fileSize = new FileInfo(ExtractPath).Length;
-            if (e.Cancelled)
+            if (Extract())
             {
-                MessageBox.Show(BaseResource.FailedDownload, BaseResource.Updater, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                System.Diagnostics.Process.Start(Path.Combine(Application.StartupPath, "QTech.exe"));
             }
-            else if (fileSize < 1024)
-            {
-                if (MsgBox.ShowError(BaseResource.CannotFindLinkToDownload,"") == DialogResult.OK)
-                {
-                    Environment.ExitCode = 1;
-                    Close();
-                }
-            }
-            else
-            {
-                if (Extract())
-                {
-                    System.Diagnostics.Process.Start(Path.Combine(Application.StartupPath, "Oone.exe"));
-                }
-                Application.Exit();
-            }
+            Application.Exit();
         }
 
         private void KillProcess(string processName)
@@ -217,13 +208,15 @@ namespace QTech.Forms
         }
     }
 
-    class OldFile
+    internal class MyWebClient : WebClient
     {
-        public string Filename { get; set; }
-        public string Extension { get; set; }
-        public string Path { get; set; }
+        protected override WebRequest GetWebRequest(Uri address)
+        {
+            FtpWebRequest req = (FtpWebRequest)base.GetWebRequest(address);
+            req.UsePassive = false;
+            return req;
+        }
+
     }
-
-
 }
 

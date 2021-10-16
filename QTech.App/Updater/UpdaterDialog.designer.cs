@@ -36,26 +36,26 @@ namespace QTech.Forms
             this._lblVersion = new QTech.Component.ExLabel();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblDownloaded = new QTech.Component.ExLabel();
-            this.lblTransferRate = new QTech.Component.ExLabel();
-            this.lblFileSize = new System.Windows.Forms.Label();
-            this.lblrootname = new System.Windows.Forms.Label();
+            this._lblDownloaded = new QTech.Component.ExLabel();
+            this._lblTransferRate = new QTech.Component.ExLabel();
+            this._lblFileSize = new System.Windows.Forms.Label();
+            this._lblrootname = new System.Windows.Forms.Label();
             this.container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // container
             // 
-            this.container.Controls.Add(this.lblrootname);
-            this.container.Controls.Add(this.lblFileSize);
-            this.container.Controls.Add(this.lblTransferRate);
-            this.container.Controls.Add(this.lblDownloaded);
+            this.container.Controls.Add(this._lblrootname);
+            this.container.Controls.Add(this._lblFileSize);
+            this.container.Controls.Add(this._lblTransferRate);
+            this.container.Controls.Add(this._lblDownloaded);
             this.container.Controls.Add(this.pictureBox1);
             this.container.Controls.Add(this.progressBar);
             this.container.Controls.Add(this._lblVersion);
             this.container.Controls.Add(this.exLabel1);
             this.container.Padding = new System.Windows.Forms.Padding(2);
-            this.container.Size = new System.Drawing.Size(649, 250);
+            this.container.Size = new System.Drawing.Size(446, 180);
             this.container.Text = "container";
             // 
             // exLabel1
@@ -65,7 +65,7 @@ namespace QTech.Forms
             this.exLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.exLabel1.Name = "exLabel1";
             this.exLabel1.Required = false;
-            this.exLabel1.Size = new System.Drawing.Size(352, 32);
+            this.exLabel1.Size = new System.Drawing.Size(287, 32);
             this.exLabel1.TabIndex = 23;
             this.exLabel1.Text = "កំពុងធ្វើបច្ចុប្បន្នភាព QTech Sale .  .  .  .  .  .";
             // 
@@ -83,70 +83,71 @@ namespace QTech.Forms
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(28, 179);
+            this.progressBar.Location = new System.Drawing.Point(28, 130);
             this.progressBar.Margin = new System.Windows.Forms.Padding(4);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(589, 13);
+            this.progressBar.Size = new System.Drawing.Size(387, 13);
             this.progressBar.TabIndex = 25;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::QTech.Properties.Resources.UpateIcon;
-            this.pictureBox1.Location = new System.Drawing.Point(465, 6);
+            this.pictureBox1.Location = new System.Drawing.Point(321, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(145, 141);
+            this.pictureBox1.Size = new System.Drawing.Size(94, 88);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 26;
             this.pictureBox1.TabStop = false;
             // 
-            // lblDownloaded
+            // _lblDownloaded
             // 
-            this.lblDownloaded.ForeColor = System.Drawing.Color.Blue;
-            this.lblDownloaded.Location = new System.Drawing.Point(27, 209);
-            this.lblDownloaded.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDownloaded.Name = "lblDownloaded";
-            this.lblDownloaded.Required = false;
-            this.lblDownloaded.Size = new System.Drawing.Size(172, 24);
-            this.lblDownloaded.TabIndex = 28;
-            this.lblDownloaded.Text = "0.00M(0%)";
-            this.lblDownloaded.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._lblDownloaded.ForeColor = System.Drawing.Color.Blue;
+            this._lblDownloaded.Location = new System.Drawing.Point(27, 147);
+            this._lblDownloaded.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this._lblDownloaded.Name = "_lblDownloaded";
+            this._lblDownloaded.Required = false;
+            this._lblDownloaded.Size = new System.Drawing.Size(172, 24);
+            this._lblDownloaded.TabIndex = 28;
+            this._lblDownloaded.Text = "0.00M(0%)";
+            this._lblDownloaded.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lblTransferRate
+            // _lblTransferRate
             // 
-            this.lblTransferRate.ForeColor = System.Drawing.Color.Blue;
-            this.lblTransferRate.Location = new System.Drawing.Point(438, 207);
-            this.lblTransferRate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTransferRate.Name = "lblTransferRate";
-            this.lblTransferRate.Required = false;
-            this.lblTransferRate.Size = new System.Drawing.Size(172, 24);
-            this.lblTransferRate.TabIndex = 29;
-            this.lblTransferRate.Text = "0.00kb/s";
-            this.lblTransferRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this._lblTransferRate.ForeColor = System.Drawing.Color.Blue;
+            this._lblTransferRate.Location = new System.Drawing.Point(309, 147);
+            this._lblTransferRate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this._lblTransferRate.Name = "_lblTransferRate";
+            this._lblTransferRate.Required = false;
+            this._lblTransferRate.Size = new System.Drawing.Size(104, 24);
+            this._lblTransferRate.TabIndex = 29;
+            this._lblTransferRate.Text = "0.00kb/s";
+            this._lblTransferRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lblFileSize
+            // _lblFileSize
             // 
-            this.lblFileSize.ForeColor = System.Drawing.Color.Blue;
-            this.lblFileSize.Location = new System.Drawing.Point(502, 148);
-            this.lblFileSize.Name = "lblFileSize";
-            this.lblFileSize.Size = new System.Drawing.Size(108, 27);
-            this.lblFileSize.TabIndex = 30;
-            this.lblFileSize.Text = "0.00MB";
-            this.lblFileSize.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this._lblFileSize.ForeColor = System.Drawing.Color.Blue;
+            this._lblFileSize.Location = new System.Drawing.Point(305, 99);
+            this._lblFileSize.Name = "_lblFileSize";
+            this._lblFileSize.Size = new System.Drawing.Size(108, 27);
+            this._lblFileSize.TabIndex = 30;
+            this._lblFileSize.Text = "0.00MB";
+            this._lblFileSize.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lblrootname
+            // _lblrootname
             // 
-            this.lblrootname.AutoSize = true;
-            this.lblrootname.ForeColor = System.Drawing.Color.Blue;
-            this.lblrootname.Location = new System.Drawing.Point(27, 151);
-            this.lblrootname.Name = "lblrootname";
-            this.lblrootname.Size = new System.Drawing.Size(77, 24);
-            this.lblrootname.TabIndex = 31;
-            this.lblrootname.Text = "3.0.0..zip";
+            this._lblrootname.AutoSize = true;
+            this._lblrootname.ForeColor = System.Drawing.Color.Blue;
+            this._lblrootname.Location = new System.Drawing.Point(27, 102);
+            this._lblrootname.Name = "_lblrootname";
+            this._lblrootname.Size = new System.Drawing.Size(77, 24);
+            this._lblrootname.TabIndex = 31;
+            this._lblrootname.Text = "1.0.0..zip";
             // 
             // UpdaterDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(649, 270);
+            this.ClientSize = new System.Drawing.Size(446, 200);
             this.Font = new System.Drawing.Font("Hanuman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(0, 0);
@@ -154,7 +155,7 @@ namespace QTech.Forms
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "UpdaterDialog";
-            this.Text = "កំណត់ App Settings";
+            this.Text = "ធ្វើបច្ចុប្បន្នភាពប្រព័ន្ធ";
             this.container.ResumeLayout(false);
             this.container.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -167,9 +168,9 @@ namespace QTech.Forms
         private Component.ExLabel _lblVersion;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lblrootname;
-        private System.Windows.Forms.Label lblFileSize;
-        private Component.ExLabel lblTransferRate;
-        private Component.ExLabel lblDownloaded;
+        private System.Windows.Forms.Label _lblrootname;
+        private System.Windows.Forms.Label _lblFileSize;
+        private Component.ExLabel _lblTransferRate;
+        private Component.ExLabel _lblDownloaded;
     }
 }

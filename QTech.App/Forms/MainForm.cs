@@ -18,6 +18,7 @@ using QTech.Base.Helpers;
 using QTech.Db.Logics;
 using QTech.Base.SearchModels;
 using QTech.Updater;
+using System.IO;
 
 namespace QTech.Forms
 {
@@ -47,7 +48,7 @@ namespace QTech.Forms
             this.InitForm();
             this.OptimizeLoadUI();
             this.FormClosed += (s, e) => Application.Exit();
-            _lblVersion.Text = ShareValue.CurrentAppVersion;
+            _lblVersion.Text = $"v{ShareValue.CurrentAppVersion}";
         }
         private void MainForm_Shown(object sender, EventArgs e)
         {
@@ -279,7 +280,7 @@ namespace QTech.Forms
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             this.Close();
-            new LoginDialog().Show();
+            System.Diagnostics.Process.Start(Path.Combine(Application.StartupPath, "QTech.exe"));
         }
 
         private void txtVersion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

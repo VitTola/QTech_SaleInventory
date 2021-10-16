@@ -49,7 +49,7 @@ namespace QTech.Forms
                     return user;
                 }
 
-                //ShareValue.CurrentAppVersion = AppSettingLogic.Instance.GetCurrentVersion();
+                ShareValue.CurrentAppVersion = ApplicationSettingLogic.Instance.GetCurrentVersion() ?? "";
                 ShareValue.User = user;
                 var userPermissions = UserPermissionLogic.Instance.GetUserPermissionsByUserId(user.Id);
                 if (userPermissions != null)

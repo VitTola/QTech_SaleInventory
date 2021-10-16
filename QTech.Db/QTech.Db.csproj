@@ -264,9 +264,9 @@
     <Compile Include="Migrations\202109211724584_v5.0.designer.cs">
       <DependentUpon>202109211724584_v5.0.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110150806515_v5.1.cs" />
-    <Compile Include="Migrations\202110150806515_v5.1.designer.cs">
-      <DependentUpon>202110150806515_v5.1.cs</DependentUpon>
+    <Compile Include="Migrations\202110151310101_v5.2.cs" />
+    <Compile Include="Migrations\202110151310101_v5.2.designer.cs">
+      <DependentUpon>202110151310101_v5.2.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -402,8 +402,8 @@
     <EmbeddedResource Include="Migrations\202109211724584_v5.0.resx">
       <DependentUpon>202109211724584_v5.0.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110150806515_v5.1.resx">
-      <DependentUpon>202110150806515_v5.1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110151310101_v5.2.resx">
+      <DependentUpon>202110151310101_v5.2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

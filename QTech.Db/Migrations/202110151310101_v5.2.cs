@@ -3,16 +3,15 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class v51 : DbMigration
+    public partial class v52 : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.AppSettings",
+                "dbo.ApplicationSettings",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        ServerVersion = c.String(),
                         AppDownloadLink = c.String(),
                         CurrentAppVersion = c.String(),
                         Active = c.Boolean(nullable: false),
@@ -25,7 +24,7 @@
         
         public override void Down()
         {
-            DropTable("dbo.AppSettings");
+            DropTable("dbo.ApplicationSettings");
         }
     }
 }
