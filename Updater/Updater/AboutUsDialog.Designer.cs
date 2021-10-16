@@ -1,4 +1,4 @@
-﻿namespace QTech.Updater
+﻿namespace Updater
 {
     partial class AboutUsDialog
     {
@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.picLogo = new System.Windows.Forms.PictureBox();
-            this.exPanel = new QTech.Component.Components.ExPanel();
+            this.exPanel = new System.Windows.Forms.Panel();
             this._lblVersion = new System.Windows.Forms.LinkLabel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnClose = new QTech.Component.ExButtonLoading();
+            this.btnClose = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this._lblComanyName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,7 +44,7 @@
             this.exPanel.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             // 
             // container
             // 
@@ -59,14 +60,11 @@
             // 
             this.picLogo.BackColor = System.Drawing.Color.Transparent;
             this.picLogo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.picLogo.ErrorImage = global::QTech.Properties.Resources.QTech__2_;
-            this.picLogo.Image = global::QTech.Properties.Resources.Pheng_Ry;
-            this.picLogo.InitialImage = global::QTech.Properties.Resources.QTech__2_;
+            this.picLogo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picLogo.Location = new System.Drawing.Point(0, 0);
             this.picLogo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(456, 88);
+            this.picLogo.Size = new System.Drawing.Size(456, 109);
             this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picLogo.TabIndex = 1;
             this.picLogo.TabStop = false;
@@ -112,14 +110,11 @@
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.DefaultImage = null;
-            this.btnClose.Executing = false;
+   
             this.btnClose.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Location = new System.Drawing.Point(18, 5);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 5, 3, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.ShortcutAligment = QTech.Component.ExButtonLoading.Aligment.Horizontal;
-            this.btnClose.ShortcutText = null;
             this.btnClose.Size = new System.Drawing.Size(82, 28);
             this.btnClose.TabIndex = 5;
             this.btnClose.Text = "បិទ";
@@ -128,6 +123,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.picLogo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(1, 1);
@@ -135,6 +131,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(456, 109);
             this.panel1.TabIndex = 25;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Updater.Properties.Resources.Pheng_Ry;
+            this.pictureBox1.Location = new System.Drawing.Point(185, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(94, 88);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 27;
+            this.pictureBox1.TabStop = false;
             // 
             // _lblComanyName
             // 
@@ -204,36 +210,39 @@
             // 
             // AboutUsDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 29F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(458, 355);
-            this.Font = new System.Drawing.Font("Khmer OS Siemreap", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Location = new System.Drawing.Point(0, 0);
-            this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.Name = "AboutUsDialog";
-            this.Text = "AboutUsDialog";
-            this.Load += new System.EventHandler(this.AboutUsDialog_Load);
+            //this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 29F);
+            //this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            //this.ClientSize = new System.Drawing.Size(458, 355);
+            //this.Font = new System.Drawing.Font("Khmer OS Siemreap", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //this.Location = new System.Drawing.Point(0, 0);
+            //this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            //this.Name = "AboutUsDialog";
+            //this.Text = "AboutUsDialog";
+            //this.Load += new System.EventHandler(this.AboutUsDialog_Load);
             this.container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.exPanel.ResumeLayout(false);
             this.exPanel.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 
         }
 
         #endregion
 
         private System.Windows.Forms.PictureBox picLogo;
-        private Component.Components.ExPanel exPanel;
+        private System.Windows.Forms.Panel exPanel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private Component.ExButtonLoading btnClose;
+        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label _lblComanyName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.LinkLabel _lblVersion;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel container;
+
     }
 }

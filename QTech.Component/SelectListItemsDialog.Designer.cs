@@ -31,9 +31,13 @@ namespace QTech.Component
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            Paging paging1 = new Paging();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            QTech.Base.BaseModels.Paging paging1 = new QTech.Base.BaseModels.Paging();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectListItemsDialog));
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();
             this.graPanel1 = new QTech.Component.GRAPanel();
             this.colorWithAlpha2 = new QTech.Component.ColorWithAlpha();
@@ -83,7 +87,7 @@ namespace QTech.Component
             this.container.Controls.Add(this.panel1);
             this.container.Controls.Add(this.graPanel1);
             this.container.Padding = new System.Windows.Forms.Padding(1, 0, 1, 1);
-            this.container.Size = new System.Drawing.Size(920, 599);
+            this.container.Size = new System.Drawing.Size(920, 600);
             this.container.Text = "container";
             // 
             // colorWithAlpha1
@@ -174,11 +178,11 @@ namespace QTech.Component
             // 
             this.lblChoosed1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblChoosed1.AutoSize = true;
-            this.lblChoosed1.Location = new System.Drawing.Point(135, 10);
+            this.lblChoosed1.Location = new System.Drawing.Point(142, 10);
             this.lblChoosed1.Margin = new System.Windows.Forms.Padding(2, 6, 0, 2);
             this.lblChoosed1.Name = "lblChoosed1";
             this.lblChoosed1.Required = false;
-            this.lblChoosed1.Size = new System.Drawing.Size(80, 19);
+            this.lblChoosed1.Size = new System.Drawing.Size(73, 19);
             this.lblChoosed1.TabIndex = 7;
             this.lblChoosed1.Text = "បានជ្រើសរើស";
             // 
@@ -220,6 +224,10 @@ namespace QTech.Component
             this.dgv.BackgroundColor = System.Drawing.Color.White;
             this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Ivory;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colId,
@@ -227,14 +235,14 @@ namespace QTech.Component
             this.colName,
             this.colDisplayText_,
             this.colItemObject});
-            //dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            //dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            //dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            //dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            //dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
-            //dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            //dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            //this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
@@ -246,7 +254,7 @@ namespace QTech.Component
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(646, 530);
+            this.dgv.Size = new System.Drawing.Size(646, 531);
             this.dgv.TabIndex = 1;
             this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
             this.dgv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgv_KeyDown);
@@ -331,7 +339,7 @@ namespace QTech.Component
             this.panel1.Controls.Add(this.flowLayoutPanel4);
             this.panel1.Controls.Add(this.pagination);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(1, 565);
+            this.panel1.Location = new System.Drawing.Point(1, 566);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(918, 33);
             this.panel1.TabIndex = 4;
@@ -367,6 +375,7 @@ namespace QTech.Component
             this.pagination.Action = null;
             this.pagination.Dock = System.Windows.Forms.DockStyle.Left;
             this.pagination.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pagination.IsPaging = false;
             this.pagination.ListModel = null;
             this.pagination.Location = new System.Drawing.Point(0, 0);
             this.pagination.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -398,25 +407,29 @@ namespace QTech.Component
             this.dgvSelected.AllowUserToAddRows = false;
             this.dgvSelected.AllowUserToDeleteRows = false;
             this.dgvSelected.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvSelected.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvSelected.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvSelected.BackgroundColor = System.Drawing.Color.White;
             this.dgvSelected.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvSelected.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Ivory;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Ivory;
+            this.dgvSelected.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvSelected.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSelected.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSelectedId,
             this.colSelectedName_,
             this.colSelectedItemObject,
             this.colRemove_});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSelected.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Khmer OS Siemreap", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSelected.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvSelected.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSelected.EnableHeadersVisualStyles = false;
             this.dgvSelected.Executing = false;
@@ -428,7 +441,7 @@ namespace QTech.Component
             this.dgvSelected.RowHeadersVisible = false;
             this.dgvSelected.RowTemplate.Height = 28;
             this.dgvSelected.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSelected.Size = new System.Drawing.Size(269, 530);
+            this.dgvSelected.Size = new System.Drawing.Size(269, 531);
             this.dgvSelected.TabIndex = 6;
             // 
             // colSelectedId
@@ -475,7 +488,7 @@ namespace QTech.Component
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(1, 35);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(918, 530);
+            this.panel2.Size = new System.Drawing.Size(918, 531);
             this.panel2.TabIndex = 7;
             // 
             // pnlRight
@@ -485,7 +498,7 @@ namespace QTech.Component
             this.pnlRight.Location = new System.Drawing.Point(646, 0);
             this.pnlRight.Name = "pnlRight";
             this.pnlRight.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.pnlRight.Size = new System.Drawing.Size(272, 530);
+            this.pnlRight.Size = new System.Drawing.Size(272, 531);
             this.pnlRight.TabIndex = 8;
             this.pnlRight.Visible = false;
             // 
@@ -493,6 +506,7 @@ namespace QTech.Component
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.ClientSize = new System.Drawing.Size(920, 620);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "SelectListItemsDialog";

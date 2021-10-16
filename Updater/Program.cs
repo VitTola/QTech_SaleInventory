@@ -1,16 +1,11 @@
 ﻿
-using QTech.Component;
-using QTech.Db;
-using QTech.Forms;
-using SaleInventory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Resources;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QTech
+namespace Updater
 {
     static class Program
     {
@@ -22,11 +17,7 @@ namespace QTech
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            DataBaseSetting.ReadSetting();
-
-            Application.Run(new MainForm());
-            //Application.Run(new LoginDialog());
-
+            Application.Run(new AboutUsDialog());
         }
     }
 }

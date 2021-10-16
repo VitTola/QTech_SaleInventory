@@ -1,6 +1,4 @@
-﻿using QTech.Base.Helpers;
-using QTech.Component;
-using QTech.Forms;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,9 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QTech.Updater
+namespace Updater
 {
-    public partial class AboutUsDialog : ExDialog
+    public partial class AboutUsDialog : Form
     {
         public AboutUsDialog()
         {
@@ -24,50 +22,62 @@ namespace QTech.Updater
         string filePath = string.Empty;
         string nextVersion = string.Empty;
         long fileSize;
+        public string AppDownloadLink { get; set; } = "ftp://54.255.194.247/QTech_Sale/";
+        public  string CurrentAppVersion { get; set; }
 
-        public QTech.Base.OutFaceModels.Version AppVersion { get; set; } = new Base.OutFaceModels.Version();
+        public Version AppVersion { get; set; } = new Version();
         private void InitEvent()
         {
             Text = string.Empty;
             MinimizeBox = MaximizeBox = false;
             CenterToScreen();
+            AppDownloadLink = StaticVar.AppDownloadLink;
+            CurrentAppVersion = StaticVar.CurrentAppVersion;
         }
-        private void ApplySetting()
+
+        bool exist = false;
+        private async Task CheckIfFileExistsOnServer()
         {
             _lblVersion.Text = string.Empty;
-            if (CheckIfFileExistsOnServer())
+
+            var result = await Task.Run(() =>
+            {
+                nextVersion = GetNextVersion();
+                filePath = $"{AppDownloadLink}{nextVersion}.zip";
+
+                var request = (FtpWebRequest)WebRequest.Create(filePath);
+                request.Credentials = new NetworkCredential("Tola", "T123@tiger");
+                request.Method = WebRequestMethods.Ftp.GetFileSize;
+
+                try
+                {
+                    FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+                    fileSize = response.ContentLength;
+                    exist = true;
+                }
+                catch (WebException ex)
+                {
+                    FtpWebResponse response = (FtpWebResponse)ex.Response;
+                    if (response.StatusCode == FtpStatusCode.ActionNotTakenFileUnavailable)
+                        exist = false;
+                }
+                return exist;
+            });
+        }
+        private async void SetVersionText()
+        {
+            await CheckIfFileExistsOnServer();
+
+            if (exist)
             {
                 _lblVersion.Text = $"ទាញយកជំនាន់កម្មវិធីថ្មី {nextVersion}";
             }
-
         }
-        private bool CheckIfFileExistsOnServer()
-        {
-            bool exist = false;
-            nextVersion = GetNextVersion();
-            filePath = $"{ShareValue.AppDownloadLink}{nextVersion}.zip";
 
-            var request = (FtpWebRequest)WebRequest.Create(filePath);
-            request.Credentials = new NetworkCredential("Tola", "T123@tiger");
-            request.Method = WebRequestMethods.Ftp.GetFileSize;
-
-            try
-            {
-                FtpWebResponse response = (FtpWebResponse)request.GetResponse();
-                fileSize = response.ContentLength;
-                exist = true;
-            }
-            catch (WebException ex)
-            {
-                FtpWebResponse response = (FtpWebResponse)ex.Response;
-                if (response.StatusCode == FtpStatusCode.ActionNotTakenFileUnavailable)
-                    exist = false;
-            }
-            return exist;
-        }
         private string GetNextVersion()
         {
-            var subVersions = ShareValue.CurrentAppVersion.Split('.');
+
+            var subVersions = StaticVar.CurrentAppVersion.Split('.');
             int first = int.Parse(subVersions[0]);
             int second = int.Parse(subVersions[1]);
             int third = int.Parse(subVersions[2]);
@@ -92,7 +102,6 @@ namespace QTech.Updater
         private void lblVersion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             new UpdaterDialog(nextVersion, filePath, fileSize).ShowDialog();
-
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -102,7 +111,7 @@ namespace QTech.Updater
 
         private void AboutUsDialog_Load(object sender, EventArgs e)
         {
-            ApplySetting();
+            SetVersionText();
         }
     }
 }

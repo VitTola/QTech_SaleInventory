@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 
 
-namespace QTech.Forms
+namespace Updater
 {
     partial class UpdaterDialog
     {
@@ -32,31 +32,16 @@ namespace QTech.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdaterDialog));
-            this.exLabel1 = new QTech.Component.ExLabel();
-            this._lblVersion = new QTech.Component.ExLabel();
+            this.exLabel1 = new System.Windows.Forms.Label();
+            this._lblVersion = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this._lblDownloaded = new QTech.Component.ExLabel();
-            this._lblTransferRate = new QTech.Component.ExLabel();
+            this._lblDownloaded = new System.Windows.Forms.Label();
+            this._lblTransferRate = new System.Windows.Forms.Label();
             this._lblFileSize = new System.Windows.Forms.Label();
             this._lblrootname = new System.Windows.Forms.Label();
-            this.container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // container
-            // 
-            this.container.Controls.Add(this._lblrootname);
-            this.container.Controls.Add(this._lblFileSize);
-            this.container.Controls.Add(this._lblTransferRate);
-            this.container.Controls.Add(this._lblDownloaded);
-            this.container.Controls.Add(this.pictureBox1);
-            this.container.Controls.Add(this.progressBar);
-            this.container.Controls.Add(this._lblVersion);
-            this.container.Controls.Add(this.exLabel1);
-            this.container.Padding = new System.Windows.Forms.Padding(2);
-            this.container.Size = new System.Drawing.Size(446, 180);
-            this.container.Text = "container";
             // 
             // exLabel1
             // 
@@ -64,7 +49,6 @@ namespace QTech.Forms
             this.exLabel1.Location = new System.Drawing.Point(27, 28);
             this.exLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.exLabel1.Name = "exLabel1";
-            this.exLabel1.Required = false;
             this.exLabel1.Size = new System.Drawing.Size(287, 32);
             this.exLabel1.TabIndex = 23;
             this.exLabel1.Text = "កំពុងធ្វើបច្ចុប្បន្នភាព QTech Sale .  .  .  .  .  .";
@@ -76,7 +60,6 @@ namespace QTech.Forms
             this._lblVersion.Location = new System.Drawing.Point(27, 71);
             this._lblVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this._lblVersion.Name = "_lblVersion";
-            this._lblVersion.Required = false;
             this._lblVersion.Size = new System.Drawing.Size(83, 24);
             this._lblVersion.TabIndex = 24;
             this._lblVersion.Text = "ជំនាន់កម្មវិធី";
@@ -91,7 +74,7 @@ namespace QTech.Forms
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::QTech.Properties.Resources.UpateIcon;
+            this.pictureBox1.Image = global::Updater.Properties.Resources.UpateIcon;
             this.pictureBox1.Location = new System.Drawing.Point(321, 5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(94, 88);
@@ -105,7 +88,6 @@ namespace QTech.Forms
             this._lblDownloaded.Location = new System.Drawing.Point(27, 147);
             this._lblDownloaded.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this._lblDownloaded.Name = "_lblDownloaded";
-            this._lblDownloaded.Required = false;
             this._lblDownloaded.Size = new System.Drawing.Size(172, 24);
             this._lblDownloaded.TabIndex = 28;
             this._lblDownloaded.Text = "0.00M(0%)";
@@ -117,7 +99,6 @@ namespace QTech.Forms
             this._lblTransferRate.Location = new System.Drawing.Point(309, 147);
             this._lblTransferRate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this._lblTransferRate.Name = "_lblTransferRate";
-            this._lblTransferRate.Required = false;
             this._lblTransferRate.Size = new System.Drawing.Size(104, 24);
             this._lblTransferRate.TabIndex = 29;
             this._lblTransferRate.Text = "0.00kb/s";
@@ -147,30 +128,29 @@ namespace QTech.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(446, 200);
+            this.ClientSize = new System.Drawing.Size(588, 239);
             this.Font = new System.Drawing.Font("Hanuman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Location = new System.Drawing.Point(0, 0);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "UpdaterDialog";
             this.Text = "ធ្វើបច្ចុប្បន្នភាពប្រព័ន្ធ";
-            this.container.ResumeLayout(false);
-            this.container.PerformLayout();
+            this.Load += new System.EventHandler(this.UpdaterDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private Component.ExLabel exLabel1;
-        private Component.ExLabel _lblVersion;
+        private System.Windows.Forms.Label exLabel1;
+        private System.Windows.Forms.Label _lblVersion;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label _lblrootname;
         private System.Windows.Forms.Label _lblFileSize;
-        private Component.ExLabel _lblTransferRate;
-        private Component.ExLabel _lblDownloaded;
+        private System.Windows.Forms.Label _lblTransferRate;
+        private System.Windows.Forms.Label _lblDownloaded;
+        private System.Windows.Forms.Panel container;
     }
 }

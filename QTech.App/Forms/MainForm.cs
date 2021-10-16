@@ -17,8 +17,8 @@ using Storm.CC.Report.Helpers;
 using QTech.Base.Helpers;
 using QTech.Db.Logics;
 using QTech.Base.SearchModels;
-using QTech.Updater;
 using System.IO;
+using Updater;
 
 namespace QTech.Forms
 {
@@ -38,7 +38,8 @@ namespace QTech.Forms
         private void InitEvent()
         {
             this.FormClosing += (e, o) => DataBaseSetting.WriteSetting();
-            //ShareValue.permissions = PermissionLogic.Instance.SearchAsync(new PermissionSearch());
+            ShareValue.permissions = PermissionLogic.Instance.SearchAsync(new PermissionSearch());
+            StaticVar.CurrentAppVersion = ApplicationSettingLogic.Instance.GetCurrentVersion() ?? "";
 
             ReportHelper.Instance.RegisterPath(@"QTech\QTech.App\Reports");
             _lblComanyName.Text = QTech.Base.Properties.Resources.Company;
@@ -48,7 +49,7 @@ namespace QTech.Forms
             this.InitForm();
             this.OptimizeLoadUI();
             this.FormClosed += (s, e) => Application.Exit();
-            _lblVersion.Text = $"v{ShareValue.CurrentAppVersion}";
+            _lblVersion.Text = $"v{StaticVar.CurrentAppVersion}";
         }
         private void MainForm_Shown(object sender, EventArgs e)
         {
@@ -285,26 +286,29 @@ namespace QTech.Forms
 
         private void txtVersion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            new AboutUsDialog().Show();
+            StartUpdater();
         }
 
         private void _lblComanyName_Click(object sender, EventArgs e)
         {
-            new AboutUsDialog().Show();
+            StartUpdater();
         }
 
         private void picLogo_Click(object sender, EventArgs e)
         {
-            new AboutUsDialog().Show();
+            StartUpdater();
         }
-        //protected override CreateParams CreateParams
-        //{
-        //    get
-        //    {
-        //        CreateParams cp = base.CreateParams;
-        //        cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
-        //        return cp;
-        //    }
-        //}
+        private void StartUpdater()
+        {
+            try
+            {
+                var path = Path.Combine(Application.StartupPath, "Updater.exe");
+                System.Diagnostics.Process.Start(path);
+            }
+            catch (Exception ex)
+            {
+                MsgBox.ShowError(ex.Message, "Error");
+            }
+        }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExReportPeroidDatePickerDialog));
             this.lblFromDate = new System.Windows.Forms.Label();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
@@ -49,7 +50,7 @@
             this.container.Controls.Add(this.lblToDate);
             this.container.Controls.Add(this.dtpFromDate);
             this.container.Controls.Add(this.lblFromDate);
-            this.container.Size = new System.Drawing.Size(370, 120);
+            this.container.Size = new System.Drawing.Size(370, 121);
             this.container.Text = "container";
             // 
             // lblFromDate
@@ -102,7 +103,7 @@
             this.exPanel.BackColor = System.Drawing.Color.Transparent;
             this.exPanel.Controls.Add(this.flowLayoutPanel2);
             this.exPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.exPanel.Location = new System.Drawing.Point(1, 83);
+            this.exPanel.Location = new System.Drawing.Point(1, 84);
             this.exPanel.Name = "exPanel";
             this.exPanel.Padding = new System.Windows.Forms.Padding(2);
             this.exPanel.Size = new System.Drawing.Size(368, 36);
@@ -159,6 +160,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(370, 141);
             this.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(0, 0);
             this.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.MaximizeBox = false;

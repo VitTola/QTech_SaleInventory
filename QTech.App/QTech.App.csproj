@@ -382,24 +382,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="Updater\AboutUsDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Updater\AboutUsDialog.Designer.cs">
-      <DependentUpon>AboutUsDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Updater\UpdaterDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Updater\UpdaterDialog.designer.cs">
-      <DependentUpon>UpdaterDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Updater\AppSettingDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Updater\AppSettingDialog.designer.cs">
-      <DependentUpon>AppSettingDialog.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="CustomeForms\SelectProductDialog.resx">
       <DependentUpon>SelectProductDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -548,15 +530,6 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RportDriverDeliveryDetail.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Updater\AboutUsDialog.resx">
-      <DependentUpon>AboutUsDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Updater\UpdaterDialog.resx">
-      <DependentUpon>UpdaterDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Updater\AppSettingDialog.resx">
-      <DependentUpon>AppSettingDialog.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -583,6 +556,10 @@
     <ProjectReference Include="..\QTech.Db\QTech.Db.csproj">
       <Project>{789540cb-aeb1-4e6c-aba1-dac5b8d6d37a}</Project>
       <Name>QTech.Db</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Updater\Updater.csproj">
+      <Project>{8dc88175-66fc-4544-b766-ddbdd70a5e3e}</Project>
+      <Name>Updater</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

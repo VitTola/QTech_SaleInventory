@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportPeroidDatePickerDialog));
             this.lblFromDate = new System.Windows.Forms.Label();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
@@ -49,8 +50,8 @@
             this.container.Controls.Add(this.lblToDate);
             this.container.Controls.Add(this.dtpFromDate);
             this.container.Controls.Add(this.lblFromDate);
-            this.container.Location = new System.Drawing.Point(0, 23);
-            this.container.Size = new System.Drawing.Size(339, 118);
+            this.container.Location = new System.Drawing.Point(0, 19);
+            this.container.Size = new System.Drawing.Size(339, 122);
             this.container.Text = "container";
             // 
             // lblFromDate
@@ -102,7 +103,7 @@
             this.exPanel.BackColor = System.Drawing.Color.Transparent;
             this.exPanel.Controls.Add(this.flowLayoutPanel2);
             this.exPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.exPanel.Location = new System.Drawing.Point(1, 81);
+            this.exPanel.Location = new System.Drawing.Point(1, 85);
             this.exPanel.Name = "exPanel";
             this.exPanel.Padding = new System.Windows.Forms.Padding(2);
             this.exPanel.Size = new System.Drawing.Size(337, 36);
@@ -122,6 +123,7 @@
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.DefaultImage = null;
             this.btnClose.Executing = false;
             this.btnClose.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Location = new System.Drawing.Point(256, 3);
@@ -138,6 +140,7 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOK.DefaultImage = null;
             this.btnOK.Executing = false;
             this.btnOK.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOK.Location = new System.Drawing.Point(152, 3);
@@ -153,10 +156,11 @@
             // 
             // ReportPeroidDatePickerDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(339, 141);
             this.Font = new System.Drawing.Font("Khmer Kep", 9.75F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(0, 0);
             this.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.MaximizeBox = false;

@@ -4,28 +4,20 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using QTech.Component;
-using QTech.Component.Helpers;
-using QTech.Base.Helpers;
-using QTech.Db.Logics;
-using BaseResource = QTech.Base.Properties.Resources;
-using QTech.Db;
 using System.Net;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.IO;
 using System.ComponentModel;
 using System.IO.Compression;
-using System.Windows.Threading;
-using System.Web.Services.Protocols;
 
-namespace QTech.Forms
+namespace Updater
 {
-    public partial class UpdaterDialog : ExDialog
+    public partial class UpdaterDialog : Form
     {
 
-        private string[] _userLoggedIn = Properties.Settings.Default.USER_LOGGED_IN?
-                                                 .Cast<string>().ToArray() ?? new string[0];
+        //private string[] _userLoggedIn = Properties.Settings.Default.USER_LOGGED_IN?
+        //                                         .Cast<string>().ToArray() ?? new string[0];
 
         public UpdaterDialog(string version, string link, long _fileSize)
         {
@@ -72,11 +64,11 @@ namespace QTech.Forms
                 _client.Credentials = new NetworkCredential("Tola", "T123@tiger");
                 _client.DownloadFileAsync(downloadLink, ExtractPath);
                 _lblrootname.Text = Path.GetFileName(downloadLink.LocalPath);
-                _lblVersion.Text = string.Format(BaseResource.Version, AppVersion);
+                _lblVersion.Text = string.Format(Properties.Resources.Version, AppVersion);
             }
             catch (Exception ex)
             {
-                if (MsgBox.ShowError(ex.Message, "") == DialogResult.OK)
+                if (MessageBox.Show(ex.Message, "") == DialogResult.OK)
                 {
                     Environment.ExitCode = 1;
                     Close();
@@ -84,11 +76,12 @@ namespace QTech.Forms
             }
         }
 
+        string errorPath;
         private bool Extract()
         {
             try
             {
-                //KillProcess("QTech");
+                KillProcess("QTech");
                 var archive = ZipFile.OpenRead(ExtractPath);
                 // get the root directory
                 var root = AppVersion;
@@ -144,15 +137,17 @@ namespace QTech.Forms
                 foreach (var entry in result)
                 {
                     var filePath = (Application.StartupPath + @"\" + entry.FullName.Replace(root, "")).Replace("/", "\\").Replace("\\\\", "\\");
+                    errorPath = filePath;
                     var path = Path.GetDirectoryName(filePath);
                     if (!Directory.Exists(path)) Directory.CreateDirectory(path);
                     entry.ExtractToFile(filePath, true);
                 }
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 // rollback version here
+                MessageBox.Show(errorPath + ex.Message, "");
                 return false;
             }
         }
@@ -205,6 +200,11 @@ namespace QTech.Forms
         {
             Environment.ExitCode = 1;
             Close();
+        }
+
+        private void UpdaterDialog_Load(object sender, EventArgs e)
+        {
+
         }
     }
 

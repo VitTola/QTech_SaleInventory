@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddAttachmentDialog));
             this._lblAttachmentName = new QTech.Component.ExLabel();
             this.txtFileName = new System.Windows.Forms.TextBox();
             this._lblAttachementType = new QTech.Component.ExLabel();
@@ -54,7 +55,7 @@
             this.container.Controls.Add(this._lblAttachementType);
             this.container.Controls.Add(this.txtFileName);
             this.container.Controls.Add(this._lblAttachmentName);
-            this.container.Size = new System.Drawing.Size(365, 239);
+            this.container.Size = new System.Drawing.Size(365, 240);
             this.container.Text = "container";
             // 
             // _lblAttachmentName
@@ -63,7 +64,7 @@
             this._lblAttachmentName.Location = new System.Drawing.Point(19, 29);
             this._lblAttachmentName.Name = "_lblAttachmentName";
             this._lblAttachmentName.Required = true;
-            this._lblAttachmentName.Size = new System.Drawing.Size(80, 19);
+            this._lblAttachmentName.Size = new System.Drawing.Size(71, 19);
             this._lblAttachmentName.TabIndex = 0;
             this._lblAttachmentName.Text = "ឈ្មោះឯកសារ";
             // 
@@ -71,9 +72,8 @@
             // 
             this.txtFileName.Location = new System.Drawing.Point(138, 25);
             this.txtFileName.Name = "txtFileName";
-            this.txtFileName.Size = new System.Drawing.Size(200, 27);
+            this.txtFileName.Size = new System.Drawing.Size(200, 28);
             this.txtFileName.TabIndex = 0;
-            //this.txtFileName.TextChanged += new System.EventHandler(this.txtFileName_TextChanged);
             // 
             // _lblAttachementType
             // 
@@ -81,7 +81,7 @@
             this._lblAttachementType.Location = new System.Drawing.Point(19, 60);
             this._lblAttachementType.Name = "_lblAttachementType";
             this._lblAttachementType.Required = true;
-            this._lblAttachementType.Size = new System.Drawing.Size(81, 19);
+            this._lblAttachementType.Size = new System.Drawing.Size(75, 19);
             this._lblAttachementType.TabIndex = 2;
             this._lblAttachementType.Text = "ប្រភេទឯកសារ";
             // 
@@ -101,7 +101,7 @@
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.btnClose);
-            this.groupBox1.Location = new System.Drawing.Point(1, 193);
+            this.groupBox1.Location = new System.Drawing.Point(1, 194);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(1);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(0);
@@ -114,6 +114,7 @@
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.DefaultImage = null;
             this.btnSave.Executing = false;
+            this.btnSave.Font = new System.Drawing.Font("Khmer OS System", 8F);
             this.btnSave.Location = new System.Drawing.Point(181, 14);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
@@ -123,13 +124,13 @@
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "រក្សាទុក";
             this.btnSave.UseVisualStyleBackColor = true;
-            //this.btnSave.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.DefaultImage = null;
             this.btnClose.Executing = false;
+            this.btnClose.Font = new System.Drawing.Font("Khmer OS System", 8F);
             this.btnClose.Location = new System.Drawing.Point(285, 14);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
@@ -139,7 +140,6 @@
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "បិទ";
             this.btnClose.UseVisualStyleBackColor = true;
-            //this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // txtNote
             // 
@@ -154,7 +154,7 @@
             this.lblNote.AutoSize = true;
             this.lblNote.Location = new System.Drawing.Point(19, 90);
             this.lblNote.Name = "lblNote";
-            this.lblNote.Size = new System.Drawing.Size(78, 19);
+            this.lblNote.Size = new System.Drawing.Size(73, 19);
             this.lblNote.TabIndex = 5;
             this.lblNote.Text = "កំណត់សំគាល់";
             // 
@@ -164,7 +164,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel2.Controls.Add(this._lblFilePath);
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(23, 166);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(23, 167);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(1);
@@ -176,10 +176,10 @@
             this._lblFilePath.AutoEllipsis = true;
             this._lblFilePath.AutoSize = true;
             this._lblFilePath.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this._lblFilePath.Location = new System.Drawing.Point(275, 1);
+            this._lblFilePath.Location = new System.Drawing.Point(276, 1);
             this._lblFilePath.Margin = new System.Windows.Forms.Padding(0);
             this._lblFilePath.Name = "_lblFilePath";
-            this._lblFilePath.Size = new System.Drawing.Size(37, 19);
+            this._lblFilePath.Size = new System.Drawing.Size(36, 19);
             this._lblFilePath.TabIndex = 0;
             this._lblFilePath.Text = "label1";
             this._lblFilePath.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -189,6 +189,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(365, 260);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(0, 0);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
