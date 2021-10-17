@@ -10,7 +10,6 @@ using QTech.Base.Helpers;
 using QTech.Db.Logics;
 using BaseResource = QTech.Base.Properties.Resources;
 using QTech.Db;
-using Updater;
 
 namespace QTech.Forms
 {
@@ -49,8 +48,7 @@ namespace QTech.Forms
                     MsgBox.ShowWarning( BaseResource.MsgNotCorrectNameOrPassword, BaseResource.Login);
                     return user;
                 }
-
-                StaticVar.CurrentAppVersion = ApplicationSettingLogic.Instance.GetCurrentVersion() ?? "";
+                
                 ShareValue.User = user;
                 var userPermissions = UserPermissionLogic.Instance.GetUserPermissionsByUserId(user.Id);
                 if (userPermissions != null)

@@ -8,7 +8,7 @@ namespace Updater
 {
     public class StaticVar
     {
-        public static string AppDownloadLink { get; set; } = "ftp://54.255.194.247/QTech_Sale/";
+        public static string AppDownloadLink { get; set; } 
         public static string CurrentAppVersion { get; set; }
     }
 }

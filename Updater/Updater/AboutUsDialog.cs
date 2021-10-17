@@ -22,8 +22,6 @@ namespace Updater
         string filePath = string.Empty;
         string nextVersion = string.Empty;
         long fileSize;
-        public string AppDownloadLink { get; set; } = "ftp://54.255.194.247/QTech_Sale/";
-        public  string CurrentAppVersion { get; set; }
 
         public Version AppVersion { get; set; } = new Version();
         private void InitEvent()
@@ -31,38 +29,55 @@ namespace Updater
             Text = string.Empty;
             MinimizeBox = MaximizeBox = false;
             CenterToScreen();
-            AppDownloadLink = StaticVar.AppDownloadLink;
-            CurrentAppVersion = StaticVar.CurrentAppVersion;
+            try
+            {
+                var version = AppSettingConfig.ReadAppSetting();
+                StaticVar.AppDownloadLink = version.Url;
+                StaticVar.CurrentAppVersion = version.AppVersion;
+            }
+            catch (Exception)
+            {
+                
+            }
+            
         }
 
         bool exist = false;
         private async Task CheckIfFileExistsOnServer()
         {
-            _lblVersion.Text = string.Empty;
-
-            var result = await Task.Run(() =>
+            try
             {
-                nextVersion = GetNextVersion();
-                filePath = $"{AppDownloadLink}{nextVersion}.zip";
+                _lblVersion.Text = string.Empty;
 
-                var request = (FtpWebRequest)WebRequest.Create(filePath);
-                request.Credentials = new NetworkCredential("Tola", "T123@tiger");
-                request.Method = WebRequestMethods.Ftp.GetFileSize;
+                var result = await Task.Run(() =>
+                {
+                    nextVersion = GetNextVersion();
+                    filePath = $"{StaticVar.AppDownloadLink}{nextVersion}.zip";
 
-                try
-                {
-                    FtpWebResponse response = (FtpWebResponse)request.GetResponse();
-                    fileSize = response.ContentLength;
-                    exist = true;
-                }
-                catch (WebException ex)
-                {
-                    FtpWebResponse response = (FtpWebResponse)ex.Response;
-                    if (response.StatusCode == FtpStatusCode.ActionNotTakenFileUnavailable)
-                        exist = false;
-                }
-                return exist;
-            });
+                    var request = (FtpWebRequest)WebRequest.Create(filePath);
+                    request.Credentials = new NetworkCredential("Tola", "T123@tiger");
+                    request.Method = WebRequestMethods.Ftp.GetFileSize;
+
+                    try
+                    {
+                        FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+                        fileSize = response.ContentLength;
+                        exist = true;
+                    }
+                    catch (WebException ex)
+                    {
+                        FtpWebResponse response = (FtpWebResponse)ex.Response;
+                        if (response.StatusCode == FtpStatusCode.ActionNotTakenFileUnavailable)
+                            exist = false;
+                    }
+                    return exist;
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,"CheckExistFile");
+            }
+            
         }
         private async void SetVersionText()
         {
@@ -76,40 +91,47 @@ namespace Updater
 
         private string GetNextVersion()
         {
-
-            var subVersions = StaticVar.CurrentAppVersion.Split('.');
-            int first = int.Parse(subVersions[0]);
-            int second = int.Parse(subVersions[1]);
-            int third = int.Parse(subVersions[2]);
-            if (third < 9)
+            try
             {
-                return $"v{first}.{second}.{third + 1}";
+                var subVersions = StaticVar.CurrentAppVersion.Split('.');
+                int first = int.Parse(subVersions[0]);
+                int second = int.Parse(subVersions[1]);
+                int third = int.Parse(subVersions[2]);
+                if (third < 9)
+                {
+                    return $"v{first}.{second}.{third + 1}";
+                }
+                else if (third == 9)
+                {
+                    return $"v{first}.{second + 1}.0";
+                }
+                else if (third == 9 && second < 9)
+                {
+                    return $"v{first}.{second + 1}.0";
+                }
+                else if (third == 9 && second == 9)
+                {
+                    return $"v{first + 1}.0.0";
+                }
+                return string.Empty;
             }
-            else if (third == 9)
+            catch (Exception ex)
             {
-                return $"v{first}.{second + 1}.0";
+                MessageBox.Show(ex.Message, "GetVersion()");
+                return string.Empty;
             }
-            else if (third == 9 && second < 9)
-            {
-                return $"v{first}.{second + 1}.0";
-            }
-            else if (third == 9 && second == 9)
-            {
-                return $"v{first + 1}.0.0";
-            }
-            return string.Empty;
         }
-        private void lblVersion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            new UpdaterDialog(nextVersion, filePath, fileSize).ShowDialog();
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
+        private void btnClose_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void AboutUsDialog_Load(object sender, EventArgs e)
+        private void _lblVersion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new UpdaterDialog(nextVersion, filePath, fileSize).ShowDialog();
+        }
+
+        private void AboutUsDialog_Load_1(object sender, EventArgs e)
         {
             SetVersionText();
         }

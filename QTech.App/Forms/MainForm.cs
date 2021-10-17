@@ -18,6 +18,7 @@ using QTech.Base.Helpers;
 using QTech.Db.Logics;
 using QTech.Base.SearchModels;
 using System.IO;
+using Newtonsoft.Json;
 using Updater;
 
 namespace QTech.Forms
@@ -38,8 +39,7 @@ namespace QTech.Forms
         private void InitEvent()
         {
             this.FormClosing += (e, o) => DataBaseSetting.WriteSetting();
-            ShareValue.permissions = PermissionLogic.Instance.SearchAsync(new PermissionSearch());
-            StaticVar.CurrentAppVersion = ApplicationSettingLogic.Instance.GetCurrentVersion() ?? "";
+            //ShareValue.permissions = PermissionLogic.Instance.SearchAsync(new PermissionSearch());
 
             ReportHelper.Instance.RegisterPath(@"QTech\QTech.App\Reports");
             _lblComanyName.Text = QTech.Base.Properties.Resources.Company;
@@ -49,7 +49,14 @@ namespace QTech.Forms
             this.InitForm();
             this.OptimizeLoadUI();
             this.FormClosed += (s, e) => Application.Exit();
-            _lblVersion.Text = $"v{StaticVar.CurrentAppVersion}";
+
+            try
+            {
+                var jsonData = File.ReadAllText("Version.json");
+                var version = JsonConvert.DeserializeObject<QTech.Base.Models.Version>(jsonData);
+                _lblVersion.Text = $"v{version?.AppVersion}";
+            }
+            catch (Exception) { }
         }
         private void MainForm_Shown(object sender, EventArgs e)
         {
@@ -304,6 +311,8 @@ namespace QTech.Forms
             {
                 var path = Path.Combine(Application.StartupPath, "Updater.exe");
                 System.Diagnostics.Process.Start(path);
+
+                //new AboutUsDialog().ShowDialog();
             }
             catch (Exception ex)
             {

@@ -174,6 +174,7 @@
     <Compile Include="Models\Sale.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserPermission.cs" />
+    <Compile Include="Models\Version.cs" />
     <Compile Include="OutFaceModels\DriverDeliveryDetail.cs" />
     <Compile Include="OutFaceModels\EmployeeBillOutFace.cs" />
     <Compile Include="OutFaceModels\Expense.cs" />

@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
 using System.IO;
 using System.ComponentModel;
 using System.IO.Compression;
+using System.Collections.Generic;
 
 namespace Updater
 {
@@ -64,7 +65,7 @@ namespace Updater
                 _client.Credentials = new NetworkCredential("Tola", "T123@tiger");
                 _client.DownloadFileAsync(downloadLink, ExtractPath);
                 _lblrootname.Text = Path.GetFileName(downloadLink.LocalPath);
-                _lblVersion.Text = string.Format(Properties.Resources.Version, AppVersion);
+                _lblVersion.Text = $"{Properties.Resources.Version} {AppVersion}";
             }
             catch (Exception ex)
             {
@@ -174,6 +175,16 @@ namespace Updater
             _sw.Reset();
             if (Extract())
             {
+                try
+                {
+                    var version = new Version { AppVersion = AppVersion.Replace("v",""), Url = StaticVar.AppDownloadLink };
+                    AppSettingConfig.WriteAppSetting(version);
+                }
+                catch (Exception)
+                {
+                    
+                }
+           
                 System.Diagnostics.Process.Start(Path.Combine(Application.StartupPath, "QTech.exe"));
             }
             Application.Exit();
@@ -200,11 +211,6 @@ namespace Updater
         {
             Environment.ExitCode = 1;
             Close();
-        }
-
-        private void UpdaterDialog_Load(object sender, EventArgs e)
-        {
-
         }
     }
 
