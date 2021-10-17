@@ -16,10 +16,6 @@ namespace Updater
 {
     public partial class UpdaterDialog : Form
     {
-
-        //private string[] _userLoggedIn = Properties.Settings.Default.USER_LOGGED_IN?
-        //                                         .Cast<string>().ToArray() ?? new string[0];
-
         public UpdaterDialog(string version, string link, long _fileSize)
         {
             InitializeComponent();
@@ -39,12 +35,14 @@ namespace Updater
         public const int WmNclbuttondown = 0xA1;
         public const int HtCaption = 0x2;
         private long _fileSize;
-        int percentage = 0;
+        int percentage = 1;
 
         public string LinkDownload { get; set; }
         public string AppVersion { get; set; }
         public string ExtractPath => Application.StartupPath + string.Format("\\FileUpdate\\{0}", string.Concat(AppVersion, ".zip"));
-
+        private static List<string> exceptedFiles = new List<string>() {"Newtonsoft.Json.xml","Newtonsoft.Json.dll", "Updater.exe", "Setting.json",
+            "Version.json","Updater.exe.config","Updater.pdb"};
+        private static Dictionary<string, string> filePairs = new Dictionary<string, string>();
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int msg, int wParam, int lParam);
         [DllImport("user32.dll")]
@@ -88,8 +86,21 @@ namespace Updater
                 var root = AppVersion;
                 var result = from curr in archive.Entries
                              where Path.GetDirectoryName(curr.FullName) != archive.Entries[0]?.FullName
-                             where !string.IsNullOrEmpty(curr.Name)
+                            && !string.IsNullOrEmpty(curr.Name)
+                            && !exceptedFiles.Any(x=>curr.FullName.EndsWith(x))
                              select curr;
+
+                Dictionary<string, ZipArchiveEntry> entriesPairs = new Dictionary<string, ZipArchiveEntry>();
+                entriesPairs = result.ToDictionary(k=>k.FullName, v=>v);
+                foreach (var ex in exceptedFiles)
+                {
+                    foreach (var s in entriesPairs.Where(kv => kv.Key.EndsWith(ex)).ToList())
+                    {
+                        entriesPairs.Remove(s.Key);
+                    }
+                }
+
+                var fullPaths = result.Select(x => x.FullName).Where(y => !exceptedFiles.Any(e => y.EndsWith(e))).ToList();
 
                 var removeEntity = result?.FirstOrDefault(x => x.Name.EndsWith("RemoveNames.txt"));
                 if (removeEntity != null)
@@ -135,7 +146,7 @@ namespace Updater
                     }
                 }
 
-                foreach (var entry in result)
+                foreach (var entry in entriesPairs.Select(x=>x.Value))
                 {
                     var filePath = (Application.StartupPath + @"\" + entry.FullName.Replace(root, "")).Replace("/", "\\").Replace("\\\\", "\\");
                     errorPath = filePath;
@@ -153,12 +164,13 @@ namespace Updater
             }
         }
 
+        bool initialized = true;
         private void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             var fileSize = _fileSize / 1024d / 1024d;
             var downloadCompleted = e.BytesReceived / 1024d / 1024d;
             var transferRate = e.BytesReceived / 1024d / _sw.Elapsed.TotalSeconds;
-            percentage = (int)((e.BytesReceived * 100) / _fileSize);
+            percentage =(int)((e.BytesReceived * 100) / _fileSize);
             progressBar.Value = percentage;
             _lblFileSize.Text = $"{ fileSize:N2}MB";
             _lblDownloaded.Text = $"{downloadCompleted:N2}MB ({percentage}%)";
@@ -167,7 +179,7 @@ namespace Updater
             {
                 Completed();
             }
-
+            initialized = false;
         }
 
         private void Completed()
