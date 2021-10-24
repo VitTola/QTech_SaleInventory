@@ -48,9 +48,8 @@ namespace QTech.Forms
                     MsgBox.ShowWarning( BaseResource.MsgNotCorrectNameOrPassword, BaseResource.Login);
                     return user;
                 }
-
+                
                 ShareValue.User = user;
-
                 var userPermissions = UserPermissionLogic.Instance.GetUserPermissionsByUserId(user.Id);
                 if (userPermissions != null)
                 {

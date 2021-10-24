@@ -135,6 +135,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to រកមិនឃើញតំណរភ្ជាប់សំរាប់ទាញយកជំនាន់នៃកម្មវិធីថ្មី!.
+        /// </summary>
+        public static string CannotFindLinkToDownload {
+            get {
+                return ResourceManager.GetString("CannotFindLinkToDownload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap categorie_ing {
@@ -466,6 +475,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ការទាញយកត្រូវបានបោះបង់ចោល.
+        /// </summary>
+        public static string FailedDownload {
+            get {
+                return ResourceManager.GetString("FailedDownload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ចាប់ពី.
         /// </summary>
         public static string FromDate {
@@ -707,6 +725,16 @@ namespace QTech.Base.Properties {
         public static string Invoice {
             get {
                 return ResourceManager.GetString("Invoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap invoice_status_img {
+            get {
+                object obj = ResourceManager.GetObject("invoice_status_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -1514,6 +1542,15 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to របាយការណ៍ស្ថានភាពវិក័យប័ត្រ.
+        /// </summary>
+        public static string ReportInvoiceStatus {
+            get {
+                return ResourceManager.GetString("ReportInvoiceStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to របាយការណ៍ប្រាក់ចំណេញ.
         /// </summary>
         public static string ReportProfit {
@@ -1917,6 +1954,25 @@ namespace QTech.Base.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap UpdateIcon {
+            get {
+                object obj = ResourceManager.GetObject("UpdateIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to បច្ចុប្បន្នភាព.
+        /// </summary>
+        public static string Updater {
+            get {
+                return ResourceManager.GetString("Updater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap user_img {
             get {
                 object obj = ResourceManager.GetObject("user_img", resourceCulture);
@@ -1930,6 +1986,15 @@ namespace QTech.Base.Properties {
         public static string User_Text {
             get {
                 return ResourceManager.GetString("User_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ជំនាន់កម្មវិធី{0}.
+        /// </summary>
+        public static string Version {
+            get {
+                return ResourceManager.GetString("Version", resourceCulture);
             }
         }
         

@@ -4,6 +4,7 @@ using QTech.Base.Enums;
 using QTech.Base.Models;
 using QTech.Base.OutFaceModels;
 using QTech.Base.SearchModels;
+using QTech.Component;
 using QTech.ReportModels;
 using System;
 using System.Collections.Generic;
@@ -71,11 +72,12 @@ namespace QTech.Db.Logics
                              from scResult in cs.DefaultIfEmpty()
                              join ss in _db.Sites.Where(ss => ss.Active) on s.SiteId equals ss.Id into sss
                              from ssResult in sss.DefaultIfEmpty()
+                             join p in _db.PurchaseOrders.Where(p=>p.Active) on s.PurchaseOrderId equals p.Id
                              select new Income
                              {
                                  SaleId = s.Id,
                                  InvoiceNo = s.InvoiceNo,
-                                 PurchaseOrderNo = s.PurchaseOrderNo,
+                                 PurchaseOrderNo = p.Name,
                                  Customer = scResult == null ? s.CustomerName : scResult.Name,
                                  Site = ssResult.Name,
                                  SaleDate = s.SaleDate,
@@ -91,6 +93,7 @@ namespace QTech.Db.Logics
                 var result = from s in _db.Sales.Where(s => s.Active && s.PayStatus == PayStatus.Paid)
                              join c in _db.Customers.Where(c => c.Active) on s.CompanyId equals c.Id
                              join ss in _db.Sites.Where(ss => ss.Active) on s.SiteId equals ss.Id
+                             join p in _db.PurchaseOrders.Where(p => p.Active) on s.PurchaseOrderId equals p.Id
                              where
                              s.SaleDate >= param.D1 && s.SaleDate <= param.D2
                              && param.CustomerId == 0 ? true
@@ -100,7 +103,7 @@ namespace QTech.Db.Logics
                              {
                                  SaleId = s.Id,
                                  InvoiceNo = s.InvoiceNo,
-                                 PurchaseOrderNo = s.PurchaseOrderNo,
+                                 PurchaseOrderNo = p.Name,
                                  Customer = c.Name,
                                  Site = ss.Name,
                                  SaleDate = s.SaleDate,
@@ -117,6 +120,7 @@ namespace QTech.Db.Logics
             var param = model;
             var result = from b in _db.EmployeeBills.Where(b => b.InvoiceStatus == InvoiceStatus.Paid && b.DoDate >= param.D1 && b.DoDate <= param.D2)
                          join e in _db.Employees on b.EmployeeId equals e.Id
+
                          where b.Active
                          && e.Active
                          && param.DiriverId == 0 ? true : b.EmployeeId == param.DiriverId
@@ -170,6 +174,8 @@ namespace QTech.Db.Logics
                         from sitResult in sites.DefaultIfEmpty()
                         join pro in _db.Products.Where(p => p.Active) on sad.ProductId equals pro.Id
                         join cat in _db.Categories.Where(c => c.Active) on pro.CategoryId equals cat.Id
+                        join p in _db.PurchaseOrders.Where(p => p.Active) on sal.PurchaseOrderId equals p.Id
+
                         where sal.SaleDate >= param.D1 && sal.SaleDate <= param.D2
                         && (param.DriverId == 0 ? true : sad.EmployeeId == param.DriverId)
                         && (param.SiteId == 0 ? true : sitResult.Id == param.SiteId)
@@ -180,7 +186,7 @@ namespace QTech.Db.Logics
                             saleDetailId = sad.Id,
                             SaleDate = sal.SaleDate,
                             InvoiceNo = sal.InvoiceNo.ToString(),
-                            PurchaseOrderNo = sal.PurchaseOrderNo.ToString(),
+                            PurchaseOrderNo = p.Name,
                             Company = cusResult == null ? sal.CustomerName : cusResult.Name,
                             Site = sitResult == null ? string.Empty : sitResult.Name,
                             Qauntity = sad.Qauntity,
@@ -199,6 +205,8 @@ namespace QTech.Db.Logics
                         join sit in _db.Sites.Where(x => x.Active) on sal.SiteId equals sit.Id
                         join pro in _db.Products.Where(p => p.Active) on sad.ProductId equals pro.Id
                         join cat in _db.Categories.Where(c => c.Active) on pro.CategoryId equals cat.Id
+                        join p in _db.PurchaseOrders.Where(p => p.Active) on sal.PurchaseOrderId equals p.Id
+
                         where sal.SaleDate >= param.D1 && sal.SaleDate <= param.D2
                         && (param.DriverId == 0 ? true : sad.EmployeeId == param.DriverId)
                         && (sal.CompanyId == param.CustomerId)
@@ -209,7 +217,7 @@ namespace QTech.Db.Logics
                             saleDetailId = sad.Id,
                             SaleDate = sal.SaleDate,
                             InvoiceNo = sal.InvoiceNo.ToString(),
-                            PurchaseOrderNo = sal.PurchaseOrderNo.ToString(),
+                            PurchaseOrderNo = p.Name,
                             Company = cus.Name,
                             Site = sit.Name,
                             Qauntity = sad.Qauntity,
@@ -320,6 +328,93 @@ namespace QTech.Db.Logics
             }
             
             return profits;
+        }
+
+        public List<Income> GetInvoiceStatuses(ReportIncomeSearch model)
+        {
+            var param = model;
+            if (param.CustomerId == -1)
+            {
+                var result = from s in _db.Sales.Where(s => s.Active && s.SaleType == SaleType.General &&
+                s.SaleDate >= param.D1 && s.SaleDate <= param.D2)
+                where (s.PayStatus == param.PayStatus || param.PayStatus == PayStatus.All)
+                             select new Income
+                             {
+                                 SaleId = s.Id,
+                                 InvoiceNo = s.InvoiceNo,
+                                 PurchaseOrderNo = string.Empty,
+                                 Customer = s.CustomerName,
+                                 Site = string.Empty,
+                                 SaleDate = s.SaleDate,
+                                 Total = s.Total,
+                                 Expense = s.Expense,
+                                 Status = s.PayStatus == PayStatus.NotYetPaid ? BaseResource.PayStatus_NotYetPaid :
+                                 (s.PayStatus == PayStatus.All ? BaseResource.PayStatus_All : (s.PayStatus == PayStatus.Paid ? BaseResource.PayStatus_Paid : BaseResource.PayStatus_WaitPayment))
+
+                             };
+                var _result = result.GroupBy(x => x.SaleId).Select(x => x.FirstOrDefault()).ToList();
+                return _result;
+            }
+            else if (param.CustomerId == 0)
+            {
+                var result = from s in _db.Sales.Where(s => s.Active && s.SaleDate >= param.D1 && s.SaleDate <= param.D2)
+                             join c in _db.Customers.Where(c => c.Active) on s.CompanyId equals c.Id into cs
+                             from scResult in cs.DefaultIfEmpty()
+                             join ss in _db.Sites.Where(ss => ss.Active) on s.SiteId equals ss.Id into sss
+                             from ssResult in sss.DefaultIfEmpty()
+                             join p in _db.PurchaseOrders.Where(p => p.Active) on s.PurchaseOrderId equals p.Id
+
+                             where (s.PayStatus == param.PayStatus || param.PayStatus == PayStatus.All)
+
+                             select new Income
+                             {
+                                 SaleId = s.Id,
+                                 InvoiceNo = s.InvoiceNo,
+                                 PurchaseOrderNo = p.Name,
+                                 Customer = scResult == null ? s.CustomerName : scResult.Name,
+                                 Site = ssResult.Name,
+                                 SaleDate = s.SaleDate,
+                                 Total = s.Total,
+                                 Expense = s.Expense,
+                                 Status = s.PayStatus == PayStatus.NotYetPaid ? BaseResource.PayStatus_NotYetPaid : 
+                                 (s.PayStatus == PayStatus.All ? BaseResource.PayStatus_All : (s.PayStatus == PayStatus.Paid ? BaseResource.PayStatus_Paid : BaseResource.PayStatus_WaitPayment))
+
+                             };
+                var res = result.GroupBy(x => x.SaleId).Select(x => x.FirstOrDefault()).ToList();
+                return res;
+
+            }
+            else
+            {
+                var result = from s in _db.Sales.Where(s => s.Active)
+                             join c in _db.Customers.Where(c => c.Active) on s.CompanyId equals c.Id
+                             join ss in _db.Sites.Where(ss => ss.Active) on s.SiteId equals ss.Id
+                             join p in _db.PurchaseOrders.Where(p => p.Active) on s.PurchaseOrderId equals p.Id
+
+                             where
+                             s.SaleDate >= param.D1 && s.SaleDate <= param.D2
+                             && param.CustomerId == 0 ? true
+                             :
+                             s.CompanyId == param.CustomerId
+                             && (s.PayStatus == param.PayStatus || param.PayStatus == PayStatus.All)
+
+                             select new Income
+                             {
+                                 SaleId = s.Id,
+                                 InvoiceNo = s.InvoiceNo,
+                                 PurchaseOrderNo = p.Name,
+                                 Customer = c.Name,
+                                 Site = ss.Name,
+                                 SaleDate = s.SaleDate,
+                                 Total = s.Total,
+                                 Expense = s.Expense,
+                                 Status = s.PayStatus == PayStatus.NotYetPaid ? BaseResource.PayStatus_NotYetPaid :
+                                 (s.PayStatus == PayStatus.All ? BaseResource.PayStatus_All : (s.PayStatus == PayStatus.Paid ? BaseResource.PayStatus_Paid : BaseResource.PayStatus_WaitPayment))
+
+                             };
+                return result.GroupBy(x => x.SaleId).Select(x => x.FirstOrDefault()).ToList();
+            }
+
         }
     }
 }

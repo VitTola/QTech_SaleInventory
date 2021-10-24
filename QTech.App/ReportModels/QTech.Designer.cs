@@ -1235,6 +1235,8 @@ namespace QTech.ReportModels {
             
             private global::System.Data.DataColumn columnExpense;
             
+            private global::System.Data.DataColumn columnStatus;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public IncomeDataTable() {
@@ -1326,6 +1328,14 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn StatusColumn {
+                get {
+                    return this.columnStatus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1361,7 +1371,7 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public IncomeRow AddIncomeRow(string InvoiceNo, string PurchaseOrderNo, string Customer, string Site, System.DateTime SaleDate, decimal Total, decimal Expense) {
+            public IncomeRow AddIncomeRow(string InvoiceNo, string PurchaseOrderNo, string Customer, string Site, System.DateTime SaleDate, decimal Total, decimal Expense, string Status) {
                 IncomeRow rowIncomeRow = ((IncomeRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         InvoiceNo,
@@ -1370,7 +1380,8 @@ namespace QTech.ReportModels {
                         Site,
                         SaleDate,
                         Total,
-                        Expense};
+                        Expense,
+                        Status};
                 rowIncomeRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowIncomeRow);
                 return rowIncomeRow;
@@ -1400,6 +1411,7 @@ namespace QTech.ReportModels {
                 this.columnSaleDate = base.Columns["SaleDate"];
                 this.columnTotal = base.Columns["Total"];
                 this.columnExpense = base.Columns["Expense"];
+                this.columnStatus = base.Columns["Status"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1419,6 +1431,8 @@ namespace QTech.ReportModels {
                 base.Columns.Add(this.columnTotal);
                 this.columnExpense = new global::System.Data.DataColumn("Expense", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnExpense);
+                this.columnStatus = new global::System.Data.DataColumn("Status", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStatus);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3435,6 +3449,22 @@ namespace QTech.ReportModels {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Status {
+                get {
+                    try {
+                        return ((string)(this[this.tableIncome.StatusColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Status\' in table \'Income\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableIncome.StatusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsInvoiceNoNull() {
                 return this.IsNull(this.tableIncome.InvoiceNoColumn);
             }
@@ -3515,6 +3545,18 @@ namespace QTech.ReportModels {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetExpenseNull() {
                 this[this.tableIncome.ExpenseColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsStatusNull() {
+                return this.IsNull(this.tableIncome.StatusColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetStatusNull() {
+                this[this.tableIncome.StatusColumn] = global::System.Convert.DBNull;
             }
         }
         

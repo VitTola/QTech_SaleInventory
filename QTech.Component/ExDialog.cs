@@ -605,6 +605,15 @@ namespace QTech.Component
         {
             //Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width + 2, this.Height + 5, 10, 10));
         }
+
+        private void _lblTITLE_DoubleClick(object sender, EventArgs e)
+        {
+            if (MaximizeBox == true)
+            {
+                WindowState = WindowState == FormWindowState.Maximized ? FormWindowState.Normal : FormWindowState.Maximized;
+            }
+        }
+        
     }
 
     internal class CotrolDialogButton : Button

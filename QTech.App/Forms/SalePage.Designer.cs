@@ -32,21 +32,12 @@ namespace QTech.Forms
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             QTech.Base.BaseModels.Paging paging1 = new QTech.Base.BaseModels.Paging();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv = new QTech.Component.ExDataGridView();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRowDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPurchaseOrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colInvoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colToCompany = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colToSite = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSaleDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIsPaid = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.graPanel1 = new QTech.Component.GRAPanel();
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -61,6 +52,17 @@ namespace QTech.Forms
             this.colorWithAlpha3 = new QTech.Component.ColorWithAlpha();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.pagination = new QTech.Component.ExPaging();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRowDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPurchaseOrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colInvoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colToCompany = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colToSite = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSaleDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIsPaid = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.graPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -103,14 +105,14 @@ namespace QTech.Forms
             this.colTotal,
             this.colStatus,
             this.colIsPaid});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Khmer OS System", 8F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Khmer OS System", 8F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(205)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.Executing = false;
@@ -126,98 +128,6 @@ namespace QTech.Forms
             this.dgv.Size = new System.Drawing.Size(1091, 505);
             this.dgv.TabIndex = 1;
             this.dgv.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_RowPostPaint);
-            // 
-            // colId
-            // 
-            this.colId.DataPropertyName = "Id";
-            this.colId.HeaderText = "Id";
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            this.colId.Visible = false;
-            // 
-            // colRow
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colRow.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colRow.HeaderText = "ល.រ";
-            this.colRow.Name = "colRow";
-            this.colRow.ReadOnly = true;
-            this.colRow.Width = 30;
-            // 
-            // colRowDate
-            // 
-            this.colRowDate.HeaderText = "RowDate";
-            this.colRowDate.Name = "colRowDate";
-            this.colRowDate.ReadOnly = true;
-            this.colRowDate.Visible = false;
-            // 
-            // colPurchaseOrderNo
-            // 
-            this.colPurchaseOrderNo.DataPropertyName = "PurchaseOrderNo";
-            this.colPurchaseOrderNo.FillWeight = 40F;
-            this.colPurchaseOrderNo.HeaderText = "លេខបញ្ជាទិញ";
-            this.colPurchaseOrderNo.MinimumWidth = 150;
-            this.colPurchaseOrderNo.Name = "colPurchaseOrderNo";
-            this.colPurchaseOrderNo.ReadOnly = true;
-            this.colPurchaseOrderNo.Width = 200;
-            // 
-            // colInvoiceNo
-            // 
-            this.colInvoiceNo.DataPropertyName = "InvoiceNo";
-            this.colInvoiceNo.FillWeight = 40F;
-            this.colInvoiceNo.HeaderText = "លេខវិក័យប័ត្រ";
-            this.colInvoiceNo.MinimumWidth = 100;
-            this.colInvoiceNo.Name = "colInvoiceNo";
-            this.colInvoiceNo.ReadOnly = true;
-            this.colInvoiceNo.Width = 200;
-            // 
-            // colToCompany
-            // 
-            this.colToCompany.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colToCompany.DataPropertyName = "ToCompany";
-            this.colToCompany.FillWeight = 60F;
-            this.colToCompany.HeaderText = "ទៅកាន់ក្រុមហ៊ុន";
-            this.colToCompany.MinimumWidth = 100;
-            this.colToCompany.Name = "colToCompany";
-            this.colToCompany.ReadOnly = true;
-            // 
-            // colToSite
-            // 
-            this.colToSite.DataPropertyName = "Site";
-            this.colToSite.HeaderText = "ទៅកាន់គំរោង";
-            this.colToSite.Name = "colToSite";
-            this.colToSite.ReadOnly = true;
-            this.colToSite.Width = 300;
-            // 
-            // colSaleDate
-            // 
-            this.colSaleDate.DataPropertyName = "SaleDate";
-            this.colSaleDate.HeaderText = "កាលបរិច្ឆេទលក់";
-            this.colSaleDate.Name = "colSaleDate";
-            this.colSaleDate.ReadOnly = true;
-            this.colSaleDate.Width = 150;
-            // 
-            // colTotal
-            // 
-            this.colTotal.HeaderText = "សរុបទឹកប្រាក់";
-            this.colTotal.Name = "colTotal";
-            this.colTotal.ReadOnly = true;
-            this.colTotal.Width = 200;
-            // 
-            // colStatus
-            // 
-            this.colStatus.DataPropertyName = "Status";
-            this.colStatus.HeaderText = "ស្ថានភាព";
-            this.colStatus.Name = "colStatus";
-            this.colStatus.ReadOnly = true;
-            this.colStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // colIsPaid
-            // 
-            this.colIsPaid.HeaderText = "IsPaid";
-            this.colIsPaid.Name = "colIsPaid";
-            this.colIsPaid.ReadOnly = true;
-            this.colIsPaid.Visible = false;
             // 
             // graPanel1
             // 
@@ -402,6 +312,102 @@ namespace QTech.Forms
             this.pagination.Size = new System.Drawing.Size(485, 33);
             this.pagination.TabIndex = 0;
             // 
+            // colId
+            // 
+            this.colId.DataPropertyName = "Id";
+            dataGridViewCellStyle3.NullValue = null;
+            this.colId.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colId.HeaderText = "Id";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            this.colId.Visible = false;
+            // 
+            // colRow
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colRow.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colRow.HeaderText = "ល.រ";
+            this.colRow.Name = "colRow";
+            this.colRow.ReadOnly = true;
+            this.colRow.Width = 30;
+            // 
+            // colRowDate
+            // 
+            this.colRowDate.HeaderText = "RowDate";
+            this.colRowDate.Name = "colRowDate";
+            this.colRowDate.ReadOnly = true;
+            this.colRowDate.Visible = false;
+            // 
+            // colPurchaseOrderNo
+            // 
+            this.colPurchaseOrderNo.DataPropertyName = "PurchaseOrderNo";
+            this.colPurchaseOrderNo.FillWeight = 40F;
+            this.colPurchaseOrderNo.HeaderText = "លេខបញ្ជាទិញ";
+            this.colPurchaseOrderNo.MinimumWidth = 100;
+            this.colPurchaseOrderNo.Name = "colPurchaseOrderNo";
+            this.colPurchaseOrderNo.ReadOnly = true;
+            this.colPurchaseOrderNo.Width = 150;
+            // 
+            // colInvoiceNo
+            // 
+            this.colInvoiceNo.DataPropertyName = "InvoiceNo";
+            this.colInvoiceNo.FillWeight = 40F;
+            this.colInvoiceNo.HeaderText = "លេខវិក័យប័ត្រ";
+            this.colInvoiceNo.MinimumWidth = 100;
+            this.colInvoiceNo.Name = "colInvoiceNo";
+            this.colInvoiceNo.ReadOnly = true;
+            this.colInvoiceNo.Width = 150;
+            // 
+            // colToCompany
+            // 
+            this.colToCompany.DataPropertyName = "ToCompany";
+            this.colToCompany.FillWeight = 60F;
+            this.colToCompany.HeaderText = "ទៅកាន់ក្រុមហ៊ុន";
+            this.colToCompany.Name = "colToCompany";
+            this.colToCompany.ReadOnly = true;
+            this.colToCompany.Width = 300;
+            // 
+            // colToSite
+            // 
+            this.colToSite.DataPropertyName = "Site";
+            this.colToSite.HeaderText = "ទៅកាន់គំរោង";
+            this.colToSite.Name = "colToSite";
+            this.colToSite.ReadOnly = true;
+            this.colToSite.Width = 300;
+            // 
+            // colSaleDate
+            // 
+            this.colSaleDate.DataPropertyName = "SaleDate";
+            this.colSaleDate.HeaderText = "កាលបរិច្ឆេទលក់";
+            this.colSaleDate.Name = "colSaleDate";
+            this.colSaleDate.ReadOnly = true;
+            this.colSaleDate.Width = 150;
+            // 
+            // colTotal
+            // 
+            dataGridViewCellStyle5.NullValue = null;
+            this.colTotal.DefaultCellStyle = dataGridViewCellStyle5;
+            this.colTotal.HeaderText = "សរុបទឹកប្រាក់";
+            this.colTotal.Name = "colTotal";
+            this.colTotal.ReadOnly = true;
+            this.colTotal.Width = 200;
+            // 
+            // colStatus
+            // 
+            this.colStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colStatus.DataPropertyName = "Status";
+            this.colStatus.HeaderText = "ស្ថានភាព";
+            this.colStatus.Name = "colStatus";
+            this.colStatus.ReadOnly = true;
+            this.colStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // colIsPaid
+            // 
+            this.colIsPaid.HeaderText = "IsPaid";
+            this.colIsPaid.Name = "colIsPaid";
+            this.colIsPaid.ReadOnly = true;
+            this.colIsPaid.Visible = false;
+            // 
             // SalePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
@@ -439,6 +445,7 @@ namespace QTech.Forms
         private System.Windows.Forms.ComboBox cboPayStatus;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private Component.ExPaging pagination;
+        private System.Windows.Forms.ComboBox cboImport;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRow;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRowDate;
@@ -450,6 +457,5 @@ namespace QTech.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colIsPaid;
-        private System.Windows.Forms.ComboBox cboImport;
     }
 }

@@ -2,6 +2,7 @@
 using QTech.Base.BaseModels;
 using QTech.Base.Enums;
 using QTech.Base.Helpers;
+using QTech.Base.Models;
 using QTech.Base.SearchModels;
 using QTech.Component;
 using QTech.Db.Logics;
@@ -144,6 +145,7 @@ namespace QTech.Forms
             dgv.Rows.Clear();
             List<Customer> _Customers = null;
             List<Site> _Sites = null;
+            List<PurchaseOrder> purchaseOrders = null;
             var _payStatus = (PayStatus)cboPayStatus.SelectedValue;
             var _importPrice = (ImportPrice)cboImport.SelectedValue;
             var search = new SaleSearch()
@@ -161,6 +163,7 @@ namespace QTech.Forms
                  var SitesIds = _result.Select(x => x.SiteId).ToList();
                  _Customers = CustomerLogic.Instance.GetCustomersById(CusIds);
                  _Sites = SiteLogic.Instance.GetSiteByIds(SitesIds);
+                 purchaseOrders = PurchaseOrderLogic.Instance.SearchAsync(new PurchaseOrderSearch());
 
                  return _result;
              });
@@ -173,7 +176,7 @@ namespace QTech.Forms
             {
                 var row = newRow(false);
                 row.Cells[colId.Name].Value = x.Id;
-                row.Cells[colPurchaseOrderNo.Name].Value = x.PurchaseOrderNo;
+                row.Cells[colPurchaseOrderNo.Name].Value = purchaseOrders.FirstOrDefault(p => p.Id == x.PurchaseOrderId)?.Name ?? "";
                 row.Cells[colInvoiceNo.Name].Value = x.InvoiceNo;
                 row.Cells[colToCompany.Name].Value = _Customers?.FirstOrDefault(cus => cus.Id == x.CompanyId)?.Name ?? x.CustomerName;
                 row.Cells[colToSite.Name].Value = _Sites?.FirstOrDefault(s => s.Id == x.SiteId)?.Name;

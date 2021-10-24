@@ -49,7 +49,7 @@
             this.lblUserDropDown_ = new System.Windows.Forms.Label();
             this.lblBranchIcon_ = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.txtVersion = new System.Windows.Forms.LinkLabel();
+            this._lblVersion = new System.Windows.Forms.LinkLabel();
             this.label5 = new System.Windows.Forms.Label();
             this._lbSocketStatus = new QTech.Component.ExLabel();
             this.label2 = new System.Windows.Forms.Label();
@@ -183,6 +183,7 @@
             this._lblComanyName.Size = new System.Drawing.Size(170, 24);
             this._lblComanyName.TabIndex = 8;
             this._lblComanyName.Text = "សម្រាប់ប្រើបណ្ដោះអាសន្ន";
+            this._lblComanyName.Click += new System.EventHandler(this._lblComanyName_Click);
             // 
             // picLogo
             // 
@@ -198,6 +199,7 @@
             this.picLogo.TabIndex = 0;
             this.picLogo.TabStop = false;
             this.picLogo.WaitOnLoad = true;
+            this.picLogo.Click += new System.EventHandler(this.picLogo_Click);
             // 
             // pTopMenu
             // 
@@ -323,7 +325,7 @@
             // 
             // flowLayoutPanel2
             // 
-            this.flowLayoutPanel2.Controls.Add(this.txtVersion);
+            this.flowLayoutPanel2.Controls.Add(this._lblVersion);
             this.flowLayoutPanel2.Controls.Add(this.label5);
             this.flowLayoutPanel2.Controls.Add(this._lbSocketStatus);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right;
@@ -333,21 +335,22 @@
             this.flowLayoutPanel2.Size = new System.Drawing.Size(534, 21);
             this.flowLayoutPanel2.TabIndex = 13;
             // 
-            // txtVersion
+            // _lblVersion
             // 
-            this.txtVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtVersion.AutoSize = true;
-            this.txtVersion.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVersion.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.txtVersion.Location = new System.Drawing.Point(489, 0);
-            this.txtVersion.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.txtVersion.Name = "txtVersion";
-            this.txtVersion.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
-            this.txtVersion.Size = new System.Drawing.Size(42, 16);
-            this.txtVersion.TabIndex = 6;
-            this.txtVersion.TabStop = true;
-            this.txtVersion.Text = "V1.0.0.0";
-            this.txtVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this._lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._lblVersion.AutoSize = true;
+            this._lblVersion.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._lblVersion.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this._lblVersion.Location = new System.Drawing.Point(489, 0);
+            this._lblVersion.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this._lblVersion.Name = "_lblVersion";
+            this._lblVersion.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
+            this._lblVersion.Size = new System.Drawing.Size(42, 16);
+            this._lblVersion.TabIndex = 6;
+            this._lblVersion.TabStop = true;
+            this._lblVersion.Text = "V1.0.0.0";
+            this._lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this._lblVersion.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.txtVersion_LinkClicked);
             // 
             // label5
             // 
@@ -731,7 +734,7 @@
         private QTech.Component.GRAPanel pBoder;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label txtLogin;
-        private System.Windows.Forms.LinkLabel txtVersion;
+        private System.Windows.Forms.LinkLabel _lblVersion;
         private System.Windows.Forms.Label label2;
         private QTech.Component.ColorWithAlpha colorWithAlpha3;
         private QTech.Component.ExTabBar pTopMenu;

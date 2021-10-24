@@ -2,12 +2,16 @@ namespace QTech.Db
 {
     using System;
     using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Migrations;
+    using System.Data.Entity.Migrations.Infrastructure;
     using System.IO;
     using System.Linq;
     using Newtonsoft.Json;
     using QTech.Base;
     using QTech.Base.Models;
     using QTech.Db.Configs;
+    using QTech.Db.Migrations;
 
     public class QTechDbContext : DbContext
     {
@@ -20,6 +24,7 @@ namespace QTech.Db
             : base("data source="+DataBaseSetting.config.DataSource+";initial catalog="+DataBaseSetting.config.DataBase+";" +
                   "integrated security=True;MultipleActiveResultSets=True;" +"App=EntityFramework")
         {
+            Database.SetInitializer<QTechDbContext>(new MigrateDatabaseToLatestVersion<QTechDbContext, Configuration>());
         }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Site> Sites { get; set; }
@@ -40,13 +45,14 @@ namespace QTech.Db
         public virtual DbSet<PurchaseOrder> PurchaseOrders { get; set; }
         public virtual DbSet<IncomeExpense> IncomeExpenses { get; set; }
         public virtual DbSet<AuditTrail> AuditTrails { get; set; }
-
-
+        public virtual DbSet<ApplicationSetting> ApplicationSettings { get; set; }
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             QTechDbConfigs.ConfigureDatabase(modelBuilder);
         }
+        
 
     }
 
@@ -54,7 +60,7 @@ namespace QTech.Db
     {
         public static DbConfig config = new DbConfig() {
             DataSource = ".",
-            DataBase = "QTech_SaleDb",
+            DataBase = "QTech_SaleDbX",
             
         };
 

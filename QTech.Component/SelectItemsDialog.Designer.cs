@@ -32,6 +32,7 @@ namespace QTech.Component
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectItemsDialog));
             this.colorWithAlpha1 = new QTech.Component.ColorWithAlpha();
             this.graPanel1 = new QTech.Component.GRAPanel();
             this.colorWithAlpha2 = new QTech.Component.ColorWithAlpha();
@@ -320,6 +321,7 @@ namespace QTech.Component
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 19F);
             this.ClientSize = new System.Drawing.Size(636, 507);
             this.Font = new System.Drawing.Font("Khmer OS System", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "SelectItemsDialog";

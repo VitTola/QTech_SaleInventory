@@ -73,6 +73,8 @@ namespace QTech.Db.Logics
                          from sitResult in sites.DefaultIfEmpty()
                          join product in _db.Products on saleDetail.ProductId equals product.Id
                          join category in _db.Categories on product.CategoryId equals category.Id
+                         join p in _db.PurchaseOrders.Where(p => p.Active) on sale.PurchaseOrderId equals p.Id
+
                          where param.EmployeeBillId != 0 ?
                          (saleDetail.EmployeeBillId == param.EmployeeBillId && saleDetail.Active)
                          :
@@ -85,7 +87,7 @@ namespace QTech.Db.Logics
 
                          select new EmployeeBillOutFace()
                          {
-                             PurchaseOrderNo = sale.PurchaseOrderNo,
+                             PurchaseOrderNo = p.Name,
                              InvoiceNo = sale.InvoiceNo,
                              ToCompany = cusResult.Name,
                              ToSite = sitResult.Name,

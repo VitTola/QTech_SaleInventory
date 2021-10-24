@@ -17,6 +17,9 @@ using Storm.CC.Report.Helpers;
 using QTech.Base.Helpers;
 using QTech.Db.Logics;
 using QTech.Base.SearchModels;
+using System.IO;
+using Newtonsoft.Json;
+using Updater;
 
 namespace QTech.Forms
 {
@@ -46,6 +49,14 @@ namespace QTech.Forms
             this.InitForm();
             this.OptimizeLoadUI();
             this.FormClosed += (s, e) => Application.Exit();
+
+            try
+            {
+                var jsonData = File.ReadAllText("Version.json");
+                var version = JsonConvert.DeserializeObject<QTech.Base.Models.Version>(jsonData);
+                _lblVersion.Text = $"v{version?.AppVersion}";
+            }
+            catch (Exception) { }
         }
         private void MainForm_Shown(object sender, EventArgs e)
         {
@@ -70,6 +81,7 @@ namespace QTech.Forms
             var moduleManager = ModuleManager.Instance;
             _menuBars = moduleManager.GetMenubars();
             InitMenu();
+            
         }
         public void InitMenu()
         {
@@ -276,16 +288,36 @@ namespace QTech.Forms
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             this.Close();
-            new LoginDialog().Show();
+            System.Diagnostics.Process.Start(Path.Combine(Application.StartupPath, "QTech.exe"));
         }
-        //protected override CreateParams CreateParams
-        //{
-        //    get
-        //    {
-        //        CreateParams cp = base.CreateParams;
-        //        cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
-        //        return cp;
-        //    }
-        //}
+
+        private void txtVersion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            StartUpdater();
+        }
+
+        private void _lblComanyName_Click(object sender, EventArgs e)
+        {
+            StartUpdater();
+        }
+
+        private void picLogo_Click(object sender, EventArgs e)
+        {
+            StartUpdater();
+        }
+        private void StartUpdater()
+        {
+            try
+            {
+                var path = Path.Combine(Application.StartupPath, "Updater.exe");
+                System.Diagnostics.Process.Start(path);
+
+                //new AboutUsDialog().ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MsgBox.ShowError(ex.Message, "Error");
+            }
+        }
     }
 }
