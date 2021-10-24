@@ -121,11 +121,11 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
+    <PreBuildEvent>XCOPY /i /Y "$(ProjectDir)bin\Debug\Updater.exe" "$(SolutionDir)QTech.App\$(OutDir)bin\Debug"
+</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>XCOPY /i /Y "$(ProjectDir)bin\Debug\Updater.exe" "$(SolutionDir)QTech.App\$(OutDir)bin\Debug"
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

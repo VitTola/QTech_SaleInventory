@@ -51,16 +51,16 @@ namespace QTech.Forms
         }
         public void Bind()
         {
-            cboCustomer.DataSourceFn = p => CustomerLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
+            cboCustomer.DataSourceFn = p => CustomerLogic.Instance.SearchAsync(p).OrderByDescending(x => x.RowDate).ToDropDownItemModelList();
             cboCustomer.SearchParamFn = () => new CustomerSearch();
-            cboSite.DataSourceFn = p => SiteLogic.Instance.GetSites(p).ToDropDownItemModelList();
+            cboSite.DataSourceFn = p => SiteLogic.Instance.GetSites(p).OrderByDescending(x => x.RowDate).ToDropDownItemModelList();
             cboSite.SearchParamFn = () => new SiteSearch() { };
-            colProductId.DataSourceFn = p => ProductLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
+            colProductId.DataSourceFn = p => ProductLogic.Instance.SearchAsync(p).OrderByDescending(x => x.RowDate).ToDropDownItemModelList();
             colProductId.SearchParamFn = () => new ProductSearch();
             colProductId.CustomSearchForm = () => new SelectProductDialog(new ProductSearch());
-            colEmployeeId.DataSourceFn = p => EmployeeLogic.Instance.SearchAsync(p).ToDropDownItemModelList();
+            colEmployeeId.DataSourceFn = p => EmployeeLogic.Instance.SearchAsync(p).OrderByDescending(x => x.RowDate).ToDropDownItemModelList();
             colEmployeeId.SearchParamFn = () => new EmployeeSearch();
-            cboPurchaseOrderNo.DataSourceFn = p => PurchaseOrderLogic.Instance.GetPurchaseOrder(p).ToDropDownItemModelList();
+            cboPurchaseOrderNo.DataSourceFn = p => PurchaseOrderLogic.Instance.GetPurchaseOrder(p).OrderByDescending(x=>x.RowDate).ToDropDownItemModelList();
             cboPurchaseOrderNo.SearchParamFn = () => new PurchaseOrderSearch();
 
         }
