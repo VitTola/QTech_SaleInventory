@@ -117,11 +117,12 @@ namespace QTech.Db.Logics
             var q = All().Where(x => x.Active);
             if (_saleSearchKey == SaleSearchKey.PurchaseOrderNo && !string.IsNullOrEmpty(param.Search))
             {
-                q = q.Where(x => x.PurchaseOrderNo == param.Search);
+                var purchaseOrderIds = _db.PurchaseOrders.Where(c => c.Name.ToLower().Contains(param.Search.ToLower())).Select(y => y.Id).ToList();
+                q = q.Where(x => purchaseOrderIds.Any(p=> p == x.PurchaseOrderId));
             }
             if (_saleSearchKey == SaleSearchKey.InvoiceNo && !string.IsNullOrEmpty(param.Search))
             {
-                q = q.Where(x => x.InvoiceNo == param.Search);
+                q = q.Where(x => x.InvoiceNo.ToLower().Contains(param.Search.ToLower()));
             }
             if (_saleSearchKey == SaleSearchKey.CompanyName && !string.IsNullOrEmpty(param.Search))
             {

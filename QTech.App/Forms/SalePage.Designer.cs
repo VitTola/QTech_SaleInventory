@@ -343,10 +343,10 @@ namespace QTech.Forms
             this.colPurchaseOrderNo.DataPropertyName = "PurchaseOrderNo";
             this.colPurchaseOrderNo.FillWeight = 40F;
             this.colPurchaseOrderNo.HeaderText = "លេខបញ្ជាទិញ";
-            this.colPurchaseOrderNo.MinimumWidth = 150;
+            this.colPurchaseOrderNo.MinimumWidth = 100;
             this.colPurchaseOrderNo.Name = "colPurchaseOrderNo";
             this.colPurchaseOrderNo.ReadOnly = true;
-            this.colPurchaseOrderNo.Width = 200;
+            this.colPurchaseOrderNo.Width = 150;
             // 
             // colInvoiceNo
             // 
@@ -356,7 +356,7 @@ namespace QTech.Forms
             this.colInvoiceNo.MinimumWidth = 100;
             this.colInvoiceNo.Name = "colInvoiceNo";
             this.colInvoiceNo.ReadOnly = true;
-            this.colInvoiceNo.Width = 200;
+            this.colInvoiceNo.Width = 150;
             // 
             // colToCompany
             // 

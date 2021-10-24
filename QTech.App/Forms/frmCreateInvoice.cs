@@ -32,6 +32,7 @@ namespace QTech.Forms
         private decimal Total;
         private int AllSales = 0, CheckingAmount = 0;
         public GeneralProcess Flag { get; set; }
+        private List<PurchaseOrder> purchaseOrders = null;
         public frmCreateInvoice(Invoice model, GeneralProcess flag)
         {
             InitializeComponent();
@@ -175,6 +176,12 @@ namespace QTech.Forms
                 var result = SaleLogic.Instance.GetSaleByCustomerId(search);
                 var SitesIds = result?.Select(x => x.SiteId).ToList();
                 _sites = SiteLogic.Instance.GetSiteByIds(SitesIds);
+
+                var pSearch = new PurchaseOrderSearch
+                {
+                    Paging = new Base.BaseModels.Paging { IsPaging = false }
+                };
+                purchaseOrders = PurchaseOrderLogic.Instance.SearchAsync(pSearch);
                 return result;
             });
 
@@ -190,7 +197,7 @@ namespace QTech.Forms
                     var row = newRow(dgvView);
                     row.Cells[colId2.Name].Value = Model.InvoiceDetails?.FirstOrDefault(s => s.SaleId == x.Id)?.Id ?? 0;
                     row.Cells[colSaleId2.Name].Value = x.Id;
-                    row.Cells[colPurchaseOrderNo2.Name].Value = x.PurchaseOrderNo;
+                    row.Cells[colPurchaseOrderNo2.Name].Value = purchaseOrders?.FirstOrDefault(p => p.Id == x.PurchaseOrderId)?.Name ?? ""; ;
                     row.Cells[colInvoiceNo2.Name].Value = x.InvoiceNo;
                     row.Cells[colToCompany2.Name].Value = customer?.Name;
                     row.Cells[colToSite2.Name].Value = _sites?.FirstOrDefault(s => s.Id == x.SiteId)?.Name;
@@ -240,7 +247,7 @@ namespace QTech.Forms
                     var row = newRow(dgv);
                     row.Cells[colId.Name].Value = Model.InvoiceDetails?.FirstOrDefault(s => s.SaleId == x.Id)?.Id ?? 0;
                     row.Cells[colSaleId.Name].Value = x.Id;
-                    row.Cells[colPurchaseOrderNo.Name].Value = x.PurchaseOrderNo;
+                    row.Cells[colPurchaseOrderNo.Name].Value = purchaseOrders?.FirstOrDefault(p=>p.Id == x.PurchaseOrderId)?.Name ?? "";
                     row.Cells[colInvoiceNo.Name].Value = x.InvoiceNo;
                     var customerName = Model.SaleType == SaleType.General ? Model.CustomerName : customer.Name;
                     row.Cells[colToCompany.Name].Value = customerName;
@@ -326,6 +333,12 @@ namespace QTech.Forms
                 var saleIds = Model.InvoiceDetails?.Select(x => x.SaleId).ToList();
                 sales = SaleLogic.Instance.GetSaleByIds(saleIds);
                 sites = SiteLogic.Instance.GetSiteByIds(sales.Select(x => x.SiteId).ToList());
+
+                var pSearch = new PurchaseOrderSearch
+                {
+                    Paging = new Base.BaseModels.Paging { IsPaging = false }
+                };
+                purchaseOrders = PurchaseOrderLogic.Instance.SearchAsync(pSearch);
                 return customer;
             });
             if (customer != null)

@@ -312,11 +312,6 @@
     <Compile Include="Reports\FormPage\ReportProfitPage.Designer.cs">
       <DependentUpon>ReportProfitPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\ReportInvoiceStatus.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ReportInvoiceStatus.rpt</DependentUpon>
-    </Compile>
     <Compile Include="Reports\ReportProfit.cs">
       <DependentUpon>ReportProfit.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
