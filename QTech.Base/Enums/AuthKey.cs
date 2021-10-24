@@ -71,6 +71,7 @@ namespace QTech.Base.Enums
         Report_Income = 61,
         Report_Expense = 62,
         Report_Profit = 63,
+        Report_InvoiceStatus = 64,
 
 
     }

@@ -13,5 +13,6 @@ namespace QTech.Base.SearchModels
         public DateTime D1 { get; set; }
         public DateTime D2 { get; set; }
         public int CustomerId{ get; set; }
+        public PayStatus PayStatus { get; set; }
     }
 }

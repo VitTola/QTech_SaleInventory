@@ -729,6 +729,16 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap invoice_status_img {
+            get {
+                object obj = ResourceManager.GetObject("invoice_status_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to លេខវិក័យប័ត្រ.
         /// </summary>
         public static string InvoiceNo {
@@ -1528,6 +1538,15 @@ namespace QTech.Base.Properties {
         public static string ReportIncomeExpense {
             get {
                 return ResourceManager.GetString("ReportIncomeExpense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to របាយការណ៍ស្ថានភាពវិក័យប័ត្រ.
+        /// </summary>
+        public static string ReportInvoiceStatus {
+            get {
+                return ResourceManager.GetString("ReportInvoiceStatus", resourceCulture);
             }
         }
         

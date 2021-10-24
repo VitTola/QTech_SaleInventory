@@ -17,6 +17,6 @@ namespace QTech.Base.OutFaceModels
         public decimal Total { get; set; }
         public decimal Expense { get; set; }
         public decimal LeftAmount { get; set; }
-
+        public string Status { get; set; }
     }
 }
