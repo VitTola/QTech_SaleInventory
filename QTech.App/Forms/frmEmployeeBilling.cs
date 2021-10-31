@@ -57,6 +57,16 @@ namespace QTech.Forms
             dtpPeroid.Items.AddRange(peroids.ToArray());
             dtpPeroid.Items.Add(customPeroid);
             dtpPeroid.SetSelectePeroid(DatePeroid.Today);
+
+            cboCompany.TextAll = BaseResource.Customer;
+            var customers = CustomerLogic.Instance.SearchAsync(new CustomerSearch())?.ToList() ?? new List<Customer>();
+            var customer = new Customer() { Id = -1, Name = BaseResource.GeneralCustomer };
+            customers.Add(customer);
+            cboCompany.DataSourceFn = p => customers.ToDropDownItemModelList();
+            cboCompany.SearchParamFn = () => new CustomerSearch();
+            cboCompany.Choose = BaseResource.Customer;
+            cboCompany.Name = BaseResource.Customer;
+            cboCompany.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         private void InitEvent()
         {
@@ -184,10 +194,19 @@ namespace QTech.Forms
             {
                 return;
             }
-            if (!cboDriver.IsSelected() | !cboCompany.IsSelected() | !cboSite.IsSelected())
+            if (!cboDriver.IsSelected() | !cboCompany.IsSelected())
             {
                 btnAdvanceSearch.ShowValidation(BaseResource.MsgPleaseSelectValue);
                 return;
+            }
+
+            if (cboCompany.Text != BaseResource.GeneralCustomer)
+            {
+                if (!cboSite.IsSelected())
+                {
+                    btnAdvanceSearch.ShowValidation(BaseResource.MsgPleaseSelectValue);
+                    return ;
+                }
             }
 
             var employeeBills = await Search();
@@ -281,14 +300,8 @@ namespace QTech.Forms
             SearchParamFn = () => new EmployeeSearch(),
         };
 
-        ExSearchCombo cboCompany = new ExSearchCombo
-        {
-            Name = BaseResource.Customer,
-            TextAll = BaseResource.Customer,
-            DataSourceFn = p => CustomerLogic.Instance.SearchAsync(p).ToDropDownItemModelList(),
-            SearchParamFn = () => new CustomerSearch(),
-            Choose = BaseResource.Customer,
-        };
+        ExSearchCombo cboCompany = new ExSearchCombo();
+        
 
         ExSearchCombo cboSite = new ExSearchCombo
         {
@@ -359,10 +372,19 @@ namespace QTech.Forms
                 return true;
             }
 
-            if (!cboDriver.IsSelected() | !cboCompany.IsSelected() | !cboSite.IsSelected())
+            if (!cboDriver.IsSelected() | !cboCompany.IsSelected())
             {
                 btnAdvanceSearch.ShowValidation(BaseResource.MsgPleaseSelectValue);
                 return true;
+            }
+
+            if (cboCompany.Text != BaseResource.GeneralCustomer)
+            {
+                if (!cboSite.IsSelected())
+                {
+                    btnAdvanceSearch.ShowValidation(BaseResource.MsgPleaseSelectValue);
+                    return true;
+                }
             }
 
             return false;

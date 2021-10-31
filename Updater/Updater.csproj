@@ -117,12 +117,13 @@
     <None Include="Resources\Pheng Ry.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CopyProject.txt" />
     <Content Include="Pheng Ry.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>XCOPY /i /Y "$(ProjectDir)bin\Debug\Updater.exe" "$(SolutionDir)QTech.App\$(OutDir)bin\Debug"
-</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>

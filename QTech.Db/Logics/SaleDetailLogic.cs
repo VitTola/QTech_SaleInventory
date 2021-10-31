@@ -64,44 +64,152 @@ namespace QTech.Db.Logics
         {
             var param = model as EmployeeBillSearch;
             var q = All();
-            var result = from saleDetail in q
-                         join employee in _db.Employees on saleDetail.EmployeeId equals employee.Id
-                         join sale in _db.Sales on saleDetail.SaleId equals sale.Id
-                         join customer in _db.Customers on sale.CompanyId equals customer.Id into cusotmers
-                         from cusResult in cusotmers.DefaultIfEmpty()
-                         join site in _db.Sites on sale.SiteId equals site.Id into sites
-                         from sitResult in sites.DefaultIfEmpty()
-                         join product in _db.Products on saleDetail.ProductId equals product.Id
-                         join category in _db.Categories on product.CategoryId equals category.Id
-                         join p in _db.PurchaseOrders.Where(p => p.Active) on sale.PurchaseOrderId equals p.Id
+            if (param.CustomerId == -1)
+            {
+                var result = from saleDetail in q
+                             join employee in _db.Employees.Where(x=>x.Active) on saleDetail.EmployeeId equals employee.Id
+                             join sale in _db.Sales.Where(x => x.Active && x.SaleType == Base.Enums.SaleType.General) on saleDetail.SaleId equals sale.Id
+                             join product in _db.Products.Where(x => x.Active) on saleDetail.ProductId equals product.Id
+                             join category in _db.Categories.Where(x => x.Active) on product.CategoryId equals category.Id
 
-                         where param.EmployeeBillId != 0 ?
-                         (saleDetail.EmployeeBillId == param.EmployeeBillId && saleDetail.Active)
-                         :
-                         (sale.SaleDate >= param.D1 && sale.SaleDate <= param.D2
-                         && (param.DriverId == 0 ? true : employee.Id == param.DriverId) 
-                         && (param.CustomerId == 0 ? true : cusResult.Id == param.CustomerId) 
-                         && (param.SiteId == 0 ? true : sitResult.Id == param.SiteId)
-                         && (saleDetail.PayStatus == Base.Enums.PayStatus.NotYetPaid)
-                         && saleDetail.Active)
+                             where param.EmployeeBillId != 0 ?
+                             (saleDetail.EmployeeBillId == param.EmployeeBillId && saleDetail.Active)
+                             :
+                             (sale.SaleDate >= param.D1 && sale.SaleDate <= param.D2
+                             && (param.DriverId == 0 ? true : employee.Id == param.DriverId)
+                             && (saleDetail.PayStatus == Base.Enums.PayStatus.NotYetPaid)
+                             && saleDetail.Active)
 
-                         select new EmployeeBillOutFace()
-                         {
-                             PurchaseOrderNo = p.Name,
-                             InvoiceNo = sale.InvoiceNo,
-                             ToCompany = cusResult.Name,
-                             ToSite = sitResult.Name,
-                             SaleDate = sale.SaleDate,
-                             Product = product.Name,
-                             Category = category.Name,
-                             ImportPrice = saleDetail.ImportPrice,
-                             Qauntity = saleDetail.Qauntity,
-                             ImportTotalAmount = saleDetail.ImportTotalAmount,
-                             saleDetail = saleDetail
-                         };
+                             select new EmployeeBillOutFace()
+                             {
+                                 PurchaseOrderNo = string.Empty,
+                                 InvoiceNo = sale.InvoiceNo,
+                                 ToCompany = sale.CustomerName,
+                                 ToSite = string.Empty,
+                                 SaleDate = sale.SaleDate,
+                                 Product = product.Name,
+                                 Category = category.Name,
+                                 ImportPrice = saleDetail.ImportPrice,
+                                 Qauntity = saleDetail.Qauntity,
+                                 ImportTotalAmount = saleDetail.ImportTotalAmount,
+                                 saleDetail = saleDetail
+                             };
 
-            var res =result.GroupBy(x => x.saleDetail).Select(y => y.FirstOrDefault()).ToList();
-            return res;
+                var res = result.GroupBy(x => x.saleDetail).Select(y => y.FirstOrDefault()).ToList();
+                return res;
+            }
+            else if(param.CustomerId == 0)
+            {
+                var result = from saleDetail in q
+                             join employee in _db.Employees.Where(x => x.Active) on saleDetail.EmployeeId equals employee.Id
+                             join sale in _db.Sales.Where(x => x.Active && x.SaleType == Base.Enums.SaleType.Company) on saleDetail.SaleId equals sale.Id
+                             join customer in _db.Customers.Where(x => x.Active) on sale.CompanyId equals customer.Id into cusotmers
+                             from cusResult in cusotmers.DefaultIfEmpty()
+                             join site in _db.Sites.Where(x => x.Active) on sale.SiteId equals site.Id into sites
+                             from sitResult in sites.DefaultIfEmpty()
+                             join product in _db.Products.Where(x => x.Active) on saleDetail.ProductId equals product.Id
+                             join category in _db.Categories.Where(x => x.Active) on product.CategoryId equals category.Id
+                             join p in _db.PurchaseOrders.Where(p => p.Active) on sale.PurchaseOrderId equals p.Id
+
+                             where param.EmployeeBillId != 0 ?
+                             (saleDetail.EmployeeBillId == param.EmployeeBillId && saleDetail.Active)
+                             :
+                             (sale.SaleDate >= param.D1 && sale.SaleDate <= param.D2
+                             && (param.DriverId == 0 ? true : employee.Id == param.DriverId)
+                             && (param.CustomerId == 0 ? true : cusResult.Id == param.CustomerId)
+                             && (param.SiteId == 0 ? true : sitResult.Id == param.SiteId)
+                             && (saleDetail.PayStatus == Base.Enums.PayStatus.NotYetPaid)
+                             && saleDetail.Active)
+
+                             select new EmployeeBillOutFace()
+                             {
+                                 PurchaseOrderNo = p.Name,
+                                 InvoiceNo = sale.InvoiceNo,
+                                 ToCompany = cusResult.Name,
+                                 ToSite = sitResult.Name,
+                                 SaleDate = sale.SaleDate,
+                                 Product = product.Name,
+                                 Category = category.Name,
+                                 ImportPrice = saleDetail.ImportPrice,
+                                 Qauntity = saleDetail.Qauntity,
+                                 ImportTotalAmount = saleDetail.ImportTotalAmount,
+                                 saleDetail = saleDetail
+                             };
+
+                var result1 = from saleDetail in q
+                             join employee in _db.Employees.Where(x => x.Active) on saleDetail.EmployeeId equals employee.Id
+                             join sale in _db.Sales.Where(x => x.Active && x.SaleType == Base.Enums.SaleType.General) on saleDetail.SaleId equals sale.Id
+                             join product in _db.Products.Where(x => x.Active) on saleDetail.ProductId equals product.Id
+                             join category in _db.Categories.Where(x => x.Active) on product.CategoryId equals category.Id
+
+                             where param.EmployeeBillId != 0 ?
+                             (saleDetail.EmployeeBillId == param.EmployeeBillId && saleDetail.Active)
+                             :
+                             (sale.SaleDate >= param.D1 && sale.SaleDate <= param.D2
+                             && (param.DriverId == 0 ? true : employee.Id == param.DriverId)
+                             && (saleDetail.PayStatus == Base.Enums.PayStatus.NotYetPaid)
+                             && saleDetail.Active)
+
+                             select new EmployeeBillOutFace()
+                             {
+                                 PurchaseOrderNo = string.Empty,
+                                 InvoiceNo = sale.InvoiceNo,
+                                 ToCompany = sale.CustomerName,
+                                 ToSite = string.Empty,
+                                 SaleDate = sale.SaleDate,
+                                 Product = product.Name,
+                                 Category = category.Name,
+                                 ImportPrice = saleDetail.ImportPrice,
+                                 Qauntity = saleDetail.Qauntity,
+                                 ImportTotalAmount = saleDetail.ImportTotalAmount,
+                                 saleDetail = saleDetail
+                             };
+
+                var res = result.Union(result1).GroupBy(x => x.saleDetail).Select(y => y.FirstOrDefault()).ToList();
+                return res;
+            }
+            else
+            {
+                var result = from saleDetail in q
+                             join employee in _db.Employees on saleDetail.EmployeeId equals employee.Id
+                             join sale in _db.Sales on saleDetail.SaleId equals sale.Id
+                             join customer in _db.Customers on sale.CompanyId equals customer.Id into cusotmers
+                             from cusResult in cusotmers.DefaultIfEmpty()
+                             join site in _db.Sites on sale.SiteId equals site.Id into sites
+                             from sitResult in sites.DefaultIfEmpty()
+                             join product in _db.Products on saleDetail.ProductId equals product.Id
+                             join category in _db.Categories on product.CategoryId equals category.Id
+                             join p in _db.PurchaseOrders.Where(p => p.Active) on sale.PurchaseOrderId equals p.Id
+
+                             where param.EmployeeBillId != 0 ?
+                             (saleDetail.EmployeeBillId == param.EmployeeBillId && saleDetail.Active)
+                             :
+                             (sale.SaleDate >= param.D1 && sale.SaleDate <= param.D2
+                             && (param.DriverId == 0 ? true : employee.Id == param.DriverId)
+                             && (param.CustomerId == 0 ? true : cusResult.Id == param.CustomerId)
+                             && (param.SiteId == 0 ? true : sitResult.Id == param.SiteId)
+                             && (saleDetail.PayStatus == Base.Enums.PayStatus.NotYetPaid)
+                             && saleDetail.Active)
+
+                             select new EmployeeBillOutFace()
+                             {
+                                 PurchaseOrderNo = p.Name,
+                                 InvoiceNo = sale.InvoiceNo,
+                                 ToCompany = cusResult.Name,
+                                 ToSite = sitResult.Name,
+                                 SaleDate = sale.SaleDate,
+                                 Product = product.Name,
+                                 Category = category.Name,
+                                 ImportPrice = saleDetail.ImportPrice,
+                                 Qauntity = saleDetail.Qauntity,
+                                 ImportTotalAmount = saleDetail.ImportTotalAmount,
+                                 saleDetail = saleDetail
+                             };
+
+                var res = result.GroupBy(x => x.saleDetail).Select(y => y.FirstOrDefault()).ToList();
+                return res;
+            }
+           
         }
         
         public List<MonthlyInvoice> GetMonthlyInvoiceBySaleIds(List<int> saleIds)

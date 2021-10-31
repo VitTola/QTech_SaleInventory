@@ -1,0 +1,1 @@
+﻿XCOPY /i /Y "$(ProjectDir)bin\Debug\Updater.exe" "$(SolutionDir)QTech.App\$(OutDir)bin\Debug"

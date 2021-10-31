@@ -332,8 +332,9 @@ namespace QTech.Forms
             node.Cells[dgv.Columns[colRow_.Name].Index].Value = row++;
             node.Cells[dgv.Columns[colParentId.Name].Index].Value = invoice.Id;
             node.Cells[dgv.Columns[colInvoiceNo.Name].Index].Value = invoice.InvoiceNo;
-            node.Cells[dgv.Columns[colInvoicingDate.Name].Index].Value = invoice.InvoicingDate.ToString("dd-MMM-yyyy hh:mm"); 
-            node.Cells[dgv.Columns[colCustomer.Name].Index].Value = Customers.FirstOrDefault(x=>x.Id == invoice.CustomerId)?.Name;
+            node.Cells[dgv.Columns[colInvoicingDate.Name].Index].Value = invoice.InvoicingDate.ToString("dd-MMM-yyyy hh:mm");
+            var customerName = invoice.SaleType == SaleType.General ? invoice.CustomerName : Customers.FirstOrDefault(x => x.Id == invoice.CustomerId)?.Name;
+            node.Cells[dgv.Columns[colCustomer.Name].Index].Value =customerName;
             node.Cells[dgv.Columns[colTotalAmount.Name].Index].Value = invoice.TotalAmount;
             node.Cells[dgv.Columns[colPaidAmount.Name].Index].Value = invoice.PaidAmount;
             node.Cells[dgv.Columns[colLeftAmount.Name].Index].Value = invoice.LeftAmount;
