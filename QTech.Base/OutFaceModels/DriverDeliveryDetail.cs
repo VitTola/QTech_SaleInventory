@@ -18,5 +18,6 @@ namespace QTech.Base.OutFaceModels
         public decimal SubTotal { get; set; }
         public string Product { get; set; }
         public decimal Qauntity { get; set; }
+        public decimal ImportPrice { get; set; }
     }
 }

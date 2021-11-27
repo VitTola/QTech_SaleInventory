@@ -7,7 +7,7 @@
 <DiagramLayout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ex:showrelationlabel="False" ViewPortX="-10" ViewPortY="-10" xmlns:ex="urn:schemas-microsoft-com:xml-msdatasource-layout-extended" xmlns="urn:schemas-microsoft-com:xml-msdatasource-layout">
   <Shapes>
     <Shape ID="DesignTable:MonthlyInvoice" ZOrder="7" X="366" Y="221" Height="28" Width="157" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="0" OldDataTableHeight="368" SplitterPosition="24" />
-    <Shape ID="DesignTable:RportDriverDeliveryDetail" ZOrder="1" X="1068" Y="586" Height="28" Width="216" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="0" OldDataTableHeight="254" SplitterPosition="24" />
+    <Shape ID="DesignTable:RportDriverDeliveryDetail" ZOrder="1" X="1068" Y="586" Height="258" Width="216" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="24" SplitterPosition="254" />
     <Shape ID="DesignTable:Income" ZOrder="6" X="571" Y="224" Height="239" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="24" SplitterPosition="235" />
     <Shape ID="DesignTable:Expense" ZOrder="5" X="767" Y="225" Height="28" Width="150" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="0" OldDataTableHeight="235" SplitterPosition="24" />
     <Shape ID="DesignTable:IncomeExpense" ZOrder="4" X="839" Y="500" Height="220" Width="156" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="24" SplitterPosition="216" />

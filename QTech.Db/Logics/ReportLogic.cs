@@ -172,7 +172,8 @@ namespace QTech.Db.Logics
                             Site = string.Empty,
                             Qauntity = sad.Qauntity,
                             Product = pro.Name + cat.Name,
-                            SubTotal = sad.Total
+                            ImportPrice = sad.ImportPrice,
+                            SubTotal = sad.ImportTotalAmount
                         };
                 return q.ToList();
             }
@@ -204,7 +205,8 @@ namespace QTech.Db.Logics
                             Site = sitResult == null ? string.Empty : sitResult.Name,
                             Qauntity = sad.Qauntity,
                             Product = pro.Name + cat.Name,
-                            SubTotal = sad.Total
+                            ImportPrice = sad.ImportPrice,
+                            SubTotal = sad.ImportTotalAmount
                         };
 
                 var q1 = from sal in _db.Sales.Where(x => x.Active && x.SaleDate >= param.D1 && x.SaleDate <= param.D2 && x.SaleType == SaleType.General)
@@ -224,7 +226,8 @@ namespace QTech.Db.Logics
                             Site = string.Empty,
                             Qauntity = sad.Qauntity,
                             Product = pro.Name + cat.Name,
-                            SubTotal = sad.Total
+                            ImportPrice = sad.ImportPrice,
+                            SubTotal = sad.ImportTotalAmount
                         };
 
                 return q.Union(q1).ToList();
