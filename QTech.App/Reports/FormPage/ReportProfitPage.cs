@@ -26,7 +26,13 @@ namespace QTech.Reports
         {
             InitializeComponent();
             Bind();
+            InitAdvanceFilter();
+
         }
+
+        Dictionary<string, Control> _advanceFilters;
+        CustomAdvanceFilter dig;
+
         private void Bind()
         {
             var maxDate = DateTime.Now;
@@ -37,8 +43,29 @@ namespace QTech.Reports
             dtpPeroid.Items.AddRange(peroids.ToArray());
             dtpPeroid.Items.Add(customPeroid);
             dtpPeroid.SetSelectePeroid(DatePeroid.Today);
+
+
+            cboCompany.TextAll = BaseResource.Customer;
+            var customers = CustomerLogic.Instance.SearchAsync(new CustomerSearch())?.ToList() ?? new List<Customer>();
+            var customer = new Customer() { Id = -1, Name = BaseResource.GeneralCustomer };
+            customers.Add(customer);
+            cboCompany.DataSourceFn = p => customers.ToDropDownItemModelList();
+            cboCompany.SearchParamFn = () => new CustomerSearch();
+            cboCompany.Choose = BaseResource.Customer;
+            cboCompany.Name = BaseResource.Customer;
         }
         
+        private void InitEvent()
+        {
+            btnAdvanceSearch.Click += btnAdvanceSearch_Click;
+            cboCompany.SelectedIndexChanged += CboCompany_SelectedIndexChanged;
+        }
+        private void CboCompany_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var company = cboCompany.SelectedObject.ItemObject as Customer;
+            cboSite.SearchParamFn = () => new SiteSearch() { CustomerId = company == null ? 0 : company.Id };
+        }
+
         public async void View()
         {
             if (inValid() || btnView.Executing)
@@ -84,17 +111,23 @@ namespace QTech.Reports
                 viewer.View(report);
             }
         }
-        
+
         private bool inValid()
         {
+            _isAdvanceInvalid = false;
             if (!dtpPeroid.IsSelected())
             {
                 return true;
             }
-            
+
+            if (!cboCompany.IsSelected() | !cboSite.IsSelected())
+            {
+                _isAdvanceInvalid = true;
+                btnAdvanceSearch.ShowValidation(BaseResource.MsgPleaseSelectValue);
+                return true;
+            }
             return false;
         }
-        
         private void dig_FormClosed(object sender, FormClosedEventArgs e)
         {
         }
@@ -121,6 +154,93 @@ namespace QTech.Reports
         private void btnView_Click(object sender, EventArgs e)
         {
             View();
+        }
+
+        ExSearchCombo cboCompany = new ExSearchCombo();
+
+        ExSearchCombo cboSite = new ExSearchCombo
+        {
+            Name = BaseResource.Site,
+            TextAll = BaseResource.Site,
+            Choose = BaseResource.Site,
+            DataSourceFn = p => SiteLogic.Instance.SearchAsync(p).ToDropDownItemModelList(),
+            SearchParamFn = () => new SiteSearch() { }
+        };
+
+        ExSearchCombo cboProduct = new ExSearchCombo
+        {
+            Name = BaseResource.Products,
+            TextAll = BaseResource.Products,
+            Choose = BaseResource.Products,
+            DataSourceFn = p => ProductLogic.Instance.SearchAsync(p).ToDropDownItemModelList(),
+            SearchParamFn = () => new ProductSearch(),
+            CustomSearchForm = () => new SelectProductDialog(new ProductSearch(), true),
+        };
+
+        private void InitAdvanceFilter()
+        {
+            _advanceFilters = new Dictionary<string, Control>()
+            {
+                {cboCompany.Name, cboCompany },
+                {cboSite.Name, cboSite },
+                {cboProduct.Name, cboProduct },
+            };
+
+
+            _advanceFilters.IniAdvanceFilter();
+            dig = new CustomAdvanceFilter(_advanceFilters, inValid);
+
+            foreach (var item in _advanceFilters.Values)
+            {
+                if (item is ExSearchListCombo cbo)
+                {
+                    if (!item.IsHandleCreated)
+                    {
+                        item.CreateControl();
+                    }
+                    if (cbo.SelectedItems.Any())
+                    {
+                        cbo.SelectedValue = cbo.SelectedItems[0].Id;
+                    }
+                }
+                else if (item is ComboBox comboBox)
+                {
+                    if (!item.IsHandleCreated)
+                    {
+                        comboBox.CreateControl();
+                    }
+                }
+            }
+        }
+        private void btnAdvanceSearch_Click(object sender, EventArgs e)
+        {
+            Find();
+        }
+        private bool _isAdvanceInvalid = false;
+
+        public void Find()
+        {
+            if (btnView.Executing)
+            {
+                return;
+            }
+            btnAdvanceSearch.HideValidation();
+            if (dig.ShowDialog() == DialogResult.OK)
+            {
+                if (btnView.Enabled && btnView.Visible)
+                {
+                    View();
+                }
+            }
+            if (_isAdvanceInvalid)
+            {
+                btnAdvanceSearch.ShowValidation(BaseResource.MsgPleaseSelectValue);
+            }
+        }
+
+        private void btnAdvanceSearch_Click_1(object sender, EventArgs e)
+        {
+            Find();
         }
     }
 }

@@ -70,8 +70,41 @@ namespace QTech.Component
             ResourceHelper.Register(QTech.Base.Properties.Resources.ResourceManager);
 
             this.Move += ExDialog_Move;
+            //this.Opacity = 0;
+            InitializeFormTransparency();
+        }
+        const int WS_MINIMIZEBOX = 0x20000;
+        const int CS_DBLCLKS = 0x8;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.Style |= WS_MINIMIZEBOX;
+                cp.ClassStyle |= CS_DBLCLKS;
+                return cp;
+            }
+        }
+        DDFormsExtentions.DDFormFader FF;
+        private void InitializeFormTransparency()
+        {
+            //pass the class constructor the handle to the form
+            FF = new DDFormsExtentions.DDFormFader(Handle);
+
+            //set the form to a Layered Window Form
+            FF.setTransparentLayeredWindow();
+
+            //sets the length of time between fade steps in Milliseconds 
+            FF.seekSpeed = 2;
+
+            // sets the amount of steps to take to reach target opacity    
+            FF.StepsToFade = 2;
+
+            FF.updateOpacity((byte)0, false); // set the forms opacity to 0;
 
         }
+
+        public Color TittleColor { set { _lblTITLE.ForeColor = value; } }
 
         private void ExDialog_Move(object sender, EventArgs e)
         {
@@ -105,12 +138,11 @@ namespace QTech.Component
             return c.PointToScreen(Point.Empty);
         }
 
-
-
         public virtual void SetDefaultColumnSize() { }
 
         public virtual void Reload()
         {
+
         }
 
         public bool IsLoading { get; set; } = true;
@@ -124,14 +156,13 @@ namespace QTech.Component
                 _bMaximize.Visible = show;
         }
 
-
-
         protected override void OnLoad(EventArgs e)
         {
-            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width + 2, this.Height+5, 10, 10));
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width + 2, this.Height + 5, 10, 10));
             //this.Font = new Font("Khmer OS System", this.Font.Size);
             this.ApplyResource();
-            this.InitForm();
+            //this.InitForm();
+            FF.seekTo((byte)255);
             this.OptimizeLoadUI();
             this.DefaultEnglishInputControls();
             this.Reload();
@@ -179,17 +210,7 @@ namespace QTech.Component
                         paging.Repaging();
                     }
                 }
-                //if (flag == GeneralProcess.View)
-                //{
-                //    if (btnOk != null)
-                //    {
-                //        btnOk.Select();
-                //    }
-                //    else if (btnSave != null)
-                //    {
-                //        btnSave.Select();
-                //    }
-                //}
+
                 if (flag == GeneralProcess.Remove | flag == GeneralProcess.View)
                 {
                     if (btnClose != null)
@@ -216,29 +237,6 @@ namespace QTech.Component
                     btnSave.Visible = (flag != GeneralProcess.View);
                     btnSave.ShortcutText = Conts.DialogKeyText[DialogProcess.Save];
                 }
-
-                //if (flag == GeneralProcess.View)
-                //{
-                //    foreach (Control c in container.Controls)
-                //    {
-                //        if (c.GetType() == typeof(TextBox))
-                //        {
-                //            ((TextBox)c).ReadOnly = true;
-                //        }
-                //        if (c is ComboBox com)
-                //        {
-                //            com.KeyPress += (o, ee) => {ee.Handled = true; };
-                //        }
-                //        if (c is ExSearchCombo exCom)
-                //        {
-                //            exCom.KeyPress += (o, ee) => { ee.Handled = true; };
-                //        }
-                //        if (c is DataGrid g)
-                //        {
-                //            g.ReadOnly = true;
-                //        }
-                //    }
-                //}
             }
 
             base.OnLoad(e);
@@ -285,22 +283,6 @@ namespace QTech.Component
             }
             return false;
         }
-
-
-        private const int CS_DROPSHADOW = 0x20000;
-        //protected override CreateParams CreateParams
-        //{
-        //    get
-        //    {
-        //        CreateParams cp = base.CreateParams;
-        //        cp.Style |= CS_DROPSHADOW;
-        //        cp.ClassStyle |= CS_DROPSHADOW;
-        //        return cp;
-        //    }
-        //}
-
-
-
         protected override void WndProc(ref Message m)
         {
             //const int RESIZE_HANDLE_SIZE = 10;
@@ -354,6 +336,8 @@ namespace QTech.Component
 
         private void btnMaximize_Click(object sender, EventArgs e)
         {
+            FF.updateOpacity((byte)0, false); // set the forms opacity to 0;
+
             if (WindowState != FormWindowState.Maximized)
             {
                 MaximizedBounds = new Rectangle(new Point(0, 0), Screen.FromControl(this).WorkingArea.Size);
@@ -363,11 +347,16 @@ namespace QTech.Component
             {
                 WindowState = FormWindowState.Normal;
             }
+            FF.seekTo((byte)255);
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
         {
+            FF.seekTo((byte)0);
+
             WindowState = FormWindowState.Minimized;
+            FF.seekTo((byte)255);
+
         }
 
         public override string Text
@@ -404,12 +393,6 @@ namespace QTech.Component
             ControlPaint.DrawBorder(e.Graphics, rect, SystemColors.ActiveBorder, ButtonBorderStyle.Solid);
         }
 
-        private void container_Resize(object sender, EventArgs e)
-        {
-            //Invalidate();
-            //this.Refresh();
-        }
-
         private void HDialog_SizeChanged(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Maximized)
@@ -417,12 +400,12 @@ namespace QTech.Component
                 _bMaximize.Image = Properties.Resources.minimize;
                 var width = Screen.FromControl(this).Bounds.Width;
                 var heigth = Screen.FromControl(this).Bounds.Height;
-                Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, width, heigth+5, 10, 10));
+                Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, width, heigth + 5, 10, 10));
             }
             else
             {
                 _bMaximize.Image = Properties.Resources.maximize;
-                Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width+2, this.Height+5, 10, 10));
+                Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width + 2, this.Height + 5, 10, 10));
 
             }
             Invalidate();
@@ -593,27 +576,10 @@ namespace QTech.Component
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
-        private void ExDialog_MaximumSizeChanged(object sender, EventArgs e)
-        {
-            //var width = Screen.FromControl(this).Bounds.Width;
-            //var heigth = Screen.FromControl(this).Bounds.Height;
-            //Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, width, heigth + 5, 10, 10));
-
-        }
-
-        private void ExDialog_MinimumSizeChanged(object sender, EventArgs e)
-        {
-            //Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width + 2, this.Height + 5, 10, 10));
-        }
-
         private void _lblTITLE_DoubleClick(object sender, EventArgs e)
         {
-            if (MaximizeBox == true)
-            {
-                WindowState = WindowState == FormWindowState.Maximized ? FormWindowState.Normal : FormWindowState.Maximized;
-            }
+            WindowState = WindowState == FormWindowState.Maximized ? FormWindowState.Normal : FormWindowState.Maximized;
         }
-        
     }
 
     internal class CotrolDialogButton : Button

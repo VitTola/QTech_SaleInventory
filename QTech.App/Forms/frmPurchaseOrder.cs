@@ -80,24 +80,42 @@ namespace QTech.Forms
                 if (dgv.CurrentCell.ColumnIndex == colQauntity.Index || dgv.CurrentCell.ColumnIndex == colUnitPrice_.Index)
                 {
                     txt.KeyPress += Txt_KeyPress;
+                    txt.MouseEnter += Txt_MouseEnter;
                 }
             }
         }
+
+        private void Txt_MouseEnter(object sender, EventArgs e)
+        {
+            if (Flag == GeneralProcess.Update)
+            {
+                var _sender = sender as TextBox;
+                try
+                {
+                    _sender.Text = decimal.Parse(_sender.Text) == 0 ? "" : _sender.Text;
+                }
+                catch (Exception)
+                {
+                    _sender.Text = "";
+                }
+            }
+        }
+
         private void Txt_KeyPress(object sender, KeyPressEventArgs e)
         {
             var _sender = sender as TextBox;
             _sender.validCurrency(_sender, e);
-            _sender.KeyPress -= Txt_KeyPress;
+            //_sender.KeyPress -= Txt_KeyPress;
         }
         private void Txt_KeyUp(object sender, EventArgs e)
         {
             dgv.EndEdit();
             if (Flag == GeneralProcess.Update)
             {
-                var rowId = int.Parse(dgv.CurrentRow.Cells[colId.Name].Value?.ToString() ?? "0");
+                var rowId = Parse.ToInt(dgv.CurrentRow.Cells[colId.Name].Value?.ToString() ?? "0");
                 var firstQty = POProductPrices.FirstOrDefault(x => x.Id == rowId)?.StartQauntity;
 
-                var currentValue = int.Parse(dgv.CurrentRow.Cells[colQauntity.Name].Value?.ToString() ?? "0");
+                var currentValue = Parse.ToInt(dgv.CurrentRow.Cells[colQauntity.Name].Value?.ToString() ?? "0");
                 var firstLeftQty = POProductPrices.FirstOrDefault(x => x.Id == rowId)?.LeftQauntity;
                 dgv.CurrentRow.Cells[colLeftQauntity_.Name].Value = firstLeftQty + (currentValue - firstQty);
             }

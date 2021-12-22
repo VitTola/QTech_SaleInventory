@@ -8,6 +8,7 @@ using QTech.Component;
 using QTech.ReportModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -315,17 +316,18 @@ namespace QTech.Db.Logics
                 GeneralIncome = x.Sum(y => y.GeneralIncome)
             }).ToList();
 
+            var sTotal = saleIncomes.Sum(x => x.CustomerAmount);
 
             //Get all expense
-            var temp4 = from b in _db.EmployeeBills.Where(b => b.InvoiceStatus == InvoiceStatus.Paid && b.DoDate >= param.D1 && b.DoDate <= param.D2)
-                        join e in _db.Employees on b.EmployeeId equals e.Id
-                        where b.Active
-                        && e.Active
+            var temp4 = from s in _db.Sales.Where(x => x.Active && x.SaleDate <= param.D2 && x.SaleDate >= param.D1 && x.PayStatus == PayStatus.Paid)
+                        join sd in _db.SaleDetails.Where(x => x.Active) on s.Id equals sd.SaleId
+                        join e in _db.Employees.Where(x=>x.Active) on sd.EmployeeId equals e.Id
                         select new
-                        {
+                         {
                             Driver = e.Name,
-                            DriverAmount = b.PaidAmount
-                        };
+                            DriverAmount = sd.ImportTotalAmount
+                         };
+
             var driverExpenses = temp4.GroupBy(x => x.Driver).Select(x => new
             {
                 Key = 1,

@@ -126,6 +126,7 @@
     <Compile Include="Components\ExSearchListCombo.Designer.cs">
       <DependentUpon>ExSearchListCombo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\DDFormFader.cs" />
     <Compile Include="Interface\PrinterPickerDialog.cs">
       <SubType>Form</SubType>
     </Compile>

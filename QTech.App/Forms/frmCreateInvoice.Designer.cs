@@ -926,7 +926,7 @@
             this.Font = new System.Drawing.Font("Khmer OS System", 8.25F);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "frmCreateInvoice";
-            this.Opacity = 0D;
+            //this.Opacity = 0D;
             this.Text = "frmCreateInvoice";
             this.container.ResumeLayout(false);
             this.exPanel1.ResumeLayout(false);

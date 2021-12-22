@@ -27,10 +27,9 @@ namespace Updater
             LinkDownload = link;
             this._fileSize = _fileSize;
             btnUpdate_Click();
-
         }
 
-        private readonly MyWebClient _client = new MyWebClient();
+        private readonly WebClient _client = new WebClient();
         private readonly Stopwatch _sw = new Stopwatch();
         public const int WmNclbuttondown = 0xA1;
         public const int HtCaption = 0x2;

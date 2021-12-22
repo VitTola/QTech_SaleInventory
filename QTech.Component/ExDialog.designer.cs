@@ -60,7 +60,7 @@ namespace QTech.Component
             this.container.Size = new System.Drawing.Size(447, 308);
             this.container.TabIndex = 0;
             this.container.Paint += new System.Windows.Forms.PaintEventHandler(this.container_Paint);
-            this.container.Resize += new System.EventHandler(this.container_Resize);
+            //this.container.Resize += new System.EventHandler(this.container_Resize);
             // 
             // digheader
             // 
@@ -233,8 +233,8 @@ namespace QTech.Component
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HDialog";
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(238)))), ((int)(((byte)(240)))));
-            this.MaximumSizeChanged += new System.EventHandler(this.ExDialog_MaximumSizeChanged);
-            this.MinimumSizeChanged += new System.EventHandler(this.ExDialog_MinimumSizeChanged);
+            //this.MaximumSizeChanged += new System.EventHandler(this.ExDialog_MaximumSizeChanged);
+            //this.MinimumSizeChanged += new System.EventHandler(this.ExDialog_MinimumSizeChanged);
             this.SizeChanged += new System.EventHandler(this.HDialog_SizeChanged);
             this.digheader.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
