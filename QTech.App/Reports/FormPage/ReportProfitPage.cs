@@ -17,6 +17,8 @@ using FastMember;
 using QTech.ReportModels;
 using Storm.CC.Report.Helpers;
 using QTech.Component.Helpers;
+using QTech.Base.Models;
+using QTech.Base.Enums;
 
 namespace QTech.Reports
 {
@@ -27,7 +29,7 @@ namespace QTech.Reports
             InitializeComponent();
             Bind();
             InitAdvanceFilter();
-
+            InitEvent();
         }
 
         Dictionary<string, Control> _advanceFilters;
@@ -43,8 +45,7 @@ namespace QTech.Reports
             dtpPeroid.Items.AddRange(peroids.ToArray());
             dtpPeroid.Items.Add(customPeroid);
             dtpPeroid.SetSelectePeroid(DatePeroid.Today);
-
-
+            
             cboCompany.TextAll = BaseResource.Customer;
             var customers = CustomerLogic.Instance.SearchAsync(new CustomerSearch())?.ToList() ?? new List<Customer>();
             var customer = new Customer() { Id = -1, Name = BaseResource.GeneralCustomer };
@@ -53,13 +54,23 @@ namespace QTech.Reports
             cboCompany.SearchParamFn = () => new CustomerSearch();
             cboCompany.Choose = BaseResource.Customer;
             cboCompany.Name = BaseResource.Customer;
+
+            cboSource.SetDataSource<PaymentSource>();
         }
-        
+
         private void InitEvent()
         {
             btnAdvanceSearch.Click += btnAdvanceSearch_Click;
             cboCompany.SelectedIndexChanged += CboCompany_SelectedIndexChanged;
+            cboSource.SelectedIndexChanged += CboSource_SelectedIndexChanged;
         }
+
+        private void CboSource_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var source = (PaymentSource)cboSource.SelectedValue;
+            cboProduct.Enabled = cboCompany.Enabled = cboSite.Enabled = source != PaymentSource.Miscellaneous;
+        }
+
         private void CboCompany_SelectedIndexChanged(object sender, EventArgs e)
         {
             var company = cboCompany.SelectedObject.ItemObject as Customer;
@@ -72,13 +83,22 @@ namespace QTech.Reports
             {
                 return;
             }
-            
+
+            var company = cboCompany.SelectedObject.ItemObject as Customer;
+            var site = cboSite.SelectedObject.ItemObject as Site;
+            var product = cboProduct.SelectedObject.ItemObject as Product;
+            var paymentSource = (PaymentSource)cboSource.SelectedValue;
+
             var searchParam = new ProfitSearch()
             {
                 D1 = dtpPeroid.SelectedPeroid.FromDate.Date,
                 D2 = dtpPeroid.SelectedPeroid.ToDate,
+                CustomerId = company?.Id ?? 0,
+                SiteId = site?.Id ?? 0,
+                ProductId = product?.Id ?? 0,
+                PaymentSource = paymentSource
             };
-            
+
             var _Profits = await btnView.RunAsync(() =>
             {
                 var result = ReportLogic.Instance.GetProfitData(searchParam);
@@ -89,8 +109,12 @@ namespace QTech.Reports
             {
                 { "D1" , dtpPeroid.SelectedPeroid.FromDate.Date.ToString(FormatHelper.DateTime[FormatHelper.DateTimeType.ShortDate]) },
                 { "D2" , dtpPeroid.SelectedPeroid.ToDate.Date.ToString(FormatHelper.DateTime[FormatHelper.DateTimeType.ShortDate]) },
+                {"PaymentSource",cboSource.Text },
+                {"Customer", paymentSource == PaymentSource.Miscellaneous ? "គ្មាន" : cboCompany.Text },
+                {"Site", paymentSource == PaymentSource.Miscellaneous ? "គ្មាន" : cboSite.Text},
+                {"Product",paymentSource == PaymentSource.Miscellaneous ? "គ្មាន" : cboProduct.Text }
             };
-            
+
             DataTable profitDt = new DataTable("Profit");
             using (var reader = ObjectReader.Create(_Profits))
             {
@@ -128,9 +152,6 @@ namespace QTech.Reports
             }
             return false;
         }
-        private void dig_FormClosed(object sender, FormClosedEventArgs e)
-        {
-        }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -156,6 +177,12 @@ namespace QTech.Reports
             View();
         }
 
+        ComboBox cboSource = new ComboBox()
+        {
+            Name = nameof(cboSource),
+            DropDownStyle = ComboBoxStyle.DropDownList
+        };
+
         ExSearchCombo cboCompany = new ExSearchCombo();
 
         ExSearchCombo cboSite = new ExSearchCombo
@@ -177,10 +204,12 @@ namespace QTech.Reports
             CustomSearchForm = () => new SelectProductDialog(new ProductSearch(), true),
         };
 
+
         private void InitAdvanceFilter()
         {
             _advanceFilters = new Dictionary<string, Control>()
             {
+                {cboSource.Name, cboSource },
                 {cboCompany.Name, cboCompany },
                 {cboSite.Name, cboSite },
                 {cboProduct.Name, cboProduct },

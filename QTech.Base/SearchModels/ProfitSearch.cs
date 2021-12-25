@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QTech.Base.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,10 @@ namespace QTech.Base.SearchModels
     {
         public DateTime D1 { get; set; }
         public DateTime D2 { get; set; }
+        public int CustomerId { get; set; }
+        public int SiteId { get; set; }
+        public int ProductId { get; set; }
+        public PaymentSource PaymentSource { get; set; }
+
     }
 }

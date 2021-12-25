@@ -143,6 +143,7 @@
     <Compile Include="Enums\AuthKey.cs" />
     <Compile Include="Enums\InsertImport.cs" />
     <Compile Include="Enums\MiscellaneousType.cs" />
+    <Compile Include="Enums\PaymentSource.cs" />
     <Compile Include="Enums\PayStatus.cs" />
     <Compile Include="Enums\Currency.cs" />
     <Compile Include="Enums\PermissionType.cs" />

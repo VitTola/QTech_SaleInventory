@@ -1196,6 +1196,33 @@ namespace QTech.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ប្រភពទាំអស់.
+        /// </summary>
+        public static string PaymentSource_All {
+            get {
+                return ResourceManager.GetString("PaymentSource_All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ចំណូលចំណាយទូទៅ.
+        /// </summary>
+        public static string PaymentSource_Miscellaneous {
+            get {
+                return ResourceManager.GetString("PaymentSource_Miscellaneous", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ការលក់ចេញទិញចូល.
+        /// </summary>
+        public static string PaymentSource_Sale {
+            get {
+                return ResourceManager.GetString("PaymentSource_Sale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ស្ថានភាពទាំងអស់.
         /// </summary>
         public static string PayStatus_All {
@@ -1782,6 +1809,15 @@ namespace QTech.Base.Properties {
         public static string Site {
             get {
                 return ResourceManager.GetString("Site", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ប្រភព.
+        /// </summary>
+        public static string Source {
+            get {
+                return ResourceManager.GetString("Source", resourceCulture);
             }
         }
         

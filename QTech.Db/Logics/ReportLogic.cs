@@ -73,7 +73,7 @@ namespace QTech.Db.Logics
                              from scResult in cs.DefaultIfEmpty()
                              join ss in _db.Sites.Where(ss => ss.Active) on s.SiteId equals ss.Id into sss
                              from ssResult in sss.DefaultIfEmpty()
-                             join p in _db.PurchaseOrders.Where(p=>p.Active) on s.PurchaseOrderId equals p.Id
+                             join p in _db.PurchaseOrders.Where(p => p.Active) on s.PurchaseOrderId equals p.Id
                              select new Income
                              {
                                  SaleId = s.Id,
@@ -88,17 +88,17 @@ namespace QTech.Db.Logics
 
                 var result1 = from s in _db.Sales.Where(s => s.Active && s.PayStatus == PayStatus.Paid && s.SaleType == SaleType.General &&
              s.SaleDate >= param.D1 && s.SaleDate <= param.D2)
-                             select new Income
-                             {
-                                 SaleId = s.Id,
-                                 InvoiceNo = s.InvoiceNo,
-                                 PurchaseOrderNo = string.Empty,
-                                 Customer = s.CustomerName,
-                                 Site = string.Empty,
-                                 SaleDate = s.SaleDate,
-                                 Total = s.Total,
-                                 Expense = s.Expense
-                             };
+                              select new Income
+                              {
+                                  SaleId = s.Id,
+                                  InvoiceNo = s.InvoiceNo,
+                                  PurchaseOrderNo = string.Empty,
+                                  Customer = s.CustomerName,
+                                  Site = string.Empty,
+                                  SaleDate = s.SaleDate,
+                                  Total = s.Total,
+                                  Expense = s.Expense
+                              };
 
                 var res = result.Union(result1).GroupBy(x => x.SaleId).Select(x => x.FirstOrDefault()).ToList();
                 return res;
@@ -110,7 +110,7 @@ namespace QTech.Db.Logics
                              join c in _db.Customers.Where(c => c.Active) on s.CompanyId equals c.Id
                              join ss in _db.Sites.Where(ss => ss.Active) on s.SiteId equals ss.Id
                              join p in _db.PurchaseOrders.Where(p => p.Active) on s.PurchaseOrderId equals p.Id
-                             where  param.CustomerId == 0 ? true
+                             where param.CustomerId == 0 ? true
                              :
                              s.CompanyId == param.CustomerId
                              select new Income
@@ -191,7 +191,7 @@ namespace QTech.Db.Logics
                         join cat in _db.Categories.Where(c => c.Active) on pro.CategoryId equals cat.Id
                         join p in _db.PurchaseOrders.Where(p => p.Active) on sal.PurchaseOrderId equals p.Id
 
-                        where 
+                        where
                         (param.DriverId == 0 ? true : sad.EmployeeId == param.DriverId)
                         && (param.SiteId == 0 ? true : sitResult.Id == param.SiteId)
                         && (param.CustomerId == 0 ? true : sal.CompanyId == param.CustomerId)
@@ -211,25 +211,25 @@ namespace QTech.Db.Logics
                         };
 
                 var q1 = from sal in _db.Sales.Where(x => x.Active && x.SaleDate >= param.D1 && x.SaleDate <= param.D2 && x.SaleType == SaleType.General)
-                        join sad in _db.SaleDetails.Where(x => x.Active) on sal.Id equals sad.SaleId
-                        join pro in _db.Products.Where(p => p.Active) on sad.ProductId equals pro.Id
-                        join cat in _db.Categories.Where(c => c.Active) on pro.CategoryId equals cat.Id
-                        where 
-                        (param.DriverId == 0 ? true : sad.EmployeeId == param.DriverId)
-                        && (param.ProductId == 0 ? true : sad.ProductId == param.ProductId)
-                        select new DriverDeliveryDetail()
-                        {
-                            saleDetailId = sad.Id,
-                            SaleDate = sal.SaleDate,
-                            InvoiceNo = sal.InvoiceNo.ToString(),
-                            PurchaseOrderNo = string.Empty,
-                            Company = sal.CustomerName,
-                            Site = string.Empty,
-                            Qauntity = sad.Qauntity,
-                            Product = pro.Name + cat.Name,
-                            ImportPrice = sad.ImportPrice,
-                            SubTotal = sad.ImportTotalAmount
-                        };
+                         join sad in _db.SaleDetails.Where(x => x.Active) on sal.Id equals sad.SaleId
+                         join pro in _db.Products.Where(p => p.Active) on sad.ProductId equals pro.Id
+                         join cat in _db.Categories.Where(c => c.Active) on pro.CategoryId equals cat.Id
+                         where
+                         (param.DriverId == 0 ? true : sad.EmployeeId == param.DriverId)
+                         && (param.ProductId == 0 ? true : sad.ProductId == param.ProductId)
+                         select new DriverDeliveryDetail()
+                         {
+                             saleDetailId = sad.Id,
+                             SaleDate = sal.SaleDate,
+                             InvoiceNo = sal.InvoiceNo.ToString(),
+                             PurchaseOrderNo = string.Empty,
+                             Company = sal.CustomerName,
+                             Site = string.Empty,
+                             Qauntity = sad.Qauntity,
+                             Product = pro.Name + cat.Name,
+                             ImportPrice = sad.ImportPrice,
+                             SubTotal = sad.ImportTotalAmount
+                         };
 
                 return q.Union(q1).ToList();
             }
@@ -269,8 +269,13 @@ namespace QTech.Db.Logics
         public List<Profit> GetProfitData(ProfitSearch param)
         {
             // Get all incomes
-            var temp1 = from s in _db.Sales.Where(s => s.Active && s.PayStatus == PayStatus.Paid && s.SaleType == SaleType.General &&
-               s.SaleDate >= param.D1 && s.SaleDate <= param.D2)
+            var temp1 = from s in _db.Sales.Where(s => s.Active && s.PayStatus == PayStatus.Paid && s.SaleType == SaleType.General && s.SaleDate >= param.D1 && s.SaleDate <= param.D2)
+                        join sd in _db.SaleDetails.Where(x => x.Active) on s.Id equals sd.SaleId
+                        join p in _db.Products.Where(x => x.Active) on sd.ProductId equals p.Id
+                        where
+                        (param.PaymentSource != PaymentSource.Miscellaneous)
+                        && (param.CustomerId == 0 || param.CustomerId == -1)
+                        && (param.ProductId == 0 ? true : p.Id == param.ProductId)
                         select new
                         {
                             Customer = QTech.Base.Properties.Resources.GeneralCustomer,
@@ -278,9 +283,17 @@ namespace QTech.Db.Logics
                             Expense = s.Expense
                         };
 
-            var temp2 = from s in _db.Sales.Where(s => s.Active && s.PayStatus == PayStatus.Paid && s.SaleType == SaleType.Company &&
-                s.SaleDate >= param.D1 && s.SaleDate <= param.D2)
-                        join c in _db.Customers.Where(c => c.Active) on s.CompanyId equals c.Id
+            var temp2 = from s in _db.Sales.Where(s => s.Active && s.PayStatus == PayStatus.Paid && s.SaleType == SaleType.Company && s.SaleDate >= param.D1 && s.SaleDate <= param.D2)
+                        join c in _db.Customers.Where(x => x.Active) on s.CompanyId equals c.Id
+                        join ss in _db.Sites.Where(x => x.Active) on s.SiteId equals ss.Id
+                        join sd in _db.SaleDetails.Where(x => x.Active) on s.Id equals sd.SaleId
+                        join p in _db.Products.Where(x => x.Active) on sd.ProductId equals p.Id
+                        where
+                        (param.PaymentSource != PaymentSource.Miscellaneous)
+                        && (param.CustomerId == 0 ? true : s.CompanyId == param.CustomerId)
+                        && (param.SiteId == 0 ? true : ss.Id == param.SiteId)
+                        && (param.ProductId == 0 ? true : p.Id == param.ProductId)
+
                         select new
                         {
                             Customer = c.Name,
@@ -304,6 +317,7 @@ namespace QTech.Db.Logics
 
             var temp3 = from e in _db.IncomeExpenses.Where(x => x.Active && x.DoDate >= param.D1 && x.DoDate <= param.D2 &&
                                   x.MiscellaneousType == MiscellaneousType.Income)
+                        where param.PaymentSource != PaymentSource.Sale
                         select new
                         {
                             Customer = "temp",
@@ -319,23 +333,47 @@ namespace QTech.Db.Logics
             var sTotal = saleIncomes.Sum(x => x.CustomerAmount);
 
             //Get all expense
-            var temp4 = from s in _db.Sales.Where(x => x.Active && x.SaleDate <= param.D2 && x.SaleDate >= param.D1 && x.PayStatus == PayStatus.Paid)
+            var temp4 = from s in _db.Sales.Where(x => x.Active && x.SaleDate <= param.D2 && x.SaleDate >= param.D1 && x.PayStatus == PayStatus.Paid && x.SaleType == SaleType.Company)
+                        join c in _db.Customers.Where(x => x.Active) on s.CompanyId equals c.Id
+                        join ss in _db.Sites.Where(x => x.Active) on s.SiteId equals ss.Id
                         join sd in _db.SaleDetails.Where(x => x.Active) on s.Id equals sd.SaleId
-                        join e in _db.Employees.Where(x=>x.Active) on sd.EmployeeId equals e.Id
+                        join p in _db.Products.Where(x => x.Active) on sd.ProductId equals p.Id
+                        join e in _db.Employees.Where(x => x.Active) on sd.EmployeeId equals e.Id
+                        where
+                        (param.PaymentSource != PaymentSource.Miscellaneous)
+                        && (param.CustomerId == 0 ? true : s.CompanyId == param.CustomerId)
+                        && (param.SiteId == 0 ? true : ss.Id == param.SiteId)
+                        && (param.ProductId == 0 ? true : p.Id == param.ProductId)
                         select new
-                         {
+                        {
                             Driver = e.Name,
                             DriverAmount = sd.ImportTotalAmount
-                         };
+                        };
 
-            var driverExpenses = temp4.GroupBy(x => x.Driver).Select(x => new
+            var tempGeneral = from s in _db.Sales.Where(x => x.Active && x.SaleDate <= param.D2 && x.SaleDate >= param.D1 && x.PayStatus == PayStatus.Paid && x.SaleType == SaleType.General)
+                              join sd in _db.SaleDetails.Where(x => x.Active) on s.Id equals sd.SaleId
+                              join p in _db.Products.Where(x => x.Active) on sd.ProductId equals p.Id
+                              join e in _db.Employees.Where(x => x.Active) on sd.EmployeeId equals e.Id
+                              where
+                                    (param.PaymentSource != PaymentSource.Miscellaneous)
+                                    && (param.CustomerId == 0 || param.CustomerId == -1)
+                                    && (param.ProductId == 0 ? true : p.Id == param.ProductId)
+                              select new
+                              {
+                                  Driver = e.Name,
+                                  DriverAmount = sd.ImportTotalAmount
+                              };
+
+            var driverExpenses = temp4.Union(tempGeneral).GroupBy(x => x.Driver).Select(x => new
             {
                 Key = 1,
                 Driver = x.FirstOrDefault().Driver,
                 DriverAmount = x.Sum(y => y.DriverAmount),
             }).ToList();
+
             var temp5 = from e in _db.IncomeExpenses.Where(x => x.Active && x.DoDate >= param.D1 && x.DoDate <= param.D2 &&
-                                 x.MiscellaneousType == MiscellaneousType.Expense)  
+                                 x.MiscellaneousType == MiscellaneousType.Expense)
+                        where param.PaymentSource != PaymentSource.Sale
                         select new
                         {
                             Key = e.Amount > 0 ? 1 : 0,
@@ -350,22 +388,22 @@ namespace QTech.Db.Logics
 
             var profits = new List<Profit>();
             int si = saleIncomes.Count(), gi = generalIncomes.Count(), de = driverExpenses.Count(), ge = generalExpenses.Count();
-            int maxCount = new[] { si, gi, de, ge}.Max();
+            int maxCount = new[] { si, gi, de, ge }.Max();
             for (int i = 0; i < maxCount; i++)
             {
                 profits.Add(
                     new Profit
                     {
-                        Customer = i < si ? saleIncomes[i].Customer : string.Empty,  
-                        CustomerAmount = i < si ? saleIncomes[i].CustomerAmount : 0,  
+                        Customer = i < si ? saleIncomes[i].Customer : string.Empty,
+                        CustomerAmount = i < si ? saleIncomes[i].CustomerAmount : 0,
                         GeneralIncome = i < gi ? generalIncomes[i].GeneralIncome : 0,
                         Driver = i < de ? driverExpenses[i]?.Driver : string.Empty,
                         DriverAmount = i < de ? driverExpenses[i].DriverAmount : 0,
                         GeneralExpense = i < ge ? generalExpenses[i].GeneralExpense : 0
                     }
-                    );   
+                    );
             }
-            
+
             return profits;
         }
 
@@ -376,7 +414,7 @@ namespace QTech.Db.Logics
             {
                 var result = from s in _db.Sales.Where(s => s.Active && s.SaleType == SaleType.General &&
                 s.SaleDate >= param.D1 && s.SaleDate <= param.D2)
-                where (s.PayStatus == param.PayStatus || param.PayStatus == PayStatus.All)
+                             where (s.PayStatus == param.PayStatus || param.PayStatus == PayStatus.All)
                              select new Income
                              {
                                  SaleId = s.Id,
@@ -396,7 +434,7 @@ namespace QTech.Db.Logics
             }
             else if (param.CustomerId == 0)
             {
-                var result = from s in _db.Sales.Where(s => s.Active && s.SaleType == SaleType.Company && s.SaleDate >= param.D1 && s.SaleDate <= param.D2) 
+                var result = from s in _db.Sales.Where(s => s.Active && s.SaleType == SaleType.Company && s.SaleDate >= param.D1 && s.SaleDate <= param.D2)
                              join c in _db.Customers.Where(c => c.Active) on s.CompanyId equals c.Id into cs
                              from scResult in cs.DefaultIfEmpty()
                              join ss in _db.Sites.Where(ss => ss.Active) on s.SiteId equals ss.Id into sss
@@ -415,28 +453,28 @@ namespace QTech.Db.Logics
                                  SaleDate = s.SaleDate,
                                  Total = s.Total,
                                  Expense = s.Expense,
-                                 Status = s.PayStatus == PayStatus.NotYetPaid ? BaseResource.PayStatus_NotYetPaid : 
+                                 Status = s.PayStatus == PayStatus.NotYetPaid ? BaseResource.PayStatus_NotYetPaid :
                                  (s.PayStatus == PayStatus.All ? BaseResource.PayStatus_All : (s.PayStatus == PayStatus.Paid ? BaseResource.PayStatus_Paid : BaseResource.PayStatus_WaitPayment))
 
                              };
 
                 var result1 = from s in _db.Sales.Where(s => s.Active && s.SaleType == SaleType.General &&
                s.SaleDate >= param.D1 && s.SaleDate <= param.D2)
-                             where (s.PayStatus == param.PayStatus || param.PayStatus == PayStatus.All)
-                             select new Income
-                             {
-                                 SaleId = s.Id,
-                                 InvoiceNo = s.InvoiceNo,
-                                 PurchaseOrderNo = string.Empty,
-                                 Customer = s.CustomerName,
-                                 Site = string.Empty,
-                                 SaleDate = s.SaleDate,
-                                 Total = s.Total,
-                                 Expense = s.Expense,
-                                 Status = s.PayStatus == PayStatus.NotYetPaid ? BaseResource.PayStatus_NotYetPaid :
-                                 (s.PayStatus == PayStatus.All ? BaseResource.PayStatus_All : (s.PayStatus == PayStatus.Paid ? BaseResource.PayStatus_Paid : BaseResource.PayStatus_WaitPayment))
+                              where (s.PayStatus == param.PayStatus || param.PayStatus == PayStatus.All)
+                              select new Income
+                              {
+                                  SaleId = s.Id,
+                                  InvoiceNo = s.InvoiceNo,
+                                  PurchaseOrderNo = string.Empty,
+                                  Customer = s.CustomerName,
+                                  Site = string.Empty,
+                                  SaleDate = s.SaleDate,
+                                  Total = s.Total,
+                                  Expense = s.Expense,
+                                  Status = s.PayStatus == PayStatus.NotYetPaid ? BaseResource.PayStatus_NotYetPaid :
+                                  (s.PayStatus == PayStatus.All ? BaseResource.PayStatus_All : (s.PayStatus == PayStatus.Paid ? BaseResource.PayStatus_Paid : BaseResource.PayStatus_WaitPayment))
 
-                             };
+                              };
 
                 var res = result.Union(result1).GroupBy(x => x.SaleId).Select(x => x.FirstOrDefault()).ToList();
                 return res;
