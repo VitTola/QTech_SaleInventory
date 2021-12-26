@@ -349,6 +349,7 @@ namespace QTech.Db.Logics
                             Driver = e.Name,
                             DriverAmount = sd.ImportTotalAmount
                         };
+            var res1 = temp4.ToList();
 
             var tempGeneral = from s in _db.Sales.Where(x => x.Active && x.SaleDate <= param.D2 && x.SaleDate >= param.D1 && x.PayStatus == PayStatus.Paid && x.SaleType == SaleType.General)
                               join sd in _db.SaleDetails.Where(x => x.Active) on s.Id equals sd.SaleId
@@ -364,7 +365,8 @@ namespace QTech.Db.Logics
                                   DriverAmount = sd.ImportTotalAmount
                               };
 
-            var driverExpenses = temp4.Union(tempGeneral).GroupBy(x => x.Driver).Select(x => new
+            var totalExpenses = temp4.Concat(tempGeneral);
+            var driverExpenses = totalExpenses.GroupBy(x => x.Driver).Select(x => new
             {
                 Key = 1,
                 Driver = x.FirstOrDefault().Driver,
