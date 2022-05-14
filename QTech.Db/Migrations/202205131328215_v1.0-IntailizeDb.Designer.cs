@@ -7,13 +7,13 @@ namespace QTech.Db.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class v47 : IMigrationMetadata
+    public sealed partial class v10IntailizeDb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(v47));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(v10IntailizeDb));
         
         string IMigrationMetadata.Id
         {
-            get { return "202109201616012_v4.7"; }
+            get { return "202205131328215_v1.0-IntailizeDb"; }
         }
         
         string IMigrationMetadata.Source

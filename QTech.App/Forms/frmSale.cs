@@ -544,25 +544,27 @@ namespace QTech.Forms
             if (InValid()) { return; }
             Write();
 
+            #region check existing invoiceno
             //check existing invoiceno
-            if (tabMain.SelectedTab.Equals(tabCompany_))
-            {
-                var existedInvoiceNo = SaleLogic.Instance.IsExistedInvoiceNo(Model);
-                if (existedInvoiceNo)
-                {
-                    txtInvoiceNo.ShowValidation(string.Format(EDomain.Resources.MsgFieldExists, lblInvoiceNo.Text), TabAlignment.Left);
-                    return;
-                }
-            }
-            else
-            {
-                var existedInvoiceNo = SaleLogic.Instance.IsExistedInvoiceNo(Model);
-                if (existedInvoiceNo)
-                {
-                    txtInvoiceNo1.ShowValidation(string.Format(EDomain.Resources.MsgFieldExists, lblInvoiceNo.Text), TabAlignment.Right);
-                    return;
-                }
-            }
+            //if (tabMain.SelectedTab.Equals(tabCompany_))
+            //{
+            //    var existedInvoiceNo = SaleLogic.Instance.IsExistedInvoiceNo(Model);
+            //    if (existedInvoiceNo)
+            //    {
+            //        txtInvoiceNo.ShowValidation(string.Format(EDomain.Resources.MsgFieldExists, lblInvoiceNo.Text), TabAlignment.Left);
+            //        return;
+            //    }
+            //}
+            //else
+            //{
+            //    var existedInvoiceNo = SaleLogic.Instance.IsExistedInvoiceNo(Model);
+            //    if (existedInvoiceNo)
+            //    {
+            //        txtInvoiceNo1.ShowValidation(string.Format(EDomain.Resources.MsgFieldExists, lblInvoiceNo.Text), TabAlignment.Right);
+            //        return;
+            //    }
+            //}
+            #endregion
 
             var result = await btnSave.RunAsync(() =>
             {

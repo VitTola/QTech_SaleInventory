@@ -242,7 +242,9 @@
     </Compile>
     <Compile Include="Helpers\ExcelHelper.cs" />
     <Compile Include="Helpers\ISearchForm.cs" />
-    <Compile Include="Interface\AuditTrailDialog.cs" />
+    <Compile Include="Interface\AuditTrailDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Interface\AuditTrailDialog.Designer.cs">
       <DependentUpon>AuditTrailDialog.cs</DependentUpon>
     </Compile>

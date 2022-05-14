@@ -172,6 +172,7 @@ namespace QTech.Forms
                 return;
             }
             List<Sale> sales = pagination.ListModel;
+            dgv.Rows.Clear();
             sales.ForEach(x =>
             {
                 var row = newRow(false);

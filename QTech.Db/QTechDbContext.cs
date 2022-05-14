@@ -59,8 +59,8 @@ namespace QTech.Db
     public static class DataBaseSetting
     {
         public static DbConfig config = new DbConfig() {
-            DataSource = ".",
-            DataBase = "QTech_SaleDbX",
+            DataSource = @"localhost\sqlexpress",
+            DataBase = "QTech_SaleDb",
             
         };
 
